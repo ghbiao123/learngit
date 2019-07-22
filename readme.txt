@@ -5,3 +5,4 @@ this is a change,
 add some new words !!! 
 Git has a mutable index called stage.
 Git track changes.
+Git track changes of files.
