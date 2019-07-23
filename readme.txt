@@ -10,4 +10,3 @@ Creating a new branch is quick.
 test the branch.
 test the branch again.
 Creating a new branch is quick & simple.
-
