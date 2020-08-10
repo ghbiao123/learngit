@@ -1,0 +1,23 @@
+.banner{
+  position: relative;
+  width: 750rpx;
+  height: 280rpx;
+}
+
+.banner-bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 750rpx;
+}
+
+.banner-swiper,
+.banner-swiper-item,
+.banner-image{
+  margin: 0 auto;
+  width: 710rpx;
+  height: 280rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+}

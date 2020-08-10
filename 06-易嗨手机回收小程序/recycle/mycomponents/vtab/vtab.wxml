@@ -1,0 +1,29 @@
+<view class="vtab">
+  <view class="vtab-list">
+    <scroll-view class="vtab-list-scroll" scroll-y  scroll-into-view="vtab{{selected-4}}">
+      <block wx:for="{{vtab}}" wx:key="index">
+        <view id="vtab{{index}}" class="vtab-list-item {{selected==index? 'color':''}}" data-index="{{index}}" bindtap="getSelected">{{item}}</view>
+      </block>
+    </scroll-view>
+  </view>
+
+  <view class="vtab-content">
+    <scroll-view scroll-y scroll-with-animation class="vtab-content-scroll" scroll-into-view="content{{selected}}">
+      <block wx:for="{{vtab}}" wx:key="index">
+        <view id="content{{index}}" class="vtab-content-scroll-item">
+          <view class="vtab-content-scroll-title">{{item}}</view>
+          <block wx:for="{{content}}" wx:key="index" wx:for-index="idx" wx:for-item="it">
+            <view class="vtab-cont-list {{(idx+1)%2==1?'bg-w':'bg-p'}}">
+              <image class="vtab-cont-list-image" src="/images/a.jpg"></image>
+              <view class="vtab-cont-list-info">
+                <view class="vtab-cont-list-info-name ellipsis-text">型号{{item}}{{it}}</view>
+                <view class="vtab-cont-list-info-name ellipsis-text">最高可卖：<text class="color">￥1234</text></view>
+              </view>
+              <image class="vtab-cont-list-icon" src="/images/first.png"></image>
+            </view>
+          </block>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

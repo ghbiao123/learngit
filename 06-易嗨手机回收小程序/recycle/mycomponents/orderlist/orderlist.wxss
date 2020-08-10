@@ -1,0 +1,81 @@
+.order-list{
+  margin: 20rpx auto 0;
+  padding: 20rpx;
+  width: 670rpx;
+  height: auto;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+
+.title{
+  font-size: 30rpx;
+  font-weight: bold;
+  line-height: 2;
+}
+
+.project{
+  display: flex;
+  width: 670rpx;
+  height: auto;
+}
+.project-image{
+  width: 170rpx;
+  height: auto;
+  text-align: center;
+}
+.image{
+  width: 140rpx;
+}
+.project-info{
+  width: 500rpx;
+}
+
+.project-name{
+  display: flex;
+  justify-content: space-between;
+  line-height: 1.5;
+}
+
+.name{
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.state{
+  font-size: 20rpx;
+  color: #EB2323;
+}
+.info{
+  padding: 5rpx 0;
+  font-size: 24rpx;
+  color: #929292;
+  line-height: 1.5;
+}
+
+
+.order-info{
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+}
+
+.order-info-name{
+  color: #929292;
+}
+.order-info-cont{
+  display: flex;
+}
+
+.copy{
+  margin: 0 10rpx;
+  width: 70rpx;
+  height: 36rpx;
+  line-height: 34rpx;
+  text-align: center;
+  border: 1rpx solid #000000;
+  border-radius: 10rpx;
+}
+
+
+
+

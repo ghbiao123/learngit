@@ -1,0 +1,14 @@
+<view class="">
+  <searchbar id="search" theme="#ffffff"></searchbar>
+
+
+  <tab title="{{tab}}" swiperHeight="{{height}}">
+    <block wx:for="{{tab}}" wx:key="index">
+      <view slot="tab-content-{{index}}">
+        <vtab vtab="{{vtab}}" vtabHeight="{{height}}"></vtab>
+      </view>
+    </block>
+  </tab>
+
+  
+</view>
