@@ -1,0 +1,10 @@
+<view style="width:{{size*5}}rpx;height:{{size}}rpx; display:flex;">
+  <view wx:for="00000" wx:key="index" data-num="{{index+1}}" bindtap="comment">
+    <block wx:if="{{index+1<=num}}">
+      <image style="width:{{size}}rpx;height:{{size}}rpx;" src="../static/star-s.png"></image>
+    </block>
+    <block wx:else>
+      <image style="width:{{size}}rpx;height:{{size}}rpx;" src="../static/star.png"></image>
+    </block>
+  </view>
+</view>
