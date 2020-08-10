@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "searchbar":"/mycomponents/searchbar/searchbar",
-    "order-list":"/mycomponents/orderlist/orderlist"
-  }
-}
