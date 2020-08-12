@@ -1,0 +1,80 @@
+<!--index.wxml-->
+<view class="container">
+
+	<swiper class="swiper" current="{{id}}" bindchange="swiperChange">
+		<swiper-item class="swiper-item">
+			<view class="content">
+				<view class="form-title">注册账号</view>
+				<view class="form-tip">请牢记您的注册信息</view>
+				<form bindsubmit="submit">
+
+					<view class="form-item">
+						<view class="item-name">姓名</view>
+						<view class="item-input">
+							<input class="input" placeholder="请输入姓名"></input>
+						</view>
+					</view>
+
+					<view class="form-item">
+						<view class="item-name">手机号</view>
+						<view class="item-input">
+							<input class="input" placeholder="请输入手机号"></input>
+						</view>
+					</view>
+
+					<view class="form-item">
+						<view class="item-name">密码</view>
+						<view class="item-input">
+							<input class="input" placeholder="请设置密码"></input>
+						</view>
+					</view>
+
+					<view class="form-item">
+						<view class="item-name">地址</view>
+						<view class="item-input">
+							<input class="input" placeholder="请输入地址"></input>
+						</view>
+					</view>
+
+          <view class="btn-box">
+            <button form-type="submit" data-id="0" class="submit">注册</button>
+            <button class="reset" data-id="1" bindtap="changePage">登录</button>
+          </view>
+
+				</form>
+
+			</view>
+		</swiper-item>
+    <swiper-item class="swiper-item">
+			<view class="content">
+				<view class="form-title">登录</view>
+				<view class="form-tip">请准确输入您的登录信息</view>
+				<form bindsubmit="submit">
+
+					<view class="form-item">
+						<view class="item-name">手机号</view>
+						<view class="item-input">
+							<input class="input" placeholder="请输入手机号"></input>
+						</view>
+					</view>
+
+          <view class="form-item">
+						<view class="item-name">密码</view>
+						<view class="item-input">
+							<input class="input" placeholder="请输入密码"></input>
+						</view>
+					</view>
+
+          <view class="btn-box">
+            <button class="submit" form-type="submit" data-id="1">登录</button>
+            <button class="reset" bindtap="changePage" data-id="0">注册</button>
+          </view>
+
+				</form>
+
+			</view>
+		</swiper-item>
+	</swiper>
+
+
+</view>
