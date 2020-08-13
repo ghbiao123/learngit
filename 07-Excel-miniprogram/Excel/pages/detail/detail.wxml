@@ -1,6 +1,6 @@
 <view class="container">
   <view class="cell" wx:for="{{needData}}" wx:key="index">
     <view class="cell-key">{{item.value}}</view>
-    <view class="cell-value">{{item.key}}</view>
+    <view class="cell-value">{{item.info}}</view>
   </view>
 </view>

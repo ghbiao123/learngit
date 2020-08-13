@@ -10,12 +10,12 @@
   border-radius: 10rpx;
 }
 .cell-key{
-  width: 335rpx;
+  width: 370rpx;
   font-size: 30rpx;
   color: #999999;
 }
 .cell-value{
-  width: 335rpx;
+  width: 300rpx;
   text-align: right;
   font-size: 30rpx;
   color: #1A1A1A;

@@ -11,28 +11,28 @@
 					<view class="form-item">
 						<view class="item-name">姓名</view>
 						<view class="item-input">
-							<input class="input" placeholder="请输入姓名"></input>
+							<input name="name" class="input" placeholder="请输入姓名"></input>
 						</view>
 					</view>
 
 					<view class="form-item">
 						<view class="item-name">手机号</view>
 						<view class="item-input">
-							<input class="input" placeholder="请输入手机号"></input>
+							<input name="phone" class="input" placeholder="请输入手机号"></input>
 						</view>
 					</view>
 
 					<view class="form-item">
 						<view class="item-name">密码</view>
 						<view class="item-input">
-							<input class="input" placeholder="请设置密码"></input>
+							<input name="password" class="input" placeholder="请设置密码"></input>
 						</view>
 					</view>
 
 					<view class="form-item">
 						<view class="item-name">地址</view>
 						<view class="item-input">
-							<input class="input" placeholder="请输入地址"></input>
+							<input name="address" class="input" placeholder="请输入地址"></input>
 						</view>
 					</view>
 
@@ -54,14 +54,14 @@
 					<view class="form-item">
 						<view class="item-name">手机号</view>
 						<view class="item-input">
-							<input class="input" placeholder="请输入手机号"></input>
+							<input name="phone" class="input" placeholder="请输入手机号"></input>
 						</view>
 					</view>
 
           <view class="form-item">
 						<view class="item-name">密码</view>
 						<view class="item-input">
-							<input class="input" placeholder="请输入密码"></input>
+							<input name="password" class="input" placeholder="请输入密码"></input>
 						</view>
 					</view>
 
