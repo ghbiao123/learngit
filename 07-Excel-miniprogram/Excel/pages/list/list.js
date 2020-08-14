@@ -9,7 +9,7 @@ Page({
   data: {
     typeList:["土地（工业）","土地（商业）","土地（住宅）","土地（物流）","住宅","商铺","写字楼","车库","厂房","酒店","机械设备","动产","其他"],
     isShowFilter:false,
-    reqData:{},
+    reqData:{page:1},
     resData:{
       isLastPage: false,
       list: []
@@ -31,7 +31,7 @@ Page({
   // 搜索确认
   searchConfirm(e){
     let address = e.detail.value;
-    console.log(address);
+   
     if(!address){
       wx.showToast({
         title: '请输入您想搜索的内容',
@@ -41,7 +41,12 @@ Page({
       return;
     }
 
-    this.data.reqData = {address};
+    this.data.reqData = {
+      address,
+      page: 1
+    };
+
+    this.data.resData.list = [];
 
     this.getDataList(this.data.reqData);
 
@@ -49,10 +54,16 @@ Page({
 
   // 获取列表
   getDataList(data = {}){
-    console.log(data);
+   
     mQuery.getQuery("api/info/list", data).then(res=>{
-      console.log(res);
-      let list = res.data.data;
+     
+      let result = res.data.data;
+
+      that.data.resData.isLastPage =  result.length > 0 ? false : true;
+
+      let list = that.data.resData.list;
+
+      list.push(...result);
 
       that.setData({
         list
@@ -63,21 +74,44 @@ Page({
 
   // filter 确认
   filterSubmit(e){
-    console.log(e.detail.value);
+   
     if(this.data.reqData.hasOwnProperty("address")){
       delete this.data.reqData.address
     }
     Object.assign(this.data.reqData, e.detail.value);
 
+    this.data.reqData.page = 1;
+
+    this.data.resData.list = [];
+
     this.getDataList(this.data.reqData);
+
+    this.getAnimation(750);
   },
   // filter reset
   filterReset(e){
-    console.log(e);
+    
     let isTypeHidden = new Array(this.data.isTypeHidden.length).fill(false);
     this.setData({
       isTypeHidden
     });
+  },
+   /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    
+
+    if(that.data.resData.isLastPage){
+      wx.showToast({
+        title: '已加载所有信息',
+        icon: "none"
+      });
+      return;
+    }
+
+    this.data.reqData.page++;
+    this.getDataList(this.data.reqData);
   },
 
   // 获取详情
@@ -109,7 +143,7 @@ Page({
     let querySelecter = wx.createSelectorQuery();
     querySelecter.select("#search").boundingClientRect((res)=>{
       let filterHeight = (screenHeight - res.height) + "px";
-      console.log(filterHeight);
+      
       that.setData({
         filterHeight
       });
@@ -143,7 +177,7 @@ Page({
   closeFilter(){
     this.data.isShowFilter = false;
     this.getAnimation(750);
-    console.log("closeFilter");
+    
   },
   // 防止冒泡
   stopCloseFilter(){},
@@ -191,13 +225,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
 
   },
 

@@ -16,8 +16,6 @@ Page({
   onLoad: function (options) {
     that = this;
 
-    console.log(options);
-
     this.getDetail(options.id);
   },
   getDetail(id){
@@ -36,7 +34,7 @@ Page({
     ];
 
     mQuery.getQuery("api/info/detail",{info_id:id}).then(res=>{
-      console.log(res);
+    
       let detail = res.data;
       needData = needData.map(v=>{
         v.info = detail[v.key];

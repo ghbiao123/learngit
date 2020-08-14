@@ -42,7 +42,6 @@ Page({
       }
     }
 
-    console.log("submit", id, data);
     if(id == 0){
       // 注册
       _url = "api/member/register";
@@ -52,7 +51,7 @@ Page({
     }
 
     mQuery.getQuery(_url, data).then(res=>{
-      console.log(res);
+    
       if(res.data.code==0){
         // 请求登录成功
         wx.showToast({
