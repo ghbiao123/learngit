@@ -29,12 +29,12 @@
 						</view>
 					</view>
 
-					<view class="form-item">
+					<!-- <view class="form-item">
 						<view class="item-name">地址</view>
 						<view class="item-input">
 							<input name="address" class="input" placeholder="请输入地址"></input>
 						</view>
-					</view>
+					</view> -->
 
           <view class="btn-box">
             <button form-type="submit" data-id="0" class="submit">注册</button>

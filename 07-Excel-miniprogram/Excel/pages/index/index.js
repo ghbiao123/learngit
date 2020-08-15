@@ -6,12 +6,27 @@ const app = getApp()
 
 Page({
   data: {
-    id:0
+    id:1
   },
   //事件处理函数
   
   onLoad: function () {
     that = this;
+
+    this.checkLogin();
+  },
+  // 检测是否登录
+  checkLogin(){
+    wx.getStorage({
+      key: 'userinfo',
+      success(res){
+        if(res.data.phone){
+          wx.redirectTo({
+            url: '/pages/list/list',
+          });
+        }
+      }
+    });
   },
   submit(e){
     let id = e.detail.target.dataset.id;
@@ -21,7 +36,7 @@ Page({
       name: "姓名",
       phone: "手机号",
       password: "密码",
-      address: "地址"
+      // address: "地址"
     }
 
     for(let key in needData){
@@ -76,9 +91,16 @@ Page({
             // 登录成功
             // 跳转详情，并关闭当前页面
 
+            wx.setStorage({
+              data: data,
+              key: 'userinfo',
+            });
+
             wx.redirectTo({
               url: '/pages/list/list',
             });
+
+
 
           }
         }, 2000);

@@ -11,17 +11,17 @@ page{
   left: 0;
   top: 0;
   z-index: 888;
-  padding: 0 20rpx;
+  /* padding: 0 20rpx; */
   display: flex;
   justify-content: space-between;
-  width: 710rpx;
+  width: 750rpx;
   height: 100rpx;
   background-color: #3DC3F5;
 }
 
 .search-input{
   display: flex;
-  margin-top: 18rpx;
+  margin: 18rpx 0 0 20rpx;
   width: 630rpx;
   height: 64rpx;
   border-radius: 32rpx;
@@ -42,7 +42,7 @@ page{
 }
 
 .filter-image{
-  margin-top: 25rpx;
+  margin: 25rpx 20rpx 0 0;
   width: 50rpx;
   height: 50rpx;
   vertical-align: top;

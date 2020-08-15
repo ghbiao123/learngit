@@ -28,6 +28,7 @@ Page({
     // 获取列表
     this.getDataList();
   },
+  
   // 搜索确认
   searchConfirm(e){
     let address = e.detail.value;
@@ -87,6 +88,11 @@ Page({
     this.getDataList(this.data.reqData);
 
     this.getAnimation(750);
+
+    this.setData({
+      searchVal:''
+    });
+
   },
   // filter reset
   filterReset(e){
