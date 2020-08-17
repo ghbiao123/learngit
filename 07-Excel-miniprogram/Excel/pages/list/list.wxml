@@ -12,7 +12,7 @@
 
 
 	<!-- list -->
-	<view data-id="{{item.id}}" bindtap="getDetail" class="list" wx:for="{{list}}" wx:key="index">
+	<view wx:if="{{list.length > 0}}" data-id="{{item.id}}" bindtap="getDetail" class="list" wx:for="{{list}}" wx:key="index">
 		<view class="title">
 			<view class="name">{{item.cate}}</view>
 			<view class="address">{{item.city}}</view>
@@ -26,6 +26,9 @@
 			<view class="color-b">查看更多<text class="iconfont icon-you"></text></view>
 		</view>
 	</view>
+	<block wx:if="{{list.length == 0}}">
+	<view style="text-align: center; line-height: 100rpx;">未查询到任何内容</view>
+	</block>
 
 	<!-- filter -->
 	<view class="filter-box" animation="{{filterAnimate}}" style="height:{{filterHeight}};" bindtap="closeFilter">

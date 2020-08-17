@@ -27,12 +27,12 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.3",
-	"appid": "wx12d6a8db33c0135c",
+	"appid": "wx1c12f7b3b02b1a74",
 	"projectname": "recycle",
 	"debugOptions": {
 		"hidedInDevtools": []

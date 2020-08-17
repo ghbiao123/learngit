@@ -20,13 +20,13 @@ Page({
   },
   getDetail(id){
     let needData = [
-      {key: "borrower", value: "借款人"},
-      {key: "cate", value: "抵押物种类"},
-      {key: "city", value: "抵押物所在地"},
-      {key: "address", value: "抵押物详细地址"},
+      {key: "borrower", value: "客户名称"},
+      {key: "cate", value: "资产种类"},
+      {key: "city", value: "资产所在地"},
+      {key: "address", value: "资产详细地址"},
       {key: "count", value: "面积（平方米）"},
       {key: "price", value: "原评估价值/最新评估价值"},
-      {key: "situation", value: "抵押情况"},
+      {key: "situation", value: "优先权情况"},
       {key: "seizure", value: "有无第三方查封"},
       {key: "management", value: "预计可处置时间"},
       {key: "manager", value: "管护人员名称"},
