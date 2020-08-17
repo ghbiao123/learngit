@@ -40,6 +40,16 @@ image{
   border-radius: 20rpx;
 }
 
+.tit-no-bg{
+  display: flex;
+  margin: 0 auto;
+  width: 710rpx;
+  height: 75rpx;
+  line-height: 75rpx;
+  font-size: 35rpx;
+  font-weight: bold;
+}
+
 /* 文字居右 */
 .t-a-r{
   text-align: right;

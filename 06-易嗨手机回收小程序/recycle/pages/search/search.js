@@ -1,6 +1,6 @@
 // pages/search/search.js
 let that;
-let mQuery = require("../../utils/mQuery");
+let util = require("../../utils/util");
 Page({
 
   /**
