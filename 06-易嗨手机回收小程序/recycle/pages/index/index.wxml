@@ -61,7 +61,7 @@
 
 <scroll-view class="scroll-view" scroll-x>
   <view class="scroll-content" style="width:{{5*290}}rpx;">
-    <view class="scroll-item" wx:for="00000">
+    <view class="scroll-item" wx:for="00000" wx:key="index">
       <image class="scroll-image" src="/images/a.jpg"></image>
       <view class="name ellipsis-text">小米10 Pro 尊享版</view>
       <view class="price">￥5999</view>

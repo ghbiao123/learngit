@@ -1,4 +1,5 @@
-// pages/evaluation/evaluation.js
+// pages/login/login.js
+let app = getApp();
 Page({
 
   /**
@@ -12,10 +13,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+  
   },
-  radioChange(e){
-    console.log(e);
+  getUserInfo(e){
+    app.getUserInfo(e, callback);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

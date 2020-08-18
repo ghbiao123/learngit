@@ -20,13 +20,13 @@ image{
 /* 自定义按钮样式 */
 .button-clear{
   padding: 0;
-  width: 710rpx !important;
-  height: 80rpx;
-  line-height: 80rpx;
+  width: 670rpx !important;
+  height: 90rpx;
+  line-height: 90rpx;
   color: #fff;
   font-weight: normal;
   background-color: #C1402A;
-  border-radius: 40rpx;
+  border-radius: 10rpx;
 }
 
 /* 页面大部分公共样式 */
@@ -38,6 +38,22 @@ image{
   padding: 20rpx;
   background-color: #fff;
   border-radius: 20rpx;
+}
+/* 
+  白色卡片下样式
+*/
+.cell-item{
+  display: flex;
+  justify-content: space-between;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  color: #606060;
+}
+.cell-rt{
+  margin: 40rpx 20rpx 0 0;
+  width: 10rpx;
+  height: 20rpx;
 }
 
 .tit-no-bg{

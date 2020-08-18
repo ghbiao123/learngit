@@ -1,0 +1,8 @@
+/* pages/login/login.wxss */
+
+.avatar{
+  display: block;
+  margin: 20rpx auto;
+  width: 200rpx;
+  height: 200rpx;
+}

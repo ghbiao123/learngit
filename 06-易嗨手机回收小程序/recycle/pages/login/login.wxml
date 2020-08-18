@@ -1,0 +1,7 @@
+<view class="container">
+
+  <open-data class="avatar" type="userAvatarUrl"></open-data>
+
+  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="button-clear m-t-20">微信用户一键登录</button>
+
+</view>

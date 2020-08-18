@@ -1,4 +1,4 @@
-<block wx:for="0" wx:key="index">
+<block wx:for="{{list}}" wx:key="index">
   <view class="order-list">
     <view class="title">机器信息</view>
     <view class="project">

@@ -1,21 +1,24 @@
-// pages/evaluation/evaluation.js
+// pages/evaluation/result.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    selected:1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
-  radioChange(e){
-    console.log(e);
+  getSelected(e){
+    let selected = e.currentTarget.dataset.id;
+    this.setData({
+      selected
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -2,5 +2,7 @@
   "usingComponents": {
     "searchbar":"/mycomponents/searchbar/searchbar",
     "order-list":"/mycomponents/orderlist/orderlist"
-  }
+  },
+  "navigationBarBackgroundColor": "#C2432E",
+  "navigationBarTextStyle":"white"
 }

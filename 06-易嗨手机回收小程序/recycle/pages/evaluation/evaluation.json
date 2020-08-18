@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "机型估价",
+  "navigationBarTextStyle": "black"
 }

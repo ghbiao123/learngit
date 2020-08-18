@@ -27,7 +27,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": true,
+		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -42,6 +42,8 @@
 		"hidedInDevtools": []
 	},
 	"scripts": {},
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -78,6 +80,40 @@
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/evaluation/evaluation",
+					"pathName": "pages/evaluation/evaluation",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/order/order",
+					"pathName": "pages/order/order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/mine/mine",
+					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/evaluation/result",
+					"pathName": "pages/evaluation/result",
 					"scene": null
 				}
 			]

@@ -1,2 +1,35 @@
-<!--pages/evaluation/evaluation.wxml-->
-<text>pages/evaluation/evaluation.wxml</text>
+<view class="container">
+  <view class="content">
+    
+    <view class="head">
+      <view class="progress">
+        6/7
+        <view class="progress-s"></view>
+      </view>
+      <image class="image" src="/images/a.jpg"></image>
+      <view class="name">华为 P30</view>
+    </view>
+
+    <view class="cont">
+
+      <block wx:for="0000" wx:key="index">
+        <view class="tit-no-bg">
+          {{index}}标题1
+        </view>
+        <view class="cell-card">
+          <radio-group data-id="{{index}}" bindchange="radioChange">
+              <radio class="radio" color="#C7402C" value="{{index}}">234</radio>
+              <radio class="radio" color="#C7402C" value="{{index}}">234</radio>
+              <radio class="radio" color="#C7402C" value="{{index}}">234</radio>
+          </radio-group>
+        </view>
+      </block>
+
+    </view>
+
+    <view class="button">
+      <button class="button-clear m-t-20">估价</button>
+    </view>
+
+  </view>
+</view>

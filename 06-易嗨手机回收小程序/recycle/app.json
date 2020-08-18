@@ -2,9 +2,11 @@
   "pages":[
     "pages/index/index",
     "pages/evaluation/evaluation",
+    "pages/evaluation/result",
     "pages/order/order",
     "pages/mine/mine",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/login/login"
 
   ],
   "tabBar": {
@@ -38,9 +40,9 @@
   },
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#C2432E",
     "navigationBarTitleText": "易嗨机",
-    "navigationBarTextStyle":"white"
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
