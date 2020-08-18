@@ -76,7 +76,7 @@
   width: 690rpx;
   height: auto;
 }
-.cont{}
+/* .cont{} */
 
 .radios{
   display: flex;
