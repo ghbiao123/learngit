@@ -53,12 +53,14 @@
 			</view>
 		</view>
 
-		<button class="contact" open-type="contact">
+		<!-- <button class="contact" open-type="contact"> -->
+		<!-- </button> -->
+		<navigator url="/pages/contact/contact">
 			<view class="cell-item">
 				<view>联系客服</view>
 				<image class="cell-rt" src="/images/rt2.png"></image>
 			</view>
-		</button>
+		</navigator>
 
 	</view>
 

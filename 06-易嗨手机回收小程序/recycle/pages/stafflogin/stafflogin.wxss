@@ -1,0 +1,25 @@
+/* pages/stafflogin/stafflogin.wxss */
+.logo{
+  display: block;
+  margin: 140rpx auto;
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.input-box{
+  display: flex;
+  margin: 0 auto;
+  width: 670rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.name{
+  font-size: 35rpx;
+  width: 150rpx;
+  font-weight: bold;
+}
+.input{
+  width: 500rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+}

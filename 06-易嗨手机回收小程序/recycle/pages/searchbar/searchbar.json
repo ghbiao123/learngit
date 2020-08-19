@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "scarch-bar": "/mycomponents/searchbar/searchbar"
+  },
+  "navigationBarTitleText": "搜索机型"
+}

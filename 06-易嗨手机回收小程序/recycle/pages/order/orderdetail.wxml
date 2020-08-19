@@ -1,0 +1,126 @@
+<view class="container">
+	<view class="head">
+		<view class="step">
+			<!-- <view class="line"></view> -->
+			<view class="step-item">
+				<view hidden class="step-image">
+					<image class="icon" src="/images/addm.png"></image>
+				</view>
+				<view class="step-image step-image-s">
+					<image class="icon" src="/images/addm-s.png"></image>
+				</view>
+				<view class="step-name">使用增加券</view>
+			</view>
+
+			<view class="step-item">
+				<view hidden class="step-image">
+					<image class="icon" src="/images/co.png"></image>
+				</view>
+				<view class="step-image step-image-s">
+					<image class="icon" src="/images/co-s.png"></image>
+				</view>
+				<view class="step-name">确认订单</view>
+			</view>
+
+			<view class="step-item">
+				<view hidden class="step-image">
+					<image class="icon" src="/images/subo.png"></image>
+				</view>
+				<view class="step-image step-image-s">
+					<image class="icon" src="/images/subo-s.png"></image>
+				</view>
+				<view class="step-name">提交的订单</view>
+			</view>
+
+			<view class="step-item">
+				<view class="step-image">
+					<image class="icon" src="/images/wp.png"></image>
+				</view>
+				<view hidden class="step-image step-image-s">
+					<image class="icon" src="/images/wp-s.png"></image>
+				</view>
+				<view class="step-name">等待支付</view>
+			</view>
+
+		</view>
+	</view>
+
+	<view class="cell-card express">
+		<view class="cell-item">
+			自行邮寄
+		</view>
+
+		<view class="cell-item">
+			<image class="express-icon" src="/images/location.png"></image>
+			<view>
+				<view class="express-add-name">
+					<view>
+						<text>淄博万象汇回收质检中心</text>
+						<text>13256488965</text>
+					</view>
+					<view class="copy">复制</view>
+				</view>
+				<view class="express-address ellipsis-text">
+					淄博市金晶大道与华光路交叉路口34号万象汇二楼回收质检中心象汇二楼回收质检中心
+				</view>
+			</view>
+		</view>
+
+		<view class="cell-item">
+			<image class="express-icon" src="/images/co-s.png"></image>
+			<view>快递单号</view>
+			<view><input class="order-input" placeholder="请输入物流单号"></input></view>
+			<image class="scan-icon" src="/images/scan.png"></image>
+		</view>
+
+		<view class="cell-item">
+			<image class="express-icon" src="/images/co-s.png"></image>
+			<view>快递公司</view>
+			<view>
+				<picker range="{{companyArr}}" mode="selector" bindchange="companyChange">
+					<input disabled class="order-input" placeholder="请选择公司" value="{{company}}"></input>
+				</picker>
+			</view>
+			<image class="cell-rt" src="/images/rt2.png"></image>
+		</view>
+
+	</view>
+
+  <view class="cell-card">
+    <view class="cell-item">机器信息</view>
+    <view class="project-info">
+      <image class="project-image" src="/images/a.jpg"></image>
+      <view class="info">
+        <view class="name">
+          <view>华为 P40</view>
+          <view style="font-size:24rpx; color: #C7402C;">待邮寄</view>
+        </view>
+        <view class="msg ellipsis-text">全网通</view>
+        <view class="msg">预估价：￥12345</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="cell-card">
+    <view class="cell-item">订单信息</view>
+    <view class="order">
+      <view class="order-info">
+        <view class="order-name">订单编号：</view>
+        <view class="order-value">
+          <view style="padding-right:20rpx;">121234567890</view>
+          <view class="copy">复制</view>
+        </view>
+      </view>
+      <view class="order-info">
+        <view class="order-name">下单时间</view>
+        <view class="order-value">34567890-56789</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="button m-t-20">
+    <button class="btn">取消订单</button>
+    <button class="btn">确认发货</button>
+  </view>
+
+</view>

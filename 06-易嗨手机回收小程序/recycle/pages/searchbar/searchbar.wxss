@@ -1,0 +1,26 @@
+/* pages/searchbar/searchbar.wxss */
+page{
+  background-color: #fff;
+}
+.tit-no-bg{
+  justify-content: space-between;
+}
+.tip-content{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 0 10rpx;
+  margin: 0 auto;
+  width: 710rpx;
+  height: auto;
+}
+.tip{
+  padding: 0 10rpx;
+  width: auto;
+  height: 55rpx;
+  margin: 25rpx 25rpx 0  0;
+  line-height: 55rpx;
+  text-align: center;
+  font-size: 24rpx;
+  background-color: #F7F8FA;
+  border-radius: 10rpx;
+}

@@ -4,10 +4,13 @@
     "pages/evaluation/evaluation",
     "pages/evaluation/result",
     "pages/order/order",
+    "pages/order/orderdetail",
     "pages/mine/mine",
     "pages/search/search",
-    "pages/login/login"
-
+    "pages/login/login",
+    "pages/searchbar/searchbar",
+    "pages/contact/contact",
+    "pages/stafflogin/stafflogin"
   ],
   "tabBar": {
     "color": "#cccccc",

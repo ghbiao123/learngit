@@ -66,6 +66,11 @@ image{
   font-weight: bold;
 }
 
+/* 下边框 */
+.b-b-g{
+  border-bottom: 1rpx solid #f6f6f6;
+}
+
 /* 文字居右 */
 .t-a-r{
   text-align: right;

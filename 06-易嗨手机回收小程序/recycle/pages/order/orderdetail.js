@@ -1,12 +1,11 @@
-// pages/evaluation/result.js
+// pages/order/orderdetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    selected:1,
-    timeSelected:["10:00", "14:00", "14:00", "14:00", "14:00",]
+    companyArr:["顺丰", "中通", "圆通", "申通", "韵达", ]
   },
 
   /**
@@ -14,29 +13,10 @@ Page({
    */
   onLoad: function (options) {
 
-
-
   },
-  // tab 点击事件
-  getSelected(e){
-    let selected = e.currentTarget.dataset.id;
-    this.setData({
-      selected
-    });
-  },
-  // radios chang 事件
-  radioChange(e){
-    console.log(e.detail.value);
-  },
-  // 选择日期
-  dateChange(e){
-    let orderDate = e.detail.value;
-    this.setData({orderDate});
-  },
-  // 选择时间
-  timeChange(e){
-    let orderTime = this.data.timeSelected[e.detail.value];
-    this.setData({orderTime});
+  companyChange(e){
+    let company = this.data.companyArr[e.detail.value];
+    this.setData({company});
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

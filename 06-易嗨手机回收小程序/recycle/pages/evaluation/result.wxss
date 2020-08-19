@@ -84,6 +84,11 @@
   height: 80rpx;
   line-height: 80rpx;
 }
+.pick-input{
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 240rpx;
+}
 .phone{
   margin: 28rpx 20rpx 0 0;
   width: 28rpx;
@@ -93,7 +98,16 @@
   color: #009CFF;
   padding-left: 20rpx;
 }
+.input{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+}
 
+.text-tip{
+  font-size: 24rpx;
+  color: #9A9A9A;
+}
 
 
 .button{

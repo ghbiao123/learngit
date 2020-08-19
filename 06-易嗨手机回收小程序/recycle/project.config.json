@@ -114,6 +114,34 @@
 					"id": -1,
 					"name": "pages/evaluation/result",
 					"pathName": "pages/evaluation/result",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/order/orderdetail",
+					"pathName": "pages/order/orderdetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/searchbar/searchbar",
+					"pathName": "pages/searchbar/searchbar",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/contact/contact",
+					"pathName": "pages/contact/contact",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/stafflogin/stafflogin",
+					"pathName": "pages/stafflogin/stafflogin",
 					"scene": null
 				}
 			]
