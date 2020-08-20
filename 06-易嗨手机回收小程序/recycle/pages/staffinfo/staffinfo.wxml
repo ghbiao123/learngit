@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="user-info">
+    <view>
+      <image class="avatar" src="/images/a.jpg"></image>
+      <name class="name">工作人员123</name>
+    </view>
+    <image class="qrcode" src="/images/qrcode.png"></image>
+  </view>
+  <view class="tit-no-bg">订单汇总</view>
+  <view class="cell-card">
+    <view class="order-type">
+      <view class="type">
+        <image class="type-icon" src="/images/wei.png"></image>
+        <view class="type-txt">未上门</view>
+        <view class="dot">88</view>
+      </view>
+      <view class="type">
+        <image class="type-icon" src="/images/wait.png"></image>
+        <view class="type-txt">待处理</view>
+        <view class="dot">88</view>
+      </view>
+      <view class="type">
+        <image class="type-icon" src="/images/qr.png"></image>
+        <view class="type-txt">增加订单</view>
+        <view class="dot">88</view>
+      </view>
+    </view>
+  </view>
+</view>

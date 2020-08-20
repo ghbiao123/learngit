@@ -10,7 +10,11 @@
     "pages/login/login",
     "pages/searchbar/searchbar",
     "pages/contact/contact",
-    "pages/stafflogin/stafflogin"
+    "pages/stafflogin/stafflogin",
+    "pages/staffinfo/staffinfo",
+    "pages/stafforder/stafforder",
+    "pages/stafforderlist/stafforderlist",
+    "pages/coupon/coupon"
   ],
   "tabBar": {
     "color": "#cccccc",

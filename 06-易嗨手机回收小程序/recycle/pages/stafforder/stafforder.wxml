@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="tit-no-bg">订单明细</view>
+  <view class="cell-card">
+    <view class="cell-item">
+      <view class="">类目：</view>
+    </view>
+  </view>
+</view>

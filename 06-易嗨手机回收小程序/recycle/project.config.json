@@ -142,6 +142,34 @@
 					"id": -1,
 					"name": "pages/stafflogin/stafflogin",
 					"pathName": "pages/stafflogin/stafflogin",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/staffinfo/staffinfo",
+					"pathName": "pages/staffinfo/staffinfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/coupon/coupon",
+					"pathName": "pages/coupon/coupon",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/stafforderlist/stafforderlist",
+					"pathName": "pages/stafforderlist/stafforderlist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/stafforder/stafforder",
+					"pathName": "pages/stafforder/stafforder",
 					"scene": null
 				}
 			]

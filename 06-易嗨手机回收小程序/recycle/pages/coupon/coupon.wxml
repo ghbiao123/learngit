@@ -1,0 +1,11 @@
+<view class="cell-card coupon">
+  <view class="price">
+    <view class="price-num">￥12345</view>
+    <view class="price-txt">加价券</view>
+  </view>
+  <view class="text">
+    <view class="text-txt">回收手机加价券</view>
+    <view class="text-time">还剩5天到期</view>
+  </view>
+  <view class="button overdue">立即使用</view>
+</view>

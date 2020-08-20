@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "orderlist": "/mycomponents/orderlist/orderlist"
+  },
+  "navigationBarTitleText": "工作人员订单列表"
+}

@@ -1,0 +1,48 @@
+/* pages/coupon/coupon.wxss */
+.coupon{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 30rpx;
+}
+.price{
+  text-align: center;
+  color: #FB6601;
+}
+.price-num{
+  font-size: 40rpx;
+}
+.price-txt{
+  font-size: 24rpx;
+}
+.text{
+  padding-top: 18rpx;
+}
+.text-txt{
+  font-size: 26rpx;
+  color: #515151;
+}
+.text-time{
+  color: #FB6601;
+  font-size: 22rpx;
+}
+.button{
+  margin-top: 24rpx;
+  width: 150rpx;
+  height: 56rpx;
+  border-radius: 28rpx;
+  text-align: center;
+  line-height: 56rpx;
+  font-size: 26rpx;
+  color: #fff;
+}
+
+.immediately{
+  background-color: #FB6601;
+}
+.done{
+  background-color: #878787;
+}
+.overdue{
+  background-color: #FB6601;
+  opacity: 0.4;
+}
