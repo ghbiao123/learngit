@@ -5,7 +5,8 @@ Component({
       value:[],
       observer(newVal){
         this.setData({
-          list: newVal
+          list: newVal,
+          status: 1
         });
       }
     }
@@ -18,6 +19,12 @@ Component({
         success(res){
           console.log(res);
         }
+      });
+    },
+    getDetail(e){
+      let id = e.currentTarget.dataset.id;
+      wx.navigateTo({
+        url: '/pages/order/orderdetail?id=' + id,
       });
     }
   }

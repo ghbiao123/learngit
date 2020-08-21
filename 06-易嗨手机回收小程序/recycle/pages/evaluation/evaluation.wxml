@@ -4,7 +4,7 @@
     <view class="head">
       <view class="progress">
         6/7
-        <view class="progress-s"></view>
+        <view class="progress-s" style="width:{{progress}};"></view>
       </view>
       <image class="image" src="/images/a.jpg"></image>
       <view class="name">华为 P30</view>

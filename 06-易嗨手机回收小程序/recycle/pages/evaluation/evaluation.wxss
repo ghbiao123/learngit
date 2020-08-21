@@ -25,7 +25,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 80%;
+  width: 10%;
   height: 30rpx;
   z-index: -1;
   background-color: #C7402C;

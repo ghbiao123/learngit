@@ -12,9 +12,43 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let type = options.type;
+    this.getList(type);
   },
-
+  // 获取列表数据
+  getList(type){
+    console.log(type);
+    let title = '';
+    let url = '';
+    switch(type){
+      case "staff":{
+        title = "工作人员订单";
+      }
+      break;
+      case "send":{
+        title = "待发货";
+      }
+      break;
+      case "check":{
+        title = "待验机";
+      }
+      break;
+      case "done":{
+        title = "已完成";
+      }
+      break;
+      case "cancel":{
+        title = "已取消";
+      }
+      break;
+      default:{
+        title = "全部";
+      }
+    }
+    wx.setNavigationBarTitle({
+      title: title,
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

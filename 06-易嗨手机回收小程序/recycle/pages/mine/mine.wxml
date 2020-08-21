@@ -8,21 +8,27 @@
 			</view>
 			<view class="user-phone">12365478954</view>
 		</view>
+		<navigator hover-class="none" url="/pages/stafflogin/stafflogin">
 		<view class="staff-login">
 			<image class="staff-icon" src="/images/staff-login.png"></image>
 			<view class="staff-info">工作人员登录</view>
 		</view>
+		</navigator>
 	</view>
 
 	<view class="cell-card">
-		<view class="cell-item">
-			<view>我的加价卷</view>
-			<image class="cell-rt" src="/images/rt2.png"></image>
-		</view>
-		<view class="cell-item">
-			<view>领取加价卷</view>
-			<image class="cell-rt" src="/images/rt2.png"></image>
-		</view>
+		<navigator url="/pages/coupon/coupon?type=mine">
+			<view class="cell-item">
+				<view>我的加价卷</view>
+				<image class="cell-rt" src="/images/rt2.png"></image>
+			</view>
+		</navigator>
+		<navigator url="/pages/coupon/coupon?type=add">
+			<view class="cell-item">
+				<view>领取加价卷</view>
+				<image class="cell-rt" src="/images/rt2.png"></image>
+			</view>
+		</navigator>
 	</view>
 
 	<view class="tit-no-bg">
@@ -31,26 +37,36 @@
 
 	<view class="cell-card">
 		<view class="order-step">
-			<view class="order-step-item">
-				<image class="order-icon" src="/images/main1.png"></image>
-				<view class="order-name">全部</view>
-			</view>
+			<navigator hover-class="none" url="/pages/stafforderlist/stafforderlist?type=all">
 				<view class="order-step-item">
-				<image class="order-icon" src="/images/main2.png"></image>
-				<view class="order-name">待发货</view>
-			</view>
-			<view class="order-step-item">
-				<image class="order-icon" src="/images/main3.png"></image>
-				<view class="order-name">待验机</view>
-			</view>
+					<image class="order-icon" src="/images/main1.png"></image>
+					<view class="order-name">全部</view>
+				</view>
+			</navigator>
+			<navigator hover-class="none" url="/pages/stafforderlist/stafforderlist?type=send">
+				<view hover-class="none" class="order-step-item">
+					<image class="order-icon" src="/images/main2.png"></image>
+					<view class="order-name">待发货</view>
+				</view>
+			</navigator>
+			<navigator hover-class="none" url="/pages/stafforderlist/stafforderlist?type=check">
 				<view class="order-step-item">
-				<image class="order-icon" src="/images/main4.png"></image>
-				<view class="order-name">已完成</view>
-			</view>
+					<image class="order-icon" src="/images/main3.png"></image>
+					<view class="order-name">待验机</view>
+				</view>
+			</navigator>
+			<navigator hover-class="none" url="/pages/stafforderlist/stafforderlist?type=done">
 				<view class="order-step-item">
-				<image class="order-icon" src="/images/main5.png"></image>
-				<view class="order-name">已取消</view>
-			</view>
+					<image class="order-icon" src="/images/main4.png"></image>
+					<view class="order-name">已完成</view>
+				</view>
+			</navigator>
+			<navigator hover-class="none" url="/pages/stafforderlist/stafforderlist?type=cancel">
+				<view class="order-step-item">
+					<image class="order-icon" src="/images/main5.png"></image>
+					<view class="order-name">已取消</view>
+				</view>
+			</navigator>
 		</view>
 
 		<!-- <button class="contact" open-type="contact"> -->

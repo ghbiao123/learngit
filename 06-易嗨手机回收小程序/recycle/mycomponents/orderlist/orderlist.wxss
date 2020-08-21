@@ -43,8 +43,18 @@
 
 .state{
   font-size: 20rpx;
+}
+
+.state-red{
   color: #EB2323;
 }
+.state-green{
+  color: #0CC540;
+}
+.state-gray{
+  color: #949494;
+}
+
 .info{
   padding: 5rpx 0;
   font-size: 24rpx;

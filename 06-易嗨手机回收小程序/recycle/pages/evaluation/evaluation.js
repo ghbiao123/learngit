@@ -1,4 +1,5 @@
 // pages/evaluation/evaluation.js
+let util = require("../../utils/util");
 Page({
 
   /**
@@ -15,7 +16,12 @@ Page({
     
   },
   radioChange(e){
-    console.log(e);
+    let val = e.detail.value;
+    let id = e.currentTarget.dataset.id;
+    
+    let progress = util.getToPersent(id/10);
+   
+    this.setData({progress});
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

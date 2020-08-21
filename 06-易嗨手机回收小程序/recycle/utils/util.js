@@ -1,4 +1,4 @@
-let myApp = getApp();
+let App = getApp();
 
 /*
   返回当天日期
@@ -53,16 +53,31 @@ function getImageToBase64(path){
       encoding: 'base64',
       success: (res)=>{
         let type = path.split(".");
-
         resolve(`data:image/${type[type.length-1]};base64,${res.data}`);
       }
     });
   });
 }
 
+/**
+ * 小数转百分数
+ * 0.1234 => 12.34%
+ */
+function getToPersent(num){
+  let p = (num * 100).toFixed(2);
+  return p + "%";
+}
+// 百分数转小数
+// 12.34% => 0.1234
+function getToPoint(num){
+  let n = num.replace(/\%/g, "");
+  return n/100;
+}
 
 module.exports = {
   getToday,
   getRandomString,
-  getImageToBase64
+  getImageToBase64,
+  getToPersent,
+  getToPoint
 }

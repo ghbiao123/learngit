@@ -16,6 +16,13 @@ Page({
 
   },
 
+  // 跳转加价券页面
+  receiveCoupon(){
+    wx.navigateTo({
+      url: '/pages/coupon/coupon',
+    });
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

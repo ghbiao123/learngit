@@ -1,1 +1,71 @@
 /* pages/stafforder/stafforder.wxss */
+
+.cell-item{
+  padding-top: 20rpx;
+  height: 60rpx;
+  min-height: 60rpx;
+  line-height: 1.5;
+  font-size: 26rpx;
+}
+
+.name{
+  width: 80rpx;
+  color: #000;
+}
+.cont{
+  display: block;
+  width: 480rpx;
+}
+.change{
+  color: #009CFF;
+}
+
+.cell-card ~ .cell-card{
+  background: transparent;
+}
+
+.add-image{
+  display: flex;
+}
+.add-image-item{
+  margin-right: 16rpx;
+  width: 155rpx;
+  height: 110rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.add-image-item:last-child{
+  margin-right: 0rpx;
+}
+
+.idcard{
+  display: flex;
+}
+.idcard-image{
+  width: 230rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.idcard-info{
+  width: 440rpx;
+}
+.info{
+  display: flex;
+  line-height: 75rpx;
+}
+
+.idcard-name{
+  padding: 0 20rpx;
+  width: 120rpx;
+  font-size: 30rpx;
+}
+.idcard-input{
+  margin-top: 5rpx;
+  width: 280rpx;
+  height: 60rpx;
+  font-size: 25rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
