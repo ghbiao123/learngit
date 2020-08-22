@@ -36,7 +36,7 @@
   <view class="cell-card">
     <view class="idcard">
       <view class="idcard-image">
-        <image class="idcard-image" src="/images/add-idcard.png"></image>
+        <image class="idcard-image" bindtap="chooseIdcard" src="{{ idcardSrc || '/images/add-idcard.png'}}"></image>
       </view>
       <view class="idcard-info">
         <view class="info">

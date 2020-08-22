@@ -1,4 +1,6 @@
 // pages/stafforder/stafforder.js
+let that;
+import util from "../../utils/util";
 Page({
 
   /**
@@ -12,9 +14,71 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this
 
   },
+  chooseIdcard() {
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      success: async function(res) {
+        let idcardSrc = res.tempFilePaths[0];
 
+        try {
+          const invokeRes = await wx.serviceMarket.invokeService({
+            service: 'wx79ac3de8be320b71',
+            api: 'OcrAllInOne',
+            data: {
+              // 用 CDN 方法标记要上传并转换成 HTTP URL 的文件
+              img_url:idcardSrc,
+              data_type: 3,
+              ocr_type: 1
+            },
+          })
+    
+          console.log('invokeService success', invokeRes)
+          // wx.showModal({
+          //   title: 'success',
+          //   content: JSON.stringify(invokeRes),
+          // })
+        } catch (err) {
+          console.error('invokeService fail', err)
+          // wx.showModal({
+          //   title: 'fail',
+          //   content: err,
+          // })
+        }
+
+        return;
+
+        wx.serviceMarket.invokeService({
+          service: 'wx79ac3de8be320b71', // '固定为服务商OCR的appid，非小程序appid',
+          api: 'OcrAllInOne',
+          data: {
+            img_url: idcardSrc,
+            data_type: 3,
+            ocr_type: 1,
+          },
+        }).then(res => {
+          console.log('invokeService success', res)
+          // wx.showModal({
+          //   title: 'cost',
+          //   content: (Date.now() - d) + '',
+          // })
+        }).catch(err => {
+          console.error('invokeService fail', err)
+          // wx.showModal({
+          //   title: 'fail',
+          //   content: err + '',
+          // })
+        });
+      
+        that.setData({
+          idcardSrc
+        });
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

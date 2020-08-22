@@ -6,7 +6,10 @@
 			<view class="nick-name">
 				<open-data type="userNickName"></open-data>
 			</view>
-			<view class="user-phone">12365478954</view>
+			<view hidden="{{!isLogin}}" class="user-phone">12365478954</view>
+			<view hidden="{{isLogin}}" class="user-phone">
+				<navigator url="/pages/login/login" hover-class="none">去登陆></navigator>
+			</view>
 		</view>
 		<navigator hover-class="none" url="/pages/stafflogin/stafflogin">
 		<view class="staff-login">

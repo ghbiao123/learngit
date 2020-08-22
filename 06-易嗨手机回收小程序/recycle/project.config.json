@@ -27,11 +27,11 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.11.3",
+	"libVersion": "2.12.1",
 	"appid": "wx1c12f7b3b02b1a74",
 	"projectname": "recycle",
 	"cloudfunctionTemplateRoot": "",
