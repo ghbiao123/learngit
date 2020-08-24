@@ -14,7 +14,8 @@
     "pages/staffinfo/staffinfo",
     "pages/stafforder/stafforder",
     "pages/stafforderlist/stafforderlist",
-    "pages/coupon/coupon"
+    "pages/coupon/coupon",
+    "pages/qrcode/qrcode"
   ],
   "tabBar": {
     "color": "#cccccc",

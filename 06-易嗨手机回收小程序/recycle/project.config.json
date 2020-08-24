@@ -27,7 +27,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": true,
+		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -177,6 +177,13 @@
 					"id": -1,
 					"name": "pages/order/order",
 					"pathName": "pages/order/order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/qrcode/qrcode",
+					"pathName": "pages/qrcode/qrcode",
 					"scene": null
 				}
 			]

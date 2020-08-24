@@ -1,0 +1,5 @@
+<view class="container">
+
+  <image src="/images/a.jpg" mode="widthFix" style="width: 500rpx; display: block; margin: 250rpx auto 0;"></image>
+
+</view>
