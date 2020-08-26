@@ -1,0 +1,2 @@
+/* pages/searchresult/searchresult.wxss */
+@import "../searchbar/searchbar.wxss";

@@ -256,6 +256,8 @@ function getToPoint(num) {
   return n / 100;
 }
 
+
+
 module.exports = {
   getToday, // 获取当前日期，时间，周几
   getRandomString, // 获取特定位的随机字符串

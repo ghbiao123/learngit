@@ -1,28 +1,27 @@
-let util = require("../../utils/util");
-const app = getApp();
+// pages/searchresult/searchresult.js
+import util from "../../utils/util";
+let that;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    type:["手机", "平板", "电脑", "摄影摄像", "其他产品",]
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
+
+    console.log(options);
+    this.getList(options);
+  },
+  getList(data){
 
   },
-
-  // 跳转加价券页面
-  receiveCoupon(){
-    wx.navigateTo({
-      url: '/pages/coupon/coupon',
-    });
-  },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

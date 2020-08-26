@@ -1,28 +1,17 @@
 <view class="content">
 	<scarch-bar bind:searchbar="result" theme="#ffffff" placeholder="搜索品牌或者机型"></scarch-bar>
 
-	<block wx:if="{{true}}">
-		<view class="list" wx:for="1234567890" wx:key="index">
-      iPhone 11 Pro Max
-		</view>
-	</block>
+	<view class="tit-no-bg" wx:if="{{Storage.length > 0}}">
+		<view>历史记录</view>
+		<image bindtap="clearStorageData" style="width: 28rpx; height: 28rpx; margin-top: 23rpx;" src="/images/clear.png"></image>
+	</view>
+	<view class="tip-content">
+		<view class="tip" bindtap="getItem" data-key="{{item}}" wx:for="{{Storage}}" wx:key="index">{{item}}</view>
+	</view>
+	<view class="tit-no-bg">热门搜索</view>
+	<view class="tip-content">
+		<view class="tip" bindtap="getItem" data-key="{{item}}" wx:for="{{[1,2,3,4,6,5]}}" wx:key="index">{{item}}</view>
+	</view>
 
-	<block wx:if="{{false}}">
-		<view class="tit-no-bg">
-			<view>历史记录</view>
-			<image style="width: 28rpx; height: 28rpx; margin-top: 23rpx;" src="/images/clear.png"></image>
-		</view>
-		<view class="tip-content">
-			<view class="tip">iPhone 10 Pro Max</view>
-			<view class="tip">iPhone 10 Pro Max 小米10尊享版</view>
-			<view class="tip">iPhone 10 Pro Max</view>
-			<view class="tip">iPhone 10 Pro Max 小米10尊享版</view>
-		</view>
-		<view class="tit-no-bg">热门搜索</view>
-		<view class="tip-content">
-			<view class="tip">iPhone 10 Pro Max</view>
-			<view class="tip">iPhone 10 Pro Max 小米10尊享版</view>
-		</view>
-	</block>
 
 </view>

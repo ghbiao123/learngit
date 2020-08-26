@@ -1,0 +1,3 @@
+<view class="list" wx:for="1234567890" wx:key="index">
+	iPhone 11 Pro Max
+</view>

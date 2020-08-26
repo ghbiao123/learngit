@@ -9,6 +9,7 @@
     "pages/search/search",
     "pages/login/login",
     "pages/searchbar/searchbar",
+    "pages/searchresult/searchresult",
     "pages/contact/contact",
     "pages/stafflogin/stafflogin",
     "pages/staffinfo/staffinfo",
