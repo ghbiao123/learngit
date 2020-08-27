@@ -1,5 +1,5 @@
 let util = require("../../utils/util");
-const app = getApp();
+let that;
 Page({
 
   /**
@@ -13,7 +13,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    that = this;
+    let a = wx.getSystemInfo({
+      success: (result) => {
+        console.log(result);
+      },
+    });
   },
 
   // 跳转加价券页面
