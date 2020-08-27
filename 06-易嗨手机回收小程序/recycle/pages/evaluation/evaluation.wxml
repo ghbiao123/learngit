@@ -12,15 +12,13 @@
 
     <view class="cont">
 
-      <block wx:for="0000" wx:key="index">
+      <block wx:for="{{arrList}}" wx:key="index">
         <view class="tit-no-bg">
-          {{index}}标题1
+          {{index+1}}标题1
         </view>
         <view class="cell-card">
           <radio-group data-id="{{index}}" bindchange="radioChange">
-              <radio class="radio" color="#C7402C" value="{{index}}">234</radio>
-              <radio class="radio" color="#C7402C" value="{{index}}">234</radio>
-              <radio class="radio" color="#C7402C" value="{{index}}">234</radio>
+              <radio wx:for="{{item}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio" color="#C7402C" value="{{itm}}">{{itm}}</radio>
           </radio-group>
         </view>
       </block>
