@@ -1,0 +1,43 @@
+
+body,
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+image {
+  vertical-align: top;
+  border: none;
+}
+
+i,
+b,
+em {
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+}
+
+.e-t {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+
+

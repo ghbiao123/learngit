@@ -6,8 +6,15 @@ import router from './router'
 
 import ViewUI from "view-design"
 import "view-design/dist/styles/iview.css"
-
 Vue.use(ViewUI);
+
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+Vue.use(MintUI)
+
+
+// reset + common 
+import '../static/common.css'
 
 Vue.config.productionTip = false;
 
