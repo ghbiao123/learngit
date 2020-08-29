@@ -22,8 +22,13 @@
 
       <!-- video -->
 
-      <div class="video-player">
-        <video src="../../static/video/test.mp4" controls class="video"></video>
+      <div class="video-player"  @click="videoPlayer">
+        <video preload='auto' ref="video" :src="videoData.src"  class="video"></video>
+        <img src="../../static/images/stop.png" :hidden="videoData.state==1? true: false" class="video-icon" alt="">
+        <div class="control">
+          <div>{{videoData.name}}</div>
+          <div>{{videoData.leftTime}}</div>
+        </div>
       </div>
 
       <!-- course list -->
@@ -45,13 +50,77 @@
 </template>
 
 <script>
+// import func from '../../vue-temp/vue-editor-bridge';
 export default {
   data() {
     return {
       list: [1, 2, 3, 4],
+      videoData:{
+        src: '../../static/video/test.mp4',
+        name: '视频标题',
+        currentTime:0,
+        leftTime: '00:00',
+        duration: 0,
+        state: 0
+      }
     };
   },
-  methods: {},
+  created(){
+    
+
+  },
+  
+  mounted(){
+    let video = this.$refs.video;
+    let that = this;
+
+    // 监听视频播放时间改变
+    video.addEventListener('timeupdate', function(){
+      that.videoData.currentTime = video.currentTime;
+      that.videoData.duration = video.duration;
+      let left = video.duration - video.currentTime
+
+      that.videoData.leftTime = formateTime(left);
+
+    });
+
+    // 监听视频开始播放
+    video.addEventListener('play', function(){
+      console.log('play');
+      that.videoData.state = 1;
+    });
+
+    // 监听视频暂停
+    video.addEventListener('pause', function(){
+      that.videoData.state = 0;
+    });
+
+    function formateTime(time){
+      // 时间格式化 time 单位（秒）
+      let s = Math.floor(time%60);
+      let m = Math.floor(time/60);
+
+      function addZero(o){
+        return o<10? '0'+ o : o +'';
+      }
+      return `${addZero(m)}:${addZero(s)}`;
+    }
+  },
+  methods: {
+    videoPlayer(){
+      // video对象
+      let video = this.$refs.video;
+      
+      if(video.paused){
+        // 播放视频
+        video.play();
+
+      }else{
+        // 暂停视频
+        video.pause();
+      }
+    }
+  },
 };
 </script>
 
@@ -98,6 +167,7 @@ export default {
       // }
     }
     .video-player {
+      position: relative;
       margin: 20 / @rem auto;
       width: 710 / @rem;
       height: 400 / @rem;
@@ -105,6 +175,30 @@ export default {
       .video {
         width: 710 / @rem;
         height: 400 / @rem;
+      }
+      .video-icon{
+        position: absolute;
+        left: 20/@rem;
+        top: 20/@rem;
+        width: 90/@rem;
+        height: 90/@rem;
+        z-index: 99;
+      }
+      .control{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 50/@rem;
+        line-height: 50/@rem;
+        color: #fff;
+        font-size: 30/@rem;
+        background-color: rgba(0, 0, 0, 0.2);
+        div{
+          padding: 0 20/@rem;
+        }
       }
     }
     .course {

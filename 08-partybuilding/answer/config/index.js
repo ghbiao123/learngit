@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api':{
-        target: 'https://daoyou.zlogic.cn',
+        target: 'http://answer.do/index.php',
         changeOrigin: true,
         pathRewrite: {
           '/api': '/api'

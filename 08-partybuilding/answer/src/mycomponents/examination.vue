@@ -76,6 +76,9 @@ export default {
     };
   },
   created() {
+
+    
+    
     this.test = this.test.map((v) => {
       let state = {};
 
@@ -88,6 +91,9 @@ export default {
 
     this.appData = this.test[this.idx];
     this.appData = Object.assign({}, this.appData);
+  },
+  mounted(){
+    console.log(this.$route);
   },
   methods: {
     checkAnswer(userAnswer) {

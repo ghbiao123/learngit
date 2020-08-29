@@ -14,10 +14,11 @@
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "mint-ui": "^2.2.13",
+    "prettier": "^1.8.1",
     "style-loader": "^1.2.1",
     "view-design": "^4.3.2",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.4.3"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
