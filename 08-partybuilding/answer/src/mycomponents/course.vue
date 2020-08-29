@@ -4,12 +4,15 @@
     <div class="content">
       <div class="nav-tit">
         <div class="tit">崖州区实用英语云课堂</div>
-        <button class="btn">登录</button>
+        <router-link :to="{name:'register',}">
+          <button v-if="!isLogin"  class="btn">登录</button>
+        </router-link>
+        <button v-if="isLogin" @click="logout" class="btn">退出</button>
       </div>
 
       <div class="video-player">
 
-        <video :src="videoData.src" @click="videoPlayer" preload="auto" ref="video" class="video"></video>
+        <video :src="videoData.src" @click="videoPlayer" :poster="videoData.poster" preload="auto" ref="video" class="video"></video>
         <div class="control">
           <div class="info">
             <div class="title">{{videoData.name}}</div>
@@ -26,32 +29,35 @@
 
       <div class="card">
         <div class="title">本节重点</div>
-        asdfsd
+        <div>
+          {{videoData.jieshao}}
+        </div>
       </div>
 
       <div class="card">
-        <div class="title">商务对话</div>
+        <div class="title">{{title}}</div>
 
-        <div class="list" v-for="(item, index) in 5" :key="index">
-          <div class="name">第一课</div>
-          <div class="time">12:12</div>
-          <div class="btn">已学习</div>
+        <div class="list" v-for="(item, index) in classList" :key="index">
+          <div class="name">{{item.name}}</div>
+          <div class="time">{{item.duration}}</div>
+          <div v-if="item.status==1?true:false" @click="getClassDetail(item.id)" class="btn btn-s">已学习</div>
+          <div v-if="item.status==2?true:false" @click="getClassDetail(item.id)" class="btn">未学习</div>
         </div>
 
       </div>
 
       <div class="card">
-        <div class="title">商务对话</div>
+        <div class="title">讲师</div>
 
         <div class="teacher-info">
           <div class="avatar">
-            <img src="../../static/images/avatar.png" alt="" class="avatar-image">
+            <img :src="videoData.miniavatar" alt="" class="avatar-image">
           </div>
-          <div class="name">姓名</div>
+          <div class="name">{{videoData.teacher}}</div>
         </div>
 
         <div class="introduce">
-          朱东明老师，美藉华人，美国俄亥俄州立大学学士，亚利桑那大学教育学硕士。现任海南欧美同事会理事，海口广播电视台英文新闻栏目专业配音，标准美语发音。 新阳英语资深教师。持有ESL证书，连续三年被评为优秀外藉教师。课堂幽默风趣，内容充实，备受学生追捧。精通各学段口语课程及托福课程。在校十年来，培养出众多托福口语高分。
+          {{videoData.teacherjieshao}}
         </div>
 
         <button class="sub" @click="pageTo">参加答题</button>
@@ -61,47 +67,103 @@
 
       </div>
 
-
-
-
     </div>
   </div>
 </template>
 
 <script>
+import { Toast } from 'mint-ui';
 export default {
   data() {
     return {
       title: "商务对话",
       videoData:{
-        src: '../../static/video/test.mp4',
-        name: '视频标题',
-        teacher:'Bruce',
+        src: '',
+        name: '',
+        teacher:'',
         currentTime:0,
         leftTime: '00:00',
         duration: 0,
         state: 0,
-        playBack:123
-      }
+        playBack:0,
+        poster: ""
+      },
+      courseId: '',
+      classList:[],
+      isLogin: false,
+
     };
+  },
+  created(){
+    let that = this;
+    
+    // 检测是否登录
+    if(localStorage.length>0){
+      let a = localStorage.getItem('userid');
+      if(a){
+        this.isLogin = true;
+      }
+    }
+    // 某一类课程id
+    let c_id = this.$route.query.id;
+    this.title = this.$route.query.title;
+
+    // 获取某个课程的信息
+    this.$ajax.post('/api/shou_ye/getKechengDetail',{kecheng_id: c_id}).then(res=>{
+      that.classList = res.data.data;
+      
+      // 获取第一节课的详情
+      that.getClassDetail(that.classList[0].id);
+
+    });
+
+
   },
   mounted(){
     let video = this.$refs.video;
     let that = this;
+
+    // 是否看完
+    let isDone = false;
+    // 播放量是否增加
+    let isPlayBack = false;
 
     // 监听视频播放时间改变
     video.addEventListener('timeupdate', function(){
       that.videoData.currentTime = video.currentTime;
       that.videoData.duration = video.duration;
       let left = video.duration - video.currentTime
+      let progress =Math.floor(left / video.duration * 100);
+      // that.videoData.leftTime = formateTime(left);
+      if(progress<=10){
+        // 视频已看完
+        if(isDone) return;
+        isDone = true;
+        var data = {
+          users_id: localStorage.getItem('userid'),
+          subject_id: that.courseId,
+          kecheng_id: that.kecheng_id
+        }
+        that.$ajax.post('/api/shou_ye/addjilu', data).then(res=>{
+        });
+      }
+      if(progress<=50){
+        // 播放量增加
+        if(isPlayBack) return; 
+        var data  ={
+          subject_id: that.courseId
+        }
+        isPlayBack = true;
+        that.$ajax.post('/api/shou_ye/addNum', data).then(res=>{
+        });
+      }
 
-      that.videoData.leftTime = formateTime(left);
+      
 
     });
 
     // 监听视频开始播放
     video.addEventListener('play', function(){
-      console.log('play');
       that.videoData.state = 1;
     });
 
@@ -128,6 +190,11 @@ export default {
       
       if(video.paused){
         // 播放视频
+        let a = localStorage.getItem('userid');
+        if(!a){
+          Toast({message: '请您先登录'});
+          return;
+        }
         video.play();
 
       }else{
@@ -135,8 +202,34 @@ export default {
         video.pause();
       }
     },
+    getClassDetail(subject_id){
+      let that = this;
+      this.$ajax.post('/api/shou_ye/getKecheng',{subject_id}).then(res=>{
+        that.videoData.src = res.data.data.shipinfile;
+        that.videoData.name = res.data.data.name;
+        that.videoData.teacher = res.data.data.teachers_name;
+        that.videoData.playBack = res.data.data.num;
+        that.videoData.poster = res.data.data.photoimages;
+        that.videoData.miniavatar = res.data.data.miniavatar;
+        that.videoData.poster = res.data.data.photoimages;
+        that.videoData.jieshao = res.data.data.jieshao;
+        that.videoData.teacherjieshao = res.data.data.teacherjieshao;
+        that.courseId = res.data.data.id;
+        that.kecheng_id = res.data.data.kecheng_id;
+      });
+    },
     pageTo(){
-      this.$router.push({name: 'examination', query:{id: 123}});
+      let a = localStorage.getItem('userid');
+      if(!a){
+        Toast({message: '请您先登录'});
+        return;
+      }
+      this.$router.push({name: 'examination', query:{id: this.courseId}});
+    },
+    logout(){
+      this.isLogin = false;
+      localStorage.clear();
+      Toast({message: '已退出登录'});
     }
   },
   
@@ -257,6 +350,9 @@ export default {
     color: #fff;
     background-color: #6248EA;
     border-radius: 25/@rem;
+  }
+  .btn-s{
+    opacity: 0.5;
   }
 }
 .list:last-child{

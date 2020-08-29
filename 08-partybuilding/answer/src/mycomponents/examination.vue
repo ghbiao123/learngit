@@ -4,8 +4,8 @@
     <div class="content">
       <div class="cont">
         <div class="question">
-          <div class="num">第一题</div>
-          <div class="title">{{appData.name}}Who was it ______ put so many large stones on the road?</div>
+          <div class="num">第{{appData.num}}题</div>
+          <div class="title">{{appData.name}}</div>
           <div
             class="list"
             v-for="(value, key) in appData.order"
@@ -28,72 +28,63 @@
 
       <div class="btn-box">
         <button class="btn" @click="prevQuestion">上一题</button>
-        <button v-if="true" @click="nextQuestion" class="btn">下一题</button>
-        <button v-if="false" class="btn sub">交卷</button>
+        <button v-if="!isLast" @click="nextQuestion" class="btn">下一题</button>
+        <button v-if="isLast" @click="submit" class="btn sub">交卷</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { Toast } from 'mint-ui';
 export default {
   data() {
     return {
-      test: [
-        {
-          name: "第一题",
-          answer: "A",
-          order: {
-            A: "optionsA",
-            B: "optionsB",
-            C: "optionsC",
-            D: "optionsD",
-          },
-        },
-        {
-          name: "第二题",
-          answer: "B",
-          order: {
-            A: "optionsA",
-            B: "optionsB",
-            C: "optionsC",
-            D: "optionsD",
-          },
-        },
-        {
-          name: "第三题",
-          answer: "C",
-          order: {
-            A: "optionsA",
-            B: "optionsB",
-            C: "optionsC",
-            D: "optionsD",
-          },
-        },
-      ],
+      test: [],
       appData: {},
-      idx:0
+      idx:0,
+      isLast:false,
+      reqData:{
+
+      }
     };
   },
   created() {
 
-    
-    
-    this.test = this.test.map((v) => {
-      let state = {};
+    // 获取试题
+    let that = this;
+    let subject_id = this.$route.query.id;
 
-      for (let k in v.order) {
-        state[k] = "normal";
-      }
-      v.state = state;
-      return v;
+    this.$ajax.post('/api/shou_ye/getKecheng', {subject_id}).then(res=>{
+      // 最终请求数据
+      that.reqData.subject_id = res.data.data.id;
+      that.reqData.kecheng_id = res.data.data.kecheng_id;
+      // 对数据进行格式化
+      let data = res.data.data.data;
+      let len = data.length;
+      
+        data = data.map((v, i)=>{
+          let d = {
+            num: i+1
+          };
+          d.name = v['stem'+(i+1)];
+          d.answer = v['right_key'+(i+1)];
+          d.order = JSON.parse(v['subject'+(i+1)]);
+          let state = {};
+          for (let k in d.order) {
+            state[k] = "normal";
+          }
+          d.state = state;
+          return d;
+        });
+      
+      that.test = [...data];
+      that.appData = this.test[this.idx];
+      that.appData = Object.assign({}, this.appData);
     });
-
-    this.appData = this.test[this.idx];
-    this.appData = Object.assign({}, this.appData);
   },
   mounted(){
-    console.log(this.$route);
+    
   },
   methods: {
     checkAnswer(userAnswer) {
@@ -104,14 +95,47 @@ export default {
       }
     },
     nextQuestion(){
+      if(this.appData.state[this.appData.answer] !== 'success'){
+        Toast({message: '请选出正确的选项'});
+        return;
+      }
       this.idx++;
       this.idx = Math.min(this.idx, this.test.length-1);
+      if(this.idx == this.test.length-1){
+        this.isLast = true;
+      }
       this.appData = Object.assign({}, this.test[this.idx]);
     },
     prevQuestion(){
       this.idx--;
+      if(this.idx<0){
+        Toast({message:'已到第1题'});
+      }
+      this.isLast = false;
       this.idx = Math.max(this.idx, 0);
       this.appData = Object.assign({}, this.test[this.idx]);
+    },
+    submit(){
+      if(this.appData.state[this.appData.answer] !== 'success'){
+        Toast({message: '请选出正确的选项'});
+        return;
+      }
+
+      let that = this;
+
+      this.reqData.users_id = localStorage.getItem('userid');
+
+      this.$ajax.post('/api/shou_ye/dati', this.reqData).then(res=>{
+        
+
+        Toast({message: res.data.msg});
+
+        setTimeout(()=>{
+          that.$router.go(-1);
+        },3000);
+
+      });
+
     }
   },
 };

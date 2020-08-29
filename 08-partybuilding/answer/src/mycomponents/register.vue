@@ -62,7 +62,6 @@ export default {
       let that = this;
 
       let type = e.target.dataset.type;
-      console.log(this.formData);
 
       let needData = {
         phone:'账号/手机号',
@@ -105,7 +104,6 @@ export default {
 
       this.$ajax.post(url, data).then(res=>{
         
-        console.log(res);
         Toast({message: res.data.msg, duration: 2000});
 
         if(type == 'login'){
@@ -114,7 +112,12 @@ export default {
             // 登录成功，跳转页面，写入storage
             localStorage.setItem('userid', res.data.users_id);
             setTimeout(()=>{
-              that.$router.push({name:'index'});
+              let path = that.$route.query.fromPath;
+              if(!path){
+                path = 'index'
+              }
+
+              that.$router.push({name: path});
             }, 3000);
           }
           

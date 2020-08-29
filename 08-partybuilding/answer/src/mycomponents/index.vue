@@ -4,18 +4,15 @@
     <div class="content">
       <div class="nav-tit">
         <div class="tit">崖州区实用英语云课堂</div>
-        <button class="btn">登录</button>
+        <router-link :to="{name:'register', }">
+          <button v-if="!isLogin"  class="btn">登录</button>
+        </router-link>
+        <button v-if="isLogin" @click="logout" class="btn">退出</button>
       </div>
       <div class="swiper">
         <mt-swipe class="mt-swiper" :speed="500" :show-indicators="false">
-          <mt-swipe-item class="mt-swiper-item">
-            <img class="mt-swiper-item-img" src="../../static/images/a.png" alt />
-          </mt-swipe-item>
-          <mt-swipe-item>
-            <img class="mt-swiper-item-img" src="../../static/images/a.png" alt />
-          </mt-swipe-item>
-          <mt-swipe-item>
-            <img class="mt-swiper-item-img" src="../../static/images/a.png" alt />
+          <mt-swipe-item class="mt-swiper-item" v-for="(item, index) in swiperSrc" :key='index'>
+            <img class="mt-swiper-item-img" :src="item" alt />
           </mt-swipe-item>
         </mt-swipe>
       </div>
@@ -36,10 +33,10 @@
         <div class="title">
           <div class="title-name">课程列表</div>
         </div>
-        <div v-for="(item, index) in list" :key="index">
-          <router-link :to="{name: 'course'}">
+        <div v-for="(item, index) in crouseList" :key="index">
+          <router-link :to="{name: 'course', query:{id: item.id, title: item.name}}">
             <div class="list">
-              <div class="name">第一课</div>
+              <div class="name">{{item.name}}</div>
               <img src="../../static/images/rt.png" alt class="icon" />
             </div>
           </router-link>
@@ -51,22 +48,48 @@
 
 <script>
 // import func from '../../vue-temp/vue-editor-bridge';
+import site from '../../config/program.config';
+import { Toast } from 'mint-ui';
 export default {
   data() {
     return {
-      list: [1, 2, 3, 4],
+      crouseList: [],
+      swiperSrc:[],
       videoData:{
-        src: '../../static/video/test.mp4',
-        name: '视频标题',
+        src: '',
+        name: '',
         currentTime:0,
         leftTime: '00:00',
         duration: 0,
         state: 0
-      }
+      },
+      isLogin: false
     };
   },
   created(){
+
+    let that = this;
     
+    // 检测是否登录
+    if(localStorage.length>0){
+      let a = localStorage.getItem('userid');
+      if(a){
+        this.isLogin = true;
+      }
+    }
+
+    // 获取首页数据
+    this.$ajax.post('/api/shou_ye/getShouye').then(res=>{
+
+    that.swiperSrc = res.data.image.images.split(',');
+
+    that.videoData.src = res.data.video.xcfile;
+    that.videoData.name = res.data.video.name;
+
+    that.crouseList = res.data.kecheng;
+
+
+    });
 
   },
   
@@ -86,7 +109,6 @@ export default {
 
     // 监听视频开始播放
     video.addEventListener('play', function(){
-      console.log('play');
       that.videoData.state = 1;
     });
 
@@ -96,6 +118,7 @@ export default {
     });
 
     function formateTime(time){
+      if(!time) return;
       // 时间格式化 time 单位（秒）
       let s = Math.floor(time%60);
       let m = Math.floor(time/60);
@@ -119,6 +142,11 @@ export default {
         // 暂停视频
         video.pause();
       }
+    },
+    logout(){
+      this.isLogin = false;
+      localStorage.clear();
+      Toast({message: '已退出登录'});
     }
   },
 };
