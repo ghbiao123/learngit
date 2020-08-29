@@ -11,13 +11,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api':{
-        target: 'https://djdt.zlogic.cn/index.php',
-        changeOrigin: true,
-        pathRewrite: {
-          '/api': '/api'
-        }
-      }
+      // '/api':{
+      //   target: 'https://djdt.zlogic.cn/index.php',
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     '/api': '/api'
+      //   }
+      // }
     },
 
     // Various Dev Server settings
