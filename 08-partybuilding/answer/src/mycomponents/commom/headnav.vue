@@ -34,12 +34,15 @@ export default {
 <style lang='less' scoped>
   @rem:750/10rem;
   .app{
+    margin: 0 auto;
     width: 750/@rem;
     height: 128/@rem;
     .nav{
       position: fixed;
       top: 0;
       left: 0;
+      right: 0;
+      margin: auto;
       z-index: 9999;
       display: flex;
       width: 750/@rem;

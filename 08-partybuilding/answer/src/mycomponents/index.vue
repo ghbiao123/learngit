@@ -163,6 +163,7 @@ export default {
       justify-content: space-between;
       width: 750 / @rem;
       height: 100 / @rem;
+      margin: 0 auto;
       .tit {
         line-height: 100 / @rem;
         text-indent: 20 / @rem;
@@ -173,6 +174,7 @@ export default {
         margin: 22 / @rem 20 / @rem 0 0;
         width: 134 / @rem;
         height: 54 / @rem;
+        font-size: 28/@rem;
         border-radius: 27 / @rem;
         border: 1 / @rem solid #6248ea;
         color: #6248ea;

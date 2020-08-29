@@ -246,6 +246,7 @@ export default {
   justify-content: space-between;
   width: 750 / @rem;
   height: 100 / @rem;
+  margin: 0 auto;
   .tit {
     line-height: 100 / @rem;
     text-indent: 20 / @rem;
@@ -257,6 +258,7 @@ export default {
     width: 134 / @rem;
     height: 54 / @rem;
     border-radius: 27 / @rem;
+    font-size: 28/@rem;
     border: 1 / @rem solid #6248ea;
     color: #6248ea;
   }
@@ -265,6 +267,7 @@ export default {
   position: relative;
   width: 750 / @rem;
   height: 530 / @rem;
+  margin: 0 auto;
   overflow: hidden;
   .video-icon{
     position: absolute;
@@ -316,7 +319,7 @@ export default {
   }
 }
 .card{
-  margin-top: 20/@rem;
+  margin: 20/@rem auto 0;
   padding: 0 20/@rem 20/@rem;
   width: 750/@rem;
   background-color: #fff;

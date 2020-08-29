@@ -15,7 +15,7 @@ Vue.component('headNav', HeadNav);
 // 数据请求
 import site from '../mycomponents/index.vue'
 import Axios from "axios"
-Axios.defaults.baseURL = site.site+'/index.php';
+Axios.defaults.baseURL = 'https://djdt.zlogic.cn/index.php';
 Vue.prototype.$ajax = Axios;
 
 Vue.use(Router)

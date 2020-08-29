@@ -158,6 +158,7 @@ export default {
     padding: 20 / @rem;
     background-color: #fff;
     font-size: 28 / @rem;
+    margin: 0 auto;
     .num {
       font-weight: bold;
     }
@@ -204,6 +205,7 @@ export default {
   justify-content: space-between;
   padding: 20 / @rem;
   width: 750 / @rem;
+  margin: 0 auto;
   .btn {
     width: 250 / @rem;
     height: 80 / @rem;
