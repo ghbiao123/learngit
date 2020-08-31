@@ -20,7 +20,7 @@
       <!-- video -->
 
       <div class="video-player"  @click="videoPlayer">
-        <video preload='auto' ref="video" :src="videoData.src"  class="video"></video>
+        <video preload='auto' ref="video" :poster="videoData.poster" :src="videoData.src"  class="video"></video>
         <img src="../../static/images/stop.png" :hidden="videoData.state==1? true: false" class="video-icon" alt="">
         <div class="control">
           <div>{{videoData.name}}</div>
@@ -61,7 +61,8 @@ export default {
         currentTime:0,
         leftTime: '00:00',
         duration: 0,
-        state: 0
+        state: 0,
+        poster: ''
       },
       isLogin: false
     };
@@ -85,9 +86,9 @@ export default {
 
     that.videoData.src = res.data.video.xcfile;
     that.videoData.name = res.data.video.name;
+    that.videoData.poster = res.data.video.fmimage;
 
     that.crouseList = res.data.kecheng;
-
 
     });
 
