@@ -96,11 +96,11 @@ export default {
   },
   created(){
     let that = this;
-    
+    let users_id = '';
     // 检测是否登录
     if(localStorage.length>0){
-      let a = localStorage.getItem('userid');
-      if(a){
+      users_id = localStorage.getItem('userid');
+      if(users_id){
         this.isLogin = true;
       }
     }
@@ -109,7 +109,7 @@ export default {
     this.title = this.$route.query.title;
 
     // 获取某个课程的信息
-    this.$ajax.post('/api/shou_ye/getKechengDetail',{kecheng_id: c_id}).then(res=>{
+    this.$ajax.post('/api/shou_ye/getKechengDetail',{kecheng_id: c_id, users_id}).then(res=>{
       that.classList = res.data.data;
       
       // 获取第一节课的详情
@@ -227,9 +227,17 @@ export default {
       this.$router.push({name: 'examination', query:{id: this.courseId}});
     },
     logout(){
+      let that = this;
       this.isLogin = false;
       localStorage.clear();
       Toast({message: '已退出登录'});
+
+      let c_id = this.$route.query.id;
+
+      // 获取某个课程的信息
+      this.$ajax.post('/api/shou_ye/getKechengDetail',{kecheng_id: c_id, users_id: ''}).then(res=>{
+        that.classList = res.data.data;
+      });
     }
   },
   
