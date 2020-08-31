@@ -183,6 +183,7 @@ export default {
     .swiper {
       width: 750 / @rem;
       height: 340 / @rem;
+      margin: 0 auto;
       img {
         width: 750 / @rem;
         height: 340 / @rem;

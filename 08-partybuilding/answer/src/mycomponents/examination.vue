@@ -150,7 +150,7 @@ export default {
   height: 100%;
 }
 .cont {
-  margin-top: 20 / @rem;
+  margin: 20 / @rem auto 0;
   width: 10rem;
   height: auto;
   .question {
