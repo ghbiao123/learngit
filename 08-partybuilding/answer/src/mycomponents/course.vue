@@ -113,7 +113,14 @@ export default {
       that.classList = res.data.data;
       
       // 获取第一节课的详情
-      that.getClassDetail(that.classList[0].id);
+      if(that.classList.length>0){
+        that.getClassDetail(that.classList[0].id);
+      }else{
+        Toast({message: '暂无课程信息'});
+        setTimeout(() => {
+          this.$router.push({name: 'index'});
+        }, 3000);
+      }
 
     });
 

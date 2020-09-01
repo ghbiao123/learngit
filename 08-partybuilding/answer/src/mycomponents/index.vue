@@ -245,7 +245,7 @@ export default {
         border-bottom: 1 / @rem solid #f5f5f5;
         .title-name {
           margin-top: 30 / @rem;
-          font-size: 32rpx;
+          font-size: 32/@rem;
           text-indent: 20 / @rem;
           border-left: 6 / @rem solid #6248ea;
         }
