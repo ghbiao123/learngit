@@ -14,10 +14,10 @@ Page({
    */
   onLoad: function (options) {
 
-
+    console.log(JSON.parse(options.result));
 
   },
-  // tab 点击事件
+  // tab 点击事件, 切换回收类型
   getSelected(e){
     let selected = e.currentTarget.dataset.id;
     this.setData({
@@ -37,6 +37,10 @@ Page({
   timeChange(e){
     let orderTime = this.data.timeSelected[e.detail.value];
     this.setData({orderTime});
+  },
+  // 重新询价
+  resetPrice(e){
+    wx.navigateBack();
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

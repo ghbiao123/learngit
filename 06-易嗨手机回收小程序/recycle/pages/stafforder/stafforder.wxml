@@ -22,10 +22,10 @@
   <view class="tit-no-bg">订单处理</view>
   <view class="cell-card">
     <view class="add-image">
-      <view class="add-image-item">
-        <image class="add-image-item" src="/images/add.png"></image>
+      <view wx:for="{{phonePhoto}}" wx:key="index" class="add-image-item">
+        <image class="add-image-item" src="{{item}}"></image>
       </view>
-      <view class="add-image-item">
+      <view bindtap="getPhoto" class="add-image-item">
         <image class="add-image-item" src="/images/add.png"></image>
       </view>
       

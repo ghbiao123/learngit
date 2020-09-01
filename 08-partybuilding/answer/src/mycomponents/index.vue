@@ -50,6 +50,7 @@
 // import func from '../../vue-temp/vue-editor-bridge';
 import site from '../../config/program.config';
 import { Toast } from 'mint-ui';
+
 export default {
   data() {
     return {
@@ -81,12 +82,15 @@ export default {
 
     // 获取首页数据
     this.$ajax.post('/api/shou_ye/getShouye').then(res=>{
+    
+    // banner 路径拼接
+    that.swiperSrc = res.data.image.images.split(',').map(v=>(site.fileSite + v));
 
-    that.swiperSrc = res.data.image.images.split(',');
-
-    that.videoData.src = res.data.video.xcfile;
+    // video src poster 路径拼接
+    that.videoData.src = site.fileSite + res.data.video.xcfile;
+    that.videoData.poster = site.fileSite +  res.data.video.fmimage;
+    
     that.videoData.name = res.data.video.name;
-    that.videoData.poster = res.data.video.fmimage;
 
     that.crouseList = res.data.kecheng;
 

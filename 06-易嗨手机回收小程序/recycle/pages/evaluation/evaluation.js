@@ -8,7 +8,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    progressData:{
+      chose: 0,
+      all: 10
+    }
   },
 
   /**
@@ -20,10 +23,14 @@ Page({
 
     let list = ["a1","a2","a3","a4"];
 
-    let arrList = new Array(10).fill(list);
+    let arrList = new Array(11).fill(list);
+
+    let progressData = this.data.progressData;
+    progressData.all = arrList.length;
     
     this.setData({
-      arrList
+      arrList,
+      progressData
     });
 
   },
@@ -34,13 +41,26 @@ Page({
     result[id] = val;
 
     let _len = Object.keys(result).length;
+    let progressData = this.data.progressData;
+    progressData.chose = _len;
+    progressData.all = len;
 
     console.log(result);
 
     let progress = util.getToPersent(_len/len);
    
-    this.setData({progress});
+    this.setData({
+      progress,
+      progressData
+    });
 
+  },
+  // 跳转估价结果页
+  getResult(e){
+    let rlt = JSON.stringify(result);
+    wx.navigateTo({
+      url: '/pages/evaluation/result?result='+rlt,
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

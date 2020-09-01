@@ -3,7 +3,7 @@
     
     <view class="head">
       <view class="progress">
-        6/7
+        {{progressData.chose}}/{{progressData.all}}
         <view class="progress-s" style="width:{{progress}};"></view>
       </view>
       <image class="image" src="/images/a.jpg"></image>
@@ -26,7 +26,7 @@
     </view>
 
     <view class="button">
-      <button class="button-clear m-t-20">估价</button>
+      <button bindtap="getResult" class="button-clear m-t-20">估价</button>
     </view>
 
   </view>

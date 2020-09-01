@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    phonePhoto: []
   },
 
   /**
@@ -76,6 +76,17 @@ Page({
         that.setData({
           idcardSrc
         });
+      }
+    });
+  },
+  // 选择手机图片
+  getPhoto(e){
+    wx.chooseImage({
+      count: 2,
+      success(res){
+        console.log(res);
+        // 所选图片数组
+        let arr = res.tempFilePaths;
       }
     });
   },

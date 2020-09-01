@@ -6,7 +6,7 @@
 			<text style="font-size:65rpx;">12345</text>
 			<text style="font-size:25rpx; color: #262626; padding-left: 40rpx; vertical-align: middle;">预计下周下跌￥12345</text>
 			<image style="width: 17rpx; margin-left:5rpx; vertical-align: middle;" mode="widthFix" src="/images/down.png"></image>
-			<text style="font-size: 24rpx; padding-left: 60rpx; color: #2693FF; ">重新询价</text>
+			<text bindtap="resetPrice" style="font-size: 24rpx; padding-left: 60rpx; color: #2693FF; ">重新询价</text>
 		</view>
 		<view class="calc-price">
 			<view class="triangle"></view>

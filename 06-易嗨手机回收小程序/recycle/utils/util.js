@@ -78,7 +78,7 @@ function checkIsLogin() {
 function showSuccess(msg, callBack) {
   wx.showToast({
     title: msg,
-    icon: "success",
+    // icon: "success",
     mask: true,
     duration: 2000,
     success() {

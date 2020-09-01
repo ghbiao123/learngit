@@ -73,6 +73,7 @@
 
 <script>
 import { Toast } from 'mint-ui';
+import site from '../../config/program.config'
 export default {
   data() {
     return {
@@ -212,13 +213,17 @@ export default {
     getClassDetail(subject_id){
       let that = this;
       this.$ajax.post('/api/shou_ye/getKecheng',{subject_id}).then(res=>{
-        that.videoData.src = res.data.data.shipinfile;
+
+        // video src poster 路径拼接
+        that.videoData.src = site.fileSite + res.data.data.shipinfile;
+        that.videoData.poster = site.fileSite + res.data.data.photoimages;
+
         that.videoData.name = res.data.data.name;
         that.videoData.teacher = res.data.data.teachers_name;
         that.videoData.playBack = res.data.data.num;
         that.videoData.poster = res.data.data.photoimages;
-        that.videoData.miniavatar = res.data.data.miniavatar;
-        that.videoData.poster = res.data.data.photoimages;
+        // 教师头像路径拼接
+        that.videoData.miniavatar = site.fileSite + res.data.data.miniavatar;
         that.videoData.jieshao = res.data.data.jieshao;
         that.videoData.teacherjieshao = res.data.data.teacherjieshao;
         that.courseId = res.data.data.id;
