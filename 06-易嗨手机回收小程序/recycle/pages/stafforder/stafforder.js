@@ -82,11 +82,19 @@ Page({
   // 选择手机图片
   getPhoto(e){
     wx.chooseImage({
-      count: 2,
+      count: 4,
       success(res){
         console.log(res);
         // 所选图片数组
         let arr = res.tempFilePaths;
+        let phonePhoto = that.data.phonePhoto;
+        phonePhoto.push(...arr);
+        arr.forEach(V=>{
+          // upload
+        });
+        that.setData({
+          phonePhoto
+        });
       }
     });
   },

@@ -4,7 +4,7 @@
     <view class="cell-item">
       <view class="name">类目：</view>
       <view class="cont">
-        <textarea disabled class="cont" value="国行全网通，6G+128G，4500mAh，支持WiFi6，NFC"></textarea>
+        <textarea class="cont" value="国行全网通，6G+128G，4500mAh，支持WiFi6，NFC"></textarea>
       </view>
       <view class="change">修改</view>
     </view>
@@ -29,6 +29,14 @@
         <image class="add-image-item" src="/images/add.png"></image>
       </view>
       
+    </view>
+  </view>
+
+  <!-- 输入tmet号 -->
+  <view class="tmet">
+    <view class="tmet-name">输入TMET号：</view>
+    <view class="tmet-input-box">
+      <input class="tmet-input-input" placeholder="请输入TMET号"></input>
     </view>
   </view>
 

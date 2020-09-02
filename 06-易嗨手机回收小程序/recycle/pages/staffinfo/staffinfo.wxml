@@ -4,7 +4,9 @@
       <image class="avatar" src="/images/a.jpg"></image>
       <name class="name">工作人员123</name>
     </view>
-    <image class="qrcode" src="/images/qrcode.png"></image>
+    <navigator url="/pages/qrcode/qrcode" hover-class="none">
+      <image class="qrcode" src="/images/qrcode.png"></image>
+    </navigator>
   </view>
   <view class="tit-no-bg">订单汇总</view>
   <view class="cell-card">

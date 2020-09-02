@@ -29,9 +29,8 @@
 
       <div class="card">
         <div class="title">本节重点</div>
-        <div>
-          {{videoData.jieshao}}
-        </div>
+        <div class="point-introduce" v-html="videoData.jieshao"></div>
+        <!-- <div class="point-introduce" >{{videoData.jieshao}}</div> -->
       </div>
 
       <div class="card">
@@ -39,7 +38,7 @@
 
         <div class="list" v-for="(item, index) in classList" :key="index">
           <div class="name">{{item.name}}</div>
-          <div class="time">{{item.duration}}</div>
+          <!-- <div class="time">{{item.duration}}</div> -->
           <div v-if="item.status==1?true:false" @click="getClassDetail(item.id)" class="btn btn-s">已学习</div>
           <div v-if="item.status==2?true:false" @click="getClassDetail(item.id)" class="btn">未学习</div>
         </div>
@@ -56,9 +55,7 @@
           <div class="name">{{videoData.teacher}}</div>
         </div>
 
-        <div class="introduce">
-          {{videoData.teacherjieshao}}
-        </div>
+        <div class="introduce">{{videoData.teacherjieshao}}</div>
 
         <button class="sub" @click="pageTo">参加答题</button>
         <!-- <router-link :to="{name:'examination', params:{id:1}}">
@@ -146,9 +143,11 @@ export default {
       if(progress<=10){
         // 视频已看完
         if(isDone) return;
+        var uid = localStorage.getItem('userid');
+        if(!uid) return;
         isDone = true;
         var data = {
-          users_id: localStorage.getItem('userid'),
+          users_id: uid,
           subject_id: that.courseId,
           kecheng_id: that.kecheng_id
         }
@@ -198,11 +197,11 @@ export default {
       
       if(video.paused){
         // 播放视频
-        let a = localStorage.getItem('userid');
-        if(!a){
-          Toast({message: '请您先登录'});
-          return;
-        }
+        // let a = localStorage.getItem('userid');
+        // if(!a){
+        //   Toast({message: '请您先登录'});
+        //   return;
+        // }
         video.play();
 
       }else{
@@ -351,6 +350,10 @@ export default {
     border-bottom: 1/@rem solid #f5f5f5;
   }
 }
+.point-introduce{
+  font-size: 28/@rem;
+  white-space: pre-line;
+}
 .list{
   display: flex;
   height: 90/@rem;
@@ -360,7 +363,12 @@ export default {
   border-bottom: 1/@rem solid #f5f5f5;
   .name{
     text-align: left;
-    width: 410/@rem;
+    width: 550/@rem;
+    // 时间显示、未显示，宽度不一致
+    // width: 410/@rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   .time{
     width: 150/@rem;

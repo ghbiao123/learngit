@@ -26,9 +26,17 @@
 
 .add-image{
   display: flex;
+  flex-wrap: wrap;
 }
 .add-image-item{
-  margin-right: 16rpx;
+  margin: 10rpx 12rpx 0 0;
+  width: 155rpx;
+  height: 110rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.add-image-item>.add-image-item{
+  margin-top: 0;
   width: 155rpx;
   height: 110rpx;
   border-radius: 10rpx;
@@ -36,6 +44,29 @@
 }
 .add-image-item:last-child{
   margin-right: 0rpx;
+}
+
+.tmet{
+  display: flex;
+  margin: 10rpx auto;
+  width: 710rpx;
+}
+.tmet-name{
+  width: 170rpx;
+  font-size: 24rpx;
+  line-height: 60rpx;
+}
+.tmet-input-box{
+  width: 520rpx;
+  height: 60rpx;
+  border-radius: 20rpx;
+}
+.tmet-input-input{
+  width: 520rpx;
+  height: 60rpx;
+  text-indent: 10rpx;
+  font-size: 28rpx;
+  background-color: #fff;
 }
 
 .idcard{

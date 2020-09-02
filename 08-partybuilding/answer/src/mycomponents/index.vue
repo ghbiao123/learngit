@@ -19,14 +19,14 @@
 
       <!-- video -->
 
-      <div class="video-player"  @click="videoPlayer">
+      <!-- <div class="video-player"  @click="videoPlayer">
         <video preload='auto' ref="video" :poster="videoData.poster" :src="videoData.src"  class="video"></video>
         <img src="../../static/images/stop.png" :hidden="videoData.state==1? true: false" class="video-icon" alt="">
         <div class="control">
           <div>{{videoData.name}}</div>
           <div>{{videoData.leftTime}}</div>
         </div>
-      </div>
+      </div> -->
 
       <!-- course list -->
       <div class="course">
@@ -101,6 +101,8 @@ export default {
   mounted(){
     let video = this.$refs.video;
     let that = this;
+
+    if(!video) return;
 
     // 监听视频播放时间改变
     video.addEventListener('timeupdate', function(){
