@@ -227,7 +227,6 @@ function getRandomString(e) {
 }
 
 // 把图片转为base64格式
-
 function getImageToBase64(path) {
   return new Promise((resolve, reject) => {
     wx.getFileSystemManager().readFile({
@@ -272,3 +271,4 @@ module.exports = {
   getCaptcha, // 验证手机号并获取验证码
   getSiteRoot, // 获取api接口根
 }
+

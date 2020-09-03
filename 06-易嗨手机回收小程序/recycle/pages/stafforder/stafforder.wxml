@@ -4,7 +4,7 @@
     <view class="cell-item">
       <view class="name">类目：</view>
       <view class="cont">
-        <textarea class="cont" value="国行全网通，6G+128G，4500mAh，支持WiFi6，NFC"></textarea>
+        <input class="cont" value="国行全网通，6G+128G，4500mAh，支持WiFi6，NFC"></input>
       </view>
       <view class="change">修改</view>
     </view>

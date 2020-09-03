@@ -41,6 +41,14 @@ Page({
         title = "已取消";
       }
       break;
+      case 'todoor': {
+        title = '未上门订单';
+      }
+      break;
+      case 'dealwith' : {
+        title =  '未处理订单';
+      }
+      break;
       default:{
         title = "全部";
       }

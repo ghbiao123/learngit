@@ -12,7 +12,15 @@
 
       <div class="video-player">
 
-        <video :src="videoData.src" @click="videoPlayer" :poster="videoData.poster" preload="auto" ref="video" class="video"></video>
+        <video :src="videoData.src" 
+          :playsinline='true' 
+          :webkit-playsinline="true"
+          :controls='true'
+          @click="videoPlayer" 
+          :poster="videoData.poster" 
+          preload="auto" 
+          ref="video" 
+          class="video"></video>
         <div class="control">
           <div class="info">
             <div class="title">{{videoData.name}}</div>
@@ -174,12 +182,36 @@ export default {
     // 监听视频开始播放
     video.addEventListener('play', function(){
       that.videoData.state = 1;
+      // FullScreen(video);
     });
 
     // 监听视频暂停
     video.addEventListener('pause', function(){
       that.videoData.state = 0;
     });
+
+    //进入全屏
+    function FullScreen(ele) {
+        // var ele = document.documentElement;
+        if (ele.requestFullscreen) {
+            ele.requestFullscreen();
+        } else if (ele.mozRequestFullScreen) {
+            ele.mozRequestFullScreen();
+        } else if (ele.webkitRequestFullScreen) {
+            ele.webkitRequestFullScreen();
+        }
+    }
+    //退出全屏
+    function exitFullscreen() {
+        var de = document;
+        if (de.exitFullscreen) {
+            de.exitFullscreen();
+        } else if (de.mozCancelFullScreen) {
+            de.mozCancelFullScreen();
+        } else if (de.webkitCancelFullScreen) {
+            de.webkitCancelFullScreen();
+        }
+    }
 
     function formateTime(time){
       // 时间格式化 time 单位（秒）
@@ -287,7 +319,7 @@ export default {
 .video-player {
   position: relative;
   width: 750 / @rem;
-  height: 530 / @rem;
+  // height: 530 / @rem;
   margin: 0 auto;
   overflow: hidden;
   .video-icon{
@@ -301,7 +333,7 @@ export default {
     display: block;
     margin: 0 auto;
     width: 710/@rem;
-    height: 400/@rem;
+    // height: 400/@rem;
     background-color: #fff;
   }
   .control{
