@@ -33,17 +33,17 @@
         <!-- <div class="point-introduce" >{{videoData.jieshao}}</div> -->
       </div>
 
-      <div class="card">
+      <!-- <div class="card">
         <div class="title">{{title}}</div>
 
         <div class="list" v-for="(item, index) in classList" :key="index">
           <div class="name">{{item.name}}</div>
-          <!-- <div class="time">{{item.duration}}</div> -->
+          <div class="time">{{item.duration}}</div>
           <div v-if="item.status==1?true:false" @click="getClassDetail(item.id)" class="btn btn-s">已学习</div>
           <div v-if="item.status==2?true:false" @click="getClassDetail(item.id)" class="btn">未学习</div>
         </div>
 
-      </div>
+      </div> -->
 
       <div class="card">
         <div class="title">讲师</div>
@@ -106,21 +106,23 @@ export default {
     let c_id = this.$route.query.id;
     this.title = this.$route.query.title;
 
-    // 获取某个课程的信息
-    this.$ajax.post('/api/shou_ye/getKechengDetail',{kecheng_id: c_id, users_id}).then(res=>{
-      that.classList = res.data.data;
-      
-      // 获取第一节课的详情
-      if(that.classList.length>0){
-        that.getClassDetail(that.classList[0].id);
-      }else{
-        Toast({message: '暂无课程信息'});
-        setTimeout(() => {
-          this.$router.push({name: 'index'});
-        }, 3000);
-      }
+    this.getClassDetail(c_id);
 
-    });
+    // 获取某个课程的信息
+    // this.$ajax.post('/api/shou_ye/getKechengDetail',{kecheng_id: c_id, users_id}).then(res=>{
+    //   that.classList = res.data.data;
+      
+    //   // 获取第一节课的详情
+    //   if(that.classList.length>0){
+    //     that.getClassDetail(that.classList[0].id);
+    //   }else{
+    //     Toast({message: '暂无课程信息'});
+    //     setTimeout(() => {
+    //       this.$router.push({name: 'index'});
+    //     }, 3000);
+    //   }
+
+    // });
 
 
   },
@@ -351,6 +353,9 @@ export default {
   }
 }
 .point-introduce{
+  width: 710/@rem;
+  overflow: hidden;
+  word-wrap: break-word;
   font-size: 28/@rem;
   white-space: pre-line;
 }

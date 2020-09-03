@@ -34,12 +34,20 @@
           <div class="title-name">课程列表</div>
         </div>
         <div v-for="(item, index) in crouseList" :key="index">
-          <router-link :to="{name: 'course', query:{id: item.id, title: item.name}}">
-            <div class="list">
+            <div class="list" @click="toggleContent(index)">
               <div class="name">{{item.name}}</div>
-              <img src="../../static/images/rt.png" alt class="icon" />
+              <img src="../../static/images/rt.png" alt :class="showContent[index]? 'icon-rotate icon':'icon'" />
             </div>
-          </router-link>
+            <div class="list-cont" v-if="showContent[index]">
+              <div class="list" v-for="(itm, idx) in item.data" :key="idx">
+                <router-link :to="{name: 'course', query:{id: itm.id, title: itm.name}}">
+                  <div class="name">{{itm.name}}</div>
+                </router-link>
+                  <!-- <div class="time">{{item.duration}}</div> -->
+                  <div v-if="itm.status==1?true:false" class="btn btn-s">已学习</div>
+                  <div v-if="itm.status==2?true:false" class="btn">未学习</div>
+              </div>
+            </div>
         </div>
       </div>
     </div>
@@ -63,8 +71,9 @@ export default {
         leftTime: '00:00',
         duration: 0,
         state: 0,
-        poster: ''
+        poster: '',
       },
+      showContent:[],
       isLogin: false
     };
   },
@@ -73,18 +82,20 @@ export default {
     let that = this;
     
     // 检测是否登录
+    let users_id = '';
     if(localStorage.length>0){
-      let a = localStorage.getItem('userid');
-      if(a){
+      users_id = localStorage.getItem('userid');
+      if(users_id){
         this.isLogin = true;
       }
     }
 
     // 获取首页数据
-    this.$ajax.post('/api/shou_ye/getShouye').then(res=>{
+    this.$ajax.post('/api/shou_ye/getShouye', {users_id}).then(res=>{
     
     // banner 路径拼接
     that.swiperSrc = res.data.image.images.split(',').map(v=>(site.fileSite + v));
+
 
     // video src poster 路径拼接
     that.videoData.src = site.fileSite + res.data.video.xcfile;
@@ -92,7 +103,9 @@ export default {
     
     that.videoData.name = res.data.video.name;
 
-    that.crouseList = res.data.kecheng;
+    // 课程列表数据 
+    that.crouseList = res.data.data;
+    that.showContent = new Array(that.crouseList.length).fill(false);
 
     });
 
@@ -154,8 +167,33 @@ export default {
       this.isLogin = false;
       localStorage.clear();
       Toast({message: '已退出登录'});
+      // 获取首页数据
+      let that = this;
+      this.$ajax.post('/api/shou_ye/getShouye',).then(res=>{
+        
+        // banner 路径拼接
+        that.swiperSrc = res.data.image.images.split(',').map(v=>(site.fileSite + v));
+
+
+        // video src poster 路径拼接
+        that.videoData.src = site.fileSite + res.data.video.xcfile;
+        that.videoData.poster = site.fileSite +  res.data.video.fmimage;
+        
+        that.videoData.name = res.data.video.name;
+
+        // 课程列表数据 
+        that.crouseList = res.data.data;
+        that.showContent = new Array(that.crouseList.length).fill(false);
+
+        });
+
+    },
+    toggleContent(idx){
+      let arr = [...this.showContent];
+      arr[idx] = !arr[idx];
+      this.showContent = arr;
     }
-  },
+  }
 };
 </script>
 
@@ -271,9 +309,51 @@ export default {
           width: 30 / @rem;
           height: 30 / @rem;
         }
+        .icon-rotate{
+          transform: rotate(90deg);
+        }
       }
       .list:last-child {
         border: none;
+      }
+      // 二级列表
+      .list-cont{
+        .list{
+          display: flex;
+          height: 90/@rem;
+          line-height: 90/@rem;
+          font-size: 28/@rem;
+          text-align: center;
+          border-bottom: 1/@rem solid #f5f5f5;
+          .name{
+            text-indent: 2em;
+            text-align: left;
+            width: 550/@rem;
+            // 时间显示、未显示，宽度不一致
+            // width: 410/@rem;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+          .time{
+            width: 150/@rem;
+          }
+          .btn{
+            margin-top: 20/@rem;
+            width: 150/@rem;
+            height: 50/@rem;
+            line-height: 50/@rem;
+            color: #fff;
+            background-color: #6248EA;
+            border-radius: 25/@rem;
+          }
+          .btn-s{
+            opacity: 0.5;
+          }
+        }
+        .list:last-child{
+          border: none;
+        }
       }
     }
   }
