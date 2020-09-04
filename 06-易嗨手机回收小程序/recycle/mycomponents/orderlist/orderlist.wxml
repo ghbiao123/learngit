@@ -12,7 +12,7 @@
             {{status==0?'待发货':''}}{{status==1?'已完成':''}}{{status==2?'已取消':''}}
           </view>
         </view>
-        <view class="info ellipsis-text">全网速，64G，国行，三网通，过保或保修期...</view>
+        <view class="info ellipsis-text">全网速，64G，国行，三网通，过，三网通，过，三网通，过保或保修期...</view>
         <view class="info">预估价：¥1041</view>
       </view>
     </view>
