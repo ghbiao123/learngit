@@ -13,8 +13,11 @@ Vue.component('headNav', HeadNav);
 
 
 // 数据请求
-import site from '../mycomponents/index.vue'
+import site from '../../config/program.config'
 import Axios from "axios"
+let isPro = Object.is(process.env.NODE_ENV, 'production');
+const baseURL = isPro ? `${site.site}/index.php`: '';
+Axios.defaults.baseURL = baseURL;
 Vue.prototype.$ajax = Axios;
 
 Vue.use(Router)

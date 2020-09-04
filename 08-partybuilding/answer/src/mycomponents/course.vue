@@ -12,10 +12,10 @@
 
       <div class="video-player">
 
-        <video :src="videoData.src" 
-          :playsinline='true' 
+          <!-- :playsinline='true' 
           :webkit-playsinline="true"
-          :controls='true'
+          :controls='true' -->
+        <video :src="videoData.src" 
           @click="videoPlayer" 
           :poster="videoData.poster" 
           preload="auto" 
