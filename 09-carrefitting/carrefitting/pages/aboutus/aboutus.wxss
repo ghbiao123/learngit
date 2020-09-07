@@ -1,0 +1,5 @@
+/* pages/aboutus/aboutus.wxss */
+.content{
+  padding: 20rpx;
+  background-color: #fff;
+}

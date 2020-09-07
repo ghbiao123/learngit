@@ -1,0 +1,50 @@
+.list{
+  display: flex;
+  margin: 20rpx auto;
+  padding: 20rpx 0;
+  width: 710rpx;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+.image{
+  margin-left: 20rpx;
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 20rpx;
+}
+.cont{
+  padding-left: 20rpx;
+  width: 560rpx;
+  height: 110rpx;
+}
+.title{
+  height: 70rpx;
+  font-size: 30rpx;
+  line-height: 40rpx;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.subtitle{
+  display: flex;
+  height: 40rpx;
+  line-height: 40rpx;
+  color: #999999;
+}
+.icon{
+  display: none;
+  margin-top: 12rpx;
+  width: 26rpx;
+  height: 26rpx;
+}
+.subtitle-cont{
+  padding-left: 10rpx;
+}
+
+.cont,
+.subtitle-cont{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

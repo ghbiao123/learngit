@@ -1,0 +1,140 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"scopeDataCheck": false,
+		"coverView": true,
+		"es6": true,
+		"postcss": true,
+		"compileHotReLoad": false,
+		"preloadBackgroundData": false,
+		"minified": true,
+		"autoAudits": false,
+		"newFeature": true,
+		"uglifyFileName": false,
+		"uploadWithSourceMap": true,
+		"useIsolateContext": true,
+		"nodeModules": false,
+		"enhance": false,
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"showShadowRootInWxmlPanel": true,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.11.3",
+	"appid": "wx80d9669559441282",
+	"projectname": "carrefitting",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/aboutus/aboutus",
+					"pathName": "pages/aboutus/aboutus",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/case/case",
+					"pathName": "pages/case/case",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/joinus/joinus",
+					"pathName": "pages/joinus/joinus",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "pages/detail/detail",
+					"pathName": "pages/detail/detail",
+					"query": "type=case",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/shopquery/shopquery",
+					"pathName": "pages/shopquery/shopquery",
+					"query": "type=case",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/qaquery/qaquery",
+					"pathName": "pages/qaquery/qaquery",
+					"query": "type=case",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/qaresult/qaresult",
+					"pathName": "pages/qaresult/qaresult",
+					"query": "type=case",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
+					"query": "type=case",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/qainput/qainput",
+					"pathName": "pages/qainput/qainput",
+					"query": "type=case",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "type=case",
+					"scene": null
+				}
+			]
+		}
+	}
+}

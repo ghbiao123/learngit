@@ -1,0 +1,18 @@
+<view class="container m-t-20">
+  <view class="title">请登录</view>
+  <form bindsubmit="submit">
+    <view class="input-box">
+      <image class="icon" src="/images/account.png"></image>
+      <input class="input" placeholder="输入账号"></input>
+      <!-- <image class="btn-icon"></image> -->
+    </view>
+    <view class="input-box">
+      <image class="icon" src="/images/pwd.png"></image>
+      <input password="{{isPwd}}" class="input" placeholder="输入密码"></input>
+      <image class="btn-icon" bindtap="showPwd" src="/images/hidepwd.png"></image>
+    </view>
+    
+    <button class="button-clear" form-type="submit">登录</button>
+
+  </form>
+</view>

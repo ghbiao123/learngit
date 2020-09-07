@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "searchbar": "/mycomponents/searchbar/searchbar",
+    "shoplist": "/mycomponents/shoplist/shoplist"
+  },
+  "navigationBarTitleText": "门店查询"
+}

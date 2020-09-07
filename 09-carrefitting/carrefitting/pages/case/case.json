@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "caselist": "/mycomponents/caselist/caselist"
+  },
+  "navigationBarTitleText": "案例"
+}

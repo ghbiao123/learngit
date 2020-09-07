@@ -1,0 +1,6 @@
+<view class="container">
+  <searchbar coverholder="搜索经销商" bind:searchbar="search"></searchbar>
+  <view class="cont">
+    <shoplist list="{{[1,2,3,4,5]}}"></shoplist>
+  </view>
+</view>

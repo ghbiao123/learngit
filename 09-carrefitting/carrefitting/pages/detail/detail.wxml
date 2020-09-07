@@ -1,0 +1,9 @@
+<view class="container m-t-20">
+  <view class="head">
+    <view class="title">施工案例第01期（每10台车不定期更新）</view>
+    <view class="time">2020-08-26</view>
+  </view>
+  <view class="cont">
+    <rich-text nodes='{{nodes}}'></rich-text>
+  </view>
+</view>

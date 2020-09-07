@@ -1,0 +1,24 @@
+<view class="container">
+	<view class="richtext">
+		<rich-text></rich-text>
+	</view>
+	<view class="query-box">
+		<view class="title">查询条件</view>
+		<view class="query">
+			<view class="picker">
+				<picker mode="selector" range="{{choiceCange}}" bindchange="getChoice">{{choiceCange[idx]}}</picker>
+			</view>
+			<image class="icon" src="/images/down.png"></image>
+		</view>
+		<form bindsubmit="submit">
+			<view class="query">
+				<input class="input" value="{{inputVal}}" name="val" placeholder="{{placeholderText}}"></input>
+			</view>
+			<button class="button-clear" form-type="submit">查询</button>
+		</form>
+	</view>
+	<view class="richtext">
+		<rich-text></rich-text>
+	</view>
+
+</view>

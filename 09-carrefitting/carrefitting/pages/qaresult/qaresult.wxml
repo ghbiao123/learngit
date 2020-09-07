@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="name">质保编号</view>
+  <view class="cont">LMPPF742396255</view>
+  <view class="name">汽车牌照</view>
+  <view class="cont">鲁c23512</view>
+  <view class="name">汽车美容店</view>
+  <view class="cont">云涛汽车保养</view>
+  <view class="name">贴膜店地址</view>
+  <view class="cont">山东省淄博市桓台县齐鲁家具北60米</view>
+  <view class="name">贴膜日期</view>
+  <view class="cont">2020-08-26</view>
+  <view class="name">价格</view>
+  <view class="cont">￥1244</view>
+  <image class="icon" src="/images/car.png"></image>
+</view>

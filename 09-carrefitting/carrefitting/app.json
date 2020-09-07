@@ -1,0 +1,51 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/aboutus/aboutus",
+    "pages/case/case",
+    "pages/joinus/joinus",
+    "pages/detail/detail",
+    "pages/shopquery/shopquery",
+    "pages/qaquery/qaquery",
+    "pages/qaresult/qaresult",
+    "pages/qainput/qainput",
+    "pages/login/login"
+  ],
+  "tabBar": {
+    "color": "#CCCCCC",
+    "selectedColor": "#1E65F1",
+    "list": [
+      {
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "/images/index.png",
+      "selectedIconPath": "/images/index-s.png"
+    },
+    {
+      "pagePath": "pages/aboutus/aboutus",
+      "text": "关于我们",
+      "iconPath": "/images/aboutus.png",
+      "selectedIconPath": "/images/aboutus-s.png"
+    },
+    {
+      "pagePath": "pages/case/case",
+      "text": "案例",
+      "iconPath": "/images/case.png",
+      "selectedIconPath": "/images/case-s.png"
+    },
+    {
+      "pagePath": "pages/joinus/joinus",
+      "text": "加盟我们",
+      "iconPath": "/images/joinus.png",
+      "selectedIconPath": "/images/joinus-s.png"
+    }
+  ]
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle":"black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
