@@ -1,4 +1,6 @@
 // pages/qainput/qainput.js
+let that;
+let util = require("../../utils/util");
 Page({
 
   /**
@@ -12,8 +14,37 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    that = this;
   },
+
+  // 选择图片
+  addImage(){
+    wx.chooseImage({
+      count: 5,
+      success(res){
+        let rlt = res.tempFilePaths;
+        let arrImage = that.data.arrImage;
+        arrImage.push(...rlt);
+        that.setData({
+          arrImage
+        });
+      }
+    });
+  },
+  // 删除所选图片
+  deleteImage(e){
+    let idx = e.currentTarget.dataset.id;
+    let arrImage = this.data.arrImage;
+    arrImage.splice(idx,1);
+    this.setData({
+      arrImage
+    });
+  },
+  // 提交
+  submit(e){
+    let data = e.detail.data;
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -29,8 +29,18 @@
   border-radius: 10rpx;
   background-color: #f6f6f6;
 }
-.image{
+.image-item{
+  position: relative;
   margin: 20rpx 11rpx 0;
+  width: 120rpx;
+  height: 120rpx;
+}
+.image-icon{
+  position: absolute;
+  right: -12rpx;
+  top: -30rpx;
+}
+.image{
   width: 120rpx;
   height: 120rpx;
 }

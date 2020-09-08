@@ -1,4 +1,5 @@
 <view class="container m-t-20">
+<form bindsubmit="submit">
   <view class="name">质保号</view>
   <view class="cont">
     <input class="input" placeholder="请输入质保号"></input>
@@ -45,10 +46,14 @@
   </view>
   <view class="name">案例照片</view>
   <view class="image-box">
-    <image class="image" wx:if="{{arrImage.length>0}}" wx:for="{{arrImage}}" wx:key="index" src="{{item}}"></image>
+    <view class="image-item" wx:if="{{arrImage.length>0}}" wx:for="{{arrImage}}" wx:key="index">
+      <image class="image" src="{{item}}"></image>
+      <icon bindtap="deleteImage" data-id="{{index}}" type="cancel" color="#888" class="image-icon" size="20"></icon>
+    </view>
     <view style="width: 560rpx;" wx:if="{{arrImage.length==0}}">请上传案例照片</view>
-    <image class="image" src="/images/addimage.png"></image>
+    <image bindtap="addImage" class="image-item" src="/images/addimage.png"></image>
   </view>
   
-  <button class="button-clear">添加质保信息</button>
+  <button form-type="submit" class="button-clear">添加质保信息</button>
+  </form>
 </view>
