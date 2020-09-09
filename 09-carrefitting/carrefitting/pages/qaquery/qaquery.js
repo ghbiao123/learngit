@@ -1,4 +1,6 @@
 // pages/qaquery/qaquery.js
+let that;
+let util = require('../../utils/util');
 Page({
 
   /**
@@ -14,7 +16,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
 
+
+    // 获取富文本
+    this.getRichText();
+  },
+  // 获取富文本
+  getRichText(){
+    util._post('/api/warrantyinfo/detail').then(res=>{
+      that.setData({
+        richTxt: res.detail
+      });
+    });
   },
   // picker的change事件
   getChoice(e){

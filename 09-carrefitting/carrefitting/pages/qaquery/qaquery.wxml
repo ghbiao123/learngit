@@ -1,6 +1,6 @@
 <view class="container">
 	<view class="richtext">
-		<rich-text></rich-text>
+		<rich-text nodes="{{richTxt.tipscontent}}"></rich-text>
 	</view>
 	<view class="query-box">
 		<view class="title">查询条件</view>
@@ -18,7 +18,7 @@
 		</form>
 	</view>
 	<view class="richtext">
-		<rich-text></rich-text>
+		<rich-text nodes="{{richTxt.noticecontent}}"></rich-text>
 	</view>
 
 </view>

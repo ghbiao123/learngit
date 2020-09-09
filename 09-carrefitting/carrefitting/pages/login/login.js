@@ -26,6 +26,28 @@ Page({
   submit(e){
     let data = e.detail.value;
     console.log(data);
+    let needData = {
+      username: '账号',
+      password: '密码',
+    }
+    for(let key in data){
+      if(!data[key]){
+        return util.showSuccess(needData[key]+'不能为空');
+      }
+    }
+    util._post('/api/staff/login', data).then(res=>{
+      if(res.code==0){
+        wx.setStorage({
+          data: res.uid,
+          key: 'uid',
+        })
+        util.showSuccess(res.msg, function(){
+          wx.navigateBack();
+        });
+      }else{
+        util.showError(res.msg);
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

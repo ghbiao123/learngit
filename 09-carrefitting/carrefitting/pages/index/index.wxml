@@ -1,8 +1,8 @@
 <!--index.wxml-->
 <view class="container">
-	<swiper class="swiper" autoplay>
-		<swiper-item wx:for="00000" wx:key="index" class="swiper-item">
-			<image src="/images/{{index}}.jpg" class="swiper-item-images"></image>
+	<swiper class="swiper" autoplay circular>
+		<swiper-item wx:for="{{bannerList}}" wx:key="index" class="swiper-item">
+			<image src="{{item.image}}" class="swiper-item-images"></image>
 		</swiper-item>
 	</swiper>
 

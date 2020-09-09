@@ -8,7 +8,7 @@ function getSiteRoot() {
 }
 
 // post 请求
-function post(url, data = {}) {
+function _post(url, data = {}) {
 
   let ROOT_URL = getSiteRoot();
 
@@ -78,7 +78,7 @@ function checkIsLogin() {
 function showSuccess(msg, callBack) {
   wx.showToast({
     title: msg,
-    // icon: "success",
+    icon: "none",
     mask: true,
     duration: 2000,
     success() {
@@ -92,7 +92,7 @@ function showSuccess(msg, callBack) {
 // 显示失败提示框
 function showError(msg, callBack) {
   wx.showModal({
-    title: "友情提示",
+    title: "提示",
     content: msg,
     showCancel: false,
     success(res) {
@@ -179,8 +179,6 @@ function getCaptcha(num) {
     showSuccess(res.msg);
   });
 }
-
-
 /*
   返回当天日期
   eq： {
@@ -266,9 +264,10 @@ module.exports = {
   checkIsLogin, // 检测是否登录
   showSuccess, // 显示成功消息
   showError, // 显示错误消息
-  post, // post请求
+  _post, // post请求
   getUserInfo, // button触发获取用户信息，code userinfo
   getCaptcha, // 验证手机号并获取验证码
   getSiteRoot, // 获取api接口根
+  updateManager, //小程序主动更新
 }
 

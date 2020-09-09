@@ -1,11 +1,16 @@
+let util = require('../../utils/util');
 Component({
   properties:{
     list:{
       type: Array,
       value: [],
       observer: function(newVal){
+        let newList = newVal.map(v=>{
+          v.createtime = util.getToday(v.createtime*1000).date;
+          return v;
+        })
         this.setData({
-          list: newVal
+          newList
         });
       }
     }
@@ -15,7 +20,7 @@ Component({
       let id = e.currentTarget.dataset.id;
       console.log(id);
       wx.navigateTo({
-        url: '/pages/detail/detail?type=case&id='+id,
+        url: '/pages/detail/detail?type=case&case_id='+id,
       });
     }
   }

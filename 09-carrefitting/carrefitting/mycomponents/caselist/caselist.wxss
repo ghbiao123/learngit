@@ -31,7 +31,7 @@
   color: #999999;
 }
 .icon{
-  margin-top: 12rpx;
+  margin-top: 8rpx;
   width: 26rpx;
   height: 26rpx;
 }

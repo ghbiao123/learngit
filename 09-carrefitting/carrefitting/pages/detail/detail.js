@@ -18,6 +18,7 @@ Page({
     
     // 确定是哪个页面详情
     let type = options.type;
+    this.data.case_id = options.case_id;
     this.getData(type);
 
   },
@@ -25,15 +26,30 @@ Page({
   getData(type){
     let title = '';
     let url = '';
+    let data = {};
     if(type=='case'){
       title = '案例详情';
-      url = '';
+      url = '/api/carcase/detail';
+      data.case_id = this.data.case_id;
     }
     
     if(type == 'project'){
       title = '产品中心';
-      url = '';
+      url = '/api/center/detail';
     }
+
+    util._post(url, data).then(res=>{
+      if(type=='case'){
+        that.setData({
+          detail: res
+        });
+      }
+      if(type=='project'){
+        that.setData({
+          detail: res.detail
+        });
+      }
+    });
 
     wx.setNavigationBarTitle({
       title: title,

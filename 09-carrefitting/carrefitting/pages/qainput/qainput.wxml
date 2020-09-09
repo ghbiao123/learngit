@@ -2,47 +2,47 @@
 <form bindsubmit="submit">
   <view class="name">质保号</view>
   <view class="cont">
-    <input class="input" placeholder="请输入质保号"></input>
+    <input name="zhibao_no" class="input" placeholder="请输入质保号"></input>
   </view>
   <view class="name">车主姓名</view>
   <view class="cont">
-    <input class="input" placeholder="请输入车主姓名"></input>
+    <input name="name" class="input" placeholder="请输入车主姓名"></input>
   </view>
   <view class="name">联系方式</view>
   <view class="cont">
-    <input class="input" placeholder="请输入联系方式"></input>
+    <input name="phone" class="input" placeholder="请输入联系方式"></input>
   </view>
   <view class="name">车架号</view>
   <view class="cont">
-    <input class="input" placeholder="请输入车架号"></input>
+    <input name="chejia_no" class="input" placeholder="请输入车架号"></input>
   </view>
   <view class="name">车牌号</view>
   <view class="cont">
-    <input class="input" placeholder="请输入车牌号"></input>
+    <input name="chepai_no" class="input" placeholder="请输入车牌号"></input>
   </view>
   <view class="name">品牌类型</view>
   <view class="cont">
-    <input class="input" placeholder="请输入品牌类型"></input>
+    <input name="brand" class="input" placeholder="请输入品牌类型"></input>
   </view>
   <view class="name">产品型号</view>
   <view class="cont">
-    <input class="input" placeholder="请输入产品型号"></input>
+    <input name="p_model" class="input" placeholder="请输入产品型号"></input>
   </view>
   <view class="name">施工部位</view>
   <view class="cont">
-    <input class="input" placeholder="请输入">施工部位</input>
+    <input name="position" class="input" placeholder="请输入">施工部位</input>
   </view>
   <view class="name">质保年限（年）</view>
   <view class="cont">
-    <input class="input" placeholder="请输入质保年限"></input>
+    <input name="year" class="input" placeholder="请输入质保年限"></input>
   </view>
   <view class="name">门店名称</view>
   <view class="cont">
-    <input class="input" placeholder="请输入门店名称"></input>
+    <input name="mendian" class="input" placeholder="请输入门店名称"></input>
   </view>
   <view class="name">门店地址</view>
   <view class="cont">
-    <input class="input" placeholder="请输入门店地址"></input>
+    <input name="address" class="input" placeholder="请输入门店地址"></input>
   </view>
   <view class="name">案例照片</view>
   <view class="image-box">

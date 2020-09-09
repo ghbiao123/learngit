@@ -1,11 +1,11 @@
-<block wx:for="{{list}}" wx:key="index">
-	<view class="list" data-id="{{index}}" bindtap="getDetail">
-		<image class="image" src="/images/1.jpg"></image>
+<block wx:for="{{newList}}" wx:key="index">
+	<view class="list" data-id="{{item.id}}" bindtap="getDetail">
+		<image class="image" src="{{item.image}}"></image>
 		<view class="cont">
-			<view class="title">标题</view>
+			<view class="title">{{item.title}}</view>
 			<view class="subtitle">
 				<image class="icon" src="/images/clock.png"></image>
-				<view class="subtitle-cont">2020年9月7日10:10:13</view>
+				<view class="subtitle-cont">{{item.createtime}}</view>
 			</view>
 		</view>
 	</view>
