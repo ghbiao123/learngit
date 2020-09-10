@@ -26,11 +26,12 @@ Page({
   },
   // search
   search(e){
-    if(!e.detail){
+    if(!e){
       this.data.isSearch = true;
       this.getShopList();
       return;
-    }else{
+    }else if(this.data.keyword != e.detail){
+      this.data.list = [];
       this.data.keyword = e.detail;
     }
     if(!this.data.isSearch){
