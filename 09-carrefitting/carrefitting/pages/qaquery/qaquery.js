@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    choiceCange:['车主手机号', '车牌号', '车架号码', '质保编号'],
+    choiceCange:['车主手机号', '车架号码', '车牌号'],
     idx: 0,
     placeholderText: '请输入车主手机号'
   },
@@ -42,11 +42,17 @@ Page({
   },
   // 提交事件
   submit(e){
-    let value = e.detail.value.val;
-    console.log(value);
+    let value = e.detail.value.keyword;
     if(!value) return;
+    if(this.data.idx==0){
+      let reg = /^1[3-9]\d{9}$/;
+      let isPhone = reg.test(value);
+      if(!isPhone){
+        return util.showSuccess('您的手机号有误');
+      }
+    }
     wx.navigateTo({
-      url: '/pages/qaresult/qaresult?value='+value,
+      url: `/pages/qaresult/qaresult?flag=${Number(this.data.idx)+1}&keyword=${value}`,
     });
   },
   /**

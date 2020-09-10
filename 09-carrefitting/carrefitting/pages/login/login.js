@@ -25,7 +25,6 @@ Page({
   },
   submit(e){
     let data = e.detail.value;
-    console.log(data);
     let needData = {
       username: '账号',
       password: '密码',

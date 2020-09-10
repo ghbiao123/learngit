@@ -61,7 +61,6 @@ Page({
       that.data.isMore = res.has_more;
       that.data.isSearch = false;
       let list = that.data.list;
-      console.log(list);
       list.push(...res.data);
       that.setData({
         list

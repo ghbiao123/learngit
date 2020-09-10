@@ -133,6 +133,12 @@
 					"pathName": "pages/index/index",
 					"query": "type=case",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/qaquery/qaquery",
+					"pathName": "pages/qaquery/qaquery",
+					"scene": null
 				}
 			]
 		}

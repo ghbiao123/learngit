@@ -1,4 +1,6 @@
 // pages/qaresult/qaresult.js
+let that;
+let util = require('../../utils/util');
 Page({
 
   /**
@@ -12,9 +14,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
 
+    // 查询结果
+    this.getResult(options);
   },
-
+  // 查询结果
+  getResult(data){
+    util._post('/api/warrantylist/search', data).then(res=>{
+      if(res.code==0){
+        res.data.createtime = util.getToday(res.data.createtime*1000).date;
+        that.setData({
+          rlt: res.data
+        });
+      }else if(res.code==1){
+        util.showError('未查询到数据', function(){
+          wx.navigateBack();
+        });
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

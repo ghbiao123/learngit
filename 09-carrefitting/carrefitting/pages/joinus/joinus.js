@@ -19,7 +19,6 @@ Page({
   // 提交按钮事件
   submit(e){
     let data = e.detail.value;
-    console.log(data);
     let needData = {
       name: '姓名',
       phone: '电话号码'

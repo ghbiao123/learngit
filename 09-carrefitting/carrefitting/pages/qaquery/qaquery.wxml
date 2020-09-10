@@ -12,7 +12,7 @@
 		</view>
 		<form bindsubmit="submit">
 			<view class="query">
-				<input class="input" value="{{inputVal}}" name="val" placeholder="{{placeholderText}}"></input>
+				<input class="input" value="{{inputVal}}" name="keyword" placeholder="{{placeholderText}}"></input>
 			</view>
 			<button class="button-clear" form-type="submit">查询</button>
 		</form>

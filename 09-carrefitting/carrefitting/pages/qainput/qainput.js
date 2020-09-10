@@ -56,8 +56,6 @@ Page({
   // 提交
   submit(e) {
     let data = e.detail.value;
-    console.log(data);
-    console.log(Object.keys(data).length)
 
     let a = wx.getStorageSync('uid');
     if(!a){
