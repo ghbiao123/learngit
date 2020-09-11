@@ -1,4 +1,4 @@
 {
-  "usingComponents": {},
+  "usingComponents": {"parser": "/mycomponents/parser/parser"},
   "navigationBarTitleText": "质保查询"
 }

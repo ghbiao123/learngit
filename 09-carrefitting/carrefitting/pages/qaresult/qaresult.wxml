@@ -1,15 +1,27 @@
 <view class="container">
-  <view class="name">质保编号</view>
-  <view class="cont">{{rlt.zhibao_no}}</view>
-  <view class="name">汽车牌照</view>
+	<block wx:for="{{needData}}" wx:for-index="key" wx:for-item="value" wx:key="key">
+		<block wx:if="{{key!='images'}}">
+			<view class="name">{{value}}</view>
+			<view class="cont">{{rlt[key]}}</view>
+		</block>
+		<block wx:if="{{key=='images'}}">
+      <view class="name">{{value}}</view>
+			<view class="cont">
+        <image bindtap="showImage" data-idx="{{index}}" wx:key="index" wx:for="{{rlt[key]}}" src="{{item}}" mode="widthFix" class="image"></image>
+      </view>
+    </block>
+	</block>
+	<!-- <view class="name">质保编号</view>
+    <view class="cont">{{rlt.zhibao_no}}</view> -->
+	<!-- <view class="name">汽车牌照</view>
   <view class="cont">{{rlt.chepai_no}}</view>
   <view class="name">汽车美容店</view>
   <view class="cont">{{rlt.mendian}}</view>
   <view class="name">贴膜店地址</view>
   <view class="cont">{{rlt.address}}</view>
   <view class="name">贴膜日期</view>
-  <view class="cont">{{rlt.createtime}}</view>
-  <!-- <view class="name">价格</view>
+  <view class="cont">{{rlt.createtime}}</view> -->
+	<!-- <view class="name">价格</view>
   <view class="cont">{{rlt.}}</view> -->
-  <image class="icon" src="/images/car.png"></image>
+	<image class="icon" src="/images/car.png"></image>
 </view>

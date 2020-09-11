@@ -31,7 +31,7 @@ Page({
           wx.uploadFile({
             filePath: v,
             name: 'file',
-            url: baseURL.siteroot+'/api/upload/upload',
+            url: baseURL.siteroot+'/index.php/api/upload/upload',
             success(result){
               that.data.images.push(result.data);
             }

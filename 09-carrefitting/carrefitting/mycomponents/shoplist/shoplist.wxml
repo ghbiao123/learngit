@@ -5,7 +5,7 @@
 			<view class="title">{{item.name}}</view>
 			<view class="subtitle">
 				<!-- <image class="icon" src="/images/clock.png"></image> -->
-				<view class="subtitle-cont">{{item.createtime}}</view>
+				<view class="subtitle-cont">{{item.address}}</view>
 			</view>
 		</view>
 	</view>

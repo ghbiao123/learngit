@@ -16,4 +16,6 @@
   font-size: 26rpx;
   color: #CCCCCC;
 }
-.cont{padding-top: 20rpx;}
+.cont{
+  padding: 20rpx;
+}

@@ -10,7 +10,7 @@ function getSiteRoot() {
 // post 请求
 function _post(url, data = {}) {
 
-  let ROOT_URL = getSiteRoot();
+  let ROOT_URL = getSiteRoot() + `/index.php`;
 
   let status = 0;
 

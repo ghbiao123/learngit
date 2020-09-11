@@ -1,6 +1,7 @@
 // pages/aboutus/aboutus.js
 let that;
 let util = require('../../utils/util');
+let parseText = require('../../utils/uniapp-rich-text');
 Page({
 
   /**
@@ -16,12 +17,11 @@ Page({
   onLoad: function (options) {
     that = this;
 
-    // 获取富文本
-    this.getContent();
   },
   // 获取富文本
   getContent(){
     util._post('/api/about/detail').then(res=>{
+      res.detail.content = parseText.format(res.detail.content);
       that.setData({
         cont: res.detail.content
       });
@@ -38,7 +38,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // 获取富文本
+    this.getContent();
   },
 
   /**

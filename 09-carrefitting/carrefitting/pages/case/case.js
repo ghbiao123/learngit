@@ -18,8 +18,7 @@ Page({
   onLoad: function (options) {
     that = this;
 
-    // 获取列表
-    this.getList();
+   
   },
   // 获取列表
   getList(){
@@ -43,7 +42,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+     // 获取列表
+     this.data.list = [];
+     this.getList();
   },
 
   /**

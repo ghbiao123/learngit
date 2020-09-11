@@ -19,13 +19,37 @@ Page({
     // 查询结果
     this.getResult(options);
   },
+  // 展示图片
+  showImage(e){
+    let idx = e.currentTarget.dataset.idx;
+    wx.previewImage({
+      urls: that.data.images,
+      current: that.data.images[idx]
+    });
+  },
   // 查询结果
   getResult(data){
     util._post('/api/warrantylist/search', data).then(res=>{
       if(res.code==0){
         res.data.createtime = util.getToday(res.data.createtime*1000).date;
+        let needData = {
+          'zhibao_no': '质保号',
+          'name': '车主姓名',
+          'phone': '联系方式',
+          'chejia_no': '车架号',
+          'chepai_no': '车牌号',
+          'brand': '品牌类型',
+          'p_model': '产品型号',
+          'position': '施工部位',
+          'year': '质保年限',
+          'mendian': '门店名称',
+          'address': '门店地址',
+          'images': '案例照片'
+        }
+        that.data.images = res.data.images;
         that.setData({
-          rlt: res.data
+          rlt: res.data,
+          needData
         });
       }else if(res.code==1){
         util.showError('未查询到数据', function(){

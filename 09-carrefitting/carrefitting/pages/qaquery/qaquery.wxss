@@ -24,7 +24,7 @@
   background-color: #fff;
 }
 .picker{
-  width: 500rpx;
+  width: 650rpx;
   text-indent: 20rpx;
 }
 .icon{

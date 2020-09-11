@@ -1,5 +1,4 @@
 /**app.wxss**/
-/* @import '/components/weui-wxss/dist/style/weui.wxss'; */
 .container {
   padding-bottom: 20rpx;
 }
