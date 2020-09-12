@@ -15,6 +15,7 @@ Page({
    */
   onLoad: function (options) {
     that = this;
+    this.data.from = options.from;
   },
   // 显示/隐藏密码
   showPwd(){
@@ -41,7 +42,9 @@ Page({
           key: 'uid',
         })
         util.showSuccess(res.msg, function(){
-          wx.navigateBack();
+          wx.redirectTo({
+            url: `/pages/${that.data.from}/${that.data.from}`,
+          });
         });
       }else{
         util.showError(res.msg);

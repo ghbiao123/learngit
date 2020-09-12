@@ -17,9 +17,11 @@
 		<navigator url="/pages/qaquery/qaquery" hover-class="none">
 			<icontext src='/images/idx2.png' iconW='75' iconH='75' cont="质保查询" lHeight='60'></icontext>
 		</navigator>
-		<navigator url="/pages/qainput/qainput" hover-class="none">
+		<view bindtap="getQuery">
 			<icontext src='/images/idx3.png' iconW='75' iconH='75' cont="质保录入" lHeight='60'></icontext>
-		</navigator>
+		</view>
+		<!-- <navigator url="/pages/qainput/qainput" hover-class="none">
+		</navigator> -->
 	</view>
 
 </view>

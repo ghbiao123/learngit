@@ -6,9 +6,10 @@
 		<view class="title">查询条件</view>
 		<view class="query">
 			<view class="picker">
-				<picker mode="selector" range="{{choiceCange}}" bindchange="getChoice">{{choiceCange[idx]}}</picker>
+				{{choiceCange[idx]}}
+				<!-- <picker mode="selector" range="{{choiceCange}}" bindchange="getChoice">{{choiceCange[idx]}}</picker> -->
 			</view>
-			<image class="icon" src="/images/down.png"></image>
+			<image class="icon" hidden src="/images/down.png"></image>
 		</view>
 		<form bindsubmit="submit">
 			<view class="query">

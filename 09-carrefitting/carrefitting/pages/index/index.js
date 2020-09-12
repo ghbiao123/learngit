@@ -16,6 +16,19 @@ Page({
     // 获取banner
     this.getBannerList();
   },
+  // 跳转查询页面
+  getQuery(){
+    let uid = wx.getStorageSync('uid');
+    if(uid){
+      wx.navigateTo({
+        url: '/pages/qainput/qainput',
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/login/login?from=qainput',
+      });
+    }
+  },
   // 获取首页banner图
   getBannerList(){
     util._post("/api/banner/list").then(res=>{
