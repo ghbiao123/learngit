@@ -1,0 +1,8 @@
+<view class="container">
+	<navigation titleL="已下单"></navigation>
+	<tab id="tab" title="{{['已下单', '已取件']}}">
+		<view style="text-align: center; width:200rpx; height:200rpx; background:#040;" wx:for="{{['已下单', '已取件']}}" slot="tab-content-{{index}}" wx:key="index">
+			{{item}}
+		</view>
+	</tab>
+</view>

@@ -1,0 +1,11 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="swiper-cont">
+    <swiper class="swiper" circular>
+      <swiper-item class="swiper-item" wx:for="000" wx:key="index">
+        <image class="swiper-image" src="/images/banner.png"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>
+

@@ -1,0 +1,38 @@
+<view class="container">
+	<view class="userinfo">
+		<block wx:if="{{isLogin}}">
+			<image class="avatar" src="/images/avatar.png"></image>
+			<view class="username">用户姓名</view>
+		</block>
+		<block wx:else="{{!isLogin}}">
+			去登陆 >
+		</block>
+	</view>
+
+	<view class="menu m-t-20" bindtap="getMyOrder">
+		<view class="cell-item">
+			<view class="cell-left">
+				<image class="cell-icon" src="/images/myorder.png"></image>
+				<view>我的订单</view>
+			</view>
+			<view class="cell-right">
+				<image class="cell-rt" src="/images/rt.png"></image>
+			</view>
+		</view>
+	</view>
+
+	<view class="menu m-t-10">
+		<button class="contact" open-type="contact">
+			<view class="cell-item">
+				<view class="cell-left">
+					<image class="cell-icon" src="/images/myorder.png"></image>
+					<view>客服</view>
+				</view>
+				<view class="cell-right">
+					<image class="cell-rt" src="/images/rt.png"></image>
+				</view>
+			</view>
+		</button>
+	</view>
+
+</view>

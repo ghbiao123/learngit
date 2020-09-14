@@ -1,0 +1,35 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/calcprice/calcprice",
+    "pages/makeorderonline/makeorderonline",
+    "pages/myorder/myorder",
+    "pages/orderdetail/orderdetail"
+  ],
+  "tabBar": {
+    "color": "#CCCCCC",
+    "selectedColor": "#F6A800",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "/images/index.png",
+      "selectedIconPath": "/images/index-s.png"
+    },
+    {
+      "pagePath": "pages/mine/mine",
+      "text": "我的",
+      "iconPath": "/images/mine.png",
+      "selectedIconPath": "/images/mine-s.png"
+    }
+  ]
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
