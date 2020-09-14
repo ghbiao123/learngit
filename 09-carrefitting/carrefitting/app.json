@@ -11,6 +11,9 @@
     "pages/qainput/qainput",
     "pages/login/login"
   ],
+  "usingComponents":{
+    "logo": "/mycomponents/logo/logo"
+  },
   "tabBar": {
     "color": "#CCCCCC",
     "selectedColor": "#1E65F1",
