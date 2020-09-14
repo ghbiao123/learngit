@@ -1,3 +1,4 @@
+<logo text="质保录入"></logo>
 <view class="container m-t-20">
 <form bindsubmit="submit">
   <view class="name">质保号</view>

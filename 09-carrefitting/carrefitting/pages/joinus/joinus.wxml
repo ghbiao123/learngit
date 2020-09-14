@@ -1,4 +1,5 @@
-<view class="container">
+<logo text="加盟我们"></logo>
+<view class="container m-t-20">
   <form bindsubmit="submit">
     <view class="title">姓名</view>
     <input name="name" class="input" value="{{resetTxt}}" placeholder="请输入姓名"></input>

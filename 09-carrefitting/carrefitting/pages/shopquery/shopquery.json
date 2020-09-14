@@ -2,6 +2,5 @@
   "usingComponents": {
     "searchbar": "/mycomponents/searchbar/searchbar",
     "shoplist": "/mycomponents/shoplist/shoplist"
-  },
-  "navigationBarTitleText": "经销商查询"
+  }
 }

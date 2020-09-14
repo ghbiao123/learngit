@@ -1,3 +1,4 @@
+<logo text="经销商账户登陆"></logo>
 <view class="container m-t-20">
   <view class="title">请登录</view>
   <form bindsubmit="submit">

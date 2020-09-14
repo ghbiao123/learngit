@@ -1,4 +1,5 @@
 <!--pages/case/case.wxml-->
+<logo text="案例"></logo>
 <view class="container m-t-20">
   <caselist list="{{list}}"></caselist>
 </view>

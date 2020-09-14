@@ -13,7 +13,7 @@
 
 	<view class="menu">
 		<navigator url="/pages/shopquery/shopquery" hover-class="none">
-			<icontext src='/images/idx1.png' iconW='75' iconH='75' cont="门店查询" lHeight='60'></icontext>
+			<icontext src='/images/idx1.png' iconW='75' iconH='75' cont="经销商查询" lHeight='60'></icontext>
 		</navigator>
 		<navigator url="/pages/qaquery/qaquery" hover-class="none">
 			<icontext src='/images/idx2.png' iconW='75' iconH='75' cont="质保查询" lHeight='60'></icontext>

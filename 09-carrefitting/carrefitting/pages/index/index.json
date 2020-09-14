@@ -1,6 +1,5 @@
 {
   "usingComponents": {
     "icontext": "/mycomponents/icontext/icontext"
-  },
-  "navigationBarTitleText": "首页"
+  }
 }

@@ -50,10 +50,12 @@ Page({
         });
       }
     });
-
-    wx.setNavigationBarTitle({
-      title: title,
+    that.setData({
+      title
     });
+    // wx.setNavigationBarTitle({
+    //   title: title,
+    // });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

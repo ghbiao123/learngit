@@ -1,4 +1,5 @@
-<view class="container">
+<logo text="经销商查询"></logo>
+<view class="container m-t-20">
   <!-- <searchbar coverholder="搜索经销商" bind:searchbar="search"></searchbar> -->
   <view class="cell-card">
     <view class="cell-item">

@@ -1,4 +1,5 @@
-<view class="container">
+<logo text="质保查询"></logo>
+<view class="container m-t-20">
 	<view class="richtext">
 		<parser html="{{richTxt.tipscontent}}"></parser>
 	</view>
