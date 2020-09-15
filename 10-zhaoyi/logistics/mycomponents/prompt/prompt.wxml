@@ -1,0 +1,11 @@
+<view class="prompt-box">
+  <view class="prompt">
+    <view class="title">输入价格</view>
+    <view class="input-box">
+      <view>￥</view>
+      <input class="input" placeholder="请输入价格"></input>
+    </view>
+    <button size="mini" class="button">确定</button>
+    <icon color="#CCCCCC" type="cancel" size="25" class="cancel"></icon>
+  </view>
+</view>

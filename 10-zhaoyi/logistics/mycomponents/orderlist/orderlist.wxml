@@ -1,0 +1,18 @@
+<block wx:for="{{list}}" wx:key="idnex">
+	<view class="list-box">
+    <view class="list-title">
+      <view class="title">物流单号：123465798789798</view>
+      <view class="price color-red">约￥100</view>
+    </view>
+    <view class="list-cont">
+      <view class="cont">货物种类：衣物</view>
+      <view class="cont">地址：中国--美国</view>
+      <view class="cont">物品重量：20kg</view>
+      <view class="cont">物品尺寸：100cm</view>
+    </view>
+    <view class="list-button">
+      <button class="button-small button-gray">订单详情</button>
+      <button class="button-small button-lightgreen">订单详情</button>
+    </view>
+	</view>
+</block>

@@ -5,7 +5,8 @@
     "pages/calcprice/calcprice",
     "pages/makeorderonline/makeorderonline",
     "pages/myorder/myorder",
-    "pages/orderdetail/orderdetail"
+    "pages/orderdetail/orderdetail",
+    "pages/editpersonalinfo/editpersonalinfo"
   ],
   "tabBar": {
     "color": "#CCCCCC",

@@ -1,2 +1,90 @@
-<!--pages/orderdetail/orderdetail.wxml-->
-<text>pages/orderdetail/orderdetail.wxml</text>
+<view class="container">
+	<view class="cell-card">
+		<view class="cell-item">
+			<view class="cell-name">物流单号</view>
+			<view class="cell-cont t-a-r flex-end">
+				<view style="margin-right: 20rpx;">CY95820200912001</view>
+				<view class="color-blue">待取件</view>
+			</view>
+		</view>
+		<view class="cell-item">
+			<view class="cell-name">预约时间</view>
+			<view class="cell-cont t-a-r">2020年9月15日14:13:52</view>
+		</view>
+	</view>
+
+	<view class="cell-card">
+		<view class="cell-item">
+			<view class="cell-name">选择货物种类</view>
+			<view class="cell-cont t-a-r">待取件</view>
+		</view>
+		<view class="cell-item">
+			<view class="cell-name">物品重量</view>
+			<view class="cell-cont t-a-r">kg</view>
+		</view>
+		<view class="cell-item">
+			<view class="cell-name">物品尺寸</view>
+			<view class="cell-cont t-a-r">cm</view>
+		</view>
+		<view class="cell-item">
+			<view class="cell-name">地址</view>
+			<view class="cell-cont t-a-r">中国--美国</view>
+		</view>
+		<view class="cell-item">
+			<view class="cell-name">估价</view>
+			<view class="cell-cont t-a-r color-red">约￥100</view>
+		</view>
+	</view>
+
+	<view class="tit-no-bg">寄件人信息</view>
+	<view class="cell-card" style="margin-top: 0rpx;">
+		<view class="cell-item">
+			<view class="cell-name">姓名</view>
+			<view class="cell-cont t-a-r">待取件</view>
+		</view>
+		<view class="cell-item">
+			<view class="cell-name">电话</view>
+			<view class="cell-cont t-a-r">待取件</view>
+		</view>
+		<view class="cell-item">
+			<view class="cell-name">身份证</view>
+			<view class="cell-cont t-a-r">待取件</view>
+		</view>
+		<view class="cell-item">
+			<view class="cell-name">寄件地址</view>
+			<view class="cell-cont t-a-r">待取件</view>
+		</view>
+	</view>
+
+	<view class="tit-no-bg">收件人信息</view>
+	<view class="cell-card" style="margin-top: 0rpx;">
+		<view class="cell-item">
+			<view class="cell-name">姓名</view>
+			<view class="cell-cont t-a-r">待取件</view>
+		</view>
+		<view class="cell-item">
+			<view class="cell-name">电话</view>
+			<view class="cell-cont t-a-r">待取件</view>
+		</view>
+		<view class="cell-item">
+			<view class="cell-name">身份证</view>
+			<view class="cell-cont t-a-r">待取件</view>
+		</view>
+		<view class="cell-item">
+			<view class="cell-name">寄件地址</view>
+			<view class="cell-cont t-a-r">待取件</view>
+		</view>
+	</view>
+
+	<view class="cell-card">
+		<view class="cell-item">
+			<view class="cell-name">订单价格</view>
+			<view class="cell-cont t-a-r color-red">￥100</view>
+		</view>
+	</view>
+	<button class="button-big m-t-20">立即支付</button>
+</view>
+
+<view hidden>
+	<prompt></prompt>
+</view>

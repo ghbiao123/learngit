@@ -31,7 +31,7 @@ image{
   color: #fff;
   font-weight: normal;
   border-radius: 10rpx;
-  background-image: linear-gradient(to bottom,#F6A800 , #F51F02);
+  background-image: linear-gradient(to bottom,#F6A800 0, #F51F02 100%);
 }
 .button-small{
   padding: 0;
@@ -49,6 +49,13 @@ image{
 .button-lightgreen{
   color: #24C3D4;
   border: 1rpx solid #24C3D4;
+}
+
+.color-red{
+  color: #F51F02;
+}
+.color-blue{
+  color: #24C3D4;
 }
 
 /* 页面大部分公共样式 */
@@ -72,7 +79,16 @@ image{
   font-size: 28rpx;
   color: #000;
 }
+.cell-input{
+  height: 100rpx;
+  line-height: 100rpx;
+  width: 180rpx;
+}
+.cell-input-w400{
+  width: 400rpx;
+}
 
+/* 选择更多 */
 .cell-left{
   display: flex;
   width: 630rpx;
@@ -90,11 +106,22 @@ image{
   width: 24rpx;
   height: 24rpx;
 }
+/* title - cont */
 .cell-name{
   width: 170rpx;
 }
 .cell-cont{
   width: 500rpx;
+}
+/* icon - title -cont  */
+.cell-icon-title{
+  display: flex;
+  width: 270rpx;
+}
+.cell-icon-cont{
+  display: flex;
+  justify-content: flex-end;
+  width: 400rpx;
 }
 
 .tit-no-bg{
@@ -103,8 +130,8 @@ image{
   width: 710rpx;
   height: 75rpx;
   line-height: 75rpx;
-  font-size: 35rpx;
-  font-weight: bold;
+  font-size: 30rpx;
+  color: #666666;
 }
 
 /* 下边框 */
@@ -135,6 +162,11 @@ image{
   background-color: #fff;
 }
 
+/* flex 布局 */
+.flex-end{
+  display: flex;
+  justify-content: flex-end;
+}
 
 
 

@@ -1,8 +1,13 @@
 <view class="container">
 	<navigation titleL="已下单"></navigation>
 	<tab id="tab" title="{{['已下单', '已取件']}}">
-		<view style="text-align: center; width:200rpx; height:200rpx; background:#040;" wx:for="{{['已下单', '已取件']}}" slot="tab-content-{{index}}" wx:key="index">
-			{{item}}
+		<view slot="tab-content-0" wx:key="index" class="order-list-cont">
+			<view>tab-content-0</view>
+			<orderlist list="{{list}}"></orderlist>
+		</view>
+		<view slot="tab-content-1" wx:key="index" class="order-list-cont">
+			<view>tab-content-1</view>
+			<orderlist list="{{list}}"></orderlist>
 		</view>
 	</tab>
 </view>

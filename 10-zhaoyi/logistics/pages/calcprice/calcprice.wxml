@@ -1,2 +1,75 @@
-<!--pages/calcprice/calcprice.wxml-->
-<text>pages/calcprice/calcprice.wxml</text>
+<view class="container">
+	<form bindsubmit="submit">
+		<view class="cell-card">
+
+			<!-- 货物种类 -->
+			<view class="cell-item">
+				<view class="cell-icon-title">
+					<image class="cell-icon" src="/images/order1.png"></image>
+					<view>选择货物种类</view>
+				</view>
+				<picker mode="date">
+					<view class="cell-icon-cont">
+						<input disabled class="cell-input" placeholder="选择货物种类"></input>
+						<image class="cell-rt" src="/images/rt.png"></image>
+					</view>
+				</picker>
+			</view>
+
+			<!-- 物品重量 -->
+			<view class="cell-item">
+				<view class="cell-icon-title">
+					<image class="cell-icon" src="/images/order2.png"></image>
+					<view>物品重量</view>
+				</view>
+				<view class="cell-icon-cont">
+					<input class="cell-input t-a-r" placeholder="输入物品重量"></input>
+					<view>kg</view>
+				</view>
+			</view>
+
+			<!-- 物品尺寸 -->
+			<view class="cell-item">
+				<view class="cell-icon-title">
+					<image class="cell-icon" src="/images/order3.png"></image>
+					<view>物品尺寸</view>
+				</view>
+				<view class="cell-icon-cont">
+					<input class="cell-input t-a-r" placeholder="输入物品尺寸"></input>
+					<view>cm</view>
+				</view>
+			</view>
+
+			<!-- 地址 -->
+			<view class="cell-item">
+				<view class="cell-icon-title">
+					<image class="cell-icon" src="/images/order4.png"></image>
+					<view>地址</view>
+				</view>
+				<view class="cell-icon-cont">
+					<input class="cell-input t-a-c" placeholder="发件国家"></input>
+					<view>--</view>
+					<input class="cell-input t-a-c" placeholder="收件国家"></input>
+				</view>
+			</view>
+
+		</view>
+
+		<view class="cell-card">
+			<!-- 估价 -->
+			<view class="cell-item">
+				<view class="cell-icon-title">
+					<image class="cell-icon" src="/images/order5.png"></image>
+					<view>估价</view>
+				</view>
+				<view class="cell-icon-cont">
+					<input disabled value="123" class="cell-input color-red" placeholder="价格"></input>
+				</view>
+			</view>
+		</view>
+
+	</form>
+
+
+
+</view>

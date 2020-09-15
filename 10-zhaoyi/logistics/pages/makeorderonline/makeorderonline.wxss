@@ -1,1 +1,53 @@
 /* pages/makeorderonline/makeorderonline.wxss */
+
+.personal-info{
+  display: flex;
+  justify-content: space-between;
+  height: 120rpx;
+}
+.address{
+  line-height: 80rpx;
+  font-size: 32rpx;
+}
+.contact-info{
+  line-height: 40rpx;
+  color: #999999;
+}
+
+.edit-icon{
+  margin: 42rpx 0 0;
+  width: 36rpx;
+  height: 36rpx;
+}
+.more-icon{
+  margin: 44rpx 0 0;
+  width: 32rpx;
+  height: 32rpx;
+}
+/* agreement */
+.agreement{
+  display: flex;
+  justify-content: center;
+  padding: 20rpx 0 0;
+}
+.agreement>view{
+  margin: 0 10rpx;
+  font-size: 24rpx;
+}
+.check-box{
+  width: 24rpx;
+  height: 24rpx;
+  border: 2rpx solid #F6A800;
+}
+.is-check{
+  margin: 4rpx auto;
+  width: 16rpx;
+  height: 16rpx;
+  background-color: #F6A800;
+}
+.text{
+  color: #999999;
+}
+.agreement-item{
+  color: #F6A800;
+}
