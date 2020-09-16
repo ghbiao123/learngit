@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "tab": "/mycomponents/tab/tab",
-    "orderlist": "/mycomponents/orderlist/orderlist"
+    "orderlist": "/mycomponents/orderlist/orderlist",
+    "datanull": "/mycomponents/datanull/datanull"
   },
   "navigationBarTitleText": "我的订单"
 }

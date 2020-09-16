@@ -2,11 +2,20 @@
 	<navigation titleL="已下单"></navigation>
 	<tab id="tab" title="{{['已下单', '已取件']}}">
 		<view slot="tab-content-0" wx:key="index" class="order-list-cont">
-			<view>tab-content-0</view>
-			<orderlist list="{{list}}"></orderlist>
+			<view class="t-a-c">tab-content-0</view>
+			<block wx:if="{{list1.length>0}}">
+				<orderlist list="{{list}}"></orderlist>
+			</block>
+			<block wx:if="{{list1.length==0}}">
+				<view class="no-data">
+					<datanull></datanull>
+				</view>
+				<button class="button-big-orange"></button>
+				<button class="button-big-blue m-t-20"></button>
+			</block>
 		</view>
 		<view slot="tab-content-1" wx:key="index" class="order-list-cont">
-			<view>tab-content-1</view>
+			<view class="t-a-c">tab-content-1</view>
 			<orderlist list="{{list}}"></orderlist>
 		</view>
 	</tab>

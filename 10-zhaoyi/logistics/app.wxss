@@ -23,7 +23,7 @@ image{
 
 /* 自定义按钮样式 */
 /* 超大按钮 */
-.button-big{
+.button-big-orange{
   padding: 0;
   width: 710rpx !important;
   height: 90rpx;
@@ -31,7 +31,17 @@ image{
   color: #fff;
   font-weight: normal;
   border-radius: 10rpx;
-  background-image: linear-gradient(to bottom,#F6A800 0, #F51F02 100%);
+  background-image: linear-gradient(to bottom,#F6A800 0, #F55C01 100%);
+}
+.button-big-blue{
+  padding: 0;
+  width: 710rpx !important;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #fff;
+  font-weight: normal;
+  border-radius: 10rpx;
+  background-image: linear-gradient(to bottom,#24C3D4 0,#0B97CA 100%);
 }
 .button-small{
   padding: 0;
@@ -169,4 +179,7 @@ image{
 }
 
 
-
+/* no-data */
+.no-data{
+  margin-top: 220rpx;
+}
