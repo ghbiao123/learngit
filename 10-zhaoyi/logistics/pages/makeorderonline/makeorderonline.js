@@ -1,4 +1,6 @@
 // pages/makeorderonline/makeorderonline.js
+let that;
+let util = require("../../utils/util");
 Page({
 
   /**
@@ -12,7 +14,41 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
 
+    // 初始化数据
+    this.init();
+  },
+  // init data
+  init(){
+    // 商品类型
+    util.post('/api/Xd/selecttype').then(res=>{
+      console.log("商品类型", res);
+      that.setData({
+        goodsTypeRange: res
+      });
+    });
+    // 国家
+    util.post('/api/Xd/selectadder').then(res=>{
+      console.log("国家", res);
+    });
+    // 运输方式
+    util.post('/api/Xd/selectyunshu').then(res=>{
+      console.log("运输方式", res);
+    });
+  },
+  // 监听文字输入
+  textInput(e){
+    let type = e.currentTarget.dataset.type;
+    console.log(type);
+  },
+  // 商品类型pickerChange
+  goodsTypeChange(e){
+    let val = e.detail.value;
+    console.log(val);
+    that.setData({
+      goodstype: that.data.goodsTypeRange[val].name
+    });
   },
 
   /**

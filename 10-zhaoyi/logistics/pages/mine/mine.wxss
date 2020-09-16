@@ -21,3 +21,9 @@
   padding: 0 20rpx;
   background-color: #fff;
 }
+
+.contact{
+  text-align: left;
+  height: 100rpx;
+  line-height: 100rpx;
+}

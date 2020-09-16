@@ -4,7 +4,7 @@ import site from "../program.config";
 
 // api根目录
 function getSiteRoot() {
-  return site.siteroot;
+  return site.siteroot + `/index.php`;
 }
 
 // post 请求
@@ -143,17 +143,22 @@ function getUserInfo(e, callBack) {
     });
     return;
   }
+  console.log(e);
 
   wx.login({
     success(res) {
+      // let data = {
+      //   code: res.code,
+      //   userInfo: e.detail.rawData,
+      //   encrypted_data: e.detail.encryptedData,
+      //   iv: e.detail.iv,
+      // }
       let data = {
         code: res.code,
-        userInfo: e.detail.rawData,
-        encrypted_data: e.detail.encryptedData,
-        iv: e.detail.iv,
+        wxname: e.detail.userInfo.nickName
       }
-      post("url", data).then(res => {
-        console.log(res);
+      post("/api/wxlogin/wxlogin", data).then(res => {
+        callBack&&callBack(res);
       });
     }
   });

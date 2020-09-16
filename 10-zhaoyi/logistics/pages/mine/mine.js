@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isLogin: true
+    isLogin: false
   },
 
   /**
@@ -15,6 +15,25 @@ Page({
    */
   onLoad: function (options) {
     that = this;
+  },
+  // login
+  getUserInfo(e){
+    let userInfo = e.detail.userInfo;
+    util.getUserInfo(e, function(res){
+      console.log(res);
+      if(res.code==1){
+        util.showSuccess(res.msg);
+        userInfo.uid = res.userid;
+        wx.setStorage({
+          data: userInfo,
+          key: 'userinfo',
+        });
+        that.setData({
+          isLogin: true,
+          userInfo
+        });
+      }
+    });
   },
   // 跳转我的订单页
   getMyOrder() {
@@ -36,7 +55,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    return;
     let a = util.checkIsLogin.call(this);
     if (!a) {
       return util.showError('请您先登录');

@@ -10,8 +10,7 @@
 				<view class="no-data">
 					<datanull></datanull>
 				</view>
-				<button class="button-big-orange"></button>
-				<button class="button-big-blue m-t-20"></button>
+				
 			</block>
 		</view>
 		<view slot="tab-content-1" wx:key="index" class="order-list-cont">
