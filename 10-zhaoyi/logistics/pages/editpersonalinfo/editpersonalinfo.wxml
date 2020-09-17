@@ -3,9 +3,9 @@
 		<view class="content m-t-20">
 			<!-- 姓名 -->
 			<view class="cell-item">
-				<view class="cell-name">{{type=='receive'? '收':'寄'}}件人姓名</view>
+				<view class="cell-name">{{type=='receiveCountryAddress'? '收':'寄'}}件人姓名</view>
 				<view class="cell-cont flex-end">
-					<input class="cell-input t-a-r cell-input-w400" placeholder-class="t-a-r" placeholder="输入{{type=='receive'? '收':'寄'}}件人姓名"></input>
+					<input name="name" value="{{data.name}}" class="cell-input t-a-r cell-input-w400" placeholder-class="t-a-r" placeholder="输入{{type=='receiveCountryAddress'? '收':'寄'}}件人姓名"></input>
 				</view>
 			</view>
 
@@ -13,7 +13,7 @@
 			<view class="cell-item">
 				<view class="cell-name">联系方式</view>
 				<view class="cell-cont flex-end">
-					<input class="cell-input t-a-r cell-input-w400" placeholder-class="t-a-r" placeholder="输入联系方式"></input>
+					<input name="phone" value="{{data.phone}}" class="cell-input t-a-r cell-input-w400" placeholder-class="t-a-r" placeholder="输入联系方式"></input>
 				</view>
 			</view>
 
@@ -21,18 +21,18 @@
 			<view class="cell-item">
 				<view class="cell-name">身份证</view>
 				<view class="cell-cont flex-end">
-					<input class="cell-input t-a-r cell-input-w400" placeholder-class="t-a-r" placeholder="输入身份证号码"></input>
+					<input name="idcard" value="{{data.idcard}}" class="cell-input t-a-r cell-input-w400" placeholder-class="t-a-r" placeholder="输入身份证号码"></input>
 				</view>
 			</view>
 
 			<!-- 地址 -->
 			<view class="cell-item">
-				<view class="cell-name">{{type=='receive'? '收':'寄'}}件地址</view>
+				<view class="cell-name">{{type=='receiveCountryAddress'? '收':'寄'}}件地址</view>
 				<view class="cell-cont flex-end">
-					<input class="cell-input t-a-r cell-input-w400" placeholder-class="t-a-r" placeholder="输入{{type=='receive'? '收':'寄'}}件人地址"></input>
+					<input name="address" value="{{data.address}}" class="cell-input t-a-r cell-input-w400" placeholder-class="t-a-r" placeholder="输入{{type=='receiveCountryAddress'? '收':'寄'}}件人地址"></input>
 				</view>
 			</view>
 		</view>
-    <button class="button-big m-t-20" form-type="submit">确定</button>
+    <button class="button-big-orange m-t-20" form-type="submit">确定</button>
 	</form>
 </view>

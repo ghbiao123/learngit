@@ -1,21 +1,54 @@
 // pages/editpersonalinfo/editpersonalinfo.js
+let that;
+let type;
+let util = require('../../utils/util');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    type: 'receivea'
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    type = options.type;
+    that = this;
+    // init data
+    this.init();
 
+    this.setData({
+      type
+    });
   },
-  submit(){
-
+  init(){
+    wx.getStorage({
+      key: type,
+      success(res){
+        let data = res.data;
+        that.setData({
+          data
+        });
+      }
+    });
+  },
+  submit(e){
+    let data = e.detail.value;
+    
+    wx.setStorage({
+      data: data,
+      key: type,
+      success(){
+        util.showSuccess('编辑成功', function(){
+          wx.navigateBack({
+            delta: 1,
+          });
+        });
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

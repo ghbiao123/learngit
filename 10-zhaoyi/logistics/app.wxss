@@ -88,6 +88,10 @@ image{
   line-height: 100rpx;
   font-size: 28rpx;
   color: #000;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+.cell-card>.cell-item:last-child{
+  border: none;
 }
 .cell-input{
   height: 100rpx;

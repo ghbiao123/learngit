@@ -8,9 +8,9 @@
 					<image class="cell-icon" src="/images/order1.png"></image>
 					<view>选择货物种类</view>
 				</view>
-				<picker mode="date">
+				<picker mode="selector" range="{{goodsTypeRange}}" range-key="name" bindchange="goodsTypeChange">
 					<view class="cell-icon-cont">
-						<input disabled class="cell-input" placeholder="选择货物种类"></input>
+						<input disabled value="{{goodsType}}" class="cell-input t-a-r" placeholder="选择货物种类"></input>
 						<image class="cell-rt" src="/images/rt.png"></image>
 					</view>
 				</picker>
@@ -23,7 +23,7 @@
 					<view>物品重量</view>
 				</view>
 				<view class="cell-icon-cont">
-					<input class="cell-input t-a-r" placeholder="输入物品重量"></input>
+					<input data-type="weight" bindinput="textInput" class="cell-input t-a-r" placeholder="输入物品重量"></input>
 					<view>kg</view>
 				</view>
 			</view>
@@ -35,7 +35,11 @@
 					<view>物品尺寸</view>
 				</view>
 				<view class="cell-icon-cont">
-					<input class="cell-input t-a-r" placeholder="输入物品尺寸"></input>
+					<input data-type="long" bindinput="textInput" class="cell-input t-a-c" placeholder="长"></input>
+					<view>-</view>
+					<input data-type="wide" bindinput="textInput" class="cell-input t-a-c" placeholder="宽"></input>
+					<view>-</view>
+					<input data-type="high" bindinput="textInput" class="cell-input t-a-c" placeholder="高"></input>
 					<view>cm</view>
 				</view>
 			</view>
@@ -47,15 +51,30 @@
 					<view>地址</view>
 				</view>
 				<view class="cell-icon-cont">
-					<input class="cell-input t-a-c" placeholder="发件国家"></input>
-					<view>--</view>
-					<input class="cell-input t-a-c" placeholder="收件国家"></input>
+					<picker mode="selector" range="{{sendCountryRange}}" range-key="name" bindchange="sendCountryChange">
+						<input disabled value="{{sendCountry}}" class="cell-input t-a-c" placeholder="发件国家"></input>
+					</picker>
+					<view>-</view>
+					<picker mode="selector" range="{{receiveCountryRange}}" range-key="name" bindchange="receiveCountryChange">
+						<input disabled value="{{receiveCountry}}" class="cell-input t-a-c" placeholder="收件国家"></input>
+					</picker>
 				</view>
 			</view>
 
-		</view>
+			<!-- 运输方式 -->
+			<view class="cell-item">
+				<view class="cell-icon-title">
+					<image class="cell-icon" src="/images/order7.png"></image>
+					<view>运输方式</view>
+				</view>
+				<picker mode="selector" range="{{transportRange}}" range-key="name" bindchange="transportChange">
+					<view class="cell-icon-cont">
+						<input disabled value="{{transport}}" class="cell-input t-a-r" placeholder="选择运输方式"></input>
+						<image class="cell-rt" src="/images/rt.png"></image>
+					</view>
+				</picker>
+			</view>
 
-		<view class="cell-card">
 			<!-- 估价 -->
 			<view class="cell-item">
 				<view class="cell-icon-title">
@@ -63,13 +82,85 @@
 					<view>估价</view>
 				</view>
 				<view class="cell-icon-cont">
-					<input disabled value="123" class="cell-input color-red" placeholder="价格"></input>
+					<input disabled value="￥{{evaluationPrive || 0}}" class="cell-input color-red t-a-r" placeholder="价格"></input>
 				</view>
 			</view>
 		</view>
 
+		<!-- 预约时间 -->
+		<view hidden class="cell-card">
+			<view class="cell-item">
+				<view class="cell-icon-title">
+					<image class="cell-icon" src="/images/order6.png"></image>
+					<view>预约时间</view>
+				</view>
+				<picker mode="date" start="{{startTime}}" bindchange="timeChange">
+					<view class="cell-icon-cont">
+						<input disabled value="{{time}}" class="cell-input" placeholder="选择预约时间"></input>
+						<image class="cell-rt" src="/images/rt.png"></image>
+					</view>
+				</picker>
+			</view>
+		</view>
+
+		<!-- 寄件人信息 -->
+		<view hidden class="tit-no-bg">寄件人信息</view>
+		<view hidden class="cell-card" style="margin-top: 0rpx;">
+			<navigator hover-class="none" url="/pages/editpersonalinfo/editpersonalinfo?type=sendCountryAddress">
+				<view class="personal-info">
+					<view class="info">
+						<block wx:if="{{sendCountryAddress}}">
+							<view class="address">{{sendCountryAddress.address}}</view>
+							<view class="contact-info">
+								<text>{{sendCountryAddress.name}}</text>
+								<text style="padding: 0 20rpx;">{{sendCountryAddress.phone}}</text>
+							</view>
+						</block>
+						<block wx:if="{{!sendCountryAddress}}">
+							<view style="line-height: 120rpx; font-size: 32rpx;">点击进行编辑</view>
+						</block>
+					</view>
+					<view class="edit-it">
+						<image class="edit-icon" src="/images/edit.png"></image>
+						<image class="more-icon" src="/images/rt.png"></image>
+					</view>
+				</view>
+			</navigator>
+		</view>
+
+		<!-- 收件人信息 -->
+		<view hidden class="tit-no-bg">收件人信息</view>
+		<view hidden class="cell-card" style="margin-top: 0rpx;">
+			<navigator hover-class="none" url="/pages/editpersonalinfo/editpersonalinfo?type=receiveCountryAddress">
+			<view class="personal-info">
+				<view class="info">
+					<block wx:if="{{receiveCountryAddress}}">
+						<view class="address">{{receiveCountryAddress.address}}</view>
+						<view class="contact-info">
+							<text>{{receiveCountryAddress.name}}</text>
+							<text style="padding: 0 20rpx;">{{receiveCountryAddress.phone}}</text>
+						</view>
+					</block>
+					<block wx:if="{{!receiveCountryAddress}}">
+						<view style="line-height: 120rpx; font-size: 32rpx;">点击进行编辑</view>
+					</block>
+				</view>
+				<view class="edit-it">
+					<image class="edit-icon" src="/images/edit.png"></image>
+					<image class="more-icon" src="/images/rt.png"></image>
+				</view>
+			</view>
+			</navigator>
+		</view>
+
+		<button hidden form-type="submit" class="button-big-orange m-t-20">确认下单</button>
 	</form>
 
-
+	<view hidden class="agreement">
+		<view class="check-box" bindtap="checkAgreement">
+			<view hidden="{{!isAgree}}" class="is-check"></view>
+		</view>
+		<view class="text">已阅读并同意<text class="agreement-item">《电子运单契约条款》</text></view>
+	</view>
 
 </view>
