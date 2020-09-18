@@ -1,0 +1,24 @@
+<block wx:for="{{list}}" wx:key="idnex">
+	<view class="list-box">
+    <view class="list-title">
+      <block wx:if="{{item.status==0}}">
+        <view class="title">取件时间：</view>
+        <view class="price">{{item.reservetime}}</view>
+      </block>
+      <block wx:if="{{item.status==1}}">
+        <view class="title">订单价格：</view>
+        <view class="price color-red">￥{{item.price}}</view>
+      </block>
+    </view>
+    <view class="list-cont">
+      <view class="cont">货物种类：{{item.goodstype}}</view>
+      <view class="cont">地址：中国--{{item.adder}}</view>
+      <view class="cont">物品重量：{{item.goodsweight}}kg</view>
+      <view class="cont">物品尺寸：{{item.goodssize}}cm</view>
+    </view>
+    <view class="list-button">
+      <button bindtap="getOrderDetail" data-id="{{item.id}}" class="button-small button-gray">订单详情</button>
+      <!-- <button bindtap="getOrderDetail" data-id="{{item.id}}" wx:if="{{item.status==1}}" class="button-small button-lightgreen">物流查询</button> -->
+    </view>
+	</view>
+</block>

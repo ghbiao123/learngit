@@ -5,7 +5,8 @@
 			<view class="username">{{userInfo.nickName}}</view>
 		</block>
 		<block wx:else="{{!isLogin}}">
-			<button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="contact">去登陆 ></button>
+			<!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="contact">去登陆 ></button> -->
+			<navigator url="/pages/login/login" hover-class="none" class="contact">去登陆 ></navigator>
 		</block>
 	</view>
 

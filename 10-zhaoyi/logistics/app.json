@@ -6,7 +6,8 @@
     "pages/makeorderonline/makeorderonline",
     "pages/myorder/myorder",
     "pages/orderdetail/orderdetail",
-    "pages/editpersonalinfo/editpersonalinfo"
+    "pages/editpersonalinfo/editpersonalinfo",
+    "pages/login/login"
   ],
   "tabBar": {
     "color": "#CCCCCC",

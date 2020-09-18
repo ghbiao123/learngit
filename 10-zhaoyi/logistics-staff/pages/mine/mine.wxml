@@ -1,0 +1,41 @@
+<view class="container">
+	<view class="userinfo">
+		<block wx:if="{{isLogin}}">
+			<image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+			<view class="username">{{userInfo.nickName}}</view>
+		</block>
+		<block wx:else="{{!isLogin}}">
+			<!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="contact">去登陆 ></button> -->
+			<navigator url="/pages/login/login" hover-class="none" class="contact">去登陆 ></navigator>
+		</block>
+	</view>
+
+	<view class="menu m-t-20" bindtap="getMyOrder">
+		<view class="menu m-t-20">
+			<view class="cell-item">
+				<view class="cell-left">
+					<image class="cell-icon" src="/images/myorder.png"></image>
+					<view>完善个人信息</view>
+				</view>
+				<view class="cell-right">
+					<image class="cell-rt" src="/images/rt.png"></image>
+				</view>
+			</view>
+		</view>
+	</view>
+
+		<view class="menu m-t-10">
+			<button class="contact" open-type="contact">
+				<view class="cell-item">
+					<view class="cell-left">
+						<image class="cell-icon" src="/images/myorder.png"></image>
+						<view>客服</view>
+					</view>
+					<view class="cell-right">
+						<image class="cell-rt" src="/images/rt.png"></image>
+					</view>
+				</view>
+			</button>
+		</view>
+
+	</view>

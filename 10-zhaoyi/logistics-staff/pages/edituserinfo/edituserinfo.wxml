@@ -1,0 +1,24 @@
+<view class="container">
+  <form bindsubmit="submit">
+
+    <view class="cell-card">
+
+      <view class="cell-item">
+        <view class="cell-name">真实姓名</view>
+        <view class="cell-cont">
+          <input class="cell-input" style="width: 400rpx;" placeholder="请输入您的真实姓名" name="name" type="text"></input>
+        </view>
+      </view>
+
+      <view class="cell-item">
+        <view class="cell-name">手机号</view>
+        <view class="cell-cont">
+          <input class="cell-input" style="width: 400rpx;" placeholder="请输入您的手机号" name="phone" type="text"></input>
+        </view>
+      </view>
+
+    </view>
+    <button form-type="submit" class="button-big-blue m-t-20">提交</button>
+  </form>
+
+</view>

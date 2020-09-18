@@ -1,0 +1,16 @@
+.datanull{
+  margin: 0 auto;
+  width: 375rpx;
+  height: auto;
+  text-align: center;
+  overflow: hidden;
+}
+.image{
+  width: 375rpx;
+  vertical-align: top;
+}
+.text{
+  padding-top: 75rpx;
+  font-size: 26rpx;
+  color: #999999;
+}

@@ -1,0 +1,6 @@
+/* pages/editpersonalinfo/editpersonalinfo.wxss */
+.content{
+  padding: 20rpx 40rpx;
+  background-color: #fff;
+}
+

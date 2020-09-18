@@ -1,0 +1,4 @@
+<view class="navigative-bar">
+  <view data-id="0" bindtap="getSelected" class="navigative-item {{selected==0? 'select-item' : ''}}">{{titleL}}</view>
+  <view data-id="1" bindtap="getSelected" class="navigative-item {{selected==1? 'select-item' : ''}}">{{titleR}}</view>
+</view>

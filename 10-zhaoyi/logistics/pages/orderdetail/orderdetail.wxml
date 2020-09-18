@@ -3,36 +3,45 @@
 		<view class="cell-item">
 			<view class="cell-name">物流单号</view>
 			<view class="cell-cont t-a-r flex-end">
-				<view style="margin-right: 20rpx;">CY95820200912001</view>
-				<view class="color-blue">待取件</view>
+				<view style="margin-right: 20rpx;">{{order.status==0? '' : order.ordernum}}</view>
+				<block wx:if="{{order.status==0}}">
+					<view class="color-blue">待取件</view>
+				</block>
+				<block wx:else>
+					<view class="color-blue" data-id="{{order.ordernum}}" bindtap="cutText">查询</view>
+				</block>
 			</view>
 		</view>
 		<view class="cell-item">
 			<view class="cell-name">预约时间</view>
-			<view class="cell-cont t-a-r">2020年9月15日14:13:52</view>
+			<view class="cell-cont t-a-r">{{order.reservetime}}</view>
 		</view>
 	</view>
 
 	<view class="cell-card">
 		<view class="cell-item">
 			<view class="cell-name">选择货物种类</view>
-			<view class="cell-cont t-a-r">待取件</view>
+			<view class="cell-cont t-a-r">{{order.goodstype}}</view>
 		</view>
 		<view class="cell-item">
 			<view class="cell-name">物品重量</view>
-			<view class="cell-cont t-a-r">kg</view>
+			<view class="cell-cont t-a-r">{{order.goodsweight}}kg</view>
 		</view>
 		<view class="cell-item">
 			<view class="cell-name">物品尺寸</view>
-			<view class="cell-cont t-a-r">cm</view>
+			<view class="cell-cont t-a-r">{{order.goodssize}}cm</view>
 		</view>
 		<view class="cell-item">
 			<view class="cell-name">地址</view>
-			<view class="cell-cont t-a-r">中国--美国</view>
+			<view class="cell-cont t-a-r">中国--{{order.adder}}</view>
 		</view>
-		<view class="cell-item">
+		<view wx:if="{{order.zhuangtai==0}}" class="cell-item">
 			<view class="cell-name">估价</view>
-			<view class="cell-cont t-a-r color-red">约￥100</view>
+			<view class="cell-cont t-a-r color-red">约￥{{order.price}}</view>
+		</view>
+		<view wx:if="{{order.status==1}}" class="cell-item">
+			<view class="cell-name">支付价格</view>
+			<view class="cell-cont t-a-r color-red">￥{{order.price}}</view>
 		</view>
 	</view>
 
@@ -40,19 +49,19 @@
 	<view class="cell-card" style="margin-top: 0rpx;">
 		<view class="cell-item">
 			<view class="cell-name">姓名</view>
-			<view class="cell-cont t-a-r">待取件</view>
+			<view class="cell-cont t-a-r">{{order.mailname}}</view>
 		</view>
 		<view class="cell-item">
 			<view class="cell-name">电话</view>
-			<view class="cell-cont t-a-r">待取件</view>
+			<view class="cell-cont t-a-r">{{order.mailphone}}</view>
 		</view>
-		<view class="cell-item">
+		<view class="cell-item" hidden>
 			<view class="cell-name">身份证</view>
-			<view class="cell-cont t-a-r">待取件</view>
+			<view class="cell-cont t-a-r">{{order.mailadder}}</view>
 		</view>
 		<view class="cell-item">
 			<view class="cell-name">寄件地址</view>
-			<view class="cell-cont t-a-r">待取件</view>
+			<view class="cell-cont t-a-r">{{order.mailadder}}</view>
 		</view>
 	</view>
 
@@ -60,29 +69,31 @@
 	<view class="cell-card" style="margin-top: 0rpx;">
 		<view class="cell-item">
 			<view class="cell-name">姓名</view>
-			<view class="cell-cont t-a-r">待取件</view>
+			<view class="cell-cont t-a-r">{{order.receiptname}}</view>
 		</view>
 		<view class="cell-item">
 			<view class="cell-name">电话</view>
-			<view class="cell-cont t-a-r">待取件</view>
+			<view class="cell-cont t-a-r">{{order.receiptphone}}</view>
 		</view>
-		<view class="cell-item">
+		<view class="cell-item" hidden>
 			<view class="cell-name">身份证</view>
-			<view class="cell-cont t-a-r">待取件</view>
+			<view class="cell-cont t-a-r">{{order.receiptphone}}</view>
 		</view>
 		<view class="cell-item">
-			<view class="cell-name">寄件地址</view>
-			<view class="cell-cont t-a-r">待取件</view>
+			<view class="cell-name">收件地址</view>
+			<view class="cell-cont t-a-r">{{order.receiptadder}}</view>
 		</view>
 	</view>
 
-	<view class="cell-card">
-		<view class="cell-item">
-			<view class="cell-name">订单价格</view>
-			<view class="cell-cont t-a-r color-red">￥100</view>
+	<block wx:if="{{order.zhuangtai==1}}">
+		<view class="cell-card">
+			<view class="cell-item">
+				<view class="cell-name">订单价格</view>
+				<view class="cell-cont t-a-r color-red">￥{{order.price}}</view>
+			</view>
 		</view>
-	</view>
-	<button class="button-big m-t-20">立即支付</button>
+		<button class="button-big-orange m-t-20">立即支付</button>
+	</block>
 </view>
 
 <view hidden>

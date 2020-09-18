@@ -1,0 +1,190 @@
+/**app.wxss**/
+@import '/components/weui-wxss/dist/style/weui.wxss';
+.container {
+  padding-bottom: 20rpx;
+}
+
+page{
+  background-color: #f6f6f6;
+}
+
+image{
+  vertical-align: top;
+  border: 0;
+}
+/* 上外边距 20rpx */
+.m-t-20{
+  margin-top: 20rpx !important;
+}
+/* 上外边距 10rpx */
+.m-t-10{
+  margin-top: 10rpx !important;
+}
+
+/* 自定义按钮样式 */
+/* 超大按钮 */
+.button-big-orange{
+  padding: 0;
+  width: 710rpx !important;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #fff;
+  font-weight: normal;
+  border-radius: 10rpx;
+  background-image: linear-gradient(to bottom,#F6A800 0, #F55C01 100%);
+}
+.button-big-blue{
+  padding: 0;
+  width: 710rpx !important;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #fff;
+  font-weight: normal;
+  border-radius: 10rpx;
+  background-image: linear-gradient(to bottom,#24C3D4 0,#0B97CA 100%);
+}
+.button-small{
+  padding: 0;
+  width: 180rpx !important;
+  height: 54rpx;
+  line-height: 54rpx;
+  font-size: 26rpx;
+  font-weight: normal;
+  border-radius: 10rpx;
+}
+.button-gray{
+  color: #999999;
+  border: 1rpx solid #999999;
+}
+.button-lightgreen{
+  color: #24C3D4;
+  border: 1rpx solid #24C3D4;
+}
+
+.color-red{
+  color: #F51F02;
+}
+.color-blue{
+  color: #24C3D4;
+}
+
+/* 页面大部分公共样式 */
+
+/* 白色卡片 */
+.cell-card{
+  margin: 20rpx auto 0;
+  width: 670rpx;
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+/* 
+  白色卡片下样式
+*/
+.cell-item{
+  display: flex;
+  justify-content: space-between;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  color: #000;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+.cell-card>.cell-item:last-child{
+  border: none;
+}
+.cell-input{
+  height: 100rpx;
+  line-height: 100rpx;
+  width: 180rpx;
+}
+.cell-input-w400{
+  width: 400rpx;
+}
+
+/* 选择更多 */
+.cell-left{
+  display: flex;
+  width: 630rpx;
+}
+.cell-right{
+ width: 40rpx; 
+}
+.cell-icon{
+  margin: 34rpx 20rpx 0 0;
+  width: 32rpx;
+  height: 32rpx;
+}
+.cell-rt{
+  margin: 40rpx 0 0 15rpx;
+  width: 24rpx;
+  height: 24rpx;
+}
+/* title - cont */
+.cell-name{
+  width: 170rpx;
+}
+.cell-cont{
+  width: 500rpx;
+}
+/* icon - title -cont  */
+.cell-icon-title{
+  display: flex;
+  width: 270rpx;
+}
+.cell-icon-cont{
+  display: flex;
+  justify-content: flex-end;
+  width: 400rpx;
+}
+
+.tit-no-bg{
+  display: flex;
+  margin: 0 auto;
+  width: 710rpx;
+  height: 75rpx;
+  line-height: 75rpx;
+  font-size: 30rpx;
+  color: #666666;
+}
+
+/* 下边框 */
+.b-b-g{
+  border-bottom: 1rpx solid #f6f6f6;
+}
+
+/* 文字居右 */
+.t-a-r{
+  text-align: right;
+}
+/* 文字居中 */
+.t-a-c{
+  text-align: center;
+}
+
+/* 文字不换行，超出隐藏 */
+.e-text{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.contact{
+  width: 710rpx !important;
+  padding: 0;
+  margin: 0 !important;
+  font-weight: normal;
+  background-color: #fff;
+}
+
+/* flex 布局 */
+.flex-end{
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+/* no-data */
+.no-data{
+  margin-top: 220rpx;
+}

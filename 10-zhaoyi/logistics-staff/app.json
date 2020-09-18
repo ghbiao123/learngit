@@ -1,0 +1,41 @@
+{
+  "pages":[
+    "pages/staffplatformorder/staffplatformorder",
+    "pages/staffmyorder/staffmyorder",
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/calcprice/calcprice",
+    "pages/makeorderonline/makeorderonline",
+    "pages/myorder/myorder",
+    "pages/orderdetail/orderdetail",
+    "pages/editpersonalinfo/editpersonalinfo",
+    "pages/login/login",
+    "pages/edituserinfo/edituserinfo"
+  ],
+  "tabBar": {
+    "color": "#CCCCCC",
+    "selectedColor": "#1A1A1A",
+    "list": [
+      {
+        "pagePath": "pages/staffplatformorder/staffplatformorder",
+        "text": "订单记录",
+        "iconPath": "/images/order.png",
+        "selectedIconPath": "/images/order-s.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/images/newmine.png",
+        "selectedIconPath": "/images/newmine-s.png"
+      }
+    ]
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

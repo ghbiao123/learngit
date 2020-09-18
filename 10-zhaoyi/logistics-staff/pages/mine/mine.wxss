@@ -1,0 +1,29 @@
+/* pages/mine/mine.wxss */
+.userinfo{
+  display: flex;
+  padding: 40rpx 20rpx;
+  height: 120rpx;
+  line-height: 120rpx;
+  font-size: 42rpx;
+  font-weight: bold;
+  background-color: #fff;
+}
+.avatar{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 10rpx;
+}
+.username{
+  padding-left: 20rpx;
+}
+
+.menu{
+  padding: 0 20rpx;
+  background-color: #fff;
+}
+
+.contact{
+  text-align: left;
+  height: 100rpx;
+  line-height: 100rpx;
+}

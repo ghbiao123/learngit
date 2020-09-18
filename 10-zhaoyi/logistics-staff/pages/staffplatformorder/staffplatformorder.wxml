@@ -1,0 +1,27 @@
+<view class="container">
+	<tab id="tab" title="{{['待接单', '已接单']}}">
+		<view slot="tab-content-0" wx:key="index" class="order-list-cont">
+			<!-- <view class="t-a-c">tab-content-0</view> -->
+			<block wx:if="{{toDealOrder.length>0}}">
+				<orderlist list="{{toDealOrder}}"></orderlist>
+			</block>
+			<block wx:if="{{toDealOrder.length==0}}">
+				<view class="no-data">
+					<datanull></datanull>
+				</view>
+			</block>
+		</view>
+		<view slot="tab-content-1" wx:key="index" class="order-list-cont">
+			<!-- <view class="t-a-c">tab-content-1</view> -->
+
+			<block wx:if="{{dealOrder.length>0}}">
+				<orderlist list="{{dealOrder}}"></orderlist>
+			</block>
+			<block wx:if="{{dealOrder.length==0}}">
+				<view class="no-data">
+					<datanull></datanull>
+				</view>
+			</block>
+		</view>
+	</tab>
+</view>

@@ -1,0 +1,12 @@
+.swiper-cont,
+.swiper,
+.swiper-item,
+.swiper-image{
+  width: 750rpx;
+  height: 400rpx;
+}
+
+.menu{
+  display: flex;
+  justify-content: space-around;
+}
