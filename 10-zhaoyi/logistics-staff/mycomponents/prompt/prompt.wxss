@@ -43,7 +43,7 @@
   width: 180rpx !important;
   color: #fff;
   font-weight: normal;
-  background-color: #F6A800;
+  background-color: #24C3D4;
 }
 .cancel{
   position: absolute;

@@ -12,7 +12,14 @@
   <view class="tab-content">
     <swiper style="height:{{scrollHeight}}rpx;" class="swiper-cont" current="{{selected}}" bindchange="swiperChange">
       <swiper-item wx:for="{{title}}" wx:key="index">
-        <scroll-view style="height:{{scrollHeight}}rpx;" scroll-y lower-threshold='50' bindscrolltolower="reachBottom">
+        <scroll-view style="height:{{scrollHeight}}rpx;" 
+          scroll-y 
+          lower-threshold='50' 
+          bindscrolltolower="reachBottom"
+          refresher-enabled="{{true}}"
+          bindrefresherrefresh="pullDown"
+          refresher-triggered="{{refresher}}"
+          >
           <slot name="tab-content-{{index}}"></slot>
         </scroll-view>
       </swiper-item>

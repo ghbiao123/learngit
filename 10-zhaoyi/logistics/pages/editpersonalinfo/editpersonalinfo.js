@@ -25,6 +25,13 @@ Page({
     });
   },
   init(){
+    let title;
+    if(type == 'sendCountryAddress'){
+      title = '寄件人信息编辑';
+    }else{
+      title = '收件人信息编辑';
+    }
+    wx.setNavigationBarTitle({title});
     wx.getStorage({
       key: type,
       success(res){

@@ -43,7 +43,16 @@ Component({
       });
     },
     reachBottom(e){
+    },
+    pullDown(e){
       console.log(e);
+      let that = this;
+      this.triggerEvent('pullDown', true);
+      setTimeout(()=>{
+        that.setData({
+          refresher: false
+        });
+      }, 1500);
     }
   }
 });

@@ -15,6 +15,7 @@ Page({
    */
   onLoad: function (options) {
     that = this;
+    util.checkIsLogin.call(this);
   },
   submit(e){
     let userid = wx.getStorageSync('userinfo').uid;

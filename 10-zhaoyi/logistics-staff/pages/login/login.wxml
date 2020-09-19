@@ -2,5 +2,5 @@
   <view class="cell-card">
     <open-data class="avatar" type="userAvatarUrl"></open-data>
   </view>
-  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="button-big-orange m-t-20">微信用户一键登录</button>
-</view>
+  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="button-big-blue m-t-20">微信用户一键登录</button>
+</view> 

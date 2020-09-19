@@ -12,7 +12,7 @@
 				</block>
 			</view>
 		</view>
-		<view class="cell-item">
+		<view class="cell-item" wx:if="{{order.status==0}}">
 			<view class="cell-name">预约时间</view>
 			<view class="cell-cont t-a-r">{{order.reservetime}}</view>
 		</view>

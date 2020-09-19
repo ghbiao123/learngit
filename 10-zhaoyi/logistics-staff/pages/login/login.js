@@ -27,6 +27,9 @@ Page({
           });
         });
         userInfo.uid = res.userid;
+        userInfo.name = res.name;
+        userInfo.phone = res.phone;
+        userInfo.states = res.states;
         wx.setStorage({
           data: userInfo,
           key: 'userinfo',

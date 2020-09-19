@@ -7,6 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    toDealOrder: [],
+    dealOrder: []
   },
 
   /**
@@ -15,19 +17,23 @@ Page({
   onLoad: function (options) {
    that = this;
 
-   let userInfo = wx.getStorageSync('userinfo');
-    if(!userInfo){
-      return util.showError('请您登录', function(){
-        wx.navigateTo({
-          url: '/pages/login/login',
-        });
-      });
-    }
 
   },
+  // 下拉刷新
+  getPullDown(e){
+    // 更新用户订单
+    this.getOrderList();
+  },
   // 获取用户订单
-  getOrderList(){
-    let userid = wx.getStorageSync('userinfo').uid;
+  getOrderList(){ 
+    let userInfo = wx.getStorageSync('userinfo');
+    if(!userInfo){
+      return util.showSuccess('请你先登录');
+    }
+    if(userInfo.states==0){
+      return util.showSuccess('请你完善个人信息');
+    }
+    let userid = userInfo.uid;
     // 平台派单， 未接单
     util.post('/api/Order/myorder', {userid}).then(res=>{
       that.setData({

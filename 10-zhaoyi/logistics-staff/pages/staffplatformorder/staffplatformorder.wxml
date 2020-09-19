@@ -1,5 +1,5 @@
 <view class="container">
-	<tab id="tab" title="{{['待接单', '已接单']}}">
+	<tab id="tab" title="{{['待接单', '已接单']}}" bind:pullDown="getPullDown">
 		<view slot="tab-content-0" wx:key="index" class="order-list-cont">
 			<!-- <view class="t-a-c">tab-content-0</view> -->
 			<block wx:if="{{toDealOrder.length>0}}">
