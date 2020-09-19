@@ -51,13 +51,14 @@
 					<view>地址</view>
 				</view>
 				<view class="cell-icon-cont">
-					<picker mode="selector" range="{{sendCountryRange}}" range-key="name" bindchange="sendCountryChange">
+					<!-- <picker mode="selector" range="{{sendCountryRange}}" range-key="name" bindchange="sendCountryChange">
 						<input disabled value="{{sendCountry}}" class="cell-input t-a-c" placeholder="发件国家"></input>
 					</picker>
-					<view>-</view>
+					<view>-</view> -->
 					<picker mode="selector" range="{{receiveCountryRange}}" range-key="name" bindchange="receiveCountryChange">
-						<input disabled value="{{receiveCountry}}" class="cell-input t-a-c" placeholder="收件国家"></input>
+						<input disabled value="{{receiveCountry}}" class="cell-input t-a-r" placeholder="收件国家"></input>
 					</picker>
+					<image class="cell-rt" src="/images/rt.png"></image>
 				</view>
 			</view>
 
@@ -94,12 +95,17 @@
 					<image class="cell-icon" src="/images/order6.png"></image>
 					<view>预约时间</view>
 				</view>
-				<picker mode="date" start="{{startTime}}" bindchange="timeChange">
-					<view class="cell-icon-cont">
-						<input disabled value="{{time}}" class="cell-input" placeholder="选择预约时间"></input>
-						<image class="cell-rt" src="/images/rt.png"></image>
-					</view>
-				</picker>
+				<view class="cell-icon-cont">
+					<picker mode="date" start="{{startTime}}" bindchange="dateChange">
+						<input disabled value="{{date}}" class="cell-input t-a-c" placeholder="选择日期"></input>
+					</picker>
+					<view>-</view>
+					<!-- start="09:45" -->
+					<picker mode="time" bindchange="timeChange">
+						<input disabled value="{{time}}" style="width: 150rpx;" class="cell-input t-a-c" placeholder="选择时间"></input>
+					</picker>
+					<image class="cell-rt" src="/images/rt.png"></image>
+				</view>
 			</view>
 		</view>
 
@@ -132,24 +138,24 @@
 		<view class="tit-no-bg">收件人信息</view>
 		<view class="cell-card" style="margin-top: 0rpx;">
 			<navigator hover-class="none" url="/pages/editpersonalinfo/editpersonalinfo?type=receiveCountryAddress">
-			<view class="personal-info">
-				<view class="info">
-					<block wx:if="{{receiveCountryAddress}}">
-						<view class="address">{{receiveCountryAddress.address}}</view>
-						<view class="contact-info">
-							<text>{{receiveCountryAddress.name}}</text>
-							<text style="padding: 0 20rpx;">{{receiveCountryAddress.phone}}</text>
-						</view>
-					</block>
-					<block wx:if="{{!receiveCountryAddress}}">
-						<view style="line-height: 120rpx; font-size: 32rpx;">点击进行编辑</view>
-					</block>
+				<view class="personal-info">
+					<view class="info">
+						<block wx:if="{{receiveCountryAddress}}">
+							<view class="address">{{receiveCountryAddress.address}}</view>
+							<view class="contact-info">
+								<text>{{receiveCountryAddress.name}}</text>
+								<text style="padding: 0 20rpx;">{{receiveCountryAddress.phone}}</text>
+							</view>
+						</block>
+						<block wx:if="{{!receiveCountryAddress}}">
+							<view style="line-height: 120rpx; font-size: 32rpx;">点击进行编辑</view>
+						</block>
+					</view>
+					<view class="edit-it">
+						<image class="edit-icon" src="/images/edit.png"></image>
+						<image class="more-icon" src="/images/rt.png"></image>
+					</view>
 				</view>
-				<view class="edit-it">
-					<image class="edit-icon" src="/images/edit.png"></image>
-					<image class="more-icon" src="/images/rt.png"></image>
-				</view>
-			</view>
 			</navigator>
 		</view>
 
@@ -162,5 +168,11 @@
 		</view>
 		<view class="text">已阅读并同意<text class="agreement-item">《电子运单契约条款》</text></view>
 	</view>
-
+	<view class="agreement-box">
+		<view class="cell-card">
+			<view class="t-a-c" style="font: blod 35rpx/50rpx;">电子运单契约条款</view>
+			<view>1.本条款的缔约是您与寄件地的朝亿集运有限公司（以下简称朝亿或我们）。请您认真阅读本条款，<text class="color-red">您使用朝亿服务表明您已充分阅读、理解并接受本条款的全部内容，并确认您因工作需要使用本服务时，您已充分获得您工作单位的授权。</text></view>
+			<view><text class="color-red"></text></view>
+		</view>
+	</view>
 </view>

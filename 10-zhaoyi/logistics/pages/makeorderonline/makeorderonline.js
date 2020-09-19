@@ -31,7 +31,7 @@ Page({
     data = {
       goodstype: that.data.goodsType,
       goodsweight: that.data.weight,
-      reservetime: that.data.time,
+      reservetime: that.data.date + ' ' + that.data.time,
       goodssize: getGoodsSize(),
       adder: that.data.receiveCountry,
       mailname: that.data.sendCountryAddress.name,
@@ -59,10 +59,8 @@ Page({
     }
     
     data.userid = userInfo.uid;
-    console.log(data, Object.keys(data).length);
 
     util.post('/api/Order/addorder', data).then(res=>{
-      console.log(res);
       if(res.code == 1){
         util.showSuccess(res.msg, function(){
           wx.navigateBack({
@@ -147,7 +145,6 @@ Page({
       }
     }
     util.post('/api/Order/selectprice', needData).then(res=>{
-      console.log(res);
       if(res.code == 1){
         that.setData({
           evaluationPrive: res.price
@@ -198,6 +195,14 @@ Page({
     });
     // 检测是否满足估价条件
     this.checkEvaluationValue();
+  },
+
+  // 预约日期picker
+  dateChange(e){
+    let val = e.detail.value;
+    that.setData({
+      date: val
+    });
   },
   // 预约时间picker
   timeChange(e){
