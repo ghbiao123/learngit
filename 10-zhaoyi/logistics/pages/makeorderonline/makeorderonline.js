@@ -141,7 +141,6 @@ Page({
 
     // 契约条款
     util.post('/api//Order/findclause').then(res=>{
-      console.log(res);
       that.setData({
         _html: res.content
       });
@@ -186,6 +185,9 @@ Page({
   textInput(e){
     let type = e.currentTarget.dataset.type;
     this.data[type] = e.detail.value;
+    if(type == 'weight' && Number(this.data.weight)){
+      this.checkWeight()
+    }
     // 检测是否满足估价条件
     this.checkEvaluationValue();
   },
@@ -214,6 +216,15 @@ Page({
     that.setData({
       receiveCountry: that.data.receiveCountryRange[val].name
     });
+
+    // 获取当前国家现有的运输方式
+    util.post('/api/Order/transport', {adderid: that.data.receiveCountryRange[val].id}).then(res=>{
+      that.setData({
+        transportRange: res,
+        transport: ''
+      });
+    });
+
     // 检测是否满足估价条件
     this.checkEvaluationValue();
   },
@@ -225,6 +236,31 @@ Page({
     });
     // 检测是否满足估价条件
     this.checkEvaluationValue();
+
+    // 检测是否超重
+    this.checkWeight();
+  },
+  checkWeight(){
+
+    if(!Number(this.data.weight)){return}
+
+    function findIt(arr, key, val){
+      return arr.filter(v=>{
+        return v[key] == val;
+      });
+    }
+    let data = {
+      adderid: that.data.receiveCountry&&findIt(that.data.receiveCountryRange, 'name', that.data.receiveCountry)[0].id,
+      yunshuid: that.data.transport&&findIt(that.data.transportRange, 'name', that.data.transport)[0].id
+    }
+    util.post('/api/Order/selectkg', data).then(res=>{
+      let weight = res[0];
+      if(Number(that.data.weight)>Number(weight)){
+        that.setData({
+          isShowContact: true
+        });
+      }
+    });
   },
 
   // 预约日期picker

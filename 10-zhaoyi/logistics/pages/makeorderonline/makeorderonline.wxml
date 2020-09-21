@@ -101,7 +101,7 @@
 					</picker>
 					<view>-</view>
 					<!-- start="09:45" -->
-					<picker mode="time" bindchange="timeChange">
+					<picker mode="time" start="10:00" end="23:59" bindchange="timeChange">
 						<input disabled value="{{time}}" style="width: 150rpx;" class="cell-input t-a-c" placeholder="选择时间"></input>
 					</picker>
 					<image class="cell-rt" src="/images/rt.png"></image>
