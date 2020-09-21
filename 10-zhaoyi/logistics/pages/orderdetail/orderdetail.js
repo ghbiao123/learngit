@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    order_id:''
+    order_id:'',
+    showToast: false
   },
 
   /**
@@ -36,9 +37,33 @@ Page({
     wx.setClipboardData({
       data: id,
       success(res){
-        util.showSuccess('复制成功');
+        util.showSuccess('复制成功', function(){
+          that.setData({
+            showToast: true
+          });
+        });
       }
     })
+  },
+  // 保存照片到本地
+  saveToLocal(e){
+    let src = e.currentTarget.dataset.src;
+
+    wx.saveImageToPhotosAlbum({
+      filePath: src,
+      success(res){
+        console.log(res);
+        util.showSuccess('保存成功', function(){
+          that.toastCancel();
+        });
+      }
+    });
+  },
+  // cancel
+  toastCancel(){
+    this.setData({
+      showToast: false
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

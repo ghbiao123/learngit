@@ -4,7 +4,7 @@
   padding: 20rpx 0;
   width: 710rpx;
   overflow: hidden;
-  background-color: #fff;
+  background-color: #000;
   border-radius: 20rpx;
 }
 .image{
@@ -24,6 +24,7 @@
   line-height: 40rpx;
   font-weight: bold;
   overflow: hidden;
+  color: #fff;
   text-overflow: ellipsis;
 }
 .subtitle{

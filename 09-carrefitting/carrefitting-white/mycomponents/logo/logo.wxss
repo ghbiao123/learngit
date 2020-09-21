@@ -1,0 +1,21 @@
+.logo-box{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  line-height: 120rpx;
+  height: 120rpx;
+  background-color: #fff;
+  box-shadow: 0 0 10rpx 5rpx rgba(0, 0, 0, .1);
+}
+.logo{
+  margin-top: 10rpx;
+  width: 300rpx;
+  /* height: 100rpx; */
+  margin-left: 20rpx;
+  border-radius: 20rpx;
+}
+.text{
+  font-size: 40rpx;
+  /* font-weight: bold; */
+  margin-right: 30rpx;
+}

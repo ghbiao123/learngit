@@ -5,7 +5,7 @@
   padding: 20rpx;
   width: 670rpx;
   height: auto;
-  background-color: #fff;
+  background-color: #000;
   border-radius: 10rpx;
   font-size: 30rpx;
   line-height: 60rpx;
@@ -13,6 +13,7 @@
 }
 .name{
   font-weight: bold;
+  color: #fff;
 }
 .cont{
   display: flex;

@@ -16,7 +16,7 @@
 			<navigator url="/pages/makeorderonline/makeorderonline" hover-class="none">
 				<icontext src="/images/index-idx2.png" cont="在线下单"></icontext>
 			</navigator>
-			<button open-type="contact" class="contact" style="width: 120rpx !important;">
+			<button open-type="contact" class="contact" style="width: 120rpx !important; border:0; background:none;">
 				<icontext src="/images/index-idx3.png" cont="客服咨询"></icontext>
 			</button>
 			<navigator hidden url="/pages/myorder/myorder" hover-class="none">

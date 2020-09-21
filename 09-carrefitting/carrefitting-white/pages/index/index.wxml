@@ -1,0 +1,28 @@
+<!--index.wxml-->
+<view class="container">
+	<logo text="首页"></logo>
+	<swiper class="swiper m-t-20" autoplay circular>
+		<swiper-item wx:for="{{bannerList}}" wx:key="index" class="swiper-item">
+			<image src="{{item.image}}" class="swiper-item-images"></image>
+		</swiper-item>
+	</swiper>
+
+	<navigator url="/pages/detail/detail?type=project" hover-class="none">
+		<button class="button-clear m-t-20">产品中心</button>
+	</navigator>
+
+	<view class="menu">
+		<navigator url="/pages/shopquery/shopquery" hover-class="none">
+			<icontext src='/images/idx1.png' iconW='75' iconH='75' cont="经销商查询" lHeight='60'></icontext>
+		</navigator>
+		<navigator url="/pages/qaquery/qaquery" hover-class="none">
+			<icontext src='/images/idx2.png' iconW='75' iconH='75' cont="质保查询" lHeight='60'></icontext>
+		</navigator>
+		<view bindtap="getQuery">
+			<icontext src='/images/idx3.png' iconW='75' iconH='75' cont="质保录入" lHeight='60'></icontext>
+		</view>
+		<!-- <navigator url="/pages/qainput/qainput" hover-class="none">
+		</navigator> -->
+	</view>
+
+</view>

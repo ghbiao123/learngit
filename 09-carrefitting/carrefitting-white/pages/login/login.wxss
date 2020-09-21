@@ -1,0 +1,41 @@
+/* pages/login/login.wxss */
+.container{
+  padding: 30rpx 20rpx;
+  background-color: #fff;
+}
+.title{
+  font-size: 38rpx;
+  font-weight: bold;
+}
+form{
+  padding-top: 50rpx;
+}
+.input-box{
+  display: flex;
+  margin: 0 auto;
+  height: 85rpx;
+  width: 580rpx;
+  height: 85rpx;
+  line-height: 85rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+.icon{
+  margin-top: 25rpx;
+  width: 34rpx;
+  height: 34rpx;
+}
+.input{
+  margin-left: 20rpx;
+  width: 500rpx;
+  height: 85rpx;
+}
+.btn-icon{
+  margin-top: 27rpx;
+  width: 25rpx;
+  height: 25rpx;
+}
+
+.button-clear{
+  margin-top: 40rpx;
+  border-radius: 45rpx;
+}

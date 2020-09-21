@@ -4,7 +4,7 @@
   width: 100%;
   line-height: 120rpx;
   height: 120rpx;
-  background-color: #fff;
+  background-color: #000;
   box-shadow: 0 0 10rpx 5rpx rgba(0, 0, 0, .1);
 }
 .logo{
@@ -18,4 +18,5 @@
   font-size: 40rpx;
   /* font-weight: bold; */
   margin-right: 30rpx;
+  color: #fff;
 }

@@ -1,0 +1,7 @@
+/* pages/shopquery/shopquery.wxss */
+.input{
+  width: 670rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+}

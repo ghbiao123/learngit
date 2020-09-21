@@ -1,4 +1,4 @@
 <view class="logo-box">
-  <image src="/images/logo.jpg" mode="widthFix" class="logo"></image>
+  <image src="/images/logo.png" bindtap="pageToIndex" mode="widthFix" class="logo"></image>
   <view class="text">{{text}}</view>
 </view>

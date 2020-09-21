@@ -3,6 +3,7 @@
   width: 120rpx;
   text-align: center;
   overflow: hidden;
+  background-color: #000000;
 }
 .icon{
   width: 85rpx;
@@ -15,4 +16,5 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: #ffffff;
 }

@@ -7,7 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isAgree: false
+    isAgree: false,
+    isShowAgreement: false,
+    isShowContact: false
   },
 
   /**
@@ -17,6 +19,26 @@ Page({
     that = this;
 
     
+  },
+  // agreementAgree
+  agreementAgree(){
+    this.setData({
+      isAgree: true,
+      isShowAgreement: false
+    });
+  },
+  // agreementCancel
+  agreementCancel(){
+    this.setData({
+      isShowAgreement: false,
+      isShowContact: false
+    });
+  },
+  // showAgreement
+  showAgreement(){
+    this.setData({
+      isShowAgreement: true
+    });
   },
   // submit
   submit(e){
@@ -115,6 +137,14 @@ Page({
           receiveCountryAddress: res.data
         });
       }
+    });
+
+    // 契约条款
+    util.post('/api//Order/findclause').then(res=>{
+      console.log(res);
+      that.setData({
+        _html: res.content
+      });
     });
     
   },

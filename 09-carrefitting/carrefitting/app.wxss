@@ -1,10 +1,11 @@
 /**app.wxss**/
 .container {
   padding-bottom: 20rpx;
+  background-color: #000000;
 }
 
 page{
-  background-color: #F5F5F5;
+  background-color: #000000;
 }
 
 image{
@@ -24,7 +25,7 @@ image{
   line-height: 90rpx;
   color: #fff;
   font-weight: normal;
-  background-color: #1E65F1;
+  background-color: #DB0615;
   border-radius: 20rpx;
 }
 
@@ -35,7 +36,7 @@ image{
   margin: 20rpx auto 0;
   width: 670rpx;
   padding: 20rpx;
-  background-color: #fff;
+  background-color: #000;
   border-radius: 20rpx;
 }
 /* 

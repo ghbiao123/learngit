@@ -166,13 +166,32 @@
 		<view class="check-box" bindtap="checkAgreement">
 			<view hidden="{{!isAgree}}" class="is-check"></view>
 		</view>
-		<view class="text">已阅读并同意<text class="agreement-item">《电子运单契约条款》</text></view>
+		<view class="text">已阅读并同意<text class="agreement-item" bindtap="showAgreement">《电子运单契约条款》</text></view>
 	</view>
-	<view class="agreement-box">
-		<view class="cell-card">
-			<view class="t-a-c" style="font: blod 35rpx/50rpx;">电子运单契约条款</view>
-			<view>1.本条款的缔约是您与寄件地的朝亿集运有限公司（以下简称朝亿或我们）。请您认真阅读本条款，<text class="color-red">您使用朝亿服务表明您已充分阅读、理解并接受本条款的全部内容，并确认您因工作需要使用本服务时，您已充分获得您工作单位的授权。</text></view>
-			<view><text class="color-red"></text></view>
+
+	<!-- 《电子运单契约条款》 -->
+	<view class="agreement-box" hidden="{{!isShowAgreement}}">
+		<view class="cell-card agreement-cont">
+			<scroll-view scroll-y class="agreement-scroll">
+				<parser html="{{_html}}"></parser>
+			</scroll-view>
+			<view class="agreement-button m-t-20">
+				<button bindtap="agreementAgree" class="agreement-agree">同意</button>
+				<button bindtap="agreementCancel" class="agreement-cancel">取消</button>
+			</view>
+		</view>
+	</view>
+
+	<!-- 跳转客服 -->
+	<view class="agreement-box" hidden="{{!isShowContact}}">
+		<view class="cell-card agreement-cont" style="font-size: 40rpx;margin-top: 400rpx;">
+			<view class="t-a-c">提示</view>
+			<view class="t-a-c">您的货物较重，请您转人工客服！</view>
+			<view class="agreement-button m-t-20">
+				<button open-type="contact" style="padding-left:0; padding-right:0;" class="agreement-agree">跳转人工客服</button>
+				<button bindtap="agreementCancel" class="agreement-cancel">取消</button>
+			</view>
 		</view>
 	</view>
 </view>
+

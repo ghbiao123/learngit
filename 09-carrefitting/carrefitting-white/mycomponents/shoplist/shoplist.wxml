@@ -1,0 +1,12 @@
+<block wx:for="{{newList}}" wx:key="index">
+	<view class="list">
+		<image class="image" src="{{item.image}}"></image>
+		<view class="cont">
+			<view class="title">{{item.name}}</view>
+			<view class="subtitle">
+				<!-- <image class="icon" src="/images/clock.png"></image> -->
+				<view class="subtitle-cont">{{item.address}}</view>
+			</view>
+		</view>
+	</view>
+</block>

@@ -1,0 +1,18 @@
+.icontext{
+  padding: 0 7rpx;
+  width: 120rpx;
+  text-align: center;
+  overflow: hidden;
+}
+.icon{
+  width: 85rpx;
+  height: 85rpx;
+}
+.text{
+  min-width: 85rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

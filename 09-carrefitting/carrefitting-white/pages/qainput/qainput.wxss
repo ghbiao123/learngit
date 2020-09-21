@@ -1,0 +1,51 @@
+/* pages/qainput/qainput.wxss */
+.container{
+  padding: 20rpx;
+  font-size: 28rpx;
+  background-color: #fff;
+}
+.name{
+  line-height: 66rpx;
+}
+.cont{
+  width: 710rpx;
+  height: 76rpx;
+  background-color: #f5f5f5;
+  border-radius: 10rpx;
+}
+.input{
+  margin-left: 20rpx;
+  width: 670rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+}
+
+.image-box{
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 20rpx;
+  line-height: 120rpx;
+  color: #CCCCCC;
+  border-radius: 10rpx;
+  background-color: #f6f6f6;
+}
+.image-item{
+  position: relative;
+  margin: 20rpx 11rpx 0;
+  width: 120rpx;
+  height: 120rpx;
+}
+.image-icon{
+  position: absolute;
+  right: -12rpx;
+  top: -30rpx;
+}
+.image{
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.button-clear{
+  margin-top: 40rpx;
+  border-radius: 45rpx;
+}

@@ -1,7 +1,7 @@
 /* pages/qaquery/qaquery.wxss */
 .richtext{
   padding: 20rpx;
-  background-color: #fff;
+  background-color: #000;
 }
 
 .query-box{
@@ -21,7 +21,8 @@
   overflow: hidden;
   line-height: 80rpx;
   border-radius: 10rpx;
-  background-color: #fff;
+  color: #ffffff;
+  background-color: #000;
 }
 .picker{
   width: 650rpx;

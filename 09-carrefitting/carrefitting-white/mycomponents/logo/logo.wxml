@@ -1,0 +1,4 @@
+<view class="logo-box">
+  <image src="/images/logo.jpg" mode="widthFix" class="logo"></image>
+  <view class="text">{{text}}</view>
+</view>

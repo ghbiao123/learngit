@@ -1,0 +1,40 @@
+.list{
+  display: flex;
+  margin: 0 auto;
+  padding: 20rpx 0;
+  width: 710rpx;
+  background-color: #fff;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+.image{
+  width: 200rpx;
+  height: 160rpx;
+  border-radius: 20rpx;
+}
+.cont{
+  padding-left: 20rpx;
+  width: 490rpx;
+  height: 160rpx;
+}
+.title{
+  height: 120rpx;
+  font-size: 30rpx;
+  line-height: 40rpx;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.subtitle{
+  display: flex;
+  height: 40rpx;
+  line-height: 40rpx;
+  color: #999999;
+}
+.icon{
+  margin-top: 8rpx;
+  width: 26rpx;
+  height: 26rpx;
+}
+.subtitle-cont{
+  padding-left: 10rpx;
+}

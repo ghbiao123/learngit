@@ -4,5 +4,12 @@ Component({
       type:String,
       value: ''
     }
+  },
+  methods: {
+    pageToIndex(){
+      wx.switchTab({
+        url: '/pages/index/index',
+      });
+    }
   }
 });

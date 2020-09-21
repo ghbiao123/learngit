@@ -1,0 +1,11 @@
+<logo text="{{title}}"></logo>
+<view class="container m-t-20">
+	<view class="head">
+		<view class="title">{{detail.title}}</view>
+		<view class="time">{{detail.createtime}}</view>
+	</view>
+	<view class="cont">
+		<parser html="{{detail.content}}"></parser>
+		<!-- <rich-text nodes='{{detail.content}}'></rich-text> -->
+	</view>
+</view>

@@ -15,8 +15,9 @@
     "logo": "/mycomponents/logo/logo"
   },
   "tabBar": {
-    "color": "#CCCCCC",
-    "selectedColor": "#1E65F1",
+    "color": "#666666",
+    "selectedColor": "#FFFFFF",
+    "backgroundColor": "#000000",
     "list": [
       {
       "pagePath": "pages/index/index",
@@ -46,7 +47,7 @@
   },
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#000000",
     "navigationBarTextStyle":"black"
   },
   "style": "v2",

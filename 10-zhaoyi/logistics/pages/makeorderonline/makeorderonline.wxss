@@ -61,3 +61,27 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, .6);
 }
+
+.agreement-cont{
+  margin-top: 150rpx;
+}
+.agreement-scroll{
+  height: 855rpx;
+}
+.agreement-button{
+  display: flex;
+  justify-content: space-around;
+}
+.agreement-agree,
+.agreement-cancel{
+  width: 250rpx !important;
+  font-weight: normal;
+  color: #fff;
+}
+.agreement-agree{
+  background-color: #F58500;
+}
+.agreement-cancel{
+  color: #777777;
+  background-color: #f8f8f8;
+}

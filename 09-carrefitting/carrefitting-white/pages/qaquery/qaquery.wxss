@@ -1,0 +1,46 @@
+/* pages/qaquery/qaquery.wxss */
+.richtext{
+  padding: 20rpx;
+  background-color: #fff;
+}
+
+.query-box{
+  padding: 20rpx;
+}
+.title{
+  height: 45rpx;
+  font-size: 26rpx;
+  line-height: 45rpx;
+}
+.query{
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  width: 710rpx;
+  height: 80rpx;
+  overflow: hidden;
+  line-height: 80rpx;
+  border-radius: 10rpx;
+  background-color: #fff;
+}
+.picker{
+  width: 650rpx;
+  text-indent: 20rpx;
+}
+.icon{
+  margin: 28rpx 20rpx 0 0;
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.input{
+  width: 690rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left: 20rpx;
+}
+.button-clear{
+  margin-top: 40rpx;
+  border-radius: 45rpx;
+}
+

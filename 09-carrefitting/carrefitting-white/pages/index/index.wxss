@@ -1,0 +1,16 @@
+.swiper,
+.swiper-item,
+.swiper-item-images{
+  width: 750rpx;
+  height: 420rpx;
+}
+
+.menu{
+  display: flex;
+  justify-content: space-between;
+  margin: 20rpx auto 0;
+  padding: 50rpx 40rpx;
+  width: 630rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}

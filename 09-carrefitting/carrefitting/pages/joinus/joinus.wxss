@@ -1,7 +1,7 @@
 /* pages/joinus/joinus.wxss */
 .container{
   padding: 20rpx 0 40rpx;
-  background-color: #fff;
+  background-color: #000;
 }
 .title{
   margin: 0 auto;
@@ -10,6 +10,7 @@
   line-height: 40rpx;
   font-size: 26rpx;
   width: 710rpx;
+  color: #ffffff;
 }
 .input{
   display: block;
@@ -19,7 +20,8 @@
   line-height: 80rpx;
   font-size: 30rpx;
   text-indent: 20rpx;
-  background-color: #F5F5F5;
+  background-color: #000000;
+  color: #ffffff;
   border-radius: 10rpx;
 }
 .textarea{
@@ -28,7 +30,8 @@
   padding: 10rpx;
   margin: 0 auto;
   font-size: 30rpx;
-  background-color: #F5F5F5;
+  color: #ffffff;
+  background-color: #000;
   border-radius: 10rpx;
 }
 .button-clear{

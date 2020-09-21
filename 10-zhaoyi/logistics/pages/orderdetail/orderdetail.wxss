@@ -1,1 +1,37 @@
 /* pages/orderdetail/orderdetail.wxss */
+
+/* toast */
+.toast-box{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 750rpx;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .5);
+}
+.toast-image{
+  display: block;
+  margin: 0 auto;
+  width: 200rpx;
+}
+.toast-button-cancel{
+  padding: 0;
+  width: 670rpx !important;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-weight: normal;
+  border-radius: 10rpx;
+  color: #777777;
+  background-color: #f8f8f8;
+}
+.toast-button-save{
+  padding: 0;
+  width: 670rpx !important;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-weight: normal;
+  border-radius: 10rpx;
+  color: #fff;
+  background-image: linear-gradient(to bottom,#F6A800 0, #F55C01 100%);
+}

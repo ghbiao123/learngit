@@ -1,0 +1,18 @@
+<logo text="经销商查询"></logo>
+<view class="container m-t-20">
+  <!-- <searchbar coverholder="搜索经销商" bind:searchbar="search"></searchbar> -->
+  <view class="cell-card">
+    <view class="cell-item">
+      <picker mode="selector" range="{{region}}" bindchange="regionChange">
+        <input class="input" value="{{provience}}" disabled placeholder="请选择省份"></input>
+      </picker>
+    </view>
+  </view>
+
+  <view wx:if="{{list.length>0}}" class="cont">
+    <shoplist list="{{list}}"></shoplist>
+  </view>
+
+  <view wx:else class="t-a-c m-t-20">暂无数据</view>
+
+</view>
