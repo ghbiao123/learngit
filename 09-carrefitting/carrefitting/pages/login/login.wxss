@@ -1,11 +1,12 @@
 /* pages/login/login.wxss */
 .container{
   padding: 30rpx 20rpx;
-  background-color: #fff;
+  background-color: #000000;
 }
 .title{
   font-size: 38rpx;
   font-weight: bold;
+  color: #fff;
 }
 form{
   padding-top: 50rpx;

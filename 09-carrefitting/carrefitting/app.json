@@ -48,7 +48,8 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#222",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+    "backgroundColor": "#000000"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
