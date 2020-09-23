@@ -33,7 +33,16 @@ Page({
       progressData
     });
 
+    // init 
+    this.init();
+
   },
+  init(){
+    util.post('/api/order/getInquiryInfo', {mid: 3}).then(res=>{
+      console.log(res);
+    });
+  },
+
   radioChange(e){
     let val = e.detail.value;
     let id = e.currentTarget.dataset.id;
@@ -45,7 +54,6 @@ Page({
     progressData.chose = _len;
     progressData.all = len;
 
-    console.log(result);
 
     let progress = util.getToPersent(_len/len);
    

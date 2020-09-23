@@ -6,8 +6,8 @@
 	<view class="banner">
 		<image class="banner-bg" mode="widthFix" src="/images/index-bg.png"></image>
 		<swiper class="banner-swiper" autoplay circular>
-			<swiper-item class="banner-swiper-item" wx:for="000" wx:key="index">
-				<image class="banner-image" src="/images/banner.png"></image>
+			<swiper-item class="banner-swiper-item" wx:for="{{init.banner}}" wx:key="index">
+				<image class="banner-image" src="{{item}}"></image>
 			</swiper-item>
 		</swiper>
 	</view>
@@ -20,9 +20,9 @@
 
 	<view class="cell-card">
 		<view class="types">
-			<view class="types-item" wx:for="{{type}}" wx:key="index">
-				<image class="types-icon" src="/images/inx{{index+1}}.png"></image>
-				<view class="types-name t-a-c ellipsis-text">{{item}}</view>
+			<view class="types-item" wx:for="{{init.category}}" wx:key="index">
+				<image class="types-icon" src="{{item.image}}"></image>
+				<view class="types-name t-a-c ellipsis-text">{{item.name}}</view>
 			</view>
 		</view>
 
@@ -62,10 +62,10 @@
 	</view>
 
 	<scroll-view class="scroll-view" scroll-x>
-		<view class="scroll-content" style="width:{{5*290}}rpx;">
-			<view class="scroll-item" data-id="{{index}}" bindtap="getEvaluation" wx:for="00000" wx:key="index">
-				<image class="scroll-image" src="/images/a.jpg"></image>
-				<view class="name ellipsis-text">小米10 Pro 尊享版</view>
+		<view class="scroll-content" style="width:{{init.hotmodel.length * 290}}rpx;">
+			<view class="scroll-item" data-id="{{index}}" bindtap="getEvaluation" wx:for="{{init.hotmodel}}" wx:key="index">
+				<image class="scroll-image" src="{{item.image}}"></image>
+				<view class="name ellipsis-text">{{item.name}}</view>
 				<view class="price">￥5999</view>
 				<view class="max-price">最高回收价</view>
 			</view>

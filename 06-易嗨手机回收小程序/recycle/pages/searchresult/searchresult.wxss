@@ -1,2 +1,6 @@
 /* pages/searchresult/searchresult.wxss */
 @import "../searchbar/searchbar.wxss";
+
+.list:last-child{
+  border-bottom: 0;
+}

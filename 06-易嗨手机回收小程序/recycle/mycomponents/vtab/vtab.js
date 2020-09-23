@@ -12,11 +12,22 @@ Component({
           vtab:newVal
         });
       }
+    },
+    vtabContent: {
+      type: Object,
+      value: {},
+      observer(newVal){
+        this.setData({
+          vtabContent: newVal
+        });
+      }
     }
   },
   methods:{
     getSelected(e){
       let selected = e.currentTarget.dataset.index;
+      let id = e.currentTarget.dataset.id;
+      this.triggerEvent('vtabTitleId', id);
       this.setData({
         selected
       });

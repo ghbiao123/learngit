@@ -19,6 +19,21 @@ Page({
         console.log(result);
       },
     });
+
+    // init
+    this.initData();
+  },
+
+  // 初始化数据
+  initData(){
+    util.post('/api/index/indexContent').then(res=>{
+      res.data.banner = util.getImageFullUrl(res.data.banner, 'picture').map(v=>v.picture);
+      res.data.category = util.getImageFullUrl(res.data.category, 'image');
+      res.data.hotmodel = util.getImageFullUrl(res.data.hotmodel, 'image');
+      that.setData({
+        init: res.data
+      });
+    });
   },
 
   // 跳转加价券页面

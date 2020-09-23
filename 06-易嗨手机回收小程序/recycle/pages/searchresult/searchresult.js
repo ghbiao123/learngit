@@ -16,11 +16,30 @@ Page({
   onLoad: function (options) {
     that = this;
 
-    console.log(options);
-    this.getList(options);
+    this.getList(options.keywords);
   },
-  getList(data){
+  getList(keywords){
+    util.post('/api/products/searchEmodel', {keywords}).then(res=>{
+      console.log(res);
+      that.setData({
+        result: res.data
+      });
+    });
+  },
+  getEvaluation(e){
+    let mid = e.currentTarget.dataset.id;
+    let name = e.currentTarget.dataset.id;
+    let uid = wx.getStorageSync('userinfo').uid;
+    if(uid){
+      util.post('/api/products/searchStatistics', {mid, name, uid});
+    }
 
+    return;
+    wx.navigateTo({
+      url: '/pages',
+    });
+    
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

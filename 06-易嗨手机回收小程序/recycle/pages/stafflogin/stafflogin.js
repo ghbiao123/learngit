@@ -1,4 +1,6 @@
 // pages/stafflogin/stafflogin.js
+let that;
+let util = require('../../utils/util');
 Page({
 
   /**
@@ -16,7 +18,29 @@ Page({
   },
   submit(e){
     let data = e.detail.value;
-    console.log(data);
+
+    let needData = {
+      account: '账号',
+      password: '密码'
+    }
+
+    for(let key in needData){
+      if(!data[key].trim()){
+        return util.showSuccess(needData[key]+'不能为空');
+      }
+    }
+    util.post('/api/login/loginByStaff', data).then(res=>{
+      console.log(res);
+      if(res.code == 1){
+        util.showSuccess(res.msg);
+        // 跳转
+        /**
+         * .......
+         */
+      }else{
+        util.showSuccess(res.msg);
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

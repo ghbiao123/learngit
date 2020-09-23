@@ -1,5 +1,6 @@
 // pages/login/login.js
-let app = getApp();
+let that;
+let util = require('../../utils/util');
 Page({
 
   /**
@@ -16,7 +17,15 @@ Page({
   
   },
   getUserInfo(e){
-    app.getUserInfo(e, callback);
+    util.getUserInfo(e, function(res){
+      if(res.code == 1){
+        util.showSuccess('登录成功', function(){
+          wx.navigateBack({
+            delta: 1,
+          });
+        });
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

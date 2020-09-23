@@ -1,11 +1,11 @@
 <view class="">
-  <searchbar id="search" theme="#ffffff"></searchbar>
+  <searchbar bind:searchbar="getKeywords" id="search" theme="#ffffff"></searchbar>
 
 
-  <tab title="{{tab}}" swiperHeight="{{height}}">
-    <block wx:for="{{tab}}" wx:key="index">
+  <tab title="{{arrTitle}}" swiperHeight="{{height}}" bind:tabChange="tabChange">
+    <block wx:for="{{[0]}}" wx:key="index">
       <view slot="tab-content-{{index}}">
-        <vtab vtab="{{vtab}}" vtabHeight="{{height}}"></vtab>
+        <vtab bind:vtabTitleId='getVtabTitleId' vtab="{{arrTitle[0].vtabTitle[1]}}" vtabContent="{{arrContent}}" vtabHeight="{{height}}"></vtab>
       </view>
     </block>
   </tab>

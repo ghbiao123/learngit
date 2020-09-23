@@ -71,6 +71,7 @@
   font-size: 30rpx;
   font-weight: bold;
   line-height: 50rpx;
+  text-indent: 20rpx;
 }
 .color{
   color: #C7402C;

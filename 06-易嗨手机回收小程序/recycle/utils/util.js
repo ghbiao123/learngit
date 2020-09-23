@@ -78,7 +78,7 @@ function checkIsLogin() {
 function showSuccess(msg, callBack) {
   wx.showToast({
     title: msg,
-    // icon: "success",
+    icon: "none",
     mask: true,
     duration: 2000,
     success() {
@@ -135,7 +135,6 @@ function updateManager() {
 
 // 微信授权登录, 未完成
 function getUserInfo(e, callBack) {
-
   if (e.detail.errMsg !== "getUserInfo:ok") {
     wx.showToast({
       title: '登录失败请重试',
@@ -148,12 +147,22 @@ function getUserInfo(e, callBack) {
     success(res) {
       let data = {
         code: res.code,
-        userInfo: e.detail.rawData,
-        encrypted_data: e.detail.encryptedData,
+        userinfo: e.detail.rawData,
+        encrypteddata: e.detail.encryptedData,
         iv: e.detail.iv,
       }
-      post("url", data).then(res => {
-        console.log(res);
+      post("/api/login/loginByUser", data).then(res => {
+        if(res.code == 1){
+          let userInfo = e.detail.userInfo;
+          userInfo.uid = res.data.userid;
+          wx.setStorage({
+            data: userInfo,
+            key: 'userinfo',
+            success(){
+              callBack&&callBack(res);
+            }
+          });
+        }
       });
     }
   });
@@ -255,6 +264,24 @@ function getToPoint(num) {
   return n / 100;
 }
 
+// 将图片添加为完整路径
+function getImageFullUrl(arr, key){
+  if(!arr||arr.length==0){
+    return
+  }
+  if(!key){
+    // key 不存在
+    return getSiteRoot() + arr;
+  }else{
+    // key 存在
+    let newArr = arr.map(v=>{
+      v[key] = getSiteRoot() + v[key];
+      return v
+    });
+    return newArr;
+  }
+}
+
 
 
 module.exports = {
@@ -270,5 +297,6 @@ module.exports = {
   getUserInfo, // button触发获取用户信息，code userinfo
   getCaptcha, // 验证手机号并获取验证码
   getSiteRoot, // 获取api接口根
+  getImageFullUrl, // 获取完整路径
 }
 

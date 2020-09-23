@@ -19,7 +19,15 @@ Page({
     // 查询历史记录
     this.getStorageData();
 
+    this.init();
 
+  },
+  init(){
+    util.post('/api/products/getSearchRecord').then(res=>{
+      that.setData({
+        hotList: res.data.hotrecord
+      });
+    });
   },
 
   // search confirm
@@ -36,7 +44,7 @@ Page({
   getSearchResult(val){
     // 跳转另一个页面，呈现搜索结果
     wx.navigateTo({
-      url: '/pages/searchresult/searchresult?key='+ val,
+      url: '/pages/searchresult/searchresult?keywords='+ val,
     });
     
   },

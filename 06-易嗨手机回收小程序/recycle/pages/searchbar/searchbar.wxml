@@ -10,7 +10,7 @@
 	</view>
 	<view class="tit-no-bg">热门搜索</view>
 	<view class="tip-content">
-		<view class="tip" bindtap="getItem" data-key="{{item}}" wx:for="{{[1,2,3,4,6,5]}}" wx:key="index">{{item}}</view>
+		<view class="tip" bindtap="getItem" data-key="{{item}}" wx:for="{{hotList}}" wx:key="index">{{item.keywords}}</view>
 	</view>
 
 

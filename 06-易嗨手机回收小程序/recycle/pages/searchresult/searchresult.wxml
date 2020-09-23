@@ -1,3 +1,10 @@
-<view class="list" wx:for="1234567890" wx:key="index">
-	iPhone 11 Pro Max
-</view>
+<block wx:if="{{result.length>0}}">
+	<view class="list" wx:for="{{result}}" wx:key="index" data-name="{{item.name}}" data-id="{{item.id}}" bindtap="getEvaluation">
+		{{item.name}}
+	</view>
+</block>
+<block wx:else>
+	<view class="t-a-c list">
+		暂无数据
+	</view>
+</block>

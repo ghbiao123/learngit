@@ -21,16 +21,21 @@ Component({
   methods:{
     getCurrentIndex(e){
       let selected = e.currentTarget.dataset.index;
+      this.sendData(selected);
       this.setData({
         selected
       });
     },
     swiperChange(e){
-      console.log(e)
       let selected = e.detail.current;
       this.setData({
         selected
       });
+    },
+    sendData(selected){
+      //  +1
+      let id = this.data.title[selected].id;
+      this.triggerEvent('tabChange', id);
     }
   }
 });
