@@ -92,7 +92,7 @@
 				<view class="cell-cont t-a-r color-red">￥{{order.price}}</view>
 			</view>
 		</view>
-		<button class="button-big-orange m-t-20">立即支付</button>
+		<button bindtap="payBill" class="button-big-orange m-t-20">立即支付</button>
 	</block>
 
 	<view class="toast-box" hidden="{{!showToast}}">

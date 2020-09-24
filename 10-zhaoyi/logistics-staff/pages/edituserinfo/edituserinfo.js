@@ -18,7 +18,7 @@ Page({
     util.checkIsLogin.call(this);
   },
   submit(e){
-    let userid = wx.getStorageSync('userinfo').uid;
+    let userinfo = wx.getStorageSync('userinfo');
     let data = e.detail.value;
 
     for(let key in data){
@@ -27,8 +27,17 @@ Page({
       }
     }
 
-    data.userid = userid;
+    data.userid = userinfo.uid;
     util.post('/api/Order/updateuser', data).then(res=>{
+
+      userinfo.name = data.name;
+      userinfo.phone = data.phone;
+      userinfo.states = 1;
+      wx.setStorage({
+        data: userinfo,
+        key: 'userinfo',
+      });
+
       util.showSuccess(res.msg, function(){
         wx.navigateBack({
           delta: 1,

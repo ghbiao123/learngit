@@ -85,7 +85,7 @@
 
 	<button wx:if="{{order.status == 0}}" bindtap="showPrompt" class="button-big-blue m-t-20">{{order.price? '￥' + order.price : buttonText}}</button>
 
-	<block wx:if="{{order.zhuangtai==1}}">
+	<block wx:if="{{false}}">
 		<view hidden class="cell-card">
 			<view class="cell-item">
 				<view class="cell-name">订单价格</view>

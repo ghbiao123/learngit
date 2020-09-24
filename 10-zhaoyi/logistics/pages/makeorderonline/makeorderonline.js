@@ -63,6 +63,7 @@ Page({
       receiptphone: that.data.receiveCountryAddress.phone,
       receiptadder: that.data.receiveCountryAddress.address,
       transport: that.data.transport,
+      reserveprice: that.data.evaluationPrive,
     }
 
     for(let key in data){

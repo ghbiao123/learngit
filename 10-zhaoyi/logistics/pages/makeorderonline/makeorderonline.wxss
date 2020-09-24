@@ -63,7 +63,7 @@
 }
 
 .agreement-cont{
-  margin-top: 150rpx;
+  margin-top: 100rpx;
 }
 .agreement-scroll{
   height: 855rpx;

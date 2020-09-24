@@ -21,6 +21,29 @@ Page({
     // 获取订单详情
     this.getOrderDetail();
   },
+  // 支付
+  payBill(){
+    util.post('/api/order/payorder', {ordernumber: this.data.order.ordernum}).then(res=>{
+      console.log(res);
+      wx.requestPayment({
+        nonceStr: res.nonceStr,
+        package: res.package,
+        paySign: res.paySign,
+        timeStamp: res.timeStamp,
+        signType: "MD5",
+        success(){
+          util.showSuccess('支付成功', function(){
+            wx.navigateBack({
+              delta: 1,
+            });
+          });
+        },
+        fail(err)
+        {
+        }
+      })
+    });
+  },
   // 获取订单详情
   getOrderDetail(){
     util.post('/api/Order/orderde', {orderid: this.data.order_id}).then(res=>{

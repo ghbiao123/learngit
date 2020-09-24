@@ -32,13 +32,16 @@ Page({
   // 获取promptvalue
   getPromptValue(e){
     console.log(e.detail);
-    this.setData({
-      buttonText: '￥' + e.detail
-    });
+    let order = this.data.order;
+    
     util.post('/api/Order/updateprice', {
       orderid: this.data.order_id,
       price: e.detail
     }).then(res=>{
+      order.price = e.detail;
+      this.setData({
+        order
+      });
       util.showSuccess(res.msg);
     });
   },
