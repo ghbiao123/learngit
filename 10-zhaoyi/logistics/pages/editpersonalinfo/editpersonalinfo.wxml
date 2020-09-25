@@ -13,15 +13,15 @@
 			<view class="cell-item">
 				<view class="cell-name">联系方式</view>
 				<view class="cell-cont flex-end">
-					<input name="phone" value="{{data.phone}}" class="cell-input t-a-r cell-input-w400" placeholder-class="t-a-r" placeholder="输入联系方式"></input>
+					<input name="phone"  type="number" value="{{data.phone}}" class="cell-input t-a-r cell-input-w400" placeholder-class="t-a-r" placeholder="输入联系方式"></input>
 				</view>
 			</view>
 
 			<!-- 身份证 -->
-			<view class="cell-item">
+			<view class="cell-item" hidden>
 				<view class="cell-name">身份证</view>
 				<view class="cell-cont flex-end">
-					<input name="idcard" value="{{data.idcard}}" class="cell-input t-a-r cell-input-w400" placeholder-class="t-a-r" placeholder="输入身份证号码"></input>
+					<input name="idcard"  type="number" value="{{data.idcard}}" class="cell-input t-a-r cell-input-w400" placeholder-class="t-a-r" placeholder="输入身份证号码"></input>
 				</view>
 			</view>
 

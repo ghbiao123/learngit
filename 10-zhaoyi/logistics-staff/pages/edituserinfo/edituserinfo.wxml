@@ -13,7 +13,7 @@
       <view class="cell-item">
         <view class="cell-name">手机号</view>
         <view class="cell-cont">
-          <input class="cell-input" value="{{userInfo.phone}}" style="width: 400rpx;" placeholder="请输入您的手机号" name="phone" type="text"></input>
+          <input type="number" class="cell-input" value="{{userInfo.phone}}" style="width: 400rpx;" placeholder="请输入您的手机号" name="phone"></input>
         </view>
       </view>
 

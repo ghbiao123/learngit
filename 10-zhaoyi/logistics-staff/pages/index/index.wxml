@@ -1,35 +1,27 @@
-<!--index.wxml-->
 <view class="container">
-	<view class="swiper-cont">
-		<swiper class="swiper" circular autoplay>
-			<swiper-item class="swiper-item" wx:for="000" wx:key="index">
-				<image class="swiper-image" src="/images/banner.png"></image>
-			</swiper-item>
-		</swiper>
-	</view>
-
-	<view class="content cell-card">
-		<view class="menu">
-			<navigator url="/pages/calcprice/calcprice" hover-class="none">
-				<icontext src="/images/index-idx1.png" cont="计算价格"></icontext>
-			</navigator>
-			<navigator url="/pages/makeorderonline/makeorderonline" hover-class="none">
-				<icontext src="/images/index-idx2.png" cont="在线下单"></icontext>
-			</navigator>
-			<button open-type="contact" class="contact" style="width: 120rpx !important;">
-				<icontext src="/images/index-idx3.png" cont="客服咨询"></icontext>
-			</button>
-			<navigator url="/pages/myorder/myorder" hover-class="none">
-				<icontext src="/images/index-idx4.png" cont="单号查询"></icontext>
-			</navigator>
+	<tab id="tab" title="{{['待接单', '已接单']}}" bind:pullDown="getPullDown">
+		<view slot="tab-content-0" wx:key="index" class="order-list-cont">
+			<!-- <view class="t-a-c">tab-content-0</view> -->
+			<block wx:if="{{toDealOrder.length>0}}">
+				<orderlist list="{{toDealOrder}}"></orderlist>
+			</block>
+			<block wx:if="{{toDealOrder.length==0}}">
+				<view class="no-data">
+					<datanull></datanull>
+				</view>
+			</block>
 		</view>
-    
-    <view class="t-a-c m-t-20" style="font-size: 32rpx; font-weight: bold;">服务流程</view>
-    
-    <view class="t-a-c">
-      <image style="width: 600rpx;" mode="widthFix" src="/images/step.png"></image>
-    </view>
+		<view slot="tab-content-1" wx:key="index" class="order-list-cont">
+			<!-- <view class="t-a-c">tab-content-1</view> -->
 
-	</view>
-
+			<block wx:if="{{dealOrder.length>0}}">
+				<orderlist list="{{dealOrder}}"></orderlist>
+			</block>
+			<block wx:if="{{dealOrder.length==0}}">
+				<view class="no-data">
+					<datanull></datanull>
+				</view>
+			</block>
+		</view>
+	</tab>
 </view>

@@ -1,4 +1,0 @@
-/* pages/myorder/myorder.wxss */
-.order-list-cont{
-  padding-bottom: 20rpx;
-}

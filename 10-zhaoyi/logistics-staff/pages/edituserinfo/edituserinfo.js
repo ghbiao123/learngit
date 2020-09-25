@@ -25,6 +25,12 @@ Page({
       if(!data[key]){
         return util.showSuccess('请完善您的信息');
       }
+      if(key == 'phone'){
+        let reg = /^1[3-9]\d{9}$/;
+        if(!reg.test(data[key])){
+          return util.showSuccess('请输入正确的手机号')
+        }
+      }
     }
 
     data.userid = userinfo.uid;

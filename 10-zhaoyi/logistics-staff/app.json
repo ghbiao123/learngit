@@ -1,8 +1,7 @@
 {
   "pages":[
-    "pages/staffplatformorder/staffplatformorder",
-    "pages/staffmyorder/staffmyorder",
     "pages/index/index",
+    "pages/staffmyorder/staffmyorder",
     "pages/mine/mine",
     "pages/calcprice/calcprice",
     "pages/makeorderonline/makeorderonline",
@@ -17,7 +16,7 @@
     "selectedColor": "#1A1A1A",
     "list": [
       {
-        "pagePath": "pages/staffplatformorder/staffplatformorder",
+        "pagePath": "pages/index/index",
         "text": "订单记录",
         "iconPath": "/images/order.png",
         "selectedIconPath": "/images/order-s.png"

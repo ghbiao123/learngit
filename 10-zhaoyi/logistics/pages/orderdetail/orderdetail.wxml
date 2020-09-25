@@ -37,7 +37,7 @@
 		</view>
 		<view wx:if="{{order.zhuangtai==0}}" class="cell-item">
 			<view class="cell-name">估价</view>
-			<view class="cell-cont t-a-r color-red">约￥{{order.price}}</view>
+			<view class="cell-cont t-a-r color-red">约￥{{order.reserveprice}}</view>
 		</view>
 		<view wx:if="{{order.status==1}}" class="cell-item">
 			<view class="cell-name">支付价格</view>

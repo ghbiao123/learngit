@@ -23,7 +23,7 @@
 					<view>物品重量</view>
 				</view>
 				<view class="cell-icon-cont">
-					<input data-type="weight" bindinput="textInput" class="cell-input t-a-r" placeholder="输入物品重量"></input>
+					<input type="number" data-type="weight" bindinput="textInput" class="cell-input t-a-r" placeholder="输入物品重量"></input>
 					<view>kg</view>
 				</view>
 			</view>
@@ -35,11 +35,11 @@
 					<view>物品尺寸</view>
 				</view>
 				<view class="cell-icon-cont">
-					<input data-type="long" bindinput="textInput" class="cell-input t-a-c" placeholder="长"></input>
+					<input type="number" data-type="long" bindinput="textInput" class="cell-input t-a-c" placeholder="长"></input>
 					<view>-</view>
-					<input data-type="wide" bindinput="textInput" class="cell-input t-a-c" placeholder="宽"></input>
+					<input type="number" data-type="wide" bindinput="textInput" class="cell-input t-a-c" placeholder="宽"></input>
 					<view>-</view>
-					<input data-type="high" bindinput="textInput" class="cell-input t-a-c" placeholder="高"></input>
+					<input type="number" data-type="high" bindinput="textInput" class="cell-input t-a-c" placeholder="高"></input>
 					<view>cm</view>
 				</view>
 			</view>

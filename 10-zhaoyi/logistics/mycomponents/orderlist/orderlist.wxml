@@ -2,7 +2,7 @@
 	<view class="list-box">
     <view class="list-title">
       <view class="title">物流单号：{{item.status==0? '待取件' : item.ordernum}}</view>
-      <view class="price color-red">{{item.status==0? '约' : ''}}￥{{item.reserveprice}}</view>
+      <view class="price color-red">{{item.status==0? '约￥'+item.reserveprice : '￥'+item.price}}</view>
     </view>
     <view class="list-cont">
       <view class="cont">货物种类：{{item.goodstype}}</view>

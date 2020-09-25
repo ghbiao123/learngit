@@ -1,6 +1,8 @@
 {
   "usingComponents": {
-    "icontext": "/mycomponents/icontext/icontext"
+    "tab": "/mycomponents/tab/tab",
+    "orderlist": "/mycomponents/orderlist/orderlist",
+    "datanull": "/mycomponents/datanull/datanull"
   },
-  "navigationBarTitleText": "朝亿物流"
+  "navigationBarTitleText": "我的订单"
 }
