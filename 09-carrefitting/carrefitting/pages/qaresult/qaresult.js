@@ -36,6 +36,7 @@ Page({
           'zhibao_no': '质保号',
           'name': '车主姓名',
           'phone': '联系方式',
+          'sgtime': '施工时间',
           'chejia_no': '车架号',
           'chepai_no': '车牌号',
           'brand': '品牌类型',
@@ -47,6 +48,7 @@ Page({
           'images': '案例照片'
         }
         that.data.images = res.data.images;
+        res.data.sgtime = util.getToday(res.data.sgtime*1000).date;
         that.setData({
           rlt: res.data,
           needData

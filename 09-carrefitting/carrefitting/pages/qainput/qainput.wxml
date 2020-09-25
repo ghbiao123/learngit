@@ -33,6 +33,12 @@
   <view class="cont">
     <input name="position" class="input" placeholder="请输入">施工部位</input>
   </view>
+  <view class="name">施工时间</view>
+  <view class="cont">
+    <picker mode="date" bindchange="sgtimeChange">
+      <input disabled value="{{sgtime}}" name="sgtime" class="input" placeholder="请选择施工时间"></input>
+    </picker>
+  </view>
   <view class="name">质保年限（年）</view>
   <view class="cont">
     <input name="year" class="input" placeholder="请输入质保年限"></input>

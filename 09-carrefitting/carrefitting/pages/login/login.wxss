@@ -29,6 +29,7 @@ form{
   margin-left: 20rpx;
   width: 500rpx;
   height: 85rpx;
+  color: #fff;
 }
 .btn-icon{
   margin-top: 27rpx;

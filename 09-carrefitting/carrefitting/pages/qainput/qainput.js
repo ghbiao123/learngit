@@ -18,7 +18,14 @@ Page({
   onLoad: function (options) {
     that = this;
   },
-
+  // sgtimeChange
+  sgtimeChange(e){
+    let date = e.detail.value;
+    this.setData({
+      sgtime: date
+    });
+    this.data.timeStamp = Math.floor(new Date(date).getTime()/1000);
+  },
   // 选择图片
   addImage() {
     wx.chooseImage({
@@ -73,7 +80,7 @@ Page({
     data.uid = a;
 
     data.images = this.data.images.join(',');
-
+    data.sgtime = that.data.timeStamp;
     let needData = {
       'zhibao_no': '质保号',
       'name': '车主姓名',
@@ -83,6 +90,7 @@ Page({
       'brand': '品牌类型',
       'p_model': '产品型号',
       'position': '施工部位',
+      'sgtime': '施工时间',
       'year': '质保年限',
       'mendian': '门店名称',
       'address': '门店地址',

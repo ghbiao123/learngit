@@ -111,10 +111,10 @@
           "scene": null
         },
         {
-          "id": -1,
+          "id": 6,
           "name": "pages/qaresult/qaresult",
           "pathName": "pages/qaresult/qaresult",
-          "query": "type=case",
+          "query": "flag=1&keyword=13233332222",
           "scene": null
         },
         {
@@ -142,6 +142,7 @@
           "id": -1,
           "name": "pages/qaquery/qaquery",
           "pathName": "pages/qaquery/qaquery",
+          "query": "",
           "scene": null
         }
       ]
