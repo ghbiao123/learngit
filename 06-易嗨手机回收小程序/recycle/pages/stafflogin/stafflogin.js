@@ -32,11 +32,11 @@ Page({
     util.post('/api/login/loginByStaff', data).then(res=>{
       console.log(res);
       if(res.code == 1){
-        util.showSuccess(res.msg);
-        // 跳转
-        /**
-         * .......
-         */
+        util.showSuccess(res.msg, function(){
+          wx.reLaunch({
+            url: '/pages/staffinfo/staffinfo',
+          });
+        });
       }else{
         util.showSuccess(res.msg);
       }

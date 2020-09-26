@@ -3,8 +3,8 @@
 	<view class="head">
 		<view class="price">
 			<text style="font-size:35rpx;">￥</text>
-			<text style="font-size:65rpx;">12345</text>
-			<text style="font-size:25rpx; color: #262626; padding-left: 40rpx; vertical-align: middle;">预计下周下跌￥12345</text>
+			<text style="font-size:65rpx;">{{price}}</text>
+			<text style="font-size:25rpx; color: #262626; padding-left: 40rpx; vertical-align: middle;">预计下周下跌￥123</text>
 			<image style="width: 17rpx; margin-left:5rpx; vertical-align: middle;" mode="widthFix" src="/images/down.png"></image>
 			<text bindtap="resetPrice" style="font-size: 24rpx; padding-left: 60rpx; color: #2693FF; ">重新询价</text>
 		</view>

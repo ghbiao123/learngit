@@ -1,4 +1,6 @@
 // pages/evaluation/result.js
+let that;
+let util = require('../../utils/util');
 Page({
 
   /**
@@ -13,8 +15,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
 
-    console.log(JSON.parse(options.result));
+    // init data
+    this.init(options);
+
+  },
+  // init()
+  init(data){
+    console.log(data);
+
+    wx.setNavigationBarTitle({
+      title: data.name,
+    });
+
+    this.setData({
+      price: data.price
+    });
 
   },
   // tab 点击事件, 切换回收类型

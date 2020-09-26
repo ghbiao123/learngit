@@ -1,26 +1,67 @@
 <view class="container">
   <view class="content">
-    
+
     <view class="head">
       <view class="progress">
         {{progressData.chose}}/{{progressData.all}}
         <view class="progress-s" style="width:{{progress}};"></view>
       </view>
-      <image class="image" src="/images/a.jpg"></image>
-      <view class="name">华为 P30</view>
+      <image class="image" src="{{_data.image}}"></image>
+      <view class="name">{{_data.name}}</view>
     </view>
 
     <view class="cont">
 
-      <block wx:for="{{arrList}}" wx:key="index">
-        <view class="tit-no-bg">
-          {{index+1}}标题1
+      <view class="tit-no-bg">1.手机型号</view>
+      <view class="cell-card">
+        <radio-group data-id="phonemodel" bindchange="radioChange">
+          <radio wx:for="{{_data.phone_model}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+        </radio-group>
+      </view>
+
+      <view class="tit-no-bg">2.手机颜色</view>
+      <view class="cell-card">
+        <radio-group data-id="phonecolor" bindchange="radioChange">
+          <radio wx:for="{{_data.phone_color}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+        </radio-group>
+      </view>
+
+      <view class="tit-no-bg">3.存储空间</view>
+      <view class="cell-card">
+        <radio-group data-id="phonestorage" bindchange="radioChange">
+          <radio wx:for="{{_data.phone_storage}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+        </radio-group>
+      </view>
+
+      <block wx:for="{{_data.other}}" wx:key="index">
+
+        <view hidden="{{ index+4 > hideCode}}">
+
+
+          <view class="tit-no-bg">
+            {{index+4}}.{{item.name}}
+          </view>
+
+          <view class="cell-card">
+            <block wx:if="{{index != _data.other.length-1}}">
+              <radio-group data-id="{{index}}" bindchange="radioChange">
+                <radio wx:for="{{item.inquiryinfo}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+                  color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+              </radio-group>
+            </block>
+            <block wx:else>
+              <checkbox-group data-id="{{index}}" bindchange="radioChange">
+                <checkbox wx:for="{{item.inquiryinfo}}" wx:key="index" wx:for-item="itm" wx:for-index="idx"
+                  class="radio" color="#C7402C" value="{{itm.id}}">{{itm.name}}</checkbox>
+              </checkbox-group>
+            </block>
+          </view>
+
         </view>
-        <view class="cell-card">
-          <radio-group data-id="{{index}}" bindchange="radioChange">
-              <radio wx:for="{{item}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio" color="#C7402C" value="{{itm}}">{{itm}}</radio>
-          </radio-group>
-        </view>
+
       </block>
 
     </view>

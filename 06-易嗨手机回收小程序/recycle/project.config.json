@@ -87,7 +87,7 @@
           "scene": null
         },
         {
-          "id": -1,
+          "id": 2,
           "name": "pages/evaluation/evaluation",
           "pathName": "pages/evaluation/evaluation",
           "query": "",
@@ -115,10 +115,10 @@
           "scene": null
         },
         {
-          "id": -1,
+          "id": 6,
           "name": "pages/evaluation/result",
           "pathName": "pages/evaluation/result",
-          "query": "",
+          "query": "name=小米10&price=2900",
           "scene": null
         },
         {
@@ -188,6 +188,7 @@
           "id": -1,
           "name": "pages/qrcode/qrcode",
           "pathName": "pages/qrcode/qrcode",
+          "query": "",
           "scene": null
         }
       ]
