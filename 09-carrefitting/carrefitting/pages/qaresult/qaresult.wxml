@@ -15,4 +15,9 @@
     </block>
 	</block>
 	<image class="icon" src="/images/car.png"></image>
+
+	<view style="padding-top: 40rpx;">
+		<parser html="{{nodes}}"></parser>
+	</view>
+
 </view>

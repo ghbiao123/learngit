@@ -32,7 +32,7 @@
 .icon {
   position: absolute;
   right: 27rpx;
-  bottom: 250rpx;
+  top: 1300rpx;
   width: 197rpx;
   height: 161rpx;
 }

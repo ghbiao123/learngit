@@ -51,7 +51,8 @@ Page({
         res.data.sgtime = util.getToday(res.data.sgtime*1000).date;
         that.setData({
           rlt: res.data,
-          needData
+          needData,
+          nodes: res.introduce
         });
       }else if(res.code==1){
         util.showError('未查询到数据', function(){
