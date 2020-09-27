@@ -1,7 +1,7 @@
 // pages/evaluation/evaluation.js
 let util = require("../../utils/util");
 let that;
-let result;
+let _key;
 Page({
 
   /**
@@ -17,7 +17,8 @@ Page({
         last: ''
       }
     },
-    _data:{}
+    _data:{},
+    type:'', // mobile || pc
   },
 
   /**
@@ -25,59 +26,91 @@ Page({
    */
   onLoad: function (options) {
     that = this;
-    result = {};
 
     // init 
     this.init();
 
   },
+  // 选择图片
+  chooseImage(){
+    
+  },
+  // 初始化数据
   init(){
-    let mid = 3;
-    this.data.reqData.mid = mid;
-    util.post('/api/order/getInquiryInfo', {mid}).then(res=>{
+    let data = {};
+    let url;
+    this.data.type = 'pc';
+
+    if(this.data.type == 'mobile'){
+      // 手机
+      _key = 'inquiryinfo'; // api返回的json的 特殊 key；
+      
+      data.mid = 3;
+      url = '/api/order/getInquiryInfo';
+      this.data.reqData.mid = data.mid;
+    }else if(this.data.type == 'pc'){
+      // 电脑id
+      _key = 'inquiryinfopc'; // api返回的json的 特殊 key；
+
+      data.pcid = 1;
+      url = '/api/order/getPcInquiryInfo';
+      this.data.reqData.pcid = data.pcid;
+    }
+
+    // 请求数据
+    util.post(url , data).then(res=>{
       console.log(res);
 
       let _data = res.data;
       _data.image = util.getImageFullUrl(_data.image);
 
       let progressData = that.data.progressData;
-      progressData.all = _data.other.length + 3;
+      progressData.all = _data.other.length + (this.data.type == 'pc'? 5:3);
 
       that.setData({
+        type: this.data.type,
         _data,
         progressData,
         hideCode: progressData.all
       });
     });
   },
-
+  // 选择选项
   radioChange(e){
 
     let val = e.detail.value;
     let id = e.currentTarget.dataset.id;
 
-    let hiddenCode = ['1', '3', '5'];
-
+    let hiddenCode,hideCode;
+    let progressData = this.data.progressData;
+    if(this.data.type == 'mobile'){
+      hiddenCode = ['1', '3', '5'];
+    }else if(this.data.type == 'pc'){
+      hiddenCode = ['34', '36', '2'];
+    }
     if(hiddenCode.indexOf(val)==0 || hiddenCode.indexOf(val)==1){
       // 5 -all hidden
-      this.setData({
-        hideCode: 4
-      });
+      hideCode = this.data.type == 'pc'? 6:4;
+      progressData.all = hideCode;
+      
     }else if(hiddenCode.indexOf(val)==2){
       // 6 - all hidden
-      this.setData({
-        hideCode: 5
-      });
+      hideCode = this.data.type == 'pc'? 7:5;
+      progressData.all = hideCode;
+      
     }else{
-      this.setData({
-        hideCode: 555
-      });
+      progressData.all = this.data._data.other.length + (this.data.type == 'pc'? 5:3);
+      hideCode = 555;
     }
+    this.setData({
+      hideCode,
+      progressData
+    });
 
     
     if(Number(id)||Number(id)==0){
       if(id != this.data._data.other.length-1){
-        this.data.reqData.inquiryinfo[id] = this.data._data.other[id].inquiryinfo.filter(v=> v.id == val)[0];
+        this.data.reqData.inquiryinfo[id] = this.data._data.other[id][_key].filter(v=> v.id == val)[0];
       }else if(id == this.data._data.other.length-1){
         this.data.reqData.inquiryinfo.last = val;
       }
@@ -85,8 +118,8 @@ Page({
       this.data.reqData[id] = val;
     }
 
-    let progressData = this.data.progressData;
-    progressData.chose = Object.keys(this.data.reqData).length - 2 + Object.keys(this.data.reqData.inquiryinfo);
+    progressData.chose = Object.keys(this.data.reqData).length - 2 + Object.keys(this.data.reqData.inquiryinfo).length;
+    if(!this.data.reqData.inquiryinfo.last){progressData.chose--}
     let progress = util.getToPersent(progressData.chose / progressData.all);
    
     this.setData({
@@ -97,14 +130,19 @@ Page({
   },
   // 跳转估价结果页
   getResult(e){
+
+    // 手机价格计算接口， default
+    let url = '/api/order/calculatePrice';
     let data = this.data.reqData;
+    
+    // 将用户所选数据进行处理
     let inquiryinfo = [];
     for(let key in data.inquiryinfo){
       if(key != 'last'){
         inquiryinfo.push(data.inquiryinfo[key]);
       }else{
         let len = this.data._data.other.length;
-        let arr = this.data._data.other[len-1].inquiryinfo.filter(v=>{
+        let arr = this.data._data.other[len-1][_key].filter(v=>{
           if(data.inquiryinfo.last.indexOf(v.id.toString())>=0){
             return v;
           }
@@ -112,14 +150,33 @@ Page({
         inquiryinfo.push(...arr);
       }
     }
-
     data.inquiryinfo = JSON.stringify(inquiryinfo);
 
-    util.post('/api/order/calculatePrice', data).then(res=>{
+    // 数据处理完毕， 手机价格计算可直接使用
+
+    // 苹果电脑价格计算数据处理
+    url = '/api/order/calculatePricePc';
+    let MacData = {
+      pcid: data.pcid,
+      pcram: data.pc_ram,
+      pcssd: data.pc_ssd,
+      pcvideocard: data.pc_videocard,
+      inquiryinfo: data.inquiryinfo
+    };
+    data = MacData;
+    // 苹果电脑价格计算数据处理完毕
+
+
+    // 其他电脑价格计算数据处理
+    /**
+     * 未完成
+     */
+
+    util.post(url, data).then(res=>{
       console.log(res);
       if(res.code == 1){
         wx.navigateTo({
-          url: `/pages/evaluation/result?name=${that.data._data.name}&price=${res.data.totalprice}`,
+          url: `/pages/evaluation/result?type=${this.data.type}&name=${that.data._data.name}&price=${res.data.totalprice}`,
         });
       }else{
         

@@ -10,7 +10,7 @@
       <view class="name">{{_data.name}}</view>
     </view>
 
-    <view class="cont">
+    <view wx:if="{{type == 'mobile'}}" class="cont">
 
       <view class="tit-no-bg">1.手机型号</view>
       <view class="cell-card">
@@ -65,6 +65,89 @@
       </block>
 
     </view>
+
+    <view wx:if="{{type == 'pc'}}" class="cont">
+
+      <view class="tit-no-bg">1.处理器</view>
+      <view class="cell-card">
+        <radio-group data-id="pc_processor" bindchange="radioChange">
+          <radio wx:for="{{_data.pc_processor}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+        </radio-group>
+      </view>
+
+      <view class="tit-no-bg">2.内存</view>
+      <view class="cell-card">
+        <radio-group data-id="pc_ram" bindchange="radioChange">
+          <radio wx:for="{{_data.pc_ram}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+        </radio-group>
+      </view>
+
+      <view class="tit-no-bg">3.显卡</view>
+      <view class="cell-card">
+        <radio-group data-id="pc_videocard" bindchange="radioChange">
+          <radio wx:for="{{_data.pc_videocard}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+        </radio-group>
+      </view>
+
+      <view class="tit-no-bg">4.固态硬盘</view>
+      <view class="cell-card">
+        <radio-group data-id="pc_ssd" bindchange="radioChange">
+          <radio wx:for="{{_data.pc_ssd}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+        </radio-group>
+      </view>
+
+      <view class="tit-no-bg">5.机械硬盘</view>
+      <view class="cell-card">
+        <radio-group data-id="pc_harddisk" bindchange="radioChange">
+          <radio wx:for="{{_data.pc_harddisk}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+        </radio-group>
+      </view>
+
+      <block wx:for="{{_data.other}}" wx:key="index">
+
+        <view hidden="{{ index+6 > hideCode}}">
+
+          <view class="tit-no-bg">
+            {{index+6}}.{{item.name}}
+          </view>
+
+          <view class="cell-card">
+            <block wx:if="{{index != _data.other.length-1}}">
+              <radio-group data-id="{{index}}" bindchange="radioChange">
+                <radio wx:for="{{item.inquiryinfopc}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+                  color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+              </radio-group>
+            </block>
+            <block wx:else>
+              <checkbox-group data-id="{{index}}" bindchange="radioChange">
+                <checkbox wx:for="{{item.inquiryinfopc}}" wx:key="index" wx:for-item="itm" wx:for-index="idx"
+                  class="radio" color="#C7402C" value="{{itm.id}}">{{itm.name}}</checkbox>
+              </checkbox-group>
+            </block>
+          </view>
+
+        </view>
+      </block>
+
+
+      <view wx:if="{{!(_data.bid == 1)}}">
+        <view class="tit-no-bg">
+          {{progressData.all+1}}.上传照片
+        </view>
+        <view class="cell-card m-t-20" style="display: flex; flex-wrap: wrap; width: 600rpx; padding: 20rpx 105rpx;">
+          <image wx:for="{{imageUrl}}" src="{{item}}" class="computer-image"></image>
+          <image bindtap="chooseImage" src="/images/add.png" class="computer-image"></image>
+        </view>
+      </view>
+
+    </view>
+
+
 
     <view class="button">
       <button bindtap="getResult" class="button-clear m-t-20">估价</button>
