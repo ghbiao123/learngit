@@ -8,6 +8,7 @@
 }
 .tab-list{
   display: flex;
+  justify-content: space-around;
   min-width: 750rpx;
   height: 100rpx;
   background-color: #fff;

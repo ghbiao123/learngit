@@ -12,12 +12,21 @@
 			<view class="triangle"></view>
 			<view>
 				<view class="prev-price">本机预估价</view>
-				<view class="prev-price-item">1975</view>
+				<view class="prev-price-item">{{totalPrice}}</view>
 			</view>
 			<image class="plus" src="/images/plus.png"></image>
 			<view>
 				<view class="prev-price">是否使用增价卷</view>
-				<view class="prev-price-item">1975</view>
+				<view class="prev-price-item">
+					<view wx:if="{{couponPrice != 0}}">
+						{{couponPrice}}
+					</view>
+					<view wx:if="{{couponPrice == 0}}">
+						<navigator url="/pages/coupon/coupon" hover-class="none">
+							选择我的加价券
+						</navigator>
+					</view>
+				</view>
 			</view>
 
 		</view>
@@ -25,7 +34,7 @@
 
 	<view class="pick m-t-20">
 		<view class="btn-box">
-			<view bindtap="getSelected" data-id="0" class="btn {{selected==0?'btn-s':''}}">门店回收</view>
+			<!-- <view bindtap="getSelected" data-id="0" class="btn {{selected==0?'btn-s':''}}">门店回收</view> -->
 			<view bindtap="getSelected" data-id="1" class="btn {{selected==1?'btn-s':''}}">上门回收</view>
 			<view bindtap="getSelected" data-id="2" class="btn {{selected==2?'btn-s':''}}">快递回收</view>
 		</view>

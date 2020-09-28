@@ -21,8 +21,10 @@
 	<view class="cell-card">
 		<view class="types">
 			<view class="types-item" wx:for="{{init.category}}" wx:key="index">
-				<image class="types-icon" src="{{item.image}}"></image>
-				<view class="types-name t-a-c ellipsis-text">{{item.name}}</view>
+				<navigator url="/pages/search/search?id={{item.id}}">
+					<image class="types-icon" src="{{item.image}}"></image>
+					<view class="types-name t-a-c ellipsis-text">{{item.name}}</view>
+				</navigator>
 			</view>
 		</view>
 

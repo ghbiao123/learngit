@@ -5,7 +5,7 @@
   <tab title="{{arrTitle}}" swiperHeight="{{height}}" bind:tabChange="tabChange">
     <block wx:for="{{[0]}}" wx:key="index">
       <view slot="tab-content-{{index}}">
-        <vtab bind:vtabTitleId='getVtabTitleId' vtab="{{arrTitle[0].vtabTitle[1]}}" vtabContent="{{arrContent}}" vtabHeight="{{height}}"></vtab>
+        <vtab bind:vtabTitleId='getVtabTitleId' vtab="{{arrVtabTitle}}" vtabContent="{{arrContent}}" vtabHeight="{{height}}"></vtab>
       </view>
     </block>
   </tab>

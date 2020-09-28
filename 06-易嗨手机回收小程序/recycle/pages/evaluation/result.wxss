@@ -59,17 +59,19 @@
   overflow: hidden;
 }
 .btn{
-  width: 230rpx;
+  width: 345rpx;
+  /* width: 230rpx; */
 }
 .btn-s{
   background-color: #C7402C;
   color: #fff;
 }
 
-.btn:nth-child(2){
-  width: 228rpx;
+.btn:nth-child(1){
+  width: 344rpx;
+  /* width: 228rpx; */
   border-left: 1rpx solid #C7402C;
-  border-right: 1rpx solid #C7402C;
+  /* border-right: 1rpx solid #C7402C; */
 }
 .content{
   margin: 0 auto;

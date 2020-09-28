@@ -8,7 +8,11 @@ Page({
    */
   data: {
     selected:1,
-    timeSelected:["10:00", "14:00", "14:00", "14:00", "14:00",]
+    timeSelected:["10:00", "14:00", "14:00", "14:00", "14:00",],
+    pageOption: {},
+    price: 0,
+    totalPrice: 0,
+    couponPrice: 0,
   },
 
   /**
@@ -16,21 +20,30 @@ Page({
    */
   onLoad: function (options) {
     that = this;
-
-    // init data
-    this.init(options);
-
+    this.data.pageOption = options;
   },
   // init()
-  init(data){
-    console.log(data);
+  init(){
+
+    let data = this.data.pageOption;
 
     wx.setNavigationBarTitle({
       title: data.name,
     });
 
+
+    let coupon = wx.getStorageSync('coupon');
+
+    this.data.couponPrice = 0;
+    this.data.price = Number(data.price);
+    this.data.totalPrice = this.data.couponPrice + this.data.price;
+
+
+
     this.setData({
-      price: data.price
+      price: this.data.price,
+      totalPrice: this.data.totalPrice,
+      couponPrice: this.data.couponPrice,
     });
 
   },
@@ -70,7 +83,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // init data
+    this.init();
   },
 
   /**

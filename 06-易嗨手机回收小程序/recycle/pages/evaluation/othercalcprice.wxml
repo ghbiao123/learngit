@@ -1,0 +1,41 @@
+<view class="container">
+  <view class="tit-no-bg">机器名称</view>
+  <view class="cell-card">
+    <view class="cell-item">
+      <!-- <view class="cell-name">机器名称</view> -->
+      <view class="cell-cont">
+        <input type="text" placeholder="请输入机器名称" class="cell-input" />
+      </view>
+    </view>
+  </view>
+
+  <view class="tit-no-bg">机器配置信息</view>
+  <view class="cell-card">
+    <textarea class="cell-textarea" placeholder="请输入机器配置信息"></textarea>
+  </view>
+
+  <view class="tit-no-bg">机器描述</view>
+  <view class="cell-card">
+    <textarea class="cell-textarea" placeholder="（机器有无维修情况等）"></textarea>
+  </view>
+
+  <view>
+    <view class="tit-no-bg">
+      <!-- {{progressData.all+1}}.上传照片 -->
+      上传照片
+    </view>
+    <view class="cell-card m-t-20" style="display: flex; flex-wrap: wrap; width: 600rpx; padding: 20rpx 105rpx;">
+      <view class="computer-image" wx:for="{{imageUrl}}">
+        <image src="{{item}}" style="width: 155rpx; height: 110rpx;"></image>
+        <icon data-idx="{{index}}" bindtap="cancelImage" class="cancel" size="25" type="cancel" color="#999"></icon>
+      </view>
+      <image bindtap="chooseImage" src="/images/add.png" class="computer-image"></image>
+    </view>
+  </view>
+
+
+
+  <view class="button">
+    <button bindtap="getResult" class="button-clear m-t-20">估价</button>
+  </view>
+</view>

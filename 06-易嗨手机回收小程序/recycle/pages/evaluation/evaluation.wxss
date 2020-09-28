@@ -78,7 +78,13 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 }
 
 .computer-image{
+  position: relative;
   width: 155rpx;
   height: 110rpx;
   margin: 10rpx 20rpx;
+}
+.cancel{
+  position: absolute;
+  right: 0;
+  top: 0;
 }

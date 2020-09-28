@@ -7,9 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tab: ["手机", "平板", "电脑", "摄影摄像", "其他产品"],
-    vtab: ["热门推荐", "华为", "荣耀", "小米", "红米", "三星", "vivo", "OPPO", "苹果", "iPhone", "onePlus", "锤子", "乐视", "联想", "酷派", "诺基亚", "老年机", "其他", ],
+    // tab: ["手机", "平板", "电脑", "摄影摄像", "其他产品"],
+    // vtab: ["热门推荐", "华为", "荣耀", "小米", "红米", "三星", "vivo", "OPPO", "苹果", "iPhone", "onePlus", "锤子", "乐视", "联想", "酷派", "诺基亚", "老年机", "其他", ],
     arrTitle: [], // 页面tab标题， 页面vtab标题
+    arrVtabTitle:[],
     arrContent: {}, // vtab item-》content
     reqData: {
       cid: 0,
@@ -25,16 +26,18 @@ Page({
     that = this;
 
     // 初始化data
-    this.init();
+    this.init(options.id);
   },
   // init data
-  init() {
+  init(id) {
     util.post('/api/products/getEcategoryList').then(res => {
       let arrTitle = res.data;
       that.setData({
         arrTitle
       });
-      that.tabChange({detail: arrTitle[0].id});
+      // let _id = id? id:arrTitle[0].id;
+      let _id = arrTitle[0].id;
+      that.tabChange({detail: _id});
     });
   },
   // getVtabTitleId
@@ -54,29 +57,27 @@ Page({
     });
 
   },
-  // tab component change, get curent id
+  // tab component change, get current id
   tabChange(e) {
     let id = e.detail;
+    console.log('tabChange:', id);
     that.data.reqData.cid = id;
     util.post('/api/products/getEbrandsList', {cid: id}).then(res => {
-      let arrTitle = that.data.arrTitle;
-      arrTitle.forEach(v => {
-        if (v.id == id) {
-          v.vtabTitle = {};
-          v.vtabTitle[id] = res.data.brands;
-          v.vtabTitle[id].unshift({
-            ebrands: {
-              id: 'hot',
-              name: "推荐"
-            }
-          });
-        }
-      });
+
       let arrContent = util.getImageFullUrl(res.data.hotmodel, 'image');
       that.data.hotmodel = [...arrContent];
+
+      res.data.brands.unshift({
+              ebrands: {
+                id: 'hot',
+                name: "推荐"
+              }
+            });
+      let a = res.data.brands;
       that.setData({
-        arrTitle,
-        arrContent
+        arrContent,
+        arrVtabTitle: res.data.brands,
+        tabid: id,
       });
     });
   },

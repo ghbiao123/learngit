@@ -1,0 +1,52 @@
+<view class="container">
+  <form bindsubmit="submit">
+    <view class="cell-card">
+      <view class="cell-item" style="justify-content: flex-start;">
+        <open-data style="width: 100rpx;" type="userAvatarUrl"></open-data>
+        <open-data style="margin-left: 20rpx;" type="userNickName"></open-data>
+      </view>
+    </view>
+
+    <view class="tit-no-bg">银行卡信息</view>
+    <view class="cell-card">
+      <view class="cell-item">
+        <view class="cell-name">收款人姓名</view>
+        <view class="cell-cont">
+          <input class="cell-input" type="text" placeholder="请输入收款人姓名" />
+        </view>
+      </view>
+      <view class="cell-item">
+        <view class="cell-name">卡号</view>
+        <view class="cell-cont">
+          <input class="cell-input" type="number" placeholder="请输入银行卡号" />
+        </view>
+      </view>
+    </view>
+
+    <view class="tit-no-bg">个人地址</view>
+    <view class="cell-card">
+      <view class="cell-item">
+        <view class="cell-name">寄件人姓名</view>
+        <view class="cell-cont">
+          <input class="cell-input" type="text" placeholder="请输入寄件人姓名" />
+        </view>
+      </view>
+
+      <view class="cell-item">
+        <view class="cell-name">寄件人地址</view>
+        <view class="cell-cont">
+          <input class="cell-input" type="text" placeholder="请输入寄件人地址" />
+        </view>
+      </view>
+
+      <view class="cell-item">
+        <view class="cell-name">寄件人手机号</view>
+        <view class="cell-cont">
+          <input class="cell-input" type="number" placeholder="请输入寄件人手机号" />
+        </view>
+      </view>
+    </view>
+
+    <button form-type="submit" class="button-clear m-t-20">保存</button>
+  </form>
+</view>

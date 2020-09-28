@@ -135,12 +135,16 @@
       </block>
 
 
-      <view wx:if="{{!(_data.bid == 1)}}">
+      <view wx:if="{{isUpdateImage}}">
         <view class="tit-no-bg">
-          {{progressData.all+1}}.上传照片
+          <!-- {{progressData.all+1}}.上传照片 -->
+          上传照片
         </view>
         <view class="cell-card m-t-20" style="display: flex; flex-wrap: wrap; width: 600rpx; padding: 20rpx 105rpx;">
-          <image wx:for="{{imageUrl}}" src="{{item}}" class="computer-image"></image>
+          <view class="computer-image" wx:for="{{imageUrl}}">
+            <image src="{{item}}" style="width: 155rpx; height: 110rpx;"></image>
+            <icon data-idx="{{index}}" bindtap="cancelImage" class="cancel" size="25" type="cancel" color="#999"></icon>
+          </view>
           <image bindtap="chooseImage" src="/images/add.png" class="computer-image"></image>
         </view>
       </view>

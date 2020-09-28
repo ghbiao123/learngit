@@ -190,6 +190,27 @@
           "pathName": "pages/qrcode/qrcode",
           "query": "",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/recyclelist/recyclelist",
+          "pathName": "pages/recyclelist/recyclelist",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/personalinfo/personalinfo",
+          "pathName": "pages/personalinfo/personalinfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/evaluation/othercalcprice",
+          "pathName": "pages/evaluation/othercalcprice",
+          "query": "",
+          "scene": null
         }
       ]
     }

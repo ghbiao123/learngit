@@ -267,7 +267,7 @@ function getToPoint(num) {
 // 将图片添加为完整路径
 function getImageFullUrl(arr, key){
   if(!arr||arr.length==0){
-    return
+    return [];
   }
   if(!key){
     // key 不存在
