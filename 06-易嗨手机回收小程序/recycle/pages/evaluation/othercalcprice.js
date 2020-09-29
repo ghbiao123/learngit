@@ -9,6 +9,7 @@ Page({
   data: {
     imageUrl: [],
     reqImageUrl: [],
+    reqData:{}
   },
 
   /**
@@ -17,7 +18,38 @@ Page({
   onLoad: function (options) {
     that = this;
 
+    this.data.reqData.cid = options.id;
     
+  },
+  // 估价提交
+  submit(e){
+    let data = e.detail.value;
+    Object.assign(data, this.data.reqData);
+    let userInfo = util.checkIsLogin.call(this);
+    if(!userInfo){
+      return util.showError('请您先登录', function(){
+        wx.navigateTo({
+          url: '/pages/login/login',
+        })
+      });
+    }
+
+    data.userid = userInfo.uid;
+
+    data.pictures = this.data.reqImageUrl.join(',');
+
+    if(this.data.imageUrl.length != this.data.reqImageUrl.length){
+      return util.showSuccess('图片正在上传，请稍后尝试...');
+    }
+
+    util.post('/api/order/calculatePriceOther', data).then(res=>{
+      if(res.code == 1){
+        util.showSuccess(res.msg, function(){
+          wx.navigateBack();
+        });
+      }
+    });
+
   },
   // 删除图片
   cancelImage(e) {

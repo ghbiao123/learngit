@@ -1,4 +1,7 @@
 /* pages/evaluation/result.wxss */
+.container{
+  padding-bottom: 125rpx;
+}
 .head{
   width: 100%;
   height: 270rpx;
@@ -104,6 +107,7 @@
   width: 100%;
   height: 80rpx;
   line-height: 80rpx;
+  color: #707070;
 }
 
 .text-tip{
@@ -118,5 +122,6 @@
   bottom: 0;
   width: 100%;
   height: 130rpx;
+  z-index: 999;
   background-color: #fff;
 }

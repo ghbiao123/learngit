@@ -20,11 +20,11 @@
 
 	<view class="cell-card">
 		<view class="types">
-			<view class="types-item" wx:for="{{init.category}}" wx:key="index">
-				<navigator url="/pages/search/search?id={{item.id}}">
+			<view class="types-item" wx:for="{{init.category}}" wx:key="index" data-id="{{item.id}}" bindtap="getDiffPage">
+				<!-- <navigator url="/pages/search/search?id={{item.id}}">
+				</navigator> -->
 					<image class="types-icon" src="{{item.image}}"></image>
 					<view class="types-name t-a-c ellipsis-text">{{item.name}}</view>
-				</navigator>
 			</view>
 		</view>
 

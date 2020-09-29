@@ -15,7 +15,8 @@
   font-size: 24rpx;
 }
 .text{
-  padding-top: 18rpx;
+  text-align: center;
+  /* padding-top: 18rpx; */
 }
 .text-txt{
   font-size: 26rpx;
@@ -45,4 +46,8 @@
 .overdue{
   background-color: #FB6601;
   opacity: 0.4;
+}
+
+.p-t-30{
+  padding-top: 30rpx;
 }

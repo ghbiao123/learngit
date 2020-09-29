@@ -3,26 +3,28 @@
 	<view class="head">
 		<view class="price">
 			<text style="font-size:35rpx;">￥</text>
-			<text style="font-size:65rpx;">{{price}}</text>
-			<text style="font-size:25rpx; color: #262626; padding-left: 40rpx; vertical-align: middle;">预计下周下跌￥123</text>
-			<image style="width: 17rpx; margin-left:5rpx; vertical-align: middle;" mode="widthFix" src="/images/down.png"></image>
-			<text bindtap="resetPrice" style="font-size: 24rpx; padding-left: 60rpx; color: #2693FF; ">重新询价</text>
+			<text style="font-size:65rpx;">{{totalPrice}}</text>
+			<text hidden style="font-size:25rpx; color: #262626; padding-left: 40rpx; vertical-align: middle;">预计下周下跌￥123</text>
+			<image hidden style="width: 17rpx; margin-left:5rpx; vertical-align: middle;" mode="widthFix" src="/images/down.png"></image>
+			<text bindtap="resetPrice" style="font-size: 24rpx; padding-left: 360rpx; color: #2693FF; ">重新询价</text>
 		</view>
 		<view class="calc-price">
 			<view class="triangle"></view>
 			<view>
 				<view class="prev-price">本机预估价</view>
-				<view class="prev-price-item">{{totalPrice}}</view>
+				<view class="prev-price-item">{{price}}</view>
 			</view>
 			<image class="plus" src="/images/plus.png"></image>
 			<view>
 				<view class="prev-price">是否使用增价卷</view>
 				<view class="prev-price-item">
 					<view wx:if="{{couponPrice != 0}}">
+						<navigator url="/pages/coupon/coupon?type=mine&available=9" hover-class="none">
 						{{couponPrice}}
+						</navigator>
 					</view>
 					<view wx:if="{{couponPrice == 0}}">
-						<navigator url="/pages/coupon/coupon" hover-class="none">
+						<navigator url="/pages/coupon/coupon?type=mine&available=9" hover-class="none">
 							选择我的加价券
 						</navigator>
 					</view>
@@ -66,46 +68,88 @@
 					</view>
 				</view>
 			</view>
+
 			<!-- 上门回收 -->
-			<view class="cont" hidden="{{!(selected==1)}}">
+			<view class="cont" bindtap="editUserData" hidden="{{!(selected==1)}}">
 				<view class="radios">
 					<view>联系方式</view>
 					<!-- <view class="color-b">修改</view> -->
 				</view>
 				<view class="radios b-b-g">
-					<input class="input" placeholder="请输入您的联系方式"></input>
+					<input disabled value="{{userData.mobile}}" class="input" placeholder="请输入您的联系方式"></input>
 				</view>
 				<view class="radios">
 					<view>上门地址</view>
 					<!-- <view class="color-b">修改</view> -->
 				</view>
+				<view class="radios">
+					<input disabled value="{{userData.region}}" class="input" placeholder="请输入您的地址"></input>
+				</view>
+				
 				<view class="radios b-b-g">
-					<input class="input" placeholder="请输入您的地址"></input>
+					<input disabled value="{{userData.address}}" class="input" placeholder="请输入您的地址"></input>
 				</view>
 				<view class="radios text-tip">工作人员上门验收货物</view>
       
-      </view>
-			<!-- 快递回收 -->
-			<view class="cont" hidden="{{!(selected==2)}}">
-				<view class="radios">
-					<view>联系方式</view>
-					<!-- <view class="color-b">修改</view> -->
-				</view>
-				<view class="radios b-b-g">
-					<input class="input" placeholder="请输入您的联系方式"></input>
-				</view>
-				<view class="radios">
-					<view>发货地址</view>
-					<!-- <view class="color-b">修改</view> -->
-				</view>
-				<view class="radios b-b-g">
-					<input class="input" placeholder="请输入您的地址"></input>
-				</view>
 			</view>
+			
+			<!-- 快递回收 -->
+			<view class="cont" bindtap="editUserData" hidden="{{!(selected==2)}}">
+
+				<view class="radios" >
+					<view>姓名</view>
+				</view>
+				<view class="radios b-b-g">
+					<input disabled class="input" value="{{userData.username}}" placeholder="请输入您的姓名"></input>
+				</view>
+
+				<view class="radios" >
+					<view>联系方式</view>
+				</view>
+				<view class="radios b-b-g">
+					<input disabled value="{{userData.mobile}}" class="input" placeholder="请输入您的联系方式"></input>
+				</view>
+
+				<view class="radios">
+					<view>地址</view>
+				</view>
+				<view class="radios">
+					<input disabled value="{{userData.region}}" class="input" placeholder="请输入您的地址"></input>
+				</view>
+				<view class="radios b-b-g">
+					<input disabled value="{{userData.address}}" class="input" placeholder="请输入您的地址"></input>
+				</view>
+
+				<view class="radios">
+					<view>收件人姓名</view>
+					<!-- <view class="color-b">修改</view> -->
+				</view>
+				<view class="radios b-b-g">
+					<input class="input" disabled value="{{platformInfo.contactperson}}"></input>
+				</view>
+
+				<view class="radios">
+					<view>收件人电话</view>
+					<!-- <view class="color-b">修改</view> -->
+				</view>
+				<view class="radios b-b-g">
+					<input class="input" disabled value="{{platformInfo.contactphone}}"></input>
+				</view>
+
+				<view class="radios">
+					<view>收件人地址</view>
+					<!-- <view class="color-b">修改</view> -->
+				</view>
+				<view class="radios b-b-g">
+					<input class="input" disabled value="{{platformInfo.contactaddress}}"></input>
+				</view>
+
+			</view>
+
 		</view>
 	</view>
 
 	<view class="button">
-		<button class="button-clear m-t-20">立即回收</button>
+		<button bindtap="recycle" class="button-clear m-t-20">立即回收</button>
 	</view>
 </view>

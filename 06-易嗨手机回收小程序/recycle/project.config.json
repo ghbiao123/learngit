@@ -101,7 +101,7 @@
           "scene": null
         },
         {
-          "id": -1,
+          "id": 4,
           "name": "pages/mine/mine",
           "pathName": "pages/mine/mine",
           "query": "",
@@ -118,7 +118,7 @@
           "id": 6,
           "name": "pages/evaluation/result",
           "pathName": "pages/evaluation/result",
-          "query": "name=小米10&price=2900",
+          "query": "name=小米10&price=2900&type=mobile",
           "scene": null
         },
         {

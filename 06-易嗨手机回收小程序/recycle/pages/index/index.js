@@ -23,7 +23,19 @@ Page({
     // init
     this.initData();
   },
-
+  // 跳转不同估价页面
+  getDiffPage(e){
+    let id = e.currentTarget.dataset.id;
+    if(id<4){
+      wx.navigateTo({
+        url: '/pages/search/search?id='+id,
+      });
+    }else if(id>=4){
+      wx.navigateTo({
+        url: '/pages/evaluation/othercalcprice?id='+id,
+      });
+    }
+  },
   // 初始化数据
   initData(){
     util.post('/api/index/indexContent').then(res=>{
@@ -39,7 +51,7 @@ Page({
   // 跳转加价券页面
   receiveCoupon(){
     wx.navigateTo({
-      url: '/pages/coupon/coupon',
+      url: '/pages/coupon/coupon?type=add',
     });
   },
 

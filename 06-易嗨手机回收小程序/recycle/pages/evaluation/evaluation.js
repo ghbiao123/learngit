@@ -77,7 +77,7 @@ Page({
   init() {
     let data = {};
     let url;
-    this.data.type = 'pc';
+    this.data.type = 'mobile';
 
     if (this.data.type == 'mobile') {
       // 手机
@@ -250,7 +250,15 @@ Page({
 
 
     util.post(url, data).then(res => {
-      console.log(res);
+
+      // 当前估价机器 Storage
+      let newData = Object.assign({}, data);
+      newData.cid = that.data._data.cid;
+      wx.setStorage({
+        data: newData,
+        key: 'currentmachine',
+      });
+      
       if (res.code == 1) {
         if(this.data.type == 'pc' && this.data._data.bid != 1){
           return util.showSuccess(res.msg); 

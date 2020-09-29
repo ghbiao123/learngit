@@ -7,42 +7,53 @@
       </view>
     </view>
 
+
+    <view class="tit-no-bg">个人信息</view>
+    <view class="cell-card">
+      <view class="cell-item">
+        <view class="cell-name">姓名</view>
+        <view class="cell-cont">
+          <input name="username" value="{{userData.username}}" class="cell-input" type="text" placeholder="请输入姓名" />
+        </view>
+      </view>
+
+      <view class="cell-item">
+        <view class="cell-name">电话</view>
+        <view class="cell-cont">
+          <input name="mobile" value="{{userData.mobile}}" type="number" class="cell-input" type="text" placeholder="请输入手机号" />
+        </view>
+      </view>
+
+      <view class="cell-item">
+        <view class="cell-name">所在地区</view>
+        <view class="cell-cont">
+          <picker mode="region" bindchange="regionChange">
+            <input name="region" disabled value="{{region || userData.region}}" class="cell-input" type="number" placeholder="请选择所在地区" />
+          </picker>
+        </view>
+      </view>
+
+      <view class="cell-item">
+        <view class="cell-name">详细地址</view>
+        <view class="cell-cont">
+          <input name="address" value="{{userData.address}}" class="cell-input" type="text" placeholder="请输入详细地址" />
+        </view>
+      </view>
+
+    </view>
+    
     <view class="tit-no-bg">银行卡信息</view>
     <view class="cell-card">
       <view class="cell-item">
-        <view class="cell-name">收款人姓名</view>
+        <view class="cell-name">开户行</view>
         <view class="cell-cont">
-          <input class="cell-input" type="text" placeholder="请输入收款人姓名" />
+          <input name="bank" value="{{userData.bank}}" class="cell-input" type="text" placeholder="请输入开户行" />
         </view>
       </view>
       <view class="cell-item">
-        <view class="cell-name">卡号</view>
+        <view class="cell-name">银行卡号</view>
         <view class="cell-cont">
-          <input class="cell-input" type="number" placeholder="请输入银行卡号" />
-        </view>
-      </view>
-    </view>
-
-    <view class="tit-no-bg">个人地址</view>
-    <view class="cell-card">
-      <view class="cell-item">
-        <view class="cell-name">寄件人姓名</view>
-        <view class="cell-cont">
-          <input class="cell-input" type="text" placeholder="请输入寄件人姓名" />
-        </view>
-      </view>
-
-      <view class="cell-item">
-        <view class="cell-name">寄件人地址</view>
-        <view class="cell-cont">
-          <input class="cell-input" type="text" placeholder="请输入寄件人地址" />
-        </view>
-      </view>
-
-      <view class="cell-item">
-        <view class="cell-name">寄件人手机号</view>
-        <view class="cell-cont">
-          <input class="cell-input" type="number" placeholder="请输入寄件人手机号" />
+          <input name="bankcard" value="{{userData.bankcard}}" type="number" class="cell-input" type="number" placeholder="请输入银行卡号" />
         </view>
       </view>
     </view>

@@ -1,11 +1,13 @@
-<view class="cell-card coupon">
+<view class="cell-card coupon" wx:for="{{list}}" wx:key="index">
   <view class="price">
-    <view class="price-num">￥12345</view>
+    <view class="price-num">￥{{item.par_value || item.parvalue}}</view>
     <view class="price-txt">加价券</view>
   </view>
   <view class="text">
-    <view class="text-txt">回收手机加价券</view>
-    <view class="text-time">还剩5天到期</view>
+    <view class="text-txt {{type == 'mine'? 'p-t-30':''}}">{{item.name}}</view>
+    <view class="text-time" wx:if="{{type == 'add'}}">起：{{item.validstime_text}}</view>
+    <view class="text-time" wx:if="{{type == 'add'}}">止：{{item.validetime_text}}</view>
   </view>
-  <view class="button overdue">立即使用</view>
+  <view wx:if="{{type == 'add'}}" data-id="{{index}}" bindtap="getCoupon" class="button immediately">{{arrIsGot[index]? '已领取':'立即领取'}}</view>
+  <view wx:if="{{type == 'mine'}}" data-id="{{index}}" bindtap="useCoupon" class="button {{item.status == 0? 'immediately':''}}{{item.status == 1? 'done':''}}{{item.status == 2? 'overdue':''}}">{{item.status_text}}</view>
 </view>

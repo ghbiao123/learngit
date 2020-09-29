@@ -22,6 +22,60 @@ Page({
     that = this;
     this.data.pageOption = options;
   },
+  // 回收
+  recycle(){
+    // request data
+    let data = {};
+    
+    let userInfo = wx.getStorageInfoSync('userinfo');
+    // 检测登录 userid 1
+    if(!userInfo){
+      return util.showError('请您登录', function(){
+        wx.navigateTo({
+          url: '/pages/login/login',
+        });
+      });
+    }
+
+    // 登录后得到userid
+    data.userid = userInfo.uid;
+
+    // 检测是否完善个人信息
+    let userData = wx.getStorageInfoSync('userdata');
+    if(!userData){
+      return util.showError('请您登录', function(){
+        wx.navigateTo({
+          url: '/pages/personalinfo/personalinfo',
+        });
+      });
+    }
+
+    // 加价券 couponid 1
+    let coupon = wx.getStorageInfoSync('coupon');
+    // 得到加价券id
+    data.couponid = coupon.id;
+
+    // currentmachine 当前机型 cid mid configureinfo describeinfo 4
+    let currentMachine = wx.getStorageSync('currentmachine');
+    // 得到 cid mid configureinfo describeinfo
+
+
+
+    // recoverytype this.data.selected 1
+    // 得到回收方式
+    data.recoverytype = this.data.selected;
+    
+    // this.data.pageOption  estimatefee estimatetype assessorderid 3
+    // 得到  estimatefee estimatetype assessorderid
+
+
+
+  },
+  editUserData(){
+    wx.navigateTo({
+      url: '/pages/personalinfo/personalinfo',
+    });
+  },
   // init()
   init(){
 
@@ -34,17 +88,37 @@ Page({
 
     let coupon = wx.getStorageSync('coupon');
 
-    this.data.couponPrice = 0;
+    this.data.couponPrice = Number(coupon.parvalue);
     this.data.price = Number(data.price);
     this.data.totalPrice = this.data.couponPrice + this.data.price;
-
-
 
     this.setData({
       price: this.data.price,
       totalPrice: this.data.totalPrice,
       couponPrice: this.data.couponPrice,
     });
+
+    // 获取storage
+
+    wx.getStorage({
+      key: 'userdata',
+      success(res){
+        that.setData({
+          userData: res.data
+        });
+      },
+      fail(){
+        util.showSuccess('请完善您的个人信息');
+      }
+    });
+
+    // 回收平台邮寄地址
+    util.post('/api/user/getPlatforminfo').then(res=>{
+      that.setData({
+        platformInfo: res.data
+      });
+    });
+
 
   },
   // tab 点击事件, 切换回收类型
@@ -70,7 +144,10 @@ Page({
   },
   // 重新询价
   resetPrice(e){
-    wx.navigateBack();
+    // wx.navigateBack();
+    wx.redirectTo({
+      url: '/pages/evaluation/evaluation',
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
