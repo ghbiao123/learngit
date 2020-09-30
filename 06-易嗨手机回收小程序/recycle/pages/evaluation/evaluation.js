@@ -22,7 +22,7 @@ Page({
     isUpdateImage: false, // 是否上传图片
     imageUrl: [],
     reqImageUrl: [],
-    winConfigId:{}
+    winConfigId: {}
   },
 
   /**
@@ -30,6 +30,10 @@ Page({
    */
   onLoad: function (options) {
     that = this;
+
+    this.data.pageOption = options;
+
+    console.log(options);
 
     // init 
     this.init();
@@ -77,13 +81,18 @@ Page({
   init() {
     let data = {};
     let url;
-    this.data.type = 'mobile';
+    if (this.data.pageOption.cid == 1) {
+      this.data.type = 'mobile';
+    } else if (this.data.pageOption.cid == 2 || this.data.pageOption.cid == 3) {
+      this.data.type = 'pc';
+    }
+
 
     if (this.data.type == 'mobile') {
       // 手机
       _key = 'inquiryinfo'; // api返回的json的 特殊 key；
 
-      data.mid = 3;
+      data.mid = this.data.pageOption.id;
       url = '/api/order/getInquiryInfo';
       this.data.reqData.mid = data.mid;
     } else if (this.data.type == 'pc') {
@@ -91,7 +100,7 @@ Page({
       _key = 'inquiryinfopc'; // api返回的json的 特殊 key；
 
       // data.pcid = 1; // 苹果电脑id
-      data.pcid = 3; // 其他电脑id
+      data.pcid = this.data.pageOption.id; // 其他电脑id
       url = '/api/order/getPcInquiryInfo';
       this.data.reqData.pcid = data.pcid;
     }
@@ -99,6 +108,12 @@ Page({
     // 请求数据
     util.post(url, data).then(res => {
       console.log(res);
+
+      if (res.code == -1) {
+        return util.showSuccess(res.msg, function () {
+          wx.navigateBack();
+        });
+      }
 
       let _data = res.data;
 
@@ -177,14 +192,24 @@ Page({
   // 跳转估价结果页
   getResult(e) {
 
-    let data = this.data.reqData;
-
+    let data = Object.assign({}, this.data.reqData);
     // 将用户所选数据进行处理
+    let lev1 = [1, 3, 5];
+    let lev2 = [34, 36, 2];
     let inquiryinfo = [];
+    let keys = Object.keys(data.inquiryinfo);
     for (let key in data.inquiryinfo) {
       if (key != 'last') {
         inquiryinfo.push(data.inquiryinfo[key]);
+
+        if (this.data.type =='mobile' && lev1.indexOf(data.inquiryinfo[key].id) >= 0) {
+          break;
+        }else if(this.data.type =='pc' && lev2.indexOf(data.inquiryinfo[key].id) >= 0){
+          break;
+        }
+        
       } else {
+
         let len = this.data._data.other.length;
         let arr = this.data._data.other[len - 1][_key].filter(v => {
           if (data.inquiryinfo.last.indexOf(v.id.toString()) >= 0) {
@@ -197,6 +222,7 @@ Page({
     data.inquiryinfo = JSON.stringify(inquiryinfo);
 
     // 数据处理完毕， 手机价格计算可直接使用
+
 
     let url = '';
     if (this.data.type == 'mobile') {
@@ -218,15 +244,15 @@ Page({
         // 其他电脑价格计算数据处理
         url = '/api/order/calculatePricePcNa';
 
-        if(this.data.imageUrl.length != this.data.reqImageUrl.length){
+        if (this.data.imageUrl.length != this.data.reqImageUrl.length) {
           return util.showSuccess('正在上传图片，请稍后...');
         }
 
         let userInfo = wx.getStorageSync('userinfo');
 
         // 判断是否登录， 未登录则让用户先登录
-        if(!userInfo){
-          return util.showError('请您先登录', function(){
+        if (!userInfo) {
+          return util.showError('请您先登录', function () {
             wx.navigateTo({
               url: '/pages/login/login',
             });
@@ -258,17 +284,17 @@ Page({
         data: newData,
         key: 'currentmachine',
       });
-      
+
       if (res.code == 1) {
-        if(this.data.type == 'pc' && this.data._data.bid != 1){
-          return util.showSuccess(res.msg); 
-        }else{
+        if (this.data.type == 'pc' && this.data._data.bid != 1) {
+          return util.showSuccess(res.msg);
+        } else {
           wx.navigateTo({
-            url: `/pages/evaluation/result?type=${this.data.type}&name=${that.data._data.name}&price=${res.data.totalprice}`,
+            url: `/pages/evaluation/result?type=${this.data.type}&name=${that.data._data.name}&price=${res.data.totalprice}&frompage=evaluation`,
           });
         }
       } else {
-
+        util.showSuccess(res.msg);
       }
     });
 

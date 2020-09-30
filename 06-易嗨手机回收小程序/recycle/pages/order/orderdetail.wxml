@@ -45,7 +45,7 @@
 		</view>
 	</view>
 
-	<view class="cell-card express">
+	<view hidden class="cell-card express">
 		<view class="cell-item">
 			自行邮寄
 		</view>
@@ -89,14 +89,18 @@
   <view class="cell-card">
     <view class="cell-item">机器信息</view>
     <view class="project-info">
+		<!-- 没有图片， 待确认 -->
       <image class="project-image" src="/images/a.jpg"></image>
       <view class="info">
         <view class="name">
-          <view>华为 P40</view>
-          <view style="font-size:24rpx; color: #C7402C;">待邮寄</view>
+          <view>{{detail.model_info.name}}</view>
+					<view hidden style="font-size:24rpx; color: #C7402C;">待邮寄</view>
+					<view class="state {{detail.order_status==0||detail.order_status==1?'state-red':''}}{{detail.order_status==2?'state-green':''}}{{detail.order_status==3?'state-gray':''}}">
+            {{detail.order_status==0?'待验机':''}}{{detail.order_status==1?'待付款':''}}{{detail.order_status==2?'订单完成':''}}{{detail.order_status==3?'订单取消':''}}
+          </view>
         </view>
-        <view class="msg ellipsis-text">全网通</view>
-        <view class="msg">预估价：￥12345</view>
+        <view class="msg">{{detail.model_info.configure}}</view>
+        <view class="msg">预估价：￥{{detail.total_amount}}</view>
       </view>
     </view>
   </view>
@@ -107,18 +111,18 @@
       <view class="order-info">
         <view class="order-name">订单编号：</view>
         <view class="order-value">
-          <view style="padding-right:20rpx;">121234567890</view>
-          <view class="copy">复制</view>
+          <view style="padding-right:20rpx;">{{detail.order_sn}}</view>
+          <view class="copy" data-text="{{detail.order_sn}}" bindtap="copyText">复制</view>
         </view>
       </view>
       <view class="order-info">
         <view class="order-name">下单时间</view>
-        <view class="order-value">34567890-56789</view>
+        <view class="order-value">{{detail.createtime}}</view>
       </view>
     </view>
   </view>
 
-  <view class="button m-t-20">
+  <view hidden class="button m-t-20">
     <button class="btn">取消订单</button>
     <button class="btn">确认发货</button>
   </view>

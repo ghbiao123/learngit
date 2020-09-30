@@ -23,6 +23,20 @@ Page({
     // init
     this.initData();
   },
+  // 跳转估价页面
+  getEvaluation(e){
+    let idx = e.currentTarget.dataset.id;
+    let cid = e.currentTarget.dataset.cid;
+    if(cid>=4){
+      wx.navigateTo({
+        url: '/pages/evaluation/othercalcprice',
+      });
+      return
+    }
+    wx.navigateTo({
+      url: `/pages/evaluation/evaluation?id=${idx}&cid=${cid}`,
+    });
+  },
   // 跳转不同估价页面
   getDiffPage(e){
     let id = e.currentTarget.dataset.id;

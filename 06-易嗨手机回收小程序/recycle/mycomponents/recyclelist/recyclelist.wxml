@@ -1,18 +1,19 @@
 <block wx:for="{{list}}" wx:key="index">
   <view class="order-list">
     <view class="title">机器信息</view>
-    <view class="project" data-id="index" bindtap="getDetail">
+    <view class="project">
       <view hidden class="project-image">
+        <!-- 没有图片， 待确认 -->
         <image class="image" src="/images/a.jpg" mode="widthFix"></image>
       </view>
       <view class="project-info">
         <view class="project-name">
-          <view class="name">机器名称</view>
-          <view class="state {{status==0?'state-red':''}}{{status==1?'state-green':''}}{{status==2?'state-gray':''}}">
-            {{status==0?'待发货':''}}{{status==1?'已完成':''}}{{status==2?'已取消':''}}{{status==3?'价格':''}}
+          <view class="name">{{item.name}}</view>
+          <view class="state {{item.assess_status==0?'state-red':''}}{{item.assess_status==1?'state-green':''}}{{item.assess_status==2?'state-gray':''}}">
+            {{item.assess_status==0?'估算中':''}}{{item.assess_status==1?'￥'+item.total_amount:''}}{{item.assess_status==2?'已取消':''}}{{item.assess_status==3?'价格':''}}
           </view>
         </view>
-        <view class="info ellipsis-text">全网速，64G，国行，三网通，过，三网通，过，三网通，过保或保修期...</view>
+        <view class="info ellipsis-text">{{item.configure}}</view>
         <view hidden class="info">预估价：¥1041</view>
       </view>
     </view>
@@ -32,5 +33,8 @@
         <view class="order-info-cont">2020年8月4日14:55:44</view>
       </view>
     </view>
+
+    <button wx:if="{{item.assess_status==1}}" data-id="{{index}}" bindtap="getDetail" class="button-clear">立即回收</button>
+
   </view>
 </block>

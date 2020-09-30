@@ -1,4 +1,6 @@
 // pages/order/orderdetail.js
+let that;
+let util = require('../../utils/util');
 Page({
 
   /**
@@ -13,6 +15,33 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
+    that = this;
+    this.data.pageOption = options;
+    this.init();
+  },
+  copyText(e){
+    let text = e.currentTarget.dataset.text;
+    wx.setClipboardData({
+      data: text,
+      success(res){
+        console.log(res);
+      }
+    });
+  },
+  init(){
+
+    util.post('/api/order/orderDetail', {orderid: this.data.pageOption.id}).then(res=>{
+      console.log(res);
+      if(res.code == 1){
+        let detail = res.data;
+        let t = util.getToday(detail.createtime*1000);
+        detail.createtime = t.date + ' ' + t.time;
+        that.setData({
+          detail: res.data
+        });
+      }
+    });
+
   },
   companyChange(e){
     let company = this.data.companyArr[e.detail.value];

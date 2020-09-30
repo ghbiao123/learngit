@@ -30,12 +30,7 @@
       "iconPath": "/images/index.png",
       "selectedIconPath": "/images/index-s.png"
     },
-    {
-      "pagePath": "pages/evaluation/evaluation",
-      "text": "估价",
-      "iconPath": "/images/evaluation.png",
-      "selectedIconPath": "/images/evaluation-s.png"
-    },
+    
     {
       "pagePath": "pages/order/order",
       "text": "订单",

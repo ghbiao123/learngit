@@ -28,11 +28,22 @@ Page({
   },
   getEvaluation(e){
     let mid = e.currentTarget.dataset.id;
-    let name = e.currentTarget.dataset.id;
-    let uid = wx.getStorageSync('userinfo').uid;
-    if(uid){
-      util.post('/api/products/searchStatistics', {mid, name, uid});
+    let name = e.currentTarget.dataset.name;
+    let cid = e.currentTarget.dataset.cid;
+    let userInfo = wx.getStorageSync('userinfo');
+    if(userInfo){
+      util.post('/api/products/searchStatistics', {mid, name, userid: userInfo.uid});
     }
+
+    if(cid>=4){
+      wx.navigateTo({
+        url: '/pages/evaluation/othercalcprice',
+      });
+      return
+    }
+    wx.navigateTo({
+      url: `/pages/evaluation/evaluation?id=${mid}&cid=${cid}`,
+    });
 
     return;
     wx.navigateTo({

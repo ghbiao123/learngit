@@ -24,6 +24,10 @@ Page({
       userid
     }).then(res => {
       console.log(res);
+      wx.setStorage({
+        data: res.data,
+        key: 'userdata',
+      })
       that.setData({
         userData: res.data
       });

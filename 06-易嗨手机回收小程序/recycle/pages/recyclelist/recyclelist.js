@@ -1,4 +1,6 @@
 // pages/recyclelist/recyclelist.js
+let that;
+let util = require('../../utils/util');
 Page({
 
   /**
@@ -12,6 +14,32 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
+    let userInfo = wx.getStorageSync('userinfo');
+    if(!userInfo){
+      return util.showSrror('请您先登录', function(){
+        wx.navigateBack({
+          delta: 1,
+        });
+      });
+    }
+
+    let userid = userInfo.uid;
+
+    util.post('/api/order/userrAssessOrderList', {userid}).then(res=>{
+      console.log(res);
+      if(res.code == 1){
+        let list = [];
+        list = res.data.map(v=>{
+          let t = util.getToday(v.createtime*1000);
+          v.createtime = t.date + ' ' + t.time;
+          return v;
+        });
+        that.setData({
+          list: res.data
+        });
+      }
+    });
 
   },
 

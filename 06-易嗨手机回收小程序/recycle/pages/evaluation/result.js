@@ -27,7 +27,7 @@ Page({
     // request data
     let data = {};
     
-    let userInfo = wx.getStorageInfoSync('userinfo');
+    let userInfo = wx.getStorageSync('userinfo');
     // 检测登录 userid 1
     if(!userInfo){
       return util.showError('请您登录', function(){
@@ -41,7 +41,7 @@ Page({
     data.userid = userInfo.uid;
 
     // 检测是否完善个人信息
-    let userData = wx.getStorageInfoSync('userdata');
+    let userData = wx.getStorageSync('userdata');
     if(!userData){
       return util.showError('请您登录', function(){
         wx.navigateTo({
@@ -51,14 +51,20 @@ Page({
     }
 
     // 加价券 couponid 1
-    let coupon = wx.getStorageInfoSync('coupon');
+    let coupon = wx.getStorageSync('coupon');
     // 得到加价券id
-    data.couponid = coupon.id;
+    if(coupon){
+      data.couponid = coupon.id;
+    }
 
     // currentmachine 当前机型 cid mid configureinfo describeinfo 4
     let currentMachine = wx.getStorageSync('currentmachine');
     // 得到 cid mid configureinfo describeinfo
-
+    let neeedId = ['phonecolor', 'phonestorage', 'phonemodel', 'pcconfigure', 'pcram', 'pcssd', 'pcvideocard'];
+    currentMachine.cid&&(data.cid = currentMachine.cid);
+    currentMachine.mid&&(data.cid = currentMachine.mid);
+    // currentMachine.mid&&(data.configureinfo = currentMachine.mid);
+    // currentMachine.mid&&(data.describeinfo = currentMachine.mid);
 
 
     // recoverytype this.data.selected 1
@@ -67,7 +73,28 @@ Page({
     
     // this.data.pageOption  estimatefee estimatetype assessorderid 3
     // 得到  estimatefee estimatetype assessorderid
+    data.estimatefee = this.data.totalPrice;
+    data.estimatetype = this.data.pageOption.frompage == 'evaluation' ? 0:1;
+    this.data.pageOption.orderid&&(data.assessorderid = this.data.pageOption.orderid);
 
+    util.post('/api/order/placeOrder', data).then(res=>{
+      console.log(res);
+      if(res.code == 1){
+
+        wx.removeStorage({
+          key: 'currentmachine',
+        });
+        wx.removeStorage({
+          key: 'coupon',
+        });
+
+        util.showSuccess(res.msg, function(){
+          wx.switchTab({
+            url: '/pages/index/index',
+          });
+        });
+      }
+    });
 
 
   },
@@ -88,7 +115,7 @@ Page({
 
     let coupon = wx.getStorageSync('coupon');
 
-    this.data.couponPrice = Number(coupon.parvalue);
+    this.data.couponPrice = Number(coupon.parvalue) || 0;
     this.data.price = Number(data.price);
     this.data.totalPrice = this.data.couponPrice + this.data.price;
 
@@ -145,9 +172,10 @@ Page({
   // 重新询价
   resetPrice(e){
     // wx.navigateBack();
-    wx.redirectTo({
-      url: '/pages/evaluation/evaluation',
-    });
+    // wx.redirectTo({
+    //   url: '/pages/evaluation/evaluation',
+    // });
+    wx.navigateBack()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

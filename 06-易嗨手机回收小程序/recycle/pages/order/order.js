@@ -1,4 +1,6 @@
 // pages/order/order.js
+let that;
+let util = require('../../utils/util');
 Page({
 
   /**
@@ -12,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    that = this;
   },
 
   /**
@@ -27,8 +29,36 @@ Page({
    */
   onShow: function () {
 
+    // 获取订单列表
+    this.init();
   },
-
+  // 获取订单列表
+  init(){
+    let userInfo = wx.getStorageSync('userinfo');
+    if(!userInfo){
+      return
+    }
+    let userid = userInfo.uid;
+    // orderstatus
+    let data = {
+      userid,
+      // orderstatus: 0
+    };
+    util.post('/api/order/userOrderList', data).then(res=>{
+      console.log(res);
+      if(res.code == 1){
+        let list = [];
+        list = res.data.map(v=>{
+          let t = util.getToday(v.createtime*1000);
+          v.createtime = t.date + ' ' + t.time;
+          return v;
+        });
+        that.setData({
+          list: res.data
+        });
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

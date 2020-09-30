@@ -34,7 +34,7 @@
   justify-content: space-between;
 }
 .types-item{
-  width: 115rpx;
+  width: 120rpx;
   height: 200rpx;
 }
 .types-icon{

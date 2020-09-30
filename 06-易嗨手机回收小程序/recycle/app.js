@@ -6,6 +6,14 @@ let siteinfo = require("./program.config");
 
 App({
 
+  /**
+   * {
+      "pagePath": "pages/evaluation/evaluation",
+      "text": "估价",
+      "iconPath": "/images/evaluation.png",
+      "selectedIconPath": "/images/evaluation-s.png"
+    },
+   */
 
   // 全局变量
 
