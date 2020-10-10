@@ -7,7 +7,10 @@
     "pages/myorder/myorder",
     "pages/orderdetail/orderdetail",
     "pages/editpersonalinfo/editpersonalinfo",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/newsdetail/newsdetail",
+    "pages/choicedetail/choicedetail",
+    "pages/detail/detail"
   ],
   "tabBar": {
     "color": "#CCCCCC",

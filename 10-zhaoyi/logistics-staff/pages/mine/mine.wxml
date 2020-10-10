@@ -26,9 +26,9 @@
 
 		<view class="menu m-t-10">
 			<button class="contact" open-type="contact">
-				<view class="cell-item">
+				<view class="cell-item" style="margin-left: 20rpx; width: 670rpx;">
 					<view class="cell-left">
-						<image class="cell-icon" src="/images/myorder.png"></image>
+						<image class="cell-icon" src="/images/contact.png"></image>
 						<view>客服</view>
 					</view>
 					<view class="cell-right">

@@ -4,13 +4,13 @@ import site from "../program.config";
 
 // api根目录
 function getSiteRoot() {
-  return site.siteroot + `/index.php`;
+  return site.siteroot;
 }
 
 // post 请求
 function post(url, data = {}) {
 
-  let ROOT_URL = getSiteRoot();
+  let ROOT_URL = getSiteRoot() + `/index.php`;
 
   let status = 0;
 

@@ -26,7 +26,7 @@
 		<button class="contact" open-type="contact">
 			<view class="cell-item">
 				<view class="cell-left">
-					<image class="cell-icon" src="/images/myorder.png"></image>
+					<image class="cell-icon" src="/images/contact.png"></image>
 					<view>客服</view>
 				</view>
 				<view class="cell-right">
@@ -34,6 +34,42 @@
 				</view>
 			</view>
 		</button>
+	</view>
+
+	<view class="menu m-t-20" bindtap="getLocation">
+		<view class="cell-item">
+			<view class="cell-left">
+				<image class="cell-icon" src="/images/location.png"></image>
+				<view class="e-text">广东省深圳市福田区深南中路2032号爱华电脑大厦3层 朝亿全球达</view>
+			</view>
+			<view class="cell-right">
+				<image class="cell-rt" src="/images/rt.png"></image>
+			</view>
+		</view>
+	</view>
+
+	<view class="menu m-t-20" data-phoneNumber="{{phoneNumber}}" bindtap="makeCall">
+		<view class="cell-item">
+			<view class="cell-left">
+				<image class="cell-icon" src="/images/phone.png"></image>
+				<view>{{phoneNumber}}</view>
+			</view>
+			<view class="cell-right">
+				<image class="cell-rt" src="/images/rt.png"></image>
+			</view>
+		</view>
+	</view>
+
+	<view class="menu m-t-20">
+		<view class="cell-item">
+			<view class="cell-left">
+				<image class="cell-icon" src="/images/time.png"></image>
+				<view class="e-text" bindtap="showTime">周末-周五 早上10:00-晚上00:00 周六早上10:00-晚上18:00</view>
+			</view>
+			<view class="cell-right">
+				<image class="cell-rt" src="/images/rt.png"></image>
+			</view>
+		</view>
 	</view>
 
 </view>

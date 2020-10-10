@@ -9,7 +9,9 @@ Page({
   data: {
     order_id:'',
     buttonText: '输入订单价格',
-    showPrompt: false
+    showPrompt: false,
+    isChange: true,
+    oldData:{},
   },
 
   /**
@@ -21,7 +23,55 @@ Page({
 
     // 获取订单详情
     this.getOrderDetail();
+
+    
+
   },
+  // resetData
+  resetData(){
+    let data = {
+      orderid: this.data.order.id,
+      goodstype: this.data.oldData.goodstype,
+      goodsweight: this.data.oldData.goodsweight,
+      goodssize: `${this.data.oldData.l}x${this.data.oldData.w}x${this.data.oldData.h}`,
+    }
+    util.post('/api/Order/editsize', data).then(res=>{
+      console.log(res);
+      if(res.code == 1){
+        let order = that.data.order;
+        Object.assign(order, data);
+        that.setData({
+          order,
+          isChange: false
+        });
+        return util.showSuccess(res.msg);
+      }else{
+        return util.showError(res.msg);
+      }
+
+    });
+  },
+  // 显示修改数据框
+  changeOrderData(){
+    this.setData({
+      isChange: true
+    });
+  },
+  // 监听文字输入
+  textInput(e){
+    let type = e.currentTarget.dataset.type;
+    this.data.oldData[type] = e.detail.value;
+  },
+   // 商品类型picker
+   goodsTypeChange(e){
+    let val = e.detail.value;
+    this.data.oldData.goodstype = that.data.goodsTypeRange[val].name;
+    that.setData({
+      goodsType: that.data.goodsTypeRange[val].name
+    });
+
+  },
+
   // 显示prompt
   showPrompt(){
     let showPrompt = !this.data.showPrompt;
@@ -32,6 +82,7 @@ Page({
   // 获取promptvalue
   getPromptValue(e){
     console.log(e.detail);
+    if(!e.detail) return;
     let order = this.data.order;
     
     util.post('/api/Order/updateprice', {
@@ -49,11 +100,29 @@ Page({
   getOrderDetail(){
     util.post('/api/Order/orderde', {orderid: this.data.order_id}).then(res=>{
       console.log(res);
+      let orderSize = res.goodssize.split('x');
+      let oldData = {
+        goodstype: res.goodstype,
+        goodsweight: res.goodsweight,
+        l: orderSize[0],
+        w: orderSize[1],
+        h: orderSize[2],
+      };
+
       that.setData({
-        order: res
+        order: res,
+        oldData
       });
       wx.stopPullDownRefresh();
     });
+
+    // 获取商品种类
+    util.post('/api/Xd/selecttype').then(res=>{
+      that.setData({
+        goodsTypeRange: res
+      });
+    });
+
   },
   // 复制单号
   cutText(e){

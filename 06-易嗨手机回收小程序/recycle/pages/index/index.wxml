@@ -51,7 +51,7 @@
 				<image class="rt-icon" src="/images/rt.png"></image>
 			</view>
 			<view class="steps-item">
-				<image class="steps-icon" src="/images/idx4.png"></image>
+				<image mode="widthFix" style="width: 60rpx; margin-top: -10rpx;" class="steps-icon" src="/images/idx4.png"></image>
 				<view class="steps-name">当面付款</view>
 			</view>
 		</view>

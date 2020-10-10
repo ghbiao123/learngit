@@ -2,8 +2,8 @@
 <view class="container">
 	<view class="swiper-cont">
 		<swiper class="swiper" circular autoplay>
-			<swiper-item class="swiper-item" wx:for="000" wx:key="index">
-				<image class="swiper-image" src="/images/banner.png"></image>
+			<swiper-item class="swiper-item" wx:for="{{bannerList}}" wx:key="index">
+				<image class="swiper-image" src="{{item}}"></image>
 			</swiper-item>
 		</swiper>
 	</view>
@@ -28,8 +28,18 @@
     
     <view class="t-a-c">
       <image style="width: 600rpx;" mode="widthFix" src="/images/step.png"></image>
-    </view>
-
+		</view>
+		
+		<view class="title-center t-a-c">为你优选</view>
+		<scroll-view class="better-choice" scroll-x>
+			<view class="better-choice-box" style="width:{{arrBetterChoice.length*350}}rpx;">
+				<view wx:for="{{arrBetterChoice}}" bindtap="getChoiceDetail" data-id="{{item.id}}" wx:key="index" class="choice-item">
+					{{item.name}}
+				</view>
+			</view>
+		</scroll-view>
+		<view class="title-center t-a-c">新闻公告</view>
+		<newslist list="{{newsList}}"></newslist>
 	</view>
 
 </view>

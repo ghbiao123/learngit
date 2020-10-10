@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "icontext": "/mycomponents/icontext/icontext"
+    "icontext": "/mycomponents/icontext/icontext",
+    "newslist": "/mycomponents/caselist/caselist"
   },
   "navigationBarTitleText": "朝亿物流"
 }

@@ -7,14 +7,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isLogin: false
+    isLogin: false,
+    phoneNumber: '18320999507'
   },
-
+  showTime(){
+    // util.showSuccess('周末-周五 早上10:00-晚上00:00 周六早上10:00-晚上18:00');
+    wx.showModal({
+      title:'工作时间',
+      content: `周末-周五 早上10:00-晚上00:00
+                周六早上10:00-晚上18:00`,
+      showCancel: false
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     that = this;
+  },
+  getLocation(){
+    
+    wx.openLocation({
+      latitude: 22.541031799,
+      longitude: 114.091626899
+    });
+  },
+  // makeCall
+  makeCall(e){
+    // let num = e.currentTarget.dataset.phoneNumber;
+    wx.makePhoneCall({
+      phoneNumber: that.data.phoneNumber,
+    });
   },
   // login
   getUserInfo(e){

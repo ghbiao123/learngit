@@ -23,7 +23,7 @@
 					<view>物品重量</view>
 				</view>
 				<view class="cell-icon-cont">
-					<input type="number" data-type="weight" bindinput="textInput" class="cell-input t-a-r" placeholder="输入物品重量"></input>
+					<input data-type="weight" bindinput="textInput" class="cell-input t-a-r" placeholder="输入物品重量"></input>
 					<view>kg</view>
 				</view>
 			</view>

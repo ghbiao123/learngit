@@ -17,15 +17,15 @@
 	</view>
 
 	<view class="cell-card">
-		<view class="cell-item">
+		<view class="cell-item" bindtap="changeOrderData">
 			<view class="cell-name">选择货物种类</view>
 			<view class="cell-cont t-a-r">{{order.goodstype}}</view>
 		</view>
-		<view class="cell-item">
+		<view class="cell-item" bindtap="changeOrderData">
 			<view class="cell-name">物品重量</view>
 			<view class="cell-cont t-a-r">{{order.goodsweight}}kg</view>
 		</view>
-		<view class="cell-item">
+		<view class="cell-item" bindtap="changeOrderData">
 			<view class="cell-name">物品尺寸</view>
 			<view class="cell-cont t-a-r">{{order.goodssize}}cm</view>
 		</view>
@@ -97,3 +97,53 @@
 </view>
 
 	<prompt bind:getPrompt="getPromptValue" isShow="{{showPrompt}}"></prompt>
+
+	<!-- 修改货物信息 -->
+	<view hidden="{{!isChange}}" class="msg-change-box">
+		<view class="cell-card msg-options">
+
+			<!-- 货物种类 -->
+			<view class="cell-item">
+				<view class="cell-icon-title">
+					<image class="cell-icon" src="/images/order1.png"></image>
+					<view>选择货物种类</view>
+				</view>
+				<picker mode="selector" range="{{goodsTypeRange}}" range-key="name" bindchange="goodsTypeChange">
+					<view class="cell-icon-cont">
+						<input disabled value="{{goodsType || oldData.goodstype}}" class="cell-input t-a-r" placeholder="选择货物种类"></input>
+						<image class="cell-rt" src="/images/rt.png"></image>
+					</view>
+				</picker>
+			</view>
+
+			<!-- 物品重量 -->
+			<view class="cell-item">
+				<view class="cell-icon-title">
+					<image class="cell-icon" src="/images/order2.png"></image>
+					<view>物品重量</view>
+				</view>
+				<view class="cell-icon-cont">
+					<input value="{{oldData.goodsweight}}" data-type="goodsweight" bindinput="textInput" class="cell-input t-a-r" placeholder="输入物品重量"></input>
+					<view>kg</view>
+				</view>
+			</view>
+
+			<!-- 物品尺寸 -->
+			<view class="cell-item">
+				<view class="cell-icon-title">
+					<image class="cell-icon" src="/images/order3.png"></image>
+					<view>物品尺寸</view>
+				</view>
+				<view class="cell-icon-cont">
+					<input type="number" value="{{oldData.l}}" data-type="l" bindinput="textInput" class="cell-input t-a-c" placeholder="长"></input>
+					<view>-</view>
+					<input type="number" value="{{oldData.w}}" data-type="w" bindinput="textInput" class="cell-input t-a-c" placeholder="宽"></input>
+					<view>-</view>
+					<input type="number" value="{{oldData.h}}" data-type="h" bindinput="textInput" class="cell-input t-a-c" placeholder="高"></input>
+					<view>cm</view>
+				</view>
+			</view>
+
+		</view>
+		<button bindtap="resetData" class="button-big-blue m-t-20">确认修改</button>
+	</view>

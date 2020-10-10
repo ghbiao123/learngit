@@ -1,0 +1,10 @@
+<image
+  wx:for="{{imageList}}" 
+  wx:key="index" 
+  src="{{item}}" 
+  mode="widthFix" 
+  style="width: 750rpx;"
+  show-menu-by-longpress
+  data-idx="{{index}}"
+  bindtap="showIt"
+  ></image>
