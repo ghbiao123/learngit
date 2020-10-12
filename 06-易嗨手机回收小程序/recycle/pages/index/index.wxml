@@ -12,22 +12,99 @@
 		</swiper>
 	</view>
 
-	<view class="add-price" bindtap="receiveCoupon">
+	<!-- <view class="add-price" bindtap="receiveCoupon">
 		<image class="add-price" src="/images/add-price.png"></image>
+	</view> -->
+
+	<view class="my-old-phone">
+		<view class="recycle-phone">
+			<image src="/images/old-phone-bg.png" class="my-old-phone-bg" mode="widthFix"></image>
+			<view class="recycle-phone-cont">
+				<image class="recycle-icon" mode="widthFix" src="/images/recycle-icon.png"></image>
+				<view class="recycle-content">
+					<view class="recycle-content-tit">旧机回收</view>
+					<view class="recycle-content-subtitle">手机 笔记本 平板 摄影摄像 智能数码</view>
+				</view>
+				<navigator hover-class="none" url="/pages/search/search">
+					<button class="evaluation-free" hover-class="btn-hover">免费估价</button>
+				</navigator>
+			</view>
+		</view>
+		<view class="get-coupon">
+			<image src="/images/coupon-bg.png" class="my-old-phone-bg" mode="widthFix"></image>
+			<view class="coupon-content" hover-class="line-hover" bindtap="receiveCoupon">
+				<image class="coupon-content-icon" mode="widthFix" src="/images/coupon.png"></image>
+				<view class="coupon-content-text">一键领取加价券</view>
+			</view>
+		</view>
 	</view>
 
-	<view class="tit-no-bg">回收品类</view>
+	<view class="tit-no-bg">
+		<view class="left-red-line">我的机型</view>
+	</view>
+	<view class="myphone">
+		<image class="myphone-bg" mode="widthFix" src="/images/myphone-bg.png"></image>
+		<view class="myphone-content">
+			<view class="myphone-content-image">
+				<image class="myphone-image" src="/images/inx1.png" mode="widthFix"></image>
+				<view class="myphone-button">
+					<image class="myphone-button-icon" src="/images/gh.png" mode="widthFix"></image>
+					<view class="myphone-button-text">更换</view>
+				</view>
+			</view>
+			<view class="myphone-content-info">
+				<view class="myphone-info-title">
+					华为mate30 5G
+				</view>
+				<view class="myphone-info-descr">最高可卖</view>
+				<view class="myphone-info-price">
+					<text class="myphone-info-price-type">￥</text> <text class="myphone-info-price-value">5098</text>
+				</view>
+				<view class="myphone-info-button">获取精确报价</view>
+				<image class="myphone-info-icon" mode="widthFix" src="/images/han.png"></image>
+			</view>
+		</view>
+	</view>
+
+	<view class="tit-no-bg">
+		<view class="left-red-line">回收品类</view>
+	</view>
 
 	<view class="cell-card">
 		<view class="types">
 			<view class="types-item" wx:for="{{init.category}}" wx:key="index" data-id="{{item.id}}" bindtap="getDiffPage">
 				<!-- <navigator url="/pages/search/search?id={{item.id}}">
 				</navigator> -->
-					<image class="types-icon" src="{{item.image}}"></image>
-					<view class="types-name t-a-c ellipsis-text">{{item.name}}</view>
+				<image class="types-icon" src="{{item.image}}"></image>
+				<view class="types-name t-a-c ellipsis-text">{{item.name}}</view>
 			</view>
 		</view>
 
+	</view>
+
+	<view class="tit-no-bg">
+		<image class="fire" src="/images/fire.png"></image>
+		<view>热门回收</view>
+	</view>
+
+	<scroll-view class="scroll-view" scroll-x>
+		<view class="scroll-content" style="width:{{init.hotmodel.length * 290}}rpx;">
+			<view class="scroll-item" data-cid="{{item.cid}}" data-id="{{item.id}}" bindtap="getEvaluation"
+				wx:for="{{init.hotmodel}}" wx:key="index">
+				<image class="scroll-image" src="{{item.image}}"></image>
+				<view class="name ellipsis-text">{{item.name}}</view>
+				<view class="price">￥{{item.maxprice}}</view>
+				<view class="max-price">最高回收价</view>
+			</view>
+		</view>
+	</scroll-view>
+
+	<view class="tit-no-bg">
+		<view class="left-red-line">回收流程</view>
+	</view>
+
+	<view class="cell-card">
+		
 		<view class="steps">
 			<view class="steps-item">
 				<image class="steps-icon" src="/images/idx1.png"></image>
@@ -51,27 +128,12 @@
 				<image class="rt-icon" src="/images/rt.png"></image>
 			</view>
 			<view class="steps-item">
-				<image mode="widthFix" style="width: 60rpx; margin-top: -10rpx;" class="steps-icon" src="/images/idx4.png"></image>
+				<image mode="widthFix" style="width: 60rpx; margin-top: -10rpx;" class="steps-icon" src="/images/idx4.png">
+				</image>
 				<view class="steps-name">当面付款</view>
 			</view>
 		</view>
 
 	</view>
-
-	<view class="tit-no-bg">
-		<image class="fire" src="/images/fire.png"></image>
-		<view>热门回收</view>
-	</view>
-
-	<scroll-view class="scroll-view" scroll-x>
-		<view class="scroll-content" style="width:{{init.hotmodel.length * 290}}rpx;">
-			<view class="scroll-item" data-cid="{{item.cid}}" data-id="{{item.id}}" bindtap="getEvaluation" wx:for="{{init.hotmodel}}" wx:key="index">
-				<image class="scroll-image" src="{{item.image}}"></image>
-				<view class="name ellipsis-text">{{item.name}}</view>
-				<view class="price">￥{{item.maxprice}}</view>
-				<view class="max-price">最高回收价</view>
-			</view>
-		</view>
-	</scroll-view>
 
 </view>

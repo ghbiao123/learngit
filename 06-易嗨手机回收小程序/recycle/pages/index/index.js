@@ -14,7 +14,7 @@ Page({
    */
   onLoad: function (options) {
     that = this;
-    let a = wx.getSystemInfo({
+    wx.getSystemInfo({
       success: (result) => {
         console.log(result);
       },

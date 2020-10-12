@@ -22,6 +22,14 @@
   overflow: hidden;
 }
 
+/* index - title  */
+.left-red-line{
+  margin-top: 20rpx;
+  padding-left: 20rpx;
+  height: 35rpx;
+  line-height: 35rpx;
+  border-left: 4rpx solid #C1402A;
+}
 
 .add-price{
   margin: 0 auto;
@@ -29,13 +37,189 @@
   height: 150rpx;
 }
 
+/* banner 下边 回收手机 */
+.my-old-phone{
+  margin: 20rpx auto 0;
+  width: 710rpx;
+  height: 216rpx;
+  overflow: hidden;
+  border-radius: 20rpx;
+}
+.recycle-phone,
+.get-coupon{
+  position: relative;
+}
+.recycle-phone{
+  height: 126rpx;
+}
+.get-coupon{
+  height: 90rpx;
+}
+.my-old-phone-bg{
+  width: 710rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.recycle-phone-cont{
+  display: flex;
+  width: 710rpx;
+  height: 126rpx;
+}
+.recycle-icon{
+  margin: 20rpx 0 0 20rpx;
+  width: 86rpx;
+}
+.recycle-content{
+  margin: 20rpx 0 0 20rpx;
+  width: 400rpx;
+}
+.recycle-content-tit{
+  line-height: 43rpx;
+  font-size: 36rpx;
+  color: #333;
+}
+.recycle-content-subtitle{
+  line-height: 43rpx;
+  font-size: 24rpx;
+  color: #999999;
+}
+.evaluation-free{
+  margin-top: 39rpx;
+  padding: 0;
+  width: 140rpx !important;
+  height: 48rpx;
+  font: normal 24rpx/48rpx '微软雅黑';
+  color: #fff;
+  border-radius: 24rpx;
+  background-color: #f74444;
+}
+.coupon-content{
+  display: flex;
+  justify-content: center;
+}
+.coupon-content-icon{
+  margin: 28rpx 20rpx 0 0;
+  width: 34rpx;
+}
+.coupon-content-text{
+  font: normal 28rpx/90rpx '';
+  color: #333333;
+}
+.myphone{
+  margin: 20rpx auto 0;
+  position: relative;
+  width: 710rpx;
+  height: 300rpx;
+  overflow: hidden;
+  border-radius: 20rpx;
+}
+.myphone-bg{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 710rpx;
+}
+.myphone-content{
+  margin: 30rpx 0 0 38rpx;
+  display: flex;
+  width: 640rpx;
+  height: 240rpx;
+}
+.myphone-content-image{
+  position: relative;
+  width: 280rpx;
+  height: 240rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.myphone-image{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 280rpx;
+}
+.myphone-button{
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  width: 86rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  background-color: #a1225c;
+  border-radius: 0 0 0 10rpx;
+}
+.myphone-button-icon{
+  margin: 11rpx 0 0 11rpx;
+  width: 20rpx;
+}
+.myphone-button-text{
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.myphone-content-info{
+  margin-left: 20rpx;
+  position: relative;
+  width: 315rpx;
+  height: 240rpx;
+}
+.myphone-info-title{
+  position: absolute;
+  top: 5rpx;
+  left: 5rpx;
+  font-size: 28rpx;
+}
+.myphone-info-descr{
+  position: absolute;
+  top: 40rpx;
+  left: 5rpx;
+  font-size: 24rpx;
+}
+.myphone-info-price{
+  position: absolute;
+  top: 96rpx;
+  left: 5rpx;
+  color: #f74847;
+}
+.myphone-info-price-type{
+  font-size: 20rpx;
+  vertical-align: bottom;
+}
+.myphone-info-price-value{
+  font-size: 34rpx;
+  vertical-align: bottom;
+}
+.myphone-info-button{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 300rpx;
+  height: 64rpx;
+  font-size: 24rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 64rpx;
+  border-radius: 32rpx;
+  background-image: linear-gradient(to right, #f98382 0%, #f74544 100%);
+}
+.myphone-info-icon{
+  position: absolute;
+  bottom: 64rpx;
+  right: 0;
+  width: 146rpx;
+}
+
+
 .types{
   display: flex;
   justify-content: space-between;
 }
 .types-item{
   width: 120rpx;
-  height: 200rpx;
+  height: 140rpx;
 }
 .types-icon{
   width: 115rpx;

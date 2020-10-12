@@ -19,7 +19,8 @@
     "pages/coupon/coupon",
     "pages/qrcode/qrcode",
     "pages/recyclelist/recyclelist",
-    "pages/personalinfo/personalinfo"
+    "pages/personalinfo/personalinfo",
+    "pages/oldfornew/oldfornew"
   ],
   "tabBar": {
     "color": "#cccccc",
@@ -30,7 +31,12 @@
       "iconPath": "/images/index.png",
       "selectedIconPath": "/images/index-s.png"
     },
-    
+    {
+      "pagePath": "pages/oldfornew/oldfornew",
+      "text": "订单",
+      "iconPath": "/images/oldfornew.png",
+      "selectedIconPath": "/images/oldfornew-s.png"
+    },
     {
       "pagePath": "pages/order/order",
       "text": "订单",
