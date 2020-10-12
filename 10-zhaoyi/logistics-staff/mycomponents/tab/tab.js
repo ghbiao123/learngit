@@ -12,7 +12,7 @@ Component({
     let window = wx.getSystemInfoSync();
     let query = wx.createSelectorQuery().in(this);
     query.select("#tab").boundingClientRect(res=>{
-      let scrollHeight = (window.windowHeight - res.height) * 2;
+      let scrollHeight = (window.windowHeight - res.height) * 2 - 20;
       that.setData({
         scrollHeight
       });

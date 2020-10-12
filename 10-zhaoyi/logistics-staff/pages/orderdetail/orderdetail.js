@@ -10,7 +10,7 @@ Page({
     order_id:'',
     buttonText: '输入订单价格',
     showPrompt: false,
-    isChange: true,
+    isChange: false,
     oldData:{},
   },
 
