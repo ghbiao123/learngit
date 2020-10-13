@@ -16,6 +16,16 @@ Component({
           title: newVal
         })
       }
+    },
+    pselected: {
+      type: Number,
+      value: 0,
+      observer(newVal){
+        
+        this.setData({
+          selected: newVal-1
+        });
+      }
     }
   },
   methods:{

@@ -35,9 +35,9 @@ Page({
         key: 'coupon',
         success(){
           // 跳转其他页面
-          wx.navigateBack({
-            delta: 1,
-          });
+         wx.redirectTo({
+           url: '/pages/search/search',
+         });
         }
       });
     }
@@ -46,6 +46,16 @@ Page({
   getCoupon(e){
     let arrIsGot = this.data.arrIsGot;
     let idx = e.currentTarget.dataset.id;
+
+    if(arrIsGot[idx]){
+
+      wx.redirectTo({
+        url: '/pages/search/search',
+      });
+
+      return;
+    }
+
     let mcid = this.data.list[idx].id;
     let userid = this.data.userInfo.uid;
     util.post('/api/products/userDoCoupon', {mcid, userid}).then(res=>{
@@ -68,10 +78,11 @@ Page({
 
     let url, 
       data = {},
-      arrIsGot = this.data.isGot;
+      arrIsGot = this.data.arrIsGot;
     if(type == 'add'){
       // 领取加价券
       url = '/api/products/markupCouponList';
+      data.userid = isLogin.uid;
     }else if(type == 'mine'){
       // 用户的加价券
       url = '/api/user/userMarkupCoupon';
@@ -87,10 +98,10 @@ Page({
         list = res.data.map(v=>{
           v.validstime_text = v.validstime_text.replace(/\-/g, "\/");
           v.validetime_text = v.validetime_text.replace(/\-/g, "\/");
-          v.isGot = false;
+          // v.isGot = false;
+          arrIsGot.push((v.usercoupon_count==0? false:true));
           return v;
         });
-        arrIsGot = new Array(3).fill(false);
       }else if(type == 'mine'){
         list = res.data.map(v=>{
 

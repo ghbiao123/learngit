@@ -24,13 +24,13 @@
 	<view class="cell-card">
 		<navigator hover-class="none" url="/pages/coupon/coupon?type=mine">
 			<view class="cell-item">
-				<view>我的加价卷</view>
+				<view>我的回收加价卷</view>
 				<image class="cell-rt" src="/images/rt2.png"></image>
 			</view>
 		</navigator>
 		<navigator hover-class="none" url="/pages/coupon/coupon?type=add">
 			<view class="cell-item">
-				<view>领取加价卷</view>
+				<view>领取回收加价卷</view>
 				<image class="cell-rt" src="/images/rt2.png"></image>
 			</view>
 		</navigator>

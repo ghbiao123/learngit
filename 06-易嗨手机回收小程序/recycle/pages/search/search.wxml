@@ -2,7 +2,7 @@
   <searchbar bind:searchbar="getKeywords" id="search" theme="#ffffff"></searchbar>
 
 
-  <tab title="{{arrTitle}}" swiperHeight="{{height}}" bind:tabChange="tabChange">
+  <tab pselected="{{selected}}" title="{{arrTitle}}" swiperHeight="{{height}}" bind:tabChange="tabChange">
     <block wx:for="{{[0]}}" wx:key="index">
       <view slot="tab-content-{{index}}">
         <vtab bind:vtabTitleId='getVtabTitleId' vtab="{{arrVtabTitle}}" vtabContent="{{arrContent}}" vtabHeight="{{height}}"></vtab>

@@ -205,6 +205,9 @@
   border-radius: 32rpx;
   background-image: linear-gradient(to right, #f98382 0%, #f74544 100%);
 }
+.myphone-info-button-hover{
+  background-image: linear-gradient(to right, #f98382 0%, #f98382 100%);
+}
 .myphone-info-icon{
   position: absolute;
   bottom: 64rpx;
@@ -217,8 +220,13 @@
   display: flex;
   justify-content: space-between;
 }
+.types-vertical-line{
+  width: 1rpx;
+  height: 140rpx;
+  background-color: #f5f5f5;
+}
 .types-item{
-  width: 120rpx;
+  width: 130rpx;
   height: 140rpx;
 }
 .types-icon{

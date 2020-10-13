@@ -81,9 +81,9 @@ Page({
   init() {
     let data = {};
     let url;
-    if (this.data.pageOption.cid == 1) {
+    if (this.data.pageOption.cid == 1 || this.data.pageOption.cid == 2) {
       this.data.type = 'mobile';
-    } else if (this.data.pageOption.cid == 2 || this.data.pageOption.cid == 3) {
+    } else if (this.data.pageOption.cid == 3) {
       this.data.type = 'pc';
     }
 
@@ -121,6 +121,13 @@ Page({
 
       _data.image = util.getImageFullUrl(_data.image);
 
+      _data.other[_data.other.length-1][_key].unshift({
+        id: 'none',
+        name: '无'
+      });
+
+      let arrChecked = new Array(_data.other[_data.other.length-1][_key].length).fill(false);
+
       let progressData = that.data.progressData;
       progressData.all = _data.other.length + (this.data.type == 'pc' ? 5 : 3);
 
@@ -129,15 +136,24 @@ Page({
         _data,
         progressData,
         hideCode: progressData.all,
-        isUpdateImage
+        isUpdateImage,
+        arrChecked,
       });
     });
+
   },
   // 选择选项
   radioChange(e) {
 
     let val = e.detail.value;
     let id = e.currentTarget.dataset.id;
+    if(val.indexOf('none') >= 0 ){
+      let arrChecked = this.data.arrChecked.fill(false);
+      arrChecked[0] = true;
+      this.setData({
+        arrChecked
+      });
+    }
 
     let hiddenCode, hideCode;
     let progressData = this.data.progressData;
@@ -209,6 +225,8 @@ Page({
         }
         
       } else {
+
+        // 处理多选的选项
 
         let len = this.data._data.other.length;
         let arr = this.data._data.other[len - 1][_key].filter(v => {

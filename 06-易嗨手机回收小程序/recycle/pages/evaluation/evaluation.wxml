@@ -6,7 +6,7 @@
         {{progressData.chose}}/{{progressData.all}}
         <view class="progress-s" style="width:{{progress}};"></view>
       </view>
-      <image class="image" src="{{_data.image}}"></image>
+      <image  mode="aspectFit" class="image" src="{{_data.image}}"></image>
       <view class="name">{{_data.name}}</view>
     </view>
 
@@ -55,7 +55,7 @@
             <block wx:else>
               <checkbox-group data-id="{{index}}" bindchange="radioChange">
                 <checkbox wx:for="{{item.inquiryinfo}}" wx:key="index" wx:for-item="itm" wx:for-index="idx"
-                  class="radio" color="#C7402C" value="{{itm.id}}">{{itm.name}}</checkbox>
+                  class="radio" color="#C7402C" value="{{itm.id}}" checked="{{arrChecked[idx]}}">{{itm.name}}</checkbox>
               </checkbox-group>
             </block>
           </view>

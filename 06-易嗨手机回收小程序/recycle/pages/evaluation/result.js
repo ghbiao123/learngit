@@ -22,6 +22,7 @@ Page({
     that = this;
     this.data.pageOption = options;
   },
+
   // 回收
   recycle(){
     // request data
@@ -125,8 +126,28 @@ Page({
       couponPrice: this.data.couponPrice,
     });
 
-    // 获取storage
 
+    // 回收平台邮寄地址
+    util.post('/api/user/getPlatforminfo').then(res=>{
+      that.setData({
+        platformInfo: res.data
+      });
+    });
+
+    // 获取用户信息
+    let userInfo = wx.getStorageSync('userinfo');
+    if(userInfo){
+      util.post('/api/user/getUserInfo',{userid: userInfo.uid}).then(res=>{
+        console.log(res);
+      });
+    }else{
+    }
+
+
+  },
+  // 使用个人信息
+  usingUserInfo(){
+    // 获取storage
     wx.getStorage({
       key: 'userdata',
       success(res){
@@ -138,21 +159,19 @@ Page({
         util.showSuccess('请完善您的个人信息');
       }
     });
-
-    // 回收平台邮寄地址
-    util.post('/api/user/getPlatforminfo').then(res=>{
-      that.setData({
-        platformInfo: res.data
-      });
-    });
-
-
   },
   // tab 点击事件, 切换回收类型
   getSelected(e){
     let selected = e.currentTarget.dataset.id;
     this.setData({
       selected
+    });
+  },
+  // regionChange 
+  regionChange(e){
+    let userRegion = e.detail.value;
+    this.setData({
+      userRegion
     });
   },
   // radios chang 事件

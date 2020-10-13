@@ -60,7 +60,7 @@
 				<view class="myphone-info-price">
 					<text class="myphone-info-price-type">￥</text> <text class="myphone-info-price-value">5098</text>
 				</view>
-				<view class="myphone-info-button">获取精确报价</view>
+				<view class="myphone-info-button" hover-class="myphone-info-button-hover">获取精确报价</view>
 				<image class="myphone-info-icon" mode="widthFix" src="/images/han.png"></image>
 			</view>
 		</view>
@@ -72,12 +72,13 @@
 
 	<view class="cell-card">
 		<view class="types">
-			<view class="types-item" wx:for="{{init.category}}" wx:key="index" data-id="{{item.id}}" bindtap="getDiffPage">
-				<!-- <navigator url="/pages/search/search?id={{item.id}}">
-				</navigator> -->
-				<image class="types-icon" src="{{item.image}}"></image>
-				<view class="types-name t-a-c ellipsis-text">{{item.name}}</view>
-			</view>
+			<block wx:for="{{init.category}}" wx:key="index">
+				<view hover-class="line-hover" class="types-item t-a-c" data-id="{{item.id}}" bindtap="getDiffPage">
+					<image class="types-icon" src="{{item.image}}"></image>
+					<view class="types-name ellipsis-text">{{item.name}}</view>
+				</view>
+				<view wx:if="{{(index+1) != init.category.length}}" class="types-vertical-line"></view>
+			</block>
 		</view>
 
 	</view>
@@ -91,7 +92,7 @@
 		<view class="scroll-content" style="width:{{init.hotmodel.length * 290}}rpx;">
 			<view class="scroll-item" data-cid="{{item.cid}}" data-id="{{item.id}}" bindtap="getEvaluation"
 				wx:for="{{init.hotmodel}}" wx:key="index">
-				<image class="scroll-image" src="{{item.image}}"></image>
+				<image mode="aspectFit" class="scroll-image" src="{{item.image}}"></image>
 				<view class="name ellipsis-text">{{item.name}}</view>
 				<view class="price">￥{{item.maxprice}}</view>
 				<view class="max-price">最高回收价</view>

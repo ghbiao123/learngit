@@ -2,7 +2,7 @@
   <view class="vtab-list">
     <scroll-view class="vtab-list-scroll" scroll-y  scroll-into-view="vtab{{selected-4}}">
       <block wx:for="{{vtab}}" wx:key="index">
-        <view id="vtab{{index}}" class="vtab-list-item {{selected==index? 'color':''}}" data-index="{{index}}" data-id="{{item.ebrands.id}}" bindtap="getSelected">{{item.ebrands.name}}</view>
+        <view id="vtab{{index}}" class="vtab-list-item {{selected==index? 'vtab-list-item-s':''}}" data-index="{{index}}" data-id="{{item.ebrands.id}}" bindtap="getSelected">{{item.ebrands.name}}</view>
       </block>
     </scroll-view>
   </view>
@@ -14,10 +14,10 @@
           <view class="vtab-content-scroll-title">{{vtab[selected].ebrands.name}}</view>
           <block wx:for="{{vtabContent}}" wx:key="index" wx:for-index="idx" wx:for-item="it">
             <view class="vtab-cont-list {{(idx+1)%2==1?'bg-w':'bg-p'}}" data-cid="{{it.cid}}" data-id="{{it.id}}" bindtap="getEvaluation">
-              <image class="vtab-cont-list-image" src="{{it.image}}"></image>
+              <image mode="aspectFit" class="vtab-cont-list-image" src="{{it.image}}"></image>
               <view class="vtab-cont-list-info">
                 <view class="vtab-cont-list-info-name ellipsis-text">{{it.name}}</view>
-                <view class="vtab-cont-list-info-name ellipsis-text">最高可卖：<text class="color">￥1234</text></view>
+                <view class="vtab-cont-list-info-name ellipsis-text">最高可卖：<text class="color">￥{{it.maxprice}}</text></view>
               </view>
               <image wx:if="{{idx < 3}}" class="vtab-cont-list-icon" src="/images/rank{{idx}}.png"></image>
             </view>

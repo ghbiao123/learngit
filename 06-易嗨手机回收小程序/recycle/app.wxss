@@ -94,6 +94,9 @@ image{
 .b-b-g{
   border-bottom: 1rpx solid #f6f6f6;
 }
+.b-t-g{
+  border-top: 1rpx solid #f6f6f6;
+}
 
 /* 文字居右 */
 .t-a-r{

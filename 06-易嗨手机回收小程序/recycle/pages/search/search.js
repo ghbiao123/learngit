@@ -7,8 +7,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // tab: ["手机", "平板", "电脑", "摄影摄像", "其他产品"],
-    // vtab: ["热门推荐", "华为", "荣耀", "小米", "红米", "三星", "vivo", "OPPO", "苹果", "iPhone", "onePlus", "锤子", "乐视", "联想", "酷派", "诺基亚", "老年机", "其他", ],
     arrTitle: [], // 页面tab标题， 页面vtab标题
     arrVtabTitle:[],
     arrContent: {}, // vtab item-》content
@@ -32,11 +30,12 @@ Page({
   init(id) {
     util.post('/api/products/getEcategoryList').then(res => {
       let arrTitle = res.data;
+      let _id = id? id:arrTitle[0].id;
       that.setData({
-        arrTitle
+        arrTitle,
+        selected: _id
       });
-      // let _id = id? id:arrTitle[0].id;
-      let _id = arrTitle[0].id;
+      // let _id = arrTitle[0].id;
       that.tabChange({detail: _id});
     });
   },
