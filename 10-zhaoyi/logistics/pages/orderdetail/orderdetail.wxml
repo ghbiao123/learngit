@@ -100,7 +100,7 @@
 			<view class="t-a-c">关注公众号查询订单</view>
 			<image mode="widthFix" show-menu-by-longpress class="toast-image m-t-20" src="/images/qrcode.jpg"></image>
 			<view class="toast-button-box">
-				<button class="toast-button-save" data-src="/images/accept-s.png" bindtap="saveToLocal">保存到相册</button>
+				<button class="toast-button-save" data-src="/images/qrcode.jpg" bindtap="saveToLocal">保存到相册</button>
 				<button class="toast-button-cancel m-t-20" bindtap="toastCancel">取消</button>
 			</view>
 		</view>

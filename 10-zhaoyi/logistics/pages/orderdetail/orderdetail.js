@@ -71,7 +71,7 @@ Page({
   // 保存照片到本地
   saveToLocal(e){
     let src = e.currentTarget.dataset.src;
-
+    
     wx.saveImageToPhotosAlbum({
       filePath: src,
       success(res){
@@ -79,6 +79,8 @@ Page({
         util.showSuccess('保存成功', function(){
           that.toastCancel();
         });
+      },fail(err){
+        console.log(err)
       }
     });
   },

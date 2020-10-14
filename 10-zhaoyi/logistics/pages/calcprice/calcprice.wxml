@@ -23,7 +23,7 @@
 					<view>物品重量</view>
 				</view>
 				<view class="cell-icon-cont">
-					<input data-type="weight" bindinput="textInput" class="cell-input t-a-r" placeholder="输入物品重量"></input>
+					<input data-type="weight" focus="{{blur_it}}" bindinput="textInput" class="cell-input t-a-r" placeholder="输入物品重量"></input>
 					<view>kg</view>
 				</view>
 			</view>
@@ -50,7 +50,7 @@
 					<image class="cell-icon" src="/images/order4.png"></image>
 					<view>地址</view>
 				</view>
-				<view class="cell-icon-cont">
+				<view class="cell-icon-cont" bindtap="blur">
 					<!-- <picker mode="selector" range="{{sendCountryRange}}" range-key="name" bindchange="sendCountryChange">
 						<input disabled value="{{sendCountry}}" class="cell-input t-a-c" placeholder="发件国家"></input>
 					</picker>
@@ -163,6 +163,18 @@
 			<view hidden="{{!isAgree}}" class="is-check"></view>
 		</view>
 		<view class="text">已阅读并同意<text class="agreement-item">《电子运单契约条款》</text></view>
+	</view>
+
+	<!-- 跳转客服 -->
+	<view class="agreement-box" hidden="{{!isShowContact}}">
+		<view class="cell-card agreement-cont" style="font-size: 40rpx;margin-top: 400rpx;">
+			<view class="t-a-c">提示</view>
+			<view class="t-a-c">您的货物较重，请您转人工客服！</view>
+			<view class="agreement-button m-t-20">
+				<button open-type="contact" style="padding-left:0; padding-right:0;" class="agreement-agree">跳转人工客服</button>
+				<button bindtap="agreementCancel" class="agreement-cancel">取消</button>
+			</view>
+		</view>
 	</view>
 
 </view>

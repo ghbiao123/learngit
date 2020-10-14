@@ -20,6 +20,12 @@ Page({
 
     
   },
+   // 失去焦点
+   blur(){
+    this.setData({
+      blur_it: false
+    });
+  },
   // agreementAgree
   agreementAgree(){
     this.setData({

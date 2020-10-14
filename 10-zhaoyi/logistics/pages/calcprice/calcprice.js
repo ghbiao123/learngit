@@ -295,6 +295,12 @@ Page({
       isShowAgreement: true
     });
   },
+  // 失去焦点
+  blur(){
+    this.setData({
+      blur_it: false
+    });
+  },
   // submit
   submit(e){
     // 判断是否同意协议

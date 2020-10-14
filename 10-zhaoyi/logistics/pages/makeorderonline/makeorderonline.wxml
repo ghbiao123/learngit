@@ -35,11 +35,11 @@
 					<view>物品尺寸</view>
 				</view>
 				<view class="cell-icon-cont">
-					<input type="number" data-type="long" bindinput="textInput" class="cell-input t-a-c" placeholder="长"></input>
+					<input type="number" data-type="long" focus="{{blur_it}}" bindinput="textInput" class="cell-input t-a-c" placeholder="长"></input>
 					<view>-</view>
-					<input type="number" data-type="wide" bindinput="textInput" class="cell-input t-a-c" placeholder="宽"></input>
+					<input type="number" data-type="wide" focus="{{blur_it}}" bindinput="textInput" class="cell-input t-a-c" placeholder="宽"></input>
 					<view>-</view>
-					<input type="number" data-type="high" bindinput="textInput" class="cell-input t-a-c" placeholder="高"></input>
+					<input type="number" data-type="high" focus="{{blur_it}}" bindinput="textInput" class="cell-input t-a-c" placeholder="高"></input>
 					<view>cm</view>
 				</view>
 			</view>
@@ -50,7 +50,7 @@
 					<image class="cell-icon" src="/images/order4.png"></image>
 					<view>地址</view>
 				</view>
-				<view class="cell-icon-cont">
+				<view class="cell-icon-cont" bindtap="blur">
 					<!-- <picker mode="selector" range="{{sendCountryRange}}" range-key="name" bindchange="sendCountryChange">
 						<input disabled value="{{sendCountry}}" class="cell-input t-a-c" placeholder="发件国家"></input>
 					</picker>
