@@ -121,12 +121,12 @@ Page({
 
       _data.image = util.getImageFullUrl(_data.image);
 
-      _data.other[_data.other.length-1][_key].unshift({
+      _data.other[_data.other.length - 1][_key].unshift({
         id: 'none',
         name: '无'
       });
 
-      let arrChecked = new Array(_data.other[_data.other.length-1][_key].length).fill(false);
+      let arrChecked = new Array(_data.other[_data.other.length - 1][_key].length).fill(false);
 
       let progressData = that.data.progressData;
       progressData.all = _data.other.length + (this.data.type == 'pc' ? 5 : 3);
@@ -147,7 +147,7 @@ Page({
 
     let val = e.detail.value;
     let id = e.currentTarget.dataset.id;
-    if(val.indexOf('none') >= 0 ){
+    if (val.indexOf('none') >= 0) {
       let arrChecked = this.data.arrChecked.fill(false);
       arrChecked[0] = true;
       this.setData({
@@ -218,23 +218,24 @@ Page({
       if (key != 'last') {
         inquiryinfo.push(data.inquiryinfo[key]);
 
-        if (this.data.type =='mobile' && lev1.indexOf(data.inquiryinfo[key].id) >= 0) {
+        if (this.data.type == 'mobile' && lev1.indexOf(data.inquiryinfo[key].id) >= 0) {
           break;
-        }else if(this.data.type =='pc' && lev2.indexOf(data.inquiryinfo[key].id) >= 0){
+        } else if (this.data.type == 'pc' && lev2.indexOf(data.inquiryinfo[key].id) >= 0) {
           break;
         }
-        
+
       } else {
 
         // 处理多选的选项
-
-        let len = this.data._data.other.length;
-        let arr = this.data._data.other[len - 1][_key].filter(v => {
-          if (data.inquiryinfo.last.indexOf(v.id.toString()) >= 0) {
-            return v;
-          }
-        });
-        inquiryinfo.push(...arr);
+        if (this.data.reqData.inquiryinfo.last[0] != 'none') {
+          let len = this.data._data.other.length;
+          let arr = this.data._data.other[len - 1][_key].filter(v => {
+            if (data.inquiryinfo.last.indexOf(v.id.toString()) >= 0) {
+              return v;
+            }
+          });
+          inquiryinfo.push(...arr);
+        }
       }
     }
     data.inquiryinfo = JSON.stringify(inquiryinfo);

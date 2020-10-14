@@ -1,1 +1,12 @@
 /* pages/oldfornew/oldfornew.wxss */
+.content{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 750rpx;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.cont-position{
+  margin-top: 400rpx;
+}

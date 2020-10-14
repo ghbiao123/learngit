@@ -73,7 +73,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 125rpx;
+  height: 145rpx;
   background-color: #fff;
 }
 

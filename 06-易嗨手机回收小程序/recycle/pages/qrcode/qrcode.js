@@ -1,4 +1,6 @@
 // pages/qrcode/qrcode.js
+let util = require('../../utils/util');
+let that;
 Page({
 
   /**
@@ -12,9 +14,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    that = this;
+    let staffid = wx.getStorageSync('staffid');
+    util.post('/api/user/getStaffInfo', {staffid}).then(res=>{
+      console.log(res);
+      wx.setStorage({
+        data: res.data,
+        key: 'staffinfo',
+      });
+      that.setData({
+        
+      });
+    });
   },
-
+  show(e){
+    wx.previewImage({
+      urls: ['/images/a.jpg'],
+      current: '/images/a.jpg'
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

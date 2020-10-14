@@ -14,10 +14,10 @@
 			</view>
 		</view>
 		<navigator hover-class="none" url="/pages/stafflogin/stafflogin">
-		<view class="staff-login">
-			<image class="staff-icon" src="/images/staff-login.png"></image>
-			<view class="staff-info">工作人员登录</view>
-		</view>
+			<view class="staff-login">
+				<image class="staff-icon" src="/images/staff-login.png"></image>
+				<view class="staff-info">工作人员登录</view>
+			</view>
 		</navigator>
 	</view>
 
@@ -40,6 +40,10 @@
 				<image class="cell-rt" src="/images/rt2.png"></image>
 			</view>
 		</navigator>
+		<view bindtap="showModel" class="cell-item">
+			<view>我的机器型号</view>
+			<image class="cell-rt" src="/images/rt2.png"></image>
+		</view>
 	</view>
 
 	<view class="tit-no-bg">

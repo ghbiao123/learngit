@@ -33,6 +33,10 @@ Page({
       console.log(res);
       if(res.code == 1){
         util.showSuccess(res.msg, function(){
+          wx.setStorage({
+            data: res.data.staffid,
+            key: 'staffid',
+          });
           wx.reLaunch({
             url: '/pages/staffinfo/staffinfo',
           });

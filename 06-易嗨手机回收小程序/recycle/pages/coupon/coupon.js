@@ -21,6 +21,8 @@ Page({
 
     this.data.available = options.available;
 
+    this.data.fromPage = options.page;
+
     console.log(options);
 
   },
@@ -35,8 +37,14 @@ Page({
         key: 'coupon',
         success(){
           // 跳转其他页面
+          let url = '';
+          if(this.data.fromPage == 'result'){
+            url = `/pages/evaluation/result`;
+          }else{
+            url = ``;
+          }
          wx.redirectTo({
-           url: '/pages/search/search',
+           url: url,
          });
         }
       });

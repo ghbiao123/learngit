@@ -98,3 +98,17 @@
 .vtab-list-scroll{
   height: 82.08vh;
 }
+
+
+
+.button-clear{
+  margin-top: 20rpx;
+  padding: 0;
+  width: 470rpx !important;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #fff;
+  font-weight: normal;
+  background-color: #C1402A;
+  border-radius: 10rpx;
+}

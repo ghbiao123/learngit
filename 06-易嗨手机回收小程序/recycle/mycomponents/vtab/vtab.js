@@ -13,6 +13,15 @@ Component({
         });
       }
     },
+    selected: {
+      type: Number,
+      value: 0,
+      observer(newVal) {
+        this.setData({
+          selected: newVal
+        });
+      }
+    },
     
     vtabContent: {
       type: Object,

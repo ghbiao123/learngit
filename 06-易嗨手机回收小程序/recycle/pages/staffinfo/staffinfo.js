@@ -1,4 +1,6 @@
 // pages/staffinfo/staffinfo.js
+let util = require('../../utils/util');
+let that;
 Page({
 
   /**
@@ -12,9 +14,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
+
+    this.init();
+  },
+  // 初始化数据
+  init(){
+    let staffid = wx.getStorageSync('staffid');
+    util.post('/api/user/getStaffInfo', {staffid}).then(res=>{
+      console.log(res);
+      wx.setStorage({
+        data: res.data,
+        key: 'staffinfo',
+      });
+      that.setData({
+        staffInfo: res.data
+      });
+    });
+  },
+  // 展示二维码
+  previewImage(){
 
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

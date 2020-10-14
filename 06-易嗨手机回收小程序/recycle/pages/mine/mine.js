@@ -16,6 +16,18 @@ Page({
     that = this;
     
   },
+  // 显示我的机型
+  showModel(){
+    wx.getSystemInfo({
+      success: (result) => {
+        util.showError(result.model, function(){
+          wx.setClipboardData({
+            data: result.model,
+          });
+        }); 
+      },
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

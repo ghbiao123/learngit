@@ -24,12 +24,12 @@
 						<navigator url="/pages/coupon/coupon?type=mine&available=9" hover-class="none">
 							{{couponPrice}}
 						</navigator>
-						<view class="prev-price-radio">
-							<image src="/images/choose.png" mode="widthFix" class="prev-price-radio-icon"></image>
+						<view bindtap="chooseCoupon" class="prev-price-radio">
+							<image hidden="{{!isCoupon}}" src="/images/choose.png" mode="widthFix" class="prev-price-radio-icon"></image>
 						</view>
 					</view>
 					<view wx:if="{{couponPrice == 0}}">
-						<navigator url="/pages/coupon/coupon?type=mine&available=9" hover-class="none">
+						<navigator url="/pages/coupon/coupon?type=mine&available=9&frompage=result" hover-class="none">
 							选择我的加价券
 						</navigator>
 					</view>
@@ -81,14 +81,26 @@
 					<view class="color-b" bindtap="usingUserInfo" hover-class="using-userinfo">使用个人信息</view>
 				</view>
 				<view class="radios b-b-g radios-input">
-					<input value="{{userData.username}}" class="input" placeholder="请输入联系人姓名"></input>
+					<input data-selected="1" data-key="uname" bindinput="inputText" value="{{userData.username}}" class="input" placeholder="请输入联系人姓名"></input>
 				</view>
 				<view class="radios">
 					<view>联系方式</view>
 					<!-- <view class="color-b">修改</view> -->
 				</view>
 				<view class="radios b-b-g radios-input">
-					<input value="{{userData.mobile}}" class="input" placeholder="请输入联系人电话"></input>
+					<input data-selected="1" data-key="uphone" bindinput="inputText" value="{{userData.mobile}}" class="input" placeholder="请输入联系人电话"></input>
+				</view>
+				<view class="radios">
+					<view>银行卡号</view>
+				</view>
+				<view class="radios b-b-g radios-input">
+					<input data-selected="1" data-key="ubankcard" bindinput="inputText" value="{{userData.bank}}" class="input" placeholder="请输入银行卡号"></input>
+				</view>
+				<view class="radios">
+					<view>开户行</view>
+				</view>
+				<view class="radios b-b-g radios-input">
+					<input data-selected="1" data-key="ubank" bindinput="inputText" value="{{userData.bCard}}" class="input" placeholder="请输入开户行"></input>
 				</view>
 				<view class="radios">
 					<view>上门地址</view>
@@ -107,7 +119,7 @@
 				</view>
 
 				<view class="radios b-b-g radios-input">
-					<input value="{{userData.address}}" class="input" placeholder="详细地址：如道路、门牌号、小区、单元室等"></input>
+					<input data-selected="1" data-key="uaddress" bindinput="inputText" value="{{userData.address}}" class="input" placeholder="详细地址：如道路、门牌号、小区、单元室等"></input>
 				</view>
 
 				<view class="radios">
@@ -133,29 +145,29 @@
 
 				<view class="radios">
 					<view>联系人</view>
-					<view class="color-b" bindtap="usingUserInfo" hover-class="using-userinfo">使用个人信息</view>
+					<view class="color-b" bindinput="usingUserInfo" hover-class="using-userinfo">使用个人信息</view>
 				</view>
 				<view class="radios b-b-g radios-input">
-					<input value="{{userData.username}}" class="input" placeholder="请输入联系人姓名"></input>
+					<input data-selected="2" data-key="uname" bindinput="inputText" value="{{userData.username}}" class="input" placeholder="请输入联系人姓名"></input>
 				</view>
 				<view class="radios">
 					<view>联系方式</view>
 					<!-- <view class="color-b">修改</view> -->
 				</view>
 				<view class="radios b-b-g radios-input">
-					<input value="{{userData.mobile}}" class="input" placeholder="请输入联系人电话"></input>
+					<input data-selected="2" data-key="uphone" bindinput="inputText" value="{{userData.mobile}}" class="input" placeholder="请输入联系人电话"></input>
 				</view>
 				<view class="radios">
 					<view>银行卡号</view>
 				</view>
 				<view class="radios b-b-g radios-input">
-					<input value="{{userData.bank}}" class="input" placeholder="请输入银行卡号"></input>
+					<input data-selected="2" data-key="ubankcard" bindinput="inputText" value="{{userData.bank}}" class="input" placeholder="请输入银行卡号"></input>
 				</view>
 				<view class="radios">
 					<view>开户行</view>
 				</view>
 				<view class="radios b-b-g radios-input">
-					<input value="{{userData.bCard}}" class="input" placeholder="请输入开户行"></input>
+					<input data-selected="2" data-key="ubank" bindinput="inputText" value="{{userData.bCard}}" class="input" placeholder="请输入开户行"></input>
 				</view>
 				<view class="radios">
 					<view>上门地址</view>
@@ -174,7 +186,7 @@
 				</view>
 
 				<view class="radios b-b-g radios-input">
-					<input value="{{userData.address}}" class="input" placeholder="详细地址：如道路、门牌号、小区、单元室等"></input>
+					<input data-selected="2" data-key="uaddress" bindinput="inputText" value="{{userData.address}}" class="input" placeholder="详细地址：如道路、门牌号、小区、单元室等"></input>
 				</view>
 
 				<view class="radios b-t-g">
@@ -182,7 +194,7 @@
 					<!-- <view class="color-b">修改</view> -->
 				</view>
 				<view class="radios b-b-g">
-					<input class="input  radios-input" disabled value="{{platformInfo.contactperson}}"></input>
+					<input class="input radios-input" disabled value="{{platformInfo.contactperson}}"></input>
 				</view>
 
 				<view class="radios">
@@ -207,6 +219,9 @@
 	</view>
 
 	<view class="button">
-		<button bindtap="recycle" class="button-clear m-t-20">立即回收</button>
+		<button bindtap="recycle" style="width: 560rpx !important;" class="button-clear m-t-20">立即回收</button>
+		<button bindtap="scanCode" style="width: 90rpx !important;" class="button-clear m-t-20">
+			<image style="width: 90rpx;" mode="widthFix" src="/images/sanf.png"></image>
+		</button>
 	</view>
 </view>
