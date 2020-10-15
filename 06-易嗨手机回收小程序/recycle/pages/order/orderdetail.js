@@ -42,6 +42,19 @@ Page({
       }
     });
 
+    util.post('/api/user/getPlatforminfo').then(res=>{
+      that.setData({
+        platform: res.data
+      });
+    });
+
+  },
+  copy(){
+    let platform = this.data.platform;
+    let str = `${platform.contactperson},${platform.contactphone},${platform.contactaddress}`;
+    wx.setClipboardData({
+      data: str,
+    });
   },
   companyChange(e){
     let company = this.data.companyArr[e.detail.value];

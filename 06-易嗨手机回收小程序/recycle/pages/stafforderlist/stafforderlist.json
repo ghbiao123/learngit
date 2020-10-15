@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "orderlist": "/mycomponents/orderlist/orderlist"
+    "orderlist": "/mycomponents/orderlist/orderlist",
+    "recyclelist": "/mycomponents/recyclelist/recyclelist"
   }
 }

@@ -18,24 +18,31 @@ Page({
 
     this.getList(options.keywords);
   },
-  getList(keywords){
-    util.post('/api/products/searchEmodel', {keywords}).then(res=>{
+  getList(keywords) {
+    util.post('/api/products/searchEmodel', {
+      keywords
+    }).then(res => {
       console.log(res);
       that.setData({
         result: res.data
       });
     });
   },
-  getEvaluation(e){
+  getEvaluation(e) {
     let mid = e.currentTarget.dataset.id;
-    let name = e.currentTarget.dataset.name;
+    let mname = e.currentTarget.dataset.name;
     let cid = e.currentTarget.dataset.cid;
     let userInfo = wx.getStorageSync('userinfo');
-    if(userInfo){
-      util.post('/api/products/searchStatistics', {mid, name, userid: userInfo.uid});
+    if (userInfo) {
+      util.post('/api/products/searchStatistics', {
+        mid,
+        mname,
+        userid: userInfo.uid,
+        cid
+      });
     }
 
-    if(cid>=4){
+    if (cid >= 4) {
       wx.navigateTo({
         url: '/pages/evaluation/othercalcprice',
       });
@@ -49,8 +56,8 @@ Page({
     wx.navigateTo({
       url: '/pages',
     });
-    
-    
+
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

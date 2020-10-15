@@ -14,11 +14,6 @@ Page({
    */
   onLoad: function (options) {
     that = this;
-    wx.getSystemInfo({
-      success: (result) => {
-        console.log(result);
-      },
-    });
 
     // init
     this.initData();
@@ -60,6 +55,22 @@ Page({
         init: res.data
       });
     });
+
+    // 获取本机机型
+    wx.getSystemInfo({
+      success: (result) => {
+        let modelkey = `MI 8` || result.model;
+        util.post('/api/index/getSystemInfo', {modelkey}).then(res=>{
+          console.log(res);
+          res.data.image = util.getImageFullUrl(res.data.image);
+          let myPhoneInfo = res.data;
+          that.setData({
+            myPhoneInfo
+          });
+        });
+      },
+    });
+
   },
 
   // 跳转加价券页面

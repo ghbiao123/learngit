@@ -4,7 +4,7 @@
     <view class="cell-item">
       <view class="name">类目：</view>
       <view class="cont">
-        <input class="cont" value="国行全网通，6G+128G，4500mAh，支持WiFi6，NFC"></input>
+        <input class="cont" value="{{order.model_info.configure}}"></input>
       </view>
       <view class="change">修改</view>
     </view>
@@ -12,7 +12,7 @@
     <view class="cell-item">
       <view class="name">价格：</view>
       <view class="cont">
-        <input class="cont" value="￥1234556"></input>
+        <input class="cont" value="￥{{order.estimate_fee}}"></input>
       </view>
       <view class="change">修改</view>
     </view>
@@ -44,16 +44,19 @@
   <view class="cell-card">
     <view class="idcard">
       <view class="idcard-image">
-        <image class="idcard-image" bindtap="chooseIdcard" src="{{ idcardSrc || '/images/add-idcard.png'}}"></image>
+      <ocr-navigator bind:onSuccess="chooseIdcard" certificateType="idCard" opposite="{{false}}">
+      <!-- <button type="primary">身份证正面识别</button> -->
+        <image class="idcard-image" src="{{ idcardSrc || '/images/add-idcard.png'}}"></image>
+      </ocr-navigator>
       </view>
       <view class="idcard-info">
         <view class="info">
           <view class="idcard-name">姓名</view>
-          <input class="idcard-input"></input>
+          <input disabled value="{{idCard.name}}" class="idcard-input"></input>
         </view>
         <view class="info">
           <view class="idcard-name">身份证号</view>
-          <input class="idcard-input"></input>
+          <input disabled value="{{idCard.id}}" class="idcard-input"></input>
         </view>
       </view>
 

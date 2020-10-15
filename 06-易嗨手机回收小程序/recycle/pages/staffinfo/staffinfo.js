@@ -20,9 +20,12 @@ Page({
   },
   // 初始化数据
   init(){
+    // 获取工作人员二维码
     let staffid = wx.getStorageSync('staffid');
     util.post('/api/user/getStaffInfo', {staffid}).then(res=>{
       console.log(res);
+      res.data.avatar = util.getImageFullUrl(res.data.avatar);
+      res.data.qrcode_path = util.getImageFullUrl(res.data.qrcode_path);
       wx.setStorage({
         data: res.data,
         key: 'staffinfo',
@@ -31,10 +34,24 @@ Page({
         staffInfo: res.data
       });
     });
+
+    // 工作人员订单
+    util.post('/api/order/staffOrderList', {
+      orderstatus: 0,
+      staffid
+    }).then(res=>{
+      that.setData({
+        count: res.data.length
+      });
+    });
+
   },
   // 展示二维码
   previewImage(){
-
+    wx.previewImage({
+      current: that.data.staffInfo.qrcode_path,
+      urls: [that.data.staffInfo.qrcode_path],
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

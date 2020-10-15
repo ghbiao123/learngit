@@ -1,6 +1,4 @@
-// pages/contact/contact.js
-let util = require('../../utils/util');
-let that;
+// pages/aboutus/aboutus.js
 Page({
 
   /**
@@ -14,18 +12,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    that = this;
-    this.init();
+
   },
-  init(){
-    util.post('/api/index/getAbout').then(res=>{
-      console.log(res);
-      res.data.logo = util.getImageFullUrl(res.data.logo);
-      that.setData({
-        data: res.data
-      });
-    });
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -38,7 +38,7 @@ Page({
         success(){
           // 跳转其他页面
           let url = '';
-          if(this.data.fromPage == 'result'){
+          if(that.data.fromPage == 'result'){
             url = `/pages/evaluation/result`;
           }else{
             url = ``;

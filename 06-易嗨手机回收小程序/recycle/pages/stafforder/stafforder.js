@@ -16,8 +16,34 @@ Page({
   onLoad: function (options) {
     that = this
 
+    this.data.pageOptions = options;
+
+    this.init();
+
   },
-  chooseIdcard() {
+  // 初始化数据
+  init(){
+
+    // 获取订单详情
+    let orderid = this.data.pageOptions.id;
+    if(!orderid) return;
+    util.post('/api/order/orderDetail', {orderid}).then(res=>{
+      console.log(res);
+      that.setData({
+        order: res.data
+      });
+    });
+  },
+
+  chooseIdcard(res) {
+    let idCard = {
+      id: res.detail.id.text,
+      name: res.detail.name.text
+    }
+    this.setData({
+      idCard
+    });
+    return;
     wx.chooseImage({
       count: 1,
       sizeType: ['compressed'],

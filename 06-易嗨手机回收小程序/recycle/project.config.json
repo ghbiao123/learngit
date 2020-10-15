@@ -122,10 +122,10 @@
           "scene": null
         },
         {
-          "id": -1,
+          "id": 7,
           "name": "pages/order/orderdetail",
           "pathName": "pages/order/orderdetail",
-          "query": "",
+          "query": "id=9",
           "scene": null
         },
         {

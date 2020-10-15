@@ -120,7 +120,7 @@ Page({
     }
 
     currentMachine.cid && (data.cid = currentMachine.cid);
-    currentMachine.mid && (data.mid = currentMachine.mid);
+    currentMachine.mid && (data.cid = currentMachine.mid);
     // currentMachine.mid&&(data.configureinfo = currentMachine.mid);
     // currentMachine.mid&&(data.describeinfo = currentMachine.mid);
 

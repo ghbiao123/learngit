@@ -61,13 +61,13 @@
 			<navigator hover-class="none" url="/pages/stafforderlist/stafforderlist?type=send">
 				<view class="order-step-item">
 					<image class="order-icon" src="/images/main2.png"></image>
-					<view class="order-name">待发货</view>
+					<view class="order-name">待验机</view>
 				</view>
 			</navigator>
 			<navigator hover-class="none" url="/pages/stafforderlist/stafforderlist?type=check">
 				<view class="order-step-item">
 					<image class="order-icon" src="/images/main3.png"></image>
-					<view class="order-name">待验机</view>
+					<view class="order-name">待付款</view>
 				</view>
 			</navigator>
 			<navigator hover-class="none" url="/pages/stafforderlist/stafforderlist?type=done">

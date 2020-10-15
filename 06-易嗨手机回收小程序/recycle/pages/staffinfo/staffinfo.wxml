@@ -1,8 +1,8 @@
 <view class="container">
   <view class="user-info">
     <view>
-      <image class="avatar" src="/images/a.jpg"></image>
-      <name class="name">工作人员123</name>
+      <image class="avatar" src="{{staffInfo.avatar}}"></image>
+      <name class="name">{{staffInfo.username}}</name>
     </view>
       <image bindtap="previewImage" class="qrcode" src="/images/qrcode.png"></image>
   </view>
@@ -12,22 +12,22 @@
       <view class="type">
         <navigator url="/pages/stafforderlist/stafforderlist?type=todoor" hover-class="none">
           <image class="type-icon" src="/images/wei.png"></image>
-          <view class="type-txt">未上门</view>
-          <view class="dot">88</view>
+          <view class="type-txt">待处理</view>
+          <view class="dot">{{count}}</view>
         </navigator>
       </view>
       <view class="type">
         <navigator url="/pages/stafforderlist/stafforderlist?type=dealwith" hover-class="none">
           <image class="type-icon" src="/images/wait.png"></image>
-          <view class="type-txt">待处理</view>
-          <view class="dot">88</view>
+          <view class="type-txt">已验机</view>
+          <view hidden class="dot">88</view>
         </navigator>
       </view>
       <view class="type">
         <navigator url="/pages/stafforder/stafforder?type=addorder" hover-class="none">
           <image class="type-icon" src="/images/qr.png"></image>
           <view class="type-txt">增加订单</view>
-          <view class="dot">88</view>
+          <view hidden class="dot">88</view>
         </navigator>
       </view>
     </view>

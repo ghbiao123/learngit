@@ -42,48 +42,13 @@ Page({
       return util.showSuccess('图片正在上传，请稍后尝试...');
     }
 
-    wx.showModal({
-      cancelColor: '#000',
-      cancelText: '人工估价',
-      confirmText: '立即回收',
-      title: '提示',
-      content: '',
-      success(res){
-        if(res.confirm){
-          // 用户现场扫码
-          data.otype = 1;
-          // 添加storage： currentmachine
-          wx.setStorage({
-            data: data,
-            key: 'currentmachine',
-          });
-          submit(data, function(){
-            wx.navigateTo({
-              url: '/pages/evaluation/result?frompage=othercalcprice&name=1&price=0',
-            });
-          });
-        }else if(res.cancel){
-          // 用户正常流程进行人工估价
-          data.otype = 1;
-          submit(data, function(){
-            wx.redirectTo({
-              url: '/pages/recyclelist/recyclelist',
-            });
-          });
-        }
-
-        function submitOrder(data, callBack){
-          util.post('/api/order/calculatePriceOther', data).then(res=>{
-            if(res.code == 1){
-              callBack&&callBack()
-            }
-          });
-        }
-        
+    util.post('/api/order/calculatePriceOther', data).then(res=>{
+      if(res.code == 1){
+        util.showSuccess(res.msg, function(){
+          wx.navigateBack();
+        });
       }
     });
-
-    
 
   },
   // 删除图片

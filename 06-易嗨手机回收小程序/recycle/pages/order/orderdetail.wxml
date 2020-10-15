@@ -1,7 +1,7 @@
 <view class="container">
 	<view class="head">
 		<view class="step">
-			<!-- <view class="line"></view> -->
+			<view class="line"></view>
 			<view class="step-item">
 				<view hidden class="step-image">
 					<image class="icon" src="/images/addm.png"></image>
@@ -45,7 +45,24 @@
 		</view>
 	</view>
 
-	<view hidden class="cell-card express">
+	<view class="cell-card express">
+    <view class="cell-item">订单信息</view>
+    <view class="order">
+      <view class="order-info">
+        <view class="order-name">订单编号：</view>
+        <view class="order-value">
+          <view style="padding-right:20rpx;">{{detail.order_sn}}</view>
+          <view class="copy" data-text="{{detail.order_sn}}" bindtap="copyText">复制</view>
+        </view>
+      </view>
+      <view class="order-info">
+        <view class="order-name">下单时间</view>
+        <view class="order-value">{{detail.createtime}}</view>
+      </view>
+    </view>
+  </view>
+
+	<view wx:if="{{detail.recovery_type==2}}" class="cell-card">
 		<view class="cell-item">
 			自行邮寄
 		</view>
@@ -55,13 +72,13 @@
 			<view>
 				<view class="express-add-name">
 					<view>
-						<text>淄博万象汇回收质检中心</text>
-						<text>13256488965</text>
+						<text style="padding-right: 20rpx;">{{platform.contactperson}}</text>
+						<text>{{platform.contactphone}}</text>
 					</view>
-					<view class="copy">复制</view>
+					<view bindtap="copy" class="copy">复制</view>
 				</view>
 				<view class="express-address ellipsis-text">
-					淄博市金晶大道与华光路交叉路口34号万象汇二楼回收质检中心象汇二楼回收质检中心
+					{{platform.contactaddress}}
 				</view>
 			</view>
 		</view>
@@ -70,7 +87,7 @@
 			<image class="express-icon" src="/images/co-s.png"></image>
 			<view>快递单号</view>
 			<view><input class="order-input" placeholder="请输入物流单号"></input></view>
-			<image class="scan-icon" src="/images/scan.png"></image>
+			<image hidden class="scan-icon" src="/images/scan.png"></image>
 		</view>
 
 		<view class="cell-item">
@@ -99,30 +116,13 @@
             {{detail.order_status==0?'待验机':''}}{{detail.order_status==1?'待付款':''}}{{detail.order_status==2?'订单完成':''}}{{detail.order_status==3?'订单取消':''}}
           </view>
         </view>
-        <view class="msg">{{detail.model_info.configure}}</view>
+        <view class="msg">{{detail.model_info.cinfo}}</view>
         <view class="msg">预估价：￥{{detail.total_amount}}</view>
       </view>
     </view>
   </view>
 
-  <view class="cell-card">
-    <view class="cell-item">订单信息</view>
-    <view class="order">
-      <view class="order-info">
-        <view class="order-name">订单编号：</view>
-        <view class="order-value">
-          <view style="padding-right:20rpx;">{{detail.order_sn}}</view>
-          <view class="copy" data-text="{{detail.order_sn}}" bindtap="copyText">复制</view>
-        </view>
-      </view>
-      <view class="order-info">
-        <view class="order-name">下单时间</view>
-        <view class="order-value">{{detail.createtime}}</view>
-      </view>
-    </view>
-  </view>
-
-  <view hidden class="button m-t-20">
+  <view wx:if="{{detail.recovery_type == 2}}" class="button m-t-20">
     <button class="btn">取消订单</button>
     <button class="btn">确认发货</button>
   </view>

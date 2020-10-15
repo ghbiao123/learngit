@@ -1,58 +1,106 @@
 // pages/stafforderlist/stafforderlist.js
+let util = require('../../utils/util');
+let that;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    identy: 1, // 1: 用户， 默认值， 2：工作人员
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
     let type = options.type;
     this.getList(type);
   },
   // 获取列表数据
   getList(type){
     console.log(type);
+    let staffid = wx.getStorageSync('staffid');
+    let userInfo = wx.getStorageSync('userinfo');
     let title = '';
-    let url = '';
+    let url = '/api/order/userOrderList';
+    let identy = 1;
+    let data = {};
     switch(type){
       case "staff":{
         title = "工作人员订单";
       }
       break;
       case "send":{
-        title = "待发货";
+        title = "待验机";
+        data.userid = userInfo.uid;
+        data.orderstatus = 0;
       }
       break;
       case "check":{
-        title = "待验机";
+        title = "待付款";
+        data.userid = userInfo.uid;
+        data.orderstatus = 1;
       }
       break;
       case "done":{
         title = "已完成";
+        data.userid = userInfo.uid;
+        data.orderstatus = 2;
       }
       break;
       case "cancel":{
         title = "已取消";
+        data.userid = userInfo.uid;
+        data.orderstatus = 3;
       }
       break;
       case 'todoor': {
-        title = '未上门订单';
+        title = '待处理订单';
+        identy = 2;
+        url = '/api/order/staffOrderList';
+        data.staffid = staffid;
+        data.orderstatus = 0;
       }
       break;
       case 'dealwith' : {
-        title =  '未处理订单';
+        title =  '已验机订单';
+        identy = 2;
+        url = '/api/order/staffOrderList';
+        data.staffid = staffid;
+        data.orderstatus = 1;
       }
       break;
       default:{
         title = "全部";
+        data.userid = userInfo.uid;
       }
     }
+
+    util.post(url, data).then(res=>{
+      console.log(res);
+      if(res.data.length == 0){
+        return util.showSuccess(res.msg, function(){
+          wx.navigateBack({
+            delta: 1,
+          });
+        });
+      }
+      let list = res.data.map(v=>{
+        let t = util.getToday(v.createtime * 1000);
+        v.createtime = t.date + ' ' + t.time;
+        return v;
+      });
+      that.setData({
+        list
+      });
+    });
+    
+
+    this.setData({
+      identy
+    });
     wx.setNavigationBarTitle({
       title: title,
     });
