@@ -11,22 +11,22 @@
     <view class="order-type">
       <view class="type">
         <navigator url="/pages/stafforderlist/stafforderlist?type=todoor" hover-class="none">
-          <image class="type-icon" src="/images/wei.png"></image>
+          <image mode="aspectFit" class="type-icon" src="/images/wei.png"></image>
           <view class="type-txt">待处理</view>
           <view class="dot">{{count}}</view>
         </navigator>
       </view>
       <view class="type">
         <navigator url="/pages/stafforderlist/stafforderlist?type=dealwith" hover-class="none">
-          <image class="type-icon" src="/images/wait.png"></image>
+          <image mode="aspectFit" class="type-icon" src="/images/wait.png"></image>
           <view class="type-txt">已验机</view>
           <view hidden class="dot">88</view>
         </navigator>
       </view>
       <view class="type">
-        <navigator url="/pages/stafforder/stafforder?type=addorder" hover-class="none">
-          <image class="type-icon" src="/images/qr.png"></image>
-          <view class="type-txt">增加订单</view>
+        <navigator url="/pages/stafforderlist/stafforderlist?type=staffcancel" hover-class="none">
+          <image mode="aspectFit" class="type-icon" src="/images/main5.png"></image>
+          <view class="type-txt">已取消</view>
           <view hidden class="dot">88</view>
         </navigator>
       </view>

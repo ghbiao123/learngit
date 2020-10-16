@@ -28,6 +28,16 @@ image{
   background-color: #C1402A;
   border-radius: 10rpx;
 }
+.button-clear-cancel{
+  padding: 0;
+  width: 670rpx !important;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #fff;
+  font-weight: normal;
+  background-color: #d3d3d3;
+  border-radius: 10rpx;
+}
 
 /* 页面大部分公共样式 */
 

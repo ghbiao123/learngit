@@ -36,6 +36,8 @@ Page({
         let detail = res.data;
         let t = util.getToday(detail.createtime*1000);
         detail.createtime = t.date + ' ' + t.time;
+        detail.model_info.image = util.getImageFullUrl(detail.model_info.image);
+        // detail.model_info.des = detail.model_info.des.join('；')
         that.setData({
           detail: res.data
         });
@@ -49,6 +51,21 @@ Page({
     });
 
   },
+  // 快递单号输入
+  expressNumberInput(e){
+    this.data.expressNumber = e.detail.value;
+  },
+  // 取消订单
+  cancelOrder(){
+    let userInfo = wx.getStorageSync('userinfo');
+    let uid = userInfo.uid;
+    let orderId = this.data.detail.id;
+    let url =`/pages/cancel/cancel?orderid=${orderId}&operator=1&operatorid=${uid}`
+    wx.navigateTo({
+      url: url,
+    });
+  },
+  // 复制平台信息
   copy(){
     let platform = this.data.platform;
     let str = `${platform.contactperson},${platform.contactphone},${platform.contactaddress}`;

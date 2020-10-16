@@ -20,7 +20,9 @@
     "pages/qrcode/qrcode",
     "pages/recyclelist/recyclelist",
     "pages/personalinfo/personalinfo",
-    "pages/oldfornew/oldfornew"
+    "pages/oldfornew/oldfornew",
+    "pages/cancel/cancel",
+    "pages/staffevaluation/evaluation"
   ],
   "tabBar": {
     "color": "#cccccc",

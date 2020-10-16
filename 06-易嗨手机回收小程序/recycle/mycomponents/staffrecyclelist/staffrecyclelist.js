@@ -22,18 +22,9 @@ Component({
       });
     },
     getDetail(e){
-      let idx = e.currentTarget.dataset.id;
-      let data = this.data.list[idx];
-
-
-
-      wx.setStorage({
-        data: data,
-        key: 'key',
-      })
-
+      let id = e.currentTarget.dataset.id;
       wx.navigateTo({
-        url: `/pages/evaluation/result?type=pc&name=${data.name}&price=${data.total_amount}&frompage=recycle&orderid=${data.id}`,
+        url: '/pages/stafforder/stafforder?id=' + id,
       });
     }
   }

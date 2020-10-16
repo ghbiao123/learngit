@@ -21,7 +21,7 @@
 				<view class="prev-price">是否使用增价卷</view>
 				<view class="prev-price-item">
 					<view class="prev-price-value" wx:if="{{couponPrice != 0}}">
-						<navigator url="/pages/coupon/coupon?type=mine&available=9" hover-class="none">
+						<navigator url="/pages/coupon/coupon?type=mine&available=9&page=result" hover-class="none">
 							{{couponPrice}}
 						</navigator>
 						<view bindtap="chooseCoupon" class="prev-price-radio">

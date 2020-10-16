@@ -1,0 +1,13 @@
+<view class="prompt-box" hidden="{{!isShow}}">
+  <form bindsubmit="confirm">
+    <view class="prompt">
+      <view class="title">输入价格</view>
+      <view class="input-box">
+        <view>￥</view>
+        <input type="number" name="val" class="input" placeholder="请输入价格"></input>
+      </view>
+      <button form-type="submit" size="mini" class="button">确定</button>
+      <icon bindtap="cancel" color="#CCCCCC" type="cancel" size="25" class="cancel"></icon>
+    </view>
+  </form>
+</view>

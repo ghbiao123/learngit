@@ -7,7 +7,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    phonePhoto: []
+    phonePhoto: [],
+    isChangePrice: false,
+    isResetConfig: false,
+    newConfig: {},
+    imageUrl: [],
+    reqImageUrl: [],
   },
 
   /**
@@ -21,33 +26,176 @@ Page({
     this.init();
 
   },
+
   // 初始化数据
-  init(){
+  init() {
 
     // 获取订单详情
     let orderid = this.data.pageOptions.id;
-    if(!orderid) return;
-    util.post('/api/order/orderDetail', {orderid}).then(res=>{
+    if (!orderid) return;
+
+    util.post('/api/order/orderDetail', {
+      orderid
+    }).then(res => {
       console.log(res);
+      that.data.order = res.data;
       that.setData({
         order: res.data
       });
+
+    });
+  },
+  // 取消订单
+  cancelOrder(){
+    let staffid = wx.getStorageSync('staffid');
+    let orderId = this.data.order.id;
+    let url =`/pages/cancel/cancel?orderid=${orderId}&operator=2&operatorid=${staffid}`
+    wx.navigateTo({
+      url: url,
+    });
+  },
+  // 最终提交
+  submit(e) {
+    let staffid = wx.getStorageSync('staffid');
+    let data = {
+      orderid: this.data.order.id,
+      staffid,
+      estimatefee: this.data.order.total_amount,
+      configureinfo: this.data.order.configure_info,
+      describeinfo: this.data.order.describe_info,
+      pictures: this.data.reqImageUrl,
+      imei: this.data.imei,
+      pname: this.data.idCard.name,
+      pidcard: this.data.idCard.name,
+      ppic: this.data.idcardSrc,
+    };
+
+    let needData = ['imei','pname'];
+    if(!data.imei || !data.pname){
+      return util.showSuccess('请完善信息');
+    }
+
+    util.post('/api/order/testingMachineOrder', data).then(res=>{
+      console.log(res);
+      if(res.code == 1){
+        return util.showSuccess(res.msg, function(){
+          wx.navigateBack({
+            delta: 1,
+          });
+        });
+      }else{
+        util.showError(res.msg);
+      }
+    });
+
+  },
+  // TMETInput
+  TMETInput(e) {
+    this.data.imei = e.detail.value;
+  },
+  // 删除图片
+  cancelImage(e) {
+    let id = e.currentTarget.dataset.idx;
+    let imageUrl = this.data.imageUrl;
+    imageUrl.splice(id, 1);
+    this.data.reqImageUrl.splice(id, 1);
+    this.setData({
+      imageUrl
+    });
+  },
+  // 设置新配置项
+  resetConfigConfirm() {
+    if (this.data.newConfig.cinfo) {
+      this.data.order.model_info = this.data.newConfig.cinfo;
+    }
+    if (this.data.newConfig.des) {
+      this.data.order.model_info.des = this.data.newConfig.des;
+    }
+    util.showSuccess('已修改');
+    this.setData({
+      isResetConfig: false
+    });
+  },
+  // 放弃设置配置项
+  resetConfigCancel() {
+    this.setData({
+      isResetConfig: false
+    });
+  },
+  // 监听配置项修改
+  textAreaInput(e) {
+    let key = e.currentTarget.dataset.key;
+    let value = e.detail.value;
+    this.data.newConfig[key] = value;
+  },
+  // 设置新价格
+  getNewPrice(e) {
+    let newPrice = e.detail;
+    let order = this.data.order;
+    order.estimate_fee = Number(newPrice);
+    order.total_amount = order.estimate_fee + Number(order.coupon_fee);
+    this.setData({
+      order
     });
   },
 
-  chooseIdcard(res) {
-    let idCard = {
-      id: res.detail.id.text,
-      name: res.detail.name.text
+  // 修改机器配置
+  changeConfig() {
+    if (this.data.estimate_type == 1) {
+      // 人工估价，直接弹窗进行编辑
+      this.setData({
+        isResetConfig: true
+      });
+      return;
     }
-    this.setData({
-      idCard
+    wx.setStorage({
+      data: this.data.order,
+      key: 'staffmachine',
+      success(res) {
+        wx.navigateTo({
+          url: `/pages/staffevaluation/evaluation?id=${that.data.order.m_id}&cid=${that.data.order.c_id}`,
+        });
+      }
     });
+  },
+  // changePrice 修改订单估价
+  changePrice() {
+    this.setData({
+      isChangePrice: true
+    });
+  },
+  // 选择身份证照片
+  chooseIdcard(res) {
+    console.log(res);
+    // image detail.image_path = 'wxfile://tmp_c7a5766c71bbe2b04f1003358e27a37f6e98207a5093a67b.png';
+    wx.uploadFile({
+      filePath: res.detail.image_path,
+      name: 'file',
+      url: util.getSiteRoot() + '/api/common/upload',
+      success(ret) {
+        console.log(ret);
+
+        that.data.ppic = JSON.parse(ret.data).data.url;
+
+        let idCard = {
+          id: res.detail.id.text,
+          name: res.detail.name.text
+        }
+
+        that.setData({
+          idCard,
+          idcardSrc: res.detail.image_path
+        });
+
+      }
+    });
+
+
     return;
     wx.chooseImage({
       count: 1,
       sizeType: ['compressed'],
-      success: async function(res) {
+      success: async function (res) {
         let idcardSrc = res.tempFilePaths[0];
 
         try {
@@ -56,12 +204,12 @@ Page({
             api: 'OcrAllInOne',
             data: {
               // 用 CDN 方法标记要上传并转换成 HTTP URL 的文件
-              img_url:idcardSrc,
+              img_url: idcardSrc,
               data_type: 3,
               ocr_type: 1
             },
           })
-    
+
           console.log('invokeService success', invokeRes)
           // wx.showModal({
           //   title: 'success',
@@ -98,7 +246,7 @@ Page({
           //   content: err + '',
           // })
         });
-      
+
         that.setData({
           idcardSrc
         });
@@ -106,20 +254,31 @@ Page({
     });
   },
   // 选择手机图片
-  getPhoto(e){
+  getPhoto(e) {
     wx.chooseImage({
       count: 4,
-      success(res){
+      success(res) {
         console.log(res);
         // 所选图片数组
-        let arr = res.tempFilePaths;
-        let phonePhoto = that.data.phonePhoto;
-        phonePhoto.push(...arr);
-        arr.forEach(V=>{
-          // upload
+        let path = res.tempFilePaths;
+        let imageUrl = that.data.imageUrl;
+        imageUrl.push(...path);
+        path.forEach(v => {
+
+          wx.uploadFile({
+            filePath: v,
+            name: 'file',
+            url: util.getSiteRoot() + '/api/common/upload',
+            success(ret) {
+              console.log(ret);
+              let url = JSON.parse(ret.data).data.url;
+              that.data.reqImageUrl.push(url);
+            }
+          });
+
         });
         that.setData({
-          phonePhoto
+          imageUrl
         });
       }
     });
@@ -135,7 +294,37 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let timer = setInterval(() => {
+      let order = this.data.order;
+      if (!order) {
+        return;
+      } else {
+        clearInterval(timer)
+      }
+      let newMashine = wx.getStorageSync('newstaffmachine');
+      if (!newMashine) return;
+      let needId = ['pcram', 'pcssd', 'pcvideocard', 'phonecolor', 'phonestorage', 'phonemodel']
+      order.estimate_fee = newMashine.totalprice;
+      order.total_amount = Number(order.estimate_fee) + Number(order.coupon_fee);
+      let cstr = '';
+      needId.forEach(v => {
+        if (newMashine[v]) {
+          cstr = cstr + newMashine[v] + ',';
+        }
+      });
+      util.post('/api/products/getModelConfigInfo', {
+        cstr
+      }).then(res => {
+        console.log(res);
+        order.model_info.cinfo = res.data;
+        that.setData({
+          order
+        });
+        wx.removeStorage({
+          key: 'newstaffmachine',
+        })
+      });
+    }, 100);
   },
 
   /**

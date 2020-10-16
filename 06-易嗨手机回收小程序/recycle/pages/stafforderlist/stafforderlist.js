@@ -16,10 +16,12 @@ Page({
   onLoad: function (options) {
     that = this;
     let type = options.type;
-    this.getList(type);
+    this.data.type = options.type;
+    this.getList();
   },
   // 获取列表数据
-  getList(type){
+  getList(){
+    let type = this.data.type;
     console.log(type);
     let staffid = wx.getStorageSync('staffid');
     let userInfo = wx.getStorageSync('userinfo');
@@ -72,6 +74,14 @@ Page({
         data.orderstatus = 1;
       }
       break;
+      case 'staffcancel': {
+        title =  '已取消订单';
+        identy = 2;
+        url = '/api/order/staffOrderList';
+        data.staffid = staffid;
+        data.orderstatus = 2;
+      }
+      break;
       default:{
         title = "全部";
         data.userid = userInfo.uid;
@@ -97,6 +107,9 @@ Page({
       });
     });
     
+    wx.stopPullDownRefresh({
+      success: (res) => {},
+    });
 
     this.setData({
       identy
@@ -116,7 +129,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getList();
   },
 
   /**
@@ -137,7 +150,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.getList();
   },
 
   /**

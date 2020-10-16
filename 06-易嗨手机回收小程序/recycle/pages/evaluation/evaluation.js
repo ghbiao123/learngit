@@ -292,6 +292,55 @@ Page({
       }
     }
 
+    // 共两种情况：  系统估价，人工估价
+
+    // 先判断人工估价
+    if (this.data.type == 'pc' && this.data._data.bid != 1) {
+      wx.showModal({
+        cancelColor: '#000',
+        cancelText: '人工估价',
+        confirmText: '立即回收',
+        title: '提示',
+        content: '',
+        success(res) {
+          if (res.confirm) {
+            // 用户现场扫码
+            data.otype = 1;
+            // 添加storage： currentmachine
+            wx.setStorage({
+              data: newData,
+              key: 'currentmachine',
+            });
+            submit(newData, function () {
+              wx.navigateTo({
+                url: '/pages/evaluation/result?frompage=evaluation&name=1&price=0',
+              });
+            });
+          } else if (res.cancel) {
+            // 用户正常流程进行人工估价
+            data.otype = 1;
+            submit(newData, function () {
+              wx.redirectTo({
+                url: '/pages/recyclelist/recyclelist',
+              });
+            });
+          }
+
+          function submitOrder(data, callBack) {
+            util.post('/api/order/calculatePriceOther', data).then(res => {
+              if (res.code == 1) {
+                callBack && callBack()
+              }
+            });
+          }
+
+        }
+      });
+    }
+
+
+
+
 
 
     util.post(url, data).then(res => {

@@ -22,7 +22,7 @@
 	</view>
 
 	<view class="cell-card">
-		<navigator hover-class="none" url="/pages/coupon/coupon?type=mine">
+		<navigator hover-class="none" url="/pages/coupon/coupon?type=mine&page=mine">
 			<view class="cell-item">
 				<view>我的回收加价卷</view>
 				<image class="cell-rt" src="/images/rt2.png"></image>

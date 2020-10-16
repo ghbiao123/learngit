@@ -86,7 +86,7 @@
 		<view class="cell-item">
 			<image class="express-icon" src="/images/co-s.png"></image>
 			<view>快递单号</view>
-			<view><input class="order-input" placeholder="请输入物流单号"></input></view>
+			<view><input bindinput="expressNumberInput" class="order-input" placeholder="请输入物流单号"></input></view>
 			<image hidden class="scan-icon" src="/images/scan.png"></image>
 		</view>
 
@@ -107,7 +107,7 @@
     <view class="cell-item">机器信息</view>
     <view class="project-info">
 		<!-- 没有图片， 待确认 -->
-      <image class="project-image" src="/images/a.jpg"></image>
+      <image class="project-image" mode="aspectFit" src="{{detail.model_info.image[0] || '/images/contact.png'}}"></image>
       <view class="info">
         <view class="name">
           <view>{{detail.model_info.name}}</view>
@@ -118,12 +118,13 @@
         </view>
         <view class="msg">{{detail.model_info.cinfo}}</view>
         <view class="msg">预估价：￥{{detail.total_amount}}</view>
+        <view class="msg">{{detail.model_info.des}}</view>
       </view>
     </view>
   </view>
 
   <view wx:if="{{detail.recovery_type == 2}}" class="button m-t-20">
-    <button class="btn">取消订单</button>
+    <button bindtap="cancelOrder" class="btn">取消订单</button>
     <button class="btn">确认发货</button>
   </view>
 

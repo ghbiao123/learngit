@@ -1,6 +1,8 @@
 {
   "usingComponents": {
     "orderlist": "/mycomponents/orderlist/orderlist",
-    "recyclelist": "/mycomponents/recyclelist/recyclelist"
-  }
+    "recyclelist": "/mycomponents/staffrecyclelist/staffrecyclelist"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
 }

@@ -40,8 +40,12 @@ Page({
           let url = '';
           if(that.data.fromPage == 'result'){
             url = `/pages/evaluation/result`;
-          }else{
-            url = ``;
+            wx.navigateBack({
+              delta: 1,
+            });
+            return;
+          }else if(that.data.fromPage == 'mine'){
+            url = `/pages/search/search`;
           }
          wx.redirectTo({
            url: url,

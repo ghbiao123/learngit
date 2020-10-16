@@ -1,0 +1,33 @@
+<view class="container">
+  <view class="content">
+    <view class="cont">
+      <view>
+        <view class="tit-no-bg">
+          取消原因
+        </view>
+
+        <view class="cell-card">
+          <!-- 单选操作 -->
+          <!-- <block wx:if="{{index != _data.other.length-1}}">
+              <radio-group data-id="{{index}}" bindchange="radioChange">
+                <radio wx:for="{{item.inquiryinfo}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+                  color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+              </radio-group>
+            </block> -->
+          <checkbox-group bindchange="radioChange">
+            <checkbox wx:for="{{arrChoice}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+              color="#C7402C" value="{{itm.name}}">{{itm.name}}</checkbox>
+          </checkbox-group>
+        </view>
+
+      </view>
+
+
+    </view>
+
+    <view class="button">
+      <button bindtap="getResult" class="button-clear m-t-20">取消订单</button>
+    </view>
+
+  </view>
+</view>

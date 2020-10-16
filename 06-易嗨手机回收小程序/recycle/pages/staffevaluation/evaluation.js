@@ -131,6 +131,47 @@ Page({
       let progressData = that.data.progressData;
       progressData.all = _data.other.length + (this.data.type == 'pc' ? 5 : 3);
 
+      let staffMachine = wx.getStorageSync('staffmachine');
+      let config = staffMachine.configure_info.split(',');
+      let describe = staffMachine.describe_info.split(',');
+      
+      let needKeys = ['phone_model', 'phone_color', 'phone_storage', 'pc_processor', 'pc_ram', 'pc_videocard', 'pc_ssd', 'pc_harddisk', 'other'];
+
+      needKeys.forEach(k => {
+        if (_data[k]) {
+          return
+          if (k != 'other') {
+            _data[k] = _data[k].map(v => {
+              if (config.indexOf(String(v.id)) >= 0) {
+                v.isChecked = true;
+              } else {
+                v.isChecked = false;
+              }
+              return v;
+            });
+
+
+          } else if (k == 'other') {
+            _data[k] = _data[k].map(v => {
+              v.inquiryinfo.map(i=>{
+                if (describe.indexOf(String(i.id)) >= 0) {
+                  i.isChecked = true;
+                } else {
+                  i.isChecked = false;
+                }
+                return i;
+              });
+              return v;
+            });
+          }
+        };
+
+      });
+
+
+
+
+
       that.setData({
         type: this.data.type,
         _data,
@@ -270,13 +311,13 @@ Page({
         let userInfo = wx.getStorageSync('userinfo');
 
         // 判断是否登录， 未登录则让用户先登录
-        if (!userInfo) {
-          return util.showError('请您先登录', function () {
-            wx.navigateTo({
-              url: '/pages/login/login',
-            });
-          });
-        }
+        // if (!userInfo) {
+        //   return util.showError('请您先登录', function () {
+        //     wx.navigateTo({
+        //       url: '/pages/login/login',
+        //     });
+        //   });
+        // }
 
         let winData = {
           pcid: data.pcid,
@@ -299,17 +340,20 @@ Page({
       // 当前估价机器 Storage
       let newData = Object.assign({}, data);
       newData.cid = that.data._data.cid;
-      wx.setStorage({
-        data: newData,
-        key: 'currentmachine',
-      });
+      newData.totalprice = res.data.totalprice;
 
       if (res.code == 1) {
         if (this.data.type == 'pc' && this.data._data.bid != 1) {
           return util.showSuccess(res.msg);
         } else {
-          wx.navigateTo({
-            url: `/pages/evaluation/result?type=${this.data.type}&name=${that.data._data.name}&price=${res.data.totalprice}&frompage=evaluation`,
+          wx.setStorage({
+            data: newData,
+            key: 'newstaffmachine',
+            success(){
+              wx.navigateBack({
+                delta: 1,
+              });
+            }
           });
         }
       } else {

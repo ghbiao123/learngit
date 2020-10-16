@@ -16,7 +16,7 @@
       <view class="cell-card">
         <radio-group data-id="phonemodel" bindchange="radioChange">
           <radio wx:for="{{_data.phone_model}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
-            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+            color="#C7402C" checked="{{itm.isChecked}}" value="{{itm.id}}">{{itm.name}}</radio>
         </radio-group>
       </view>
 
@@ -24,7 +24,7 @@
       <view class="cell-card">
         <radio-group data-id="phonecolor" bindchange="radioChange">
           <radio wx:for="{{_data.phone_color}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
-            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+            color="#C7402C" checked="{{itm.isChecked}}" value="{{itm.id}}">{{itm.name}}</radio>
         </radio-group>
       </view>
 
@@ -32,7 +32,7 @@
       <view class="cell-card">
         <radio-group data-id="phonestorage" bindchange="radioChange">
           <radio wx:for="{{_data.phone_storage}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
-            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+            color="#C7402C" checked="{{itm.isChecked}}" value="{{itm.id}}">{{itm.name}}</radio>
         </radio-group>
       </view>
 
@@ -49,13 +49,13 @@
             <block wx:if="{{index != _data.other.length-1}}">
               <radio-group data-id="{{index}}" bindchange="radioChange">
                 <radio wx:for="{{item.inquiryinfo}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
-                  color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+                  color="#C7402C" checked="{{itm.isChecked}}" value="{{itm.id}}">{{itm.name}}</radio>
               </radio-group>
             </block>
             <block wx:else>
               <checkbox-group data-id="{{index}}" bindchange="radioChange">
                 <checkbox wx:for="{{item.inquiryinfo}}" wx:key="index" wx:for-item="itm" wx:for-index="idx"
-                  class="radio" color="#C7402C" value="{{itm.id}}" checked="{{arrChecked[idx]}}">{{itm.name}}</checkbox>
+                  class="radio" color="#C7402C" value="{{itm.id}}" checked="{{arrChecked[idx] || itm.isChecked}}">{{itm.name}}</checkbox>
               </checkbox-group>
             </block>
           </view>
@@ -72,7 +72,7 @@
       <view class="cell-card">
         <radio-group data-id="pc_processor" bindchange="radioChange">
           <radio wx:for="{{_data.pc_processor}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
-            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+            color="#C7402C" checked="{{itm.isChecked}}" value="{{itm.id}}">{{itm.name}}</radio>
         </radio-group>
       </view>
 
@@ -80,7 +80,7 @@
       <view class="cell-card">
         <radio-group data-id="pc_ram" bindchange="radioChange">
           <radio wx:for="{{_data.pc_ram}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
-            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+            color="#C7402C" checked="{{itm.isChecked}}" value="{{itm.id}}">{{itm.name}}</radio>
         </radio-group>
       </view>
 
@@ -88,7 +88,7 @@
       <view class="cell-card">
         <radio-group data-id="pc_videocard" bindchange="radioChange">
           <radio wx:for="{{_data.pc_videocard}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
-            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+            color="#C7402C" checked="{{itm.isChecked}}" value="{{itm.id}}">{{itm.name}}</radio>
         </radio-group>
       </view>
 
@@ -96,7 +96,7 @@
       <view class="cell-card">
         <radio-group data-id="pc_ssd" bindchange="radioChange">
           <radio wx:for="{{_data.pc_ssd}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
-            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+            color="#C7402C" checked="{{itm.isChecked}}" value="{{itm.id}}">{{itm.name}}</radio>
         </radio-group>
       </view>
 
@@ -104,7 +104,7 @@
       <view class="cell-card">
         <radio-group data-id="pc_harddisk" bindchange="radioChange">
           <radio wx:for="{{_data.pc_harddisk}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
-            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+            color="#C7402C" checked="{{itm.isChecked}}" value="{{itm.id}}">{{itm.name}}</radio>
         </radio-group>
       </view>
 
@@ -120,13 +120,13 @@
             <block wx:if="{{index != _data.other.length-1}}">
               <radio-group data-id="{{index}}" bindchange="radioChange">
                 <radio wx:for="{{item.inquiryinfopc}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
-                  color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+                  color="#C7402C" checked="{{itm.isChecked}}" value="{{itm.id}}">{{itm.name}}</radio>
               </radio-group>
             </block>
             <block wx:else>
               <checkbox-group data-id="{{index}}" bindchange="radioChange">
                 <checkbox wx:for="{{item.inquiryinfopc}}" wx:key="index" wx:for-item="itm" wx:for-index="idx"
-                  class="radio" color="#C7402C" value="{{itm.id}}">{{itm.name}}</checkbox>
+                  class="radio" color="#C7402C" checked="{{arrChecked[idx] || itm.isChecked}}" value="{{itm.id}}">{{itm.name}}</checkbox>
               </checkbox-group>
             </block>
           </view>

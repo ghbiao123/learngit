@@ -1,0 +1,37 @@
+<block wx:for="{{list}}" wx:key="index">
+  <view class="order-list">
+    <view class="title">机器信息</view>
+    <view class="project" data-id="{{item.id}}" bindtap="getDetail">
+      <view class="project-image">
+        <!-- 没有图片，待确认 -->
+        <image class="image" src="/images/a.jpg" mode="widthFix"></image>
+      </view>
+      <view class="project-info">
+        <view class="project-name">
+          <view class="name">{{item.model_info.name}}</view>
+          <view class="state {{item.order_status==0||item.order_status==1?'state-red':''}}{{item.order_status==2?'state-green':''}}{{item.order_status==3?'state-gray':''}}">
+            {{item.order_status==0?'待验机':''}}{{item.order_status==1?'待付款':''}}{{item.order_status==2?'订单完成':''}}{{item.order_status==3?'订单取消':''}}
+          </view>
+        </view>
+        <view class="info ellipsis-text">{{item.model_info.cinfo}}</view>
+        <view class="info">预估价：¥{{item.total_amount}}</view>
+      </view>
+    </view>
+    <view class="title">订单信息</view>
+    <view class="order">
+      <view class="order-info">
+        <view class="order-info-name">订单编号：</view>
+        <view>
+          <view class="order-info-cont">
+            <text>{{item.order_sn}}</text>
+            <view class="copy" data-text="12865525668894720" bindtap="copyText">复制</view>
+          </view>
+        </view>
+      </view>
+      <view class="order-info">
+        <view class="order-info-name">下单时间：</view>
+        <view class="order-info-cont">{{item.createtime}}</view>
+      </view>
+    </view>
+  </view>
+</block>

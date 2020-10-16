@@ -83,6 +83,9 @@ Page({
     if (this.data.staffid) {
       data.staffid = this.data.staffid;
     }
+    if(this.data.order.otype&&this.data.order.otype == 1&&!this.data.staffid){
+      return util.showError('请扫工作人员二维码后再进行提交');
+    }
 
     // 检测是否完善个人信息
     let userData = wx.getStorageSync('userdata');
@@ -233,6 +236,17 @@ Page({
         platformInfo: res.data
       });
     });
+
+    // 获取订单信息
+    if(this.data.pageOption.orderid){
+      util.post('/api/order/orderDetail', {
+        orderid: this.data.pageOption.orderid
+      }).then(res=>{
+        that.setData({
+          order: res.data
+        });
+      });
+    }
 
     // 获取用户信息
     let userInfo = wx.getStorageSync('userinfo');
