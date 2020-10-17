@@ -3,43 +3,43 @@
 		<view class="step">
 			<view class="line"></view>
 			<view class="step-item">
-				<view hidden class="step-image">
-					<image class="icon" src="/images/addm.png"></image>
-				</view>
-				<view class="step-image step-image-s">
-					<image class="icon" src="/images/addm-s.png"></image>
-				</view>
-				<view class="step-name">使用增加券</view>
-			</view>
-
-			<view class="step-item">
-				<view hidden class="step-image">
+				<view wx:if="{{detail.order_status < 0}}" class="step-image">
 					<image class="icon" src="/images/co.png"></image>
 				</view>
-				<view class="step-image step-image-s">
+				<view wx:if="{{detail.order_status >= 0}}" class="step-image step-image-s">
 					<image class="icon" src="/images/co-s.png"></image>
 				</view>
-				<view class="step-name">确认订单</view>
+				<view class="step-name">待验机</view>
 			</view>
 
 			<view class="step-item">
-				<view hidden class="step-image">
+				<view wx:if="{{detail.order_status < 1}}" class="step-image">
+					<image class="icon" src="/images/addm.png"></image>
+				</view>
+				<view wx:if="{{detail.order_status >= 1}}" class="step-image step-image-s">
+					<image class="icon" src="/images/addm-s.png"></image>
+				</view>
+				<view class="step-name">待付款</view>
+			</view>
+
+			<view class="step-item">
+				<view wx:if="{{detail.order_status < 2}}" class="step-image">
 					<image class="icon" src="/images/subo.png"></image>
 				</view>
-				<view class="step-image step-image-s">
+				<view wx:if="{{detail.order_status >= 2}}" class="step-image step-image-s">
 					<image class="icon" src="/images/subo-s.png"></image>
 				</view>
-				<view class="step-name">提交的订单</view>
+				<view class="step-name">已完成</view>
 			</view>
 
 			<view class="step-item">
-				<view class="step-image">
+				<view wx:if="{{detail.order_status < 3}}" class="step-image">
 					<image class="icon" src="/images/wp.png"></image>
 				</view>
-				<view hidden class="step-image step-image-s">
+				<view wx:if="{{detail.order_status >= 3}}" class="step-image step-image-s">
 					<image class="icon" src="/images/wp-s.png"></image>
 				</view>
-				<view class="step-name">等待支付</view>
+				<view class="step-name">已取消</view>
 			</view>
 
 		</view>
@@ -86,11 +86,11 @@
 		<view class="cell-item">
 			<image class="express-icon" src="/images/co-s.png"></image>
 			<view>快递单号</view>
-			<view><input bindinput="expressNumberInput" class="order-input" placeholder="请输入物流单号"></input></view>
+			<view><input bindinput="expressNumberInput" value="{{detail.c_no}}" class="order-input" placeholder="请输入物流单号"></input></view>
 			<image hidden class="scan-icon" src="/images/scan.png"></image>
 		</view>
 
-		<view class="cell-item">
+		<view hidden class="cell-item">
 			<image class="express-icon" src="/images/co-s.png"></image>
 			<view>快递公司</view>
 			<view>
@@ -107,7 +107,7 @@
     <view class="cell-item">机器信息</view>
     <view class="project-info">
 		<!-- 没有图片， 待确认 -->
-      <image class="project-image" mode="aspectFit" src="{{detail.model_info.image[0] || '/images/contact.png'}}"></image>
+      <image class="project-image" mode="aspectFit" src="{{'/images/contact.png'}}"></image>
       <view class="info">
         <view class="name">
           <view>{{detail.model_info.name}}</view>
@@ -121,11 +121,15 @@
         <view class="msg">{{detail.model_info.des}}</view>
       </view>
     </view>
-  </view>
+	</view>
+	
 
-  <view wx:if="{{detail.recovery_type == 2}}" class="button m-t-20">
-    <button bindtap="cancelOrder" class="btn">取消订单</button>
-    <button class="btn">确认发货</button>
+  <view wx:if="{{detail.recovery_type == 1 && detail.order_status == 0}" class="button m-t-20">
+    <button bindtap="cancelOrder" class="btn" hover-class="cancel-hover">取消订单</button>
+  </view>
+  <view wx:if="{{detail.recovery_type == 2 && detail.order_status == 0}" class="button m-t-20">
+    <button bindtap="cancelOrder" class="btn" hover-class="cancel-hover">取消订单</button>
+    <button bindtap="confirmOrder" class="btn" hover-class="btn-hover">确认发货</button>
   </view>
 
 </view>

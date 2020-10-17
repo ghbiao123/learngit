@@ -35,15 +35,7 @@ Page({
       });
     });
 
-    // 工作人员订单
-    util.post('/api/order/staffOrderList', {
-      orderstatus: 0,
-      staffid
-    }).then(res=>{
-      that.setData({
-        count: res.data.length
-      });
-    });
+    
 
   },
   // 展示二维码
@@ -64,7 +56,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // 工作人员订单
+    let staffid = wx.getStorageSync('staffid');
+    util.post('/api/order/staffOrderList', {
+      orderstatus: 0,
+      staffid
+    }).then(res=>{
+      that.setData({
+        count: res.data.length
+      });
+    });
   },
 
   /**

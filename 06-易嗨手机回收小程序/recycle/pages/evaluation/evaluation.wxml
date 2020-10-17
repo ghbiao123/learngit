@@ -154,8 +154,11 @@
 
 
     <view class="button">
-      <button bindtap="getResult" class="button-clear m-t-20">估价</button>
+      <button  bindtap="showAction" class="button-clear m-t-20" hover-class="btn-hover">估价</button>
     </view>
 
   </view>
 </view>
+
+<mp-actionSheet bindactiontap="getResult" show="{{showActionsheet}}" actions="{{groups}}">
+</mp-actionSheet>

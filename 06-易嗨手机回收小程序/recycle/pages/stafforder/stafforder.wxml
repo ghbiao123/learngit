@@ -81,8 +81,8 @@
   
   </view>
 
-  <button bindtap="submit" class="button-clear m-t-20">提交</button>
-  <button bindtap="cancelOrder" class="button-clear-cancel m-t-20">取消订单</button>
+  <button wx:if="{{order.order_status == 0}}" bindtap="submit" class="button-clear m-t-20">提交</button>
+  <button wx:if="{{order.order_status == 0}}" bindtap="cancelOrder" class="button-clear-cancel m-t-20">取消订单</button>
 
 </view>
 

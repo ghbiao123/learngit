@@ -182,11 +182,13 @@
   background-color: #fff;
   border: 1rpx solid #a0a0a0;
 }
+
 .btn:nth-child(2){
   color: #fff;
   border: 1rpx solid #C7402C;
   background-color: #C7402C;
 }
+
 .container{
   padding-bottom: 0;
 }

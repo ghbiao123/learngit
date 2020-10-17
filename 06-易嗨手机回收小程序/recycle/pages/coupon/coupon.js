@@ -46,10 +46,10 @@ Page({
             return;
           }else if(that.data.fromPage == 'mine'){
             url = `/pages/search/search`;
+            wx.redirectTo({
+              url: url,
+            });
           }
-         wx.redirectTo({
-           url: url,
-         });
         }
       });
     }

@@ -37,8 +37,8 @@
       </view>
     </view>
 
-    <button wx:if="{{item.otype == 0 && item.assess_status==1}}" data-id="{{index}}" bindtap="getDetail" class="button-clear">立即回收</button>
-    <button wx:if="{{item.otype == 1 && (item.assess_status==1 || item.assess_status==0)}}" data-id="{{index}}" bindtap="getDetail" class="button-clear">继续进行估价</button>
+    <button wx:if="{{item.otype == 0 && item.assess_status==1}}" data-id="{{index}}" bindtap="getDetail" class="button-clear" hover-class="btn-hover">立即回收</button>
+    <button wx:if="{{item.otype == 1 && (item.assess_status==1 || item.assess_status==0)}}" data-id="{{index}}" bindtap="getDetail" class="button-clear" hover-class="btn-hover">继续进行估价</button>
 
   </view>
 </block>

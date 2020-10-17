@@ -18,13 +18,15 @@
   width: 670rpx;
   height: auto;
 }
+
 .project-image{
   width: 170rpx;
-  height: auto;
+  height: 170rpx;
   text-align: center;
 }
 .image{
   width: 140rpx;
+  height: 140rpx;
 }
 .project-info{
   width: 500rpx;
@@ -85,7 +87,10 @@
   border: 1rpx solid #000000;
   border-radius: 10rpx;
 }
+.projec-hover{
+  background-color: #f5f5f5 !important;
+}
 
-
-
-
+.btn-hover{
+  background-color: #fcd3d3 !important;
+}

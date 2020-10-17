@@ -27,7 +27,7 @@
       </view>
       <view class="cell-card m-t-20" style="display: flex; flex-wrap: wrap; width: 600rpx; padding: 20rpx 105rpx;">
         <view class="computer-image" wx:for="{{imageUrl}}" wx:key="index">
-          <image src="{{item}}" style="width: 155rpx; height: 110rpx;"></image>
+          <image src="{{item}}" mode="aspectFit" style="width: 155rpx; height: 110rpx;"></image>
           <icon data-idx="{{index}}" bindtap="cancelImage" class="cancel" size="25" type="cancel" color="#999"></icon>
         </view>
         <image bindtap="chooseImage" src="/images/add.png" class="computer-image"></image>
@@ -37,7 +37,11 @@
 
 
     <view class="button">
-      <button form-type="submit" class="button-clear m-t-20">估价</button>
+      <!-- <button bindtap="showAction" class="button-clear m-t-20">估价</button> -->
+      <button  form-type="submit" class="button-clear m-t-20" hover-class="btn-hover">估价</button>
     </view>
   </form>
 </view>
+
+<mp-actionSheet bindactiontap="sendData" show="{{showActionsheet}}" actions="{{groups}}">
+</mp-actionSheet>

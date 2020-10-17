@@ -1,10 +1,10 @@
 <block wx:for="{{list}}" wx:key="index">
   <view class="order-list">
     <view class="title">机器信息</view>
-    <view class="project" data-id="{{item.id}}" bindtap="getDetail">
+    <view class="project" hover-class="projec-hover" data-id="{{item.id}}" bindtap="getDetail">
       <view class="project-image">
         <!-- 没有图片，待确认 -->
-        <image class="image" src="/images/a.jpg" mode="widthFix"></image>
+        <image class="image" src="{{item.model_info.image}}" mode="aspectFit"></image>
       </view>
       <view class="project-info">
         <view class="project-name">

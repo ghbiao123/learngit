@@ -96,7 +96,7 @@
 
 	<scroll-view class="scroll-view" scroll-x>
 		<view class="scroll-content" style="width:{{init.hotmodel.length * 290}}rpx;">
-			<view class="scroll-item" data-cid="{{item.cid}}" data-id="{{item.id}}" bindtap="getEvaluation"
+			<view hover-class="line-hover" class="scroll-item" data-cid="{{item.cid}}" data-id="{{item.id}}" bindtap="getEvaluation"
 				wx:for="{{init.hotmodel}}" wx:key="index">
 				<image mode="aspectFit" class="scroll-image" src="{{item.image}}"></image>
 				<view class="name ellipsis-text">{{item.name}}</view>

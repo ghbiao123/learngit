@@ -18,6 +18,7 @@
   width: 480rpx;
 }
 .change{
+  padding-left: 20rpx;
   color: #009CFF;
 }
 

@@ -60,7 +60,7 @@ Page({
     let data = {
       orderid: this.data.order.id,
       staffid,
-      estimatefee: this.data.order.total_amount,
+      estimatefee: this.data.order.estimate_fee,
       configureinfo: this.data.order.configure_info,
       describeinfo: this.data.order.describe_info,
       pictures: this.data.reqImageUrl,
@@ -141,7 +141,7 @@ Page({
 
   // 修改机器配置
   changeConfig() {
-    if (this.data.estimate_type == 1) {
+    if (this.data.order.estimate_type == 1) {
       // 人工估价，直接弹窗进行编辑
       this.setData({
         isResetConfig: true

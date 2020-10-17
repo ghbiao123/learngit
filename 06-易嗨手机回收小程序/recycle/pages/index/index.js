@@ -59,7 +59,7 @@ Page({
     // 获取本机机型
     wx.getSystemInfo({
       success: (result) => {
-        let modelkey = `MI 8` || result.model;
+        let modelkey = result.model;
         util.post('/api/index/getSystemInfo', {modelkey}).then(res=>{
           console.log(res);
           res.data.image = util.getImageFullUrl(res.data.image);

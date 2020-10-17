@@ -51,6 +51,28 @@ Page({
     });
 
   },
+  // 确认订单
+  confirmOrder(){
+    let data = {};
+    data.pno = this.data.expressNumber;
+    data.orderid = this.data.detail.id;
+    data.userid = wx.getStorageSync('userinfo').uid;
+    if(!data.pno){
+      return util.showSuccess('请填写快递单号');
+    }
+    util.post('/api/order/upPackageNo', data).then(res=>{
+      console.log(res);
+      if(res.code == 1){
+        util.showSuccess(res.msg, function(){
+          wx.navigateBack({
+            delta: 1,
+          });
+        });
+      }else{
+        util.showError(res.msg);
+      }
+    });
+  },
   // 快递单号输入
   expressNumberInput(e){
     this.data.expressNumber = e.detail.value;

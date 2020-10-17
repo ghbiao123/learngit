@@ -15,16 +15,32 @@ Page({
    */
   onLoad: function (options) {
     that = this;
-    let userInfo = wx.getStorageSync('userinfo');
-    if(!userInfo){
-      return util.showSrror('请您先登录', function(){
-        wx.navigateBack({
-          delta: 1,
+    
+
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    let isLogin = util.checkIsLogin.call(this);
+    if(!isLogin){
+      return util.showError('请您先登录', function(){
+        wx.navigateTo({
+          url: '/pages/login/login',
         });
       });
     }
 
-    let userid = userInfo.uid;
+
+    let userid = isLogin.uid;
 
     util.post('/api/order/userrAssessOrderList', {userid}).then(res=>{
       console.log(res);
@@ -40,20 +56,6 @@ Page({
         });
       }
     });
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
 
   },
 

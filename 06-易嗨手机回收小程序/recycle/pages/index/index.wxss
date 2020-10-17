@@ -104,6 +104,8 @@
   width: 34rpx;
 }
 .coupon-content-text{
+  height: 90rpx;
+  line-height: 90rpx;
   font: normal 28rpx/90rpx '';
   color: #333333;
 }

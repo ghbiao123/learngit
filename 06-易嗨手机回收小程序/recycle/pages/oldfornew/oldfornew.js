@@ -27,7 +27,7 @@ Page({
    */
   onShow: function () {
     wx.navigateToMiniProgram({
-      appId: 'wxf97adbf125d4694f',
+      appId: 'wx7a4b9ec28e742334',
     });
   },
 

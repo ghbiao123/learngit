@@ -16,6 +16,7 @@ Page({
     inputDoorData: {},
     inputExpressData: {},
     isCoupon: true,
+    reQuery: true
   },
 
   /**
@@ -24,6 +25,14 @@ Page({
   onLoad: function (options) {
     that = this;
     this.data.pageOption = options;
+    
+    // 工作人员扫码估价不可重新询价
+    if(options.frompage&&options.frompage == 'recyclelist'){
+      this.setData({
+        reQuery: false,
+      });
+    }
+
   },
   inputText(e) {
     let key = e.currentTarget.dataset.key;
@@ -42,8 +51,9 @@ Page({
     wx.scanCode({
       onlyFromCamera: true,
       success(res) {
-        that.data.staffid = res;
+        that.data.staffid = res.result;
         console.log(res);
+        util.showSuccess('扫码成功');
       }
     });
   },
@@ -80,11 +90,24 @@ Page({
     data.userid = userInfo.uid;
 
     // 是否是扫码获取工作人员id
-    if (this.data.staffid) {
-      data.staffid = this.data.staffid;
+    
+    if(this.data.order){
+      if(this.data.order.otype&&this.data.order.otype == 1&&!this.data.staffid){
+        return util.showError('请扫工作人员二维码再进行提交');
+      }else if(this.data.order.otype&&this.data.order.otype == 1){
+        if (this.data.staffid) {
+          data.staffid = this.data.staffid;
+        }
+      }
     }
-    if(this.data.order.otype&&this.data.order.otype == 1&&!this.data.staffid){
-      return util.showError('请扫工作人员二维码后再进行提交');
+    if(this.data.pageOption.otype){
+      if(this.data.pageOption.otype == 1&&!this.data.staffid){
+        return util.showError('请扫工作人员二维码再进行提交');
+      }else if(this.data.pageOption.otype == 1){
+        if (this.data.staffid) {
+          data.staffid = this.data.staffid;
+        }
+      }
     }
 
     // 检测是否完善个人信息
@@ -124,9 +147,15 @@ Page({
 
     currentMachine.cid && (data.cid = currentMachine.cid);
     currentMachine.mid && (data.mid = currentMachine.mid);
-    // currentMachine.mid&&(data.configureinfo = currentMachine.mid);
-    // currentMachine.mid&&(data.describeinfo = currentMachine.mid);
 
+    // 人工填写
+    if(currentMachine.mconfigure){
+      data.configureinfo = currentMachine.mconfigure;
+    }
+
+    if(currentMachine.describe){
+      data.describeinfo = currentMachine.describe
+    }
 
     // recoverytype this.data.selected 1
     // 得到回收方式
@@ -136,12 +165,13 @@ Page({
     // 得到  estimatefee estimatetype assessorderid
     data.estimatefee = this.data.totalPrice;
     data.estimatetype = this.data.pageOption.frompage == 'evaluation' ? 0 : 1;
+    data.staffid&&(data.estimatetype = 1);
     this.data.pageOption.orderid && (data.assessorderid = this.data.pageOption.orderid);
 
     // 用户手动填写信息
     if (this.data.selected == 1) {
       data.dtdtime = this.data.orderDate + ' ' + this.data.orderTime;
-      if(!data.dtdtime){
+      if(!this.data.orderDate || !this.data.orderTime){
         return util.showSuccess('请填写预约时间');
       }
       Object.assign(data, this.data.inputDoorData);
@@ -292,7 +322,13 @@ Page({
       },
       fail() {
         let userinfo = wx.getStorageSync('userinfo');
-        if (!userinfo) return;
+        if (!userinfo) {
+          return util.showError('请您先登录', function(e){
+            wx.navigateTo({
+              url: '/pages/login/login',
+            });
+          });
+        };
         util.post('/api/user/getUserInfo', {
           userid: userinfo.uid
         }).then(res => {
@@ -340,7 +376,8 @@ Page({
   },
   // 选择时间
   timeChange(e) {
-    let orderTime = this.data.timeSelected[e.detail.value];
+    // let orderTime = this.data.timeSelected[e.detail.value];
+    let orderTime = e.detail.value;
     this.setData({
       orderTime
     });
@@ -351,7 +388,16 @@ Page({
     // wx.redirectTo({
     //   url: '/pages/evaluation/evaluation',
     // });
-    wx.navigateBack()
+    if(this.data.pageOption.frompage == 'evaluation' || this.data.pageOption.frompage == 'othercalcprice'){
+      wx.navigateBack()
+      
+    }else if(this.data.pageOption.frompage == 'recyclelist'){
+
+    }else{
+      wx.navigateTo({
+        url: `/pages/evaluation/evaluation?id=${this.data.order.m_id}&cid=${this.data.order.c_id}`,
+      });
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

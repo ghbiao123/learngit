@@ -100,3 +100,7 @@
   background-color: #C1402A;
   border-radius: 10rpx;
 }
+
+.btn-hover{
+  background-color: #fcd3d3 !important;
+}

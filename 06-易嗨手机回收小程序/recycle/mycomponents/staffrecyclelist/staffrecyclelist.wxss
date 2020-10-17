@@ -20,11 +20,12 @@
 }
 .project-image{
   width: 170rpx;
-  height: auto;
+  height: 170rpx;
   text-align: center;
 }
 .image{
   width: 140rpx;
+  height: 140rpx;
 }
 .project-info{
   /* width: 500rpx; */
@@ -99,4 +100,7 @@
   font-weight: normal;
   background-color: #C1402A;
   border-radius: 10rpx;
+}
+.btn-hover{
+  background-color: #fcd3d3 !important;
 }

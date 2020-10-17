@@ -30,7 +30,9 @@
 .type{
   position: relative;
   text-align: center;
+  width: 124rpx;
 }
+
 .dot{
   position: absolute;
   right: -5rpx;

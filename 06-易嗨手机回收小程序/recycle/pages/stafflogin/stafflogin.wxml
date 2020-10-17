@@ -10,5 +10,5 @@
 		<input name="password" class="input" password placeholder="请输入密码"></input>
 	</view>
 
-	<button style="margin-top: 100rpx;" class="button-clear" form-type="submit">登录</button>
+	<button style="margin-top: 100rpx;" class="button-clear" hover-class="btn-hover" form-type="submit">登录</button>
 </form>

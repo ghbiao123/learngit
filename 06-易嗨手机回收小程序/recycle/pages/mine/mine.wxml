@@ -14,7 +14,7 @@
 			</view>
 		</view>
 		<navigator hover-class="none" url="/pages/stafflogin/stafflogin">
-			<view class="staff-login">
+			<view class="staff-login" hover-class="line-hover">
 				<image class="staff-icon" src="/images/staff-login.png"></image>
 				<view class="staff-info">工作人员登录</view>
 			</view>
@@ -22,25 +22,25 @@
 	</view>
 
 	<view class="cell-card">
-		<navigator hover-class="none" url="/pages/coupon/coupon?type=mine&page=mine">
+		<navigator hover-class="line-hover" url="/pages/coupon/coupon?type=mine&page=mine">
 			<view class="cell-item">
 				<view>我的回收加价卷</view>
 				<image class="cell-rt" src="/images/rt2.png"></image>
 			</view>
 		</navigator>
-		<navigator hover-class="none" url="/pages/coupon/coupon?type=add">
+		<navigator hover-class="line-hover" url="/pages/coupon/coupon?type=add">
 			<view class="cell-item">
 				<view>领取回收加价卷</view>
 				<image class="cell-rt" src="/images/rt2.png"></image>
 			</view>
 		</navigator>
-		<navigator hover-class="none" url="/pages/recyclelist/recyclelist">
+		<navigator hover-class="line-hover" url="/pages/recyclelist/recyclelist">
 			<view class="cell-item">
 				<view>我的估价列表</view>
 				<image class="cell-rt" src="/images/rt2.png"></image>
 			</view>
 		</navigator>
-		<view bindtap="showModel" class="cell-item">
+		<view hover-class="line-hover" bindtap="showModel" class="cell-item">
 			<view>我的机器型号</view>
 			<image class="cell-rt" src="/images/rt2.png"></image>
 		</view>
@@ -52,31 +52,31 @@
 
 	<view class="cell-card">
 		<view class="order-step">
-			<navigator hover-class="none" url="/pages/stafforderlist/stafforderlist?type=all">
+			<navigator hover-class="line-hover" url="/pages/stafforderlist/stafforderlist?type=all">
 				<view class="order-step-item">
 					<image class="order-icon" src="/images/main1.png"></image>
 					<view class="order-name">全部</view>
 				</view>
 			</navigator>
-			<navigator hover-class="none" url="/pages/stafforderlist/stafforderlist?type=send">
+			<navigator hover-class="line-hover" url="/pages/stafforderlist/stafforderlist?type=send">
 				<view class="order-step-item">
 					<image class="order-icon" src="/images/main2.png"></image>
 					<view class="order-name">待验机</view>
 				</view>
 			</navigator>
-			<navigator hover-class="none" url="/pages/stafforderlist/stafforderlist?type=check">
+			<navigator hover-class="line-hover" url="/pages/stafforderlist/stafforderlist?type=check">
 				<view class="order-step-item">
 					<image class="order-icon" src="/images/main3.png"></image>
 					<view class="order-name">待付款</view>
 				</view>
 			</navigator>
-			<navigator hover-class="none" url="/pages/stafforderlist/stafforderlist?type=done">
+			<navigator hover-class="line-hover" url="/pages/stafforderlist/stafforderlist?type=done">
 				<view class="order-step-item">
 					<image class="order-icon" src="/images/main4.png"></image>
 					<view class="order-name">已完成</view>
 				</view>
 			</navigator>
-			<navigator hover-class="none" url="/pages/stafforderlist/stafforderlist?type=cancel">
+			<navigator hover-class="line-hover" url="/pages/stafforderlist/stafforderlist?type=cancel">
 				<view class="order-step-item">
 					<image class="order-icon" src="/images/main5.png"></image>
 					<view class="order-name">已取消</view>
@@ -86,7 +86,7 @@
 
 		<!-- <button class="contact" open-type="contact"> -->
 		<!-- </button> -->
-		<navigator hover-class="none" url="/pages/contact/contact">
+		<navigator hover-class="line-hover" url="/pages/contact/contact">
 			<view class="cell-item">
 				<view>联系客服</view>
 				<image class="cell-rt" src="/images/rt2.png"></image>

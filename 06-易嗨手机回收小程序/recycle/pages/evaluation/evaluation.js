@@ -22,7 +22,17 @@ Page({
     isUpdateImage: false, // 是否上传图片
     imageUrl: [],
     reqImageUrl: [],
-    winConfigId: {}
+    winConfigId: {},
+    showActionsheet: false,
+    groups: [{
+        text: '人工估价',
+        value: 1
+      },
+      {
+        text: '立即回收',
+        value: 2
+      }
+    ]
   },
 
   /**
@@ -39,6 +49,7 @@ Page({
     this.init();
 
   },
+
   // 删除图片
   cancelImage(e) {
     let id = e.currentTarget.dataset.idx;
@@ -207,6 +218,9 @@ Page({
   },
   // 跳转估价结果页
   getResult(e) {
+    // 关闭actionsheet
+    this.close();
+
 
     let data = Object.assign({}, this.data.reqData);
     // 将用户所选数据进行处理
@@ -296,76 +310,78 @@ Page({
 
     // 先判断人工估价
     if (this.data.type == 'pc' && this.data._data.bid != 1) {
-      wx.showModal({
-        cancelColor: '#000',
-        cancelText: '人工估价',
-        confirmText: '立即回收',
-        title: '提示',
-        content: '',
-        success(res) {
-          if (res.confirm) {
-            // 用户现场扫码
-            data.otype = 1;
-            // 添加storage： currentmachine
-            wx.setStorage({
-              data: newData,
-              key: 'currentmachine',
-            });
-            submit(newData, function () {
-              wx.navigateTo({
-                url: '/pages/evaluation/result?frompage=evaluation&name=1&price=0',
-              });
-            });
-          } else if (res.cancel) {
-            // 用户正常流程进行人工估价
-            data.otype = 1;
-            submit(newData, function () {
-              wx.redirectTo({
-                url: '/pages/recyclelist/recyclelist',
-              });
-            });
-          }
+      // wx.showModal({
+      //   cancelColor: '#000',
+      //   cancelText: '人工估价',
+      //   confirmText: '立即回收',
+      //   title: '提示',
+      //   content: '请您选择估价方式',
+      //   success(res) {}
+      // });
+      if (e.detail.value == 2) {
+        // 用户现场扫码
+        data.otype = 1;
+        submitOrder(function (res) {
+          wx.navigateTo({
+            url: `/pages/evaluation/result?type=${that.data.type}&name=${that.data._data.name}&price=${res.data.totalprice || 0}&frompage=evaluation&otype=1&orderid=${res.data.aoid}`,
+          });
+        });
+      } else if (e.detail.value == 1) {
+        // 用户正常流程进行人工估价
+        data.otype = 0;
+        submitOrder(function (res) {
+          wx.redirectTo({
+            url: '/pages/recyclelist/recyclelist',
+          });
+        });
+      }
+    } else {
+      // 普通估价
 
-          function submitOrder(data, callBack) {
-            util.post('/api/order/calculatePriceOther', data).then(res => {
-              if (res.code == 1) {
-                callBack && callBack()
-              }
-            });
-          }
+      submitOrder(function (res) {
+        wx.navigateTo({
+          url: `/pages/evaluation/result?type=${that.data.type}&name=${that.data._data.name}&price=${res.data.totalprice}&frompage=evaluation`,
+        });
+      });
 
+
+    }
+
+    function submitOrder(callBack) {
+      util.post(url, data).then(res => {
+
+        // 当前估价机器 Storage
+        let newData = Object.assign({}, data);
+        newData.cid = that.data._data.cid;
+        wx.setStorage({
+          data: newData,
+          key: 'currentmachine',
+        });
+
+        if (res.code == 1) {
+          callBack && callBack(res);
+        } else {
+          util.showSuccess(res.msg);
         }
       });
     }
 
 
-
-
-
-
-    util.post(url, data).then(res => {
-
-      // 当前估价机器 Storage
-      let newData = Object.assign({}, data);
-      newData.cid = that.data._data.cid;
-      wx.setStorage({
-        data: newData,
-        key: 'currentmachine',
+  },
+  // actionsheet
+  showAction() {
+    if(this.data.type == 'pc' && this.data._data.bid != 1){
+      this.setData({
+        showActionsheet: true
       });
-
-      if (res.code == 1) {
-        if (this.data.type == 'pc' && this.data._data.bid != 1) {
-          return util.showSuccess(res.msg);
-        } else {
-          wx.navigateTo({
-            url: `/pages/evaluation/result?type=${this.data.type}&name=${that.data._data.name}&price=${res.data.totalprice}&frompage=evaluation`,
-          });
-        }
-      } else {
-        util.showSuccess(res.msg);
-      }
-    });
-
+    }else{
+      this.getResult();
+    }
+  },
+  close: function () {
+    this.setData({
+      showActionsheet: false
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

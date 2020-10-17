@@ -100,6 +100,11 @@ Page({
       let list = res.data.map(v=>{
         let t = util.getToday(v.createtime * 1000);
         v.createtime = t.date + ' ' + t.time;
+        if(v.model_info.image){
+          v.model_info.image = util.getImageFullUrl(v.model_info.image);
+        }else{
+          v.model_info.image = '/images/contact.png';
+        }
         return v;
       });
       that.setData({

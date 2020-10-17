@@ -8,6 +8,6 @@
     <view class="text-time" wx:if="{{type == 'add'}}">起：{{item.validstime_text}}</view>
     <view class="text-time" wx:if="{{type == 'add'}}">止：{{item.validetime_text}}</view>
   </view>
-  <view wx:if="{{type == 'add'}}" data-id="{{index}}" bindtap="getCoupon" class="button immediately">{{arrIsGot[index]? '立即回收':'立即领取'}}</view>
-  <view wx:if="{{type == 'mine'}}" data-id="{{index}}" bindtap="useCoupon" class="button {{item.status == 0? 'immediately':''}}{{item.status == 1? 'done':''}}{{item.status == 2? 'overdue':''}}">{{item.status_text}}</view>
+  <view wx:if="{{type == 'add'}}" data-id="{{index}}" bindtap="getCoupon" class="button immediately" hover-class="btn-hover">{{arrIsGot[index]? '立即回收':'立即领取'}}</view>
+  <view wx:if="{{type == 'mine'}}" data-id="{{index}}" bindtap="useCoupon" class="button {{item.status == 0? 'immediately':''}}{{item.status == 1? 'done':''}}{{item.status == 2? 'overdue':''}}" hover-class="btn-hover">{{item.status_text}}</view>
 </view>

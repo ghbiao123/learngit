@@ -8,7 +8,7 @@
 				style="font-size:25rpx; color: #262626; padding-left: 40rpx; vertical-align: middle;">预计下周下跌￥123</text>
 			<image hidden style="width: 17rpx; margin-left:5rpx; vertical-align: middle;" mode="widthFix"
 				src="/images/down.png"></image>
-			<text bindtap="resetPrice"  hover-class="using-userinfo" style="font-size: 24rpx; padding-left: 360rpx; color: #2693FF; ">重新询价</text>
+			<text bindtap="resetPrice" hidden="{{!reQuery}}"  hover-class="using-userinfo" class="color-b " style="font-size: 24rpx; padding-left: 360rpx;">重新询价</text>
 		</view>
 		<view class="calc-price">
 			<view class="triangle"></view>
@@ -29,7 +29,7 @@
 						</view>
 					</view>
 					<view wx:if="{{couponPrice == 0}}">
-						<navigator url="/pages/coupon/coupon?type=mine&available=9&frompage=result" hover-class="none">
+						<navigator url="/pages/coupon/coupon?type=mine&available=9&page=result" hover-class="none">
 							选择我的加价券
 						</navigator>
 					</view>
@@ -67,7 +67,7 @@
 						<picker mode="date" bindchange="dateChange">
 							<input class="pick-input" value="{{orderDate}}" placeholder="选择预约日期"></input>
 						</picker>
-						<picker mode="selector" range="{{timeSelected}}" bindchange="timeChange">
+						<picker mode="time" start="10:00" end="22:00" bindchange="timeChange">
 							<input class="pick-input" value="{{orderTime}}" placeholder="选择预约时间"></input>
 						</picker>
 					</view>
@@ -130,7 +130,7 @@
 						<picker mode="date" bindchange="dateChange">
 							<input disabled class="pick-input" value="{{orderDate}}" placeholder="选择预约日期"></input>
 						</picker>
-						<picker mode="selector" range="{{timeSelected}}" bindchange="timeChange">
+						<picker mode="time" start="10:00" end="22:00"  bindchange="timeChange">
 							<input disabled class="pick-input" value="{{orderTime}}" placeholder="选择预约时间"></input>
 						</picker>
 					</view>
@@ -145,7 +145,7 @@
 
 				<view class="radios">
 					<view>联系人</view>
-					<view class="color-b" bindinput="usingUserInfo" hover-class="using-userinfo">使用个人信息</view>
+					<view class="color-b" bindtap="usingUserInfo" hover-class="using-userinfo">使用个人信息</view>
 				</view>
 				<view class="radios b-b-g radios-input">
 					<input data-selected="2" data-key="uname" bindinput="inputText" value="{{userData.username}}" class="input" placeholder="请输入联系人姓名"></input>
@@ -219,7 +219,7 @@
 	</view>
 
 	<view class="button">
-		<button bindtap="recycle" style="width: 560rpx !important;" class="button-clear m-t-20">立即回收</button>
+		<button bindtap="recycle" style="width: 560rpx !important;" class="button-clear m-t-20" hover-class="btn-hover">立即回收</button>
 		<button bindtap="scanCode" style="width: 90rpx !important;" class="button-clear m-t-20">
 			<image style="width: 90rpx;" mode="widthFix" src="/images/sanf.png"></image>
 		</button>

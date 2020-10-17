@@ -41,7 +41,9 @@
 }
 .order-step-item{
   text-align: center;
+  width: 120rpx;
 }
+
 .order-icon{
   margin-top: 20rpx;
   width: 45rpx;
