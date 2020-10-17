@@ -169,7 +169,7 @@
 	<view class="agreement-box" hidden="{{!isShowContact}}">
 		<view class="cell-card agreement-cont" style="font-size: 40rpx;margin-top: 400rpx;">
 			<view class="t-a-c">提示</view>
-			<view class="t-a-c">您的货物较重，请您转人工客服！</view>
+			<view class="t-a-c">大件货物，请咨询人工客服</view>
 			<view class="agreement-button m-t-20">
 				<button open-type="contact" style="padding-left:0; padding-right:0;" class="agreement-agree">跳转人工客服</button>
 				<button bindtap="agreementCancel" class="agreement-cancel">取消</button>
