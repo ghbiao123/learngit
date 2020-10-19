@@ -35,7 +35,7 @@
     },
     {
       "pagePath": "pages/oldfornew/oldfornew",
-      "text": "订单",
+      "text": "以旧换新",
       "iconPath": "/images/oldfornew.png",
       "selectedIconPath": "/images/oldfornew-s.png"
     },

@@ -124,10 +124,10 @@
 	</view>
 	
 
-  <view wx:if="{{detail.recovery_type == 1 && detail.order_status == 0}" class="button m-t-20">
+  <view wx:if="{{detail.recovery_type == 1 && detail.order_status == 0}}" class="button m-t-20">
     <button bindtap="cancelOrder" class="btn" hover-class="cancel-hover">取消订单</button>
   </view>
-  <view wx:if="{{detail.recovery_type == 2 && detail.order_status == 0}" class="button m-t-20">
+  <view wx:if="{{detail.recovery_type == 2 && detail.order_status == 0}}" class="button m-t-20">
     <button bindtap="cancelOrder" class="btn" hover-class="cancel-hover">取消订单</button>
     <button bindtap="confirmOrder" class="btn" hover-class="btn-hover">确认发货</button>
   </view>

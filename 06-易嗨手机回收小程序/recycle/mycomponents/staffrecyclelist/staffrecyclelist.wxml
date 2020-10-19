@@ -9,8 +9,8 @@
       <view class="project-info">
         <view class="project-name">
           <view class="name">{{item.model_info.name}}</view>
-          <view class="state {{item.order_status==0||item.order_status==1?'state-red':''}}{{item.order_status==2?'state-green':''}}{{item.order_status==3?'state-gray':''}}">
-            {{item.order_status==0?'待验机':''}}{{item.order_status==1?'待付款':''}}{{item.order_status==2?'订单完成':''}}{{item.order_status==3?'订单取消':''}}
+          <view class="state {{item.order_status==0||item.order_status==1?'state-red':''}}{{item.order_status==2?'state-gray':''}}{{item.order_status==3?'state-green':''}}">
+            {{item.order_status==0?'待验机':''}}{{item.order_status==1?'待付款':''}}{{item.order_status==2?'订单取消':''}}{{item.order_status==3?'订单取消':''}}
           </view>
         </view>
         <view class="info ellipsis-text">{{item.model_info.cinfo}}</view>

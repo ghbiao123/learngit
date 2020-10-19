@@ -76,7 +76,7 @@ Page({
       that.setData({
         arrContent,
         arrVtabTitle: res.data.brands,
-        tabid: id,
+        tabid: 0,
       });
     });
   },
