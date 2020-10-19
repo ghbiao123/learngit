@@ -193,6 +193,21 @@ Page({
     let type = e.currentTarget.dataset.type;
     this.data[type] = e.detail.value;
     if(type == 'weight' && Number(this.data.weight)){
+      let weight = Number(e.detail.value);
+      if(!weight){
+        return util.showSuccess('您输入的重量有误');
+      }
+
+      weight = weight.toString().split('.');
+      if(weight.length>1){
+        // 有小数
+        weight[1] = Number(`0.${weight[1]}`) > 0.5 ?  1 : 0.5;
+        weight = Number(weight[0]) + weight[1];
+      }else{
+        // 无小数
+        weight = Number(weight[0]);
+      }
+      this.data[type] = weight;
       this.checkWeight()
     }
     // 检测是否满足估价条件
@@ -258,7 +273,8 @@ Page({
     }
     let data = {
       adderid: that.data.receiveCountry&&findIt(that.data.receiveCountryRange, 'name', that.data.receiveCountry)[0].id,
-      yunshuid: that.data.transport&&findIt(that.data.transportRange, 'name', that.data.transport)[0].id
+      yunshuid: that.data.transport&&findIt(that.data.transportRange, 'name', that.data.transport)[0].id,
+      huowuid: that.data.goodsType&&findIt(that.data.goodsTypeRange, 'name', that.data.goodsType)[0].id,
     }
     util.post('/api/Order/selectkg', data).then(res=>{
       let weight = res[0];

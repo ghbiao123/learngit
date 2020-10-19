@@ -5,7 +5,9 @@ Page({
   data: {
     bannerList:[],
     arrBetterChoice:[],
-    newsList:[]
+    newsList:[],
+    page: 1,
+    hasMore: true
   },
   //事件处理函数
   
@@ -53,13 +55,42 @@ Page({
       });
     });
 
+    this.getNewsList();
+    
+  },
+
+  // 获取首页新闻
+  getNewsList(){
+    function getFullUrl(arr, key){
+      if(!arr || arr.length==0) return [];
+      if(key){
+        return arr.map(v=>{
+          v[key] = utils.getSiteRoot() + (v[key] || '');
+          return v;
+        });
+      }else{
+        return utils.getSiteRoot() + arr;
+      }
+    }
     // news
-    utils.post('/api/Order/selectgonggao').then(res=>{
-      let newsList = getFullUrl(res, 'image');
+    let page = this.data.page;
+    utils.post('/api/Order/selectgonggao', {page}).then(res=>{
+      let list = getFullUrl(res.data, 'image');
+      console.log(list);
+      let newsList = that.data.newsList;
+      newsList.push(...list);
+      that.data.hasMore = res.has_more;
       that.setData({
         newsList
       });
     });
+  },
+  onReachBottom(){
+    if(!this.data.hasMore){
+      return utils.showSuccess('已加载所有新闻公告');
+    }
+    this.data.page++;
+    this.getNewsList();
   },
 
   onShareAppMessage: function () {

@@ -6,9 +6,9 @@ Component({
       value: [],
       observer: function(newVal){
         let newList = newVal.map(v=>{
-          v.createtime = util.getToday(v.createtime*1000).date;
           return v;
-        })
+          v.createtime = util.getToday(v.createtime*1000).date;
+        });
         this.setData({
           newList
         });
