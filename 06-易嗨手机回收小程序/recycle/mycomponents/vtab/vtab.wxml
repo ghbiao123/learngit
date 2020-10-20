@@ -12,17 +12,17 @@
       <block wx:for="{{[0]}}" wx:key="index">
         <view id="content{{index}}" class="vtab-content-scroll-item">
           <view class="vtab-content-scroll-title">{{vtab[selected].ebrands.name}}</view>
-          <view wx:if="{{selected == 4}}" style="display: flex; justify-content: center;">
+          <view wx:if="{{tabid == 4}}" style="display: flex; justify-content: center;">
             <navigator url="/pages/evaluation/othercalcprice">
               <button class="button-clear">点击进行估价</button>
             </navigator>
           </view>
           <block wx:for="{{vtabContent}}" wx:key="index" wx:for-index="idx" wx:for-item="it">
             <view class="vtab-cont-list {{(idx+1)%2==1?'bg-w':'bg-p'}}" data-cid="{{it.cid}}" data-id="{{it.id}}" bindtap="getEvaluation">
-              <image mode="aspectFit" class="vtab-cont-list-image" src="{{it.image}}"></image>
+              <image hidden mode="aspectFit" class="vtab-cont-list-image" src="{{it.image}}"></image>
               <view class="vtab-cont-list-info">
                 <view class="vtab-cont-list-info-name ellipsis-text">{{it.name}}</view>
-                <view class="vtab-cont-list-info-name ellipsis-text">最高可卖：<text class="color">￥{{it.maxprice}}</text></view>
+                <view hidden class="vtab-cont-list-info-name ellipsis-text">最高可卖：<text class="color">￥{{it.maxprice}}</text></view>
               </view>
               <image wx:if="{{idx < 3}}" class="vtab-cont-list-icon" src="/images/rank{{idx}}.png"></image>
             </view>

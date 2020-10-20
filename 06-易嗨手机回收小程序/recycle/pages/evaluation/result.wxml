@@ -84,13 +84,12 @@
 					<input data-selected="1" data-key="uname" bindinput="inputText" value="{{userData.username}}" class="input" placeholder="请输入联系人姓名"></input>
 				</view>
 				<view class="radios">
-					<view>联系方式</view>
-					<!-- <view class="color-b">修改</view> -->
+					<view>联系电话</view>
 				</view>
 				<view class="radios b-b-g radios-input">
 					<input data-selected="1" data-key="uphone" bindinput="inputText" value="{{userData.mobile}}" class="input" placeholder="请输入联系人电话"></input>
 				</view>
-				<view class="radios">
+				<!-- <view class="radios">
 					<view>银行卡号</view>
 				</view>
 				<view class="radios b-b-g radios-input">
@@ -101,7 +100,7 @@
 				</view>
 				<view class="radios b-b-g radios-input">
 					<input data-selected="1" data-key="ubank" bindinput="inputText" value="{{userData.bCard}}" class="input" placeholder="请输入开户行"></input>
-				</view>
+				</view> -->
 				<view class="radios">
 					<view>上门地址</view>
 					<!-- <view class="color-b">修改</view> -->
@@ -136,7 +135,7 @@
 					</view>
 				</view>
 
-				<view hidden class="radios text-tip">工作人员上门验收货物</view>
+				<!-- <view class="radios text-tip">工作人员上门验收货物</view> -->
 
 			</view>
 
@@ -170,22 +169,31 @@
 					<input data-selected="2" data-key="ubank" bindinput="inputText" value="{{userData.bCard}}" class="input" placeholder="请输入开户行"></input>
 				</view>
 				<view class="radios">
-					<view>上门地址</view>
-					<!-- <view class="color-b">修改</view> -->
+					<view>户名</view>
 				</view>
-				<view class="radios radios-input b-b-g">
+				<view class="radios b-b-g radios-input">
+					<input data-selected="2" data-key="ubank" bindinput="inputText" value="{{userData.bCard}}" class="input" placeholder="请输入户名"></input>
+				</view>
+
+				<view class="m-t-20 t-a-c">
+					<checkbox-group bindchange="getExpress">
+						<checkbox value="1" color="#C7402C">是否需要代叫快递上门</checkbox>
+					</checkbox-group>
+				</view>
+
+				<view hidden="{{!isGetExpress}}" class="radios">
+					<view>上门地址</view>
+				</view>
+				<view hidden="{{!isGetExpress}}" class="radios radios-input b-b-g">
 					<picker mode="region" bindchange="regionChange">
 						<input disabled value="{{userRegion || userData.region}}" class="input" placeholder="请选择省/市/区"></input>
 					</picker>
 						<image class="radios-picker-icon" mode="widthFix" src="/images/rt2.png"></image>
 				</view>
-
-				<view class="radios">
+				<view hidden="{{!isGetExpress}}" class="radios">
 					<view>详细地址</view>
-					<!-- <view class="color-b">修改</view> -->
 				</view>
-
-				<view class="radios b-b-g radios-input">
+				<view hidden="{{!isGetExpress}}" class="radios b-b-g radios-input">
 					<input data-selected="2" data-key="uaddress" bindinput="inputText" value="{{userData.address}}" class="input" placeholder="详细地址：如道路、门牌号、小区、单元室等"></input>
 				</view>
 

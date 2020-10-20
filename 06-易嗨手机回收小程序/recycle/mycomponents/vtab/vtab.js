@@ -22,6 +22,15 @@ Component({
         });
       }
     },
+    tabid: {
+      type: Number,
+      value: 0,
+      observer(newVal) {
+        this.setData({
+          tabid: newVal
+        });
+      }
+    },
     
     vtabContent: {
       type: Object,

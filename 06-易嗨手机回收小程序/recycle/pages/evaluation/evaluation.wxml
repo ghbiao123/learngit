@@ -10,6 +10,8 @@
       <view class="name">{{_data.name}}</view>
     </view>
 
+    <view class="cell-card m-t-20">小提示：选择结果与实际相符，有利于加快您的回收进度。</view>
+
     <view wx:if="{{type == 'mobile'}}" class="cont">
 
       <view class="tit-no-bg">1.手机型号</view>

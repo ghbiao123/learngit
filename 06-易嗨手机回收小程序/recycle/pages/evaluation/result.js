@@ -16,7 +16,8 @@ Page({
     inputDoorData: {},
     inputExpressData: {},
     isCoupon: true,
-    reQuery: true
+    reQuery: true,
+    isGetExpress: false
   },
 
   /**
@@ -25,6 +26,8 @@ Page({
   onLoad: function (options) {
     that = this;
     this.data.pageOption = options;
+
+    this.data.pageOption.name = this.data.pageOption.name.replace(/iphone/ig, '苹果');
     
     // 工作人员扫码估价不可重新询价
     if(options.frompage&&options.frompage == 'recyclelist'){
@@ -34,6 +37,21 @@ Page({
     }
 
   },
+  // 是否显示快递回收上门服务
+  getExpress(e){
+    let val = e.detail.value[0];
+    console.log(val);
+    if(!val) {
+      this.setData({
+        isGetExpress: false
+      });
+    }else{
+      this.setData({
+        isGetExpress: true
+      });
+    }
+  },
+
   inputText(e) {
     let key = e.currentTarget.dataset.key;
     let selected = e.currentTarget.dataset.selected;

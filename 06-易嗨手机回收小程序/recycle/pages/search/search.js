@@ -77,6 +77,7 @@ Page({
         arrContent,
         arrVtabTitle: res.data.brands,
         tabid: 0,
+        _tabid: id
       });
     });
   },
