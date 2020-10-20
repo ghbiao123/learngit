@@ -11,3 +11,6 @@
 .msg-options{
   margin-top: 70rpx;
 }
+.cell-item{
+  min-height: 100rpx !important;
+}

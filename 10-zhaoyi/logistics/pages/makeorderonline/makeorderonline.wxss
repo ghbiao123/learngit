@@ -6,8 +6,12 @@
   height: 120rpx;
 }
 .address{
+  width: 630rpx;
   line-height: 80rpx;
   font-size: 32rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .contact-info{
   line-height: 40rpx;

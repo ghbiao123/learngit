@@ -430,11 +430,11 @@ Page({
       yunshuid: that.data.transport&&findIt(that.data.transportRange, 'name', that.data.transport)[0].id,
       weight: that.data.weight,
     }
-    for(let key in needData){
-      if(!needData[key]){
-        return
-      }
-    }
+    // for(let key in needData){
+    //   if(!needData[key]){
+    //     return
+    //   }
+    // }
     util.post('/api/Order/selectprice', needData).then(res=>{
       if(res.code == 1){
         that.setData({
