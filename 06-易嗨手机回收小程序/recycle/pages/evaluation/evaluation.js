@@ -310,14 +310,16 @@ Page({
 
     // 先判断人工估价
     if (this.data.type == 'pc' && this.data._data.bid != 1) {
-      // wx.showModal({
-      //   cancelColor: '#000',
-      //   cancelText: '人工估价',
-      //   confirmText: '立即回收',
-      //   title: '提示',
-      //   content: '请您选择估价方式',
-      //   success(res) {}
-      // });
+      wx.setStorage({
+        data: data,
+        key: 'currentmachine',
+        success(){
+          wx.navigateTo({
+            url: '/pages/notes/notes',
+          });
+        }
+      });
+      return;
       if (e.detail.value == 2) {
         // 用户现场扫码
         data.otype = 1;

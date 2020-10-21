@@ -54,9 +54,19 @@ Page({
 
     this.data._data = data;
 
-    this.setData({
-      showActionsheet: true
+    // this.setData({
+    //   showActionsheet: true
+    // });
+
+    wx.setStorage({
+      data: data,
+      key: 'currentmachine',
     });
+
+    wx.navigateTo({
+      url: '/pages/tips/tips?frompage=othercalcprice',
+    });
+
 
   },
   // close actionsheet
@@ -69,7 +79,6 @@ Page({
     // 关闭actionsheet
     this.close();
 
-
     let data = this.data._data;
     if(e.detail.value == 2){
       // 用户现场扫码
@@ -80,8 +89,11 @@ Page({
         key: 'currentmachine',
       });
       submit(data, function(res){
+        // wx.navigateTo({
+        //   url: `/pages/evaluation/result?frompage=othercalcprice&name=${data.name}&price=0&otype=1&orderid=${res.data.aoid}`,
+        // });
         wx.navigateTo({
-          url: `/pages/evaluation/result?frompage=othercalcprice&name=${data.name}&price=0&otype=1&orderid=${res.data.aoid}`,
+          url: `/pages/tips/tips?frompage=othercalcprice&name=${data.name}&price=0&otype=1&orderid=${res.data.aoid}`,
         });
       });
     }else if(e.detail.value == 1 ){

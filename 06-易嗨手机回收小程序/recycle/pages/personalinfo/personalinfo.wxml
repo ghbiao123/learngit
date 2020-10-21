@@ -45,6 +45,12 @@
     <view class="tit-no-bg">银行卡信息</view>
     <view class="cell-card">
       <view class="cell-item">
+        <view class="cell-name">户名</view>
+        <view class="cell-cont">
+          <input name="buname" value="{{userData.buname}}" class="cell-input" type="text" placeholder="请输入户名" />
+        </view>
+      </view>
+      <view class="cell-item">
         <view class="cell-name">开户行</view>
         <view class="cell-cont">
           <input name="bank" value="{{userData.bank}}" class="cell-input" type="text" placeholder="请输入开户行" />

@@ -42,6 +42,7 @@ Page({
       mobile: '手机号',
       region: '所在地区',
       address: '详细地址',
+      buname: '户名',
       bank: '开户行',
       bankcard: '银行卡号',
     }

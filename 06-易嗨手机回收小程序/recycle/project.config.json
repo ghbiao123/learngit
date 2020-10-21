@@ -218,6 +218,13 @@
           "pathName": "pages/cancel/cancel",
           "query": "orderid=1&operator=1&operatorid=17",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/tips/tips",
+          "pathName": "pages/tips/tips",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -22,7 +22,9 @@
     "pages/personalinfo/personalinfo",
     "pages/oldfornew/oldfornew",
     "pages/cancel/cancel",
-    "pages/staffevaluation/evaluation"
+    "pages/staffevaluation/evaluation",
+    "pages/tips/tips",
+    "pages/notes/notes"
   ],
   "tabBar": {
     "color": "#cccccc",

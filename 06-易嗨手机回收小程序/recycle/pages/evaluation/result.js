@@ -196,11 +196,25 @@ Page({
     } else if (this.data.selected == 2) {
       Object.assign(data, this.data.inputExpressData);
     }
-    data.uaddress = this.data.userRegion.join(',') + ' ' + data.uaddress;
-    let needKey = {
+
+    // data.recoverytype 回收方式 1，上门回收； 2，快递回收；
+    let needKey = {};
+    if(data.recoverytype == 1 ){
+      data.uaddress = this.data.userRegion.join(',') + ' ' + data.uaddress;
+      needKey.uaddress = '';
+    }else if(data.recoverytype == 2){
+      if(this.data.isGetExpress){
+        needKey.uaddress = '';
+        data.doexpress = 1;
+        data.uaddress = this.data.userRegion.join(',') + ' ' + data.uaddress;
+      }else{
+        data.doexpress = 0;
+      }
+    }
+
+    needKey = {
       uname: '',
       uphone: '',
-      uaddress: '',
       ubank: '',
       ubankcard: '',
     }

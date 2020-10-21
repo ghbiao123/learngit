@@ -30,6 +30,10 @@ Page({
   init(id) {
     util.post('/api/products/getEcategoryList').then(res => {
       let arrTitle = res.data;
+      arrTitle[0].name = '手机';
+      arrTitle[1].name = '平板';
+      arrTitle[2].name = '电脑';
+      arrTitle[3].name = '相机';
       let _id = id? id:arrTitle[0].id;
       that.setData({
         arrTitle,
