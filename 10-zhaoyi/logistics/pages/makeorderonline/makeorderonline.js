@@ -73,10 +73,11 @@ Page({
     }
 
     for(let key in data){
-      if(!data[key]){
+      if(!data[key] || !that.data.date  || !that.data.time){
         return util.showSuccess('请完善您的信息');
       }
     }
+  
 
     let userInfo = wx.getStorageSync('userinfo');
     if(!userInfo){

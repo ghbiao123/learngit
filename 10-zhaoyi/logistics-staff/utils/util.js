@@ -32,13 +32,13 @@ function post(url, data = {}) {
       method: "POST",
       data: data,
       success(res) {
-
+        console.log(res);
         status = 1;
 
-        if (res.statusCode !== 200) {
-          showError("您的网络出错啦");
-          return;
-        }
+        // if (res.statusCode !== 200) {
+        //   showError("您的网络出错啦");
+        //   return;
+        // }
 
         resolve(res.data);
 
