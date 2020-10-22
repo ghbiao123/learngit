@@ -31,11 +31,13 @@ Component({
         isFocus = false;
       }
       this.data.result = '';
+      this.triggerEvent('getinput','');
       that.setData({value:this.data.result, isFocus});
       
     },
     getInput(e){
       this.data.result = e.detail.value;
+      this.triggerEvent('getinput',e.detail.value);
     },
     getComfirm(e){
       this.triggerEvent('searchbar',e.detail.value);

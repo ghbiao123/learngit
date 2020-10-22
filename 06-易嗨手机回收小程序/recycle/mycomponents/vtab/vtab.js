@@ -40,6 +40,15 @@ Component({
           vtabContent: newVal
         });
       }
+    },
+    isHot: {
+      value: true,
+      type: Boolean,
+      observer(newVal){
+        this.setData({
+          isHot: newVal
+        });
+      }
     }
   },
   methods: {

@@ -47,7 +47,8 @@ Page({
   getVtabTitleId(e) {
     if(e.detail == 'hot'){
       this.setData({
-        arrContent: that.data.hotmodel
+        arrContent: that.data.hotmodel,
+        isHot: true
       });
       return;
     }
@@ -55,7 +56,8 @@ Page({
     util.post('/api/products/getEmodelList', this.data.reqData).then(res => {
       let arrContent = util.getImageFullUrl(res.data, 'image');
       that.setData({
-        arrContent
+        arrContent,
+        isHot: false
       });
     });
 
@@ -81,7 +83,8 @@ Page({
         arrContent,
         arrVtabTitle: res.data.brands,
         tabid: 0,
-        _tabid: id
+        _tabid: id,
+        isHot: true
       });
     });
   },

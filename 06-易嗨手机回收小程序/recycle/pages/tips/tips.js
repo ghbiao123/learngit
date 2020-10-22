@@ -1,4 +1,6 @@
 // pages/tips/tips.js
+let util = require('../../utils/util');
+let that;
 Page({
 
   /**
@@ -12,6 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
     this.data.pageOption = options;
     console.log(options);
     this.data._data = wx.getStorageSync('currentmachine');

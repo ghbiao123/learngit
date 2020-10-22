@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    Storage:[]
+    Storage:[],
+    showList: false
   },
 
   /**
@@ -37,9 +38,69 @@ Page({
     // 更新搜索历史记录
     this.addStorageData(key);
 
-    // 请求数据
+    // 请求数据  
     this.getSearchResult(key);
+
+    // this.getList(key);
+
   },
+  // 这里是用户填写关键字来进行搜索，需要列表来展示搜索结果
+  getInputText(e){
+    let key = e.detail;
+    if(!key){
+      this.setData({
+        showList: false
+      });
+      return;
+    }
+    this.getList(key);
+  },
+  getList(keywords) {
+    util.post('/api/products/searchEmodel', {
+      keywords
+    }).then(res => {
+      console.log(res);
+      that.setData({
+        showList: true,
+        result: res.data
+      });
+    });
+  },
+  getEvaluation(e) {
+    that.setData({
+      showList: false,
+    });
+    let mid = e.currentTarget.dataset.id;
+    let mname = e.currentTarget.dataset.name;
+    let cid = e.currentTarget.dataset.cid;
+    let userInfo = wx.getStorageSync('userinfo');
+    if (userInfo) {
+      util.post('/api/products/searchStatistics', {
+        mid,
+        mname,
+        userid: userInfo.uid,
+        cid
+      });
+    }
+
+    if (cid >= 4) {
+      wx.navigateTo({
+        url: '/pages/evaluation/othercalcprice',
+      });
+      return
+    }
+    wx.navigateTo({
+      url: `/pages/evaluation/evaluation?id=${mid}&cid=${cid}`,
+    });
+
+    return;
+    wx.navigateTo({
+      url: '/pages',
+    });
+
+
+  },
+
   // 根据input value请求内容
   getSearchResult(val){
     // 跳转另一个页面，呈现搜索结果
@@ -61,6 +122,7 @@ Page({
   },
   // 增加记录
   addStorageData(item){
+    if(!item){return}
     this.data.Storage.unshift(item);
     let Storage = this.data.Storage;
     Storage = Array.from(new Set(Storage));

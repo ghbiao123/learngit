@@ -79,10 +79,16 @@
 .vtab-cont-list-info-name{
   font-size: 30rpx;
   font-weight: bold;
-  /* line-height: 50rpx; */
-  line-height: 100rpx;
   text-indent: 20rpx;
+  line-height: 100rpx;
 }
+/* .l-h-100{
+  line-height: 100rpx;
+  
+}
+.l-h-50{
+  line-height: 50rpx;
+} */
 .color{
   color: #C7402C;
 }

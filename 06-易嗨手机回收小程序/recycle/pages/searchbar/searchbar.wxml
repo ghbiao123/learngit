@@ -1,17 +1,25 @@
 <view class="content">
-	<scarch-bar bind:searchbar="result" theme="#ffffff" placeholder="搜索品牌或者机型"></scarch-bar>
+	<scarch-bar bind:getinput="getInputText" bind:searchbar="result" theme="#ffffff" placeholder="搜索品牌或者机型"></scarch-bar>
+	<view wx:if="{{showList}}" class="list" wx:for="{{result}}" wx:key="index" data-name="{{item.name}}"
+		data-id="{{item.id}}" data-cid="{{item.cid}}" bindtap="getEvaluation">
+		{{item.name}}
+	</view>
+	<view wx:if="{{!showList}}">
+		<view class="tit-no-bg" wx:if="{{Storage.length > 0}}">
+			<view>历史记录</view>
+			<image bindtap="clearStorageData" style="width: 28rpx; height: 28rpx; margin-top: 23rpx;" src="/images/clear.png">
+			</image>
+		</view>
+		<view class="tip-content">
+			<view class="tip" bindtap="getItem" data-key="{{item}}" wx:for="{{Storage}}" wx:key="index">{{item}}</view>
+		</view>
+		<view class="tit-no-bg">热门搜索</view>
+		<view class="tip-content">
+			<view class="tip" bindtap="getItem" data-key="{{item}}" wx:for="{{hotList}}" wx:key="index">{{item.keywords}}
+			</view>
+		</view>
+	</view>
 
-	<view class="tit-no-bg" wx:if="{{Storage.length > 0}}">
-		<view>历史记录</view>
-		<image bindtap="clearStorageData" style="width: 28rpx; height: 28rpx; margin-top: 23rpx;" src="/images/clear.png"></image>
-	</view>
-	<view class="tip-content">
-		<view class="tip" bindtap="getItem" data-key="{{item}}" wx:for="{{Storage}}" wx:key="index">{{item}}</view>
-	</view>
-	<view class="tit-no-bg">热门搜索</view>
-	<view class="tip-content">
-		<view class="tip" bindtap="getItem" data-key="{{item}}" wx:for="{{hotList}}" wx:key="index">{{item.keywords}}</view>
-	</view>
 
 
 </view>

@@ -1,4 +1,4 @@
-<block wx:if="{{result.length>0}}">
+<block wx:if="{{result[0]}}">
 	<view class="list" wx:for="{{result}}" wx:key="index" data-name="{{item.name}}" data-id="{{item.id}}" data-cid="{{item.cid}}" bindtap="getEvaluation">
 		{{item.name}}
 	</view>
