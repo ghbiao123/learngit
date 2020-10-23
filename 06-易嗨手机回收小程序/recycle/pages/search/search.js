@@ -34,6 +34,7 @@ Page({
       arrTitle[1].name = '平板';
       arrTitle[2].name = '电脑';
       arrTitle[3].name = '相机';
+      arrTitle[4].name = '其他';
       let _id = id? id:arrTitle[0].id;
       that.setData({
         arrTitle,

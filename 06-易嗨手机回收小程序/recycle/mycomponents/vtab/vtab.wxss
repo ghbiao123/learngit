@@ -122,3 +122,21 @@
   background-color: #C1402A;
   border-radius: 10rpx;
 }
+
+
+/* tabid 为 4,5 的显示样式 */
+.brand{
+  width: 550rpx;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f5f5f5;
+}
+.brand-logo,
+.brand-item{
+  width: 170rpx;
+  height: 170rpx;
+}
+.brand-item{
+  margin: 10rpx 0 0 10rpx;
+}
+

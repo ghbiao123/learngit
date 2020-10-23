@@ -225,6 +225,13 @@
           "pathName": "pages/tips/tips",
           "query": "",
           "scene": null
+        },
+        {
+          "id": 22,
+          "name": "pages/cameraevaluation/evaluation",
+          "pathName": "pages/cameraevaluation/evaluation",
+          "query": "",
+          "scene": null
         }
       ]
     }

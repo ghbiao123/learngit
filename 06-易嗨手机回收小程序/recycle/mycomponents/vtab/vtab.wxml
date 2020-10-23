@@ -8,21 +8,24 @@
     </scroll-view>
   </view>
 
-  <view class="vtab-content">
+
+  <!-- tabid == 4,5, -->
+  <view wx:if="{{tabid >= 4}}" class="vtab-content" style="background: #f5f5f5;">
     <scroll-view scroll-y scroll-with-animation class="vtab-content-scroll" scroll-into-view="content{{selected}}">
-      <block wx:for="{{[0]}}" wx:key="index">
-        <view id="content{{index}}" class="vtab-content-scroll-item">
-          <view class="vtab-content-scroll-title">{{vtab[selected].ebrands.name}}</view>
-          <view wx:if="{{tabid == 4}}" style="display: flex; justify-content: center;">
-            <navigator url="/pages/evaluation/othercalcprice">
-              <button class="button-clear">点击进行估价</button>
-            </navigator>
+      <view id="content0" class="vtab-content-scroll-item" style="border-bottom: 6rpx solid #f5f5f5;">
+        <view class="vtab-content-scroll-title">{{vtab[selected].ebrands.name}}</view>
+        <!-- <block wx:for="{{vtabContent}}" wx:key="index" wx:for-index="idx" wx:for-item="it">
+        </block> -->
+        <view class="brand">
+          <view class="brand-item" wx:for="0000000000000" wx:key="index">
+            <image class="brand-logo" mode="aspectFit" src="/images/hauwei-logo.jpg"></image>
           </view>
-          <block wx:for="{{vtabContent}}" wx:key="index" wx:for-index="idx" wx:for-item="it">
-            <view class="vtab-cont-list {{(idx+1)%2==1?'bg-w':'bg-p'}}" data-cid="{{it.cid}}" data-id="{{it.id}}"
-              bindtap="getEvaluation">
-              <!-- 无图标列表 -->
-              <block wx:if="{{!isHot}}">
+        </view>
+
+        <!-- <view class="vtab-cont-list {{(idx+1)%2==1?'bg-w':'bg-p'}}" data-cid="{{it.cid}}" data-id="{{it.id}}"
+              bindtap="getEvaluation"> -->
+        <!-- 无图标列表 -->
+        <!-- <block wx:if="{{!isHot}}">
                 <image hidden mode="aspectFit" class="vtab-cont-list-image" src="{{it.image}}"></image>
                 <view class="vtab-cont-list-info">
                   <view class="vtab-cont-list-info-name l-h-100 ellipsis-text">{{it.name}}</view>
@@ -30,9 +33,9 @@
                       class="color">￥{{it.maxprice}}</text></view>
                 </view>
                 <image wx:if="{{idx < 3}}" class="vtab-cont-list-icon" src="/images/rank{{idx}}.png"></image>
-              </block>
-              <!-- 有图标列表 -->
-              <block wx:if="{{isHot}}">
+              </block> -->
+        <!-- 有图标列表 -->
+        <!-- <block wx:if="{{isHot}}">
                 <image mode="aspectFit" class="vtab-cont-list-image" src="{{it.image}}"></image>
                 <view class="vtab-cont-list-info">
                   <view class="vtab-cont-list-info-name ellipsis-text">{{it.name}}</view>
@@ -41,10 +44,45 @@
                 </view>
                 <image wx:if="{{idx < 3}}" class="vtab-cont-list-icon" src="/images/rank{{idx}}.png"></image>
               </block>
-            </view>
-          </block>
-        </view>
-      </block>
+            </view> -->
+
+      </view>
+    </scroll-view>
+  </view>
+
+
+  <!-- tabid == 1,2,3, -->
+
+  <view wx:if="{{tabid <= 3}}" class="vtab-content">
+    <scroll-view scroll-y scroll-with-animation class="vtab-content-scroll" scroll-into-view="content{{selected}}">
+      <view id="content0" class="vtab-content-scroll-item">
+        <view class="vtab-content-scroll-title">{{vtab[selected].ebrands.name}}</view>
+        <block wx:for="{{vtabContent}}" wx:key="index" wx:for-index="idx" wx:for-item="it">
+          <view class="vtab-cont-list {{(idx+1)%2==1?'bg-w':'bg-p'}}" data-cid="{{it.cid}}" data-id="{{it.id}}"
+            bindtap="getEvaluation">
+            <!-- 无图标列表 -->
+            <block wx:if="{{!isHot}}">
+              <image hidden mode="aspectFit" class="vtab-cont-list-image" src="{{it.image}}"></image>
+              <view class="vtab-cont-list-info">
+                <view class="vtab-cont-list-info-name l-h-100 ellipsis-text">{{it.name}}</view>
+                <view hidden class="vtab-cont-list-info-name ellipsis-text">最高可卖：<text
+                    class="color">￥{{it.maxprice}}</text></view>
+              </view>
+              <image wx:if="{{idx < 3}}" class="vtab-cont-list-icon" src="/images/rank{{idx}}.png"></image>
+            </block>
+            <!-- 有图标列表 -->
+            <block wx:if="{{isHot}}">
+              <image mode="aspectFit" class="vtab-cont-list-image" src="{{it.image}}"></image>
+              <view class="vtab-cont-list-info">
+                <view class="vtab-cont-list-info-name ellipsis-text">{{it.name}}</view>
+                <view hidden class="vtab-cont-list-info-name l-h-50 ellipsis-text">最高可卖：<text
+                    class="color">￥{{it.maxprice}}</text></view>
+              </view>
+              <image wx:if="{{idx < 3}}" class="vtab-cont-list-icon" src="/images/rank{{idx}}.png"></image>
+            </block>
+          </view>
+        </block>
+      </view>
     </scroll-view>
   </view>
 </view>

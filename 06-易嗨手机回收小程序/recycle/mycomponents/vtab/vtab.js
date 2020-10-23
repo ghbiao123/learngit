@@ -26,6 +26,7 @@ Component({
       type: Number,
       value: 0,
       observer(newVal) {
+        console.log('tabid：', newVal);
         this.setData({
           tabid: newVal
         });
