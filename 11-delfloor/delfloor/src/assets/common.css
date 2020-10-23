@@ -1,0 +1,14 @@
+body,ul,li,p,h1,h2{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img{
+  border: 0;
+  vertical-align: top;
+}
+
+a{
+  text-decoration: none;
+}
