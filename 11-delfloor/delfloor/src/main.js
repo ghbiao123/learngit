@@ -9,6 +9,10 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI);
 
+// project view component
+import projectView from './components/projectview.vue'
+Vue.component('projectView', projectView);
+
 // common.css 样式初始化
 import './assets/common.css'
 

@@ -28,6 +28,7 @@ export default {
 .app {
   position: relative;
   width: 750/@rem;
+  max-width: 750/@rem;
   margin: 0 auto;
   overflow: hidden;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
