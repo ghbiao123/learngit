@@ -89,9 +89,18 @@
       <button class="button-clear btn-big">免费抢先预约</button>
     </div>
 
-    <!-- 地板样式展示 -->
-    <project-view></project-view>
+      <button class="button-clear btn-small">实木复合地板</button>
 
+    <!-- 地板样式展示 -->
+    <div @click="log">
+      <project-view size="big" src="../../static/images/test1.png" text="这是一段文字，这是一段文字"></project-view>
+    </div>
+    <project-view size="small" src="../../static/images/test1.png" text="这是一段文字，这是一段文字"></project-view>
+
+
+      <viewer v-if="false" :images="images">
+        <img v-for="(item, index) in images" :key="index" :src="item" alt="#">
+      </viewer>
 
   </div>
 </template>
@@ -102,9 +111,10 @@ export default {
   data() {
     return {
       //
+      images:['../../../static/images/test1.png', '../../../static/images/test2.png'],
+      // 以上为测试数据
       name: "",
       phone: "",
-      // 以上为测试数据
       arrProvence: [],
       provence: "",
       city: "",
@@ -115,7 +125,11 @@ export default {
     // 省份数据
     this.arrProvence = region["0"];
   },
-  methods: {},
+  methods: {
+    log(){
+      console.log('a');
+    }
+  },
   // 计算属性
   computed: {
     // 筛选当前省份的城市
@@ -162,12 +176,14 @@ export default {
         height: 80 / @rem;
         line-height: 80 / @rem;
         text-align: center;
-        font-size: 30 / @rem;
+        font-size: 15px;
       }
       .cont {
+        display: flex;
+        align-items: center;
         font-size: 0;
         width: 470 / @rem;
-        height: 80 / @rem;
+        height: 82 / @rem;
         overflow: hidden;
       }
       .cont > .el-select {

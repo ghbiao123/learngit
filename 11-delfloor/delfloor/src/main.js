@@ -9,6 +9,11 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI);
 
+// v-viewer
+import 'viewerjs/dist/viewer.css'
+import Viewer from 'v-viewer'
+Vue.use(Viewer);
+
 // project view component
 import projectView from './components/projectview.vue'
 Vue.component('projectView', projectView);
