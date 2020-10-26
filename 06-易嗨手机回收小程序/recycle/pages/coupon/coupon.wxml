@@ -1,10 +1,10 @@
 <view class="cell-card coupon" wx:for="{{list}}" wx:key="index">
   <view class="price">
     <view class="price-num">￥{{item.par_value || item.parvalue}}</view>
-    <view class="price-txt">加价券</view>
+    <view class="price-txt">满{{item.form_p}}可用</view>
   </view>
   <view class="text">
-    <view class="text-txt {{type == 'mine'? 'p-t-30':''}}">{{item.name}}</view>
+    <view class="text-txt {{type == 'mine'? 'p-t-30':''}}">{{item.name}} 满{{item.form_p}}加{{item.par_value}}</view>
     <view class="text-time" wx:if="{{type == 'add'}}">起：{{item.validstime_text}}</view>
     <view class="text-time" wx:if="{{type == 'add'}}">止：{{item.validetime_text}}</view>
   </view>

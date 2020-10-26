@@ -23,7 +23,7 @@
   color: #515151;
 }
 .text-time{
-  color: #FB6601;
+  color: #aaa;
   font-size: 22rpx;
 }
 .button{

@@ -23,6 +23,8 @@ Page({
 
     this.data.fromPage = options.page;
 
+    this.data.predictprice = options.predictprice; 
+
     console.log(options);
 
   },
@@ -100,6 +102,7 @@ Page({
       url = '/api/user/userMarkupCoupon';
       data.userid = isLogin.uid;
       this.data.available&&(data.available = this.data.available);
+      this.data.predictprice&&(data.predictprice = this.data.predictprice);
     }
 
     util.post(url, data).then(res=>{
@@ -111,6 +114,9 @@ Page({
           v.validstime_text = v.validstime_text.replace(/\-/g, "\/");
           v.validetime_text = v.validetime_text.replace(/\-/g, "\/");
           // v.isGot = false;
+          v.form_p = Number(v.form_p);
+          v.to_p = Number(v.to_p);
+          v.par_value = Number(v.par_value);
           arrIsGot.push((v.usercoupon_count==0? false:true));
           return v;
         });
