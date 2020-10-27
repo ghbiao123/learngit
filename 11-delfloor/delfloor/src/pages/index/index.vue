@@ -86,21 +86,57 @@
     </div>
 
     <div class="submit">
-      <button class="button-clear btn-big">免费抢先预约</button>
+      <button @click="submit" class="button-clear btn-big">免费抢先预约</button>
     </div>
 
-      <button class="button-clear btn-small">实木复合地板</button>
+    <div class="case">
+      <div class="title">
+        <button class="button-clear btn-small">实木复合地板</button>
+      </div>
+      <div class="cont">
+        <div class="cont-item" @click="previewImage(item.src)" v-for="(item, index) in images" :key="index">
+          <project-view size="big" :src="item.src" :text="item.text"></project-view>
+        </div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="title">
+        <button class="button-clear btn-small">实木复合地板</button>
+      </div>
+      <div class="cont">
+        <div class="cont-item" @click="previewImage(item.src)" v-for="(item, index) in images" :key="index">
+          <project-view size="big" :src="item.src" :text="item.text"></project-view>
+        </div>
+      </div>
+    </div>
+
 
     <!-- 地板样式展示 -->
-    <div @click="log">
+    <div v-if="false">
       <project-view size="big" src="../../static/images/test1.png" text="这是一段文字，这是一段文字"></project-view>
+      <project-view size="small" src="../../static/images/test1.png" text="这是一段文字，这是一段文字"></project-view>
     </div>
-    <project-view size="small" src="../../static/images/test1.png" text="这是一段文字，这是一段文字"></project-view>
 
+    <!-- 说明 -->
+    <div class="explain">
+      <div class="tit">说明</div>
+      <div class="dashed">
+        <div class="triangle triangle-l"></div>
+        <div class="triangle triangle-r"></div>
+      </div>
+      <div class="explain-cont">
+        <div class="cont-item" v-for="(item, index) in explain" :key="index">
+          <div class="item-order">{{index+1}}</div>
+          <div class="item-text">{{item}}</div>
+        </div>
+      </div>
+    </div>
 
-      <viewer v-if="false" :images="images">
-        <img v-for="(item, index) in images" :key="index" :src="item" alt="#">
-      </viewer>
+    <!-- 展示框组件 -->
+    <viewer v-if="showPreview" :images="arrShowImage">
+      <img v-for="(item, index) in arrShowImage" :key="index" :src="item" alt="#">
+    </viewer>
 
   </div>
 </template>
@@ -111,7 +147,7 @@ export default {
   data() {
     return {
       //
-      images:['../../../static/images/test1.png', '../../../static/images/test2.png'],
+      images:[{src:'../../static/images/test1.png', text: '这是一段文字'}, {src:'../../static/images/test2.png', text: '这是一段文字'}, {src:'../../static/images/test1.png', text: '这是一段文字'}, {src:'../../static/images/test2.png', text: '这是一段文字'}],
       // 以上为测试数据
       name: "",
       phone: "",
@@ -119,6 +155,9 @@ export default {
       provence: "",
       city: "",
       country: "",
+      showPreview: true,
+      arrShowImage: [],
+      explain: ['因地址问题或其他原因导致我司无法提供对应的测量服务，我司不承担任何相应责任！', '门店工作人员预约上门前会与您确定是否超出服务范围', '测量不收费，但若超出最近门店服务范围而产生的“路程费”我司及门店不承担。', '如在上门测量过程中出现任何疑问，可直接在微信后台咨询人工客服。']
     };
   },
   created() {
@@ -126,8 +165,24 @@ export default {
     this.arrProvence = region["0"];
   },
   methods: {
-    log(){
-      console.log('a');
+    // 展示图片
+    previewImage(data){
+      this.showPreview = true;
+      this.arrShowImage = new Array(1).fill(data.src);
+    },
+    // 提交表单
+    submit(){
+      let address = `${region[0][this.provence]},${region[`0,${this.provence}`][this.city]},${region[`0,${this.provence},${this.city}`][this.country]}`;
+      let data = {
+        name: this.name,
+        phone: this.phone,
+        address: address,
+        style: this.country
+      }
+      console.log(data);
+
+      this.country = ''
+
     }
   },
   // 计算属性
@@ -146,7 +201,7 @@ export default {
 <style lang='less' scoped>
 @rem:750 /10rem;
 #app {
-  padding-bottom: 40 / @rem;
+  padding-bottom: 150 / @rem;
   overflow: hidden;
   background-color: #e60315;
   background-image: linear-gradient(
@@ -193,6 +248,85 @@ export default {
   }
   .submit{
     padding: 45/@rem 0 100/@rem;
+  }
+  .case{
+    padding: 5/@rem 0 80/@rem;
+    width: 630/@rem;
+    margin: 0 auto;
+    .title{
+      padding-bottom: 36/@rem;
+    }
+    .cont{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .cont-item{
+        padding-bottom: 25/@rem;
+      }
+    }
+  }
+
+  .explain{
+    padding: 40/@rem 0 60/@rem;
+    margin: 0 auto;
+    width: 680/@rem;
+    background-color: #fff;
+    .tit{
+      font-size: 30/@rem;
+      color: #777777;
+      text-align: center;
+      line-height: 1.5;
+    }
+    .dashed{
+      position: relative;
+      margin: 20/@rem auto;
+      width: 620/@rem;
+      height: 0;
+      border-top: 2/@rem dashed #cacaca;
+      .triangle{
+        position: absolute;
+        top: -14/@rem;
+        width: 0;
+        height: 0;
+        border-top: 15/@rem solid rgba(0, 0, 0, 0);
+        border-bottom: 15/@rem solid rgba(0, 0, 0, 0);
+      }
+      .triangle-l{
+        border-left: 15/@rem solid #e80013;
+        left: -30/@rem;
+      }
+      .triangle-r{
+        border-right: 15/@rem solid #e80013;
+        right: -30/@rem;
+      }
+    }
+    .explain-cont{
+      width: 610/@rem;
+      margin: 0 auto;
+      .cont-item{
+        display: flex;
+        line-height: 40/@rem;
+        .item-order{
+          margin: 5/@rem;
+          width: 30/@rem;
+          height: 30/@rem;
+          line-height: 30/@rem;
+          font-size: 22/@rem;
+          text-align: center;
+          border-radius: 50%;
+          color: #fff;
+          background-color: #e4ab72;
+          overflow: hidden;
+        }
+        .item-text{
+          width: 565/@rem;
+          padding-left: 10/@rem;
+          font-size: 24/@rem;
+          color: #777777;
+        }
+      }
+    }
+
   }
 
   // 按钮样式
