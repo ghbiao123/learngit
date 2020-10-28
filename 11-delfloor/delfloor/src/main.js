@@ -14,6 +14,10 @@ import 'viewerjs/dist/viewer.css'
 import Viewer from 'v-viewer'
 Vue.use(Viewer);
 
+// vue-lazyload
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload);
+
 // project view component
 import projectView from './components/projectview.vue'
 Vue.component('projectView', projectView);
