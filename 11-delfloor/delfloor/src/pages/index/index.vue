@@ -140,8 +140,6 @@
       </div>
     </div>
 
-    
-
     <!-- 说明 -->
     <div class="explain">
       <div class="tit">说明</div>
@@ -232,13 +230,13 @@ export default {
         proid: this.proid,
       };
       for (let key in needData) {
-        if(key == 'mobile'){
+        if (key == "mobile") {
           let reg = new RegExp(/^1[3-9]\d{9}$/);
-          if(!reg.test(needData[key])){
+          if (!reg.test(needData[key])) {
             return this.$message({
-            message: "您的手机号有误",
-            type: "warning",
-          });
+              message: "您的手机号有误",
+              type: "warning",
+            });
           }
         }
         if (!needData[key]) {
@@ -257,26 +255,25 @@ export default {
         proid: this.proid,
       };
       console.log(data);
-      
+
       this.$ajax.post("/api/index/userEnroll", data).then((res) => {
         let ret = res.data;
         console.log(ret);
 
-        if(ret.code == 0){
+        if (ret.code == 0) {
           that.$message({
             message: ret.msg,
             type: "success",
           });
 
           // 清空数据
-        this.name = "";
-        this.phone = "";
-        this.provence = "";
-        this.city = "";
-        this.country = "";
-        this.proid = "";
-
-        }else{
+          this.name = "";
+          this.phone = "";
+          this.provence = "";
+          this.city = "";
+          this.country = "";
+          this.proid = "";
+        } else {
           that.$message({
             message: ret.msg,
             type: "warning",

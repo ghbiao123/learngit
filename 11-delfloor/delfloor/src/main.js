@@ -19,7 +19,7 @@ import VueLazyload from 'vue-lazyload'
 Vue.use(VueLazyload);
 
 // project view component
-import projectView from './components/projectview.vue'
+import projectView from './component/projectview.vue'
 Vue.component('projectView', projectView);
 
 // common.css 样式初始化

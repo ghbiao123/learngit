@@ -24,7 +24,7 @@ export default new Router({
       }
     },
     {
-      path: '/index.html',
+      path: '/',
       name: 'index',
       component: Index
     }

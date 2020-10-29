@@ -35,4 +35,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.viewer-footer {
+    display: none;
+  }
 </style>
