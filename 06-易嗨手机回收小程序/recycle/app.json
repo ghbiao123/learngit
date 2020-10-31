@@ -25,7 +25,8 @@
     "pages/staffevaluation/evaluation",
     "pages/tips/tips",
     "pages/notes/notes",
-    "pages/cameraevaluation/evaluation"
+    "pages/cameraevaluation/evaluation",
+    "pages/uploadimage/uploadimage"
   ],
   "tabBar": {
     "color": "#cccccc",

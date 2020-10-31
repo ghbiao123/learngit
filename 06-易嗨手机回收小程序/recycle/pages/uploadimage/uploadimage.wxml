@@ -1,0 +1,23 @@
+<view class="container">
+  <view class="tops">
+    小提示：可参考示例图片提供，照片完整越清晰，报价越精准。
+  </view>
+
+  <view class="cell-card" wx:for="{{image}}" wx:key="index">
+    <view class="cell-item">
+      <view class="cell-order">1</view>
+      <view class="cell-title">标题标题标题标题</view>
+    </view>
+
+    <view class="cell-content">
+      <view class="cont">
+        <image class="image" mode="aspectFit" src="/images/contact.png"></image>
+      </view>
+      <view class="cont b" data-id="{{index}}" bindtap="uploadImage">
+        <image class="image" mode="aspectFit" src="{{ item ? item:'/images/upload.png'}}"></image>
+      </view>
+    </view>
+
+  </view>
+
+</view>
