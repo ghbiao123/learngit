@@ -26,8 +26,13 @@
     "pages/tips/tips",
     "pages/notes/notes",
     "pages/cameraevaluation/evaluation",
-    "pages/uploadimage/uploadimage"
+    "pages/uploadimage/uploadimage",
+    "pages/otherlist/otherlist",
+    "pages/cameranotes/cameranotes"
   ],
+  "usingComponents": {
+    "btntopage": "/mycomponents/btntopage/btntopage"
+  },
   "tabBar": {
     "color": "#cccccc",
     "selectedColor": "#000000",

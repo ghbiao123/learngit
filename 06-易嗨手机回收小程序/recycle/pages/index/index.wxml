@@ -49,8 +49,8 @@
 				<image class="myphone-image" src="{{myPhoneInfo.image}}" mode="aspectFit"></image>
 					<navigator url="/pages/search/search">
 						<view class="myphone-button">
-								<image class="myphone-button-icon" src="/images/gh.png" mode="widthFix"></image>
-								<view class="myphone-button-text">更换</view>
+							<image class="myphone-button-icon" src="/images/gh.png" mode="widthFix"></image>
+							<view class="myphone-button-text">更换</view>
 						</view>
 					</navigator>
 			</view>

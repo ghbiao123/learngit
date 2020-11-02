@@ -53,6 +53,12 @@ Component({
     }
   },
   methods: {
+    getItemList(e){
+      let bid = e.currentTarget.dataset.bid;
+      let name = e.currentTarget.dataset.name;
+      
+      this.triggerEvent('getIconId', {bid, name});
+    },
     getSelected(e) {
       let selected = e.currentTarget.dataset.index;
       let id = e.currentTarget.dataset.id;

@@ -52,6 +52,12 @@ Page({
       return util.showSuccess('图片正在上传，请稍后尝试...');
     }
 
+    if(!data.namedata.mconfigure){
+      return util.showSuccess('请填写机器名称');
+    }else if(!data.mconfigure){
+      return util.showSuccess('请填填写机器配置信息');
+    }
+
     this.data._data = data;
 
     // this.setData({

@@ -1,0 +1,8 @@
+/* pages/otherlist/otherlist.wxss */
+.container{
+  background-color: #fff;
+}
+.cell-item{
+  margin: 0 auto;
+  width: 710rpx;
+}

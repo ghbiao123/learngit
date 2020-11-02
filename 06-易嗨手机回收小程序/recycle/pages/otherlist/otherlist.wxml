@@ -1,0 +1,7 @@
+<view class="container">
+  <view class="cell-item" data-idx="{{index}}" bindtap="getEvaluation" wx:for="{{list}}">
+    {{item.name}}
+  </view>
+  <btntopage></btntopage>
+</view>
+  

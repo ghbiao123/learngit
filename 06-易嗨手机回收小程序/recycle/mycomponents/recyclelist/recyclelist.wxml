@@ -16,7 +16,7 @@
             {{item.assess_status==0?'￥'+item.total_amount:''}}{{item.assess_status==1?'￥'+item.total_amount:''}}{{item.assess_status==2?'订单已提交':''}}{{item.assess_status==3?'价格':''}}
           </view>
         </view>
-        <view class="info ellipsis-text">{{item.configure}}</view>
+        <view class="info ellipsis-text">{{item.configure? item.configure:''}}</view>
         <view hidden class="info">预估价：¥1041</view>
       </view>
     </view>

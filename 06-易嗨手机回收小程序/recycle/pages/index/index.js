@@ -22,19 +22,28 @@ Page({
   getEvaluation(e){
     let idx = e.currentTarget.dataset.id;
     let cid = e.currentTarget.dataset.cid;
-    if(cid>=4){
+    if(cid == 4){
       wx.navigateTo({
         url: '/pages/evaluation/othercalcprice',
       });
       return
+    }else if(cid == 5){
+      wx.navigateTo({
+        url: '/pages/cameraevaluation/evaluation',
+      });
+    }else{
+      wx.navigateTo({
+        url: `/pages/evaluation/evaluation?id=${idx}&cid=${cid}`,
+      });
     }
-    wx.navigateTo({
-      url: `/pages/evaluation/evaluation?id=${idx}&cid=${cid}`,
-    });
   },
   // 跳转不同估价页面
   getDiffPage(e){
     let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/search/search?id='+id,
+    });
+    return
     if(id<4){
       wx.navigateTo({
         url: '/pages/search/search?id='+id,

@@ -1,0 +1,9 @@
+<view class="container">
+  <!-- 图标+文案 -->
+  <view class="cell-card">
+    感谢您使用易嗨机，我们的工程师正在根据您提供的机器信息整理专业的报价，我们会在20分钟内，将报价以短信的形式发送给您，您也可以在我的估价列表中查询报价。
+  </view>
+
+  <button hover-class="btn-hover" bindtap="getConfirm" class="button-clear m-t-20">人工估价</button>
+  <button hover-class="cancel-hover" bindtap="getRecycle" class="button-clear m-t-20">立即回收</button>
+</view>

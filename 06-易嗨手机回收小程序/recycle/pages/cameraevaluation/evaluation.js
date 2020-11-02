@@ -14,7 +14,7 @@ Page({
     },
     reqData: {
       inquiryinfo: {
-        last: ''
+       
       }
     },
     _data: {},
@@ -46,7 +46,6 @@ Page({
     console.log(options);
 
     // init 
-    return;
     this.init();
 
   },
@@ -98,11 +97,49 @@ Page({
   init() {
     let data = {};
     let url;
-    if (this.data.pageOption.cid == 1 || this.data.pageOption.cid == 2) {
-      this.data.type = 'mobile';
-    } else if (this.data.pageOption.cid == 3) {
-      this.data.type = 'pc';
-    }
+    util.post('/api/products/getOtherInquiryInfo', {
+      cid: this.data.pageOption.cid,
+      cateid: this.data.pageOption.cateid
+    }).then(res=>{
+      console.log(res);
+      if (res.code == -1) {
+        return util.showSuccess(res.msg, function () {
+          wx.navigateBack();
+        });
+      }
+      
+      if(this.data.pageOption.cid == 4){
+        _key = 'pinquiryinfo';
+        
+      }else if(this.data.pageOption.cid == 5){
+        
+        _key = 'oeinquiryinfo';
+      }
+
+      let _data = res.data;
+
+      _data[_data.length - 1][_key].unshift({
+        id: 'none',
+        name: '无'
+      });
+
+      let arrChecked = new Array(_data[_data.length - 1][_key].length).fill(false);
+
+      let progressData = that.data.progressData;
+      progressData.all = _data.length;
+
+      that.setData({
+        name: this.data.pageOption.name,
+        _key,
+        _data,
+        progressData,
+        hideCode: progressData.all,
+        arrChecked,
+      });
+
+    });
+
+    return;
 
 
     if (this.data.type == 'mobile') {
@@ -161,9 +198,10 @@ Page({
   },
   // 选择选项
   radioChange(e) {
-
+    
     let val = e.detail.value;
     let id = e.currentTarget.dataset.id;
+    let progressData = this.data.progressData;
     if (val.indexOf('none') >= 0) {
       let arrChecked = this.data.arrChecked.fill(false);
       arrChecked[0] = true;
@@ -172,48 +210,13 @@ Page({
       });
     }
 
-    let hiddenCode, hideCode;
-    let progressData = this.data.progressData;
-    if (this.data.type == 'mobile') {
-      hiddenCode = ['1', '3', '5'];
-    } else if (this.data.type == 'pc') {
-      hiddenCode = ['34', '36', '2'];
-    }
-    if (hiddenCode.indexOf(val) == 0 || hiddenCode.indexOf(val) == 1) {
-      // 5 -all hidden
-      hideCode = this.data.type == 'pc' ? 6 : 4;
-      progressData.all = hideCode;
-
-    } else if (hiddenCode.indexOf(val) == 2) {
-      // 6 - all hidden
-      hideCode = this.data.type == 'pc' ? 7 : 5;
-      progressData.all = hideCode;
-
-    } else {
-      progressData.all = this.data._data.other.length + (this.data.type == 'pc' ? 5 : 3);
-      hideCode = 555;
-    }
-    this.setData({
-      hideCode,
-      progressData
-    });
-
 
     if (Number(id) || Number(id) == 0) {
-      if (id != this.data._data.other.length - 1) {
-        this.data.reqData.inquiryinfo[id] = this.data._data.other[id][_key].filter(v => v.id == val)[0];
-      } else if (id == this.data._data.other.length - 1) {
-        this.data.reqData.inquiryinfo.last = val;
-      }
-    } else {
-      this.data.reqData[id] = val;
-      this.data.winConfigId[id] = val;
+      this.data.reqData.inquiryinfo[id] = this.data._data[id][_key].filter(v => v.id == val)[0];
     }
 
-    progressData.chose = Object.keys(this.data.reqData).length - 2 + Object.keys(this.data.reqData.inquiryinfo).length;
-    if (!this.data.reqData.inquiryinfo.last) {
-      progressData.chose--
-    }
+    progressData.chose = Object.keys(this.data.reqData.inquiryinfo).length;
+    
     let progress = util.getToPersent(progressData.chose / progressData.all);
 
     this.setData({
@@ -230,130 +233,57 @@ Page({
 
     let data = Object.assign({}, this.data.reqData);
     // 将用户所选数据进行处理
-    let lev1 = [1, 3, 5];
-    let lev2 = [34, 36, 2];
     let inquiryinfo = [];
-    let keys = Object.keys(data.inquiryinfo);
     for (let key in data.inquiryinfo) {
-      if (key != 'last') {
-        inquiryinfo.push(data.inquiryinfo[key]);
-
-        if (this.data.type == 'mobile' && lev1.indexOf(data.inquiryinfo[key].id) >= 0) {
-          break;
-        } else if (this.data.type == 'pc' && lev2.indexOf(data.inquiryinfo[key].id) >= 0) {
-          break;
-        }
-
-      } else {
-
-        // 处理多选的选项
-        if (this.data.reqData.inquiryinfo.last[0] != 'none') {
-          let len = this.data._data.other.length;
-          let arr = this.data._data.other[len - 1][_key].filter(v => {
-            if (data.inquiryinfo.last.indexOf(v.id.toString()) >= 0) {
-              return v;
-            }
-          });
-          inquiryinfo.push(...arr);
-        }
-      }
+      inquiryinfo.push(data.inquiryinfo[key]);
     }
     data.inquiryinfo = JSON.stringify(inquiryinfo);
 
     // 数据处理完毕， 手机价格计算可直接使用
+    data.cid = this.data.pageOption.cid;
+    data.mid = this.data.pageOption.mid? this.data.pageOption.mid:0;
+    this.data.pageOption.bid&&( data.bid = this.data.pageOption.bid );
+    this.data.pageOption.cateid&&( data.cateid = this.data.pageOption.cateid );
 
-
-    let url = '';
-    if (this.data.type == 'mobile') {
-      // 手机价格计算接口，
-      url = '/api/order/calculatePrice';
-    } else if (this.data.type == 'pc') {
-      if (this.data._data.bid == 1) {
-        // 苹果电脑价格计算数据处理
-        url = '/api/order/calculatePricePc';
-        let MacData = {
-          pcid: data.pcid,
-          pcram: data.pc_ram,
-          pcssd: data.pc_ssd,
-          pcvideocard: data.pc_videocard,
-          inquiryinfo: data.inquiryinfo
-        };
-        data = MacData;
-      } else {
-        // 其他电脑价格计算数据处理
-        url = '/api/order/calculatePricePcNa';
-
-        if (this.data.imageUrl.length != this.data.reqImageUrl.length) {
-          return util.showSuccess('正在上传图片，请稍后...');
-        }
-
-        let userInfo = wx.getStorageSync('userinfo');
-
-        // 判断是否登录， 未登录则让用户先登录
-        if (!userInfo) {
-          return util.showError('请您先登录', function () {
-            wx.navigateTo({
-              url: '/pages/login/login',
-            });
-          });
-        }
-
-        let winData = {
-          pcid: data.pcid,
-          pcconfigure: Object.values(this.data.winConfigId).join(","),
-          inquiryinfo: data.inquiryinfo,
-          pictures: this.data.reqImageUrl.join(','),
-          userid: userInfo.uid,
-          cid: this.data._data.cid
-        }
-
-        data = winData;
-
-      }
+    let userInfo = wx.getStorageSync('userinfo');
+    if(!userInfo){
+      return util.showError('请您先登录', function(){
+        wx.navigateTo({
+          url: '/pages/login/login',
+        });
+      })
     }
+    data.userid = userInfo.uid;
+
+    data.modelname = this.data.machineModel;
+
+    data.otype = 0;
+
+    console.log(data);
+
+    if(!data.modelname){
+      return util.showError('请您填写设备型号');
+    }
+
+    //  util.post('/api/order/calculateOtherNa', data).then(res=>{
+    //   console.log(res);
+    // });
+
+
+    wx.setStorage({
+      data: data,
+      key: 'currentmachine',
+      success(){
+        wx.navigateTo({
+          url: '/pages/cameranotes/cameranotes',
+        });
+      }
+    });
+    // util.post('/api/order/calculateOtherNa', data).then(res=>{
+
+    // });
 
     // 共两种情况：  系统估价，人工估价
-
-    // 先判断人工估价
-    if (this.data.type == 'pc' && this.data._data.bid != 1) {
-      wx.setStorage({
-        data: data,
-        key: 'currentmachine',
-        success(){
-          wx.navigateTo({
-            url: '/pages/notes/notes',
-          });
-        }
-      });
-      return;
-      if (e.detail.value == 2) {
-        // 用户现场扫码
-        data.otype = 1;
-        submitOrder(function (res) {
-          wx.navigateTo({
-            url: `/pages/evaluation/result?type=${that.data.type}&name=${that.data._data.name}&price=${res.data.totalprice || 0}&frompage=evaluation&otype=1&orderid=${res.data.aoid}`,
-          });
-        });
-      } else if (e.detail.value == 1) {
-        // 用户正常流程进行人工估价
-        data.otype = 0;
-        submitOrder(function (res) {
-          wx.redirectTo({
-            url: '/pages/recyclelist/recyclelist',
-          });
-        });
-      }
-    } else {
-      // 普通估价
-
-      submitOrder(function (res) {
-        wx.navigateTo({
-          url: `/pages/evaluation/result?type=${that.data.type}&name=${that.data._data.name}&price=${res.data.totalprice}&frompage=evaluation`,
-        });
-      });
-
-
-    }
 
     function submitOrder(callBack) {
       util.post(url, data).then(res => {

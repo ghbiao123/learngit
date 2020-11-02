@@ -11,8 +11,8 @@ Page({
     arrVtabTitle:[],
     arrContent: {}, // vtab item-》content
     reqData: {
-      cid: 0,
-      bid: 0
+      cid: 1,
+      bid: 1
     },
     hotmodel: [],
   },
@@ -44,6 +44,25 @@ Page({
       that.tabChange({detail: _id});
     });
   },
+  // getIconid
+  getIconid(e){
+    console.log(e.detail);
+    let data = {
+      cateid: this.data.reqData.bid,
+      bid: e.detail.bid
+    }
+    if(this.data._tabid == 4){
+      // 跳转估价页面
+      wx.navigateTo({
+        url: `/pages/cameraevaluation/evaluation?cateid=${data.cateid}&cid=4&bid=${data.bid}&name=${e.detail.name}`,
+      });
+    }else if(this.data._tabid == 5){
+      // 跳转列表页
+      wx.navigateTo({
+        url: `/pages/otherlist/otherlist?cateid=${data.cateid}&bid=${data.bid}`,
+      });
+    }
+  },
   // getVtabTitleId
   getVtabTitleId(e) {
     if(e.detail == 'hot'){
@@ -54,13 +73,36 @@ Page({
       return;
     }
     this.data.reqData.bid = e.detail;
-    util.post('/api/products/getEmodelList', this.data.reqData).then(res => {
-      let arrContent = util.getImageFullUrl(res.data, 'image');
-      that.setData({
-        arrContent,
-        isHot: false
+
+    if(this.data.reqData.cid<=3){
+      util.post('/api/products/getEmodelList', this.data.reqData).then(res => {
+        let arrContent = util.getImageFullUrl(res.data, 'image');
+        that.setData({
+          arrContent,
+          isHot: false
+        });
       });
-    });
+    }else if(this.data.reqData.cid == 4 || this.data.reqData.cid == 5){
+      util.post('/api/products/getOtherBrandList', {
+        cid: this.data.reqData.cid,
+        cateid: this.data.reqData.bid
+      }).then(res => {
+        console.log(res)
+        function addUrl(arr){
+          if(!arr) return [];
+          return arr = arr.map(v=>{
+            v.ebrands.image = util.getSiteRoot() + v.ebrands.image;
+            return v;
+          });
+         }
+        let arrContent = addUrl(res.data);
+        that.setData({
+          arrContent,
+          isHot: false
+        });
+      });
+    }
+
 
   },
   // tab component change, get current id
@@ -68,26 +110,46 @@ Page({
     let id = e.detail;
     console.log('tabChange:', id);
     that.data.reqData.cid = id;
-    util.post('/api/products/getEbrandsList', {cid: id}).then(res => {
+    if(id <= 3){
+      util.post('/api/products/getEbrandsList', {cid: id}).then(res => {
 
-      let arrContent = util.getImageFullUrl(res.data.hotmodel, 'image');
-      that.data.hotmodel = [...arrContent];
-
-      res.data.brands.unshift({
-              ebrands: {
-                id: 'hot',
-                name: "推荐"
-              }
-            });
-      let a = res.data.brands;
-      that.setData({
-        arrContent,
-        arrVtabTitle: res.data.brands,
-        tabid: 0,
-        _tabid: id,
-        isHot: true
+        let arrContent = util.getImageFullUrl(res.data.hotmodel, 'image');
+        that.data.hotmodel = [...arrContent];
+        res.data.brands.unshift({
+                ebrands: {
+                  id: 'hot',
+                  name: "推荐"
+                }
+              });
+        let a = res.data.brands;
+        that.setData({
+          arrContent,
+          arrVtabTitle: res.data.brands,
+          tabid: 0,
+          _tabid: id,
+          isHot: true
+        });
       });
-    });
+    }else if(id == 4 || id == 5){
+      util.post('/api/products/getOtherCateList', {cid: id}).then(res=>{
+        console.log(res);
+         function addUrl(arr){
+          if(!arr) return [];
+          return arr = arr.map(v=>{
+            v.ebrands.image = util.getSiteRoot() + v.ebrands.image;
+            return v;
+          });
+         }
+        let arrContent = addUrl(res.data.brand);
+        that.setData({
+          arrContent,
+          arrVtabTitle: res.data.cate,
+          tabid: 0,
+          _tabid: id,
+          isHot: true
+        });
+      });
+    }
   },
   // searchBar
   getKeywords(e){
