@@ -116,9 +116,9 @@
             {{detail.order_status==0?'待验机':''}}{{detail.order_status==1?'待付款':''}}{{detail.order_status==2?'订单完成':''}}{{detail.order_status==3?'订单取消':''}}
           </view>
         </view>
-        <view class="msg">{{detail.model_info.cinfo}}</view>
+        <view class="msg">{{detail.model_info.cinfo? detail.model_info.cinfo : ''}}</view>
         <view class="msg">预估价：￥{{detail.total_amount}}</view>
-        <view class="msg">{{detail.model_info.des}}</view>
+        <view class="msg">{{detail.model_info.des? detail.model_info.des : ''}}</view>
       </view>
     </view>
 	</view>

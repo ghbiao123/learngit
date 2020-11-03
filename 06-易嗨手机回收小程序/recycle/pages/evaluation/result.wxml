@@ -160,19 +160,19 @@
 					<view>银行卡号</view>
 				</view>
 				<view class="radios b-b-g radios-input">
-					<input data-selected="2" data-key="ubankcard" bindinput="inputText" value="{{userData.bank}}" class="input" placeholder="请输入银行卡号"></input>
+					<input data-selected="2" data-key="ubankcard" bindinput="inputText" value="{{userData.bankcard}}" class="input" placeholder="请输入银行卡号"></input>
 				</view>
 				<view class="radios">
 					<view>开户行</view>
 				</view>
 				<view class="radios b-b-g radios-input">
-					<input data-selected="2" data-key="ubank" bindinput="inputText" value="{{userData.bCard}}" class="input" placeholder="请输入开户行"></input>
+					<input data-selected="2" data-key="ubank" bindinput="inputText" value="{{userData.bank}}" class="input" placeholder="请输入开户行"></input>
 				</view>
 				<view class="radios">
 					<view>户名</view>
 				</view>
 				<view class="radios b-b-g radios-input">
-					<input data-selected="2" data-key="ubname" bindinput="inputText" value="{{userData.buname}}" class="input" placeholder="请输入户名"></input>
+					<input data-selected="2" data-key="ubname" bindinput="inputText" value="{{userData.bank_uname}}" class="input" placeholder="请输入户名"></input>
 				</view>
 
 				<view class="m-t-20 t-a-c">

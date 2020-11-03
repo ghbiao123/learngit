@@ -32,7 +32,8 @@ Page({
         text: '立即回收',
         value: 2
       }
-    ]
+    ],
+    checkbox:[]
   },
 
   /**
@@ -105,6 +106,11 @@ Page({
       if (res.code == -1) {
         return util.showSuccess(res.msg, function () {
           wx.navigateBack();
+        });
+      }
+      if(res.data.length == 0){
+        wx.redirectTo({
+          url: '/pages/evaluation/othercalcprice',
         });
       }
       
@@ -209,10 +215,15 @@ Page({
         arrChecked
       });
     }
-
-
-    if (Number(id) || Number(id) == 0) {
+    
+    if (typeof val != 'object') {
       this.data.reqData.inquiryinfo[id] = this.data._data[id][_key].filter(v => v.id == val)[0];
+    }else if(typeof val == 'object') {
+      this.data.checkbox = this.data._data[id][_key].filter(v =>{
+        if(val.indexOf(String(v.id)) >= 0){
+          return v;
+        }
+      });
     }
 
     progressData.chose = Object.keys(this.data.reqData.inquiryinfo).length;
@@ -237,6 +248,7 @@ Page({
     for (let key in data.inquiryinfo) {
       inquiryinfo.push(data.inquiryinfo[key]);
     }
+    inquiryinfo.push(...this.data.checkbox);
     data.inquiryinfo = JSON.stringify(inquiryinfo);
 
     // 数据处理完毕， 手机价格计算可直接使用
