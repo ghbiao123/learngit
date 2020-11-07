@@ -12,6 +12,15 @@ Component({
     theme:{
       type:String,
       value:'#f5f5f5'
+    },
+    isFocus: {
+      type: Boolean,
+      value: false,
+      observer(newVal){
+        this.setData({
+          isFocus: newVal
+        });
+      }
     }
   },
   data:{

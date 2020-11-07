@@ -1,5 +1,5 @@
 <view class="content">
-	<scarch-bar bind:getinput="getInputText" bind:searchbar="result" theme="#ffffff" placeholder="搜索品牌或者机型"></scarch-bar>
+	<scarch-bar isFocus bind:getinput="getInputText" bind:searchbar="result" theme="#ffffff" placeholder="搜索品牌或者机型"></scarch-bar>
 	<view wx:if="{{showList}}" class="list" wx:for="{{result}}" wx:key="index" data-name="{{item.name}}"
 		data-id="{{item.id}}" data-cid="{{item.cid}}" bindtap="getEvaluation">
 		{{item.name}}

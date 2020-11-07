@@ -160,9 +160,13 @@
 
 
 
-    <view class="button">
+    <view wx:if="{{!isLogin}}" class="button">
       <button  bindtap="getResult" class="button-clear m-t-20" hover-class="btn-hover">估价</button>
     </view>
+    <view wx:else="{{isLogin}}" class="button">
+      <button open-type="getPhoneNumber" bindtap="getResult" class="button-clear m-t-20" hover-class="btn-hover">估价</button>
+    </view>
+
 
   </view>
 </view>

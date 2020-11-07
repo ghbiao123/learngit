@@ -1,5 +1,7 @@
 <view class="">
-  <searchbar bind:searchbar="getKeywords" id="search" theme="#ffffff"></searchbar>
+  <navigator url="/pages/searchbar/searchbar" hover-class="none">
+    <searchbar bind:searchbar="getKeywords" id="search" theme="#ffffff"></searchbar>
+  </navigator>
 
 
   <tab pselected="{{selected}}" title="{{arrTitle}}" swiperHeight="{{height}}" bind:tabChange="tabChange">

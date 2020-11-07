@@ -32,7 +32,8 @@ Page({
         text: '立即回收',
         value: 2
       }
-    ]
+    ],
+    isLogin: false,
   },
 
   /**
@@ -396,7 +397,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    util.checkIsLogin.call(this);
+    wx.getSetting({
+      success(res){
+        console.log(res);
+        // 用户信息，userinfo
+        // 用户手机号，user
+      }
+    });
   },
 
   /**
