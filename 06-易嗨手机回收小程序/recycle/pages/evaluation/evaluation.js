@@ -217,6 +217,10 @@ Page({
     });
 
   },
+  // console phone Number
+  getPhoneNum(e){
+    console.log(e);
+  },
   // 跳转估价结果页
   getResult(e) {
     // 关闭actionsheet
