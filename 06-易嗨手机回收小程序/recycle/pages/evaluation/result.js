@@ -204,6 +204,9 @@ Page({
       data.uaddress = this.data.userRegion.join(',') + ' ' + data.uaddress;
       needKey.uaddress = '';
     }else if(data.recoverytype == 2){
+      needKey.ubank = '';
+      needKey.ubankcard = '';
+      needKey.ubname = '';
       if(this.data.isGetExpress){
         needKey.uaddress = '';
         data.doexpress = 1;
@@ -213,17 +216,15 @@ Page({
       }
     }
 
-    needKey = {
-      uname: '',
-      uphone: '',
-      ubank: '',
-      ubankcard: '',
-    }
+    needKey.uname = '';
+    needKey.uphone = '';
+
     for(let key in needKey){
       if(!data[key]){
         return util.showSuccess('请完善您的个人信息');
       }
     }
+    return;
     util.post('/api/order/placeOrder', data).then(res => {
       console.log(res);
       if (res.code == 1) {

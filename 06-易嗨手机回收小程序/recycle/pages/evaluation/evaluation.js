@@ -154,6 +154,33 @@ Page({
     });
 
   },
+  // 获取用户信息
+  getUserInfo(e){
+    util.getUserInfo(e, function(res){
+      if(res.code == 1){
+        util.showSuccess('登录成功，请立即估价');
+      }
+    });
+  },
+  // 获取用户手机号
+  getPhoneNum(e){
+    console.log(e);
+    if(e.detail.iv){
+      // 用户同意获取手机号
+      // 将用户手机号更新到storage（‘currentphone’）
+      wx.setStorage({
+        data: '17855334978',
+        key: 'currentphone',
+        success(res){
+          that.getResult();
+        }
+      });
+     
+    }else{
+      // 用户不同意获取手机号
+
+    }
+  },
   // 选择选项
   radioChange(e) {
 
@@ -217,10 +244,7 @@ Page({
     });
 
   },
-  // console phone Number
-  getPhoneNum(e){
-    console.log(e);
-  },
+  
   // 跳转估价结果页
   getResult(e) {
     // 关闭actionsheet

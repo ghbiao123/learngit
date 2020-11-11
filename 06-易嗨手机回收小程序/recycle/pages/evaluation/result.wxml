@@ -226,10 +226,15 @@
 		</view>
 	</view>
 
-	<view class="button">
+	<!-- 立即回收按钮，人工上门回收，右侧可扫码 -->
+	<view wx:if="{{selected==1}}" class="button">
 		<button bindtap="recycle" style="width: 560rpx !important;" class="button-clear m-t-20" hover-class="btn-hover">立即回收</button>
 		<button bindtap="scanCode" style="width: 90rpx !important;" class="button-clear m-t-20">
 			<image style="width: 90rpx;" mode="widthFix" src="/images/sanf.png"></image>
 		</button>
+	</view>
+	<!-- 立即回收按钮，快递回收，右侧不可扫码 -->
+	<view wx:if="{{selected==2}}" class="button">
+		<button bindtap="recycle" class="button-clear m-t-20" hover-class="btn-hover">立即回收</button>
 	</view>
 </view>
