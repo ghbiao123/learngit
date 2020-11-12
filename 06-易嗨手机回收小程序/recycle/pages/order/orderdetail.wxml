@@ -83,10 +83,10 @@
 			</view>
 		</view>
 
-		<view class="cell-item">
+		<view wx:if="{{detail.c_no}}" class="cell-item">
 			<image class="express-icon" src="/images/co-s.png"></image>
 			<view>快递单号</view>
-			<view><input bindinput="expressNumberInput" value="{{detail.c_no}}" class="order-input" placeholder="请输入物流单号"></input></view>
+			<view><input bindinput="expressNumberInput" disabled value="{{detail.c_no}}" class="order-input" placeholder="请输入物流单号"></input></view>
 			<image hidden class="scan-icon" src="/images/scan.png"></image>
 		</view>
 

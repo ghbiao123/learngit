@@ -22,7 +22,8 @@
           </view>
         </view>
         <view wx:if="{{tabid == 4}}">
-          <btntopage></btntopage>
+          <!-- 若无机型请点击按钮 -->
+          <!-- <btntopage></btntopage> -->
         </view>
 
       </view>
@@ -40,7 +41,7 @@
           <view class="vtab-cont-list {{(idx+1)%2==1?'bg-w':'bg-p'}}" data-cid="{{it.cid}}" data-id="{{it.id}}"
             bindtap="getEvaluation">
             <!-- 无图标列表 -->
-            <block wx:if="{{!isHot}}">
+            <block wx:if="{{true}}">
               <image hidden mode="aspectFit" class="vtab-cont-list-image" src="{{it.image}}"></image>
               <view class="vtab-cont-list-info">
                 <view class="vtab-cont-list-info-name l-h-100 ellipsis-text">{{it.name}}</view>
@@ -50,7 +51,7 @@
               <image wx:if="{{idx < 3}}" class="vtab-cont-list-icon" src="/images/rank{{idx}}.png"></image>
             </block>
             <!-- 有图标列表 -->
-            <block wx:if="{{isHot}}">
+            <block wx:if="{{false}}">
               <image mode="aspectFit" class="vtab-cont-list-image" src="{{it.image}}"></image>
               <view class="vtab-cont-list-info">
                 <view class="vtab-cont-list-info-name ellipsis-text">{{it.name}}</view>
@@ -61,7 +62,8 @@
             </block>
           </view>
         </block>
-        <btntopage></btntopage>
+        <!-- "若无机型，请点击"-》按钮 -->
+        <!-- <btntopage></btntopage> -->
       </view>
     </scroll-view>
   </view>

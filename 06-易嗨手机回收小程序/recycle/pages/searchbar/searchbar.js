@@ -122,7 +122,7 @@ Page({
   },
   // 增加记录
   addStorageData(item){
-    if(!item){return}
+    if(!item.trim()){return}
     this.data.Storage.unshift(item);
     let Storage = this.data.Storage;
     Storage = Array.from(new Set(Storage));

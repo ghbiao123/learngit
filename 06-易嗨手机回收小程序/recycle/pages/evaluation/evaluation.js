@@ -159,6 +159,7 @@ Page({
     util.getUserInfo(e, function(res){
       if(res.code == 1){
         util.showSuccess('登录成功，请立即估价');
+        util.checkIsLogin.call(that);
       }
     });
   },
@@ -168,13 +169,32 @@ Page({
     if(e.detail.iv){
       // 用户同意获取手机号
       // 将用户手机号更新到storage（‘currentphone’）
-      wx.setStorage({
-        data: '17855334978',
-        key: 'currentphone',
+      wx.login({
         success(res){
-          that.getResult();
+          if(!res.code) return util.showSuccess('网络错误，请重试');
+          let data = {
+            userid: that.data.userInfo.uid,
+            code: res.code,
+            encrypteddata: e.detail.encryptedData,
+            iv: e.detail.iv
+          };
+          util.post('/api/login/getWxBindMobile', data).then(ret=>{
+            console.log(ret);
+            wx.setStorage({
+              data: ret.data,
+              key: 'currentphone',
+              success(res){
+                that.getResult();
+              }
+            });
+          });
+          
+          
+
+
         }
       });
+      
      
     }else{
       // 用户不同意获取手机号
@@ -425,14 +445,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    // 检测是否登录并把数据挂载到AppData
     util.checkIsLogin.call(this);
-    wx.getSetting({
-      success(res){
-        console.log(res);
-        // 用户信息，userinfo
-        // 用户手机号，user
-      }
-    });
   },
 
   /**

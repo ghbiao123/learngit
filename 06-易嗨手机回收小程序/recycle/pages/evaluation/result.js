@@ -218,7 +218,7 @@ Page({
 
     needKey.uname = '';
     needKey.uphone = '';
-
+    console.log(data);
     for(let key in needKey){
       if(!data[key]){
         return util.showSuccess('请完善您的个人信息');
@@ -312,7 +312,8 @@ Page({
       });
     }
 
-    // 获取用户信息
+    // 获取用户地址
+    
     let userInfo = wx.getStorageSync('userinfo');
     if (userInfo) {
       util.post('/api/user/getUserInfo', {

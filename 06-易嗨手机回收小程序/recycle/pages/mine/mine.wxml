@@ -21,36 +21,11 @@
 		</navigator>
 	</view>
 
-	<view class="cell-card">
-		<navigator hover-class="line-hover" url="/pages/coupon/coupon?type=mine&page=mine">
-			<view class="cell-item">
-				<view>我的回收加价卷</view>
-				<image class="cell-rt" src="/images/rt2.png"></image>
-			</view>
-		</navigator>
-		<navigator hover-class="line-hover" url="/pages/coupon/coupon?type=add">
-			<view class="cell-item">
-				<view>领取回收加价卷</view>
-				<image class="cell-rt" src="/images/rt2.png"></image>
-			</view>
-		</navigator>
-		<navigator hover-class="line-hover" url="/pages/recyclelist/recyclelist">
-			<view class="cell-item">
-				<view>我的估价列表</view>
-				<image class="cell-rt" src="/images/rt2.png"></image>
-			</view>
-		</navigator>
-		<view hover-class="line-hover" bindtap="showModel" class="cell-item">
-			<view>我的机器型号</view>
-			<image class="cell-rt" src="/images/rt2.png"></image>
-		</view>
-	</view>
-
 	<view class="tit-no-bg">
 		我的订单
 	</view>
 
-	<view class="cell-card">
+	<view class="cell-card" style="margin-top: 0;">
 		<view class="order-step">
 			<navigator hover-class="line-hover" url="/pages/stafforderlist/stafforderlist?type=all">
 				<view class="order-step-item">
@@ -93,6 +68,32 @@
 			</view>
 		</navigator>
 
+	</view>
+
+	<view class="cell-card">
+		<navigator hover-class="line-hover" url="/pages/recyclelist/recyclelist">
+			<view class="cell-item">
+				<view>估价列表</view>
+				<image class="cell-rt" src="/images/rt2.png"></image>
+			</view>
+		</navigator>
+		<navigator hover-class="line-hover" url="/pages/coupon/coupon?type=mine&page=mine">
+			<view class="cell-item">
+				<view>回收加价卷</view>
+				<image class="cell-rt" src="/images/rt2.png"></image>
+			</view>
+		</navigator>
+		<navigator hover-class="line-hover" url="/pages/coupon/coupon?type=add">
+			<view class="cell-item">
+				<view>领取回收加价卷</view>
+				<image class="cell-rt" src="/images/rt2.png"></image>
+			</view>
+		</navigator>
+		
+		<view hover-class="line-hover" bindtap="showModel" class="cell-item">
+			<view>我的机器型号</view>
+			<image class="cell-rt" src="/images/rt2.png"></image>
+		</view>
 	</view>
 
 </view>

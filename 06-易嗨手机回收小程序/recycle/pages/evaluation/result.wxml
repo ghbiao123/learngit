@@ -78,7 +78,7 @@
 			<view class="cont" hidden="{{!(selected==1)}}">
 				<view class="radios">
 					<view>联系人</view>
-					<view class="color-b" bindtap="usingUserInfo" hover-class="using-userinfo">使用个人信息</view>
+					<view hidden class="color-b" bindtap="usingUserInfo" hover-class="using-userinfo">使用个人信息</view>
 				</view>
 				<view class="radios b-b-g radios-input">
 					<input data-selected="1" data-key="uname" bindinput="inputText" value="{{userData.username}}" class="input" placeholder="请输入联系人姓名"></input>
@@ -144,7 +144,7 @@
 
 				<view class="radios">
 					<view>联系人</view>
-					<view class="color-b" bindtap="usingUserInfo" hover-class="using-userinfo">使用个人信息</view>
+					<view hidden class="color-b" bindtap="usingUserInfo" hover-class="using-userinfo">使用个人信息</view>
 				</view>
 				<view class="radios b-b-g radios-input">
 					<input data-selected="2" data-key="uname" bindinput="inputText" value="{{userData.username}}" class="input" placeholder="请输入联系人姓名"></input>
@@ -157,13 +157,13 @@
 					<input data-selected="2" data-key="uphone" bindinput="inputText" value="{{userData.mobile}}" class="input" placeholder="请输入联系人电话"></input>
 				</view>
 				<view class="radios">
-					<view>银行卡号</view>
+					<view>收款账号</view>
 				</view>
 				<view class="radios b-b-g radios-input">
 					<input data-selected="2" data-key="ubankcard" bindinput="inputText" value="{{userData.bankcard}}" class="input" placeholder="请输入银行卡号"></input>
 				</view>
 				<view class="radios">
-					<view>开户行</view>
+					<view>开户银行</view>
 				</view>
 				<view class="radios b-b-g radios-input">
 					<input data-selected="2" data-key="ubank" bindinput="inputText" value="{{userData.bank}}" class="input" placeholder="请输入开户行"></input>
@@ -174,7 +174,10 @@
 				<view class="radios b-b-g radios-input">
 					<input data-selected="2" data-key="ubname" bindinput="inputText" value="{{userData.bank_uname}}" class="input" placeholder="请输入户名"></input>
 				</view>
-
+				<view class="radios text-tip">提示：我们将按照您的上述信息进行付款，请务必准确填写。</view>
+				<view class="freight" hover-class="using-userinfo">
+					<navigator hover-class="none" url="/pages/expressfreight/expressfreight">运费说明</navigator>
+				</view>
 				<view class="m-t-20 t-a-c">
 					<checkbox-group bindchange="getExpress">
 						<checkbox value="1" color="#C7402C">是否需要代叫快递上门</checkbox>

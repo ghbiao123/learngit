@@ -28,7 +28,10 @@
     "pages/cameraevaluation/evaluation",
     "pages/uploadimage/uploadimage",
     "pages/otherlist/otherlist",
-    "pages/cameranotes/cameranotes"
+    "pages/cameranotes/cameranotes",
+    "pages/expressfreight/expressfreight",
+    "pages/orderresult/orderresult",
+    "pages/qualityreport/qualityreport"
   ],
   "usingComponents": {
     "btntopage": "/mycomponents/btntopage/btntopage"
