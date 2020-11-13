@@ -63,3 +63,8 @@
   border-radius: 0rpx;
   width: 670rpx !important;
 }
+
+
+.cell-card .cell-item:last-child{
+  border-bottom: 1rpx solid #f5f5f5;
+}

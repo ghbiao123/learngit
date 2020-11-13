@@ -31,7 +31,9 @@
     "pages/cameranotes/cameranotes",
     "pages/expressfreight/expressfreight",
     "pages/orderresult/orderresult",
-    "pages/qualityreport/qualityreport"
+    "pages/qualityreport/qualityreport",
+    "pages/address/address",
+    "pages/aboutus/aboutus"
   ],
   "usingComponents": {
     "btntopage": "/mycomponents/btntopage/btntopage"

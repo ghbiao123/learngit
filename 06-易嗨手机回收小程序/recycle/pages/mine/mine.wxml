@@ -59,41 +59,77 @@
 			</navigator>
 		</view>
 
-		<!-- <button class="contact" open-type="contact"> -->
-		<!-- </button> -->
-		<navigator hover-class="line-hover" url="/pages/contact/contact">
-			<view class="cell-item">
-				<view>联系客服</view>
-				<image class="cell-rt" src="/images/rt2.png"></image>
-			</view>
-		</navigator>
-
 	</view>
 
 	<view class="cell-card">
 		<navigator hover-class="line-hover" url="/pages/recyclelist/recyclelist">
 			<view class="cell-item">
-				<view>估价列表</view>
+				<view class="cell-lt">
+					<image mode="aspectFit" class="cell-icon" src="/images/qr.png"></image>
+					<view>估价列表</view>
+				</view>
 				<image class="cell-rt" src="/images/rt2.png"></image>
 			</view>
 		</navigator>
 		<navigator hover-class="line-hover" url="/pages/coupon/coupon?type=mine&page=mine">
 			<view class="cell-item">
-				<view>回收加价卷</view>
+				<view class="cell-lt">
+					<image mode="aspectFit" class="cell-icon" src="/images/qr.png"></image>
+					<view>回收加价卷</view>
+				</view>
 				<image class="cell-rt" src="/images/rt2.png"></image>
 			</view>
 		</navigator>
-		<navigator hover-class="line-hover" url="/pages/coupon/coupon?type=add">
+		<navigator hidden hover-class="line-hover" url="/pages/coupon/coupon?type=add">
 			<view class="cell-item">
-				<view>领取回收加价卷</view>
+				<view class="cell-lt">
+					<image mode="aspectFit" class="cell-icon" src="/images/qr.png"></image>
+					<view>领取回收加价卷</view>
+				</view>
 				<image class="cell-rt" src="/images/rt2.png"></image>
 			</view>
 		</navigator>
-		
-		<view hover-class="line-hover" bindtap="showModel" class="cell-item">
-			<view>我的机器型号</view>
+
+		<view hidden hover-class="line-hover" bindtap="showModel" class="cell-item">
+			<view class="cell-lt">
+				<image mode="aspectFit" class="cell-icon" src="/images/qr.png"></image>
+				<view>我的机器型号</view>
+			</view>
 			<image class="cell-rt" src="/images/rt2.png"></image>
 		</view>
+
+		<navigator hover-class="line-hover" url="/pages/address/address">
+			<view class="cell-item">
+				<view class="cell-lt">
+					<image mode="aspectFit" class="cell-icon" src="/images/qr.png"></image>
+					<view>邮寄地址</view>
+				</view>
+				<image class="cell-rt" src="/images/rt2.png"></image>
+			</view>
+		</navigator>
+
+		<!-- <button class="contact" open-type="contact"> -->
+		<!-- </button> -->
+		<navigator hover-class="line-hover" url="/pages/contact/contact">
+			<view class="cell-item">
+				<view class="cell-lt">
+					<image mode="aspectFit" class="cell-icon" src="/images/qr.png"></image>
+					<view>联系客服</view>
+				</view>
+				<image class="cell-rt" src="/images/rt2.png"></image>
+			</view>
+		</navigator>
+
+		<navigator hover-class="line-hover" url="/pages/aboutus/aboutus">
+			<view class="cell-item">
+				<view class="cell-lt">
+					<image mode="aspectFit" class="cell-icon" src="/images/qr.png"></image>
+					<view>关于我们</view>
+				</view>
+				<image class="cell-rt" src="/images/rt2.png"></image>
+			</view>
+		</navigator>
+
 	</view>
 
 </view>

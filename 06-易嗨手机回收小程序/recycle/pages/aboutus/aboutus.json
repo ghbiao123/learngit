@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "parser": "/mycomponents/parser/parser/parser"
+  }
+  
 }

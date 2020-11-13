@@ -1,2 +1,1 @@
-<!--pages/aboutus/aboutus.wxml-->
-<text>pages/aboutus/aboutus.wxml</text>
+<button bindtap="download" class="button-clear">点击下载</button>

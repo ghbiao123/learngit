@@ -226,6 +226,18 @@
           "pathName": "pages/uploadimage/uploadimage",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/address/address",
+          "pathName": "pages/address/address",
+          "query": "id=4",
+          "scene": null
+        },
+        {
+          "name": "pages/aboutus/aboutus",
+          "pathName": "pages/aboutus/aboutus",
+          "query": "",
+          "scene": null
         }
       ]
     }

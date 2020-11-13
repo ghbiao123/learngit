@@ -1,12 +1,13 @@
-// pages/mine/mine.js
+// pages/address/address.js
+let util = require('../../utils/util');
 let that;
-import util from "../../utils/util";
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+
   },
 
   /**
@@ -14,19 +15,20 @@ Page({
    */
   onLoad: function (options) {
     that = this;
-    
+    util.post("/api/user/getPlatforminfo").then(res => {
+      console.log(res);
+      that.setData({
+        data: res.data
+      });
+
+    });
   },
-  
-  // 显示我的机型
-  showModel(){
-    wx.getSystemInfo({
-      success: (result) => {
-        util.showError(result.model, function(){
-          wx.setClipboardData({
-            data: result.model,
-          });
-        }); 
-      },
+  copy() {
+    let str = `收货人：${this.data.data.contactperson}
+                 手机号码：${this.data.data.contactphone}
+                 所在地区：${this.data.data.contactaddress}`;
+    wx.setClipboardData({
+      data: str,
     });
   },
   /**
@@ -40,7 +42,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    util.checkIsLogin.call(this);
+
   },
 
   /**
