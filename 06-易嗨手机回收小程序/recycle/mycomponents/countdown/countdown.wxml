@@ -1,0 +1,6 @@
+<view class="countdown">
+  <view class="title">限时保价</view>
+  <view class="timebox">
+    <view class="item {{(index+1)%3? 'bg-au':''}}" wx:for="012345678901" wx:key="index">{{item}}</view>
+  </view>
+</view>

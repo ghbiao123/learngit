@@ -1,1 +1,5 @@
 /* pages/aboutus/aboutus.wxss */
+.cell-item{
+  font-weight: bold;
+  font-size: 45rpx;
+}

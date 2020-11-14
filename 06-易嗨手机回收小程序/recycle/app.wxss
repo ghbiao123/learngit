@@ -76,9 +76,9 @@ image{
 }
 .cell-icon{
   display: flex;
-  margin: 22rpx;
-  width: 56rpx;
-  height: 56rpx;
+  margin: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 .cell-rt{
   margin: 40rpx 20rpx 0 0;

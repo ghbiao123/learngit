@@ -1,0 +1,39 @@
+/* pages/orderinformation/orderinformation.wxss */
+.notes{
+  display: flex;
+  width: 100%;
+  height: 100rpx;
+  line-height: 40rpx;
+  color: #C7402C;
+  background-color: #F9EBE9;
+}
+.notes-icon{
+  margin: 35rpx;
+  width: 30rpx;
+}
+.notes-text{
+  padding: 10rpx 20rpx 0 0;
+  font-size: 24rpx;
+}
+.getsuccess{
+  width: 100%;
+  height: 440rpx;
+  text-align: center;
+  background-color: #fff;
+}
+.success-icon{
+  margin-top: 40rpx;
+  width: 120rpx;
+  height: 120rpx;
+}
+.success-cont{
+  font-size: 30rpx;
+  color: #333333;
+}
+.color-au{
+  color: #D18C13;
+}
+.success-tips{
+  color: #333333;
+  font-size: 26rpx;
+}

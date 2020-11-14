@@ -314,3 +314,56 @@
 .max-price{
   font-size: 25rpx;
 }
+
+/* 弹窗样式 */
+.showmodel{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(157, 157, 157, 0.4);
+}
+.modelbox{
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 320rpx;
+  height: 434rpx;
+  /* overflow: hidden; */
+}
+.close-model{
+  display: block;
+  position: absolute;
+  right: -20rpx;
+  top: 0;
+  z-index: 10;
+}
+.model-bg,
+.model-item{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 320rpx;
+  height: 434rpx;
+}
+.model-bg{
+  z-index: -1;
+}
+.model-text{
+  padding-top: 120rpx;
+  text-align: center;
+  color: #C7402C;
+}
+.model-title{
+  font-size: 42rpx;
+}
+.model-cont{
+  font-size: 32rpx;
+}
+.model-tip{
+  font-size: 22rpx;
+}

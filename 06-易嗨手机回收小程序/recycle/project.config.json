@@ -238,6 +238,11 @@
           "pathName": "pages/aboutus/aboutus",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/orderinformation/orderinformation",
+          "pathName": "pages/orderinformation/orderinformation",
+          "scene": null
         }
       ]
     }

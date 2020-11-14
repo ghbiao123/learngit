@@ -1,0 +1,39 @@
+.countdown{
+  margin: 0 auto;
+  display: flex;
+  width: 710rpx;
+  height: 90rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+  background-color: #FAEED4;
+}
+.title{
+  margin-top: 22rpx;
+  padding: 0 22rpx;
+  width: 56rpx;
+  height: 56rpx;
+  text-align: center;
+  line-height: 1.2;
+  color: #E6AC29;
+  font-size: 24rpx;
+  border-right: 2rpx solid #E6AC29;
+}
+.timebox{
+  width: 600rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.item{
+  margin: 0 1rpx;
+  width: 38rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #E6AC29;
+  border-radius: 4rpx;
+}
+.bg-au{
+  background-color: #fff;
+}

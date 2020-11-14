@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    type:["手机", "平板", "电脑", "摄影摄像", "其他产品",]
+    type:["手机", "平板", "电脑", "摄影摄像", "其他产品",],
+    isShowModel: false
   },
 
   /**
@@ -18,6 +19,7 @@ Page({
     // init
     this.initData();
   },
+ 
   // 跳转估价页面
   getEvaluation(e){
     let idx = e.currentTarget.dataset.id;
@@ -56,6 +58,7 @@ Page({
   },
   // 初始化数据
   initData(){
+    // banner hotmodel category
     util.post('/api/index/indexContent').then(res=>{
       res.data.banner = util.getImageFullUrl(res.data.banner, 'picture').map(v=>v.picture);
       res.data.category = util.getImageFullUrl(res.data.category, 'image');
@@ -80,8 +83,29 @@ Page({
       },
     });
 
+    // 判断是否显示model
+    let userInfo = wx.getStorageSync('userinfo');
+    this.setData({
+      isShowModel: true
+    });
+    if(!userInfo){
+    }
   },
+  // 领取新人券
+  getNewCoupon(){
+    console.log('getNewCoupon');
 
+    // 领取回收加价券后关闭弹窗
+    this.closeModel();
+  
+  },
+  // 关闭model
+  closeModel(){
+    console.log('closeModel');
+    this.setData({
+      isShowModel: false
+    });
+  },
   // 跳转加价券页面
   receiveCoupon(){
     wx.navigateTo({

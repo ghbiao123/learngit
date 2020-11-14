@@ -33,7 +33,8 @@
     "pages/orderresult/orderresult",
     "pages/qualityreport/qualityreport",
     "pages/address/address",
-    "pages/aboutus/aboutus"
+    "pages/aboutus/aboutus",
+    "pages/orderinformation/orderinformation"
   ],
   "usingComponents": {
     "btntopage": "/mycomponents/btntopage/btntopage"

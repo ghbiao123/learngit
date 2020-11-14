@@ -1,8 +1,10 @@
 <!--index.wxml-->
 <view class="container">
+	<!-- searchbar -->
 	<navigator url="/pages/searchbar/searchbar" hover-class="none">
 		<searchbar theme="#C1402A"></searchbar>
 	</navigator>
+	<!-- banner -->
 	<view class="banner">
 		<image class="banner-bg" mode="widthFix" src="/images/index-bg.png"></image>
 		<swiper class="banner-swiper" autoplay circular>
@@ -16,6 +18,7 @@
 		<image class="add-price" src="/images/add-price.png"></image>
 	</view> -->
 
+	<!-- 旧机回收 -->
 	<view class="my-old-phone">
 		<view class="recycle-phone">
 			<image src="/images/old-phone-bg.png" class="my-old-phone-bg" mode="widthFix"></image>
@@ -39,6 +42,7 @@
 		</view>
 	</view>
 
+	<!-- 我的机型 -->
 	<view class="tit-no-bg">
 		<view class="left-red-line">我的机型</view>
 	</view>
@@ -75,7 +79,6 @@
 	<view class="tit-no-bg">
 		<view class="left-red-line">回收品类</view>
 	</view>
-
 	<view class="cell-card">
 		<view class="types">
 			<block wx:for="{{init.category}}" wx:key="index">
@@ -93,7 +96,6 @@
 		<image class="fire" src="/images/fire.png"></image>
 		<view>热门回收</view>
 	</view>
-
 	<scroll-view class="scroll-view" scroll-x>
 		<view class="scroll-content" style="width:{{init.hotmodel.length * 290}}rpx;">
 			<view hover-class="line-hover" class="scroll-item" data-cid="{{item.cid}}" data-id="{{item.id}}" bindtap="getEvaluation"
@@ -109,9 +111,7 @@
 	<view class="tit-no-bg">
 		<view class="left-red-line">回收流程</view>
 	</view>
-
 	<view class="cell-card">
-		
 		<view class="steps">
 			<view class="steps-item">
 				<image class="steps-icon" src="/images/idx1.png"></image>
@@ -143,4 +143,19 @@
 
 	</view>
 
+</view>
+
+<!-- 新人礼弹窗 -->
+<view wx:if="{{isShowModel}}" class="showmodel">
+	<view class="modelbox" bindtap="getNewCoupon">
+		<icon catchtap="closeModel" type="cancel" class="close-model" size="30"></icon>
+		<view class="model-item">
+			<image class="model-bg" mode="aspectFit" src="/images/model-bg.png"></image>
+			<view class="model-text">
+				<view class="model-title">新人专属</view>
+				<view class="model-cont">899大礼包</view>
+				<view class="model-tip">回收加价高至5%</view>
+			</view>
+		</view>
+	</view>
 </view>

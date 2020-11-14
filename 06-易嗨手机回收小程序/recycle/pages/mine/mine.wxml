@@ -65,7 +65,7 @@
 		<navigator hover-class="line-hover" url="/pages/recyclelist/recyclelist">
 			<view class="cell-item">
 				<view class="cell-lt">
-					<image mode="aspectFit" class="cell-icon" src="/images/qr.png"></image>
+					<image mode="aspectFit" class="cell-icon" src="/images/main-searchmoney.png"></image>
 					<view>估价列表</view>
 				</view>
 				<image class="cell-rt" src="/images/rt2.png"></image>
@@ -74,7 +74,7 @@
 		<navigator hover-class="line-hover" url="/pages/coupon/coupon?type=mine&page=mine">
 			<view class="cell-item">
 				<view class="cell-lt">
-					<image mode="aspectFit" class="cell-icon" src="/images/qr.png"></image>
+					<image mode="aspectFit" class="cell-icon" src="/images/main-coupon.png"></image>
 					<view>回收加价卷</view>
 				</view>
 				<image class="cell-rt" src="/images/rt2.png"></image>
@@ -101,7 +101,7 @@
 		<navigator hover-class="line-hover" url="/pages/address/address">
 			<view class="cell-item">
 				<view class="cell-lt">
-					<image mode="aspectFit" class="cell-icon" src="/images/qr.png"></image>
+					<image mode="aspectFit" class="cell-icon" src="/images/main-aboutus.png"></image>
 					<view>邮寄地址</view>
 				</view>
 				<image class="cell-rt" src="/images/rt2.png"></image>
@@ -113,7 +113,7 @@
 		<navigator hover-class="line-hover" url="/pages/contact/contact">
 			<view class="cell-item">
 				<view class="cell-lt">
-					<image mode="aspectFit" class="cell-icon" src="/images/qr.png"></image>
+					<image mode="aspectFit" class="cell-icon" src="/images/main-contact.png"></image>
 					<view>联系客服</view>
 				</view>
 				<image class="cell-rt" src="/images/rt2.png"></image>
@@ -123,7 +123,7 @@
 		<navigator hover-class="line-hover" url="/pages/aboutus/aboutus">
 			<view class="cell-item">
 				<view class="cell-lt">
-					<image mode="aspectFit" class="cell-icon" src="/images/qr.png"></image>
+					<image mode="aspectFit" class="cell-icon" src="/images/main-tip.png"></image>
 					<view>关于我们</view>
 				</view>
 				<image class="cell-rt" src="/images/rt2.png"></image>

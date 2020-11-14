@@ -1,6 +1,4 @@
-// pages/aboutus/aboutus.js
-let util = require('../../utils/util');
-let that;
+// pages/orderinformation/orderinformation.js
 Page({
 
   /**
@@ -14,37 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    that = this;
 
-    this.init();
-  },
-  init() {
-    that.setData({
-      nodes: `<div>这是一首简单的小情歌</div>`
-    });
-  },
-  download() {
-    wx.downloadFile({
-      url: 'https://shukanfile.zlogic.cn/2a3786b97b2b318e7a762db1264a3b0d.xlsx',
-      success(res) {
-        const filePath = res.tempFilePath
-        wx.openDocument({
-          filePath: filePath,
-          showMenu: true,
-          success: function (res) {
-            wx.showModal({
-              cancelColor: 'cancelColor',
-              content: `成功`
-            });
-            console.log('打开文档成功')
-          }
-        })
-      }
-    })
-    // wx.openDocument({
-    //   filePath: '/images/test1.xlsx',
-    //   showMenu: true,
-    // });
   },
 
   /**

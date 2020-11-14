@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="notes">
+    <image class="notes-icon" mode="widthFix" src="/images/tips.png"></image>
+    <view class="notes-text">如质检结果与您选择的机器信息有差异，实际回收报价可能产生变化。</view>
+  </view>
+  <view class="getsuccess">
+    <image class="success-icon" src="/images/success.png"></image>
+    <view class="success-cont m-t-20">订单提交成功</view>
+    <view class="success-tips m-t-20">订单有效期<text class="color-au">10天</text>，逾期未成交将自动取消</view>
+    <countdown time="1637683200"></countdown>
+  </view>
+</view>
