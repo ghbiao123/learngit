@@ -7,6 +7,10 @@
     <image class="success-icon" src="/images/success.png"></image>
     <view class="success-cont m-t-20">订单提交成功</view>
     <view class="success-tips m-t-20">订单有效期<text class="color-au">10天</text>，逾期未成交将自动取消</view>
-    <countdown time="1637683200"></countdown>
+    <!-- 2020-11-24 00:00:00 -->
+    <countdown time="1606147200"></countdown>
+
+    <!-- 2021-11-24 00:00:00 -->
+    <!-- <countdown time="1637683200"></countdown> -->
   </view>
 </view>
