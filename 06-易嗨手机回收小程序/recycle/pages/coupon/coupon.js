@@ -8,7 +8,8 @@ Page({
    */
   data: {
     type:'',
-    arrIsGot: []
+    arrIsGot: [],
+    selected: 1
   },
 
   /**
@@ -76,6 +77,14 @@ Page({
       arrIsGot[idx] = true;
       that.setData({arrIsGot});
       return util.showSuccess(res.msg);
+    });
+  },
+  // tab selected
+  tabSelected(e){
+    let selected = e.currentTarget.dataset.id;
+    console.log(selected);
+    this.setData({
+      selected
     });
   },
   // init data
@@ -148,7 +157,7 @@ Page({
   onShow: function () {
 
      // init data
-     this.init();
+    //  this.init();
   },
 
   /**

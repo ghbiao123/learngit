@@ -1,1 +1,9 @@
 /* pages/qualityreport/qualityreport.wxss */
+.content{
+  position: relative;
+  height: auto;
+  min-height: 100vh;
+}
+.bg-up{
+  
+}

@@ -1,0 +1,52 @@
+.list{
+  margin: 0 auto;
+  width: 670rpx;
+  height: auto;
+}
+.list-item{
+  display: flex;
+  width: 670rpx;
+  height: 160rpx;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+.list-item ~ .list-item{
+  margin-top: 30rpx;
+}
+.price{
+  width: 160rpx;
+  height: 160rpx;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  overflow: hidden;
+  background: radial-gradient(circle at 100% 0, transparent 0, transparent 20rpx, #FD5030 20rpx, #FD5030 100%),
+              linear-gradient(to bottom, #FC5232, #F96C48),
+              radial-gradient(circle at 100% 100%, transparent 0, transparent 20rpx, #FD714D 20rpx, #FD714D 100%);
+  background-size: 160rpx 20rpx, 160rpx 120rpx, 160rpx 20rpx;
+  background-position: 0 0, 0 20rpx, 0 140rpx;
+  background-repeat: no-repeat;
+}
+.price-val{
+  padding-top: 20rpx;
+  font-size: 46rpx;
+}
+.price-txt{
+  font-size: 26rpx;
+}
+.info{
+  text-indent: 20rpx;
+}
+.info-introduce{
+  padding-top: 16rpx;
+  font-size: 30rpx;
+}
+.info-condition{
+  font-size: 24rpx;
+  color: #C7402C;
+}
+.info-time{
+  font-size: 24rpx;
+
+}

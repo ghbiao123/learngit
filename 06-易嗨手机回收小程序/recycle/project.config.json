@@ -242,6 +242,12 @@
         {
           "name": "pages/orderinformation/orderinformation",
           "pathName": "pages/orderinformation/orderinformation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/qualityreport/qualityreport",
+          "pathName": "pages/qualityreport/qualityreport",
           "scene": null
         }
       ]

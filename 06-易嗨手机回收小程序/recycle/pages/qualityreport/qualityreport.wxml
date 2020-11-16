@@ -1,2 +1,5 @@
-<!--pages/qualityreport/qualityreport.wxml-->
-<text>pages/qualityreport/qualityreport.wxml</text>
+<view class="content">
+  <!-- <image class="bg-up"></image>
+  <view class="bg-middle"></view>
+  <image class="bg-down"></image> -->
+</view>

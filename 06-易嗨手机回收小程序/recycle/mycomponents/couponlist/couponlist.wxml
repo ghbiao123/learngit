@@ -1,0 +1,15 @@
+<view class="list" >
+  
+  <view class="list-item" wx:for="{{list}}" wx:key="index">
+    <view class="price">
+      <view class="price-val">5000</view>
+      <view class="price-txt">加价券</view>
+    </view>
+    <view class="info">
+      <view class="info-introduce">易嗨机100元加价券</view>
+      <view class="info-condition">满1000可用</view>
+      <view class="info-time">2020.11.15 - 2020.11.18</view>
+    </view>
+  </view>
+
+</view>
