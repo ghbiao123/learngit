@@ -1,4 +1,6 @@
 // pages/qualityreport/qualityreport.js
+let that;
+let util = require("../../utils/util");
 Page({
 
   /**
@@ -12,6 +14,49 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
+
+    this.init();
+  },
+
+  // data init
+  init(){
+
+
+    // 计算中间背景部分高度
+    // 1.获取手机系统高度
+    wx.getSystemInfo({
+      success: async (result) => {
+        let systemHeight = result.windowHeight;
+        
+        // 2.上部分背景高度
+        let upHeight = await new Promise((resolve, reject)=>{
+          let query = wx.createSelectorQuery();
+          query.select(".head").boundingClientRect();
+          query.exec(res=>{
+            resolve(res[0].height);
+          });
+        });
+
+        // 3.下部分背景高度
+        let downHeight = await new Promise(resolve=>{
+          let query = wx.createSelectorQuery();
+          query.select(".bg-down").boundingClientRect();
+          query.exec(res=>{
+            resolve(res[0].height);
+          });
+        });
+        // 4.middleHeight 中间可变化部分高度
+        let middleHeight = (systemHeight - upHeight - downHeight) * 2;
+        that.setData({
+          middleHeight
+        });
+
+      },
+    })
+
+
+    
 
   },
 

@@ -12,7 +12,7 @@
 
     <view class="cell-card m-t-20">小提示：选择结果与实际相符，有利于加快您的回收进度。</view>
 
-    <view class="cell-card m-t-20">
+    <view hidden class="cell-card m-t-20">
       <view class="cell-item">
         <view class="cell-name t-a-c">设备型号</view>
         <view class="cell-cont">

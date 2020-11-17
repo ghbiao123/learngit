@@ -51,17 +51,22 @@ Page({
       cateid: this.data.reqData.bid,
       bid: e.detail.bid
     }
-    if(this.data._tabid == 4){
-      // 跳转估价页面
-      wx.navigateTo({
-        url: `/pages/cameraevaluation/evaluation?cateid=${data.cateid}&cid=4&bid=${data.bid}&name=${e.detail.name}`,
-      });
-    }else if(this.data._tabid == 5){
-      // 跳转列表页
+    if(this.data._tabid == 4 || this.data._tabid == 5){
       wx.navigateTo({
         url: `/pages/otherlist/otherlist?cateid=${data.cateid}&bid=${data.bid}`,
       });
     }
+    // if(this.data._tabid == 4){
+    //   // 跳转估价页面
+    //   wx.navigateTo({
+    //     url: `/pages/cameraevaluation/evaluation?cateid=${data.cateid}&cid=4&bid=${data.bid}&name=${e.detail.name}`,
+    //   });
+    // }else if(this.data._tabid == 5){
+    //   // 跳转列表页
+    //   wx.navigateTo({
+    //     url: `/pages/otherlist/otherlist?cateid=${data.cateid}&bid=${data.bid}`,
+    //   });
+    // }
   },
   // getVtabTitleId
   getVtabTitleId(e) {

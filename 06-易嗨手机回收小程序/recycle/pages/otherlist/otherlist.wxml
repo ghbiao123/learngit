@@ -1,7 +1,8 @@
 <view class="container">
-  <view class="cell-item" data-idx="{{index}}" bindtap="getEvaluation" wx:for="{{list}}">
+  <view class="cell-item" data-idx="{{index}}" bindtap="getEvaluation" wx:for="{{list}}" wx:key="index">
     {{item.name}}
   </view>
-  <btntopage></btntopage>
+  <!-- 若无机型跳转页面按钮 -->
+  <!-- <btntopage></btntopage> -->
 </view>
   

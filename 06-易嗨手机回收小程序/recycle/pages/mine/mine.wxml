@@ -13,7 +13,7 @@
 				<navigator url="/pages/login/login" hover-class="none">去登陆></navigator>
 			</view>
 		</view>
-		<navigator hover-class="none" url="/pages/stafflogin/stafflogin">
+		<navigator wx:if="{{!isLogin}}" hover-class="none" url="/pages/stafflogin/stafflogin">
 			<view class="staff-login" hover-class="line-hover">
 				<image class="staff-icon" src="/images/staff-login.png"></image>
 				<view class="staff-info">工作人员登录</view>

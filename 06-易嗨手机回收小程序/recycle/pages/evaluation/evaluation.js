@@ -175,8 +175,8 @@ Page({
           let data = {
             userid: that.data.userInfo.uid,
             code: res.code,
-            encrypteddata: e.detail.encryptedData,
-            iv: e.detail.iv
+            encrypteddata: encodeURI(e.detail.encryptedData),
+            iv: encodeURI(e.detail.iv)
           };
           util.post('/api/login/getWxBindMobile', data).then(ret=>{
             console.log(ret);

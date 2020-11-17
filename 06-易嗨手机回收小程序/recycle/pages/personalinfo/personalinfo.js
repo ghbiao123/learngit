@@ -33,6 +33,20 @@ Page({
       });
     });
   },
+  // 退出登录
+  logout(){
+    wx.removeStorage({
+      key: 'userinfo',
+      success(res){
+        util.showSuccess('退出登录', function(){
+          wx.navigateBack({
+            delta: 1,
+          });
+        })
+      }
+    });
+  },
+
   // 提交
   submit(e) {
     let data = e.detail.value;

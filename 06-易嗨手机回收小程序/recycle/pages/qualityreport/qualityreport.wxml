@@ -1,5 +1,21 @@
 <view class="content">
-  <!-- <image class="bg-up"></image>
-  <view class="bg-middle"></view>
-  <image class="bg-down"></image> -->
+  <view class="head">
+    <image class="bg-up" src="/images/report-up.jpg"></image>
+  </view>
+  <view class="bg-middle" style="height: {{middleHeight}}rpx;"></view>
+  <image class="bg-down" src="/images/report-down.jpg"></image>
+
+  <!-- 主体内容部分 -->
+
+  <view class="cont">
+    
+  </view>
+
+
+  <view class="copyright">
+    <view class="copyright-line"></view>
+    <view>易嗨机质检中心</view>
+    <view class="copyright-line"></view>
+  </view>
+
 </view>
