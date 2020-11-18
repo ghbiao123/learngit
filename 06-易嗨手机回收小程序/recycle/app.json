@@ -34,7 +34,8 @@
     "pages/qualityreport/qualityreport",
     "pages/address/address",
     "pages/aboutus/aboutus",
-    "pages/orderinformation/orderinformation"
+    "pages/orderinformation/orderinformation",
+    "pages/manualresult/manualresult"
   ],
   "usingComponents": {
     "btntopage": "/mycomponents/btntopage/btntopage"

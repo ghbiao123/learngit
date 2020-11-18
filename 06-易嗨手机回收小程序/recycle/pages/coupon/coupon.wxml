@@ -28,10 +28,10 @@
     <view wx:if="{{selected == 1}}" class="tab-cont">
       <view class="coupon-status">
         <!-- <view class="notes">“已领取”</view> -->
-        <view class="check-coupon chose-coupon" hover-class="chose-hover">一键领取</view>
-        <view class="check-coupon" hover-class="check-hover">查看优惠券</view>
+        <view wx:if="{{selected == 1}}" class="check-coupon chose-coupon" hover-class="chose-hover">一键领取</view>
+        <view wx:if="{{selected == 2}}" class="check-coupon" hover-class="check-hover">查看优惠券</view>
       </view>
-      <view class="morewel t-a-c">更多领取福利</view>
+      <!-- <view class="morewel t-a-c">更多领取福利</view> -->
 
       <!-- 加价券列表 -->
       <couponlist list="{{[1,2,3,4,5]}}"></couponlist>

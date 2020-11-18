@@ -267,20 +267,26 @@ Page({
     }
     data.userid = userInfo.uid;
 
-    data.modelname = this.data.machineModel;
+    // this.data.machineModel = this.data.name;
+    // data.modelname = this.data.machineModel;
+
+    data.modelname = this.data.name;
 
     data.otype = 0;
 
     console.log(data);
 
-    if(!data.modelname){
-      return util.showError('请您填写设备型号');
-    }
 
-    //  util.post('/api/order/calculateOtherNa', data).then(res=>{
-    //   console.log(res);
-    // });
+     util.post('/api/order/calculateOtherNa', data).then(res=>{
+      console.log(res);
+      if(false){
+        wx.redirectTo({
+          url: '/pages/manualresult/manualresult',
+        });
+      }
+    });
 
+    return;
 
     wx.setStorage({
       data: data,

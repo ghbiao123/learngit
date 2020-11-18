@@ -155,48 +155,48 @@ Page({
 
   },
   // 获取用户信息
-  getUserInfo(e){
-    util.getUserInfo(e, function(res){
-      if(res.code == 1){
+  getUserInfo(e) {
+    util.getUserInfo(e, function (res) {
+      if (res.code == 1) {
         util.showSuccess('登录成功，请立即估价');
         util.checkIsLogin.call(that);
       }
     });
   },
   // 获取用户手机号
-  getPhoneNum(e){
+  getPhoneNum(e) {
     console.log(e);
-    if(e.detail.iv){
+    if (e.detail.iv) {
       // 用户同意获取手机号
       // 将用户手机号更新到storage（‘currentphone’）
       wx.login({
-        success(res){
-          if(!res.code) return util.showSuccess('网络错误，请重试');
+        success(res) {
+          if (!res.code) return util.showSuccess('网络错误，请重试');
           let data = {
             userid: that.data.userInfo.uid,
             code: res.code,
             encrypteddata: encodeURI(e.detail.encryptedData),
             iv: encodeURI(e.detail.iv)
           };
-          util.post('/api/login/getWxBindMobile', data).then(ret=>{
+          util.post('/api/login/getWxBindMobile', data).then(ret => {
             console.log(ret);
             wx.setStorage({
               data: ret.data,
               key: 'currentphone',
-              success(res){
+              success(res) {
                 that.getResult();
               }
             });
           });
-          
-          
+
+
 
 
         }
       });
-      
-     
-    }else{
+
+
+    } else {
       // 用户不同意获取手机号
 
     }
@@ -264,7 +264,7 @@ Page({
     });
 
   },
-  
+
   // 跳转估价结果页
   getResult(e) {
     // 关闭actionsheet
@@ -359,6 +359,8 @@ Page({
 
     // 先判断人工估价
     if (this.data.type == 'pc' && this.data._data.bid != 1) {
+      /*
+      // 这段代码跳转到一个新页面，新页面判断是否是提交到系统估价还是人工现场估价
       wx.setStorage({
         data: data,
         key: 'currentmachine',
@@ -369,6 +371,19 @@ Page({
         }
       });
       return;
+      */
+      // 人工估价-》提交到系统进行估价，不再进行现场估价
+      data.otype = 0;
+      submitOrder(function (res) {
+        
+        wx.redirectTo({
+          url: '/pages/manualresult/manualresult',
+        });
+        
+      });
+
+      return;
+
       if (e.detail.value == 2) {
         // 用户现场扫码
         data.otype = 1;
@@ -421,11 +436,11 @@ Page({
   },
   // actionsheet
   showAction() {
-    if(this.data.type == 'pc' && this.data._data.bid != 1){
+    if (this.data.type == 'pc' && this.data._data.bid != 1) {
       this.setData({
         showActionsheet: true
       });
-    }else{
+    } else {
       this.getResult();
     }
   },

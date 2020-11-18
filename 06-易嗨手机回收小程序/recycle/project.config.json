@@ -248,6 +248,12 @@
         {
           "name": "pages/qualityreport/qualityreport",
           "pathName": "pages/qualityreport/qualityreport",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/manualresult/manualresult",
+          "pathName": "pages/manualresult/manualresult",
           "scene": null
         }
       ]
