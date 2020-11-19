@@ -121,11 +121,7 @@
   color: #999999;
   border-bottom: 3rpx solid #f5f5f5;
 }
-
-.tab-item:nth-child(1) {
-  z-index: 2;
-}
-.tab-item:nth-child(1)::after{
+.tab-item::after{
   content: '';
   display: block;
   position: absolute;
@@ -134,11 +130,16 @@
   right: 0;
   bottom: 0;
   z-index: -1;
-  background: lavender;
   transform: perspective(0.5em) scale(1, 1.2) rotateX(2deg);
   transform-origin: bottom left;
   border-radius: 5px;
-  background-image: linear-gradient(to bottom, royalblue 0, #fff 100%);
+  background-image: linear-gradient(to bottom, gold 0, #fff 100%);
+}
+.tab-item:nth-child(1) {
+  z-index: 2;
+}
+.tab-item:nth-child(1)::after{
+  
 }
 .tab-item:nth-child(2) {
   background-color: rosybrown;
@@ -150,7 +151,8 @@
 
 .tab-selected {
   font-size: 30rpx;
-  color: #C7402C;
+  /* color: #C7402C; */
+  color: #ec5858;
   font-weight: bold;
   border-bottom: none;
 }
