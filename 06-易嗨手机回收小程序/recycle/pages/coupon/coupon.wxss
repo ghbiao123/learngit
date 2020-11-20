@@ -135,6 +135,7 @@
   border-radius: 5px;
   background-image: linear-gradient(to bottom, gold 0, #fff 100%);
 }
+
 .tab-item:nth-child(1) {
   z-index: 2;
 }
