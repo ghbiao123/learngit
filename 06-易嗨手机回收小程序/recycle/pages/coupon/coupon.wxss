@@ -130,7 +130,6 @@
   right: 0;
   bottom: 0;
   z-index: -1;
-  transform: perspective(0.5em) scale(1, 1.2) rotateX(2deg);
   transform-origin: bottom left;
   border-radius: 5px;
   background-image: linear-gradient(to bottom, gold 0, #fff 100%);
@@ -140,7 +139,7 @@
   z-index: 2;
 }
 .tab-item:nth-child(1)::after{
-  
+  transform: perspective(0.5em) scale(1, 1.2) rotateX(2deg);
 }
 .tab-item:nth-child(2) {
   background-color: rosybrown;
