@@ -40,7 +40,7 @@
       <view class="type" hover-class="line-hover">
         <navigator url="/pages/stafforderlist/stafforderlist?type=staffcancel" hover-class="none">
           <image mode="aspectFit" class="type-icon" src="/images/main2.png"></image>
-          <view class="type-txt">待人工估价</view>
+          <view class="type-txt">待估价</view>
           <view hidden class="dot">88</view>
         </navigator>
       </view>

@@ -1,85 +1,96 @@
 <view class="container">
-  <view class="tit-no-bg">订单明细</view>
-  <view class="cell-card">
-    <view class="cell-item">
-      <view class="name">类目：</view>
-      <view class="cont">
-        <input disabled class="cont" value="{{order.model_info.cinfo}}"></input>
-      </view>
-      <view bindtap="changeConfig" class="change">修改</view>
-    </view>
-
-    <view class="cell-item">
-      <view class="name">估价：</view>
-      <view class="cont">
-        <input disabled class="cont" value="￥{{order.estimate_fee}}"></input>
-      </view>
-      <view bindtap="changePrice" class="change">修改</view>
-    </view>
-
-    <view class="cell-item">
-      <view class="name">加价：</view>
-      <view class="cont">
-        <input disabled class="cont" value="￥{{order.coupon_fee}}"></input>
-      </view>
-      <view  class="change"></view>
-    </view>
-
-    <view class="cell-item">
-      <view class="name">总价：</view>
-      <view class="cont">
-        <input disabled class="cont" value="￥{{order.total_amount}}"></input>
-      </view>
-      <view  class="change"></view>
-    </view>
-
-  </view>
-
-  <view class="tit-no-bg">订单处理</view>
-  <view class="cell-card">
-    <view class="add-image">
-      <view wx:for="{{imageUrl}}" wx:key="index" class="add-image-item">
-        <image mode="aspectFit" class="add-image-item" src="{{item}}"></image>
-        <icon data-idx="{{index}}" bindtap="cancelImage" class="cancel" size="25" type="cancel" color="#999"></icon>
-      </view>
-      <view bindtap="getPhoto" class="add-image-item">
-        <image class="add-image-item" src="/images/add.png"></image>
-      </view>
-      
-    </view>
-  </view>
-
-  <!-- 输入tmet号 -->
-  <view class="tmet">
-    <view class="tmet-name">输入TMET号：</view>
-    <view class="tmet-input-box">
-      <input bindinput="TMETInput" class="tmet-input-input" placeholder="请输入TMET号"></input>
-    </view>
-  </view>
-
-  <view class="tit-no-bg">身份证拍照识别</view>
-  <view class="cell-card">
-    <view class="idcard">
-      <view class="idcard-image">
-      <ocr-navigator bind:onSuccess="chooseIdcard" certificateType="idCard" opposite="{{false}}">
-      <!-- <button type="primary">身份证正面识别</button> -->
-        <image mode="aspectFit" class="idcard-image" src="{{ idcardSrc || '/images/add-idcard.png'}}"></image>
-      </ocr-navigator>
-      </view>
-      <view class="idcard-info">
-        <view class="info">
-          <view class="idcard-name">姓名</view>
-          <input disabled value="{{idCard.name}}" class="idcard-input"></input>
+  <swiper class="swiper">
+    <swiper-item class="swiper-item">
+      <view class="tit-no-bg">订单明细</view>
+      <view class="cell-card">
+        <view class="cell-item">
+          <view class="name">类目：</view>
+          <view class="cont">
+            <input disabled class="cont" value="{{order.model_info.cinfo}}"></input>
+          </view>
+          <view bindtap="changeConfig" class="change">修改</view>
         </view>
-        <view class="info">
-          <view class="idcard-name">身份证号</view>
-          <input disabled value="{{idCard.id}}" class="idcard-input"></input>
+
+        <view class="cell-item">
+          <view class="name">估价：</view>
+          <view class="cont">
+            <input disabled class="cont" value="￥{{order.estimate_fee}}"></input>
+          </view>
+          <view bindtap="changePrice" class="change">修改</view>
+        </view>
+
+        <view class="cell-item">
+          <view class="name">加价：</view>
+          <view class="cont">
+            <input disabled class="cont" value="￥{{order.coupon_fee}}"></input>
+          </view>
+          <view class="change"></view>
+        </view>
+
+        <view class="cell-item">
+          <view class="name">总价：</view>
+          <view class="cont">
+            <input disabled class="cont" value="￥{{order.total_amount}}"></input>
+          </view>
+          <view class="change"></view>
+        </view>
+
+      </view>
+
+      <!-- 输入tmet号 -->
+      <view class="tmet">
+        <view class="tmet-name">输入IMEI号：</view>
+        <view class="tmet-input-box">
+          <input bindinput="TMETInput" class="tmet-input-input" placeholder="请输入TMET号"></input>
         </view>
       </view>
 
-    </view>
-  
-  </view>
+
+
+    </swiper-item>
+    <swiper-item>
+      <view class="tit-no-bg">订单处理</view>
+      <view class="cell-card">
+        <view class="add-image">
+          <view wx:for="{{imageUrl}}" wx:key="index" class="add-image-item">
+            <image mode="aspectFit" class="add-image-item" src="{{item}}"></image>
+            <icon data-idx="{{index}}" bindtap="cancelImage" class="cancel" size="25" type="cancel" color="#999"></icon>
+          </view>
+          <view bindtap="getPhoto" class="add-image-item">
+            <image class="add-image-item" src="/images/add.png"></image>
+          </view>
+
+        </view>
+      </view>
+
+      <view class="tit-no-bg">身份证拍照识别</view>
+      <view class="cell-card">
+        <view class="idcard">
+          <view class="idcard-image">
+            <ocr-navigator bind:onSuccess="chooseIdcard" certificateType="idCard" opposite="{{false}}">
+              <!-- <button type="primary">身份证正面识别</button> -->
+              <image mode="aspectFit" class="idcard-image" src="{{ idcardSrc || '/images/add-idcard.png'}}"></image>
+            </ocr-navigator>
+          </view>
+          <view class="idcard-info">
+            <view class="info">
+              <view class="idcard-name">姓名</view>
+              <input disabled value="{{idCard.name}}" class="idcard-input"></input>
+            </view>
+            <view class="info">
+              <view class="idcard-name">身份证号</view>
+              <input disabled value="{{idCard.id}}" class="idcard-input"></input>
+            </view>
+          </view>
+
+        </view>
+
+      </view>
+    </swiper-item>
+  </swiper>
+
+
+
 
   <button wx:if="{{order.order_status == 0}}" bindtap="submit" class="button-clear m-t-20">提交</button>
   <button wx:if="{{order.order_status == 0}}" bindtap="cancelOrder" class="button-clear-cancel m-t-20">取消订单</button>
