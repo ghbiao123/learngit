@@ -1,0 +1,3 @@
+<view class="container">
+  <couponlist list="{{list}}"></couponlist>
+</view>

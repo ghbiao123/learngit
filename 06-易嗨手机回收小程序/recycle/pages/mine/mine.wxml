@@ -71,7 +71,7 @@
 				<image class="cell-rt" src="/images/rt2.png"></image>
 			</view>
 		</navigator>
-		<navigator hover-class="line-hover" url="/pages/coupon/coupon?type=mine&page=mine">
+		<navigator hover-class="line-hover" url="/pages/mycouponlist/mycouponlist?type=mine&page=mine">
 			<view class="cell-item">
 				<view class="cell-lt">
 					<image mode="aspectFit" class="cell-icon" src="/images/main-coupon.png"></image>

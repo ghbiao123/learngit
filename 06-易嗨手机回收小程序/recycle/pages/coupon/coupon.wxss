@@ -115,38 +115,12 @@
 
 .tab-item {
   position: relative;
-  width: 236rpx;
+  z-index: 2;
+  min-width: 236rpx;
   height: 70rpx;
   font-size: 26rpx;
   color: #999999;
   border-bottom: 3rpx solid #f5f5f5;
-}
-.tab-item::after{
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  transform-origin: bottom left;
-  border-radius: 5px;
-  background-image: linear-gradient(to bottom, gold 0, #fff 100%);
-}
-
-.tab-item:nth-child(1) {
-  z-index: 2;
-}
-.tab-item:nth-child(1)::after{
-  transform: perspective(0.5em) scale(1, 1.2) rotateX(2deg);
-}
-.tab-item:nth-child(2) {
-  background-color: rosybrown;
-}
-
-.tab-item:nth-child(3) {
-  background-color: saddlebrown;
 }
 
 .tab-selected {
@@ -155,6 +129,52 @@
   color: #ec5858;
   font-weight: bold;
   border-bottom: none;
+}
+
+.tab-selected::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -20rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: -1;
+  width: 100%;
+  height: 100rpx;
+  border-radius: 15rpx;
+  background-image: linear-gradient(to bottom, gold 0, #fff 100%);
+  transform: perspective(1em) scale(1.1, 1) rotateX(1deg);
+}
+
+.tab-selected:nth-child(1)::after {
+  transform-origin: bottom left;
+}
+
+.tab-selected:nth-child(2)::after {
+  transform-origin: bottom center;
+}
+
+.tab-selected:nth-child(3)::after {
+  transform-origin: bottom right;
+}
+.tab-2{
+  width: 354rpx;
+}
+.tab-2-selected:nth-child(1)::after {
+  transform-origin: bottom left;
+}
+
+.tab-2-selected:nth-child(2)::after {
+  transform-origin: bottom right;
+}
+
+.tab-1{
+  width: 708rpx;
+}
+.tab-1-selected::after {
+  transform: perspective(1em) scale(1, 1) rotateX(0deg) !important;
+  transform-origin: bottom center !important;
 }
 
 .b-r {
@@ -191,7 +211,7 @@
 }
 
 .check-coupon {
-  margin: 0 auto;
+  margin: 30rpx auto;
   width: 240rpx;
   height: 76rpx;
   line-height: 76rpx;
@@ -201,7 +221,6 @@
 }
 
 .chose-coupon {
-  margin: 30rpx auto;
   border: 1rpx solid #C7402C;
   color: #C7402C;
 }

@@ -35,7 +35,8 @@
     "pages/address/address",
     "pages/aboutus/aboutus",
     "pages/orderinformation/orderinformation",
-    "pages/manualresult/manualresult"
+    "pages/manualresult/manualresult",
+    "pages/mycouponlist/mycouponlist"
   ],
   "usingComponents": {
     "btntopage": "/mycomponents/btntopage/btntopage"

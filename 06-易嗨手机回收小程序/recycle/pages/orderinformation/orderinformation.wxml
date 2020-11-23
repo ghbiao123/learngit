@@ -30,6 +30,10 @@
       <view class="orderinfo-name">预约时间</view>
       <view class="orderinfo-cont">11月10日（周二） 10:00～12:00</view>
     </view>
+    <view class="orderinfo-content">
+      <view class="orderinfo-name">成交方式</view>
+      <view class="orderinfo-cont">快递回收</view>
+    </view>
     <view class="orderinfo-title">回收前准备</view>
     <view class="prepare">
       <image class="prepare-image" mode="aspectFit" src="/images/add.png"></image>

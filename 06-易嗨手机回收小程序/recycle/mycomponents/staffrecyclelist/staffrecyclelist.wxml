@@ -13,8 +13,12 @@
             {{item.order_status==0?'待验机':''}}{{item.order_status==1?'待付款':''}}{{item.order_status==2?'订单取消':''}}{{item.order_status==3?'订单取消':''}}
           </view>
         </view>
-        <view class="info ellipsis-text">{{item.model_info.cinfo? item.model_info.cinfo:''}}</view>
+        <!-- <view class="info ellipsis-text">{{item.model_info.cinfo? item.model_info.cinfo:''}}</view> -->
+        <view class="info ellipsis-text">成交方式:{{item.recovery_type == 1 ? "上门回收" : "快递回收"}}</view>
         <view class="info">预估价：¥{{item.total_amount}}</view>
+        <view class="info">上门时间：{{item.aspectFit}}</view>
+        <view class="info">联系方式：{{item.aspectFit}}</view>
+        <view class="info">上门位置：{{item.aspectFit}}</view>
       </view>
     </view>
     <view class="title">订单信息</view>

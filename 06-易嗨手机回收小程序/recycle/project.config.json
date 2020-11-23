@@ -144,10 +144,9 @@
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/coupon/coupon",
           "pathName": "pages/coupon/coupon",
-          "query": "",
+          "query": "type=add",
           "scene": null
         },
         {
@@ -254,6 +253,13 @@
         {
           "name": "pages/manualresult/manualresult",
           "pathName": "pages/manualresult/manualresult",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/mycouponlist/mycouponlist",
+          "pathName": "pages/mycouponlist/mycouponlist",
+          "query": "type=add",
           "scene": null
         }
       ]

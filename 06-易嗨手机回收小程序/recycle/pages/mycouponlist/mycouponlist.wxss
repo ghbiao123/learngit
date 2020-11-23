@@ -1,0 +1,7 @@
+/* pages/mycouponlist/mycouponlist.wxss */
+page{
+  background-color: #fff;
+}
+.container{
+  padding-top: 20rpx;
+}

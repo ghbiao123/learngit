@@ -59,24 +59,28 @@ Page({
   },
   // 用户手动领取加价券
   getCoupon(e){
-    let arrIsGot = this.data.arrIsGot;
-    let idx = e.currentTarget.dataset.id;
-
-    if(arrIsGot[idx]){
-
-      wx.redirectTo({
-        url: '/pages/search/search',
-      });
-
-      return;
-    }
-
-    let mcid = this.data.list[idx].id;
+    // let arrIsGot = this.data.arrIsGot;
+    
+    // if(arrIsGot[idx]){
+      
+    //   wx.redirectTo({
+    //     url: '/pages/search/search',
+    //   });
+      
+    //   return;
+    // }
+    // let idx = e.currentTarget.dataset.id;
+    // let mcid = this.data.list[idx].id;
+    let aid = e.currentTarget.dataset.id;
     let userid = this.data.userInfo.uid;
-    util.post('/api/products/userDoCoupon', {mcid, userid}).then(res=>{
-      arrIsGot[idx] = true;
-      that.setData({arrIsGot});
-      return util.showSuccess(res.msg);
+    util.post('/api/products/userDoCouponOnce', {aid, userid}).then(res=>{
+      // arrIsGot[idx] = true;
+      // that.setData({arrIsGot});
+      console.log(res);
+      if(res.code == 1){
+        that.init();
+        util.showSuccess(res.msg);
+      }
     });
   },
   // tab selected
@@ -97,7 +101,7 @@ Page({
           url: '/pages/login/login',
         });
       });
-    }
+    } 
 
     let url, 
       data = {},
@@ -117,18 +121,21 @@ Page({
     util.post(url, data).then(res=>{
       console.log(res);
       let list = [];
+      let len = 0;
       if(type == 'add'){
         // 领取加价券数据处理
-        list = res.data.map(v=>{
-          v.validstime_text = v.validstime_text.replace(/\-/g, "\/");
-          v.validetime_text = v.validetime_text.replace(/\-/g, "\/");
-          // v.isGot = false;
-          v.form_p = Number(v.form_p);
-          v.to_p = Number(v.to_p);
-          v.par_value = Number(v.par_value);
-          arrIsGot.push((v.usercoupon_count==0? false:true));
-          return v;
-        });
+        list = res.data;
+        len = list.length;
+        // list = res.data.map(v=>{
+        //   v.validstime_text = v.validstime_text.replace(/\-/g, "\/");
+        //   v.validetime_text = v.validetime_text.replace(/\-/g, "\/");
+        //   // v.isGot = false;
+        //   v.form_p = Number(v.form_p);
+        //   v.to_p = Number(v.to_p);
+        //   v.par_value = Number(v.par_value);
+        //   arrIsGot.push((v.usercoupon_count==0? false:true));
+        //   return v;
+        // });
       }else if(type == 'mine'){
         list = res.data.map(v=>{
 
@@ -138,7 +145,8 @@ Page({
       that.setData({
         list,
         type,
-        arrIsGot
+        arrIsGot,
+        len
       });
     });
 
@@ -157,7 +165,7 @@ Page({
   onShow: function () {
 
      // init data
-    //  this.init();
+     this.init();
   },
 
   /**
