@@ -1,0 +1,26 @@
+/* pages/paymentresult/paymentresult.wxss */
+page{
+  background-color: #fff;
+}
+.container{
+  padding-top: 300rpx;
+}
+.success{
+  margin: 20rpx auto;
+  display: block;
+  height: 150rpx;
+  width: 150rpx;
+}
+.title{
+  text-align: center;
+  color: #333;
+  font-size: 30rpx;
+  line-height: 1.5;
+}
+.tip{
+  padding-top: 50rpx;
+  text-align: center;
+  line-height: 1.5;
+  font-size: 24rpx;
+  color: rgb(165, 165, 165);
+}

@@ -1,0 +1,7 @@
+/* pages/paymentmethod/paymentmethod.wxss */
+.container{
+  padding-top: 300rpx;
+}
+.m-t-50{
+  margin-top: 50rpx;
+}

@@ -1,0 +1,45 @@
+<view class="content">
+  <!-- list -->
+  <scroll-view class="scroll" scroll-y>
+    <checkbox-group>
+      <view class="list" wx:for="1234" wx:key="index">
+        <checkbox color="#C1402A">
+          <view class="list-item">
+            <view class="item-line">
+              <view class="item-name">单号：</view>
+              <view class="item-cont">2020112414568419</view>
+            </view>
+            <view class="item-line">
+              <view class="cont">Redmi K30 pro 尊享版</view>
+            </view>
+            <view class="cont">￥3000.00</view>
+          </view>
+        </checkbox>
+      </view>
+    </checkbox-group>
+  </scroll-view>
+
+
+  <!-- submit -->
+  <view class="send-box">
+    <view class="select-all">
+      <checkbox-group>
+        <checkbox color="#C1402A">
+          全选
+        </checkbox>
+      </checkbox-group>
+      <view class="m-l-40">已选32件</view>
+    </view>
+
+    <radio-group class="send-method">
+      <radio color="#C1402A">自行配送</radio>
+      <radio class="m-l-40" color="#C1402A">快递</radio>
+    </radio-group>
+
+    <button class="button-clear m-t-20">提交</button>
+
+  </view>
+
+  <prompt isShow="{{isShowPrompt}}" bind:getPrompt="getExpressOrder"></prompt>
+
+</view>

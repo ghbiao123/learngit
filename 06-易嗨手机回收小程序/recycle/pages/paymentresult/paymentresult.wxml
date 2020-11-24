@@ -1,0 +1,5 @@
+<view class="container">
+  <image class="success" src="/images/success.png"></image>
+  <view class="title">{{method == 'wechat' ? '支付成功' : '已成功提交'}}</view>
+  <view wx:if="{{method == 'union'}}" class="tip">预计2小时内完成付款</view>
+</view>
