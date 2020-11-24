@@ -127,6 +127,11 @@ Page({
         });
       }
 
+      /**
+       * 手机配置信息：phone_model， phone_color， phone_storage
+       * 电脑配置信息：pc_processor，pc_ram，pc_videocard，pc_ssd，pc_harddisk
+       */
+
       let _data = res.data;
 
       let isUpdateImage = _data.bid == 2 ? true : false;
@@ -214,24 +219,29 @@ Page({
       });
     }
 
-    let hiddenCode, hideCode;
+    let showCode = [];
+    let hiddenCode, hideCode = this.data.hideCode;
     let progressData = this.data.progressData;
     if (this.data.type == 'mobile') {
       hiddenCode = ['1', '3', '5'];
+      showCode = ['2', '4'];
     } else if (this.data.type == 'pc') {
       hiddenCode = ['34', '36', '2'];
+      showCode = ['35', '1'];
     }
+
     if (hiddenCode.indexOf(val) == 0 || hiddenCode.indexOf(val) == 1) {
-      // 5 -all hidden
+      // 5 -all hidden 第五个选项的判断
       hideCode = this.data.type == 'pc' ? 6 : 4;
       progressData.all = hideCode;
 
     } else if (hiddenCode.indexOf(val) == 2) {
-      // 6 - all hidden
+      // 6 - all hidden 第六个选项的判断
       hideCode = this.data.type == 'pc' ? 7 : 5;
       progressData.all = hideCode;
 
     } else {
+      if(hideCode < 8 && showCode.indexOf(val) < 0) return;
       progressData.all = this.data._data.other.length + (this.data.type == 'pc' ? 5 : 3);
       hideCode = 555;
     }
