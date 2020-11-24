@@ -224,9 +224,9 @@ Page({
         return util.showSuccess('请完善您的个人信息');
       }
     }
-    return;
     util.post('/api/order/placeOrder', data).then(res => {
       console.log(res);
+      return;
       if (res.code == 1) {
 
         wx.removeStorage({

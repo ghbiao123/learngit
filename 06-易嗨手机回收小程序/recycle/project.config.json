@@ -261,6 +261,23 @@
           "pathName": "pages/mycouponlist/mycouponlist",
           "query": "type=add",
           "scene": null
+        },
+        {
+          "name": "pages/paymentmethod/paymentmethod",
+          "pathName": "pages/paymentmethod/paymentmethod",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/paymentresult/paymentresult",
+          "pathName": "pages/paymentresult/paymentresult",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/waitdeliver/waitdeliver",
+          "pathName": "pages/waitdeliver/waitdeliver",
+          "scene": null
         }
       ]
     }

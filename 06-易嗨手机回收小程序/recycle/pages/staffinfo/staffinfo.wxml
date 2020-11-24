@@ -46,4 +46,11 @@
       </view>
     </view>
   </view>
+
+  <view class="cell-card">
+    <view class="cell-item">
+      我要发货
+    </view>
+  </view>
+
 </view>

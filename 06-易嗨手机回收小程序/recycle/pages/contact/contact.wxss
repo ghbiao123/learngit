@@ -15,6 +15,6 @@
 .btn{
   position: fixed;
   bottom: 100rpx;
-  left: 20rpx;
+  left: 40rpx;
   border-radius: 45rpx;
 }

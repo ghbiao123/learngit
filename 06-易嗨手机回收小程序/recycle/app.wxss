@@ -20,10 +20,12 @@ image{
 /* 自定义按钮样式 */
 .button-clear{
   padding: 0;
+  margin: 0 auto;
   width: 670rpx !important;
   height: 90rpx;
   line-height: 90rpx;
   color: #fff;
+  text-align: center;
   font-weight: normal;
   background-color: #C1402A;
   border-radius: 10rpx;

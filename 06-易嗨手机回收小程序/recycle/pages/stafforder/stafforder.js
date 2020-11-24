@@ -13,6 +13,7 @@ Page({
     newConfig: {},
     imageUrl: [],
     reqImageUrl: [],
+    currentPageId: 0
   },
 
   /**
@@ -43,6 +44,12 @@ Page({
         order: res.data
       });
 
+    });
+  },
+  // 下一步
+  nextPage(){
+    this.setData({
+      currentPageId: 1
     });
   },
   // 取消订单
@@ -133,6 +140,9 @@ Page({
     let newPrice = e.detail;
     let order = this.data.order;
     order.estimate_fee = Number(newPrice);
+    if(!order.estimate_fee) {
+      return util.showSuccess('请输入正确的价格');
+    }
     order.total_amount = order.estimate_fee + Number(order.coupon_fee);
     this.setData({
       order

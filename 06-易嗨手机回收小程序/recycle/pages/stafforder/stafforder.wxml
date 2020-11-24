@@ -1,5 +1,5 @@
 <view class="container">
-  <swiper class="swiper">
+  <swiper class="swiper" current="{{currentPageId}}">
     <swiper-item class="swiper-item">
       <view class="tit-no-bg">订单明细</view>
       <view class="cell-card">
@@ -16,7 +16,7 @@
           <view class="cont">
             <input disabled class="cont" value="￥{{order.estimate_fee}}"></input>
           </view>
-          <view bindtap="changePrice" class="change">修改</view>
+          <view class="change"></view>
         </view>
 
         <view class="cell-item">
@@ -25,6 +25,14 @@
             <input disabled class="cont" value="￥{{order.coupon_fee}}"></input>
           </view>
           <view class="change"></view>
+        </view>
+
+        <view class="cell-item">
+          <view class="name">调整：</view>
+          <view class="cont">
+            <input disabled class="cont" value="￥{{order.coupon_fee}}"></input>
+          </view>
+          <view bindtap="changePrice" class="change">修改</view>
         </view>
 
         <view class="cell-item">
@@ -45,10 +53,13 @@
         </view>
       </view>
 
-
+      <button bindtap="nextPage" class="button-clear m-t-20">{{order.order_status == 0 ? "下一步" : "下一页"}}</button>
 
     </swiper-item>
+
+    <!-- page two -->
     <swiper-item>
+
       <view class="tit-no-bg">订单处理</view>
       <view class="cell-card">
         <view class="add-image">
@@ -86,14 +97,13 @@
         </view>
 
       </view>
+
+      <button wx:if="{{order.order_status == 0}}" bindtap="submit" class="button-clear m-t-20">提交</button>
+      <button wx:if="{{order.order_status == 0}}" bindtap="cancelOrder" class="button-clear-cancel m-t-20">取消订单</button>
+
     </swiper-item>
   </swiper>
 
-
-
-
-  <button wx:if="{{order.order_status == 0}}" bindtap="submit" class="button-clear m-t-20">提交</button>
-  <button wx:if="{{order.order_status == 0}}" bindtap="cancelOrder" class="button-clear-cancel m-t-20">取消订单</button>
 
 </view>
 

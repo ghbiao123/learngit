@@ -36,7 +36,11 @@
     "pages/aboutus/aboutus",
     "pages/orderinformation/orderinformation",
     "pages/manualresult/manualresult",
-    "pages/mycouponlist/mycouponlist"
+    "pages/mycouponlist/mycouponlist",
+    "pages/paymentmethod/paymentmethod",
+    "pages/paymentchecking/paymentchecking",
+    "pages/paymentresult/paymentresult",
+    "pages/waitdeliver/waitdeliver"
   ],
   "usingComponents": {
     "btntopage": "/mycomponents/btntopage/btntopage"

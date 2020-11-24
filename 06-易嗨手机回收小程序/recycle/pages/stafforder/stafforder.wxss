@@ -2,6 +2,7 @@
 
 .swiper{
   height: 100vh;
+  overflow: hidden;
 }
 .swiper-item{
   height: auto;
