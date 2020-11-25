@@ -119,7 +119,7 @@ Page({
 
     // 请求数据
     util.post(url, data).then(res => {
-      console.log(res);
+      console.log(res.data);
 
       if (res.code == -1) {
         return util.showSuccess(res.msg, function () {
@@ -127,17 +127,53 @@ Page({
         });
       }
 
+      // 请求过来的数据
+      let _data = res.data;
+
+
       /**
        * 手机配置信息：phone_model， phone_color， phone_storage
        * 电脑配置信息：pc_processor，pc_ram，pc_videocard，pc_ssd，pc_harddisk
        */
+      let configKeys = {
+        "phone_model": {title: "机器型号", name: "phonemodel"},
+        "phone_color": {title: "机器颜色", name: "phonecolor"},
+        "phone_storage": {title: "存储空间", name: "phonestorage"},
+        "pc_processor": {title: "处理器", name: "pc_processor"},
+        "pc_ram": {title: "内存", name: "pc_ram"},
+        "pc_videocard": {title: "显卡", name: "pc_videocard"},
+        "pc_ssd": {title: "固态硬盘", name: "pc_ssd"},
+        "pc_harddisk": {title: "机械硬盘", name: "pc_harddisk"},
+      }
+      let currentIndex = 0;
+      let arrConfigOption = [];
+      for (let key in _data) {
+        let title = configKeys[key];
+        if (title) {
+          currentIndex++;
+          let data = {
+            ...title,
+            data: _data[key]
+          }
+          arrConfigOption.push(data);
+        }
+      }
 
-      let _data = res.data;
+
 
       let isUpdateImage = _data.bid == 2 ? true : false;
-
       _data.image = util.getImageFullUrl(_data.image);
 
+      // 将唯一一个多选选项排到最后
+      for(let i = 0;i<_data.other.length;i++){
+        if(_data.other[i].multikey == 1){
+          let item = _data.other.splice(i, 1);
+          _data.other.push(item[0]);
+        }
+      }
+
+
+      // 将最后一个多选选项增添一个选项
       _data.other[_data.other.length - 1][_key].unshift({
         id: 'none',
         name: '无'
@@ -155,6 +191,8 @@ Page({
         hideCode: progressData.all,
         isUpdateImage,
         arrChecked,
+        arrConfigOption,
+        currentIndex,
       });
     });
 
@@ -163,7 +201,7 @@ Page({
   getUserInfo(e) {
     util.getUserInfo(e, function (res) {
       if (res.code == 1) {
-        util.showSuccess('登录成功，请立即估价');
+        // util.showSuccess('登录成功，请立即估价');
         util.checkIsLogin.call(that);
       }
     });
@@ -185,6 +223,9 @@ Page({
           };
           util.post('/api/login/getWxBindMobile', data).then(ret => {
             console.log(ret);
+            if(ret.code == -3){
+              return util.showSuccess(ret.msg);
+            }
             wx.setStorage({
               data: ret.data,
               key: 'currentphone',
@@ -219,6 +260,10 @@ Page({
       });
     }
 
+    /**
+     * 选择特定选项时隐藏其他未选择选项
+     */
+    let currentIndex = this.data.currentIndex;
     let showCode = [];
     let hiddenCode, hideCode = this.data.hideCode;
     let progressData = this.data.progressData;
@@ -232,25 +277,34 @@ Page({
 
     if (hiddenCode.indexOf(val) == 0 || hiddenCode.indexOf(val) == 1) {
       // 5 -all hidden 第五个选项的判断
-      hideCode = this.data.type == 'pc' ? 6 : 4;
+      // hideCode = this.data.type == 'pc' ? 6 : 4;
+      hideCode = currentIndex + 1;
       progressData.all = hideCode;
 
     } else if (hiddenCode.indexOf(val) == 2) {
       // 6 - all hidden 第六个选项的判断
-      hideCode = this.data.type == 'pc' ? 7 : 5;
+      // hideCode = this.data.type == 'pc' ? 7 : 5;
+      hideCode = currentIndex + 2;
+
       progressData.all = hideCode;
 
     } else {
-      if(hideCode < 8 && showCode.indexOf(val) < 0) return;
-      progressData.all = this.data._data.other.length + (this.data.type == 'pc' ? 5 : 3);
-      hideCode = 555;
+      if (hideCode < 8 && showCode.indexOf(val) < 0) {
+
+      }else{
+        // progressData.all = this.data._data.other.length + (this.data.type == 'pc' ? 5 : 3);
+        progressData.all = this.data._data.other.length + currentIndex;
+        hideCode = 555;
+      }
     }
     this.setData({
       hideCode,
       progressData
     });
 
-
+    /**
+     * 将选择的选项存起来
+     */
     if (Number(id) || Number(id) == 0) {
       if (id != this.data._data.other.length - 1) {
         this.data.reqData.inquiryinfo[id] = this.data._data.other[id][_key].filter(v => v.id == val)[0];
@@ -385,11 +439,11 @@ Page({
       // 人工估价-》提交到系统进行估价，不再进行现场估价
       data.otype = 0;
       submitOrder(function (res) {
-        
+
         wx.redirectTo({
           url: '/pages/manualresult/manualresult',
         });
-        
+
       });
 
       return;

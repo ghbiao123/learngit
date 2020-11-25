@@ -28,9 +28,9 @@ Page({
     this.data.pageOption = options;
 
     this.data.pageOption.name = this.data.pageOption.name.replace(/iphone/ig, '苹果');
-    
+
     // 工作人员扫码估价不可重新询价
-    if(options.frompage&&options.frompage == 'recyclelist'){
+    if (options.frompage && options.frompage == 'recyclelist') {
       this.setData({
         reQuery: false,
       });
@@ -38,14 +38,14 @@ Page({
 
   },
   // 是否显示快递回收上门服务
-  getExpress(e){
+  getExpress(e) {
     let val = e.detail.value[0];
     console.log(val);
-    if(!val) {
+    if (!val) {
       this.setData({
         isGetExpress: false
       });
-    }else{
+    } else {
       this.setData({
         isGetExpress: true
       });
@@ -56,7 +56,6 @@ Page({
     let key = e.currentTarget.dataset.key;
     let selected = e.currentTarget.dataset.selected;
     let val = e.detail.value;
-    console.log(key, selected, val);
     if (selected == 1) {
       this.data.inputDoorData[key] = val;
     } else if (selected == 2) {
@@ -108,20 +107,20 @@ Page({
     data.userid = userInfo.uid;
 
     // 是否是扫码获取工作人员id
-    
-    if(this.data.order){
-      if(this.data.order.otype&&this.data.order.otype == 1&&!this.data.staffid){
+
+    if (this.data.order) {
+      if (this.data.order.otype && this.data.order.otype == 1 && !this.data.staffid) {
         return util.showError('请扫工作人员二维码再进行提交');
-      }else if(this.data.order.otype&&this.data.order.otype == 1){
+      } else if (this.data.order.otype && this.data.order.otype == 1) {
         if (this.data.staffid) {
           data.staffid = this.data.staffid;
         }
       }
     }
-    if(this.data.pageOption.otype){
-      if(this.data.pageOption.otype == 1&&!this.data.staffid){
+    if (this.data.pageOption.otype) {
+      if (this.data.pageOption.otype == 1 && !this.data.staffid) {
         return util.showError('请扫工作人员二维码再进行提交');
-      }else if(this.data.pageOption.otype == 1){
+      } else if (this.data.pageOption.otype == 1) {
         if (this.data.staffid) {
           data.staffid = this.data.staffid;
         }
@@ -168,11 +167,11 @@ Page({
     currentMachine.mid && (data.mid = currentMachine.mid);
 
     // 人工填写
-    if(currentMachine.mconfigure){
+    if (currentMachine.mconfigure) {
       data.configureinfo = currentMachine.mconfigure;
     }
 
-    if(currentMachine.describe){
+    if (currentMachine.describe) {
       data.describeinfo = currentMachine.describe
     }
 
@@ -184,13 +183,13 @@ Page({
     // 得到  estimatefee estimatetype assessorderid
     data.estimatefee = this.data.totalPrice;
     data.estimatetype = this.data.pageOption.frompage == 'evaluation' ? 0 : 1;
-    data.staffid&&(data.estimatetype = 1);
+    data.staffid && (data.estimatetype = 1);
     this.data.pageOption.orderid && (data.assessorderid = this.data.pageOption.orderid);
 
     // 用户手动填写信息
     if (this.data.selected == 1) {
       data.dtdtime = this.data.orderDate + ' ' + this.data.orderTime;
-      if(!this.data.orderDate || !this.data.orderTime){
+      if (!this.data.orderDate || !this.data.orderTime) {
         return util.showSuccess('请填写预约时间');
       }
       Object.assign(data, this.data.inputDoorData);
@@ -200,18 +199,20 @@ Page({
 
     // data.recoverytype 回收方式 1，上门回收； 2，快递回收；
     let needKey = {};
-    if(data.recoverytype == 1 ){
-      data.uaddress = this.data.userRegion.join(',') + ' ' + data.uaddress;
+    if (data.recoverytype == 1) {
+      data.uregion = this.data.userRegion.join(',');
       needKey.uaddress = '';
-    }else if(data.recoverytype == 2){
+      needKey.uregion = '';
+    } else if (data.recoverytype == 2) {
       needKey.ubank = '';
       needKey.ubankcard = '';
       needKey.ubname = '';
-      if(this.data.isGetExpress){
-        needKey.uaddress = '';
+      if (this.data.isGetExpress) {
         data.doexpress = 1;
-        data.uaddress = this.data.userRegion.join(',') + ' ' + data.uaddress;
-      }else{
+        data.uregion = this.data.userRegion.join(',');
+        needKey.uaddress = '';
+        needKey.uregion = '';
+      } else {
         data.doexpress = 0;
       }
     }
@@ -219,8 +220,8 @@ Page({
     needKey.uname = '';
     needKey.uphone = '';
     console.log(data);
-    for(let key in needKey){
-      if(!data[key]){
+    for (let key in needKey) {
+      if (!data[key]) {
         return util.showSuccess('请完善您的个人信息');
       }
     }
@@ -266,6 +267,7 @@ Page({
 
 
   },
+  // 编辑用户信息，已废弃
   editUserData() {
     wx.navigateTo({
       url: '/pages/personalinfo/personalinfo',
@@ -280,17 +282,40 @@ Page({
       title: data.name,
     });
 
+    let userid = wx.getStorageSync('userinfo').uid;
 
-    let coupon = wx.getStorageSync('coupon');
+    util.post("/api/order/doOrderInfo", {
+      userid,
+      pricevalue: data.price
+    }).then(res => {
+      console.log(res);
 
-    this.data.couponPrice = Number(coupon.parvalue) || 0;
-    this.data.price = Number(data.price);
-    this.data.totalPrice = this.data.couponPrice + this.data.price;
+      let info = res.data;
 
-    this.setData({
-      price: this.data.price,
-      totalPrice: this.data.totalPrice,
-      couponPrice: this.data.couponPrice,
+      that.data.couponPrice = Number(info.cinfo.par_value) || 0;
+      that.data.price = Number(data.price);
+      that.data.totalPrice = that.data.couponPrice + that.data.price;
+
+      that.setData({
+        price: that.data.price,
+        totalPrice: that.data.totalPrice,
+        couponPrice: that.data.couponPrice,
+      });
+
+      function initUserInfo(data) {
+        let o = {
+          uname: data.username,
+          uphone: data.mobile,
+          ubankcard: data.bankcard,
+          ubank: data.bank,
+          uaddress: data.address,
+          uregion: data.region
+        }
+        that.data.userRegion = data.region.split(',');
+        Object.assign(that.data.inputDoorData, o);
+        Object.assign(that.data.inputExpressData, o);
+      }
+
     });
 
 
@@ -302,10 +327,10 @@ Page({
     });
 
     // 获取订单信息
-    if(this.data.pageOption.orderid){
+    if (this.data.pageOption.orderid) {
       util.post('/api/order/orderDetail', {
         orderid: this.data.pageOption.orderid
-      }).then(res=>{
+      }).then(res => {
         that.setData({
           order: res.data
         });
@@ -313,21 +338,21 @@ Page({
     }
 
     // 获取用户地址
-    
-    let userInfo = wx.getStorageSync('userinfo');
-    if (userInfo) {
-      util.post('/api/user/getUserInfo', {
-        userid: userInfo.uid
-      }).then(res => {
-        console.log(res);
-        if (res.code == 1) {
-          wx.setStorage({
-            data: res.data,
-            key: 'userdata',
-          });
-        }
-      });
-    } else {}
+
+    // let userInfo = wx.getStorageSync('userinfo');
+    // if (userInfo) {
+    //   util.post('/api/user/getUserInfo', {
+    //     userid: userInfo.uid
+    //   }).then(res => {
+    //     console.log(res);
+    //     if (res.code == 1) {
+    //       wx.setStorage({
+    //         data: res.data,
+    //         key: 'userdata',
+    //       });
+    //     }
+    //   });
+    // } else {}
 
 
   },
@@ -358,7 +383,7 @@ Page({
       fail() {
         let userinfo = wx.getStorageSync('userinfo');
         if (!userinfo) {
-          return util.showError('请您先登录', function(e){
+          return util.showError('请您先登录', function (e) {
             wx.navigateTo({
               url: '/pages/login/login',
             });
@@ -423,12 +448,12 @@ Page({
     // wx.redirectTo({
     //   url: '/pages/evaluation/evaluation',
     // });
-    if(this.data.pageOption.frompage == 'evaluation' || this.data.pageOption.frompage == 'othercalcprice'){
+    if (this.data.pageOption.frompage == 'evaluation' || this.data.pageOption.frompage == 'othercalcprice') {
       wx.navigateBack()
-      
-    }else if(this.data.pageOption.frompage == 'recyclelist'){
 
-    }else{
+    } else if (this.data.pageOption.frompage == 'recyclelist') {
+
+    } else {
       wx.navigateTo({
         url: `/pages/evaluation/evaluation?id=${this.data.order.m_id}&cid=${this.data.order.c_id}`,
       });

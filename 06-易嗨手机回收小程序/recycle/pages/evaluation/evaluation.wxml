@@ -6,16 +6,27 @@
         {{progressData.chose}}/{{progressData.all}}
         <view class="progress-s" style="width:{{progress}};"></view>
       </view>
-      <image  mode="aspectFit" class="image" src="{{_data.image}}"></image>
+      <image mode="aspectFit" class="image" src="{{_data.image}}"></image>
       <view class="name">{{_data.name}}</view>
     </view>
 
-    
+
     <view class="cell-card m-t-20">小提示：选择结果与实际相符，有利于加快您的回收进度。</view>
 
     <view wx:if="{{type == 'mobile'}}" class="cont">
 
-      <view class="tit-no-bg">1.手机型号</view>
+      <!-- 遍历手机设备的配置信息 -->
+      <block wx:for="{{arrConfigOption}}" wx:key="index">
+        <view class="tit-no-bg">{{index + 1}}.{{item.title}}</view>
+        <view class="cell-card">
+          <radio-group data-id="{{item.name}}" bindchange="radioChange">
+            <radio wx:for="{{item.data}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+              color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+          </radio-group>
+        </view>
+      </block>
+
+      <!-- <view class="tit-no-bg">1.手机型号</view>
       <view class="cell-card">
         <radio-group data-id="phonemodel" bindchange="radioChange">
           <radio wx:for="{{_data.phone_model}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
@@ -37,7 +48,7 @@
           <radio wx:for="{{_data.phone_storage}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
             color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
         </radio-group>
-      </view>
+      </view> -->
 
       <block wx:for="{{_data.other}}" wx:key="index">
 
@@ -71,7 +82,18 @@
 
     <view wx:if="{{type == 'pc'}}" class="cont">
 
-      <view class="tit-no-bg">1.处理器</view>
+      <!-- 遍历computer设备的配置信息 -->
+      <block wx:for="{{arrConfigOption}}" wx:key="index">
+        <view class="tit-no-bg">{{index + 1}}.{{item.title}}</view>
+        <view class="cell-card">
+          <radio-group data-id="{{item.name}}" bindchange="radioChange">
+            <radio wx:for="{{item.data}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+              color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+          </radio-group>
+        </view>
+      </block>
+
+      <!-- <view class="tit-no-bg">1.处理器</view>
       <view class="cell-card">
         <radio-group data-id="pc_processor" bindchange="radioChange">
           <radio wx:for="{{_data.pc_processor}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
@@ -109,7 +131,7 @@
           <radio wx:for="{{_data.pc_harddisk}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
             color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
         </radio-group>
-      </view>
+      </view> -->
 
       <block wx:for="{{_data.other}}" wx:key="index">
 
@@ -145,7 +167,7 @@
         </view>
 
         <view class="cell-card">
-          小提示：照片完整越清晰，报价越准。  
+          小提示：照片完整越清晰，报价越准。
         </view>
 
         <view class="cell-card m-t-20" style="display: flex; flex-wrap: wrap; width: 600rpx; padding: 20rpx 105rpx;">
@@ -162,10 +184,12 @@
 
 
     <view wx:if="{{!isLogin}}" class="button">
-      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="button-clear m-t-20" hover-class="btn-hover">立即估价</button>
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="button-clear m-t-20"
+        hover-class="btn-hover">立即估价</button>
     </view>
     <view wx:else="{{isLogin}}" class="button">
-      <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNum" class="button-clear m-t-20" hover-class="btn-hover">立即估价</button>
+      <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNum" class="button-clear m-t-20"
+        hover-class="btn-hover">立即估价</button>
     </view>
 
 

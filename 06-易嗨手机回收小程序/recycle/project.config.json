@@ -102,7 +102,6 @@
           "scene": null
         },
         {
-          "id": 6,
           "name": "pages/evaluation/result",
           "pathName": "pages/evaluation/result",
           "query": "name=小米10&price=2900&type=mobile&frompage=evaluation",
@@ -277,6 +276,7 @@
         {
           "name": "pages/waitdeliver/waitdeliver",
           "pathName": "pages/waitdeliver/waitdeliver",
+          "query": "",
           "scene": null
         }
       ]

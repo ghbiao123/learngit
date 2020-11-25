@@ -101,9 +101,9 @@
 				<view class="radios b-b-g radios-input">
 					<input data-selected="1" data-key="ubank" bindinput="inputText" value="{{userData.bCard}}" class="input" placeholder="请输入开户行"></input>
 				</view> -->
-				<view class="radios">
+				<view class="radios" style="justify-content: flex-start;">
 					<view>上门地址</view>
-					<!-- <view class="color-b">修改</view> -->
+					<view class="text-tip" style="margin-left: 20rpx;">若无您的位置，请选择快递回收</view>
 				</view>
 				<view class="radios radios-input">
 					<picker mode="region" bindchange="regionChange">

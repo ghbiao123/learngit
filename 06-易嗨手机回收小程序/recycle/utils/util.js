@@ -17,7 +17,7 @@ function post(url, data = {}) {
   setTimeout(() => {
     if (status) return;
     wx.showLoading({
-      title: '加载中',
+      title: '',
       mask: true
     });
   }, 800);
