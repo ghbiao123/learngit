@@ -300,8 +300,10 @@ Page({
         price: that.data.price,
         totalPrice: that.data.totalPrice,
         couponPrice: that.data.couponPrice,
+        userData: info.uinfo_h,
+        provenceList: info.plist
       });
-
+      initUserInfo(info.uinfo_h);
       function initUserInfo(data) {
         let o = {
           uname: data.username,
@@ -309,11 +311,14 @@ Page({
           ubankcard: data.bankcard,
           ubank: data.bank,
           uaddress: data.address,
-          uregion: data.region
+          uregion: data.region,
+          ubname: data.bank_uname
         }
+
         that.data.userRegion = data.region.split(',');
         Object.assign(that.data.inputDoorData, o);
         Object.assign(that.data.inputExpressData, o);
+
       }
 
     });
@@ -355,6 +360,49 @@ Page({
     // } else {}
 
 
+  },
+  // 省份改变
+  provenceChange(e){
+    let idx = e.detail.value;
+    let val = this.data.provenceList[idx];
+    util.post("/api/order/area", {
+      areaid: val.id,
+      key: 1
+    }).then(res=>{
+      that.setData({
+        cityList: res.data
+      });
+    });
+    this.setData({
+      provence: val.name,
+      city: '',
+      country: ''
+    });
+  },
+  // 城市改变
+  cityChange(e){
+    let idx = e.detail.value;
+    let val = this.data.cityList[idx];
+    util.post("/api/order/area", {
+      areaid: val.id,
+      key: 2
+    }).then(res=>{
+      that.setData({
+        countryList: res.data,
+      });
+    });
+    this.setData({
+      city: val.name,
+      country: ''
+    });
+  },
+  // 区域改变
+  countryChange(e){
+    let idx = e.detail.value;
+    let val = this.data.countryList[idx];
+    this.setData({
+      country: val.name
+    });
   },
   // 使用个人信息
   usingUserInfo() {

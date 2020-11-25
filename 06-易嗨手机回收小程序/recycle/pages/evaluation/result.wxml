@@ -8,7 +8,8 @@
 				style="font-size:25rpx; color: #262626; padding-left: 40rpx; vertical-align: middle;">预计下周下跌￥123</text>
 			<image hidden style="width: 17rpx; margin-left:5rpx; vertical-align: middle;" mode="widthFix"
 				src="/images/down.png"></image>
-			<text bindtap="resetPrice" hidden="{{!reQuery}}"  hover-class="using-userinfo" class="color-b " style="font-size: 24rpx; padding-left: 360rpx;">重新询价</text>
+			<text bindtap="resetPrice" hidden="{{!reQuery}}" hover-class="using-userinfo" class="color-b "
+				style="font-size: 24rpx; padding-left: 360rpx;">重新询价</text>
 		</view>
 		<view class="calc-price">
 			<view class="triangle"></view>
@@ -21,11 +22,13 @@
 				<view class="prev-price">是否使用增价卷</view>
 				<view class="prev-price-item">
 					<view class="prev-price-value" wx:if="{{couponPrice != 0}}">
-						<navigator url="/pages/coupon/coupon?type=mine&available=9&page=result&predictprice={{price}}" hover-class="none">
+						<navigator url="/pages/mycouponlist/mycouponlist?type=mine&available=9&page=result&predictprice={{price}}"
+							hover-class="none">
 							{{couponPrice}}
 						</navigator>
 						<view bindtap="chooseCoupon" class="prev-price-radio">
-							<image hidden="{{!isCoupon}}" src="/images/choose.png" mode="widthFix" class="prev-price-radio-icon"></image>
+							<image hidden="{{!isCoupon}}" src="/images/choose.png" mode="widthFix" class="prev-price-radio-icon">
+							</image>
 						</view>
 					</view>
 					<view wx:if="{{couponPrice == 0}}">
@@ -81,13 +84,15 @@
 					<view hidden class="color-b" bindtap="usingUserInfo" hover-class="using-userinfo">使用个人信息</view>
 				</view>
 				<view class="radios b-b-g radios-input">
-					<input data-selected="1" data-key="uname" bindinput="inputText" value="{{userData.username}}" class="input" placeholder="请输入联系人姓名"></input>
+					<input data-selected="1" data-key="uname" bindinput="inputText" value="{{userData.username}}" class="input"
+						placeholder="请输入联系人姓名"></input>
 				</view>
 				<view class="radios">
 					<view>联系电话</view>
 				</view>
 				<view class="radios b-b-g radios-input">
-					<input data-selected="1" data-key="uphone" bindinput="inputText" value="{{userData.mobile}}" class="input" placeholder="请输入联系人电话"></input>
+					<input data-selected="1" data-key="uphone" bindinput="inputText" value="{{userData.mobile}}" class="input"
+						placeholder="请输入联系人电话"></input>
 				</view>
 				<!-- <view class="radios">
 					<view>银行卡号</view>
@@ -106,10 +111,19 @@
 					<view class="text-tip" style="margin-left: 20rpx;">若无您的位置，请选择快递回收</view>
 				</view>
 				<view class="radios radios-input">
-					<picker mode="region" bindchange="regionChange">
+					<!-- <picker mode="region" bindchange="regionChange">
 						<input disabled value="{{userRegion || userData.region}}" class="input" placeholder="请选择省/市/区"></input>
+					</picker> -->
+					<picker bindchange="provenceChange" range="{{provenceList}}" range-key="name">
+						<input disabled value="{{provence}}" class="input region" placeholder="请选择省"></input>
 					</picker>
-						<image class="radios-picker-icon" mode="widthFix" src="/images/rt2.png"></image>
+					<picker disabled="{{!cityList}}" bindchange="cityChange" range="{{cityList}}" range-key="name">
+						<input disabled value="{{city}}" class="input region" placeholder="请选择市"></input>
+					</picker>
+					<picker disabled="{{!countryList}}" bindchange="countryChange" range="{{countryList}}" range-key="name">
+						<input disabled value="{{country}}" class="input region" placeholder="请选择区"></input>
+					</picker>
+					<image class="radios-picker-icon" mode="widthFix" src="/images/rt2.png"></image>
 				</view>
 
 				<view class="radios">
@@ -118,7 +132,8 @@
 				</view>
 
 				<view class="radios b-b-g radios-input">
-					<input data-selected="1" data-key="uaddress" bindinput="inputText" value="{{userData.address}}" class="input" placeholder="详细地址：如道路、门牌号、小区、单元室等"></input>
+					<input data-selected="1" data-key="uaddress" bindinput="inputText" value="{{userData.address}}" class="input"
+						placeholder="详细地址：如道路、门牌号、小区、单元室等"></input>
 				</view>
 
 				<view class="radios">
@@ -129,7 +144,7 @@
 						<picker mode="date" bindchange="dateChange">
 							<input disabled class="pick-input" value="{{orderDate}}" placeholder="选择预约日期"></input>
 						</picker>
-						<picker mode="time" start="10:00" end="22:00"  bindchange="timeChange">
+						<picker mode="time" start="10:00" end="22:00" bindchange="timeChange">
 							<input disabled class="pick-input" value="{{orderTime}}" placeholder="选择预约时间"></input>
 						</picker>
 					</view>
@@ -147,32 +162,37 @@
 					<view hidden class="color-b" bindtap="usingUserInfo" hover-class="using-userinfo">使用个人信息</view>
 				</view>
 				<view class="radios b-b-g radios-input">
-					<input data-selected="2" data-key="uname" bindinput="inputText" value="{{userData.username}}" class="input" placeholder="请输入联系人姓名"></input>
+					<input data-selected="2" data-key="uname" bindinput="inputText" value="{{userData.username}}" class="input"
+						placeholder="请输入联系人姓名"></input>
 				</view>
 				<view class="radios">
 					<view>联系方式</view>
 					<!-- <view class="color-b">修改</view> -->
 				</view>
 				<view class="radios b-b-g radios-input">
-					<input data-selected="2" data-key="uphone" bindinput="inputText" value="{{userData.mobile}}" class="input" placeholder="请输入联系人电话"></input>
+					<input data-selected="2" data-key="uphone" bindinput="inputText" value="{{userData.mobile}}" class="input"
+						placeholder="请输入联系人电话"></input>
 				</view>
 				<view class="radios">
 					<view>收款账号</view>
 				</view>
 				<view class="radios b-b-g radios-input">
-					<input data-selected="2" data-key="ubankcard" bindinput="inputText" value="{{userData.bankcard}}" class="input" placeholder="请输入银行卡号"></input>
+					<input data-selected="2" data-key="ubankcard" bindinput="inputText" value="{{userData.bankcard}}"
+						class="input" placeholder="请输入银行卡号"></input>
 				</view>
 				<view class="radios">
 					<view>开户银行</view>
 				</view>
 				<view class="radios b-b-g radios-input">
-					<input data-selected="2" data-key="ubank" bindinput="inputText" value="{{userData.bank}}" class="input" placeholder="请输入开户行"></input>
+					<input data-selected="2" data-key="ubank" bindinput="inputText" value="{{userData.bank}}" class="input"
+						placeholder="请输入开户行"></input>
 				</view>
 				<view class="radios">
 					<view>户名</view>
 				</view>
 				<view class="radios b-b-g radios-input">
-					<input data-selected="2" data-key="ubname" bindinput="inputText" value="{{userData.bank_uname}}" class="input" placeholder="请输入户名"></input>
+					<input data-selected="2" data-key="ubname" bindinput="inputText" value="{{userData.bank_uname}}" class="input"
+						placeholder="请输入户名"></input>
 				</view>
 				<view class="radios text-tip">提示：我们将按照您的上述信息进行付款，请务必准确填写。</view>
 				<view class="freight" hover-class="using-userinfo">
@@ -191,13 +211,14 @@
 					<picker mode="region" bindchange="regionChange">
 						<input disabled value="{{userRegion || userData.region}}" class="input" placeholder="请选择省/市/区"></input>
 					</picker>
-						<image class="radios-picker-icon" mode="widthFix" src="/images/rt2.png"></image>
+					<image class="radios-picker-icon" mode="widthFix" src="/images/rt2.png"></image>
 				</view>
 				<view hidden="{{!isGetExpress}}" class="radios">
 					<view>详细地址</view>
 				</view>
 				<view hidden="{{!isGetExpress}}" class="radios b-b-g radios-input">
-					<input data-selected="2" data-key="uaddress" bindinput="inputText" value="{{userData.address}}" class="input" placeholder="详细地址：如道路、门牌号、小区、单元室等"></input>
+					<input data-selected="2" data-key="uaddress" bindinput="inputText" value="{{userData.address}}" class="input"
+						placeholder="详细地址：如道路、门牌号、小区、单元室等"></input>
 				</view>
 
 				<view class="radios b-t-g">
@@ -231,7 +252,8 @@
 
 	<!-- 立即回收按钮，人工上门回收，右侧可扫码 -->
 	<view wx:if="{{selected==1}}" class="button">
-		<button bindtap="recycle" style="width: 560rpx !important;" class="button-clear m-t-20" hover-class="btn-hover">立即回收</button>
+		<button bindtap="recycle" style="width: 560rpx !important;" class="button-clear m-t-20"
+			hover-class="btn-hover">立即回收</button>
 		<button bindtap="scanCode" style="width: 90rpx !important;" class="button-clear m-t-20">
 			<image style="width: 90rpx;" mode="widthFix" src="/images/sanf.png"></image>
 		</button>

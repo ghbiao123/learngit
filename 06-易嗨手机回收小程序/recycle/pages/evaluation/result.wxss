@@ -185,3 +185,7 @@
 .using-userinfo {
   color: #707070 !important;
 }
+
+.region{
+  width: 200rpx;
+}
