@@ -1,4 +1,6 @@
 // pages/orderinformation/orderinformation.js
+let that;
+let util = require("../../utils/util");
 Page({
 
   /**
@@ -12,9 +14,34 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
+
+    this.init();
+  },
+  // 初始化数据
+  init(){
+    wx.getStorage({
+      key: 'currentResult',
+      success(res){
+        let data = res.data;
+        data.endtime = data.endtime;
+        data.ready = util.getImageFullUrl(data.ready, "picture");
+        let time = parseInt(data.forecastTime);
+        if(!time) {data.forecastTime = false;}
+        that.setData({
+          data
+        });
+      }
+    });
+
 
   },
-
+  // 查看订单
+  getOrderList(){
+    wx.switchTab({
+      url: '/pages/order/order',
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

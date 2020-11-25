@@ -1,7 +1,7 @@
 <view class="container">
   <view class="notes">
     <image class="notes-icon" mode="widthFix" src="/images/tips.png"></image>
-    <view class="notes-text">如质检结果与您选择的机器信息有差异，实际回收报价可能产生变化。</view>
+    <view class="notes-text">{{data.tip}}</view>
   </view>
   <view class="getsuccess">
     <image class="success-icon" src="/images/success.png"></image>
@@ -9,7 +9,7 @@
     <view class="success-tips m-t-20">订单有效期<text class="color-au">10天</text>，逾期未成交将自动取消</view>
     <!-- 2020-11-24 00:00:00 -->
     <view class="m-t-20">
-      <countdown time="1606147200"></countdown>
+      <countdown time="{{data.endtime}}"></countdown>
     </view>
 
     <!-- 2021-11-24 00:00:00 -->
@@ -20,26 +20,26 @@
     <view class="orderinfo-title">订单信息</view>
     <view class="orderinfo-content">
       <view class="orderinfo-name">回收机型</view>
-      <view class="orderinfo-cont">iPhone 12 pro</view>
+      <view class="orderinfo-cont">{{data.name}}</view>
     </view>
     <view class="orderinfo-content">
       <view class="orderinfo-name">估价金额</view>
-      <view class="orderinfo-cont color-red">¥8000</view>
+      <view class="orderinfo-cont color-red">¥{{data.totalPrice}}</view>
     </view>
-    <view class="orderinfo-content">
+    <view class="orderinfo-content" wx:if="{{data.forecastTime}}">
       <view class="orderinfo-name">预约时间</view>
-      <view class="orderinfo-cont">11月10日（周二） 10:00～12:00</view>
+      <view class="orderinfo-cont">{{data.forecastTime}}</view>
     </view>
     <view class="orderinfo-content">
       <view class="orderinfo-name">成交方式</view>
-      <view class="orderinfo-cont">快递回收</view>
+      <view class="orderinfo-cont">{{data.recycleType}}</view>
     </view>
     <view class="orderinfo-title">回收前准备</view>
-    <view class="prepare">
-      <image class="prepare-image" mode="aspectFit" src="/images/add.png"></image>
-      <view class="prepare-cont">准备好有效证件</view>
+    <view class="prepare" wx:for="{{data.ready}}" wx:key="index">
+      <image class="prepare-image" mode="aspectFit" src="{{item.picture}}"></image>
+      <view class="prepare-cont">{{item.name}}</view>
     </view>
-    <button class="button-clear m-t-20">查看订单</button>
+    <button bindtap="getOrderList" hover-class="btn-hover" class="button-clear m-t-20">查看订单</button>
   </view>
 
 </view>

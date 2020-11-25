@@ -200,7 +200,7 @@ Page({
     // data.recoverytype 回收方式 1，上门回收； 2，快递回收；
     let needKey = {};
     if (data.recoverytype == 1) {
-      data.uregion = this.data.userRegion.join(',');
+      data.uregion = `${that.data.provence},${that.data.city},${that.data.country}`;
       needKey.uaddress = '';
       needKey.uregion = '';
     } else if (data.recoverytype == 2) {
@@ -227,41 +227,62 @@ Page({
     }
     util.post('/api/order/placeOrder', data).then(res => {
       console.log(res);
-      return;
+
+
       if (res.code == 1) {
 
         wx.removeStorage({
           key: 'currentmachine',
         });
-        wx.removeStorage({
-          key: 'coupon',
+
+        let resultData = res.data;
+        resultData.name = that.data.pageOption.name;
+        resultData.totalPrice = that.data.totalPrice;
+        resultData.recycleType = that.data.selected == 1 ? "上门回收" : "快递回收";
+        resultData.forecastTime = that.data.orderDate + ' ' + that.data.orderTime;
+
+        wx.setStorage({
+          data: resultData,
+          key: 'currentResult',
         });
 
-        wx.showModal({
-          cancelColor: '#000000',
-          cancelText: '返回',
-          title: '提示',
-          confirmText: '查看订单',
-          content: res.msg,
-          success(res) {
-            if (res.confirm) {
-              wx.switchTab({
-                url: '/pages/order/order',
-              });
-            }
-            if (res.cancel) {
-              wx.switchTab({
-                url: '/pages/index/index',
-              });
-            }
-          }
+        return util.showSuccess(res.msg, function(){
+          wx.redirectTo({
+            url: '/pages/orderinformation/orderinformation',
+          });
         });
+
+        // wx.removeStorage({
+        //   key: 'coupon',
+        // });
+
+        // wx.showModal({
+        //   cancelColor: '#000000',
+        //   cancelText: '返回',
+        //   title: '提示',
+        //   confirmText: '查看订单',
+        //   content: res.msg,
+        //   success(res) {
+        //     if (res.confirm) {
+        //       wx.switchTab({
+        //         url: '/pages/order/order',
+        //       });
+        //     }
+        //     if (res.cancel) {
+        //       wx.switchTab({
+        //         url: '/pages/index/index',
+        //       });
+        //     }
+        //   }
+        // });
 
         // util.showSuccess(res.msg, function(){
         //   wx.switchTab({
         //     url: '/pages/index/index',
         //   });
         // });
+      }else{
+        return util.showSuccess(res.msg);
       }
     });
 
@@ -296,14 +317,22 @@ Page({
       that.data.price = Number(data.price);
       that.data.totalPrice = that.data.couponPrice + that.data.price;
 
+      let regionData = info.uinfo_h.region ? info.uinfo_h.region.split(",") : [];
+      let provence = regionData[0],
+          city = regionData[1],
+          country = regionData[2];
       that.setData({
         price: that.data.price,
         totalPrice: that.data.totalPrice,
         couponPrice: that.data.couponPrice,
         userData: info.uinfo_h,
-        provenceList: info.plist
+        provenceList: info.plist,
+        provence,
+        city,
+        country,
       });
       initUserInfo(info.uinfo_h);
+
       function initUserInfo(data) {
         let o = {
           uname: data.username,
@@ -362,13 +391,13 @@ Page({
 
   },
   // 省份改变
-  provenceChange(e){
+  provenceChange(e) {
     let idx = e.detail.value;
     let val = this.data.provenceList[idx];
     util.post("/api/order/area", {
       areaid: val.id,
       key: 1
-    }).then(res=>{
+    }).then(res => {
       that.setData({
         cityList: res.data
       });
@@ -380,13 +409,13 @@ Page({
     });
   },
   // 城市改变
-  cityChange(e){
+  cityChange(e) {
     let idx = e.detail.value;
     let val = this.data.cityList[idx];
     util.post("/api/order/area", {
       areaid: val.id,
       key: 2
-    }).then(res=>{
+    }).then(res => {
       that.setData({
         countryList: res.data,
       });
@@ -397,7 +426,7 @@ Page({
     });
   },
   // 区域改变
-  countryChange(e){
+  countryChange(e) {
     let idx = e.detail.value;
     let val = this.data.countryList[idx];
     this.setData({
