@@ -278,6 +278,18 @@
           "pathName": "pages/waitdeliver/waitdeliver",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/waitevaluationlist/waitevaluationlist",
+          "pathName": "pages/waitevaluationlist/waitevaluationlist",
+          "query": "name=小米10&price=2900&type=mobile&frompage=evaluation",
+          "scene": null
+        },
+        {
+          "name": "pages/waitevaluationdetail/waitevaluationdetail",
+          "pathName": "pages/waitevaluationdetail/waitevaluationdetail",
+          "query": "name=小米10&price=2900&type=mobile&frompage=evaluation",
+          "scene": null
         }
       ]
     }

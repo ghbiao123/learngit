@@ -30,6 +30,7 @@
 }
 .project-info{
   width: 500rpx;
+  /* width: 670rpx; */
 }
 
 .project-name{

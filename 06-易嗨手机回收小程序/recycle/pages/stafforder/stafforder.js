@@ -72,8 +72,8 @@ Page({
       describeinfo: this.data.order.describe_info,
       pictures: this.data.reqImageUrl,
       imei: this.data.imei,
-      pname: this.data.idCard.name,
-      pidcard: this.data.idCard.name,
+      pname: (this.data.idCard && this.data.idCard.name),
+      pidcard: (this.data.idCard && this.data.idCard.id),
       ppic: this.data.idcardSrc,
     };
 
@@ -137,15 +137,16 @@ Page({
   },
   // 设置新价格
   getNewPrice(e) {
-    let newPrice = e.detail;
+    let changefee = e.detail;
     let order = this.data.order;
-    order.estimate_fee = Number(newPrice);
     if(!order.estimate_fee) {
       return util.showSuccess('请输入正确的价格');
     }
-    order.total_amount = order.estimate_fee + Number(order.coupon_fee);
+
+    order.total_amount = Number(order.estimate_fee) + Number(order.coupon_fee) + Number(changefee);
     this.setData({
-      order
+      order,
+      changefee
     });
   },
 

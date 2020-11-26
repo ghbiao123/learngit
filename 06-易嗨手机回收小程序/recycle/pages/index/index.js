@@ -85,16 +85,20 @@ Page({
 
     // 判断是否显示model
     let userInfo = wx.getStorageSync('userinfo');
-    this.setData({
-      isShowModel: true
-    });
     if(!userInfo){
+      this.setData({
+        isShowModel: true
+      });
     }
   },
   // 领取新人券
   getNewCoupon(){
     console.log('getNewCoupon');
 
+    wx.navigateTo({
+      url: '/pages/coupon/coupon?type=add',
+    });
+    
     // 领取回收加价券后关闭弹窗
     this.closeModel();
   

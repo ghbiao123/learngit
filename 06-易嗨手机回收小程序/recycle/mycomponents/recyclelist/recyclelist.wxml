@@ -26,8 +26,8 @@
         <view class="order-info-name">订单编号：</view>
         <view>
           <view class="order-info-cont">
-            <text>12865525668894720</text>
-            <view class="copy" data-text="12865525668894720" bindtap="copyText">复制</view>
+            <text>{{item.order_sn}}</text>
+            <view class="copy" data-text="{{item.order_sn}}" bindtap="copyText">复制</view>
           </view>
         </view>
       </view>

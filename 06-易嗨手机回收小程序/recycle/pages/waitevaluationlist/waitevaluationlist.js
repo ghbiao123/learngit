@@ -1,12 +1,13 @@
-// pages/manualresult/manualresult.js
+// pages/waitevaluationlist/waitevaluationlist.js
 let that;
+let util = require("../../utils/util");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    btnText:"5s后跳转我的估价列表",
+
   },
 
   /**
@@ -14,25 +15,10 @@ Page({
    */
   onLoad: function (options) {
     that = this;
+    
 
-    this.init();
   },
-  init(){
-    let t = 5;
-    let timer = setInterval(function(){
-      t--;
-      if(t<0){
-        clearInterval(timer);
-        wx.redirectTo({
-          url: '/pages/recyclelist/recyclelist',
-        });
-      }
-      let str = `${t}s后跳转我的估价列表`;
-      that.setData({
-        btnText: str
-      });
-    }, 1000);
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

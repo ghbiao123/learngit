@@ -2,29 +2,41 @@
   <view class="order-list">
     <view class="title">机器信息</view>
     <view class="project" hover-class="projec-hover" data-id="{{item.id}}" bindtap="getDetail">
-      <view class="project-image">
+      <view class="project-image" hidden>
         <!-- 没有图片，待确认 -->
         <image class="image" src="{{item.model_info.image}}" mode="aspectFit"></image>
       </view>
-      <view class="project-info">
+      <view class="project-info" style="width: 670rpx;">
         <view class="project-name">
           <view class="name">{{item.model_info.name}}</view>
-          <view class="state {{item.order_status==0||item.order_status==1?'state-red':''}}{{item.order_status==2?'state-green':''}}{{item.order_status==3?'state-gray':''}}">
-            {{item.order_status==0&&item.recovery_type==1?'待验机':''}}{{item.order_status==0&&item.recovery_type==2?'待发货':''}}{{item.order_status==1?'待付款':''}}{{item.order_status==2?'订单完成':''}}{{item.order_status==3?'订单取消':''}}
+          <view
+            class="state {{item.order_status==0||item.order_status==1?'state-red':''}}{{item.order_status==2?'state-green':''}}{{item.order_status==3?'state-gray':''}}">
+            {{item.order_status==0&&item.recovery_type==1?'待验机':''}}
+            {{item.order_status==0&&item.recovery_type==2?'待发货':''}}
+            {{item.order_status==1?'待付款':''}}
+            {{item.order_status==2?'订单完成':''}}
+            {{item.order_status==3?'订单取消':''}}
+            {{item.order_status==4?'已发货':''}}
           </view>
         </view>
         <view class="info ellipsis-text">{{item.model_info.cinfo ? item.model_info.cinfo: ''}}</view>
         <view class="info">预估价：¥{{item.total_amount}}</view>
       </view>
     </view>
-    <view class="title">快递单号</view>
-    <view wx:if="{{!item.c_no}}" class="cell-item">
-			<image class="express-icon" src="/images/co-s.png"></image>
-			<view>快递单号</view>
-      <view><input bindinput="expressNumberInput" value="{{item.c_no}}" class="order-input" placeholder="请输入物流单号"></input></view>
-      <image hidden class="scan-icon" src="/images/scan.png"></image>
-    </view>
-    <button data-idx="{{index}}" bindtap="confirmExpressOrder" class="button-clear">确认</button>
+
+    <block wx:if="{{item.recovery_type ==2}}">
+      <view class="title">快递单号</view>
+      <view class="cell-item">
+        <image class="express-icon" src="/images/co-s.png"></image>
+        <view>快递单号</view>
+        <view><input disabled="{{item.c_no}}" bindinput="expressNumberInput" value="{{item.c_no}}" class="order-input"
+            placeholder="请输入物流单号"></input></view>
+        <image hidden class="scan-icon" src="/images/scan.png"></image>
+      </view>
+      <button wx:if="{{ !item.c_no }}" data-idx="{{index}}" bindtap="confirmExpressOrder"
+        class="button-clear">确认发货</button>
+    </block>
+
     <view class="title">订单信息</view>
     <view class="order">
       <view class="order-info">
@@ -32,7 +44,7 @@
         <view>
           <view class="order-info-cont">
             <text>{{item.order_sn}}</text>
-            <view class="copy" data-text="12865525668894720" bindtap="copyText">复制</view>
+            <view class="copy" data-text="{{item.order_sn}}" bindtap="copyText">复制</view>
           </view>
         </view>
       </view>

@@ -1,0 +1,4 @@
+<view class="cell-card" wx:for="12345" wx:key="index">
+    <view class="title">readmi k30 pro 尊享版</view>
+    <view class="content">这是一段长文字，很长很长的文字，长到需要换行的文字。这是一段长文字，很长很长的文字，长到需要换行的文字。</view>
+</view>

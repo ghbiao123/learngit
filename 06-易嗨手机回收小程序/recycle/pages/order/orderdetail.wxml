@@ -113,7 +113,12 @@
           <view>{{detail.model_info.name}}</view>
 					<view hidden style="font-size:24rpx; color: #C7402C;">待邮寄</view>
 					<view class="state {{detail.order_status==0||detail.order_status==1?'state-red':''}}{{detail.order_status==2?'state-green':''}}{{detail.order_status==3?'state-gray':''}}">
-            {{detail.order_status==0?'待验机':''}}{{detail.order_status==1?'待付款':''}}{{detail.order_status==2?'订单完成':''}}{{detail.order_status==3?'订单取消':''}}
+						{{item.order_status==0 && item.recovery_type==1?'待验机':''}}
+            {{item.order_status==0 && item.recovery_type==2?'待发货':''}}
+            {{item.order_status==1?'待付款':''}}
+            {{item.order_status==2?'订单完成':''}}
+            {{item.order_status==3?'订单取消':''}}
+            {{item.order_status==4?'已发货':''}}
           </view>
         </view>
         <view class="msg">{{detail.model_info.cinfo? detail.model_info.cinfo : ''}}</view>
@@ -123,10 +128,15 @@
     </view>
 	</view>
 	
-
+	<!-- 查看验机报告 -->
+  <view wx:if="{{detail.order_status == 1 || detail.order_status == 2}}" class="button m-t-20">
+    <button bindtap="cancelOrder" class="button-clear" hover-class="btn-hover">查看验机报告</button>
+	</view>
+	<!-- 上门单 -->
   <view wx:if="{{detail.recovery_type == 1 && detail.order_status == 0}}" class="button m-t-20">
     <button bindtap="cancelOrder" class="btn" hover-class="cancel-hover">取消订单</button>
-  </view>
+	</view>
+	<!-- 快递单 -->
   <view wx:if="{{detail.recovery_type == 2 && detail.order_status == 0}}" class="button m-t-20">
     <button bindtap="cancelOrder" class="btn" hover-class="cancel-hover">取消订单</button>
     <button bindtap="confirmOrder" class="btn" hover-class="btn-hover">确认发货</button>

@@ -1,0 +1,6 @@
+<view class="cell-card">
+  <view class="cell-item">
+    <view class="cell-name"></view>
+    <view class="cell-cont"></view>
+  </view>
+</view>

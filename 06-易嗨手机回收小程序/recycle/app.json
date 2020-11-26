@@ -40,7 +40,9 @@
     "pages/paymentmethod/paymentmethod",
     "pages/paymentchecking/paymentchecking",
     "pages/paymentresult/paymentresult",
-    "pages/waitdeliver/waitdeliver"
+    "pages/waitdeliver/waitdeliver",
+    "pages/waitevaluationlist/waitevaluationlist",
+    "pages/waitevaluationdetail/waitevaluationdetail"
   ],
   "usingComponents": {
     "btntopage": "/mycomponents/btntopage/btntopage"

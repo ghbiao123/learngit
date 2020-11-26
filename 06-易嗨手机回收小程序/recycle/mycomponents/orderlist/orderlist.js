@@ -1,3 +1,4 @@
+let util = require("../../utils/util");
 Component({
   properties: {
     list: {
@@ -12,10 +13,11 @@ Component({
     }
   },
   methods: {
-    expressNumberInput(e){
+    expressNumberInput(e) {
       this.data.pno = e.detail.value;
     },
     confirmExpressOrder(e) {
+      let that = this;
       if (!this.data.pno) {
         return util.showSuccess('请填写快递单号');
       }
@@ -26,15 +28,35 @@ Component({
       data = {
         pno: this.data.pno,
         orderid: detail.id,
-        uid: uid,
+        userid: uid,
       };
-      
-      util.post('/api/order/upPackageNo', data).then(res => {
-        console.log(res);
-        if (res.code == 1) {
-        //  确认订单后要更新数据: 订单是否有快递订单，是否有质检报告
-        } else {
-          util.showError(res.msg);
+
+      wx.showModal({
+        title:"提示",
+        content: "确认发货后，快递信息不可修改",
+        success(res) {
+          if (res.confirm) {
+            util.post('/api/order/upPackageNo', data).then(res => {
+              console.log(res);
+              if (res.code == 1) {
+                //  确认订单后要更新数据: 订单是否有快递订单，是否有质检报告
+
+                that.data.list[idx].c_no = data.pno;
+                that.data.list[idx].order_status = 4;
+                let newList = [...that.data.list];
+                that.setData({
+                  list: newList
+                });
+
+                return util.showSuccess(res.msg);
+              } else {
+                util.showError(res.msg);
+              }
+            });
+          }
+          if (res.cancel) {
+
+          }
         }
       });
 
