@@ -138,3 +138,6 @@
   background-color: #C1402A;
   border-radius: 10rpx;
 }
+.m-t-20{
+  margin-top: 20rpx;
+}

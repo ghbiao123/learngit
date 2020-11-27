@@ -13,9 +13,18 @@ Component({
     }
   },
   methods: {
+    // 查看验机报告
+    getQualityReport(e){
+      let ordersn = e.currentTarget.dataset.ordersn;
+      wx.navigateTo({
+        url: '/pages/qualityreport/qualityreport?ordersn=' + ordersn,
+      });
+    },
+    // 输入快递单号
     expressNumberInput(e) {
       this.data.pno = e.detail.value;
     },
+    // 确认快递单号
     confirmExpressOrder(e) {
       let that = this;
       if (!this.data.pno) {
@@ -61,6 +70,7 @@ Component({
       });
 
     },
+    // 复制订单单号
     copyText(e) {
       let text = e.currentTarget.dataset.text;
       wx.setClipboardData({
@@ -70,6 +80,7 @@ Component({
         }
       });
     },
+    // 获取订单详情
     getDetail(e) {
       let id = e.currentTarget.dataset.id;
       wx.navigateTo({

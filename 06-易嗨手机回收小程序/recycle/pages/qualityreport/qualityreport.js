@@ -16,47 +16,69 @@ Page({
   onLoad: function (options) {
     that = this;
 
+    this.data.pageOption = options;
+
     this.init();
   },
 
   // data init
-  init(){
+  init() {
+
+    // 计算动态高度
+    this.calculateHeight();
 
 
+    /**
+     * 初始化页面数据
+     */
+    let ordersn = this.data.pageOption.ordersn;
+    util.post("/api/products/testReport", {
+      ordersn
+    }).then(res => {
+      console.log(res);
+    });
+
+
+  },
+
+  // 计算中间高度
+  calculateHeight() {
     // 计算中间背景部分高度
-    // 1.获取手机系统高度
-    wx.getSystemInfo({
-      success: async (result) => {
-        let systemHeight = result.windowHeight;
-        
-        // 2.上部分背景高度
-        let upHeight = await new Promise((resolve, reject)=>{
-          let query = wx.createSelectorQuery();
-          query.select(".head").boundingClientRect();
-          query.exec(res=>{
-            resolve(res[0].height);
-          });
+    changeHeight();
+    async function changeHeight() {
+      // 1.获取手机系统高度
+
+      let systemHeight = await new Promise((resolve) => {
+        let query = wx.createSelectorQuery();
+        query.select(".content").boundingClientRect();
+        query.exec(res => {
+          resolve(res[0].height);
         });
+      });
 
-        // 3.下部分背景高度
-        let downHeight = await new Promise(resolve=>{
-          let query = wx.createSelectorQuery();
-          query.select(".bg-down").boundingClientRect();
-          query.exec(res=>{
-            resolve(res[0].height);
-          });
+      // 2.上部分背景高度
+      let upHeight = await new Promise((resolve, reject) => {
+        let query = wx.createSelectorQuery();
+        query.select(".head").boundingClientRect();
+        query.exec(res => {
+          resolve(res[0].height);
         });
-        // 4.middleHeight 中间可变化部分高度
-        let middleHeight = (systemHeight - upHeight - downHeight) * 2;
-        that.setData({
-          middleHeight
+      });
+
+      // 3.下部分背景高度
+      let downHeight = await new Promise(resolve => {
+        let query = wx.createSelectorQuery();
+        query.select(".bg-down").boundingClientRect();
+        query.exec(res => {
+          resolve(res[0].height);
         });
-
-      },
-    })
-
-
-    
+      });
+      // 4.middleHeight 中间可变化部分高度
+      let middleHeight = (systemHeight - upHeight - downHeight) * 2;
+      that.setData({
+        middleHeight
+      });
+    }
 
   },
 

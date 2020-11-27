@@ -137,11 +137,15 @@ Page({
   },
   // 设置新价格
   getNewPrice(e) {
-    let changefee = e.detail;
-    let order = this.data.order;
-    if(!order.estimate_fee) {
-      return util.showSuccess('请输入正确的价格');
+    let changefee = Number(e.detail);
+    if(!changefee){
+      // 输入的是一个坏值
+      return util.showSuccess("请输入正确的价格");
     }
+    changefee = Math.min(1000, changefee);
+    changefee = Math.max(-1000, changefee);
+
+    let order = this.data.order;
 
     order.total_amount = Number(order.estimate_fee) + Number(order.coupon_fee) + Number(changefee);
     this.setData({

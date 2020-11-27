@@ -15,7 +15,7 @@ Page({
    */
   onLoad: function (options) {
     that = this;
-    
+
 
   },
 
@@ -30,7 +30,23 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let staffid = wx.getStorageSync('staffid');
+    util.post("/api/order/assessOrderList", {
+      staffid
+    }).then(res => {
+      console.log(res);
+      if (res.code == -1) {
+        return util.showSuccess(res.msg, function () {
+          wx.navigateBack({
+            delta: 1,
+          });
+        });
+      } else if (res.code == 1) {
+        that.setData({
+          list: res.data
+        });
+      }
+    });
   },
 
   /**

@@ -246,7 +246,7 @@ Page({
           key: 'currentResult',
         });
 
-        return util.showSuccess(res.msg, function(){
+        return util.showSuccess(res.msg, function () {
           wx.redirectTo({
             url: '/pages/orderinformation/orderinformation',
           });
@@ -281,7 +281,7 @@ Page({
         //     url: '/pages/index/index',
         //   });
         // });
-      }else{
+      } else {
         return util.showSuccess(res.msg);
       }
     });
@@ -321,6 +321,7 @@ Page({
       let provence = regionData[0],
           city = regionData[1],
           country = regionData[2];
+      let freight = util.getImageFullUrl(info.freight);
       that.setData({
         price: that.data.price,
         totalPrice: that.data.totalPrice,
@@ -330,6 +331,7 @@ Page({
         provence,
         city,
         country,
+        freight
       });
       initUserInfo(info.uinfo_h);
 
@@ -389,6 +391,13 @@ Page({
     // } else {}
 
 
+  },
+  // 显示运费说明
+  showExpressFree(e) {
+    wx.previewImage({
+      urls: [that.data.freight],
+      current: that.data.freight
+    });
   },
   // 省份改变
   provenceChange(e) {

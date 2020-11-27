@@ -155,6 +155,7 @@ function getUserInfo(e, callBack) {
         if(res.code == 1){
           let userInfo = e.detail.userInfo;
           userInfo.uid = res.data.userid;
+          userInfo.phonestatus = res.data.phonestatus;
           wx.setStorage({
             data: userInfo,
             key: 'userinfo',

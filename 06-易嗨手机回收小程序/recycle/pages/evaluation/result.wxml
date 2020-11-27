@@ -195,9 +195,7 @@
 						placeholder="请输入户名"></input>
 				</view>
 				<view class="radios text-tip">提示：我们将按照您的上述信息进行付款，请务必准确填写。</view>
-				<view class="freight" hover-class="using-userinfo">
-					<navigator hover-class="none" url="/pages/expressfreight/expressfreight">运费说明</navigator>
-				</view>
+				<view class="freight" bindtap="showExpressFree" hover-class="using-userinfo">运费说明</view>
 				<view class="m-t-20 t-a-c">
 					<checkbox-group bindchange="getExpress">
 						<checkbox value="1" color="#C7402C">是否需要代叫快递上门</checkbox>

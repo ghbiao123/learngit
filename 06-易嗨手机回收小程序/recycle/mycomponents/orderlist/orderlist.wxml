@@ -37,6 +37,8 @@
         class="button-clear">确认发货</button>
     </block>
 
+    <button data-ordersn="{{item.order_sn}}" bindtap="getQualityReport" class="button-clear m-t-20">查看验机报告</button>
+
     <view class="title">订单信息</view>
     <view class="order">
       <view class="order-info">

@@ -1,3 +1,4 @@
+let util = require("../../utils/util");
 Component({
   properties:{
     list:{
@@ -12,6 +13,23 @@ Component({
     }
   },
   methods:{
+    // 输入备注
+    remarkInput(e){
+      this.data.remark = e.detail.value;
+    },
+    // 确认备注
+    confirmRemark(e){
+      let id = e.currentTarget.dataset.id;
+      let data = {
+        id,
+        remark: this.data.remark
+      }
+      util.post("/api/order/updateOrderRemark", data).then(res=>{
+        console.log(res);
+        return util.showSuccess(res.msg);
+      });
+    },
+    // 复制信息
     copyText(e){
       let text = e.currentTarget.dataset.text;
       wx.setClipboardData({
@@ -21,6 +39,7 @@ Component({
         }
       });
     },
+    // 获取详情
     getDetail(e){
       let id = e.currentTarget.dataset.id;
       let data = this.data.list.filter(v=>{

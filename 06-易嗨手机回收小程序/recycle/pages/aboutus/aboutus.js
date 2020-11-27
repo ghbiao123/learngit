@@ -19,8 +19,11 @@ Page({
     this.init();
   },
   init() {
-    that.setData({
-      nodes: `<div>这是一首简单的小情歌</div>`
+    util.post("/api/index/getAbout",).then(res=>{
+      console.log(res);
+      that.setData({
+        nodes: res.data.about
+      });
     });
   },
   download() {

@@ -66,6 +66,15 @@ Page({
         count: res.data.length
       });
     });
+
+    
+    util.post("/api/order/assessOrderList", {
+      staffid
+    }).then(res=>{
+      that.setData({
+        evaluationCount: res.data.length
+      });
+    });
   },
 
   /**

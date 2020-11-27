@@ -24,22 +24,22 @@
         <view class="info">预估价：¥{{item.total_amount}}</view>
         <block wx:if="{{item.recovery_type == 1}}">
           <view class="info">上门时间：{{item.dtd_time}}</view>
-          <view class="info">联系方式：{{item.uinfo_phone}}</view>
+          <view wx:if="{{item.order_status == 0}}" class="info">联系方式：{{item.uinfo_phone}}</view>
           <view class="info">上门位置：{{item.uinfo_address}}</view>
         </block>
         <block wx:if="{{item.recovery_type == 2}}">
           <view class="info">快递单号：{{item.c_no}}</view>
-          <view class="info">联系方式：{{item.uinfo_phone}}</view>
+          <view wx:if="{{item.order_status == 0}}" class="info">联系方式：{{item.uinfo_phone}}</view>
         </block>
         <block>
           <view class="cell-item" catchtap="aaa">
             <image hidden class="express-icon" src="/images/co-s.png"></image>
             <view>备注</view>
             <view>
-              <input bindinput="expressNumberInput" value="{{item.c_no}}" class="order-input"
+              <input bindinput="remarkInput" value="{{item.remark}}" class="order-input"
                 placeholder="请输入备注"></input>
             </view>
-            <button class="button-clear btn-confirm">确认</button>
+            <button bindtap="confirmRemark" data-id="{{item.id}}" class="button-clear btn-confirm">确认</button>
             <image hidden class="scan-icon" src="/images/scan.png"></image>
           </view>
           <button wx:if="{{ !item.c_no }}" data-idx="{{index}}" bindtap="confirmExpressOrder"
