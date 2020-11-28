@@ -128,17 +128,17 @@ Page({
     }
 
     // 检测是否完善个人信息
-    let userData = wx.getStorageSync('userdata');
-    if (!userData) {
-      return util.showError('请您登录', function () {
-        wx.navigateTo({
-          url: '/pages/personalinfo/personalinfo',
-        });
-      });
-    }
+    // let userData = wx.getStorageSync('userdata');
+    // if (!userData) {
+    //   return util.showError('请您登录', function () {
+    //     wx.navigateTo({
+    //       url: '/pages/personalinfo/personalinfo',
+    //     });
+    //   });
+    // }
 
     // 加价券 couponid 1
-    let coupon = wx.getStorageSync('coupon');
+    let coupon = that.data.coupon;
     // 得到加价券id
     if (coupon && this.data.isCoupon) {
       data.couponid = coupon.id;
@@ -312,6 +312,9 @@ Page({
       console.log(res);
 
       let info = res.data;
+
+      // 将coupon挂载到全局
+      that.data.coupon = info.cinfo;
 
       that.data.couponPrice = Number(info.cinfo.par_value) || 0;
       that.data.price = Number(data.price);

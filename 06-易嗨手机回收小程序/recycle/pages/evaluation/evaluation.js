@@ -182,7 +182,7 @@ Page({
       let arrChecked = new Array(_data.other[_data.other.length - 1][_key].length).fill(false);
 
       let progressData = that.data.progressData;
-      progressData.all = _data.other.length + (this.data.type == 'pc' ? 5 : 3);
+      progressData.all = _data.other.length + that.data.currentIndex;
 
       that.setData({
         type: this.data.type,

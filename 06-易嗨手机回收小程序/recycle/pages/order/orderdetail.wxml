@@ -6,7 +6,7 @@
 				<view wx:if="{{detail.order_status < 0}}" class="step-image">
 					<image class="icon" src="/images/co.png"></image>
 				</view>
-				<view wx:if="{{detail.order_status >= 0}}" class="step-image step-image-s">
+				<view wx:if="{{detail.order_status >= 0 || detail.order_status == 4}}" class="step-image step-image-s">
 					<image class="icon" src="/images/co-s.png"></image>
 				</view>
 				<view class="step-name">待验机</view>
@@ -107,8 +107,8 @@
     <view class="cell-item">机器信息</view>
     <view class="project-info">
 		<!-- 没有图片， 待确认 -->
-      <image class="project-image" mode="aspectFit" src="{{'/images/contact.png'}}"></image>
-      <view class="info">
+      <!-- <image class="project-image" mode="aspectFit" src="{{'/images/contact.png'}}"></image> -->
+			<view class="info" style="width: 670rpx;">
         <view class="name">
           <view>{{detail.model_info.name}}</view>
 					<view hidden style="font-size:24rpx; color: #C7402C;">待邮寄</view>

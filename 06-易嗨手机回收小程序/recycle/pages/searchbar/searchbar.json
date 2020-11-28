@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "scarch-bar": "/mycomponents/searchbar/searchbar"
+    "scarch-bar": "/mycomponents/searchbar/searchbar",
+    "btntopage": "/mycomponents/btntopage/btntopage"
   },
   "navigationBarTitleText": "搜索机型"
 }

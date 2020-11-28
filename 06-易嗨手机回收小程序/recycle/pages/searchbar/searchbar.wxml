@@ -4,6 +4,9 @@
 		data-id="{{item.id}}" data-cid="{{item.cid}}" bindtap="getEvaluation">
 		{{item.name}}
 	</view>
+	<view wx:if="{{showList && result.length == 0}}" class="m-t-20">
+		<btntopage></btntopage>
+	</view>
 	<view wx:if="{{!showList}}">
 		<view class="tit-no-bg" wx:if="{{Storage.length > 0}}">
 			<view>历史记录</view>

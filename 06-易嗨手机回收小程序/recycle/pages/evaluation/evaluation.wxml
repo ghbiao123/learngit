@@ -52,11 +52,11 @@
 
       <block wx:for="{{_data.other}}" wx:key="index">
 
-        <view hidden="{{ index+4 > hideCode}}">
+        <view hidden="{{ index + currentIndex + 1 > hideCode}}">
 
 
           <view class="tit-no-bg">
-            {{index+4}}.{{item.name}}
+            {{index + currentIndex +1}}.{{item.name}}
           </view>
 
           <view class="cell-card">
@@ -135,10 +135,10 @@
 
       <block wx:for="{{_data.other}}" wx:key="index">
 
-        <view hidden="{{ index+6 > hideCode}}">
+        <view hidden="{{ index + currentIndex +1 > hideCode}}">
 
           <view class="tit-no-bg">
-            {{index+6}}.{{item.name}}
+            {{index + currentIndex + 1}}.{{item.name}}
           </view>
 
           <view class="cell-card">

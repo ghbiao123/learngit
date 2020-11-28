@@ -36,9 +36,34 @@ Page({
       ordersn
     }).then(res => {
       console.log(res);
+      let data = res.data;
+      let time = util.getToday(data.testtime * 1000);
+      data.testtime = time.date;
+      data.pictures = data.pictures.split(",").map(v => {
+        return util.getSiteRoot() + v;
+      });
+
+      console.log(data.pictures);
+      that.setData({
+        data
+      });
+
+      setTimeout(() => {
+        // 计算动态高度
+        that.calculateHeight();
+      }, 0);
+
     });
 
 
+  },
+  // preview
+  showImage(e) {
+    let id = e.currentTarget.dataset.id;
+    wx.previewImage({
+      urls: that.data.data.pictures,
+      current: that.data.data.pictures[id]
+    });
   },
 
   // 计算中间高度
