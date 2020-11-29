@@ -3,6 +3,6 @@
     "mp-actionSheet": "/components/actionsheet/actionsheet"
   },
   "navigationBarBackgroundColor": "#fff",
-  "navigationBarTitleText": "回收估价",
+  "navigationBarTitleText": "机型估价",
   "navigationBarTextStyle": "black"
 }

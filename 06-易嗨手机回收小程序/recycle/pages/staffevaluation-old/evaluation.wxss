@@ -1,8 +1,7 @@
 /* pages/evaluation/evaluation.wxss */
 
 .content{
-  /* padding: 270rpx 0 125rpx; */
-  padding: 130rpx 0 125rpx;
+  padding: 270rpx 0 125rpx;
 }
 
 .head{
@@ -11,8 +10,7 @@
   left: 0;
   z-index: 10;
   width: 100%;
-  /* height: 270rpx; */
-  height: 130rpx;
+  height: 270rpx;
   text-align: center;
   background-color: #fff;
 }
