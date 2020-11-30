@@ -49,11 +49,12 @@ Page({
     console.log(e.detail);
     let data = {
       cateid: this.data.reqData.bid,
-      bid: e.detail.bid
+      bid: e.detail.bid,
+      type: this.data.selected
     }
     if(this.data._tabid == 4 || this.data._tabid == 5){
       wx.navigateTo({
-        url: `/pages/otherlist/otherlist?cateid=${data.cateid}&bid=${data.bid}`,
+        url: `/pages/otherlist/otherlist?cateid=${data.cateid}&bid=${data.bid}&type=${data.type}`,
       });
     }
     // if(this.data._tabid == 4){

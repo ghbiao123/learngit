@@ -1,5 +1,5 @@
 <view class="container">
 
-  <image bindtap="show" src="/images/a.jpg" show-menu-by-longpress mode="widthFix" style="width: 500rpx; display: block; margin: 250rpx auto 0;"></image>
+  <!-- <image bindtap="show" src="/images/a.jpg" show-menu-by-longpress mode="widthFix" style="width: 500rpx; display: block; margin: 250rpx auto 0;"></image> -->
 
 </view>

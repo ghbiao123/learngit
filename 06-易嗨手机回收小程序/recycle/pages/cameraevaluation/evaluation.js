@@ -14,7 +14,7 @@ Page({
     },
     reqData: {
       inquiryinfo: {
-       
+
       }
     },
     _data: {},
@@ -33,7 +33,7 @@ Page({
         value: 2
       }
     ],
-    checkbox:[]
+    checkbox: []
   },
 
   /**
@@ -52,7 +52,7 @@ Page({
   },
 
   // 输入设备型号
-  modelInput(e){
+  modelInput(e) {
     this.data.machineModel = e.detail.value;
   },
 
@@ -101,28 +101,36 @@ Page({
     util.post('/api/products/getOtherInquiryInfo', {
       cid: this.data.pageOption.cid,
       cateid: this.data.pageOption.cateid
-    }).then(res=>{
+    }).then(res => {
       console.log(res);
       if (res.code == -1) {
         return util.showSuccess(res.msg, function () {
           wx.navigateBack();
         });
       }
-      if(res.data.length == 0){
+      if (res.data.length == 0) {
         wx.redirectTo({
           url: '/pages/evaluation/othercalcprice',
         });
       }
-      
-      if(this.data.pageOption.cid == 4){
+
+      if (this.data.pageOption.cid == 4) {
         _key = 'pinquiryinfo';
-        
-      }else if(this.data.pageOption.cid == 5){
-        
+
+      } else if (this.data.pageOption.cid == 5) {
+
         _key = 'oeinquiryinfo';
       }
 
       let _data = res.data;
+
+      // 将唯一一个多选选项排到最后
+      for (let i = 0; i < _data.length; i++) {
+        if (_data[i].multikey == 1) {
+          let item = _data.splice(i, 1);
+          _data.push(item[0]);
+        }
+      }
 
       _data[_data.length - 1][_key].unshift({
         id: 'none',
@@ -204,7 +212,7 @@ Page({
   },
   // 选择选项
   radioChange(e) {
-    
+
     let val = e.detail.value;
     let id = e.currentTarget.dataset.id;
     let progressData = this.data.progressData;
@@ -215,19 +223,19 @@ Page({
         arrChecked
       });
     }
-    
+
     if (typeof val != 'object') {
       this.data.reqData.inquiryinfo[id] = this.data._data[id][_key].filter(v => v.id == val)[0];
-    }else if(typeof val == 'object') {
-      this.data.checkbox = this.data._data[id][_key].filter(v =>{
-        if(val.indexOf(String(v.id)) >= 0){
+    } else if (typeof val == 'object') {
+      this.data.checkbox = this.data._data[id][_key].filter(v => {
+        if (val.indexOf(String(v.id)) >= 0) {
           return v;
         }
       });
     }
 
     progressData.chose = Object.keys(this.data.reqData.inquiryinfo).length;
-    
+
     let progress = util.getToPersent(progressData.chose / progressData.all);
 
     this.setData({
@@ -239,7 +247,7 @@ Page({
   // 跳转估价结果页
   getResult(e) {
     // 关闭actionsheet
-    this.close();
+    // this.close();
 
 
     let data = Object.assign({}, this.data.reqData);
@@ -253,13 +261,13 @@ Page({
 
     // 数据处理完毕， 手机价格计算可直接使用
     data.cid = this.data.pageOption.cid;
-    data.mid = this.data.pageOption.mid? this.data.pageOption.mid:0;
-    this.data.pageOption.bid&&( data.bid = this.data.pageOption.bid );
-    this.data.pageOption.cateid&&( data.cateid = this.data.pageOption.cateid );
+    data.mid = this.data.pageOption.mid ? this.data.pageOption.mid : 0;
+    this.data.pageOption.bid && (data.bid = this.data.pageOption.bid);
+    this.data.pageOption.cateid && (data.cateid = this.data.pageOption.cateid);
 
     let userInfo = wx.getStorageSync('userinfo');
-    if(!userInfo){
-      return util.showError('请您先登录', function(){
+    if (!userInfo) {
+      return util.showError('请您先登录', function () {
         wx.navigateTo({
           url: '/pages/login/login',
         });
@@ -277,12 +285,14 @@ Page({
     console.log(data);
 
 
-     util.post('/api/order/calculateOtherNa', data).then(res=>{
+    util.post('/api/order/calculateOtherNa', data).then(res => {
       console.log(res);
-      if(false){
+      if (res.code == 1) {
         wx.redirectTo({
           url: '/pages/manualresult/manualresult',
         });
+      }else{
+        return util.showSuccess(res.msg);
       }
     });
 
@@ -291,7 +301,7 @@ Page({
     wx.setStorage({
       data: data,
       key: 'currentmachine',
-      success(){
+      success() {
         wx.navigateTo({
           url: '/pages/cameranotes/cameranotes',
         });
@@ -326,11 +336,11 @@ Page({
   },
   // actionsheet
   showAction() {
-    if(this.data.type == 'pc' && this.data._data.bid != 1){
+    if (this.data.type == 'pc' && this.data._data.bid != 1) {
       this.setData({
         showActionsheet: true
       });
-    }else{
+    } else {
       this.getResult();
     }
   },

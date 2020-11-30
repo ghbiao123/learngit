@@ -11,12 +11,12 @@
     <view class="cell-card">
       <view class="cell-item">
         <view class="cell-name">质检工程师：</view>
-        <view class="cell-cont">张三</view>
+        <view class="cell-cont">{{data.staffinfo}}</view>
       </view>
-      <view class="cell-item">
+      <!-- <view class="cell-item">
         <view class="cell-name">机器接收日期：</view>
         <view class="cell-cont">{{data.time}}</view>
-      </view>
+      </view> -->
       <view class="cell-item">
         <view class="cell-name">机器质检日期：</view>
         <view class="cell-cont">{{data.testtime}}</view>

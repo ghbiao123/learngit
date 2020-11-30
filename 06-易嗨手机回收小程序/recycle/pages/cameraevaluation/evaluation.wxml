@@ -56,5 +56,5 @@
   </view>
 </view>
 
-<mp-actionSheet bindactiontap="getResult" show="{{showActionsheet}}" actions="{{groups}}">
-</mp-actionSheet>
+<!-- <mp-actionSheet bindactiontap="getResult" show="{{showActionsheet}}" actions="{{groups}}">
+</mp-actionSheet> -->

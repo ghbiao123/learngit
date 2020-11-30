@@ -86,8 +86,11 @@ Page({
       console.log(res);
       if(res.code == 1){
         return util.showSuccess(res.msg, function(){
-          wx.navigateBack({
-            delta: 1,
+          // wx.navigateBack({
+          //   delta: 1,
+          // });
+          wx.redirectTo({
+            url: '/pages/paymentmethod/paymentmethod',
           });
         });
       }else{
@@ -113,7 +116,7 @@ Page({
   // 设置新配置项
   resetConfigConfirm() {
     if (this.data.newConfig.cinfo) {
-      this.data.order.model_info = this.data.newConfig.cinfo;
+      this.data.order.model_info.cinfo = this.data.newConfig.cinfo;
     }
     if (this.data.newConfig.des) {
       this.data.order.model_info.des = this.data.newConfig.des;
@@ -126,7 +129,8 @@ Page({
   // 放弃设置配置项
   resetConfigCancel() {
     this.setData({
-      isResetConfig: false
+      isResetConfig: false,
+      order: this.data.order
     });
   },
   // 监听配置项修改

@@ -26,6 +26,7 @@ Page({
         wx.redirectTo({
           url: '/pages/recyclelist/recyclelist',
         });
+        return;
       }
       let str = `${t}s后跳转我的估价列表`;
       that.setData({

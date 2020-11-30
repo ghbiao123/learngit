@@ -51,26 +51,34 @@ Page({
     if(this.data.imageUrl.length != this.data.reqImageUrl.length){
       return util.showSuccess('图片正在上传，请稍后尝试...');
     }
-
-    if(!data.namedata.mconfigure){
+    if(!data.name){
       return util.showSuccess('请填写机器名称');
     }else if(!data.mconfigure){
       return util.showSuccess('请填填写机器配置信息');
     }
 
     this.data._data = data;
-
+    data.otype = 0;
     // this.setData({
     //   showActionsheet: true
     // });
 
-    wx.setStorage({
-      data: data,
-      key: 'currentmachine',
-    });
-
-    wx.navigateTo({
-      url: '/pages/tips/tips?frompage=othercalcprice',
+    // wx.setStorage({
+    //   data: data,
+    //   key: 'currentmachine',
+    // });
+                
+    util.post('/api/order/calculatePriceOther', data).then(res=>{
+      console.log(res);
+      if(res.code == 1){
+        return util.showSuccess(res.msg, function(){
+          wx.redirectTo({
+            url: '/pages/manualresult/manualresult',
+          });
+        });
+      }else{
+        return util.showSuccess(res.msg);
+      }
     });
 
 

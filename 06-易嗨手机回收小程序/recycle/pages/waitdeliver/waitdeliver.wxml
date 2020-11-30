@@ -1,18 +1,18 @@
 <view class="content">
   <!-- list -->
-  <scroll-view class="scroll" scroll-y>
-    <checkbox-group>
-      <view class="list" wx:for="1234" wx:key="index">
-        <checkbox color="#C1402A">
+  <scroll-view bindscrolltolower="getMoreList" class="scroll" scroll-y style="height: {{scrollHeight}}rpx;">
+    <checkbox-group bindchange="getSelected">
+      <view class="list" wx:for="{{list}}" wx:key="index">
+        <checkbox color="#C1402A" value="{{item.id}}" checked="{{item.checked}}">
           <view class="list-item">
             <view class="item-line">
               <view class="item-name">单号：</view>
-              <view class="item-cont">2020112414568419</view>
+              <view class="item-cont">{{item.order_sn}}</view>
             </view>
             <view class="item-line">
-              <view class="cont">Redmi K30 pro 尊享版</view>
+              <view class="cont">{{item.model_info.name}}</view>
             </view>
-            <view class="cont">￥3000.00</view>
+            <view class="cont">￥{{item.stafforderinfo.total_amount}}</view>
           </view>
         </checkbox>
       </view>
@@ -22,22 +22,28 @@
 
   <!-- submit -->
   <view class="send-box">
-    <view class="select-all">
-      <checkbox-group>
-        <checkbox color="#C1402A">
-          全选
-        </checkbox>
-      </checkbox-group>
-      <view class="m-l-40">已选32件</view>
-    </view>
+    <form bindsubmit="submit">
+      <view class="cell-card">
+        <view class="cell-item" style="border-bottom: 2rpx solid #f5f5f5;">
+          <view class="cell-name">所在城市</view>
+          <input type="text" name="region" class="cell-input" placeholder="请输入城市" />
+        </view>
+      </view>
+      <view class="select-all">
+        <checkbox-group bindchange="selectedAll">
+          <checkbox value="1" color="#C1402A">
+            全选
+          </checkbox>
+        </checkbox-group>
+        <view class="m-l-40">已选{{selectedNum}}件</view>
+      </view>
 
-    <radio-group class="send-method">
-      <radio color="#C1402A">自行配送</radio>
-      <radio class="m-l-40" color="#C1402A">快递</radio>
-    </radio-group>
+      <radio-group bindchange="getType" class="send-method">
+        <radio wx:for="{{selectedType}}" checked="{{item.checked}}" wx:key="index" value="{{item.value}}" color="#C1402A">{{item.name}}</radio>
+      </radio-group>
 
-    <button class="button-clear m-t-20">提交</button>
-
+      <button form-type="submit" hover-class="btn-hover" class="button-clear m-t-20">提交</button>
+    </form>
   </view>
 
   <prompt isShow="{{isShowPrompt}}" bind:getPrompt="getExpressOrder"></prompt>

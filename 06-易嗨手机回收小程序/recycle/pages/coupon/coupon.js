@@ -93,7 +93,8 @@ Page({
   },
   // init data
   init(){
-    let type = this.data.type;
+    // let type = this.data.type;
+    let type = "add";
     let isLogin = util.checkIsLogin.call(this);
     if(!isLogin){
       return util.showError('请您先登录', function(){

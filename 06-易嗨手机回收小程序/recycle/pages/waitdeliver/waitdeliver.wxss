@@ -28,7 +28,7 @@ page{
 }
 
 .send-box{
-  height: 330rpx;
+  height: 470rpx;
 }
 .send-method,
 .select-all{

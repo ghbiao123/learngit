@@ -155,7 +155,7 @@ Page({
         data.configureinfo.push(currentMachine[key]);
       }
     }
-    console.log(JSON.parse(currentMachine.inquiryinfo));
+    // console.log(JSON.parse(currentMachine.inquiryinfo));
     if (currentMachine.inquiryinfo) {
       let describeinfo = JSON.parse(currentMachine.inquiryinfo).map(v => {
         return v.id

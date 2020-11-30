@@ -4,7 +4,7 @@
       <image class="avatar" src="{{staffInfo.avatar}}"></image>
       <name class="name">{{staffInfo.username}}</name>
     </view>
-      <image bindtap="previewImage" class="qrcode" src="/images/qrcode.png"></image>
+    <image bindtap="previewImage" class="qrcode" src="/images/qrcode.png"></image>
   </view>
   <view class="tit-no-bg">订单汇总</view>
   <view class="cell-card">
@@ -48,9 +48,11 @@
   </view>
 
   <view class="cell-card">
-    <view class="cell-item">
-      我要发货
-    </view>
+    <navigator hover-class="line-hover" url="/pages/waitdeliver/waitdeliver">
+      <view class="cell-item">
+        我要发货
+      </view>
+    </navigator>
   </view>
 
 </view>
