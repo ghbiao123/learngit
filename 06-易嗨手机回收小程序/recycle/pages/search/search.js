@@ -50,7 +50,7 @@ Page({
     let data = {
       cateid: this.data.reqData.bid,
       bid: e.detail.bid,
-      type: this.data.selected
+      type: this.data._tabid
     }
     if(this.data._tabid == 4 || this.data._tabid == 5){
       wx.navigateTo({

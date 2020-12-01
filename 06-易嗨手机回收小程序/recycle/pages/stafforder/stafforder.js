@@ -13,7 +13,8 @@ Page({
     newConfig: {},
     imageUrl: [],
     reqImageUrl: [],
-    currentPageId: 0
+    currentPageId: 0,
+    changefee: 0,
   },
 
   /**
@@ -47,16 +48,16 @@ Page({
     });
   },
   // 下一步
-  nextPage(){
+  nextPage() {
     this.setData({
       currentPageId: 1
     });
   },
   // 取消订单
-  cancelOrder(){
+  cancelOrder() {
     let staffid = wx.getStorageSync('staffid');
     let orderId = this.data.order.id;
-    let url =`/pages/cancel/cancel?orderid=${orderId}&operator=2&operatorid=${staffid}`
+    let url = `/pages/cancel/cancel?orderid=${orderId}&operator=2&operatorid=${staffid}`
     wx.navigateTo({
       url: url,
     });
@@ -75,25 +76,27 @@ Page({
       pname: (this.data.idCard && this.data.idCard.name),
       pidcard: (this.data.idCard && this.data.idCard.id),
       ppic: this.data.idcardSrc,
+      changefee: (this.data.changefee ? this.data.changefee : 0)
     };
 
-    let needData = ['imei','pname'];
-    if(!data.imei || !data.pname){
+    let needData = ['imei', 'pname'];
+    if (!data.imei || !data.pname) {
       return util.showSuccess('请完善信息');
     }
 
-    util.post('/api/order/testingMachineOrder', data).then(res=>{
+    util.post('/api/order/testingMachineOrder', data).then(res => {
       console.log(res);
-      if(res.code == 1){
-        return util.showSuccess(res.msg, function(){
+      if (res.code == 1) {
+        return util.showSuccess(res.msg, function () {
           // wx.navigateBack({
           //   delta: 1,
           // });
+          console.log(res);
           wx.redirectTo({
-            url: '/pages/paymentmethod/paymentmethod',
+            url: '/pages/paymentmethod/paymentmethod?orderid=' + data.orderid,
           });
         });
-      }else{
+      } else {
         util.showError(res.msg);
       }
     });
@@ -142,7 +145,7 @@ Page({
   // 设置新价格
   getNewPrice(e) {
     let changefee = Number(e.detail);
-    if(!changefee){
+    if (!changefee) {
       // 输入的是一个坏值
       return util.showSuccess("请输入正确的价格");
     }
@@ -151,10 +154,20 @@ Page({
 
     let order = this.data.order;
 
-    order.total_amount = Number(order.estimate_fee) + Number(order.coupon_fee) + Number(changefee);
-    this.setData({
-      order,
-      changefee
+    let pricevalue = (Number(order.estimate_fee) + Number(changefee));
+    let data = {
+      userid: order.user_id,
+      pricevalue
+    }
+    util.post("/api/order/doOrderInfo", data).then(res => {
+      console.log(res);
+      order.coupon_fee = res.data.cinfo.par_value;
+      order.total_amount = (Number(order.estimate_fee) + Number(order.coupon_fee) + Number(changefee)).toFixed(2);
+
+      this.setData({
+        order,
+        changefee
+      });
     });
   },
 
@@ -324,24 +337,36 @@ Page({
       if (!newMashine) return;
       let needId = ['pcram', 'pcssd', 'pcvideocard', 'phonecolor', 'phonestorage', 'phonemodel']
       order.estimate_fee = newMashine.totalprice;
-      order.total_amount = Number(order.estimate_fee) + Number(order.coupon_fee);
-      let cstr = '';
-      needId.forEach(v => {
-        if (newMashine[v]) {
-          cstr = cstr + newMashine[v] + ',';
-        }
-      });
-      util.post('/api/products/getModelConfigInfo', {
-        cstr
+
+      // order.total_amount = Number(order.estimate_fee) + Number(order.coupon_fee);
+
+      util.post("/api/order/doOrderInfo", {
+        userid: order.user_id,
+        pricevalue: order.estimate_fee
       }).then(res => {
-        console.log(res);
-        order.model_info.cinfo = res.data;
-        that.setData({
-          order
+        order.coupon_fee = res.data.cinfo.par_value;
+        order.total_amount = (Number(order.estimate_fee) + Number(order.coupon_fee)).toFixed(2);
+
+        let cstr = '';
+        needId.forEach(v => {
+          if (newMashine[v]) {
+            cstr = cstr + newMashine[v] + ',';
+          }
         });
-        wx.removeStorage({
-          key: 'newstaffmachine',
-        })
+        util.post('/api/products/getModelConfigInfo', {
+          cstr
+        }).then(res => {
+          console.log(res);
+          order.model_info.cinfo = res.data;
+          that.setData({
+            order,
+            changefee: 0
+          });
+          wx.removeStorage({
+            key: 'newstaffmachine',
+          })
+        });
+
       });
     }, 100);
   },

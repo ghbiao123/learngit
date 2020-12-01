@@ -45,12 +45,16 @@ Component({
       let data = this.data.list.filter(v=>{
         return v.id == id;
       });
-      if(data[0].order_status != 0 ){
-        return
+      if(data[0].order_status == 0 ){
+        wx.navigateTo({
+          url: '/pages/stafforder/stafforder?id=' + id,
+        });
       }
-      wx.navigateTo({
-        url: '/pages/stafforder/stafforder?id=' + id,
-      });
+      if(data[0].order_status == 1){
+        wx.redirectTo({
+          url: '/pages/paymentmethod/paymentmethod?orderid='+ data[0].orderid,
+        });
+      }
     }
   }
 });

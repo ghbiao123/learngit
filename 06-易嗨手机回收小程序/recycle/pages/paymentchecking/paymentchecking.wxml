@@ -1,13 +1,14 @@
 <view class="container">
   <!-- 微信支付 -->
   <view wx:if="{{method == 'wechat'}}">
-    <image class="avatar" src="/images/contact.png"></image>
-    <view class="cell-card">
-      <view class="cell-item">
-        <view class="cell-name">昵称</view>
-        <view class="cell-cont">昵称</view>
-      </view>
-      <view class="cell-item">
+    <form bindsubmit="confirmPayment">
+      <image class="avatar" src="/images/contact.png"></image>
+      <view class="cell-card">
+        <view class="cell-item">
+          <view class="cell-name">收款方</view>
+          <input type="text" name="checkname" class="cell-input" placeholder="请输入收款方真实姓名" />
+        </view>
+        <!-- <view class="cell-item">
         <view class="cell-name">姓名</view>
         <view class="cell-cont">昵称</view>
       </view>
@@ -18,11 +19,11 @@
       <view class="cell-item">
         <view class="cell-name">付款金额</view>
         <view class="cell-cont">昵称</view>
+      </view> -->
       </view>
-    </view>
 
-    <button bindtap="confirmPayment" class="button-clear m-t-20">确认付款</button>
-
+      <button form-type="submit" class="button-clear m-t-20">确认付款</button>
+    </form>
   </view>
 
   <!-- 银联支付 -->
@@ -31,15 +32,15 @@
       <view class="cell-card">
         <view class="cell-item">
           <view class="cell-name">收款账户</view>
-          <input type="text" class="cell-input" placeholder="请输入收款账户" />
+          <input type="number" name="bankcard" class="cell-input" placeholder="请输入收款账户" />
         </view>
         <view class="cell-item">
           <view class="cell-name">收款银行</view>
-          <input type="text" class="cell-input" placeholder="请输入收款银行" />
+          <input type="text" name="bank" class="cell-input" placeholder="请输入收款银行" />
         </view>
         <view class="cell-item">
           <view class="cell-name">账户名</view>
-          <input type="text" class="cell-input" placeholder="请输入收款账户" />
+          <input type="text" name="bankuname" class="cell-input" placeholder="请输入账户名" />
         </view>
       </view>
 

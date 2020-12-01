@@ -38,13 +38,41 @@ Page({
     });
 
   },
-  // 确认收款
-  confirmPayment(){
-
+  // 确认收款，微信支付
+  confirmPayment(e){
+    let data = e.detail.value;
+    data.orderid = this.data.pageOption.orderid;
+    if(!data.checkname) return util.showSuccess("请输入收款方真实姓名");
+    util.post("/api/order/paymentForWx", data).then(res=>{
+      if(res.code == 1){
+        wx.redirectTo({
+          url: '/pages/paymentresult/paymentresult?method=wechat',
+        });
+      }else{
+        return util.showSuccess(res.msg);
+      }
+    });
   },
   // 提交银联表单
   submit(e){
-    
+    let data = e.detail.value;
+    for(let key in data){
+      if(!data[key]){
+        return util.showSuccess("请完善表单信息");
+      }
+    }
+    data.orderid = this.data.pageOption.orderid;
+
+    util.post("/api/order/paymentForUnionPay", data).then(res=>{
+      console.log(res);
+      if(res.code == 1){
+        wx.redirectTo({
+          url: '/pages/paymentresult/paymentresult?method=union',
+        });
+      }else{
+        return util.showSuccess(res.msg);
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

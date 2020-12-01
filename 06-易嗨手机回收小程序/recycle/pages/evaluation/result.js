@@ -164,7 +164,10 @@ Page({
     }
 
     currentMachine.cid && (data.cid = currentMachine.cid);
-    currentMachine.mid && (data.mid = currentMachine.mid);
+    // currentMachine.mid && (data.mid = currentMachine.mid);
+    if(currentMachine.mid || currentMachine.pcid){
+      data.mid = currentMachine.mid || currentMachine.pcid
+    }
 
     // 人工填写
     if (currentMachine.mconfigure) {

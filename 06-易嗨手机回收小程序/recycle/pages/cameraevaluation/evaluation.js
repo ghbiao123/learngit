@@ -115,7 +115,7 @@ Page({
       }
 
       if (this.data.pageOption.cid == 4) {
-        _key = 'pinquiryinfo';
+        _key = 'oeinquiryinfo';
 
       } else if (this.data.pageOption.cid == 5) {
 
@@ -234,7 +234,7 @@ Page({
       });
     }
 
-    progressData.chose = Object.keys(this.data.reqData.inquiryinfo).length;
+    progressData.chose = Object.keys(this.data.reqData.inquiryinfo).length + (this.data.checkbox.length > 0 ? 1 : 0);
 
     let progress = util.getToPersent(progressData.chose / progressData.all);
 

@@ -39,9 +39,13 @@ Page({
       let data = res.data;
       let time = util.getToday(data.testtime * 1000);
       data.testtime = time.date;
-      data.pictures = data.pictures.split(",").map(v => {
-        return util.getSiteRoot() + v;
-      });
+
+      // 将图片链接拼接完整
+      if(data.pictures){
+        data.pictures = data.pictures.split(",").map(v => {
+          return util.getSiteRoot() + v;
+        });
+      }
 
       console.log(data.pictures);
       that.setData({

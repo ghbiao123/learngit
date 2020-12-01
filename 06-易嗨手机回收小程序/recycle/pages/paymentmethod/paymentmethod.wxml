@@ -1,9 +1,9 @@
 <view class="container">
 
-  <navigator url="/pages/paymentchecking/paymentchecking?method=wechat" class="button-clear m-t-50" hover-class="none">
+  <navigator url="/pages/paymentchecking/paymentchecking?method=wechat&orderid={{orderid}}" class="button-clear m-t-50" hover-class="btn-hover">
     微信
   </navigator>
-  <navigator url="/pages/paymentchecking/paymentchecking?method=union" class="button-clear m-t-50" hover-class="btn-hover">
+  <navigator url="/pages/paymentchecking/paymentchecking?method=union&orderid={{orderid}}" class="button-clear m-t-50" hover-class="btn-hover">
     银联
   </navigator>
 

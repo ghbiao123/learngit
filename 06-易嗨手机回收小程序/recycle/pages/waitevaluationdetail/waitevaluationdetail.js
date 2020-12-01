@@ -23,8 +23,8 @@ Page({
       aoid: that.data.aoid,
     }).then(res=>{
       console.log(res);
-      res.data.configure = res.data.configure.replace(/；/g, "\n");
-      res.data.describe = res.data.describe.replace(/；/g, "\n");
+      res.data.configure = (res.data.configure ? res.data.configure.replace(/；/g, "\n") : "");
+      res.data.describe = (res.data.describe ? res.data.describe.replace(/；/g, "\n") : "");
       that.setData({
         detail: res.data
       });

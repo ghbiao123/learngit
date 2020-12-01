@@ -17,7 +17,7 @@ function post(url, data = {}) {
   setTimeout(() => {
     if (status) return;
     wx.showLoading({
-      title: '',
+      // title: '',
       mask: true
     });
   }, 800);
@@ -150,6 +150,7 @@ function getUserInfo(e, callBack) {
         userinfo: e.detail.rawData,
         encrypteddata: e.detail.encryptedData,
         iv: e.detail.iv,
+        agentid: e.detail.agentid
       }
       post("/api/login/loginByUser", data).then(res => {
         if(res.code == 1){

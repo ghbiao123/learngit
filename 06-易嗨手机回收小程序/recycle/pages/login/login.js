@@ -14,15 +14,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    let lunchOption = wx.getLaunchOptionsSync();
+    this.data.agentid = lunchOption.query.agentid;
   },
   getUserInfo(e){
+    let that = this;
+    e.detail.agentid = this.data.agentid ? this.data.agentid : 0;
     util.getUserInfo(e, function(res){
       if(res.code == 1){
         util.showSuccess('登录成功', function(){
-          wx.navigateBack({
-            delta: 1,
-          });
+          if(that.data.agentid){
+            wx.reLaunch({
+              url: '/pages/index/index',
+            });
+          }else{
+            wx.navigateBack({
+              delta: 1,
+            });
+          }
         });
       }
     });
