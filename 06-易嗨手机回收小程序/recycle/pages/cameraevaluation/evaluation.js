@@ -115,7 +115,7 @@ Page({
       }
 
       if (this.data.pageOption.cid == 4) {
-        _key = 'oeinquiryinfo';
+        _key = 'pinquiryinfo';
 
       } else if (this.data.pageOption.cid == 5) {
 

@@ -223,11 +223,13 @@ Page({
     needKey.uname = '';
     needKey.uphone = '';
     console.log(data);
+    console.log(needKey);
     for (let key in needKey) {
       if (!data[key]) {
         return util.showSuccess('请完善您的个人信息');
       }
     }
+    // return;
     util.post('/api/order/placeOrder', data).then(res => {
       console.log(res);
 

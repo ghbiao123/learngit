@@ -72,6 +72,7 @@ Page({
     wx.getSystemInfo({
       success: (result) => {
         let modelkey = result.model;
+        // let modelkey = "iPhone Xs Max";
         util.post('/api/index/getSystemInfo', {modelkey}).then(res=>{
           console.log(res);
           res.data.image = util.getImageFullUrl(res.data.image);
