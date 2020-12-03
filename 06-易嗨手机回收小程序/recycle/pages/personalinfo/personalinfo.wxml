@@ -24,7 +24,7 @@
         </view>
       </view>
 
-      <view class="cell-item">
+      <view hidden class="cell-item">
         <view class="cell-name">所在地区</view>
         <view class="cell-cont">
           <picker mode="region" bindchange="regionChange">
@@ -33,7 +33,7 @@
         </view>
       </view>
 
-      <view class="cell-item">
+      <view hidden class="cell-item">
         <view class="cell-name">详细地址</view>
         <view class="cell-cont">
           <input name="address" value="{{userData.address}}" class="cell-input" type="text" placeholder="请输入详细地址" />
@@ -42,8 +42,8 @@
 
     </view>
     
-    <view class="tit-no-bg">银行卡信息</view>
-    <view class="cell-card">
+    <view hidden class="tit-no-bg">银行卡信息</view>
+    <view hidden class="cell-card">
       <view class="cell-item">
         <view class="cell-name">户名</view>
         <view class="cell-cont">

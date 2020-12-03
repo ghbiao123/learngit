@@ -1,0 +1,7 @@
+<view class="cell-card" wx:for="0000" wx:key="index">
+  <view class="cell-item">
+    <view>title</view>
+    <view>￥price</view>
+  </view>
+  <view>1785330875817853308758</view>
+</view>

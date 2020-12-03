@@ -41,8 +41,11 @@
     "pages/paymentchecking/paymentchecking",
     "pages/paymentresult/paymentresult",
     "pages/waitdeliver/waitdeliver",
+    "pages/waitdeliverlist/waitdeliverlist",
+    "pages/waitdeliverdetail/waitdeliverdetail",
     "pages/waitevaluationlist/waitevaluationlist",
-    "pages/waitevaluationdetail/waitevaluationdetail"
+    "pages/waitevaluationdetail/waitevaluationdetail",
+    "pages/remarklist/remarklist"
   ],
   "usingComponents": {
     "btntopage": "/mycomponents/btntopage/btntopage"

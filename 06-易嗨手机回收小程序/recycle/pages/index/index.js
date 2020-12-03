@@ -97,7 +97,7 @@ Page({
     console.log('getNewCoupon');
 
     wx.navigateTo({
-      url: '/pages/coupon/coupon?type=add',
+      url: '/pages/login/login',
     });
     
     // 领取回收加价券后关闭弹窗

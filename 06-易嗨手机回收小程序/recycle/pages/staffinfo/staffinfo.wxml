@@ -13,14 +13,14 @@
         <navigator url="/pages/stafforderlist/stafforderlist?type=todoor" hover-class="none">
           <image mode="aspectFit" class="type-icon" src="/images/wei.png"></image>
           <view class="type-txt">待处理</view>
-          <view class="dot">{{count}}</view>
+          <view wx:if="{{count > 0}}" class="dot">{{count}}</view>
         </navigator>
       </view>
       <view class="type" hover-class="line-hover">
         <navigator url="/pages/stafforderlist/stafforderlist?type=dealwith" hover-class="none">
           <image mode="aspectFit" class="type-icon" src="/images/wait.png"></image>
           <view class="type-txt">已验机</view>
-          <view hidden class="dot">88</view>
+          <view wx:if="{{checkedCount > 0}}" class="dot">{{checkedCount}}</view>
         </navigator>
       </view>
       <view class="type" hover-class="line-hover">
@@ -41,7 +41,7 @@
         <navigator url="/pages/waitevaluationlist/waitevaluationlist" hover-class="none">
           <image mode="aspectFit" class="type-icon" src="/images/main2.png"></image>
           <view class="type-txt">待估价</view>
-          <view class="dot">{{evaluationCount}}</view>
+          <view wx:if="{{evaluationCount > 0}}" class="dot">{{evaluationCount}}</view>
         </navigator>
       </view>
     </view>
@@ -51,6 +51,11 @@
     <navigator hover-class="line-hover" url="/pages/waitdeliver/waitdeliver">
       <view class="cell-item">
         我要发货
+      </view>
+    </navigator>
+    <navigator hover-class="line-hover" url="/pages/waitdeliverlist/waitdeliverlist">
+      <view class="cell-item">
+        已发货列表
       </view>
     </navigator>
   </view>

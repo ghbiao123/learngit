@@ -8,6 +8,8 @@
 }
 
 .title{
+  display: flex;
+  justify-content: space-between;
   font-size: 30rpx;
   font-weight: bold;
   line-height: 2;
@@ -130,13 +132,19 @@
 
 .button-clear{
   padding: 0;
-  width: 470rpx !important;
-  height: 75rpx;
-  line-height: 75rpx;
-  color: #fff;
+  margin: 10rpx 0 0 !important;
+  width: 160rpx !important;
+  height: 45rpx;
+  line-height: 45rpx;
+  color: #929292;
+  font-size: 24rpx;
   font-weight: normal;
-  background-color: #C1402A;
+  background-color: transparent;
+  border: 2rpx solid #929292;
   border-radius: 10rpx;
+}
+.btn-hov{
+  background-color: #f5f5f5;
 }
 .m-t-20{
   margin-top: 20rpx;

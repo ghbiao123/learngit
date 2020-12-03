@@ -7,6 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    waitCheckCount: 0,
+    waitPayCount: 0
   },
 
   /**
@@ -15,8 +17,40 @@ Page({
   onLoad: function (options) {
     that = this;
     
+    this.init();
   },
-  
+
+  // 初始化 待验机，代付款列表数目
+  init(){
+
+    let userInfo = wx.getStorageSync('userinfo');
+    if(userInfo){
+      let userid = userInfo.uid;
+
+      // 待验机数量
+      util.post("/api/order/userOrderList", {
+        userid,
+        orderstatus: 0
+      }).then(res=>{
+        let count = res.data.length;
+        that.setData({
+          waitCheckCount: count
+        });
+      });
+      // 待付款数量
+      util.post("/api/order/userOrderList", {
+        userid,
+        orderstatus: 1
+      }).then(res=>{
+        let count = res.data.length;
+        that.setData({
+          waitPayCount: count
+        });
+      });
+    }
+
+  },
+
   // 显示我的机型
   showModel(){
     wx.getSystemInfo({

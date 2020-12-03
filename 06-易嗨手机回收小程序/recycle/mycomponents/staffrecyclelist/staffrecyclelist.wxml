@@ -36,10 +36,12 @@
             <image hidden class="express-icon" src="/images/co-s.png"></image>
             <view>备注</view>
             <view>
-              <input bindinput="remarkInput" value="{{item.remark}}" class="order-input"
+              <navigator hover-class="none" url="/pages/remarklist/remarklist?ordersn={{item.order_sn}}">
+                <input bindinput="remarkInput" disabled value="{{item.remark}}" class="order-input"
                 placeholder="请输入备注"></input>
+              </navigator>
             </view>
-            <button bindtap="confirmRemark" data-id="{{item.id}}" class="button-clear btn-confirm">确认</button>
+            <button hidden bindtap="confirmRemark" data-id="{{item.id}}" class="button-clear btn-confirm">确认</button>
             <image hidden class="scan-icon" src="/images/scan.png"></image>
           </view>
           <!-- <button wx:if="{{ !item.c_no && (item.recovery_type==2) }}" data-idx="{{index}}" bindtap="confirmExpressOrder"

@@ -31,10 +31,15 @@
     <block wx:for="{{list}}" wx:key="index">
       <view wx:if="{{selected == (index+1)}}" class="tab-cont">
         <view class="coupon-status">
-          <!-- <view class="notes">“已领取”</view> -->
           <view wx:if="{{item.udo == 0}}" data-id="{{item.id}}" bindtap="getCoupon" class="check-coupon chose-coupon"
-            hover-class="chose-hover">一键领取</view>
-          <view wx:if="{{item.udo == 1}}" class="check-coupon" hover-class="check-hover"><navigator url="/pages/mycouponlist/mycouponlist" hover-class="none">查看优惠券</navigator></view>
+          hover-class="chose-hover">一键领取</view>
+          <view wx:if="{{item.udo == 1}}">
+            <view class="notes">“已领取”</view>
+            <view class="cell-item">
+              <view class="check-coupon" hover-class="check-hover"><navigator url="/pages/mycouponlist/mycouponlist" hover-class="none">查看优惠券</navigator></view>
+              <view class="check-coupon recycle-coupon" hover-class="recycle-hover"><navigator url="/pages/search/search" hover-class="none">用券回收</navigator></view>
+            </view>
+          </view>
         </view>
         <!-- <view class="morewel t-a-c">更多领取福利</view> -->
 

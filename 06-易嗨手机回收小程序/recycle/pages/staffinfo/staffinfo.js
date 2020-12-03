@@ -20,8 +20,9 @@ Page({
   },
   // 初始化数据
   init(){
-    // 获取工作人员二维码
+    //工作人员id
     let staffid = wx.getStorageSync('staffid');
+    // 获取工作人员二维码
     util.post('/api/user/getStaffInfo', {staffid}).then(res=>{
       console.log(res);
       res.data.avatar = util.getImageFullUrl(res.data.avatar);
@@ -34,7 +35,6 @@ Page({
         staffInfo: res.data
       });
     });
-
     
 
   },
@@ -58,6 +58,7 @@ Page({
   onShow: function () {
     // 工作人员订单
     let staffid = wx.getStorageSync('staffid');
+    // 待处理订单
     util.post('/api/order/staffOrderList', {
       orderstatus: 0,
       staffid
@@ -67,7 +68,7 @@ Page({
       });
     });
 
-    
+    // 待估价订单
     util.post("/api/order/assessOrderList", {
       staffid
     }).then(res=>{
@@ -75,6 +76,17 @@ Page({
         evaluationCount: res.data.length
       });
     });
+
+    // 已验机订单
+    util.post('/api/order/staffOrderList', {
+      orderstatus: 1,
+      staffid
+    }).then(res=>{
+      that.setData({
+        checkedCount: res.data.length
+      });
+    });
+
   },
 
   /**

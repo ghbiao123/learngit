@@ -51,6 +51,13 @@ Page({
     });
 
   },
+  // 查看验机报告
+  getQualityReport(e){
+    let ordersn = e.currentTarget.dataset.ordersn;
+    wx.navigateTo({
+      url: '/pages/qualityreport/qualityreport?ordersn=' + ordersn,
+    });
+  },
   // 确认订单
   confirmOrder(){
     let data = {};

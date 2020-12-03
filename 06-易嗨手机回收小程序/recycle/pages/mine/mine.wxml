@@ -37,12 +37,14 @@
 				<view class="order-step-item">
 					<image class="order-icon" src="/images/main2.png"></image>
 					<view class="order-name">待验机</view>
+					<view wx:if="{{waitCheckCount > 0}}" class="dot">{{waitCheckCount}}</view>
 				</view>
 			</navigator>
 			<navigator hover-class="line-hover" url="/pages/stafforderlist/stafforderlist?type=check">
 				<view class="order-step-item">
 					<image class="order-icon" src="/images/main3.png"></image>
 					<view class="order-name">待付款</view>
+					<view wx:if="{{waitPayCount > 0}}" class="dot">{{waitPayCount}}</view>
 				</view>
 			</navigator>
 			<navigator hover-class="line-hover" url="/pages/stafforderlist/stafforderlist?type=done">
@@ -75,7 +77,7 @@
 			<view class="cell-item">
 				<view class="cell-lt">
 					<image mode="aspectFit" class="cell-icon" src="/images/main-coupon.png"></image>
-					<view>回收加价卷</view>
+					<view>我的加价券</view>
 				</view>
 				<image class="cell-rt" src="/images/rt2.png"></image>
 			</view>

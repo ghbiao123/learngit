@@ -86,7 +86,6 @@ Page({
   // tab selected
   tabSelected(e){
     let selected = e.currentTarget.dataset.id;
-    console.log(selected);
     this.setData({
       selected
     });
@@ -125,8 +124,16 @@ Page({
       let len = 0;
       if(type == 'add'){
         // 领取加价券数据处理
-        list = res.data;
+        list = res.data.map(v=>{
+          v.udo = v.id == 2 ? 0 : 1;
+          v.markupcoupon = v.markupcoupon.map(val=>{
+            val.title = v.title
+            return val;
+          });
+          return v;
+        });
         len = list.length;
+        console.log(list);
         // list = res.data.map(v=>{
         //   v.validstime_text = v.validstime_text.replace(/\-/g, "\/");
         //   v.validetime_text = v.validetime_text.replace(/\-/g, "\/");

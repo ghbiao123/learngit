@@ -1,0 +1,6 @@
+/* pages/waitdeliverdetail/waitdeliverdetail.wxss */
+.cell-item{
+  padding: 10rpx 0;
+  line-height: 50rpx;
+  height: 50rpx;
+}

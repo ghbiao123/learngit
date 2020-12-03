@@ -6,7 +6,7 @@
       <view class="price-txt">加价券</view>
     </view>
     <view class="info">
-      <view class="info-introduce">易嗨机{{item.par_value}}元加价券</view>
+      <view class="info-introduce">{{item.title}}{{item.par_value}}元加价券</view>
       <view class="info-condition">满{{item.limit_price}}可用</view>
       <view wx:if="{{item.etime}}" class="info-time">{{item.etime}} - {{item.stime}}</view>
     </view>

@@ -1,6 +1,11 @@
 <block wx:for="{{list}}" wx:key="index">
   <view class="order-list">
-    <view class="title">机器信息</view>
+    <view class="title">
+      <view>机器信息</view>
+      <!-- <button wx:if="{{item.order_status==2 || item.order_status==1}}" data-ordersn="{{item.order_sn}}"
+        bindtap="getQualityReport" class="button-clear">查看验机报告</button> -->
+
+    </view>
     <view class="project" hover-class="projec-hover" data-id="{{item.id}}" bindtap="getDetail">
       <view class="project-image" hidden>
         <!-- 没有图片，待确认 -->
@@ -37,7 +42,7 @@
         class="button-clear">确认发货</button>
     </block>
 
-    <button wx:if="{{item.order_status==2 || item.order_status==1}}" data-ordersn="{{item.order_sn}}" bindtap="getQualityReport" class="button-clear m-t-20">查看验机报告</button>
+    <button hover-class="btn-hov" wx:if="{{item.order_status==2 || item.order_status==1}}" data-ordersn="{{item.order_sn}}" bindtap="getQualityReport" class="button-clear">查看验机报告</button>
 
     <view class="title">订单信息</view>
     <view class="order">

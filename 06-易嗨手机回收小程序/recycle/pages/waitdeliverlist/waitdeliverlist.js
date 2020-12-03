@@ -1,12 +1,13 @@
-// pages/manualresult/manualresult.js
+// pages/waitdeliverlist/waitdeliverlist.js
 let that;
+let util = require("../../utils/util");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    btnText:"查询估价列表",
+
   },
 
   /**
@@ -15,24 +16,16 @@ Page({
   onLoad: function (options) {
     that = this;
 
-    // this.init();
   },
-  init(){
-    let t = 5;
-    let timer = setInterval(function(){
-      t--;
-      if(t<0){
-        clearInterval(timer);
-        wx.redirectTo({
-          url: '/pages/recyclelist/recyclelist',
-        });
-        return;
-      }
-      let str = `${t}s后跳转我的估价列表`;
-      that.setData({
-        btnText: str
-      });
-    }, 1000);
+  // 跳转详情
+  getDetail(e){
+    let id = e.currentTarget.dataset.id;
+
+    wx.navigateTo({
+      url: '/pages/waitdeliverdetail/waitdeliverdetail?id=' + id,
+    });
+
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -1,0 +1,18 @@
+<view class="cell-card">
+  <textarea 
+    class="textarea" 
+    bindinput="textareaInput"
+    placeholder="请输入备注内容"
+    value="{{textarea}}"
+    ></textarea>
+    <button class="button-clear m-t-20">提交</button>
+</view>
+
+<view class="cell-card">
+  <block wx:for="000" wx:key="index">
+    <view class="time">2020年12月3日15:33:55</view>
+    <view class="cell-item">
+      这是一条备注这是一条备注这是一条备注这是一条备注这是一条备注这是一条备注
+    </view>
+  </block>
+</view>

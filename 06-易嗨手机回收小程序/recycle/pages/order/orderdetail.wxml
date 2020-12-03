@@ -130,7 +130,7 @@
 	
 	<!-- 查看验机报告 -->
   <view wx:if="{{detail.order_status == 1 || detail.order_status == 2}}" class="button m-t-20">
-    <button bindtap="cancelOrder" class="button-clear" hover-class="btn-hover">查看验机报告</button>
+    <button bindtap="getQualityReport" data-ordersn="{{detail.order_sn}}" class="button-clear" hover-class="btn-hover">查看验机报告</button>
 	</view>
 	<!-- 上门单 -->
   <view wx:if="{{detail.recovery_type == 1 && detail.order_status == 0}}" class="button m-t-20">

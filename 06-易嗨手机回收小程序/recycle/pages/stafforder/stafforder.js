@@ -344,7 +344,7 @@ Page({
         userid: order.user_id,
         pricevalue: order.estimate_fee
       }).then(res => {
-        order.coupon_fee = res.data.cinfo.par_value;
+        order.coupon_fee = res.data.cinfo.par_value || 0;
         order.total_amount = (Number(order.estimate_fee) + Number(order.coupon_fee)).toFixed(2);
 
         let cstr = '';
