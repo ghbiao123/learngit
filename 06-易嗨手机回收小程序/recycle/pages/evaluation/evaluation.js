@@ -225,6 +225,12 @@ Page({
             if(ret.code == -3){
               return util.showSuccess(ret.msg);
             }
+            let userInfo = wx.getStorageSync('userinfo');
+            userInfo.phonestatus = 1;
+            wx.setStorage({
+              data: userInfo,
+              key: 'userinfo',
+            });
             wx.setStorage({
               data: ret.data,
               key: 'currentphone',
@@ -247,8 +253,8 @@ Page({
     }
   },
   // 选择选项
-  radioChange(e) {
-
+  radioChange(event) {
+    let e = event.detail;
     let val = e.detail.value;
     let id = e.currentTarget.dataset.id;
     if (val.indexOf('none') >= 0) {

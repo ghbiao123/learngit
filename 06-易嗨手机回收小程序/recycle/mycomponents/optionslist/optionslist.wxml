@@ -1,0 +1,41 @@
+  <view class="cont">
+
+    <!-- 遍历设备的配置信息 -->
+    <block wx:for="{{arrConfig}}" wx:key="index">
+      <view class="tit-no-bg">{{index + 1}}.{{item.title}}</view>
+      <view class="cell-card" hidden="{{!arrSelected[index].isShow}}">
+        <radio-group data-idx="{{index}}" data-id="{{item.name}}" bindchange="radioChange">
+          <radio wx:for="{{item.data}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+        </radio-group>
+      </view>
+    </block>
+
+    <!-- 遍历设备其他的描述信息 -->
+    <block wx:for="{{arrOther}}" wx:key="index">
+
+      <view hidden="{{ index + currentIndex + 1 > hideCode}}">
+        <view class="tit-no-bg">
+          {{index + currentIndex +1}}.{{item.name}}
+        </view>
+
+        <view class="cell-card" hidden="{{!arrSelected[index+ currentIndex].isShow}}">
+          <block wx:if="{{index != _data.other.length-1}}">
+            <radio-group data-idx="{{index + currentIndex}}" data-id="{{index}}" bindchange="radioChange">
+              <radio wx:for="{{item.inquiryinfo}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+                color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+            </radio-group>
+          </block>
+          <block wx:else>
+            <checkbox-group data-id="{{index}}" bindchange="radioChange">
+              <checkbox wx:for="{{item.inquiryinfo}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+                color="#C7402C" value="{{itm.id}}" checked="{{arrChecked[idx]}}">{{itm.name}}</checkbox>
+            </checkbox-group>
+          </block>
+        </view>
+
+      </view>
+
+    </block>
+
+  </view>

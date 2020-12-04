@@ -13,7 +13,17 @@
 
     <view class="cell-card m-t-20">小提示：选择结果与实际相符，有利于加快您的回收进度。</view>
 
-    <view wx:if="{{type == 'mobile'}}" class="cont">
+    <optionlist 
+      arrConfig="{{arrConfigOption}}" 
+      arrOther="{{_data.other}}"
+      currentIndex="{{currentIndex}}"
+      hideCode="{{hideCode}}"
+      arrChecked="{{arrChecked}}"
+      arrSelected="{{arrSelected}}"
+      bind:radioChange="radioChange"
+      ></optionlist>
+
+    <view wx:if="{{type == '1mobile'}}" class="cont">
 
       <!-- 遍历手机设备的配置信息 -->
       <block wx:for="{{arrConfigOption}}" wx:key="index">

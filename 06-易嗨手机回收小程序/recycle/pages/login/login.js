@@ -22,7 +22,8 @@ Page({
     e.detail.agentid = this.data.agentid ? this.data.agentid : 0;
     util.getUserInfo(e, function(res){
       if(res.code == 1){
-        util.showSuccess('登录成功', function(){
+        let msg = res.data.couponmsg || "登录成功";
+        util.showSuccess( msg, function(){
           if(that.data.agentid){
             wx.reLaunch({
               url: '/pages/index/index',
