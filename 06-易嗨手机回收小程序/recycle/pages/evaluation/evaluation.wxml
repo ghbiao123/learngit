@@ -8,10 +8,12 @@
       </view>
       <!-- <image mode="aspectFit" class="image" src="{{_data.image}}"></image> -->
       <view class="name">{{_data.name}}</view>
+
+      <view class="cell-card m-t-20 t-a-l">小提示：选择结果与实际相符，有利于加快您的回收进度。</view>
+
     </view>
 
 
-    <view class="cell-card m-t-20">小提示：选择结果与实际相符，有利于加快您的回收进度。</view>
 
     <optionlist 
       arrConfig="{{arrConfigOption}}" 
@@ -21,6 +23,7 @@
       arrChecked="{{arrChecked}}"
       arrSelected="{{arrSelected}}"
       bind:radioChange="radioChange"
+      scrollHeight="{{scrollHeight}}"
       ></optionlist>
 
     <view wx:if="{{type == '1mobile'}}" class="cont">
@@ -90,7 +93,7 @@
 
     </view>
 
-    <view wx:if="{{type == 'pc'}}" class="cont">
+    <view wx:if="{{type == '1pc'}}" class="cont">
 
       <!-- 遍历computer设备的配置信息 -->
       <block wx:for="{{arrConfigOption}}" wx:key="index">

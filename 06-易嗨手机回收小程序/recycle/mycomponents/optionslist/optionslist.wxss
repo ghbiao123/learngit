@@ -1,4 +1,10 @@
 /* 白色卡片 */
+.scroll{
+  width: 750rpx;
+}
+.cont{
+  padding-bottom: 20rpx;
+}
 .cell-card{
   margin: 20rpx auto 0;
   width: 670rpx;
@@ -8,12 +14,33 @@
 }
 .tit-no-bg{
   display: flex;
+  justify-content: space-between;
   margin: 0 auto;
   width: 710rpx;
   height: 75rpx;
   line-height: 75rpx;
   font-size: 35rpx;
   font-weight: bold;
+}
+
+.title-selected{
+  display: flex;
+  color: #999;
+  font-size: 24rpx;
+}
+.title-selected-value{
+  padding-right: 20rpx;
+}
+
+.title-selected-change{
+  padding-top: 15rpx;
+}
+.change-btn{
+  padding: 5rpx 10rpx;
+  height: 35rpx;
+  line-height: 35rpx;
+  border: 1rpx solid #999;
+  border-radius: 5rpx;
 }
 
 .radio{

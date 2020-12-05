@@ -127,7 +127,7 @@
 
 .order-input{
   margin-left: 20rpx;
-  width: 485rpx;
+  width: 560rpx;
   height: 100rpx;
   line-height: 100rpx;
 }

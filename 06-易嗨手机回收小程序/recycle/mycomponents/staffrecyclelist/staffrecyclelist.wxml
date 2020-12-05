@@ -11,12 +11,12 @@
           <view class="name">{{item.model_info.name}}</view>
           <view
             class="state {{item.order_status==0||item.order_status==1?'state-red':''}}{{item.order_status==2?'state-green':''}}{{item.order_status==3?'state-gray':''}}">
-            {{item.order_status==0&&item.recovery_type==1?'待验机':''}}
-            {{item.order_status==0&&item.recovery_type==2?'待发货':''}}
+            {{item.order_status==0 || item.order_status==4 ? '待验机':''}}
+            <!-- {{item.order_status==0&&item.recovery_type==2?'待发货':''}} -->
             {{item.order_status==1?'待付款':''}}
             {{item.order_status==2?'订单完成':''}}
             {{item.order_status==3?'订单取消':''}}
-            {{item.order_status==4?'已发货':''}}
+            <!-- {{item.order_status==4?'已发货':''}} -->
           </view>
         </view>
         <!-- <view class="info ellipsis-text">{{item.model_info.cinfo? item.model_info.cinfo:''}}</view> -->
@@ -36,13 +36,13 @@
             <image hidden class="express-icon" src="/images/co-s.png"></image>
             <view>备注</view>
             <view>
-              <navigator hover-class="none" url="/pages/remarklist/remarklist?ordersn={{item.order_sn}}">
-                <input bindinput="remarkInput" disabled value="{{item.remark}}" class="order-input"
-                placeholder="请输入备注"></input>
+              <navigator hover-class="none" url="/pages/remarklist/remarklist?orderid={{item.id}}">
+                <input bindinput="remarkInput" disabled value="{{item.staff_remark}}" class="order-input"
+                placeholder="请填写备注"></input>
               </navigator>
             </view>
             <button hidden bindtap="confirmRemark" data-id="{{item.id}}" class="button-clear btn-confirm">确认</button>
-            <image hidden class="scan-icon" src="/images/scan.png"></image>
+            <image class="scan-icon" mode="aspectFit" src="/images/rt2.png"></image>
           </view>
           <!-- <button wx:if="{{ !item.c_no && (item.recovery_type==2) }}" data-idx="{{index}}" bindtap="confirmExpressOrder"
             class="button-clear">确认发货</button> -->

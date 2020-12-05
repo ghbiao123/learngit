@@ -2,6 +2,9 @@
 let util = require("../../utils/util");
 let that;
 let _key;
+
+let calculateHeight = require("../../utils/calculateHeight");
+
 Page({
 
   /**
@@ -49,6 +52,7 @@ Page({
     // init 
     this.init();
 
+    
   },
 
   // 删除图片
@@ -183,16 +187,26 @@ Page({
       let progressData = that.data.progressData;
       progressData.all = _data.other.length + currentIndex;
 
-      that.setData({
-        type: this.data.type,
-        _data,
-        progressData,
-        hideCode: progressData.all,
-        isUpdateImage,
-        arrChecked,
-        arrConfigOption,
-        currentIndex,
+      calculateHeight.calculateHeight().then(res=>{
+        console.log(res);
+        let scrollHeight = res;
+        that.setData({
+          type: this.data.type,
+          _data,
+          progressData,
+          hideCode: progressData.all,
+          isUpdateImage,
+          arrChecked,
+          arrConfigOption,
+          currentIndex,
+          scrollHeight,
+        });
+
       });
+
+      
+
+
     });
 
   },

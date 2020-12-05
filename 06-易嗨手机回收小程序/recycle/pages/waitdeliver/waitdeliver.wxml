@@ -17,7 +17,9 @@
         </checkbox>
       </view>
     </checkbox-group>
+    <view wx:if="{{list.length == 0}}" class="tit-no-bg t-a-c m-t-20">暂无数据</view>
   </scroll-view>
+
 
 
   <!-- submit -->

@@ -1,8 +1,22 @@
-  <view class="cont">
+<scroll-view class="scroll" scroll-y style="height: {{scrollHeight}}rpx;">
+
+ <view class="cont">
 
     <!-- 遍历设备的配置信息 -->
     <block wx:for="{{arrConfig}}" wx:key="index">
-      <view class="tit-no-bg">{{index + 1}}.{{item.title}}</view>
+      <view class="tit-no-bg">
+        <view>
+          {{index + 1}}.{{item.title}}
+        </view>
+        <view hidden="{{!arrSelected[index].value}}" class="title-selected">
+          <view class="title-selected-value">
+            {{arrSelected[index].value}}
+          </view>
+          <view class="title-selected-change">
+            <view data-idx="{{index}}" bindtap="changeConfig" class="change-btn">修改</view>
+          </view>
+        </view>
+      </view>
       <view class="cell-card" hidden="{{!arrSelected[index].isShow}}">
         <radio-group data-idx="{{index}}" data-id="{{item.name}}" bindchange="radioChange">
           <radio wx:for="{{item.data}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
@@ -39,3 +53,4 @@
     </block>
 
   </view>
+</scroll-view>

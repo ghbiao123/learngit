@@ -135,6 +135,11 @@ image{
   text-align: center;
 }
 
+/* 文字居左 */
+.t-a-l{
+  text-align: left;
+}
+
 /* 文字不换行，超出隐藏 */
 .ellipsis-text{
   white-space: nowrap;
