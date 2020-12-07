@@ -139,7 +139,7 @@
 }
 
 .msg{
-  width: 480rpx;
+  width: 650rpx;
   font-size: 24rpx;
   color: #888888;
   line-height: 2;

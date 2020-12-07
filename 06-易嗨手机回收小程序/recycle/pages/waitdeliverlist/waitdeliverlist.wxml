@@ -1,12 +1,12 @@
-<view class="cell-card" bindtap="getDetail" data-id="{{item}}" wx:for="0000" wx:key="index">
+<view class="cell-card" bindtap="getDetail" data-id="{{item.id}}" wx:for="{{list}}" wx:key="index">
   <view class="cell-item">
     <view class="index">{{index + 1}}.</view>
     <view class="cont">
-      <view>2020年12月3日16:07:37</view>
-      <view>自行配送 2020120314024414</view>
+      <view>{{item.createtime}}</view>
+      <view>{{item.delivery_type_text}} {{item.c_no}}</view>
     </view>
     <view class="status">
-      已签收
+      {{item.status}}
     </view>
   </view>
 </view>

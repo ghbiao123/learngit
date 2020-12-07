@@ -1,4 +1,6 @@
 // pages/waitdeliverdetail/waitdeliverdetail.js
+let that;
+let util = require("../../utils/util");
 Page({
 
   /**
@@ -12,7 +14,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    that = this;
+    let stockid = options.stockid;
+    util.post("/api/order/deliveryOrdersDetail", {
+      stockid
+    }).then(res=>{
+      console.log(res);
+    });
   },
 
   /**

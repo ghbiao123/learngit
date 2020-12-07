@@ -46,21 +46,21 @@
 	</view>
 
 	<view class="cell-card express">
-    <view class="cell-item">订单信息</view>
-    <view class="order">
-      <view class="order-info">
-        <view class="order-name">订单编号：</view>
-        <view class="order-value">
-          <view style="padding-right:20rpx;">{{detail.order_sn}}</view>
-          <view class="copy" data-text="{{detail.order_sn}}" bindtap="copyText">复制</view>
-        </view>
-      </view>
-      <view class="order-info">
-        <view class="order-name">下单时间</view>
-        <view class="order-value">{{detail.createtime}}</view>
-      </view>
-    </view>
-  </view>
+		<view class="cell-item">订单信息</view>
+		<view class="order">
+			<view class="order-info">
+				<view class="order-name">订单编号：</view>
+				<view class="order-value">
+					<view style="padding-right:20rpx;">{{detail.order_sn}}</view>
+					<view class="copy" data-text="{{detail.order_sn}}" bindtap="copyText">复制</view>
+				</view>
+			</view>
+			<view class="order-info">
+				<view class="order-name">下单时间</view>
+				<view class="order-value">{{detail.createtime}}</view>
+			</view>
+		</view>
+	</view>
 
 	<view wx:if="{{detail.recovery_type==2}}" class="cell-card">
 		<view class="cell-item">
@@ -86,7 +86,8 @@
 		<view wx:if="{{detail.c_no}}" class="cell-item">
 			<image class="express-icon" src="/images/co-s.png"></image>
 			<view>快递单号</view>
-			<view><input bindinput="expressNumberInput" disabled value="{{detail.c_no}}" class="order-input" placeholder="请输入物流单号"></input></view>
+			<view><input bindinput="expressNumberInput" disabled value="{{detail.c_no}}" class="order-input"
+					placeholder="请输入物流单号"></input></view>
 			<image hidden class="scan-icon" src="/images/scan.png"></image>
 		</view>
 
@@ -103,43 +104,47 @@
 
 	</view>
 
-  <view class="cell-card">
-    <view class="cell-item">机器信息</view>
-    <view class="project-info">
-		<!-- 没有图片， 待确认 -->
-      <!-- <image class="project-image" mode="aspectFit" src="{{'/images/contact.png'}}"></image> -->
+	<view class="cell-card">
+		<view class="cell-item">机器信息</view>
+		<view class="project-info">
+			<!-- 没有图片， 待确认 -->
+			<!-- <image class="project-image" mode="aspectFit" src="{{'/images/contact.png'}}"></image> -->
 			<view class="info" style="width: 670rpx;">
-        <view class="name">
-          <view>{{detail.model_info.name}}</view>
+				<view class="name">
+					<view>{{detail.model_info.name}}</view>
 					<view hidden style="font-size:24rpx; color: #C7402C;">待邮寄</view>
-					<view class="state {{detail.order_status==0||detail.order_status==1?'state-red':''}}{{detail.order_status==2?'state-green':''}}{{detail.order_status==3?'state-gray':''}}">
+					<view
+						class="state {{detail.order_status==0||detail.order_status==1?'state-red':''}}{{detail.order_status==2?'state-green':''}}{{detail.order_status==3?'state-gray':''}}">
 						{{item.order_status==0 && item.recovery_type==1?'待验机':''}}
-            {{item.order_status==0 && item.recovery_type==2?'待发货':''}}
-            {{item.order_status==1?'待付款':''}}
-            {{item.order_status==2?'订单完成':''}}
-            {{item.order_status==3?'订单取消':''}}
-            {{item.order_status==4?'已发货':''}}
-          </view>
-        </view>
-        <view class="msg">{{detail.model_info.cinfo? detail.model_info.cinfo : ''}}</view>
-        <view class="msg">预估价：￥{{detail.total_amount}}</view>
-        <view class="msg">{{detail.model_info.des? detail.model_info.des : ''}}</view>
-      </view>
-    </view>
+						{{item.order_status==0 && item.recovery_type==2?'待发货':''}}
+						{{item.order_status==1?'待付款':''}}
+						{{item.order_status==2?'订单完成':''}}
+						{{item.order_status==3?'订单取消':''}}
+						{{item.order_status==4?'已发货':''}}
+					</view>
+				</view>
+				<view class="msg">{{detail.model_info.cinfo? detail.model_info.cinfo : ''}}</view>
+				<view class="msg">{{detail.model_info.des? detail.model_info.des : ''}}</view>
+				<view class="msg">
+					<realprice status="{{detail.order_status}}" price="{{detail.total_amount}}"></realprice>
+				</view>
+			</view>
+		</view>
 	</view>
-	
+
 	<!-- 查看验机报告 -->
-  <view wx:if="{{detail.order_status == 1 || detail.order_status == 2}}" class="button m-t-20">
-    <button bindtap="getQualityReport" data-ordersn="{{detail.order_sn}}" class="button-clear" hover-class="btn-hover">查看验机报告</button>
+	<view wx:if="{{detail.order_status == 1 || detail.order_status == 2}}" class="button m-t-20">
+		<button bindtap="getQualityReport" data-ordersn="{{detail.order_sn}}" class="button-clear"
+			hover-class="btn-hover">查看验机报告</button>
 	</view>
 	<!-- 上门单 -->
-  <view wx:if="{{detail.recovery_type == 1 && detail.order_status == 0}}" class="button m-t-20">
-    <button bindtap="cancelOrder" class="btn" hover-class="cancel-hover">取消订单</button>
+	<view wx:if="{{detail.recovery_type == 1 && detail.order_status == 0}}" class="button m-t-20">
+		<button bindtap="cancelOrder" class="btn" hover-class="cancel-hover">取消订单</button>
 	</view>
 	<!-- 快递单 -->
-  <view wx:if="{{detail.recovery_type == 2 && detail.order_status == 0}}" class="button m-t-20">
-    <button bindtap="cancelOrder" class="btn" hover-class="cancel-hover">取消订单</button>
-    <button bindtap="confirmOrder" class="btn" hover-class="btn-hover">确认发货</button>
-  </view>
+	<view wx:if="{{detail.recovery_type == 2 && detail.order_status == 0}}" class="button m-t-20">
+		<button bindtap="cancelOrder" class="btn" hover-class="cancel-hover">取消订单</button>
+		<button bindtap="confirmOrder" class="btn" hover-class="btn-hover">确认发货</button>
+	</view>
 
 </view>

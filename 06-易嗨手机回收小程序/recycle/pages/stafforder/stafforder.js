@@ -41,8 +41,12 @@ Page({
     }).then(res => {
       console.log(res);
       that.data.order = res.data;
+      let order = res.data;
+      order.coupon_fee = order.coupon_fee ? order.coupon_fee * 1 : 0;
+      order.estimate_fee = order.estimate_fee ? order.estimate_fee * 1 : 0;
+      order.total_amount = order.total_amount ? order.total_amount * 1 : 0;
       that.setData({
-        order: res.data
+        order
       });
 
     });

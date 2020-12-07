@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    page: 1,
+    list: []
   },
 
   /**
@@ -16,13 +17,38 @@ Page({
   onLoad: function (options) {
     that = this;
 
+    this.init();
+
+  },
+  // init
+  init(){
+    let staffid = wx.getStorageSync('staffid');
+    let page = this.data.page;
+    util.post("/api/order/deliveryOrdersList", {
+      staffid,
+      page
+    }).then(res=>{
+      console.log(res);
+      let list = that.data.list;
+      let data = res.data.data.map(v=>{
+        let t = util.getToday(v.createtime);
+        v.createtime = t.date + " " + t.time;
+        v.c_no = v.c_no ? v.c_no : " ";
+        return v;
+      });
+      list.push(...data);
+      that.setData({
+        list
+      });
+    });
+
   },
   // 跳转详情
   getDetail(e){
     let id = e.currentTarget.dataset.id;
 
     wx.navigateTo({
-      url: '/pages/waitdeliverdetail/waitdeliverdetail?id=' + id,
+      url: '/pages/waitdeliverdetail/waitdeliverdetail?stockid=' + id,
     });
 
 

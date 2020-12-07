@@ -100,6 +100,14 @@ Page({
       let list = res.data.map(v=>{
         let t = util.getToday(v.createtime * 1000);
         v.createtime = t.date + ' ' + t.time;
+        v.total_amount = v.total_amount ? v.total_amount * 1: 0;
+        v.coupon_fee = v.coupon_fee ? v.coupon_fee * 1: 0;
+        v.estimate_fee = v.estimate_fee ? v.estimate_fee * 1: 0;
+        v.stafforderinfo.change_fee = v.stafforderinfo.change_fee ? v.stafforderinfo.change_fee * 1: 0;
+        v.stafforderinfo.coupon_fee = v.stafforderinfo.coupon_fee ? v.stafforderinfo.coupon_fee * 1: 0;
+        v.stafforderinfo.estimate_fee = v.stafforderinfo.estimate_fee ? v.stafforderinfo.estimate_fee * 1: 0;
+        v.stafforderinfo.total_amount = v.stafforderinfo.total_amount ? v.stafforderinfo.total_amount * 1: 0;
+        
         if(v.model_info.image){
           v.model_info.image = util.getImageFullUrl(v.model_info.image);
         }else{

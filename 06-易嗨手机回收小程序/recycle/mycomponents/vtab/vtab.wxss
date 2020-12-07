@@ -14,7 +14,7 @@
 
 .vtab-list-item{
   width: 100%;
-  height: 110rpx;
+  height: 80rpx;
   line-height: 110rpx;
   text-align: center;
   font-size: 28rpx;
@@ -39,7 +39,7 @@
   display: flex;
   padding: 10rpx 0;
   width: 550rpx;
-  height: 100rpx;
+  height: 80rpx;
 }
 .bg-w{
   background-color: #fff;
@@ -74,13 +74,13 @@
 }
 .vtab-cont-list-info{
   width: 350rpx;
-  height: 100rpx;
+  height: 80rpx;
 }
 .vtab-cont-list-info-name{
   font-size: 30rpx;
   font-weight: bold;
   text-indent: 20rpx;
-  line-height: 100rpx;
+  line-height: 80rpx;
 }
 /* .l-h-100{
   line-height: 100rpx;
@@ -98,7 +98,7 @@
   white-space: nowrap;
 }
 .vtab-cont-list-icon{
-  margin-top: 34rpx;
+  margin-top: 24rpx;
   width: 32rpx;
   height: 32rpx;
 }

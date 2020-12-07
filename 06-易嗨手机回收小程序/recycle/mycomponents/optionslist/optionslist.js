@@ -31,7 +31,8 @@ Component({
       value: 0,
       observer(newVal){
         this.setData({
-          hideCode: newVal
+          hideCode: newVal,
+          idx: this.data.idx
         });
       }
     },
@@ -98,18 +99,26 @@ Component({
       let idx = e.currentTarget.dataset.idx;
       this.showValue(idx, id);
 
+      let viewId = idx;
+      this.setData({
+        idx: viewId
+      });
+
       // 向父组件传递数据
       this.triggerEvent("radioChange", e);
     },
+    // 显示所选内容
     showValue(idx, id){
 
-      // typeof item => Array
-      let item = this.data.arrData[idx];
+      if(idx == this.data.arrData.length - 1) return;
+
+      // item => 当前所选选项
+      let item = this.data.arrData[idx].filter(v=>{
+        return v.id == id
+      })[0];
       
       let arrSelected = [...this.data.arrSelected];
-      arrSelected[idx].value = item.filter(v=>{
-        return v.id == id
-      })[0].name;
+      arrSelected[idx].value = item.name;
       arrSelected[idx].isShow = false;
 
       this.setData({
@@ -117,6 +126,7 @@ Component({
       });
       
     },
+    // 修改配置按钮
     changeConfig(e){
       let idx = e.currentTarget.dataset.idx;
       let arrSelected = this.data.arrSelected;

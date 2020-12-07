@@ -25,7 +25,10 @@
           </view>
         </view>
         <view class="info ellipsis-text">{{item.model_info.cinfo ? item.model_info.cinfo: ''}}</view>
-        <view class="info">预估价：¥{{item.total_amount}}</view>
+        <!-- <view hidden class="info">预估价：¥{{item.total_amount}}</view> -->
+        <view class="info">
+          <realprice status="{{item.order_status}}" price="{{item.total_amount}}"></realprice>
+        </view>
       </view>
     </view>
 

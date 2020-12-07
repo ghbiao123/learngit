@@ -48,7 +48,8 @@
     "pages/remarklist/remarklist"
   ],
   "usingComponents": {
-    "btntopage": "/mycomponents/btntopage/btntopage"
+    "btntopage": "/mycomponents/btntopage/btntopage",
+    "realprice": "/mycomponents/realprice/realprice"
   },
   "tabBar": {
     "color": "#cccccc",

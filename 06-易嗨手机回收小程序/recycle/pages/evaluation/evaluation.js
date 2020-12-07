@@ -335,10 +335,12 @@ Page({
       this.data.winConfigId[id] = val;
     }
 
+    // 设置所选。分子
     progressData.chose = Object.keys(this.data.reqData).length - 2 + Object.keys(this.data.reqData.inquiryinfo).length;
     if (!this.data.reqData.inquiryinfo.last) {
       progressData.chose--
     }
+    progressData.chose = Math.min(progressData.chose, progressData.all)
     let progress = util.getToPersent(progressData.chose / progressData.all);
 
     this.setData({

@@ -27,9 +27,14 @@
   display: flex;
   color: #999;
   font-size: 24rpx;
+  font-weight: normal;
 }
 .title-selected-value{
   padding-right: 20rpx;
+  max-width: 200rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .title-selected-change{
