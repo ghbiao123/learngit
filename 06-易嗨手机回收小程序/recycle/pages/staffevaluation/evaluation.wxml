@@ -11,9 +11,19 @@
       <view class="cell-card t-a-l m-t-20">小提示：选择结果与实际相符，有利于加快您的回收进度。</view>
     </view>
 
+    <staffoptionlist 
+      arrConfig="{{arrConfigOption}}" 
+      arrOther="{{_data.other}}" 
+      currentIndex="{{currentIndex}}"
+      hideCode="{{hideCode}}" 
+      arrChecked="{{arrChecked}}" 
+      arrSelected="{{arrSelected}}" 
+      bind:radioChange="radioChange"
+      scrollHeight="{{scrollHeight}}" 
+      key="{{_key}}"></staffoptionlist>
 
 
-    <view wx:if="{{type == 'mobile'}}" class="cont">
+    <view wx:if="{{type == '1mobile'}}" class="cont">
 
       <!-- 遍历手机设备的配置信息 -->
       <block wx:for="{{arrConfigOption}}" wx:key="index">
@@ -80,7 +90,7 @@
 
     </view>
 
-    <view wx:if="{{type == 'pc'}}" class="cont">
+    <view wx:if="{{type == '1pc'}}" class="cont">
 
       <!-- 遍历computer设备的配置信息 -->
       <block wx:for="{{arrConfigOption}}" wx:key="index">
@@ -183,17 +193,16 @@
 
 
 
-    <view wx:if="{{!isLogin}}" class="button">
+    <!-- <view wx:if="{{!isLogin}}" class="button">
       <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="button-clear m-t-20"
         hover-class="btn-hover">立即估价</button>
     </view>
     <view wx:elif="{{isLogin && (userInfo.phonestatus == 0)}}" class="button">
       <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNum" class="button-clear m-t-20"
         hover-class="btn-hover">立即估价</button>
-    </view>
-    <view wx:else="{{isLogin && (userInfo.phonestatus == 1)}}" class="button">
-      <button bindtap="getResult" class="button-clear m-t-20"
-        hover-class="btn-hover">立即估价</button>
+    </view> -->
+    <view class="button">
+      <button bindtap="getResult" class="button-clear m-t-20" hover-class="btn-hover">提交</button>
     </view>
     
 
@@ -201,5 +210,5 @@
   </view>
 </view>
 
-<mp-actionSheet bindactiontap="getResult" show="{{showActionsheet}}" actions="{{groups}}">
-</mp-actionSheet>
+<!-- <mp-actionSheet bindactiontap="getResult" show="{{showActionsheet}}" actions="{{groups}}">
+</mp-actionSheet> -->

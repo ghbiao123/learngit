@@ -46,9 +46,22 @@ Component({
         return v.id == id;
       });
       if(data[0].order_status == 0 ){
-        wx.navigateTo({
-          url: '/pages/stafforder/stafforder?id=' + id,
+
+        wx.setStorage({
+          data: data[0],
+          key: 'staffmachine',
+          success(res){
+            wx.navigateTo({
+              // id=>mid,cid=>cid,orderid=>orderid
+              url: `/pages/staffevaluation/evaluation?id=${data[0].m_id}&cid=${data[0].c_id}&orderid=${data[0].id}`,
+            });
+          }
         });
+
+
+        // wx.navigateTo({
+        //   url: '/pages/stafforder/stafforder?id=' + id,
+        // });
       }
       if(data[0].order_status == 1){
         wx.redirectTo({

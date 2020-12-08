@@ -21,7 +21,19 @@
       </view>
     </view>
 
-    <block wx:for="{{_data}}" wx:key="index">
+      <!-- 
+        arrSelected="{{arrSelected}}" 
+        currentIndex="{{currentIndex}}"
+      -->
+    <optionlist 
+      arrOther="{{_data}}"
+      arrChecked="{{arrChecked}}"
+      bind:radioChange="radioChange"
+      scrollHeight="{{scrollHeight}}"
+      key="{{_key}}"
+      ></optionlist>
+
+    <!-- <block wx:for="{{_data}}" wx:key="index">
 
       <view>
         <view class="tit-no-bg">
@@ -45,9 +57,7 @@
 
       </view>
 
-    </block>
-
-
+    </block> -->
 
     <view class="button">
       <button bindtap="getResult" class="button-clear m-t-20" hover-class="btn-hover">立即估价</button>

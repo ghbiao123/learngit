@@ -125,7 +125,7 @@ Page({
       if(type == 'add'){
         // 领取加价券数据处理
         list = res.data.map(v=>{
-          v.udo = v.id == 2 ? 0 : 1;
+          // v.udo = v.id == 2 ? 0 : 1;
           v.markupcoupon = v.markupcoupon.map(val=>{
             val.title = v.title
             return val;

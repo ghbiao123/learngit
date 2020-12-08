@@ -58,34 +58,45 @@ Page({
   onShow: function () {
     // 工作人员订单
     let staffid = wx.getStorageSync('staffid');
-    // 待处理订单
-    util.post('/api/order/staffOrderList', {
-      orderstatus: 0,
-      staffid
-    }).then(res=>{
+    
+    util.post('/api/order/staffOrderCount', {staffid}).then(res=>{
+      console.log(res);
       that.setData({
-        count: res.data.length
+        count: res.data.c1,
+        evaluationCount: res.data.c3,
+        checkedCount: res.data.c2,
       });
     });
+    
+
+    // 待处理订单
+    // util.post('/api/order/staffOrderList', {
+    //   orderstatus: 0,
+    //   staffid
+    // }).then(res=>{
+    //   that.setData({
+    //     count: res.data.length
+    //   });
+    // });
 
     // 待估价订单
-    util.post("/api/order/assessOrderList", {
-      staffid
-    }).then(res=>{
-      that.setData({
-        evaluationCount: res.data.length
-      });
-    });
+    // util.post("/api/order/assessOrderList", {
+    //   staffid
+    // }).then(res=>{
+    //   that.setData({
+    //     evaluationCount: res.data.length
+    //   });
+    // });
 
     // 已验机订单
-    util.post('/api/order/staffOrderList', {
-      orderstatus: 1,
-      staffid
-    }).then(res=>{
-      that.setData({
-        checkedCount: res.data.length
-      });
-    });
+    // util.post('/api/order/staffOrderList', {
+    //   orderstatus: 1,
+    //   staffid
+    // }).then(res=>{
+    //   that.setData({
+    //     checkedCount: res.data.length
+    //   });
+    // });
 
   },
 

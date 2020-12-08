@@ -27,7 +27,7 @@ Page({
     that = this;
     this.data.pageOption = options;
 
-    this.data.pageOption.name = this.data.pageOption.name.replace(/iphone/ig, '苹果');
+    // this.data.pageOption.name = this.data.pageOption.name.replace(/iphone/ig, '苹果');
 
     // 工作人员扫码估价不可重新询价
     if (options.frompage && options.frompage == 'recyclelist') {
@@ -36,6 +36,69 @@ Page({
       });
     }
 
+    // onload init ()
+    this.onLoadInit();
+
+
+  },
+  // onload init ()
+  onLoadInit() {
+    // get parma
+    let data = this.data.pageOption;
+    // user id
+    let userid = wx.getStorageSync('userinfo').uid;
+
+    util.post("/api/order/doOrderInfo", {
+      userid,
+      pricevalue: data.price
+    }).then(res => {
+      console.log(res);
+
+      let info = res.data;
+
+      // 将coupon挂载到全局
+      that.data.coupon = info.cinfo;
+
+      that.data.couponPrice = Number(info.cinfo.par_value) || 0;
+      that.data.price = Number(data.price);
+      that.data.totalPrice = that.data.couponPrice + that.data.price;
+
+      let regionData = info.uinfo_h.region ? info.uinfo_h.region.split(",") : [];
+      let provence = regionData[0],
+        city = regionData[1],
+        country = regionData[2];
+      let freight = util.getImageFullUrl(info.freight);
+      that.setData({
+        price: that.data.price,
+        totalPrice: that.data.totalPrice,
+        couponPrice: that.data.couponPrice,
+        userData: info.uinfo_h,
+        provenceList: info.plist,
+        provence,
+        city,
+        country,
+        freight
+      });
+      initUserInfo(info.uinfo_h);
+
+      function initUserInfo(data) {
+        let o = {
+          uname: data.username,
+          uphone: data.mobile,
+          ubankcard: data.bankcard,
+          ubank: data.bank,
+          uaddress: data.address,
+          uregion: data.region,
+          ubname: data.bank_uname
+        }
+
+        that.data.userRegion = data.region.split(',');
+        Object.assign(that.data.inputDoorData, o);
+        Object.assign(that.data.inputExpressData, o);
+
+      }
+
+    });
   },
   // 是否显示快递回收上门服务
   getExpress(e) {
@@ -141,7 +204,7 @@ Page({
     let coupon = that.data.coupon;
     // 得到加价券id
     if (coupon && this.data.isCoupon) {
-      data.couponid = coupon.id;
+      data.couponid = coupon.mcid;
     }
 
     // currentmachine 当前机型 cid mid configureinfo describeinfo 4
@@ -165,7 +228,7 @@ Page({
 
     currentMachine.cid && (data.cid = currentMachine.cid);
     // currentMachine.mid && (data.mid = currentMachine.mid);
-    if(currentMachine.mid || currentMachine.pcid){
+    if (currentMachine.mid || currentMachine.pcid) {
       data.mid = currentMachine.mid || currentMachine.pcid
     }
 
@@ -308,59 +371,7 @@ Page({
       title: data.name,
     });
 
-    let userid = wx.getStorageSync('userinfo').uid;
 
-    util.post("/api/order/doOrderInfo", {
-      userid,
-      pricevalue: data.price
-    }).then(res => {
-      console.log(res);
-
-      let info = res.data;
-
-      // 将coupon挂载到全局
-      that.data.coupon = info.cinfo;
-
-      that.data.couponPrice = Number(info.cinfo.par_value) || 0;
-      that.data.price = Number(data.price);
-      that.data.totalPrice = that.data.couponPrice + that.data.price;
-
-      let regionData = info.uinfo_h.region ? info.uinfo_h.region.split(",") : [];
-      let provence = regionData[0],
-          city = regionData[1],
-          country = regionData[2];
-      let freight = util.getImageFullUrl(info.freight);
-      that.setData({
-        price: that.data.price,
-        totalPrice: that.data.totalPrice,
-        couponPrice: that.data.couponPrice,
-        userData: info.uinfo_h,
-        provenceList: info.plist,
-        provence,
-        city,
-        country,
-        freight
-      });
-      initUserInfo(info.uinfo_h);
-
-      function initUserInfo(data) {
-        let o = {
-          uname: data.username,
-          uphone: data.mobile,
-          ubankcard: data.bankcard,
-          ubank: data.bank,
-          uaddress: data.address,
-          uregion: data.region,
-          ubname: data.bank_uname
-        }
-
-        that.data.userRegion = data.region.split(',');
-        Object.assign(that.data.inputDoorData, o);
-        Object.assign(that.data.inputExpressData, o);
-
-      }
-
-    });
 
 
     // 回收平台邮寄地址

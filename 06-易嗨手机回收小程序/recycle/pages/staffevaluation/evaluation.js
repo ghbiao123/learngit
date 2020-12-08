@@ -1,7 +1,8 @@
-// pages/evaluation/evaluation.js
+// / pages/evaluation/evaluation.js
 let util = require("../../utils/util");
 let that;
 let _key;
+let calculateHeight = require("../../utils/calculateHeight");
 Page({
 
   /**
@@ -184,7 +185,7 @@ Page({
       }
 
 
-
+      // 将图片路径拼接完整
       let isUpdateImage = _data.bid == 2 ? true : false;
       _data.image = util.getImageFullUrl(_data.image);
 
@@ -202,22 +203,53 @@ Page({
         id: 'none',
         name: '无'
       });
-
       let arrChecked = new Array(_data.other[_data.other.length - 1][_key].length).fill(false);
 
       let progressData = that.data.progressData;
       progressData.all = _data.other.length + currentIndex;
 
-      that.setData({
-        type: this.data.type,
-        _data,
-        progressData,
-        hideCode: progressData.all,
-        isUpdateImage,
-        arrChecked,
-        arrConfigOption,
-        currentIndex,
+
+      /**
+       * 获取工作人员订单信息
+       * 从storage中获取 staffmachine
+       * 订单信息在跳转此页面前存入storage中
+       * 
+       */
+
+      // util.post('/api/order/orderDetail', {
+      //   orderid: that.data.pageOption.orderid
+      // }).then(res => {
+      //   console.log(res);
+      //   that.data.order = res.data;
+      //   let order = res.data;
+      //   order.coupon_fee = order.coupon_fee ? order.coupon_fee * 1 : 0;
+      //   order.estimate_fee = order.estimate_fee ? order.estimate_fee * 1 : 0;
+      //   order.total_amount = order.total_amount ? order.total_amount * 1 : 0;
+        // that.setData({
+        //   order
+        // });
+  
+      // });
+
+
+      // 计算组件高度
+      calculateHeight.calculateHeight().then(res=>{
+        let scrollHeight = res;
+        that.setData({
+          type: that.data.type,
+          _data,
+          progressData,
+          hideCode: progressData.all,
+          isUpdateImage,
+          arrChecked,
+          arrConfigOption,
+          currentIndex,
+          scrollHeight,
+          _key,
+        });
       });
+
+      
     });
 
   },
@@ -272,8 +304,8 @@ Page({
     }
   },
   // 选择选项
-  radioChange(e) {
-
+  radioChange(event) {
+    let e = event.detail;
     let val = e.detail.value;
     let id = e.currentTarget.dataset.id;
     if (val.indexOf('none') >= 0) {

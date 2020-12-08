@@ -200,6 +200,7 @@ Page({
           arrConfigOption,
           currentIndex,
           scrollHeight,
+          _key,
         });
 
       });

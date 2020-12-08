@@ -57,7 +57,7 @@ Page({
       let t = util.getToday();
       let data = {
         remark: that.data.reqData.remark,
-        time: t.date + " " + t.time
+        createtime: t.date + " " + t.time
       }
       list.unshift(data);
       that.setData({

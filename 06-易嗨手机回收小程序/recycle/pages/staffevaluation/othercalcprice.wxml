@@ -37,7 +37,7 @@
 
 
     <view class="button">
-      <button form-type="submit" class="button-clear m-t-20">估价</button>
+      <button form-type="submit" hover-class="btn-hover" class="button-clear m-t-20">立即估价</button>
     </view>
   </form>
 </view>

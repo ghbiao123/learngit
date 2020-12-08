@@ -13,4 +13,4 @@
   </view>
 </view>
 
-<button class="button-clear m-t-20" bindtap="copy">点击复制</button>
+<button class="button-clear m-t-20"  hover-class="btn-hover" bindtap="copy">点击复制</button>

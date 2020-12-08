@@ -53,7 +53,7 @@
         </view>
       </view>
 
-      <button bindtap="nextPage" class="button-clear m-t-20">{{order.order_status == 0 ? "下一步" : "下一页"}}</button>
+      <button bindtap="nextPage"  hover-class="btn-hover" class="button-clear m-t-20">{{order.order_status == 0 ? "下一步" : "下一页"}}</button>
 
     </swiper-item>
 
@@ -98,8 +98,8 @@
 
       </view>
 
-      <button wx:if="{{order.order_status == 0}}" bindtap="submit" class="button-clear m-t-20">提交</button>
-      <button wx:if="{{order.order_status == 0}}" bindtap="cancelOrder" class="button-clear-cancel m-t-20">取消订单</button>
+      <button wx:if="{{order.order_status == 0}}" hover-class="btn-hover" bindtap="submit" class="button-clear m-t-20">提交</button>
+      <button wx:if="{{order.order_status == 0}}" hover-class="cancel-hover" bindtap="cancelOrder" class="button-clear-cancel m-t-20">取消订单</button>
 
     </swiper-item>
   </swiper>

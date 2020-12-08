@@ -1,1 +1,1 @@
-<button class="button-clear" bindtap="pageto">若无您的机型，请点我</button>
+<button class="button-clear" hover-class="btn-hover" bindtap="pageto">若无您的机型，请点我</button>

@@ -27,26 +27,36 @@ Page({
     if(userInfo){
       let userid = userInfo.uid;
 
+      util.post("/api/order/userOrderCount", {
+        userid
+      }).then(res=>{
+        console.log(res);
+        that.setData({
+          waitCheckCount: res.data.c1,
+          waitPayCount: res.data.c2,
+        });
+      });
+
       // 待验机数量
-      util.post("/api/order/userOrderList", {
-        userid,
-        orderstatus: 0
-      }).then(res=>{
-        let count = res.data.length;
-        that.setData({
-          waitCheckCount: count
-        });
-      });
+      // util.post("/api/order/userOrderList", {
+      //   userid,
+      //   orderstatus: 0
+      // }).then(res=>{
+      //   let count = res.data.length;
+      //   that.setData({
+      //     waitCheckCount: count
+      //   });
+      // });
       // 待付款数量
-      util.post("/api/order/userOrderList", {
-        userid,
-        orderstatus: 1
-      }).then(res=>{
-        let count = res.data.length;
-        that.setData({
-          waitPayCount: count
-        });
-      });
+      // util.post("/api/order/userOrderList", {
+      //   userid,
+      //   orderstatus: 1
+      // }).then(res=>{
+      //   let count = res.data.length;
+      //   that.setData({
+      //     waitPayCount: count
+      //   });
+      // });
     }
 
   },

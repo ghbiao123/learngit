@@ -2,6 +2,7 @@
 let util = require("../../utils/util");
 let that;
 let _key;
+let calculateHeight = require("../../utils/calculateHeight");
 Page({
 
   /**
@@ -142,13 +143,18 @@ Page({
       let progressData = that.data.progressData;
       progressData.all = _data.length;
 
-      that.setData({
-        name: this.data.pageOption.name,
-        _key,
-        _data,
-        progressData,
-        hideCode: progressData.all,
-        arrChecked,
+      calculateHeight.calculateHeight().then(res=>{
+        let scrollHeight = res;
+        
+        that.setData({
+          name: this.data.pageOption.name,
+          _key,
+          _data,
+          progressData,
+          hideCode: progressData.all,
+          arrChecked,
+          scrollHeight,
+        });
       });
 
     });
@@ -211,8 +217,8 @@ Page({
 
   },
   // 选择选项
-  radioChange(e) {
-
+  radioChange(event) {
+    let e = event.detail;
     let val = e.detail.value;
     let id = e.currentTarget.dataset.id;
     let progressData = this.data.progressData;

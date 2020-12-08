@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "mp-actionSheet": "/components/actionsheet/actionsheet"
+    "mp-actionSheet": "/components/actionsheet/actionsheet",
+    "optionlist": "/mycomponents/optionslist/optionslist"
   },
   "navigationBarBackgroundColor": "#fff",
   "navigationBarTitleText": "机型估价",

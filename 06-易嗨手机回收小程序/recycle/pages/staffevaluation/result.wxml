@@ -219,8 +219,8 @@
 	</view>
 
 	<view class="button">
-		<button bindtap="recycle" style="width: 560rpx !important;" class="button-clear m-t-20">立即回收</button>
-		<button bindtap="scanCode" style="width: 90rpx !important;" class="button-clear m-t-20">
+		<button bindtap="recycle" style="width: 560rpx !important;" hover-class="btn-hover" class="button-clear m-t-20">立即回收</button>
+		<button bindtap="scanCode" style="width: 90rpx !important;" hover-class="btn-hover" class="button-clear m-t-20">
 			<image style="width: 90rpx;" mode="widthFix" src="/images/sanf.png"></image>
 		</button>
 	</view>

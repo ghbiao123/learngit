@@ -64,7 +64,7 @@
       </view>
     </view>
 
-    <button form-type="submit" class="button-clear m-t-20">保存</button>
+    <button form-type="submit" hover-class="btn-hover" class="button-clear m-t-20">保存</button>
   </form>
-  <button bindtap="logout" class="button-clear-cancel m-t-20">退出登录</button>
+  <button bindtap="logout"  hover-class="cancel-hover" class="button-clear-cancel m-t-20">退出登录</button>
 </view>
