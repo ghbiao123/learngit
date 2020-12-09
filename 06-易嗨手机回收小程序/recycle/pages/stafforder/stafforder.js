@@ -40,14 +40,16 @@ Page({
         console.log(res);
         that.data.order = res.data;
         let order = res.data;
+        let showChangePrice = order.estimate_type == 1 ? true : false;
         order.coupon_fee = order.coupon_fee ? order.coupon_fee * 1 : 0;
         order.estimate_fee = order.estimate_fee ? order.estimate_fee * 1 : 0;
         order.total_amount = order.total_amount ? order.total_amount * 1 : 0;
         that.setData({
-          order
+          order,
+          showChangePrice
         });
       }
-    })
+    });
 
     // let orderid = this.data.pageOptions.id;
     // if (!orderid) return;

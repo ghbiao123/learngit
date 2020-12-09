@@ -51,10 +51,22 @@ Component({
           data: data[0],
           key: 'staffmachine',
           success(res){
-            wx.navigateTo({
-              // id=>mid,cid=>cid,orderid=>orderid
-              url: `/pages/staffevaluation/evaluation?id=${data[0].m_id}&cid=${data[0].c_id}&orderid=${data[0].id}`,
-            });
+            if(data[0].estimate_type == 0){
+              // 估算方式，0：系统，1：人工
+              wx.navigateTo({
+                // id=>mid,cid=>cid,orderid=>orderid
+                url: `/pages/staffevaluation/evaluation?id=${data[0].m_id}&cid=${data[0].c_id}&orderid=${data[0].id}`,
+              });
+            }
+            if(data[0].estimate_type == 1){
+              // 估算方式，0：系统，1：人工
+              wx.navigateTo({
+                // id=>mid,cid=>cid,orderid=>orderid
+                url: `/pages/stafforder/stafforder`,
+              });
+            }
+            
+            
           }
         });
 
