@@ -15,6 +15,7 @@ Page({
     reqImageUrl: [],
     currentPageId: 0,
     changefee: 0,
+    showChangePrice: false
   },
 
   /**
@@ -33,22 +34,43 @@ Page({
   init() {
 
     // 获取订单详情
-    let orderid = this.data.pageOptions.id;
-    if (!orderid) return;
+    wx.getStorage({
+      key: 'newstaffmachine',
+      success(res) {
+        console.log(res);
+        that.data.order = res.data;
+        let order = res.data;
+        order.coupon_fee = order.coupon_fee ? order.coupon_fee * 1 : 0;
+        order.estimate_fee = order.estimate_fee ? order.estimate_fee * 1 : 0;
+        order.total_amount = order.total_amount ? order.total_amount * 1 : 0;
+        that.setData({
+          order
+        });
+      }
+    })
 
-    util.post('/api/order/orderDetail', {
-      orderid
-    }).then(res => {
-      console.log(res);
-      that.data.order = res.data;
-      let order = res.data;
-      order.coupon_fee = order.coupon_fee ? order.coupon_fee * 1 : 0;
-      order.estimate_fee = order.estimate_fee ? order.estimate_fee * 1 : 0;
-      order.total_amount = order.total_amount ? order.total_amount * 1 : 0;
-      that.setData({
-        order
-      });
+    // let orderid = this.data.pageOptions.id;
+    // if (!orderid) return;
 
+    // util.post('/api/order/orderDetail', {
+    //   orderid
+    // }).then(res => {
+    //   console.log(res);
+    //   that.data.order = res.data;
+    //   let order = res.data;
+    //   order.coupon_fee = order.coupon_fee ? order.coupon_fee * 1 : 0;
+    //   order.estimate_fee = order.estimate_fee ? order.estimate_fee * 1 : 0;
+    //   order.total_amount = order.total_amount ? order.total_amount * 1 : 0;
+    //   that.setData({
+    //     order
+    //   });
+
+    // });
+  },
+  // 返回上一页
+  goBack(){
+    wx.navigateBack({
+      delta: 1,
     });
   },
   // 下一步
@@ -165,7 +187,7 @@ Page({
     }
     util.post("/api/order/doOrderInfo", data).then(res => {
       console.log(res);
-      order.coupon_fee = res.data.cinfo.par_value;
+      order.coupon_fee = res.data.cinfo.par_value ? res.data.cinfo.par_value : 0;
       order.total_amount = (Number(order.estimate_fee) + Number(order.coupon_fee) + Number(changefee)).toFixed(2);
 
       this.setData({
@@ -330,6 +352,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    return;
     let timer = setInterval(() => {
       let order = this.data.order;
       if (!order) {
@@ -366,9 +389,9 @@ Page({
             order,
             changefee: 0
           });
-          wx.removeStorage({
-            key: 'newstaffmachine',
-          })
+          // wx.removeStorage({
+          //   key: 'newstaffmachine',
+          // })
         });
 
       });

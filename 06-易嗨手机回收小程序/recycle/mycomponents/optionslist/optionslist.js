@@ -105,9 +105,11 @@ Component({
       this.showValue(idx, id);
 
       let viewId = idx;
-      this.setData({
-        idx: viewId
-      });
+      if(viewId != this.data.arrSelected.length - 1){
+        this.setData({
+          idx: viewId
+        });
+      }
 
       // 向父组件传递数据
       this.triggerEvent("radioChange", e);

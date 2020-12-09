@@ -94,6 +94,7 @@ Page({
   init() {
     let data = {};
     let url;
+    console.log(this.data.pageOption);
     if (this.data.pageOption.cid == 1 || this.data.pageOption.cid == 2) {
       this.data.type = 'mobile';
     } else if (this.data.pageOption.cid == 3) {
@@ -225,15 +226,15 @@ Page({
       //   order.coupon_fee = order.coupon_fee ? order.coupon_fee * 1 : 0;
       //   order.estimate_fee = order.estimate_fee ? order.estimate_fee * 1 : 0;
       //   order.total_amount = order.total_amount ? order.total_amount * 1 : 0;
-        // that.setData({
-        //   order
-        // });
-  
+      // that.setData({
+      //   order
+      // });
+
       // });
 
 
       // 计算组件高度
-      calculateHeight.calculateHeight().then(res=>{
+      calculateHeight.calculateHeight().then(res => {
         let scrollHeight = res;
         that.setData({
           type: that.data.type,
@@ -249,7 +250,7 @@ Page({
         });
       });
 
-      
+
     });
 
   },
@@ -306,8 +307,11 @@ Page({
   // 选择选项
   radioChange(event) {
     let e = event.detail;
+    // val -> 所选id
     let val = e.detail.value;
+    // id -> name, reqdata的key
     let id = e.currentTarget.dataset.id;
+
     if (val.indexOf('none') >= 0) {
       let arrChecked = this.data.arrChecked.fill(false);
       arrChecked[0] = true;
@@ -388,8 +392,7 @@ Page({
   // 跳转估价结果页
   getResult(e) {
     // 关闭actionsheet
-    this.close();
-
+    // this.close();
 
     let data = Object.assign({}, this.data.reqData);
     // 将用户所选数据进行处理
@@ -477,57 +480,58 @@ Page({
 
     // 估价之后直接回退页面
 
-    function isGetDifferent() {
 
-      /**
-       * 判断是否跟原来的配置一样
-       */
-      // pcram: data.pc_ram,
-      //       pcssd: data.pc_ssd,
-      //       pcvideocard: data.pc_videocard,
+    /**
+     * 判断是否跟原来的配置一样
+     */
+    // pcram: data.pc_ram,
+    //       pcssd: data.pc_ssd,
+    //       pcvideocard: data.pc_videocard,
 
-      let needKey = ["pcram", "pcssd", "pcvideocard", "phonecolor", "phonestorage", "phonemodel"];
-      let needId = {
-        configId: {
-          value: [],
-          isDiff: false
-        },
-        describeId: {
-          value: [],
-          isDiff: false
-        }
+    let needKey = ["pcram", "pcssd", "pcvideocard", "phonecolor", "phonestorage", "phonemodel"];
+    let needId = {
+      configId: {
+        value: [],
+        isDiff: false
+      },
+      describeId: {
+        value: [],
+        isDiff: false
       }
-      
-      needKey.forEach(v => {
-        if(data[v]){
-          needId.configId.value.push(Number(data[v]));
-        }
-      });
-      needId.configId.value = needId.configId.value.sort((a, b) => (a - b)).toString();
-
-      let allDescribe = JSON.parse(data.inquiryinfo);
-      needId.describeId.value = allDescribe.map(v => v.id).sort((a, b) => (a - b)).toString();
-
-      let oldOption = wx.getStorageSync('staffmachine');
-      // old config
-      oldOption.configure_info = oldOption.configure_info.split(",").sort((a, b) => (a - b)).toString();
-      // old describe
-      oldOption.describe_info = oldOption.describe_info.split(",").sort((a, b) => (a - b)).toString();
-
-      console.log("oldOption.configure_info", oldOption.configure_info);
-      console.log("oldOption.describe_info", oldOption.describe_info);
-      needId.configId.isDiff = needId.configId.value == oldOption.configure_info;
-      needId.describeId.isDiff = needId.describeId.value == oldOption.describe_info;
-      console.log(needId);
-      return (needId.configId.isDiff && needId.describeId.isDiff);
     }
-    let isIdChange = isGetDifferent();
-
-    if(isIdChange) {
-      wx.navigateBack({
-        delta: 1,
+    needKey.forEach(v => {
+      if (data[v]) {
+        needId.configId.value.push(Number(data[v]));
+      }
+    });
+    needId.configId.value = needId.configId.value.sort((a, b) => (a - b)).toString();
+    let allDescribe = JSON.parse(data.inquiryinfo);
+    needId.describeId.value = allDescribe.map(v => v.id).sort((a, b) => (a - b)).toString();
+    let oldOption = wx.getStorageSync('staffmachine');
+    // old config
+    oldOption.configure_info = oldOption.configure_info.split(",").sort((a, b) => (a - b)).toString();
+    // old describe
+    oldOption.describe_info = oldOption.describe_info.split(",").sort((a, b) => (a - b)).toString();
+    needId.configId.isDiff = needId.configId.value == oldOption.configure_info;
+    needId.describeId.isDiff = needId.describeId.value == oldOption.describe_info;
+    let isIdChange = (needId.configId.isDiff && needId.describeId.isDiff);
+    if (isIdChange) {
+      // 跟原来id一样
+      wx.setStorage({
+        data: oldOption,
+        key: 'newstaffmachine',
+        success() {
+          // 跳转新页面
+          wx.navigateTo({
+            url: '/pages/stafforder/stafforder',
+          });
+        }
       });
       return;
+    } else {
+      // 跟原来id不一样
+      oldOption.configure_info = needId.configId.value;
+      oldOption.describe_info = needId.describeId.value;
     }
 
 
@@ -535,9 +539,30 @@ Page({
 
       // 当前估价机器 Storage
       let newData = Object.assign({}, data);
-      newData.cid = that.data._data.cid;
-      newData.totalprice = res.data.totalprice;
-
+      let pricevalue = res.data.totalprice;
+      util.post("/api/order/doOrderInfo", {
+        userid: oldOption.user_id,
+        pricevalue
+      }).then(ret => {
+        console.log(ret);
+        if (Number(ret.cinfo.par_value)) {
+          oldOption.coupon_fee = ret.cinfo.par_value * 1;
+        }else{
+          oldOption.coupon_fee = 0;
+        }
+        oldOption.estimate_fee = pricevalue * 1;
+        oldOption.total_amount = oldOption.coupon_fee + oldOption.estimate_fee;
+        wx.setStorage({
+          data: oldOption,
+          key: 'newstaffmachine',
+          success() {
+            wx.navigateTo({
+              url: '/pages/stafforder/stafforder',
+            });
+          }
+        });
+      });
+      return;
       wx.setStorage({
         data: newData,
         key: 'newstaffmachine',

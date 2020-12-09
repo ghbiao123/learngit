@@ -24,7 +24,6 @@ Page({
     let staffid = wx.getStorageSync('staffid');
     // 获取工作人员二维码
     util.post('/api/user/getStaffInfo', {staffid}).then(res=>{
-      console.log(res);
       res.data.avatar = util.getImageFullUrl(res.data.avatar);
       res.data.qrcode_path = util.getImageFullUrl(res.data.qrcode_path);
       wx.setStorage({
@@ -60,7 +59,6 @@ Page({
     let staffid = wx.getStorageSync('staffid');
     
     util.post('/api/order/staffOrderCount', {staffid}).then(res=>{
-      console.log(res);
       that.setData({
         count: res.data.c1,
         evaluationCount: res.data.c3,

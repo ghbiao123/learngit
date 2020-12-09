@@ -3,16 +3,20 @@
     <swiper-item class="swiper-item">
       <view class="tit-no-bg">订单明细</view>
       <view class="cell-card">
-        <view class="cell-item">
+        <view hidden="{{!showChangePrice}}" class="cell-item">
           <view class="name">类目：</view>
           <view class="cont">
             <input disabled class="cont" value="{{order.model_info.cinfo}}"></input>
           </view>
-          <view bindtap="changeConfig" class="change">修改</view>
+          <view class="change">
+            <view bindtap="changeConfig">
+              修改
+            </view>
+          </view>
         </view>
 
         <view class="cell-item">
-          <view class="name">估价：</view>
+          <view class="name">验机价格：</view>
           <view class="cont">
             <input disabled class="cont" value="￥{{order.estimate_fee}}"></input>
           </view>
@@ -20,7 +24,7 @@
         </view>
 
         <view class="cell-item">
-          <view class="name">加价：</view>
+          <view class="name">加价券：</view>
           <view class="cont">
             <input disabled class="cont" value="￥{{order.coupon_fee}}"></input>
           </view>
@@ -28,7 +32,7 @@
         </view>
 
         <view class="cell-item">
-          <view class="name">调整：</view>
+          <view class="name">人工调整：</view>
           <view class="cont">
             <input disabled class="cont" value="￥{{changefee}}"></input>
           </view>
@@ -53,7 +57,10 @@
         </view>
       </view>
 
-      <button bindtap="nextPage"  hover-class="btn-hover" class="button-clear m-t-20">{{order.order_status == 0 ? "下一步" : "下一页"}}</button>
+      <view class="btn-box">
+        <button bindtap="goBack" style="width: 300rpx !important;" hover-class="btn-hover" class="button-clear m-t-20">重新验机</button>
+        <button bindtap="nextPage" style="width: 300rpx !important;" hover-class="btn-hover" class="button-clear m-t-20">{{order.order_status == 0 ? "下一步" : "下一页"}}</button>
+      </view>
 
     </swiper-item>
 

@@ -54,11 +54,11 @@ Page({
     let needData = {
       username: '姓名',
       mobile: '手机号',
-      region: '所在地区',
-      address: '详细地址',
-      buname: '户名',
-      bank: '开户行',
-      bankcard: '银行卡号',
+      // region: '所在地区',
+      // address: '详细地址',
+      // buname: '户名',
+      // bank: '开户行',
+      // bankcard: '银行卡号',
     }
 
     for(let key in data){

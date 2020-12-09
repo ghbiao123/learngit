@@ -203,8 +203,11 @@ Page({
     // 加价券 couponid 1
     let coupon = that.data.coupon;
     // 得到加价券id
-    if (coupon && this.data.isCoupon) {
+    // order.coupon_fee = res.data.cinfo.par_value ? res.data.cinfo.par_value : 0;
+    if (coupon.mcid && this.data.isCoupon) {
       data.couponid = coupon.mcid;
+    }else{
+      data.couponid = 0;
     }
 
     // currentmachine 当前机型 cid mid configureinfo describeinfo 4
@@ -285,14 +288,11 @@ Page({
 
     needKey.uname = '';
     needKey.uphone = '';
-    console.log(data);
-    console.log(needKey);
     for (let key in needKey) {
       if (!data[key]) {
         return util.showSuccess('请完善您的个人信息');
       }
     }
-    // return;
     util.post('/api/order/placeOrder', data).then(res => {
       console.log(res);
 

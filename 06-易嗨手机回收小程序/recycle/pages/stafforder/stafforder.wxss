@@ -19,12 +19,15 @@
 }
 
 .name{
-  width: 80rpx;
+  width: 135rpx;
   color: #000;
 }
 .cont{
   display: block;
-  width: 480rpx;
+  width: 440rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .change{
   padding-left: 20rpx;
@@ -85,7 +88,10 @@
   font-size: 28rpx;
   background-color: #fff;
 }
-
+.btn-box{
+  display: flex;
+  justify-content: space-around;
+}
 .idcard{
   display: flex;
 }

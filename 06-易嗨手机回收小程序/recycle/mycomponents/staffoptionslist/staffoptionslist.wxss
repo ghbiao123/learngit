@@ -31,7 +31,7 @@
 }
 .title-selected-value{
   padding-right: 20rpx;
-  max-width: 200rpx;
+  max-width: 400rpx;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -46,6 +46,10 @@
   line-height: 35rpx;
   border: 1rpx solid #999;
   border-radius: 5rpx;
+}
+.change-hover{
+  background-color: #999;
+  color: #fff;
 }
 
 .radio{
@@ -72,4 +76,7 @@
   background: transparent;
   transform: translate(-50%, -50%) scale(1);
   -webkit-transform: translate(-50%, -50%) scale(1);
+}
+.color-red{
+  color: #C7402C;
 }
