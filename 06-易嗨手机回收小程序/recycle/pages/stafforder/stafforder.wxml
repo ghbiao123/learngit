@@ -6,7 +6,7 @@
         <view hidden="{{!showChangePrice}}" class="cell-item">
           <view class="name">类目：</view>
           <view class="cont">
-            <input disabled class="cont" value="{{order.model_info.cinfo}}"></input>
+            <input disabled class="cont" value="{{order.model_info.configure || order.model_info.describe}}"></input>
           </view>
           <view class="change">
             <view bindtap="changeConfig">
@@ -57,10 +57,12 @@
         </view>
       </view>
 
-      <view class="btn-box">
+      <view class="btn-box" wx:if="{{!showChangePrice}}">
         <button bindtap="goBack" style="width: 300rpx !important;" hover-class="btn-hover" class="button-clear m-t-20">重新验机</button>
         <button bindtap="nextPage" style="width: 300rpx !important;" hover-class="btn-hover" class="button-clear m-t-20">{{order.order_status == 0 ? "下一步" : "下一页"}}</button>
       </view>
+
+        <button wx:if="{{showChangePrice}}" bindtap="nextPage" hover-class="btn-hover" class="button-clear m-t-20">{{order.order_status == 0 ? "下一步" : "下一页"}}</button>
 
     </swiper-item>
 
@@ -121,7 +123,7 @@
     <view>配置信息</view>
     <textarea bindinput="textAreaInput" data-key="cinfo" value="{{order.model_info.cinfo}}"></textarea>
     <view>硬件信息</view>
-    <textarea bindinput="textAreaInput" data-key="des" value="{{order.model_info.des}}"></textarea>
+    <textarea bindinput="textAreaInput" data-key="des" value="{{order.model_info.describe}}"></textarea>
     <view class="reset-config-btn m-t-20">
       <button bindtap="resetConfigCancel" class="btn">取消</button>
       <button bindtap="resetConfigConfirm" class="btn">确认</button>

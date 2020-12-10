@@ -293,6 +293,9 @@ Page({
         return util.showSuccess('请完善您的个人信息');
       }
     }
+    // console.log("pageOption", this.data.pageOption);
+    // console.log(data);
+    // return;
     util.post('/api/order/placeOrder', data).then(res => {
       console.log(res);
 

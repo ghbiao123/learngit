@@ -17,7 +17,7 @@ Page({
   onLoad: function (options) {
     that = this;
     
-    this.init();
+    
   },
 
   // 初始化 待验机，代付款列表数目
@@ -85,6 +85,7 @@ Page({
    */
   onShow: function () {
     util.checkIsLogin.call(this);
+    this.init();
   },
 
   /**

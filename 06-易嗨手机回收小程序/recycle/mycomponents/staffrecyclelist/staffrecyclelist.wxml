@@ -1,7 +1,7 @@
 <block wx:for="{{list}}" wx:key="index">
   <view class="order-list">
     <view class="title">机器信息</view>
-    <view class="project" data-id="{{item.id}}" bindtap="getDetail">
+    <view class="project" data-idx="{{index}}" data-id="{{item.id}}" bindtap="getDetail">
       <view class="project-image" hidden>
         <!-- 没有图片，待确认 -->
         <image class="image" src="{{item.model_info.image}}" mode="aspectFit"></image>

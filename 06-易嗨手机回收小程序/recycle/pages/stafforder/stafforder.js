@@ -190,8 +190,7 @@ Page({
     util.post("/api/order/doOrderInfo", data).then(res => {
       console.log(res);
       order.coupon_fee = res.data.cinfo.par_value ? res.data.cinfo.par_value : 0;
-      order.total_amount = (Number(order.estimate_fee) + Number(order.coupon_fee) + Number(changefee)).toFixed(2);
-
+      order.total_amount = (Number(order.estimate_fee) + Number(order.coupon_fee) + Number(changefee)).toFixed(2) * 1;
       this.setData({
         order,
         changefee

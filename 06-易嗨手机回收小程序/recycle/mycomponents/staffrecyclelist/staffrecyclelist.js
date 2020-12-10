@@ -41,43 +41,56 @@ Component({
     },
     // 获取详情
     getDetail(e){
-      let id = e.currentTarget.dataset.id;
-      let data = this.data.list.filter(v=>{
-        return v.id == id;
-      });
-      if(data[0].order_status == 0 ){
+      // let id = e.currentTarget.dataset.id;
+      // let data = this.data.list.filter(v=>{
+      //   return v.id == id;
+      // });
+      let idx = e.currentTarget.dataset.idx;
+      let data = this.data.list[idx];
+      console.log(data);
+      // 待验机
+      if(data.order_status == 0 ){
 
-        wx.setStorage({
-          data: data[0],
-          key: 'staffmachine',
-          success(res){
-            if(data[0].estimate_type == 0){
-              // 估算方式，0：系统，1：人工
+        // 人工估价
+        if(data.estimate_type == 0){
+          // 估算方式，0：系统，1：人工
+          wx.setStorage({
+            data: data,
+            key: 'staffmachine',
+            success(res){
               wx.navigateTo({
                 // id=>mid,cid=>cid,orderid=>orderid
-                url: `/pages/staffevaluation/evaluation?id=${data[0].m_id}&cid=${data[0].c_id}&orderid=${data[0].id}`,
+                url: `/pages/staffevaluation/evaluation?id=${data.m_id}&cid=${data.c_id}&orderid=${data.id}`,
               });
             }
-            if(data[0].estimate_type == 1){
-              // 估算方式，0：系统，1：人工
+          });
+          
+        }
+
+        if(data.estimate_type == 1){
+          // 估算方式，0：系统，1：人工
+          wx.setStorage({
+            data: data,
+            key: 'newstaffmachine',
+            success(res){
               wx.navigateTo({
                 // id=>mid,cid=>cid,orderid=>orderid
                 url: `/pages/stafforder/stafforder`,
               });
             }
-            
-            
-          }
-        });
+          });
 
+          
+        }
 
         // wx.navigateTo({
         //   url: '/pages/stafforder/stafforder?id=' + id,
         // });
       }
-      if(data[0].order_status == 1){
+      // 代付款
+      if(data.order_status == 1){
         wx.redirectTo({
-          url: '/pages/paymentmethod/paymentmethod?orderid='+ data[0].orderid,
+          url: '/pages/paymentmethod/paymentmethod?orderid='+ data.orderid,
         });
       }
     }

@@ -244,6 +244,7 @@
 		background-color: #F37B1D;
 	}
 	.call{
+		margin-top: -20rpx;
 		background-color: #169BD5;
 	}
 	.verify{
