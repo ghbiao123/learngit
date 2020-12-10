@@ -3,10 +3,28 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "首页"
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/shoplist/shoplist",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "车行列表",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/shopinfo/shopinfo",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "车行详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
