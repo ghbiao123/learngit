@@ -512,6 +512,12 @@ Page({
 
         if (res.code == 1) {
           callBack && callBack(res);
+        }else if(res.code == -5){
+          util.showSuccess(res.msg, function(){
+            wx.navigateTo({
+              url: 'pages/evaluation/othercalcprice',
+            });
+          });
         } else {
           util.showSuccess(res.msg);
         }

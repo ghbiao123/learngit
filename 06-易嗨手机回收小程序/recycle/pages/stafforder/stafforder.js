@@ -97,8 +97,8 @@ Page({
       orderid: this.data.order.id,
       staffid,
       estimatefee: this.data.order.estimate_fee,
-      configureinfo: this.data.order.configure_info,
-      describeinfo: this.data.order.describe_info,
+      configureinfo: this.data.order.configure_info || this.data.order.model_info.configure,
+      describeinfo: this.data.order.describe_info || this.data.order.model_info.describe,
       pictures: this.data.reqImageUrl,
       imei: this.data.imei,
       pname: (this.data.idCard && this.data.idCard.name),
@@ -106,12 +106,12 @@ Page({
       ppic: this.data.idcardSrc,
       changefee: (this.data.changefee ? this.data.changefee : 0)
     };
+   
 
     let needData = ['imei', 'pname'];
     if (!data.imei || !data.pname) {
       return util.showSuccess('请完善信息');
     }
-
     util.post('/api/order/testingMachineOrder', data).then(res => {
       console.log(res);
       if (res.code == 1) {

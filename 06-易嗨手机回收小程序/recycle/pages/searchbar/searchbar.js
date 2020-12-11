@@ -74,6 +74,10 @@ Page({
     let mname = e.currentTarget.dataset.name;
     let cid = e.currentTarget.dataset.cid;
     let userInfo = wx.getStorageSync('userinfo');
+    
+    let idx = e.currentTarget.dataset.idx;
+    let data = this.data.result[idx];
+
     if (userInfo) {
       util.post('/api/products/searchStatistics', {
         mid,
@@ -85,7 +89,8 @@ Page({
 
     if (cid >= 4) {
       wx.navigateTo({
-        url: '/pages/evaluation/othercalcprice',
+        url: `/pages/cameraevaluation/evaluation?cateid=${data.oecid || data.pcateid}&mid=${data.id}&cid=${data.cid}&bid=${data.bid}&name=${data.name}`
+        // url: '/pages/evaluation/othercalcprice',
       });
       return
     }

@@ -107,8 +107,8 @@
 
       </view>
 
-      <button wx:if="{{order.order_status == 0}}" hover-class="btn-hover" bindtap="submit" class="button-clear m-t-20">提交</button>
-      <button wx:if="{{order.order_status == 0}}" hover-class="cancel-hover" bindtap="cancelOrder" class="button-clear-cancel m-t-20">取消订单</button>
+      <button wx:if="{{order.order_status == 0 || order.order_status == 4}}" hover-class="btn-hover" bindtap="submit" class="button-clear m-t-20">提交</button>
+      <button wx:if="{{order.order_status == 0 || order.order_status == 4}}" hover-class="cancel-hover" bindtap="cancelOrder" class="button-clear-cancel m-t-20">取消订单</button>
 
     </swiper-item>
   </swiper>

@@ -545,7 +545,7 @@ Page({
         pricevalue
       }).then(ret => {
         console.log(ret);
-        if (Number(ret.cinfo.par_value)) {
+        if (Number(ret.data.cinfo.par_value)) {
           oldOption.coupon_fee = ret.cinfo.par_value * 1;
         }else{
           oldOption.coupon_fee = 0;

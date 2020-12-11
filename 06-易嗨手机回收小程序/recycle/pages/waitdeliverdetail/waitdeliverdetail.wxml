@@ -1,7 +1,7 @@
-<view class="cell-card" wx:for="0000" wx:key="index">
+<view class="cell-card" wx:for="{{list}}" wx:key="index">
   <view class="cell-item">
-    <view>title</view>
-    <view>￥price</view>
+    <view>{{item.model_info.name}}</view>
+    <view>￥{{item.stafforderinfo.total_amount * 1}}</view>
   </view>
-  <view>1785330875817853308758</view>
+  <view>{{item.stafforderinfo.order_sn}}</view>
 </view>

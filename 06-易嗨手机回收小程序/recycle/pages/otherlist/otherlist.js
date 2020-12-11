@@ -33,7 +33,7 @@ Page({
     let idx = e.currentTarget.dataset.idx;
     let data = this.data.list[idx];
     wx.navigateTo({
-      url: `/pages/cameraevaluation/evaluation?cateid=${data.oecid || data.pcateid}&cid=${data.cid}&bid=${data.bid}&name=${data.name}`,
+      url: `/pages/cameraevaluation/evaluation?cateid=${data.oecid || data.pcateid}&mid=${data.id}&cid=${data.cid}&bid=${data.bid}&name=${data.name}`,
     });
   },
   /**

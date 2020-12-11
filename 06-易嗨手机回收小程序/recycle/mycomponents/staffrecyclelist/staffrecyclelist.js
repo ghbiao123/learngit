@@ -49,7 +49,7 @@ Component({
       let data = this.data.list[idx];
       console.log(data);
       // 待验机
-      if(data.order_status == 0 ){
+      if(data.order_status == 0 || data.order_status == 4){
 
         // 人工估价
         if(data.estimate_type == 0){
@@ -90,7 +90,7 @@ Component({
       // 代付款
       if(data.order_status == 1){
         wx.redirectTo({
-          url: '/pages/paymentmethod/paymentmethod?orderid='+ data.orderid,
+          url: '/pages/paymentmethod/paymentmethod?orderid='+ data.id,
         });
       }
     }

@@ -33,7 +33,7 @@
       </view>
       <view class="select-all">
         <checkbox-group bindchange="selectedAll">
-          <checkbox value="1" color="#C1402A">
+          <checkbox value="1" checked="{{selectedNum == list.length}}" color="#C1402A">
             全选
           </checkbox>
         </checkbox-group>

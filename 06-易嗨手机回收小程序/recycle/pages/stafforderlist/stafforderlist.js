@@ -74,12 +74,20 @@ Page({
         data.orderstatus = 1;
       }
       break;
+      case 'staffdone': {
+        title =  '已完成订单';
+        identy = 2;
+        url = '/api/order/staffOrderList';
+        data.staffid = staffid;
+        data.orderstatus = 2;
+      }
+      break;
       case 'staffcancel': {
         title =  '已取消订单';
         identy = 2;
         url = '/api/order/staffOrderList';
         data.staffid = staffid;
-        data.orderstatus = 2;
+        data.orderstatus = 3;
       }
       break;
       default:{
