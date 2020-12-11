@@ -57,6 +57,11 @@ Page({
       //     waitPayCount: count
       //   });
       // });
+    }else{
+      this.setData({
+        waitCheckCount: 0,
+          waitPayCount: 0,
+      });
     }
 
   },
