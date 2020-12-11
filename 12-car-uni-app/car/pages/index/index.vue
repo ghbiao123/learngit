@@ -75,19 +75,22 @@
 		},
 		data() {
 			return {
-				// 搜索框上方遮罩
+				// 搜索框上方遮罩是否显示
 				showCover:true,
 				// 搜索框输入内容
 				searchValue:"",
+				// bannerlist
 				bannerList: [
 					{id: 1, shopId: 1,imageUrl:"../../static/images/banner01.png", backgroundColor:"#F26224", title:"", isShow:1, position:1, showIndex:1, linkType:1, linkValue:""},
 					{id: 1, shopId: 1,imageUrl:"../../static/images/banner02.jpg", backgroundColor:"rgba(153, 233, 209, 0.8)", title:"", isShow:1, position:1, showIndex:1, linkType:1, linkValue:""},
 					{id: 1, shopId: 1,imageUrl:"../../static/images/banner03.jpg", backgroundColor:"rgba(152, 157, 228, 0.9)", title:"", isShow:1, position:1, showIndex:1, linkType:1, linkValue:""},
 					{id: 1, shopId: 1,imageUrl:"../../static/images/banner04.png", backgroundColor:"rgba(147, 224, 254, 0.98)", title:"", isShow:1, position:1, showIndex:1, linkType:1, linkValue:""},
 				],
+				// 通知列表
 				noticeList:[
 					{noticeId:1, noticeType:"", noticeContent:"", status: "0"}
 				],
+				// 菜单列表
 				mallMentList:[
 					{id: 1, shopId: 1,imageUrl:"../../static/images/menu01.png", title:"代驾服务", isShow:1, showIndex:1, linkType:1, linkValue:"", isDelete:""},
 					{id: 1, shopId: 1,imageUrl:"../../static/images/menu02.png", title:"应急救援", isShow:1, showIndex:1, linkType:1, linkValue:"", isDelete:""},
@@ -107,7 +110,7 @@
 			// 预留 banner 点击事件
 			bannerClick(e){
 				let idx = e.currentTarget.dataset.idx;
-				// currentBanner 当前点击banner信息
+				// currentBanner 当前点击banner的信息
 				let currentBanner = this.bannerList[idx];
 				
 				switch(currentBanner.linkType){

@@ -111,8 +111,11 @@
 			return {
 				// 所选服务tab id
 				tabId: 0,
+				// 下方评论所选id
 				commentId:1,
+				// 多图展示数据
 				bannerList:["../../static/images/1.jpeg", "../../static/images/1.jpeg", "../../static/images/1.jpeg"],
+				// 商铺数据
 				shopInfo: {
 					id: 1,
 					shopName: "XX洗车行",
@@ -127,6 +130,7 @@
 					distance: "20",
 
 				},
+				// tab 数据
 				servesList: [
 					{
 						serveId: 1,
@@ -159,6 +163,7 @@
 							],
 					},
 				],
+				// 评论列表
 				commentList:[
 					{id:1, shopId: 123, memberId:123, memberName:"xingming1", star:10, content:"评论内容1", shopName:"商户名称", }, // star ,显示时除以十
 					{id:1, shopId: 123, memberId:123, memberName:"xingming2", star:20, content:"评论内容2", shopName:"商户名称", }, // star ,显示时除以十
@@ -186,7 +191,7 @@
 					longitude: this.shopInfo.longitude
 				});
 			},
-			// 获取评论列表后调用此函数
+			// 获取评论列表数据后调用此函数，对评分数据进行格式化
 			initCommitList(list){
 				this.commentList = list.map(v=>{
 					v.star = Number(v.star) ? v.star/10 : 0;

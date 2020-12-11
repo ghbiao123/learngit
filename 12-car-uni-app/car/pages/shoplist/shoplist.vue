@@ -37,6 +37,7 @@
 		},
 		data() {
 			return {
+				// 商铺列表数据
 				shopList:[
 					{id:1, shopName:"店铺名称", thumbnail:"../../static/images/menu06.png", star: 22, tel:"17855338899", address:"门店地址", isDelete:"", contact:"", longitude:"", latitude:"", distance:"3.3"},
 					{id:1, shopName:"店铺名称", thumbnail:"../../static/images/menu06.png", star: 31, tel:"17855338899", address:"门店地址", isDelete:"", contact:"", longitude:"", latitude:"", distance:"3.3"},
@@ -49,16 +50,6 @@
 			this.initList(this.shopList);
 		},
 		methods: {
-			getDetail(e){
-				let idx = e.currentTarget.dataset.idx;
-				let shop = this.shopList[idx];
-				uni.navigateTo({
-					url: `/pages/shopinfo/shopinfo?id=${shop.id}&shopName=${shop.shopName}`,
-					success: res => {},
-					fail: () => {},
-					complete: () => {}
-				});
-			},
 			// 将请求的列表数据传入 initList函数
 			initList(list){
 				this.shopList = list.map(v=>{
