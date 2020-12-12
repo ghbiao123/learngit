@@ -294,7 +294,7 @@ Page({
       }
     }
     // console.log("pageOption", this.data.pageOption);
-    // console.log(data);
+    console.log(data);
     // return;
     util.post('/api/order/placeOrder', data).then(res => {
       console.log(res);

@@ -34,7 +34,8 @@ Page({
         value: 2
       }
     ],
-    checkbox: []
+    checkbox: [],
+    isLogin: false
   },
 
   /**
@@ -249,6 +250,61 @@ Page({
       progressData
     });
 
+  },// 获取用户信息
+  getUserInfo(e) {
+    util.getUserInfo(e, function (res) {
+      if (res.code == 1) {
+        // util.showSuccess('登录成功，请立即估价');
+        util.checkIsLogin.call(that);
+      }
+    });
+  },
+  // 获取用户手机号
+  getPhoneNum(e) {
+    console.log(e);
+    if (e.detail.iv) {
+      // 用户同意获取手机号
+      // 将用户手机号更新到storage（‘currentphone’）
+      wx.login({
+        success(res) {
+          if (!res.code) return util.showSuccess('网络错误，请重试');
+          let data = {
+            userid: that.data.userInfo.uid,
+            code: res.code,
+            encrypteddata: encodeURI(e.detail.encryptedData),
+            iv: encodeURI(e.detail.iv)
+          };
+          util.post('/api/login/getWxBindMobile', data).then(ret => {
+            console.log(ret);
+            if(ret.code == -3){
+              return util.showSuccess(ret.msg);
+            }
+            let userInfo = wx.getStorageSync('userinfo');
+            userInfo.phonestatus = 1;
+            wx.setStorage({
+              data: userInfo,
+              key: 'userinfo',
+            });
+            wx.setStorage({
+              data: ret.data,
+              key: 'currentphone',
+              success(res) {
+                that.getResult();
+              }
+            });
+          });
+
+
+
+
+        }
+      });
+
+
+    } else {
+      // 用户不同意获取手机号
+
+    }
   },
   // 跳转估价结果页
   getResult(e) {
@@ -272,13 +328,13 @@ Page({
     this.data.pageOption.cateid && (data.cateid = this.data.pageOption.cateid);
 
     let userInfo = wx.getStorageSync('userinfo');
-    if (!userInfo) {
-      return util.showError('请您先登录', function () {
-        wx.navigateTo({
-          url: '/pages/login/login',
-        });
-      })
-    }
+    // if (!userInfo) {
+    //   return util.showError('请您先登录', function () {
+    //     wx.navigateTo({
+    //       url: '/pages/login/login',
+    //     });
+    //   })
+    // }
     data.userid = userInfo.uid;
 
     // this.data.machineModel = this.data.name;
@@ -366,7 +422,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // 检测是否登录并把数据挂载到AppData
+    util.checkIsLogin.call(this);
   },
 
   /**

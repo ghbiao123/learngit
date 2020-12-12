@@ -59,7 +59,19 @@
 
     </block> -->
 
-    <view class="button">
+    <!-- <view class="button">
+      <button bindtap="getResult" class="button-clear m-t-20" hover-class="btn-hover">立即估价</button>
+    </view> -->
+
+    <view wx:if="{{!isLogin}}" class="button">
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="button-clear m-t-20"
+        hover-class="btn-hover">立即估价</button>
+    </view>
+    <view wx:elif="{{isLogin && (userInfo.phonestatus == 0)}}" class="button">
+      <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNum" class="button-clear m-t-20"
+        hover-class="btn-hover">立即估价</button>
+    </view>
+    <view wx:else="{{isLogin && (userInfo.phonestatus == 1)}}" class="button">
       <button bindtap="getResult" class="button-clear m-t-20" hover-class="btn-hover">立即估价</button>
     </view>
 
