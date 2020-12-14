@@ -4,6 +4,12 @@ import Router from 'vue-router'
 import Index from "../pages/index/index.vue";
 import Login from "../pages/login/login.vue";
 import Register from "../pages/register/register.vue";
+import Main from "../pages/main/main.vue";
+import ChangePassWord from "../pages/changepassword/changepassword.vue";
+import PersonalData from "../pages/personaldata/personaldata.vue";
+import Record from "../pages/record/record.vue";
+
+
 
 // 配置axios
 import rootSite from '../../config/program.config'
@@ -37,6 +43,26 @@ export default new Router({
       path: "/register",
       name: "register",
       component: Register
+    },
+    {
+      path: "/main",
+      name: "main",
+      component: Main
+    },
+    {
+      path: "/changepassword",
+      name: "changepassword",
+      component: ChangePassWord
+    },
+    {
+      path: "/personaldata",
+      name: "personaldata",
+      component: PersonalData
+    },
+    {
+      path: "/record",
+      name: "record",
+      component: Record
     }
   ]
 })

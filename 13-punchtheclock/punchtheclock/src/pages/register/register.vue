@@ -109,13 +109,7 @@
           <div @click="showPopup" data-type="calendar" class="calendar-text">公历</div>
           <img class="calendar-icon" src="../../../static/images/arrow-down.png" />
         </div>
-        <!-- <mt-datetime-picker
-          v-model="pickerVisible"
-          type="date"
-          @confirm="handleConfirm">
-        </mt-datetime-picker> -->
-        <div class="input-disabled">请选择出生日期</div>
-        <!-- <mt-field placeholder="请选择出生日期" v-model="registerData" type="text"></mt-field> -->
+        <div class="input-disabled" @click="open">请选择出生日期</div>
       </div>
       <div class="rt-box">
         <img class="rt" src="../../../static/images/arrow-rt.png" alt="#">
@@ -166,7 +160,11 @@
       </div>
     </mt-popup>
 
-    
+    <mt-datetime-picker
+      ref="picker"
+      type="time"
+      v-model="pickerValue">
+    </mt-datetime-picker>
 
     
   </div>
@@ -187,11 +185,15 @@ export default {
         }],
       genderList: ["女", "男"],
       calendarList: ['公历', '农历'],
-      pickerVisible: ""
+      pickerVisible: "",
+      pickerValue: ""
 
     }
   },
   methods: {
+    open(){
+      this.$refs.picker.open();
+    },
     onGenderChange(picker, values){
       console.log(picker, values);
 
@@ -219,6 +221,9 @@ export default {
   @rem:750/10rem;
   
   #app{
+    /deep/ .mint-popup{
+      left: 50% !important;
+    }
     color: #333;
     padding-bottom: 20/@rem;
     .head,
@@ -302,13 +307,13 @@ export default {
     .cell-input:first-child .mint-cell{
       width: 245px !important;
     }
-    .mint-popup-bottom,
-    .mint-popup{
+    .mint-popup-bottom{
       left: 0;
     }
     .picker-box{
       position: fixed;
       bottom: 0;
+      left: -50%;
       // height: 200px;
       width: 750/@rem;
       background-color: #fff;

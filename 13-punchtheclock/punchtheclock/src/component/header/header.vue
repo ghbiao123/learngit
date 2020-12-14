@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     goBack(){
-      if(this.isBack) return;
+      if(!this.isBack) return;
       this.$router.go(-1);
     }
   }
