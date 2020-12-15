@@ -21,7 +21,8 @@ export default {
   data() {
     return {
       //
-      screeHeight: window.innerHeight
+      screeHeight: window.innerHeight,
+      list: []
     }
   },
   mounted(){
@@ -31,7 +32,10 @@ export default {
     // data.token = localStorage.getItem("token");
     this.$ajax.post("/api/users/getjilu", data).then(res=>{
       console.log(res);
-      this.userInfo = res.data.data;
+      this.list = res.data.data.map(v=>{
+        v.starttime = new Date();
+        return v;
+      });
     });
   },
   methods: {}

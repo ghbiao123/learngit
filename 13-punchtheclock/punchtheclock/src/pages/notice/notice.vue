@@ -2,15 +2,19 @@
   <div id="app" :style="{height: screeHeight+'px'}">
     <head-nav title="活动公告" bgColor="#fff" titleColor="#333" :isBack="true"></head-nav>
 
-    <div class="content" v-for="(item, index) in [1,2,3,4]" :key="index">
-      <div class="cell-item">
-        <div>2020-12-02</div>
-        <div>用时：02:00:00</div>
-      </div>
-      <div class="cell-cont">
+    <div class="content" v-for="(item, index) in list" :key="index">
+      <router-link :to="{name: 'noticedetail', params: {id: item.id}}">
+        <div class="cell-item">
+          {{index+1}}.{{item.name}}
+        </div>
+      </router-link>
+      <!-- <div class="cell-cont">
         <div>开始时间：10:00</div>
         <div>结束时间：12:00</div>
-      </div>
+      </div> -->
+    </div>
+    <div class="content" v-if="list.length == 0">
+      暂无数据
     </div>
 
   </div>
@@ -21,6 +25,7 @@ export default {
   data() {
     return {
       //
+      list: [],
       screeHeight: window.innerHeight
     }
   },
@@ -31,7 +36,7 @@ export default {
     // data.token = localStorage.getItem("token");
     this.$ajax.post("/api/users/getHuodong").then(res=>{
       console.log(res);
-      // this.userInfo = res.data.data; 
+      this.list = res.data.data;
     });
   },
   methods: {}
@@ -49,6 +54,8 @@ export default {
       width: 670/@rem;
       background-color: #fff;
       border-radius: 20/@rem;
+      font-size: 30/@rem;
+      text-align: center;
       .cell-item{
         display: flex;
         justify-content: space-between;
