@@ -12,8 +12,11 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       "/api": {
-        target: "http://",
-        changeOrigin: true
+        target: "http://dakah5.zlogic.cn",
+        changeOrigin: true,
+        pathRewirte: {
+          '^/api': '/api'
+        }
       }
     },
 

@@ -1,6 +1,6 @@
 <template>
   <div id="app" :style="{height: screeHeight+'px'}">
-    <head-nav title="活动记录" bgColor="#fff" titleColor="#333" :isBack="true"></head-nav>
+    <head-nav title="活动公告" bgColor="#fff" titleColor="#333" :isBack="true"></head-nav>
 
     <div class="content" v-for="(item, index) in [1,2,3,4]" :key="index">
       <div class="cell-item">
@@ -29,9 +29,9 @@ export default {
     let data = {};
     data.users_id = localStorage.getItem("uid");
     // data.token = localStorage.getItem("token");
-    this.$ajax.post("/api/users/getjilu", data).then(res=>{
+    this.$ajax.post("/api/users/getHuodong").then(res=>{
       console.log(res);
-      this.userInfo = res.data.data;
+      // this.userInfo = res.data.data; 
     });
   },
   methods: {}

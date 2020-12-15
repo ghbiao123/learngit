@@ -8,6 +8,8 @@ import Main from "../pages/main/main.vue";
 import ChangePassWord from "../pages/changepassword/changepassword.vue";
 import PersonalData from "../pages/personaldata/personaldata.vue";
 import Record from "../pages/record/record.vue";
+import Notice from "../pages/notice/notice.vue";
+import NoticeDetail from "../pages/noticedetail/noticedetail.vue";
 
 
 
@@ -15,7 +17,7 @@ import Record from "../pages/record/record.vue";
 import rootSite from '../../config/program.config'
 import Axios from 'axios'
 let isPro = Object.is(process.env.NODE_ENV, 'production');
-const baseUrl = isPro ? `${rootSite.rootSite}` : '';
+const baseUrl = isPro ? `${rootSite.rootSite}/index.php` : '';
 Axios.defaults.baseURL = baseUrl;
 Vue.prototype.$ajax = Axios;
 
@@ -63,6 +65,16 @@ export default new Router({
       path: "/record",
       name: "record",
       component: Record
+    },
+    {
+      path: "/notice",
+      name: "notice",
+      component: Notice
+    },
+    {
+      path: "/noticedetail",
+      name: "noticedetail",
+      component: NoticeDetail
     }
   ]
 })

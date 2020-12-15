@@ -1,6 +1,6 @@
 <template>
   <div id="app" :style="{height: screeHeight+'px'}">
-    <head-nav title="活动记录" bgColor="#fff" titleColor="#333" :isBack="true"></head-nav>
+    <head-nav title="公告详情" bgColor="#fff" titleColor="#333" :isBack="true"></head-nav>
 
     <div class="content" v-for="(item, index) in [1,2,3,4]" :key="index">
       <div class="cell-item">

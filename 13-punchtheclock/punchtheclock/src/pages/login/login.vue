@@ -8,8 +8,8 @@
     </div>
 
     <div class="navbar">
-      <div class="tab-item" :class="[selected==1?'is-selected':'']" @click="selected = '1'">客户注册</div>
-      <div class="tab-item" :class="[selected==2?'is-selected':'']" @click="selected = '2'">员工注册</div>
+      <div class="tab-item" :class="[selected==2?'is-selected':'']" @click="selected = '2'">客户注册</div>
+      <div class="tab-item" :class="[selected==1?'is-selected':'']" @click="selected = '1'">员工注册</div>
     </div>
 
 
@@ -19,7 +19,7 @@
         <img class="icon" src="../../../static/images/register01.png" alt="#">
       </div>
       <div class="cont">
-        <mt-field placeholder="请输入手机号(将做为登录账号)" v-model="registerData" type="number"></mt-field>
+        <mt-field placeholder="请输入手机号" v-model="registerData.phone" type="number"></mt-field>
       </div>
       <div class="rt-box">
         <img class="rt" v-if="false" src="../../../static/images/arrow-rt.png" alt="#">
@@ -31,18 +31,18 @@
         <img class="icon" src="../../../static/images/register02.png" alt="#">
       </div>
       <div class="cont">
-        <mt-field placeholder="请输入密码" v-model="registerData" type="text"></mt-field>
+        <mt-field placeholder="请输入密码" v-model="registerData.password" type="password"></mt-field>
       </div>
       <div class="rt-box">
         <img class="rt" v-if="false" src="../../../static/images/arrow-rt.png" alt="#">
       </div>
     </div>
 
-    <div class="m-t">
+    <div class="m-t" @click="login">
       <my-btn title="立即登录"></my-btn>
     </div>
 
-    <router-link :to="{name: 'login'}" class="linkto">没有账号？去注册 ></router-link>
+    <router-link :to="{name: 'register'}" class="linkto">没有账号？去注册 ></router-link>
 
     <mt-popup
       v-model="popupVisible"
@@ -63,13 +63,17 @@
 </template>
 
 <script>
+import { Toast } from 'mint-ui';
 export default {
   data() {
     return {
       //
       popupVisible: false,
-      selected: "1",
-      registerData: "",
+      selected: "2",
+      registerData: {
+        phone: "",
+        password: ""
+      },
       slotList:[{
           flex: 1,
           values: [],
@@ -82,6 +86,24 @@ export default {
     }
   },
   methods: {
+    login(){
+      this.registerData.juese = this.selected;
+      let that = this;
+      this.$ajax.post("/api/login/login", this.registerData).then(res=>{
+        console.log(res);
+        if(res.data.code == 2001){
+          localStorage.setItem("uid", res.data.data.users_id);
+          // localStorage.setItem("token", res.data.data.token);
+          setTimeout(()=>{
+            that.$router.push({
+              name: 'index',
+            });
+          }, 3000);
+        }
+        Toast(res.data.msg);
+      });
+    },
+
     onGenderChange(picker, values){
       console.log(picker, values);
 

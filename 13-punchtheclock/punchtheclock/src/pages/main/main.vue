@@ -6,8 +6,8 @@
 
     <div class="userinfo">
       <div class="info">
-        <div class="name">吴彦祖</div>
-        <div class="birth">吴彦祖</div>
+        <div class="name">{{userInfo.name}}</div>
+        <div class="birth">{{userInfo.sex}}·{{userInfo.birthday}}</div>
       </div>
 
       <router-link :to="{name: 'personaldata'}">
@@ -20,7 +20,7 @@
 
    <div class="content">
       <div class="cell-item">
-        <mt-cell title="活动公告" :to="{name:'record'}" is-link>
+        <mt-cell title="活动公告" :to="{name:'notice'}" is-link>
           <img slot="icon" src="../../../static/images/huodonggonggao.png" width="16" height="16">
         </mt-cell>
       </div>
@@ -44,8 +44,19 @@ export default {
   data() {
     return {
       //
+      userInfo:{},
       screeHeight: window.innerHeight
     }
+  },
+  mounted(){
+    let that = this;
+    let data = {};
+    data.users_id = localStorage.getItem("uid");
+    // data.token = localStorage.getItem("token");
+    this.$ajax.post("/api/users/getMyData", data).then(res=>{
+      console.log(res);
+      this.userInfo = res.data.data;
+    });
   },
   methods: {}
 }

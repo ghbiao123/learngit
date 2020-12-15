@@ -13,10 +13,12 @@
 
     <div class="btn-box">
       <div class="btn-item" @mousedown="btnLtHover = true" @mouseup="btnLtHover = false" @touchstart="btnLtHover = true" @touchend="btnLtHover = false" :class="{btnLtHover: btnLtHover}">
-        <img class="btn-icon" src="../../../static/images/daka.png" alt="#">
+        <img @click="punch" class="btn-icon" src="../../../static/images/daka.png" alt="#">
       </div>
       <div class="btn-item" @mousedown="btnRtHover = true" @mouseup="btnRtHover = false" @touchstart="btnRtHover = true" @touchend="btnRtHover = false" :class="{btnRtHover: btnRtHover}">
-        <img class="btn-icon" src="../../../static/images/main.png" alt="#">
+        <router-link :to="{name:'main'}">
+          <img class="btn-icon" src="../../../static/images/main.png" alt="#">
+        </router-link>
       </div>
     </div>
 
@@ -35,6 +37,9 @@ export default {
     }
   },
   methods: {
+    punch(){
+
+    },
     countDown(newVal) {
       
       let that = this;

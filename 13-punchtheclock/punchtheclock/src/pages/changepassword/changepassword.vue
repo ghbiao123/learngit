@@ -5,19 +5,19 @@
     <div class="content">
       <div class="list">
         <div class="name">原密码</div>
-        <mt-field placeholder="请输入原密码" v-model="username"></mt-field>
+        <mt-field placeholder="请输入原密码" type="password" v-model="reqData.old_password"></mt-field>
       </div>
        <div class="list">
         <div class="name">新密码</div>
-        <mt-field placeholder="请输入新密码" v-model="username"></mt-field>
+        <mt-field placeholder="请输入新密码" type="password" v-model="reqData.new_password"></mt-field>
       </div>
        <div class="list">
         <div class="name">确认新密码</div>
-        <mt-field placeholder="请再次输入新密码" v-model="username"></mt-field>
+        <mt-field placeholder="请再次输入新密码" type="password" v-model="oldAgain"></mt-field>
       </div>
     </div>
 
-    <div class="m-t">
+    <div class="m-t" @click="confirm">
       <my-btn title="确认修改"></my-btn>
     </div>
 
@@ -25,15 +25,40 @@
 </template>
 
 <script>
+import { Toast } from 'mint-ui';
 export default {
   data() {
     return {
       //
-      username:"",
-      screeHeight: window.innerHeight
+      oldAgain:"",
+      screeHeight: window.innerHeight,
+      reqData: {
+        token: "",
+        users_id: "",
+        old_password: "",
+        new_password: "",
+      }
     }
   },
-  methods: {}
+  methods: {
+    confirm(){
+      if(this.reqData.new_password != this.oldAgain){
+        Toast("新密码不一致");
+        return;
+      }
+      let that = this;
+      this.reqData.users_id = localStorage.getItem("uid");
+      // this.reqData.token = localStorage.getItem("token");
+      this.$ajax.post("/api/users/updatePassword", this.reqData).then(res=>{
+       if(res.data.code == 2001){
+          setTimeout(()=>{
+            this.$router.go(-1);
+          }, 3000);
+        }
+        Toast(res.data.msg);
+      });
+    }
+  }
 }
 </script>
 
