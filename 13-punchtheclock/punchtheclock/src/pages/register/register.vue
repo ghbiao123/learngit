@@ -338,6 +338,9 @@ export default {
     /deep/ .mint-datetime{
       left: 50% !important;
     }
+    /deep/ .mint-cell-wrapper{
+      background-size: 0 0;
+    }
     color: #333;
     padding-bottom: 20/@rem;
     .head,

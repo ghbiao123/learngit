@@ -8,8 +8,8 @@
     </div>
 
     <div class="navbar">
-      <div class="tab-item" :class="[selected==2?'is-selected':'']" @click="selected = '2'">客户注册</div>
-      <div class="tab-item" :class="[selected==1?'is-selected':'']" @click="selected = '1'">员工注册</div>
+      <div class="tab-item" :class="[selected==2?'is-selected':'']" @click="selected = '2'">客户登录</div>
+      <div class="tab-item" :class="[selected==1?'is-selected':'']" @click="selected = '1'">员工登录</div>
     </div>
 
 
@@ -95,7 +95,7 @@ export default {
           localStorage.setItem("uid", res.data.data.users_id);
           // localStorage.setItem("token", res.data.data.token);
           setTimeout(()=>{
-            that.$router.push({
+            that.$router.replace({
               name: 'index',
             });
           }, 3000);
@@ -105,7 +105,6 @@ export default {
     },
 
     onGenderChange(picker, values){
-      console.log(picker, values);
 
     },
     showPopup(e){
@@ -130,9 +129,12 @@ export default {
 <style lang='less' scoped>
   @rem:750/10rem;
   #app{
-      .m-t{
-        margin-top: 40/@rem;
-      }
+     /deep/ .mint-cell-wrapper{
+      background-size: 0 0;
+    }
+    .m-t{
+      margin-top: 40/@rem;
+    }
     color: #333;
     padding-bottom: 20/@rem;
     .head,

@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :style="{height: screeHeight+'px'}">
+  <div id="app" :style="{minHeight: screeHeight+'px'}">
     <head-nav title="活动公告" bgColor="#fff" titleColor="#333" :isBack="true"></head-nav>
 
     <div class="content" v-for="(item, index) in list" :key="index">

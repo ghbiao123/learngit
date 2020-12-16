@@ -4,11 +4,11 @@
 
     <div class="circle-out">
       <div class="circle-in">
-        <div class="content" v-if="false">
+        <div class="content" v-if="status">
           <div class="text">计时时间</div>
           <div class="time">{{timeCount}}</div>
         </div>
-        <div class="content" v-if="true">
+        <div class="content" v-if="!status">
           <div class="time color-red">{{timeCount}}</div>
           <div class="text">额外时间</div>
         </div>
@@ -26,7 +26,6 @@
       </div>
     </div>
 
-
   </div>
 </template>
 
@@ -40,82 +39,156 @@ export default {
       btnLtHover: false,
       btnRtHover: false,
       timeCount: "00:00:00",
+      status: true,
+      timer: null,
+      ret: '123'
     }
   },
   mounted(){
-    /**
-     * index.html 中已经引入了 http://res.wx.qq.com/open/js/jweixin-1.6.0.js
-     * 1. 通过wx.config()接口 注入权限验证
-     * 2. 通过wx.ready()接口 处理成功验证
-     * 3. 通过wx.error()接口 处理失败验证
-     */
-
-    // 请求配置参数
-    let data = {};
-    data.url = location.href;
-    // this.$ajax.post("/api/ticket/getTicket", data).then(res=>{
-    //   console.log(res);
-    // });
+    let that = this;
+    
+    // this.countDown(Math.floor( new Date()/1000 + 3 ));
 
     // 查看本地code 有code则初始化数据，
-    this.countDown(Math.floor(new Date()/1000) + 60 * 60 * 3);
+    let users_id = localStorage.getItem("uid");
+    let code = localStorage.getItem("code");
+    if(!users_id){
+      // 用户未登录
+      this.$router.push({
+        name: 'login'
+      });
+      return;
+    }
+    if(!code) {
+      // 用户未使用房间
+      return;
+    };
+    // 用户已登录并正在使用房间
+    this.$ajax.post("/api/users/getJishiStatus", {users_id}).then(res=>{
+      // res.data.state 0,正在使用房间； 1，未使用房间
+      // 正在使用房间
+      if(res.data.code == 2001 && res.data.data.state == 0){
+        if(res.data.data.chaoshi_time > 0){
+          // 已超时
+          that.status = false;
+          let t = Math.floor( new Date()/1000 - res.data.data.chaoshi_time * 60 );
+          that.countDown(t);
+        }else{
+          // 未超时
+          that.status = true;
+          let t = Math.floor( new Date()/1000 + res.data.data.shengyu_time * 60 );
+          that.countDown( t );
+        }
+      }
+
+    });
+
   
   },
   methods: {
     punch(){
       let that = this;
       // 需要先请求扫码, 得到扫码结果
-      // wx.scanQRCode({
-      //   needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
-      //   scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
-      //   success: function (res) {
-      //     var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
-      //   }
-      // });
+      /**
+       * index.html 中已经引入了 http://res.wx.qq.com/open/js/jweixin-1.6.0.js
+       * 1. 通过wx.config()接口 注入权限验证
+       * 2. 通过wx.ready()接口 处理成功验证
+       * 3. 通过wx.error()接口 处理失败验证
+       */
+      // 请求配置参数
 
-      // 模拟请求结果,
-      // 进门
-      // let resultStr = "id=1&type=1";
-      // 出门
-      let resultStr = "id=1&type=2";
-      let result = {};
-      resultStr.split("&").forEach(v=>{
-        let arrVal = v.split("=");
-        result[arrVal[0]] = arrVal[1];
-      });
-
-      console.log(result);
-      let data = {};
-      data.users_id = localStorage.getItem("uid");
-      data.code_id = result.id;
-      // result.tyoe == 1 "进门":"出门"
-      let url = result.type == 1 ? "/api/users/admission" : "/api/users/departure";
-      that.$ajax.post(url, data).then(res=>{
-        console.log(res);
-        if(res.data.code == 2001){
-          // 扫码成功, 本地存储房间id：result.id
-          localStorage.setItem("code", result.id);
-
+      this.$ajax.post("/api/ticket/getTicket", {
+        lianjie : window.location.href.split("#")[0]
+      }).then(res=>{
+        let data = {
+          debug: false,
+          jsApiList: ["scanQRCode"],
         }
-        Toast(res.data.msg);
+        Object.assign(data, res.data);
+        wx.config(data);
+
+        wx.ready(function(){
+
+          wx.scanQRCode({
+            needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+            scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+            success: function (res) {
+              // 当needResult 为 1 时，扫码返回的结果
+              let resultStr = res.resultStr;
+              let result = {};
+              resultStr.split("&").forEach(v=>{
+                let arrVal = v.split("=");
+                result[arrVal[0]] = arrVal[1];
+              });
+
+
+              let data = {};
+              data.users_id = localStorage.getItem("uid");
+              data.code_id = result.id;
+              // result.tyoe == 1 "进门":"出门"
+              let url = result.type == 1 ? "/api/users/admission" : "/api/users/departure";
+              that.$ajax.post(url, data).then(res=>{
+                console.log(res);
+                if(res.data.code == 2001){
+                  if(result.type == 1){
+                    // 扫码打卡成功, 本地存储房间id：result.id
+                    // 进门
+                    localStorage.setItem("code", result.id);
+                    if(res.data.data.chaoshi_time > 0){
+                        // 已超时
+                      that.status = false;
+                      let t = Math.floor( new Date()/1000 - res.data.data.chaoshi_time * 60 );
+                      that.countDown(t);
+                    }else{
+                      // 未超时
+                      that.status = true;
+                      let t = Math.floor( new Date()/1000 + res.data.data.shengyu_time * 60 );
+                      that.countDown( t );
+                    }
+
+                  }else if(result.type == 2){
+                    // 扫码退出成功，清除localstorage code, 重新设置显示时间00:00:00
+                    // 出门
+                    console.log(result);
+                    localStorage.removeItem("code");
+                    clearInterval(that.timer);
+                    that.timeCount = "00:00:00";
+                  }
+
+                }
+                Toast(res.data.msg);
+              });
+
+            },
+            fail(err){
+              console.log(err);
+            }
+          });
+
+        });
+        
+        wx.error(err=>{
+          console.log(err);
+        });
+        
       });
-
-
 
     },
     // 传参，秒为单位
     countDown(newVal) {
-      
+      console.log(!newVal);
       let that = this;
-      let timer;
       // const unit = ['天', '时', '分', '秒'];
       const unit = [':', ':', ':', ':'];
-
-      clearInterval(timer);
-      timer = setInterval(function () {
-        let time = new Date(newVal * 1000) - new Date();
-        if(time<0){
-          clearInterval(timer);
+      
+      clearInterval(that.timer);
+      that.timer = setInterval(function () {
+        let time = Math.abs(new Date(newVal * 1000) - new Date());
+        if(time < 1000) {
+          that.status = false;
+        }
+        if(time<0 || !newVal){
+          clearInterval(that.timer);
           return
         }
         let arrTime = [];

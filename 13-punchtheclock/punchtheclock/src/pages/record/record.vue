@@ -1,15 +1,15 @@
 <template>
-  <div id="app" :style="{height: screeHeight+'px'}">
+  <div id="app" :style="{minHeight: screeHeight+'px'}">
     <head-nav title="活动记录" bgColor="#fff" titleColor="#333" :isBack="true"></head-nav>
 
-    <div class="content" v-for="(item, index) in [1,2,3,4]" :key="index">
+    <div class="content" v-for="(item, index) in list" :key="index">
       <div class="cell-item">
-        <div>2020-12-02</div>
-        <div>用时：02:00:00</div>
+        <div>{{item.date}}</div>
+        <div>用时：{{item.total}}分钟</div>
       </div>
       <div class="cell-cont">
-        <div>开始时间：10:00</div>
-        <div>结束时间：12:00</div>
+        <div>开始时间：{{item.starttime}}</div>
+        <div>结束时间：{{item.endtime}}</div>
       </div>
     </div>
 
@@ -33,7 +33,11 @@ export default {
     this.$ajax.post("/api/users/getjilu", data).then(res=>{
       console.log(res);
       this.list = res.data.data.map(v=>{
-        v.starttime = new Date();
+        v.date = new Date(v.starttime *1000).toLocaleDateString();
+        let startTime = new Date(v.starttime *1000);
+        v.starttime = `${startTime.getHours().toString().padStart(2, "0")}:${startTime.getMinutes().toString().padStart(2, "0")}`;
+        let endTime = new Date(v.endtime *1000);
+        v.endtime = `${endTime.getHours().toString().padStart(2, "0")}:${endTime.getMinutes().toString().padStart(2, "0")}`;
         return v;
       });
     });

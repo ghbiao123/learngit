@@ -52,6 +52,12 @@ export default {
     let that = this;
     let data = {};
     data.users_id = localStorage.getItem("uid");
+    if(!data.users_id){
+      this.$router.replace({
+        name: "login"
+      });
+      return;
+    }
     // data.token = localStorage.getItem("token");
     this.$ajax.post("/api/users/getMyData", data).then(res=>{
       console.log(res);

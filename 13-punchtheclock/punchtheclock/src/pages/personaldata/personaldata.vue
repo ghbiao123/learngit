@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :style="{height: screeHeight+'px'}">
+  <div id="app">
     <head-nav title="个人资料" bgColor="#fff" titleColor="#333" :isBack="true"></head-nav>
 
     <div class="content">
@@ -32,6 +32,11 @@
         <div class="value">{{userInfo.hobby}}</div>
       </div>
     </div>
+
+    <div class="btn" @click="logout">
+      <my-btn title="退出登录"></my-btn>
+    </div>
+
   </div>
 </template>
 
@@ -48,19 +53,35 @@ export default {
     let that = this;
     let data = {};
     data.users_id = localStorage.getItem("uid");
+    if(!data.users_id){
+      this.$router.replace({
+        name: "login"
+      });
+      return;
+    }
     // data.token = localStorage.getItem("token");
     this.$ajax.post("/api/users/getMyData", data).then(res=>{
       console.log(res);
       this.userInfo = res.data.data;
     });
   },
-  methods: {}
+  methods: {
+    logout(){
+      localStorage.removeItem("uid");
+      this.$router.replace({
+        name: "login"
+      });
+    }
+  }
 }
 </script>
 
 <style lang='less' scoped>
   @rem: 750/10rem;
   #app{
+    .btn{
+      padding: 30/@rem 0;
+    }
     background-color: #f5f5f5;
     color: #333;
     .content{
