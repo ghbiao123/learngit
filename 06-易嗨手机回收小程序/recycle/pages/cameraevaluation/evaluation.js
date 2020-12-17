@@ -311,6 +311,9 @@ Page({
     // 关闭actionsheet
     // this.close();
 
+    if(that.data.progressData.chose != that.data.progressData.all){
+      return util.showSuccess("请完善选项");
+    }
 
     let data = Object.assign({}, this.data.reqData);
     // 将用户所选数据进行处理

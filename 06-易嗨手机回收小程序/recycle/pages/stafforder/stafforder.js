@@ -109,7 +109,8 @@ Page({
    
 
     let needData = ['imei', 'pname'];
-    if (!data.imei || !data.pname) {
+    
+    if (!data.imei || (!data.pname&&that.data.order.estimate_type==0)) {
       return util.showSuccess('请完善信息');
     }
     util.post('/api/order/testingMachineOrder', data).then(res => {

@@ -19,8 +19,11 @@
   width: 710rpx;
   height: 75rpx;
   line-height: 75rpx;
-  font-size: 35rpx;
+  font-size: 30rpx;
   font-weight: bold;
+}
+.tit-no-bg-selected{
+  border-bottom: 1rpx solid #ccc;
 }
 
 .title-selected{

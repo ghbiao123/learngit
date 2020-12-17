@@ -83,8 +83,8 @@
         </view>
       </view>
 
-      <view class="tit-no-bg">身份证拍照识别</view>
-      <view class="cell-card">
+      <view wx:if="{{order.estimate_type == 0}}" class="tit-no-bg">身份证拍照识别</view>
+      <view wx:if="{{order.estimate_type == 0}}" class="cell-card">
         <view class="idcard">
           <view class="idcard-image">
             <ocr-navigator bind:onSuccess="chooseIdcard" certificateType="idCard" opposite="{{false}}">

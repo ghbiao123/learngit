@@ -10,7 +10,7 @@
 
     <view class="tit-no-bg">个人信息</view>
     <view class="cell-card">
-      <view class="cell-item">
+      <view hidden class="cell-item">
         <view class="cell-name">姓名</view>
         <view class="cell-cont">
           <input name="username" value="{{userData.username}}" class="cell-input" type="text" placeholder="请输入姓名" />
@@ -20,7 +20,7 @@
       <view class="cell-item">
         <view class="cell-name">电话</view>
         <view class="cell-cont">
-          <input name="mobile" value="{{userData.mobile}}" type="number" class="cell-input" type="text" placeholder="请输入手机号" />
+          <input disabled name="mobile" value="{{userData.mobile}}" type="number" class="cell-input" type="text" placeholder="请输入手机号" />
         </view>
       </view>
 
@@ -64,7 +64,7 @@
       </view>
     </view>
 
-    <button form-type="submit" hover-class="btn-hover" class="button-clear m-t-20">保存</button>
+    <!-- <button form-type="submit" hover-class="btn-hover" class="button-clear m-t-20">保存</button> -->
   </form>
   <button bindtap="logout"  hover-class="cancel-hover" class="button-clear-cancel m-t-20">退出登录</button>
 </view>

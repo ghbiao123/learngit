@@ -8,7 +8,7 @@
       </view>
       <!-- <image mode="aspectFit" class="image" src="{{_data.image}}"></image> -->
       <view class="name">{{name}}</view>
-      <view class="cell-card t-a-l m-t-20">小提示：选择结果与实际相符，有利于加快您的回收进度。</view>
+      <view class="cell-card m-t-20 f-s-26">小提示：选择结果与实际相符，有利于加快您的回收进度。</view>
     </view>
 
 

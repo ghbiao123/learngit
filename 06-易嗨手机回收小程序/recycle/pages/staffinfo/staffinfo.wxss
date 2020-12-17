@@ -28,14 +28,15 @@
   justify-content: space-around;
 }
 .type{
+  margin-top: 15rpx;
   position: relative;
   text-align: center;
-  width: 124rpx;
+  width: 164rpx;
 }
 
 .dot{
   position: absolute;
-  right: -5rpx;
+  right: 15rpx;
   top: -5rpx;
   width: 30rpx;
   height: 30rpx;

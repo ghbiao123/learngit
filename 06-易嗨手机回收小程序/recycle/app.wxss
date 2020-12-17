@@ -160,7 +160,10 @@ image{
   color: #fff !important;
 }
 
-
+/* add style  */
+.f-s-26{
+  font-size: 26rpx;
+}
 
 
 

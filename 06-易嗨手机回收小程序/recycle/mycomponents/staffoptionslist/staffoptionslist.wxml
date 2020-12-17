@@ -7,7 +7,7 @@
     <block wx:for="{{arrConfig}}" wx:key="index">
 
       <!-- 配置标题 -->
-      <view id="id{{index}}" class="tit-no-bg">
+      <view id="id{{index}}" class="tit-no-bg {{arrSelected[index].isShow ? '' : 'tit-no-bg-selected'}}">
         <view>
           {{index + 1}}.{{item.title}}
         </view>
@@ -34,7 +34,7 @@
 
       <view hidden="{{ index + currentIndex + 1 > hideCode}}">
         <!-- 其他描述信息标题 -->
-        <view id="id{{index + currentIndex}}" class="tit-no-bg">
+        <view id="id{{index + currentIndex}}" class="tit-no-bg {{arrSelected[index + currentIndex].isShow ? '' : 'tit-no-bg-selected'}}">
           <view>
             {{index + currentIndex +1}}.{{item.name}}
           </view>
