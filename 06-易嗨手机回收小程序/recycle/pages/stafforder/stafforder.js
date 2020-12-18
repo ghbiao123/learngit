@@ -101,9 +101,9 @@ Page({
       describeinfo: this.data.order.describe_info || this.data.order.model_info.describe,
       pictures: this.data.reqImageUrl,
       imei: this.data.imei,
-      pname: (this.data.idCard && this.data.idCard.name),
-      pidcard: (this.data.idCard && this.data.idCard.id),
-      ppic: this.data.idcardSrc,
+      pname: (this.data.idCard && this.data.idCard.name) || " ",
+      pidcard: (this.data.idCard && this.data.idCard.id) || " ",
+      ppic: this.data.ppic  || " ",
       changefee: (this.data.changefee ? this.data.changefee : 0)
     };
    
@@ -236,6 +236,19 @@ Page({
         console.log(ret);
 
         that.data.ppic = JSON.parse(ret.data).data.url;
+
+        // wx.showLoading();
+        // wx.uploadFile({
+        //   filePath: JSON.parse(ret.data).data.url,
+        //   name: 'file',
+        //   url: util.getSiteRoot() + '/api/common/upload',
+        //   success(ret) {
+        //     let url = JSON.parse(ret.data).data.url;
+        //     that.data.ppic = url;
+        //     wx.hideLoading();
+        //   }
+        // });
+
 
         let idCard = {
           id: res.detail.id.text,

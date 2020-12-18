@@ -47,7 +47,8 @@ Page({
             resolve(res[0]);
           });
         });
-        let scrollHeight = (systemHeight - height.height) * 2 - 40;
+        console.log(height);
+        let scrollHeight = (systemHeight - height.height) - 2;
         that.setData({
           scrollHeight
         });

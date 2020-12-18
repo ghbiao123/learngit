@@ -234,14 +234,25 @@ Page({
     if (typeof val != 'object') {
       this.data.reqData.inquiryinfo[id] = this.data._data[id][_key].filter(v => v.id == val)[0];
     } else if (typeof val == 'object') {
+
+      if(val.indexOf("none")>=0){
+        val = ["no"]
+      }
+
       this.data.checkbox = this.data._data[id][_key].filter(v => {
         if (val.indexOf(String(v.id)) >= 0) {
           return v;
         }
       });
+
     }
 
-    progressData.chose = Object.keys(this.data.reqData.inquiryinfo).length + (this.data.checkbox.length > 0 ? 1 : 0);
+
+    progressData.chose = Object.keys(this.data.reqData.inquiryinfo).length;
+
+    if(typeof val == 'object' && val.length > 0){
+      progressData.chose += 1;
+    }
 
     let progress = util.getToPersent(progressData.chose / progressData.all);
 
@@ -347,8 +358,7 @@ Page({
 
     data.otype = 0;
 
-    console.log(data);
-
+    // console.log(data);
 
     util.post('/api/order/calculateOtherNa', data).then(res => {
       console.log(res);

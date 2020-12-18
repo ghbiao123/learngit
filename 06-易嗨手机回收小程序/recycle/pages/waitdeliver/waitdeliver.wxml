@@ -1,6 +1,6 @@
 <view class="content">
   <!-- list -->
-  <scroll-view bindscrolltolower="getMoreList" class="scroll" scroll-y style="height: {{scrollHeight}}rpx;">
+  <scroll-view bindscrolltolower="getMoreList" class="scroll" scroll-y style="height: {{scrollHeight}}px;">
     <checkbox-group bindchange="getSelected">
       <view class="list" wx:for="{{list}}" wx:key="index">
         <checkbox color="#C1402A" value="{{item.id}}" checked="{{item.checked}}">

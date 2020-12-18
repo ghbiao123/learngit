@@ -369,6 +369,9 @@ Page({
       if (id != this.data._data.other.length - 1) {
         this.data.reqData.inquiryinfo[id] = this.data._data.other[id][_key].filter(v => v.id == val)[0];
       } else if (id == this.data._data.other.length - 1) {
+        if(val.indexOf("none") >= 0){
+          val.unshift("none");
+        }
         this.data.reqData.inquiryinfo.last = val;
       }
     } else {

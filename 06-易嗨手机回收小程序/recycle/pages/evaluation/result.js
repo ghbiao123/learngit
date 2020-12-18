@@ -250,7 +250,7 @@ Page({
 
     // this.data.pageOption  estimatefee estimatetype assessorderid 3
     // 得到  estimatefee estimatetype assessorderid
-    data.estimatefee = this.data.totalPrice;
+    data.estimatefee = this.data.price;
     data.estimatetype = this.data.pageOption.frompage == 'evaluation' ? 0 : 1;
     data.staffid && (data.estimatetype = 1);
     this.data.pageOption.orderid && (data.assessorderid = this.data.pageOption.orderid);
@@ -295,7 +295,6 @@ Page({
     }
     // console.log("pageOption", this.data.pageOption);
     console.log(data);
-    return;
     util.post('/api/order/placeOrder', data).then(res => {
       console.log(res);
 
