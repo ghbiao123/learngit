@@ -92,13 +92,18 @@
 .button-clear{
   padding: 0;
   margin-top: 20rpx;
-  width: 630rpx !important;
-  height: 90rpx;
-  line-height: 90rpx;
+  width: 420rpx !important;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
   color: #fff;
   font-weight: normal;
   background-color: #C1402A;
   border-radius: 10rpx;
+}
+
+button[disabled], wx-button[disabled]:not([type]) {
+  color: #aaa;
 }
 
 .btn-hover{

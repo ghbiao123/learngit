@@ -45,6 +45,8 @@
     "pages/waitdeliverdetail/waitdeliverdetail",
     "pages/waitevaluationlist/waitevaluationlist",
     "pages/waitevaluationdetail/waitevaluationdetail",
+    "pages/waitevaluatedlist/waitevaluatedlist",
+    "pages/waitevaluateddetail/waitevaluateddetail",
     "pages/remarklist/remarklist"
   ],
   "usingComponents": {

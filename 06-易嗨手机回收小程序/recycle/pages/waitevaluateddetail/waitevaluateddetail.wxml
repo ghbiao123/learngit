@@ -5,7 +5,7 @@
   </view>
 </view>
 <view class="tit-no-bg">配置信息</view>
-<view class="cell-card"><text>{{detail.configure ? detail.configure : "无"}}</text></view>
+<view class="cell-card"><text>{{detail.configure}}</text></view>
 <view class="tit-no-bg">机器信息</view>
 <view class="cell-card"><text>{{detail.describe}}</text></view>
 

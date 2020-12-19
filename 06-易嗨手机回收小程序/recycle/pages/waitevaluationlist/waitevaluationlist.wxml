@@ -1,6 +1,7 @@
 <view class="cell-card" wx:for="{{list}}" wx:key="index">
 	<navigator hover-class="none" url="/pages/waitevaluationdetail/waitevaluationdetail?aoid={{item.id}}">
+		<view class="title">机器信息</view>
 		<view class="title">{{item.name}}</view>
-		<view class="content">{{item.configure? item.configure : ""}}</view>
+		<view class="content">联系方式：{{item.userinfo.mobile}}</view>
 	</navigator>
 </view>

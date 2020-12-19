@@ -2,11 +2,12 @@
   line-height: 1.5;
 }
 .title{
-  font-size: 32rpx;
+  font-size: 30rpx;
   font-weight: bold;
 }
 .content{
-  color: #333;
+  color: #606060;
   font-size: 28rpx;
-  background-color: #f5f5f5;
+  line-height: 2;
+  /* background-color: #f5f5f5; */
 }

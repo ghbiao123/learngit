@@ -520,17 +520,22 @@ Page({
     let isIdChange = (needId.configId.isDiff && needId.describeId.isDiff);
     if (isIdChange) {
       // 跟原来id一样
-      wx.setStorage({
-        data: oldOption,
-        key: 'newstaffmachine',
-        success() {
-          // 跳转新页面
-          wx.navigateTo({
-            url: '/pages/stafforder/stafforder',
-          });
-        }
+      submitOrder(function(res){
+        console.log(res);
+        oldOption.gradename = res.data.gradename;
+        wx.setStorage({
+          data: oldOption,
+          key: 'newstaffmachine',
+          success() {
+            // 跳转新页面
+            wx.navigateTo({
+              url: '/pages/stafforder/stafforder',
+            });
+          }
+        });
       });
-      return;
+
+     return;
     } else {
       // 跟原来id不一样
       oldOption.configure_info = needId.configId.value;
@@ -543,6 +548,7 @@ Page({
       // 当前估价机器 Storage
       let newData = Object.assign({}, data);
       let pricevalue = res.data.totalprice;
+      oldOption.gradename = res.data.gradename;
       util.post("/api/order/doOrderInfo", {
         userid: oldOption.user_id,
         pricevalue
@@ -642,15 +648,6 @@ Page({
 
     function submitOrder(callBack) {
       util.post(url, data).then(res => {
-
-        // 当前估价机器 Storage
-        let newData = Object.assign({}, data);
-        newData.cid = that.data._data.cid;
-        wx.setStorage({
-          data: newData,
-          key: 'currentmachine',
-        });
-
         if (res.code == 1) {
           callBack && callBack(res);
         } else {

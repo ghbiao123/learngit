@@ -98,10 +98,13 @@ Component({
       let arrC = newConfigVal.map((v, i) => {
 
         // 查出所选选项
+        console.log("配置信息", v);
+        console.log("配置id", arrConfigId);
         let item = v.data.filter(val => {
+          console.log("配置选项", val)
           return arrConfigId.indexOf(val.id.toString()) >= 0;
         })[0];
-
+        
         // 将所选选项提交到父组件
         // 所选id
         // let val = e.detail.value;

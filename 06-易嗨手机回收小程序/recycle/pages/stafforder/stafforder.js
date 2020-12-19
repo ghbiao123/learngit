@@ -104,9 +104,10 @@ Page({
       pname: (this.data.idCard && this.data.idCard.name) || " ",
       pidcard: (this.data.idCard && this.data.idCard.id) || " ",
       ppic: this.data.ppic  || " ",
-      changefee: (this.data.changefee ? this.data.changefee : 0)
+      changefee: (this.data.changefee ? this.data.changefee : 0),
+      gradename: this.data.order.gradename
     };
-   
+   console.log("submit" ,data);
 
     let needData = ['imei', 'pname'];
     

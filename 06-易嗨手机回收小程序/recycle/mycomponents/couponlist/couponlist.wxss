@@ -36,6 +36,7 @@
   font-size: 26rpx;
 }
 .info{
+  width: 400rpx;
   text-indent: 20rpx;
 }
 .info-introduce{
@@ -48,5 +49,17 @@
 }
 .info-time{
   font-size: 24rpx;
+}
 
+.status{
+  height: 160rpx;
+  width: 90rpx;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 160rpx;
+  color: #C7402C;
+}
+
+.s-gray{
+  filter:grayscale(100%);
 }

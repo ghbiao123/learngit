@@ -5,7 +5,8 @@
   </view>
 
   <view class="cell-card m-t-20">
-    工程师会根据您提供的机器信息，在20分钟内，以短信形式将报价发送给您，您也可以进入“我的--估价列表”中查询并完成下单。
+    <!-- 工程师会根据您提供的机器信息，在20分钟内，以短信形式将报价发送给您，您也可以进入“我的--估价列表”中查询并完成下单。 -->
+    工程师会根据您提供的机器信息，在20分钟内，以短信形式将报价发送给您，此报价有效期为48小时，您也可以进入”我的--估价列表“进行查询并完成下单。
   </view>
   <navigator open-type="redirect" url="/pages/recyclelist/recyclelist" hover-class="none">
     <button class="button-clear m-t-20" hover-class="btn-hover">查询估价列表</button>

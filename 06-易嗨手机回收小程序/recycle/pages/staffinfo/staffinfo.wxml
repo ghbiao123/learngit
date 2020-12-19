@@ -47,10 +47,10 @@
         </navigator>
       </view>
       <view class="type" hover-class="line-hover">
-        <navigator url="/pages/stafforderlist/stafforderlist?type=waitevaluationed" hover-class="none">
+        <navigator url="/pages/waitevaluatedlist/waitevaluatedlist" hover-class="none">
           <image mode="aspectFit" class="type-icon" src="/images/main2.png"></image>
           <view class="type-txt">已估价</view>
-          <view wx:if="{{count > 0}}" class="dot">{{count}}</view>
+          <!-- <view wx:if="{{count > 0}}" class="dot">{{count}}</view> -->
         </navigator>
       </view>
     </view>

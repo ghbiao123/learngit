@@ -7,7 +7,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    reqData: {}
+    reqData: {},
+    reqApi: {
+      get: "",
+      post: ""
+    }
   },
 
   /**
@@ -17,6 +21,21 @@ Page({
     that = this;
 
     this.data.reqData.orderid = options.orderid;
+    this.data.pageOption = options;
+    if (options.frompage&&options.frompage == "evaluated"){
+      // 已估价订单API
+      this.data.reqApi = {
+        get: "/api/order/assessOrderRemarkList",
+        post: "/api/order/updateAssessOrderRemark"
+      }
+    }else{
+      // 待验机订单API
+      this.data.reqApi = {
+        get: "/api/order/orderRemarkList",
+        post: "/api/order/updateOrderRemark"
+      }
+
+    }
 
     this.init();
 
@@ -27,7 +46,13 @@ Page({
     let data = {};
     data.staffid = wx.getStorageSync('staffid');
     data.orderid = this.data.reqData.orderid;
-    util.post("/api/order/orderRemarkList", data).then(res=>{
+
+    if (this.data.pageOption.frompage&&this.data.pageOption.frompage == "evaluated"){
+      delete data.orderid;
+      data.assessid = this.data.reqData.orderid;
+    }
+
+    util.post(this.data.reqApi.get, data).then(res=>{
       console.log(res);
       let list = res.data.map(v=>{
         let t = util.getToday(v.createtime * 1000);
@@ -51,7 +76,13 @@ Page({
       return util.showSuccess("请输入您的备注");
     }
     this.data.reqData.staffid = wx.getStorageSync('staffid');
-    util.post("/api/order/updateOrderRemark", this.data.reqData).then(res=>{
+
+    if (this.data.pageOption.frompage&&this.data.pageOption.frompage == "evaluated"){
+      this.data.reqData.assessid = this.data.reqData.orderid;
+      delete this.data.reqData.orderid;
+    }
+
+    util.post(this.data.reqApi.post, this.data.reqData).then(res=>{
       console.log(res);
       let list = this.data.list;
       let t = util.getToday();

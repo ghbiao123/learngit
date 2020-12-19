@@ -1,6 +1,6 @@
 <view class="list" >
   
-  <view class="list-item" wx:for="{{newList}}" wx:key="index">
+  <view class="list-item {{item.status == 0 ? '':'s-gray'}}" wx:for="{{newList}}" wx:key="index">
     <view class="price">
       <view class="price-val">{{item.par_value}}</view>
       <view class="price-txt">加价券</view>
@@ -9,6 +9,11 @@
       <view class="info-introduce">{{item.aname}}{{item.title}}{{item.par_value}}元加价券</view>
       <view class="info-condition">满{{item.limit_price}}可用</view>
       <view wx:if="{{item.etime}}" class="info-time">{{item.etime}} - {{item.stime}}</view>
+    </view>
+    <view class="status">
+      {{item.status == 0 ? "未使用" : ""}}
+      {{item.status == 1 ? "已使用" : ""}}
+      {{item.status == 2 ? "已过期" : ""}}
     </view>
   </view>
 
