@@ -3,7 +3,7 @@
 		<view class="title">机器信息</view>
 		<view class="title">{{item.name}}</view>
 		<view class="content">预估价：{{item.total_amount*1}}</view>
-		<view class="content">联系方式：{{item.userinfo.mobile}}</view>
+		<view class="content">联系方式：{{item.userinfo.mobile?item.userinfo.mobile:''}}</view>
 		<view class="cell-item" catchtap="aaa">
 			<image hidden class="express-icon" src="/images/co-s.png"></image>
 			<view>备注</view>

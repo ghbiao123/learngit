@@ -118,10 +118,6 @@ Page({
       console.log(res);
       if (res.code == 1) {
         return util.showSuccess(res.msg, function () {
-          // wx.navigateBack({
-          //   delta: 1,
-          // });
-          console.log(res);
           wx.redirectTo({
             url: '/pages/paymentmethod/paymentmethod?orderid=' + data.orderid,
           });

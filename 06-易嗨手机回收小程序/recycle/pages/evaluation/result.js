@@ -36,10 +36,6 @@ Page({
       });
     }
 
-    // onload init ()
-    this.onLoadInit();
-
-
   },
   // onload init ()
   onLoadInit() {
@@ -213,7 +209,7 @@ Page({
     // currentmachine 当前机型 cid mid configureinfo describeinfo 4
     let currentMachine = wx.getStorageSync('currentmachine');
     // 得到 cid mid configureinfo describeinfo
-    let needId = ['phonecolor', 'phonestorage', 'phonemodel', 'pcconfigure', 'pcram', 'pcssd', 'pcvideocard'];
+    let needId = ['phonecolor', 'phonestorage', 'phonemodel', 'pcconfigure', 'pcram', 'pcssd', 'pcvideocard', 'pcharddisk', 'pcprocessor'];
     data.configureinfo = [];
     data.describeinfo = [];
     for (let key in currentMachine) {
@@ -579,6 +575,9 @@ Page({
   onShow: function () {
     // init data
     this.init();
+
+     // onload init ()
+     this.onLoadInit();
   },
 
   /**

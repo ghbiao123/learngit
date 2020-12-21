@@ -345,7 +345,7 @@ Page({
     if (!this.data.reqData.inquiryinfo.last) {
       progressData.chose--
     }
-    progressData.chose = Math.min(progressData.chose, progressData.all)
+    progressData.chose = Math.min(progressData.chose, progressData.all);
     let progress = util.getToPersent(progressData.chose / progressData.all);
 
     this.setData({
@@ -451,6 +451,8 @@ Page({
 
     // 共两种情况：  系统估价，人工估价
 
+    console.log(data);
+
     // 先判断人工估价
     if (this.data.type == 'pc' && this.data._data.bid != 1) {
       /*
@@ -478,23 +480,23 @@ Page({
 
       return;
 
-      if (e.detail.value == 2) {
-        // 用户现场扫码
-        data.otype = 1;
-        submitOrder(function (res) {
-          wx.navigateTo({
-            url: `/pages/evaluation/result?type=${that.data.type}&name=${that.data._data.name}&price=${res.data.totalprice || 0}&frompage=evaluation&otype=1&orderid=${res.data.aoid}`,
-          });
-        });
-      } else if (e.detail.value == 1) {
-        // 用户正常流程进行人工估价
-        data.otype = 0;
-        submitOrder(function (res) {
-          wx.redirectTo({
-            url: '/pages/recyclelist/recyclelist',
-          });
-        });
-      }
+      // if (e.detail.value == 2) {
+      //   // 用户现场扫码
+      //   data.otype = 1;
+      //   submitOrder(function (res) {
+      //     wx.navigateTo({
+      //       url: `/pages/evaluation/result?type=${that.data.type}&name=${that.data._data.name}&price=${res.data.totalprice || 0}&frompage=evaluation&otype=1&orderid=${res.data.aoid}`,
+      //     });
+      //   });
+      // } else if (e.detail.value == 1) {
+      //   // 用户正常流程进行人工估价
+      //   data.otype = 0;
+      //   submitOrder(function (res) {
+      //     wx.redirectTo({
+      //       url: '/pages/recyclelist/recyclelist',
+      //     });
+      //   });
+      // }
     } else {
       // 普通估价
 
@@ -513,6 +515,10 @@ Page({
         // 当前估价机器 Storage
         let newData = Object.assign({}, data);
         newData.cid = that.data._data.cid;
+        if(that.data.type == 'pc' && that.data._data.bid == 1){
+          newData.pcharddisk = that.data.reqData.pc_harddisk;
+          newData.pcprocessor = that.data.reqData.pc_processor;
+        }
         wx.setStorage({
           data: newData,
           key: 'currentmachine',
@@ -521,11 +527,38 @@ Page({
         if (res.code == 1) {
           callBack && callBack(res);
         }else if(res.code == -5){
-          util.showSuccess(res.msg, function(){
-            wx.navigateTo({
-              url: 'pages/evaluation/othercalcprice',
-            });
+          
+          let userInfo = wx.getStorageSync('userinfo');
+          let userid = userInfo.uid;
+          let d = {
+            pcid: that.data._data.id,
+            inquiryinfo: data.inquiryinfo,
+            pictures: "",
+            userid,
+            cid: that.data._data.cid,
+            otype: 0,
+            pcconfigure: [],
+          }
+          let needId = ['phonecolor', 'phonestorage', 'phonemodel', 'pcconfigure', 'pcram', 'pcssd', 'pcvideocard', 'pcharddisk', 'pcprocessor'];
+          for (let key in data) {
+            if (needId.indexOf(key) >= 0) {
+              d.pcconfigure.push(data[key]);
+            }
+          }
+
+          util.post("/api/order/calculatePricePcNa", d).then(res=>{
+            console.log(res);
+            if(res.code == 1){
+              wx.redirectTo({
+                url: '/pages/manualresult/manualresult',
+              });
+            }else{
+              util.showSuccess(res.msg);
+            }
           });
+
+          return;
+
         } else {
           util.showSuccess(res.msg);
         }
