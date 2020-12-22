@@ -352,14 +352,13 @@ Page({
       if (hideCode < 8 && showCode.indexOf(val) < 0) {
 
       } else {
-        // progressData.all = this.data._data.other.length + (this.data.type == 'pc' ? 5 : 3);
         progressData.all = this.data._data.other.length + currentIndex;
         hideCode = 555;
       }
     }
     this.setData({
       hideCode,
-      progressData
+      // progressData
     });
 
     /**
@@ -380,10 +379,9 @@ Page({
     }
 
     progressData.chose = Object.keys(this.data.reqData).length - 2 + Object.keys(this.data.reqData.inquiryinfo).length;
-    if (!this.data.reqData.inquiryinfo.last) {
+    if (this.data.reqData.inquiryinfo.last.length == 0) {
       progressData.chose--
     }
-
     progressData.chose = Math.min(progressData.chose, progressData.all);
 
     let progress = util.getToPersent(progressData.chose / progressData.all);

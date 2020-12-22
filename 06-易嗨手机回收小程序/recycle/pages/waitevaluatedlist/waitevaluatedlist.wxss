@@ -6,6 +6,7 @@
   font-weight: bold;
 }
 .content{
+  /* color: #dfdfdf; */
   color: #606060;
   font-size: 28rpx;
   line-height: 2;

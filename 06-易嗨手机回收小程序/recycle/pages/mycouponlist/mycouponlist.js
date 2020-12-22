@@ -16,13 +16,22 @@ Page({
   onLoad: function (options) {
     that = this;
 
-    this.init();
+    
   },
-  init(){
+  init() {
     let isLogin = util.checkIsLogin.call(this);
-    if( !isLogin ) return;
+    if (!isLogin) {
+      return util.showError('请您先登录', function () {
+        wx.navigateTo({
+          url: '/pages/login/login',
+        });
+      });
+    };
     let userid = isLogin.uid;
-    util.post("/api/user/userMarkupCoupon", {userid, available: 9}).then(res=>{
+    util.post("/api/user/userMarkupCoupon", {
+      userid,
+      available: 9
+    }).then(res => {
       console.log(res);
       that.setData({
         list: res.data
@@ -40,7 +49,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.init();
   },
 
   /**

@@ -342,7 +342,7 @@ Page({
 
     // 设置所选。分子
     progressData.chose = Object.keys(this.data.reqData).length - 2 + Object.keys(this.data.reqData.inquiryinfo).length;
-    if (!this.data.reqData.inquiryinfo.last) {
+    if (this.data.reqData.inquiryinfo.last.length == 0) {
       progressData.chose--
     }
     progressData.chose = Math.min(progressData.chose, progressData.all);

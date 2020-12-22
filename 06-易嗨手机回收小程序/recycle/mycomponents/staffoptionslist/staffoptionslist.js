@@ -167,6 +167,14 @@ Component({
               newId: item.id,
               type: "o", // c,config; o,other
             }
+          }else{
+            data = {
+              value: '',
+              isShow: true,
+              oldId: '',
+              newId: '',
+              type: "o", // c,config; o,other
+            }
           }
 
         }
@@ -191,8 +199,11 @@ Component({
           });
         }
 
-        // 提交到父组件
-        that.triggerEvent("radioChange", e);
+        if(e.detail.value){
+
+          // 提交到父组件
+          that.triggerEvent("radioChange", e);
+        }
 
         arrSelected.push(data);
 
@@ -211,12 +222,10 @@ Component({
 
     },
     ready() {
-      console.log(this)
     }
   },
   methods: {
     radioChange(e) {
-      console.log(e);
       // 所选选项的id
       let id = e.detail.value;
       // 第几个选项

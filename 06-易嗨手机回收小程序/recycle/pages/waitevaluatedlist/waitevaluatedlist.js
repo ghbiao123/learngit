@@ -7,7 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    page: 0,
+    list: [],
+    isMore: true
   },
 
   /**
@@ -26,13 +28,17 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    let staffid = wx.getStorageSync('staffid');
+  // 获取列表
+  getList(){
+    let staffid = this.data.staffid;
+    let page = this.data.page + 1;
+    this.data.page = page;
+    if(!this.data.isMore){
+      return util.showSuccess('已加载所有订单');
+    }
     util.post("/api/order/finishAssessOrderList", {
-      staffid
+      staffid,
+      page
     }).then(res => {
       console.log(res);
       if (res.code == -1) {
@@ -42,11 +48,26 @@ Page({
           });
         });
       } else if (res.code == 1) {
+        if(res.data.last_page == that.data.page){
+          that.data.isMore = false
+        }
+        let list = this.data.list;
+        list.push(...res.data.data);
         that.setData({
-          list: res.data
+          list
         });
       }
     });
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+
+  onShow: function () {
+    this.data.staffid = wx.getStorageSync('staffid');
+    
+    this.getList();
+
   },
 
   /**
@@ -74,6 +95,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    this.getList();
 
   },
 

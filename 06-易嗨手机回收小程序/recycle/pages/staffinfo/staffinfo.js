@@ -116,7 +116,17 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    // 工作人员订单
+    let staffid = wx.getStorageSync('staffid');
+    
+    util.post('/api/order/staffOrderCount', {staffid}).then(res=>{
+      that.setData({
+        count: res.data.c1,
+        evaluationCount: res.data.c3,
+        checkedCount: res.data.c2,
+      });
+    });
+    wx.stopPullDownRefresh();
   },
 
   /**

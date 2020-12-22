@@ -1,3 +1,6 @@
 <view class="container">
   <couponlist list="{{list}}"></couponlist>
+  <view wx:if="{{list.length == 0}}">
+    <view class="cell-card t-a-c">暂无数据</view>
+  </view>
 </view>

@@ -1,3 +1,6 @@
 <view class="container">
   <recyclelist list="{{list}}"></recyclelist>
+  <view wx:if="{{list.length == 0}}">
+    <view class="cell-card t-a-c">暂无数据</view>
+  </view>
 </view>
