@@ -69,7 +69,7 @@ Page({
     // });
                 
     util.post('/api/order/calculatePriceOther', data).then(res=>{
-      console.log(res);
+       
       if(res.code == 1){
         return util.showSuccess(res.msg, function(){
           wx.redirectTo({
@@ -164,7 +164,7 @@ Page({
             name: 'file',
             url: util.getSiteRoot() + '/api/common/upload',
             success(ret) {
-              console.log(ret);
+               
               let url = JSON.parse(ret.data).data.url;
               that.data.reqImageUrl.push(url);
             }

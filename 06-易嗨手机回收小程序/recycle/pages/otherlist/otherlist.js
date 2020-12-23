@@ -22,7 +22,7 @@ Page({
   },
   init(){
     util.post('/api/products/getOeModelList', this.data.pageOptions).then(res=>{
-      console.log(res);
+       
       let list = res.data;
       this.setData({
         list

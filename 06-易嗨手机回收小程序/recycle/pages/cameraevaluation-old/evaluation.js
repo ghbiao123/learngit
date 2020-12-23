@@ -44,7 +44,6 @@ Page({
 
     this.data.pageOption = options;
 
-    console.log(options);
 
     // init 
     this.init();
@@ -81,7 +80,6 @@ Page({
             name: 'file',
             url: util.getSiteRoot() + '/api/common/upload',
             success(ret) {
-              console.log(ret);
               let url = JSON.parse(ret.data).data.url;
               that.data.reqImageUrl.push(url);
             }
@@ -102,7 +100,6 @@ Page({
       cid: this.data.pageOption.cid,
       cateid: this.data.pageOption.cateid
     }).then(res=>{
-      console.log(res);
       if (res.code == -1) {
         return util.showSuccess(res.msg, function () {
           wx.navigateBack();
@@ -167,7 +164,6 @@ Page({
 
     // 请求数据
     util.post(url, data).then(res => {
-      console.log(res);
 
       if (res.code == -1) {
         return util.showSuccess(res.msg, function () {
@@ -274,11 +270,9 @@ Page({
 
     data.otype = 0;
 
-    console.log(data);
 
 
      util.post('/api/order/calculateOtherNa', data).then(res=>{
-      console.log(res);
       if(false){
         wx.redirectTo({
           url: '/pages/manualresult/manualresult',

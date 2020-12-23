@@ -34,13 +34,12 @@ Page({
       count: 1,
       success(res) {
         let path = res.tempFilePaths[0];
-        console.log(path);
         wx.uploadFile({
           filePath: path,
           name: 'file',
           url: util.getSiteRoot() + '/api/common/upload',
           success(ret) {
-            console.log(ret);
+             
             let url = JSON.parse(ret.data).data.url;
             // that.data.image[idx] = url;
             image[idx] = util.getSiteRoot() + url;

@@ -28,10 +28,10 @@ Page({
       staffid,
       page
     }).then(res=>{
-      console.log(res);
+       
       let list = that.data.list;
       let data = res.data.data.map(v=>{
-        let t = util.getToday(v.createtime);
+        let t = util.getToday(v.createtime * 1000);
         v.createtime = t.date + " " + t.time;
         v.c_no = v.c_no ? v.c_no : " ";
         return v;

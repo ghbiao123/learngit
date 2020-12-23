@@ -46,7 +46,6 @@ Component({
         success(res) {
           if (res.confirm) {
             util.post('/api/order/upPackageNo', data).then(res => {
-              console.log(res);
               if (res.code == 1) {
                 //  确认订单后要更新数据: 订单是否有快递订单，是否有质检报告
 
@@ -76,7 +75,6 @@ Component({
       wx.setClipboardData({
         data: text,
         success(res) {
-          console.log(res);
         }
       });
     },

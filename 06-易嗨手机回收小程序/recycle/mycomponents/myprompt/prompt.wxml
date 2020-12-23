@@ -4,7 +4,7 @@
       <view class="title">请输入快递单号</view>
       <view class="input-box">
         <view> </view>
-        <input name="val" focus type="number" class="input" placeholder="请输入快递单号"></input>
+        <input name="val" focus class="input" placeholder="请输入快递单号"></input>
       </view>
       <button form-type="submit" size="mini" class="button">确定</button>
       <icon bindtap="cancel" color="#CCCCCC" type="cancel" size="25" class="cancel"></icon>

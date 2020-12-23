@@ -17,12 +17,10 @@ Page({
     that = this;
     let type = options.type;
     this.data.type = options.type;
-    this.getList();
   },
   // 获取列表数据
   getList(){
     let type = this.data.type;
-    console.log(type);
     let staffid = wx.getStorageSync('staffid');
     let userInfo = wx.getStorageSync('userinfo');
     let title = '';
@@ -37,7 +35,7 @@ Page({
       case "send":{
         title = "待验机";
         data.userid = userInfo.uid;
-        data.orderstatus = 0;
+        data.orderstatus = "0,4";
       }
       break;
       case "check":{

@@ -40,7 +40,6 @@ Page({
   // 是否显示快递回收上门服务
   getExpress(e){
     let val = e.detail.value[0];
-    console.log(val);
     if(!val) {
       this.setData({
         isGetExpress: false
@@ -56,7 +55,6 @@ Page({
     let key = e.currentTarget.dataset.key;
     let selected = e.currentTarget.dataset.selected;
     let val = e.detail.value;
-    console.log(key, selected, val);
     if (selected == 1) {
       this.data.inputDoorData[key] = val;
     } else if (selected == 2) {
@@ -70,7 +68,6 @@ Page({
       onlyFromCamera: true,
       success(res) {
         that.data.staffid = res.result;
-        console.log(res);
         util.showSuccess('扫码成功');
       }
     });
@@ -224,7 +221,6 @@ Page({
       }
     }
     util.post('/api/order/placeOrder', data).then(res => {
-      console.log(res);
       if (res.code == 1) {
 
         wx.removeStorage({
@@ -316,7 +312,6 @@ Page({
       util.post('/api/user/getUserInfo', {
         userid: userInfo.uid
       }).then(res => {
-        console.log(res);
         if (res.code == 1) {
           wx.setStorage({
             data: res.data,
@@ -364,7 +359,6 @@ Page({
         util.post('/api/user/getUserInfo', {
           userid: userinfo.uid
         }).then(res => {
-          console.log(res);
           if (res.code == 1) {
             initUserInfo(res.data);
             wx.setStorage({
@@ -397,7 +391,6 @@ Page({
   },
   // radios chang 事件
   radioChange(e) {
-    console.log(e.detail.value);
   },
   // 选择日期
   dateChange(e) {

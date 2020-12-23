@@ -150,7 +150,6 @@ Page({
             name: 'file',
             url: util.getSiteRoot() + '/api/common/upload',
             success(ret) {
-              console.log(ret);
               let url = JSON.parse(ret.data).data.url;
               that.data.reqImageUrl.push(url);
             }

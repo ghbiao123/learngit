@@ -46,7 +46,6 @@ Page({
 
     this.data.pageOption = options;
 
-    console.log(options);
 
     // init 
     this.init();
@@ -83,7 +82,6 @@ Page({
             name: 'file',
             url: util.getSiteRoot() + '/api/common/upload',
             success(ret) {
-              console.log(ret);
               let url = JSON.parse(ret.data).data.url;
               that.data.reqImageUrl.push(url);
             }
@@ -104,7 +102,6 @@ Page({
       cid: this.data.pageOption.cid,
       cateid: this.data.pageOption.cateid
     }).then(res => {
-      console.log(res);
       if (res.code == -1) {
         return util.showSuccess(res.msg, function () {
           wx.navigateBack();
@@ -182,7 +179,6 @@ Page({
 
     // 请求数据
     util.post(url, data).then(res => {
-      console.log(res);
 
       if (res.code == -1) {
         return util.showSuccess(res.msg, function () {
@@ -272,7 +268,6 @@ Page({
   },
   // 获取用户手机号
   getPhoneNum(e) {
-    console.log(e);
     if (e.detail.iv) {
       // 用户同意获取手机号
       // 将用户手机号更新到storage（‘currentphone’）
@@ -286,7 +281,6 @@ Page({
             iv: encodeURI(e.detail.iv)
           };
           util.post('/api/login/getWxBindMobile', data).then(ret => {
-            console.log(ret);
             if(ret.code == -3){
               return util.showSuccess(ret.msg);
             }
@@ -358,10 +352,8 @@ Page({
 
     data.otype = 0;
 
-    // console.log(data);
 
     util.post('/api/order/calculateOtherNa', data).then(res => {
-      console.log(res);
       if (res.code == 1) {
         wx.redirectTo({
           url: '/pages/manualresult/manualresult',

@@ -26,7 +26,6 @@ Component({
       type: Number,
       value: 0,
       observer(newVal) {
-        console.log('tabid：', newVal);
         this.setData({
           tabid: newVal
         });
@@ -71,7 +70,6 @@ Component({
       let idx = e.currentTarget.dataset.id;
       let cid = e.currentTarget.dataset.cid;
     // let cid = this.data.selected + 1;
-      console.log(cid);
       if (cid >= 4) {
         wx.navigateTo({
           url: '/pages/evaluation/othercalcprice',

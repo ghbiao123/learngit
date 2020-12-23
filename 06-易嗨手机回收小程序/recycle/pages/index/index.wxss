@@ -138,10 +138,10 @@
 }
 .myphone-image{
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 280rpx;
-  height: 240rpx;
+  top: 30rpx;
+  left: 20rpx;
+  width: 210rpx;
+  height: 180rpx;
 }
 .myphone-button{
   position: absolute;
@@ -303,16 +303,19 @@
   height: 130rpx;
 }
 .name{
-  font-size: 30rpx;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  padding-top: 12rpx;
 }
 
 .price{
   color: #F74444;
-  font-size: 40rpx;
-  line-height: 88rpx;
+  font-size: 32rpx;
+  line-height: 70rpx;
 }
 .max-price{
   font-size: 25rpx;
+  line-height: 1.5;
 }
 
 /* 弹窗样式 */

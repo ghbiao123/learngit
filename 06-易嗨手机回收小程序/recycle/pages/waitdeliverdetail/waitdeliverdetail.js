@@ -19,7 +19,7 @@ Page({
     util.post("/api/order/deliveryOrdersDetail", {
       stockid
     }).then(res=>{
-      console.log(res);
+       
       that.setData({
         list: res.data
       });

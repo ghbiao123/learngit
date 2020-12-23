@@ -26,7 +26,6 @@ Page({
 
     this.data.predictprice = options.predictprice; 
 
-    console.log(options);
 
   },
   // 使用加价券
@@ -76,7 +75,6 @@ Page({
     util.post('/api/products/userDoCouponOnce', {aid, userid}).then(res=>{
       // arrIsGot[idx] = true;
       // that.setData({arrIsGot});
-      console.log(res);
       if(res.code == 1){
         that.init();
         util.showSuccess(res.msg);
@@ -119,7 +117,6 @@ Page({
     }
 
     util.post(url, data).then(res=>{
-      console.log(res);
       let list = [];
       let len = 0;
       if(type == 'add'){
@@ -133,7 +130,6 @@ Page({
           return v;
         });
         len = list.length;
-        console.log(list);
         // list = res.data.map(v=>{
         //   v.validstime_text = v.validstime_text.replace(/\-/g, "\/");
         //   v.validetime_text = v.validetime_text.replace(/\-/g, "\/");

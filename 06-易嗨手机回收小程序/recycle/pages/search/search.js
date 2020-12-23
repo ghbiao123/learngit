@@ -46,7 +46,6 @@ Page({
   },
   // getIconid
   getIconid(e){
-    console.log(e.detail);
     let data = {
       cateid: this.data.reqData.bid,
       bid: e.detail.bid,
@@ -93,7 +92,6 @@ Page({
         cid: this.data.reqData.cid,
         cateid: this.data.reqData.bid
       }).then(res => {
-        console.log(res)
         function addUrl(arr){
           if(!arr) return [];
           return arr = arr.map(v=>{
@@ -114,7 +112,6 @@ Page({
   // tab component change, get current id
   tabChange(e) {
     let id = e.detail;
-    console.log('tabChange:', id);
     that.data.reqData.cid = id;
     if(id <= 3){
       util.post('/api/products/getEbrandsList', {cid: id}).then(res => {
@@ -138,7 +135,7 @@ Page({
       });
     }else if(id == 4 || id == 5){
       util.post('/api/products/getOtherCateList', {cid: id}).then(res=>{
-        console.log(res);
+         
          function addUrl(arr){
           if(!arr) return [];
           return arr = arr.map(v=>{

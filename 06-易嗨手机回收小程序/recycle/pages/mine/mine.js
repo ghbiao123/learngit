@@ -30,7 +30,7 @@ Page({
       util.post("/api/order/userOrderCount", {
         userid
       }).then(res=>{
-        console.log(res);
+         
         that.setData({
           waitCheckCount: res.data.c1,
           waitPayCount: res.data.c2,

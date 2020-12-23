@@ -43,7 +43,7 @@ Page({
     let userid = isLogin.uid;
 
     util.post('/api/order/userrAssessOrderList', {userid}).then(res=>{
-      console.log(res);
+       
       if(res.code == 1){
         let list = [];
         list = res.data.map(v=>{

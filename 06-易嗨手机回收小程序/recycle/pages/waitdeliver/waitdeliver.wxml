@@ -33,7 +33,7 @@
       </view>
       <view class="select-all">
         <checkbox-group bindchange="selectedAll">
-          <checkbox value="1" checked="{{selectedNum == list.length}}" color="#C1402A">
+          <checkbox style="display: flex;" value="1" checked="{{selectedNum == list.length && list.length != 0}}" color="#C1402A">
             全选
           </checkbox>
         </checkbox-group>
@@ -41,7 +41,14 @@
       </view>
 
       <radio-group bindchange="getType" class="send-method">
-        <radio wx:for="{{selectedType}}" checked="{{item.checked}}" wx:key="index" value="{{item.value}}" color="#C1402A">{{item.name}}</radio>
+        <view>
+          <radio checked="{{selectedType[0].checked}}" value="{{selectedType[0].value}}" color="#C1402A">{{selectedType[0].name}}</radio>
+        </view>
+        <view style="display: flex;">
+          <radio style="display: flex; padding-right: 20rpx;" checked="{{selectedType[1].checked}}" value="{{selectedType[1].value}}" color="#C1402A">{{selectedType[1].name}}</radio>
+          <!-- <view wx:if="{{expressNumber}}">单号：{{expressNumber}}</view> -->
+          <input bindinput="getExpNumber" wx:if="{{expressNumber}}" value="{{ipt}}" type="text" class="number-input" placeholder="请输入快递单号" />
+        </view>
       </radio-group>
 
       <button form-type="submit" hover-class="btn-hover" class="button-clear m-t-20">提交</button>

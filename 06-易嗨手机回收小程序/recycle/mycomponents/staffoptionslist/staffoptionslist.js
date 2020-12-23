@@ -5,8 +5,6 @@ Component({
       type: Array,
       value: [],
       observer(newVal) {
-        console.log("arrConfig", newVal);
-
       }
     },
     arrSelected: {
@@ -19,7 +17,6 @@ Component({
       type: Array,
       value: [],
       observer(newVal) {
-        console.log("arrOther", newVal);
 
       }
     },
@@ -28,7 +25,6 @@ Component({
       type: Number,
       value: 0,
       observer(newVal) {
-        console.log("currentIndex", newVal);
         this.setData({
           currentIndex: newVal
         });
@@ -98,10 +94,8 @@ Component({
       let arrC = newConfigVal.map((v, i) => {
 
         // 查出所选选项
-        console.log("配置信息", v);
-        console.log("配置id", arrConfigId);
+        
         let item = v.data.filter(val => {
-          console.log("配置选项", val)
           return arrConfigId.indexOf(val.id.toString()) >= 0;
         })[0];
         

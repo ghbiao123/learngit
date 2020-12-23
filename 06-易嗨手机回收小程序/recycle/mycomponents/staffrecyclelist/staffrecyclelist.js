@@ -25,7 +25,6 @@ Component({
         remark: this.data.remark
       }
       util.post("/api/order/updateOrderRemark", data).then(res=>{
-        console.log(res);
         return util.showSuccess(res.msg);
       });
     },
@@ -35,7 +34,6 @@ Component({
       wx.setClipboardData({
         data: text,
         success(res){
-          console.log(res);
         }
       });
     },
@@ -47,7 +45,6 @@ Component({
       // });
       let idx = e.currentTarget.dataset.idx;
       let data = this.data.list[idx];
-      console.log(data);
       // 待验机
       if(data.order_status == 0 || data.order_status == 4){
 

@@ -48,7 +48,7 @@ Page({
       userid,
       pricevalue: data.price
     }).then(res => {
-      console.log(res);
+       
 
       let info = res.data;
 
@@ -99,7 +99,6 @@ Page({
   // 是否显示快递回收上门服务
   getExpress(e) {
     let val = e.detail.value[0];
-    console.log(val);
     if (!val) {
       this.setData({
         isGetExpress: false
@@ -128,7 +127,7 @@ Page({
       onlyFromCamera: true,
       success(res) {
         that.data.staffid = res.result;
-        console.log(res);
+         
         util.showSuccess('扫码成功');
       }
     });
@@ -217,7 +216,6 @@ Page({
         data.configureinfo.push(currentMachine[key]);
       }
     }
-    // console.log(JSON.parse(currentMachine.inquiryinfo));
     if (currentMachine.inquiryinfo) {
       let describeinfo = JSON.parse(currentMachine.inquiryinfo).map(v => {
         return v.id
@@ -286,13 +284,12 @@ Page({
     needKey.uphone = '';
     for (let key in needKey) {
       if (!data[key]) {
-        return util.showSuccess('请完善您的个人信息');
+        return util.showSuccess('请完善信息');
       }
     }
-    // console.log("pageOption", this.data.pageOption);
-    console.log(data);
+    
     util.post('/api/order/placeOrder', data).then(res => {
-      console.log(res);
+       
 
 
       if (res.code == 1) {
@@ -397,7 +394,7 @@ Page({
     //   util.post('/api/user/getUserInfo', {
     //     userid: userInfo.uid
     //   }).then(res => {
-    //     console.log(res);
+    //      
     //     if (res.code == 1) {
     //       wx.setStorage({
     //         data: res.data,
@@ -495,7 +492,7 @@ Page({
         util.post('/api/user/getUserInfo', {
           userid: userinfo.uid
         }).then(res => {
-          console.log(res);
+           
           if (res.code == 1) {
             initUserInfo(res.data);
             wx.setStorage({
@@ -528,7 +525,6 @@ Page({
   },
   // radios chang 事件
   radioChange(e) {
-    console.log(e.detail.value);
   },
   // 选择日期
   dateChange(e) {

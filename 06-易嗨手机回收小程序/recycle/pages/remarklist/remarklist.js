@@ -53,7 +53,7 @@ Page({
     }
 
     util.post(this.data.reqApi.get, data).then(res=>{
-      console.log(res);
+       
       let list = res.data.map(v=>{
         let t = util.getToday(v.createtime * 1000);
         v.createtime = t.date + " " + t.time;
@@ -83,7 +83,7 @@ Page({
     }
 
     util.post(this.data.reqApi.post, this.data.reqData).then(res=>{
-      console.log(res);
+       
       let list = this.data.list;
       let t = util.getToday();
       let data = {

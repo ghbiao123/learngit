@@ -14,7 +14,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
     that = this;
     this.data.pageOption = options;
     this.init();
@@ -24,14 +23,14 @@ Page({
     wx.setClipboardData({
       data: text,
       success(res){
-        console.log(res);
+         
       }
     });
   },
   init(){
 
     util.post('/api/order/orderDetail', {orderid: this.data.pageOption.id}).then(res=>{
-      console.log(res);
+       
       if(res.code == 1){
         let detail = res.data;
         let t = util.getToday(detail.createtime*1000);
@@ -68,7 +67,7 @@ Page({
       return util.showSuccess('请填写快递单号');
     }
     util.post('/api/order/upPackageNo', data).then(res=>{
-      console.log(res);
+       
       if(res.code == 1){
         util.showSuccess(res.msg, function(){
           wx.navigateBack({

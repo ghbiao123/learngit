@@ -149,3 +149,7 @@
 .m-t-20{
   margin-top: 20rpx;
 }
+
+.confirm-order{
+  background-color: #f1f1f1;
+}

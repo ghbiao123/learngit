@@ -22,7 +22,7 @@ Page({
     util.post('/api/products/searchEmodel', {
       keywords
     }).then(res => {
-      console.log(res);
+       
       that.setData({
         result: res.data
       });

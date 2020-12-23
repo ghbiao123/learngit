@@ -21,7 +21,6 @@ Page({
   init(){
 
     let method = this.data.pageOption.method;
-    console.log(method);
 
     let navigativeTitle = {
       wechat: '微信支付',
@@ -45,7 +44,7 @@ Page({
     if(!data.checkname) return util.showSuccess("请输入收款方真实姓名");
     util.post("/api/order/paymentForWx", data).then(res=>{
       if(res.code == 1){
-        wx.redirectTo({
+        wx.reLaunch({
           url: '/pages/paymentresult/paymentresult?method=wechat',
         });
       }else{
@@ -64,9 +63,9 @@ Page({
     data.orderid = this.data.pageOption.orderid;
 
     util.post("/api/order/paymentForUnionPay", data).then(res=>{
-      console.log(res);
+       
       if(res.code == 1){
-        wx.redirectTo({
+        wx.reLaunch({
           url: '/pages/paymentresult/paymentresult?method=union',
         });
       }else{

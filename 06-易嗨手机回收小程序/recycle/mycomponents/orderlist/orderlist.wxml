@@ -42,7 +42,7 @@
         <image hidden class="scan-icon" src="/images/scan.png"></image>
       </view>
       <button wx:if="{{ !item.c_no }}" data-idx="{{index}}" bindtap="confirmExpressOrder"
-        class="button-clear">确认发货</button>
+        class="button-clear" hover-class="confirm-order">确认发货</button>
     </block>
 
     <button hover-class="btn-hov" wx:if="{{item.order_status==2 || item.order_status==1}}" data-ordersn="{{item.order_sn}}" bindtap="getQualityReport" class="button-clear">查看验机报告</button>

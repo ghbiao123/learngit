@@ -19,7 +19,6 @@ Page({
   },
   init(){
     util.post('/api/index/getAbout').then(res=>{
-      console.log(res);
       res.data.logo = util.getImageFullUrl(res.data.logo);
       that.setData({
         data: res.data

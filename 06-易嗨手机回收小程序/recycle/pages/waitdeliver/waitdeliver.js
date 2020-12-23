@@ -25,6 +25,8 @@ Page({
     reqData: {
       type: 1
     },
+    expressNumber: false,
+    loading: false
   },
 
   /**
@@ -47,7 +49,6 @@ Page({
             resolve(res[0]);
           });
         });
-        console.log(height);
         let scrollHeight = (systemHeight - height.height) - 2;
         that.setData({
           scrollHeight
@@ -79,24 +80,37 @@ Page({
 
     // 快递配送
     if(this.data.reqData.type == 2){
-      this.setData({
-        isShowPrompt: true
-      });
+      this.submitSelectedOrder();
+      
     }
 
   },
   // 提交当前所选订单
   submitSelectedOrder(callback){
+    if(this.data.loading)  return;
+    this.data.loading = true;
     util.post("/api/order/deliverModels", this.data.reqData).then(res=>{
 
-      console.log(res);
+       
       if(res.code == 1){
 
         that.data.page = 1;
         that.data.list = [];
         this.getList();
 
-        return util.showSuccess(res.msg);
+        let d = {
+          type : that.data.reqData.type
+        };
+        that.data.reqData = d;
+
+        that.setData({
+          ipt:"",
+          selectedNum: 0
+        });
+
+        return util.showSuccess(res.msg, function(){
+          that.data.loading = false;
+        });
 
         
         callback&&callback(res);
@@ -113,7 +127,6 @@ Page({
   },
   // 全选当前所有数据
   selectedAll(e) {
-    console.log(e.detail.value);
     // 全选
     if (e.detail.value[0] == 1) {
       let list = this.data.list.map(v => {
@@ -142,6 +155,16 @@ Page({
   // 选择配送方式
   getType(e) {
     this.data.reqData.type = e.detail.value;
+    if(this.data.reqData.type == 2){
+      this.setData({
+        expressNumber: true
+      });
+    }
+    if(this.data.reqData.type == 1){
+      this.setData({
+        expressNumber: false
+      });
+    }
   },
   // 获取更多数据
   getMoreList() {
@@ -160,7 +183,7 @@ Page({
       staffid: this.data.staffid,
       page: this.data.page
     }).then(res => {
-      console.log(res);
+       
       // 添加 checked 属性默认为false
       let moreList = res.data.data.map(v => {
         v.checked = false;
@@ -174,12 +197,16 @@ Page({
 
 
   },
-
+  getExpNumber(e){
+    this.data.reqData.cno = e.detail.value;
+  },
   // 获取快递单号
   getExpressOrder(e) {
-    console.log(e.detail);
     this.data.reqData.cno = e.detail;
-    this.submitSelectedOrder();
+    this.setData({
+      expressNumber: e.detail
+    });
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

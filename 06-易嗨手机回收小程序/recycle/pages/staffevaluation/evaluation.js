@@ -45,7 +45,6 @@ Page({
 
     this.data.pageOption = options;
 
-    console.log(options);
 
     // init 
     this.init();
@@ -77,7 +76,7 @@ Page({
             name: 'file',
             url: util.getSiteRoot() + '/api/common/upload',
             success(ret) {
-              console.log(ret);
+               
               let url = JSON.parse(ret.data).data.url;
               that.data.reqImageUrl.push(url);
             }
@@ -94,7 +93,6 @@ Page({
   init() {
     let data = {};
     let url;
-    console.log(this.data.pageOption);
     if (this.data.pageOption.cid == 1 || this.data.pageOption.cid == 2) {
       this.data.type = 'mobile';
     } else if (this.data.pageOption.cid == 3) {
@@ -121,7 +119,6 @@ Page({
 
     // 请求数据
     util.post(url, data).then(res => {
-      console.log(res.data);
 
       if (res.code == -1) {
         return util.showSuccess(res.msg, function () {
@@ -220,7 +217,7 @@ Page({
       // util.post('/api/order/orderDetail', {
       //   orderid: that.data.pageOption.orderid
       // }).then(res => {
-      //   console.log(res);
+      //    
       //   that.data.order = res.data;
       //   let order = res.data;
       //   order.coupon_fee = order.coupon_fee ? order.coupon_fee * 1 : 0;
@@ -265,7 +262,6 @@ Page({
   },
   // 获取用户手机号
   getPhoneNum(e) {
-    console.log(e);
     if (e.detail.iv) {
       // 用户同意获取手机号
       // 将用户手机号更新到storage（‘currentphone’）
@@ -279,7 +275,7 @@ Page({
             iv: encodeURI(e.detail.iv)
           };
           util.post('/api/login/getWxBindMobile', data).then(ret => {
-            console.log(ret);
+             
             if (ret.code == -3) {
               return util.showSuccess(ret.msg);
             }
@@ -522,7 +518,7 @@ Page({
     if (isIdChange) {
       // 跟原来id一样
       submitOrder(function(res){
-        console.log(res);
+         
         oldOption.gradename = res.data.gradename;
         wx.setStorage({
           data: oldOption,
@@ -554,9 +550,9 @@ Page({
         userid: oldOption.user_id,
         pricevalue
       }).then(ret => {
-        console.log(ret);
+         
         if (Number(ret.data.cinfo.par_value)) {
-          oldOption.coupon_fee = ret.cinfo.par_value * 1;
+          oldOption.coupon_fee = ret.data.cinfo.par_value * 1;
         }else{
           oldOption.coupon_fee = 0;
         }

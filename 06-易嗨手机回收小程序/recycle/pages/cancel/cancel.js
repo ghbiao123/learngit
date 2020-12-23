@@ -22,7 +22,6 @@ Page({
   },
   init(){
     util.post('/api/order/cancelReason').then(res=>{
-      console.log(res);
       that.setData({
         arrChoice: res.data
       });
@@ -34,9 +33,7 @@ Page({
   },
   // 得出结果
   getResult(e){
-    console.log(this.data.options);
     util.post('/api/order/cancelOrder', this.data.options).then(res=>{
-      console.log(res);
       if(res.code == 1){
         util.showSuccess(res.msg, function(){
           wx.navigateBack({

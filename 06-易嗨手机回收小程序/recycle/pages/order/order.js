@@ -45,7 +45,7 @@ Page({
       // orderstatus: 0
     };
     util.post('/api/order/userOrderList', data).then(res=>{
-      console.log(res);
+       
       if(res.code == 1){
         let list = [];
         list = res.data.map(v=>{

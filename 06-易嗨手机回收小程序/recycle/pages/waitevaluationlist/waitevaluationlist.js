@@ -34,7 +34,7 @@ Page({
     util.post("/api/order/assessOrderList", {
       staffid
     }).then(res => {
-      console.log(res);
+       
       if (res.code == -1) {
         return util.showSuccess(res.msg, function () {
           wx.navigateBack({
@@ -42,9 +42,17 @@ Page({
           });
         });
       } else if (res.code == 1) {
+        let list = res.data;
         that.setData({
-          list: res.data
+          list
         });
+        if(list.length == 0){
+          util.showSuccess("暂无数据!", function(){
+            wx.navigateBack({
+              delta: 1,
+            });
+          });
+        }
       }
     });
   },

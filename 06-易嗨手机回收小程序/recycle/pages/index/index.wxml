@@ -67,7 +67,7 @@
 					<text class="myphone-info-price-type">￥</text> <text class="myphone-info-price-value">{{myPhoneInfo.maxprice}}</text>
 				</view>
 				<view class="myphone-info-button" hover-class="myphone-info-button-hover">
-					<navigator url="/pages/evaluation/evaluation?id={{myPhoneInfo.id}}&cid={{myPhoneInfo.cid}}">
+					<navigator hover-class="none" url="/pages/evaluation/evaluation?id={{myPhoneInfo.id}}&cid={{myPhoneInfo.cid}}">
 						获取精确报价
 					</navigator>
 				</view>
@@ -83,7 +83,7 @@
 		<view class="types">
 			<block wx:for="{{init.category}}" wx:key="index">
 				<view hover-class="line-hover" class="types-item t-a-c" data-id="{{item.id}}" bindtap="getDiffPage">
-					<image class="types-icon" src="{{item.image}}"></image>
+					<image class="types-icon" mode="aspectFit" src="{{item.image}}"></image>
 					<view class="types-name ellipsis-text">{{item.name}}</view>
 				</view>
 				<view wx:if="{{(index+1) != init.category.length}}" class="types-vertical-line"></view>
@@ -114,25 +114,25 @@
 	<view class="cell-card">
 		<view class="steps">
 			<view class="steps-item">
-				<image class="steps-icon" src="/images/idx1.png"></image>
+				<image mode="aspectFit" class="steps-icon" src="/images/idx1.png"></image>
 				<view class="steps-name">机器评估</view>
 			</view>
 			<view class="rt">
-				<image class="rt-icon" src="/images/rt.png"></image>
+				<image mode="aspectFit" class="rt-icon" src="/images/rt.png"></image>
 			</view>
 			<view class="steps-item">
-				<image class="steps-icon" src="/images/idx2.png"></image>
+				<image mode="aspectFit" class="steps-icon" src="/images/idx2.png"></image>
 				<view class="steps-name">上门/快递</view>
 			</view>
 			<view class="rt">
-				<image class="rt-icon" src="/images/rt.png"></image>
+				<image mode="aspectFit" class="rt-icon" src="/images/rt.png"></image>
 			</view>
 			<view class="steps-item">
-				<image class="steps-icon" src="/images/idx3.png"></image>
+				<image mode="aspectFit" class="steps-icon" src="/images/idx3.png"></image>
 				<view class="steps-name">专业验机</view>
 			</view>
 			<view class="rt">
-				<image class="rt-icon" src="/images/rt.png"></image>
+				<image mode="aspectFit" class="rt-icon" src="/images/rt.png"></image>
 			</view>
 			<view class="steps-item">
 				<image mode="widthFix" style="width: 60rpx; margin-top: -10rpx;" class="steps-icon" src="/images/idx4.png">

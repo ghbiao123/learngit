@@ -74,7 +74,7 @@ Page({
         let modelkey = result.model;
         // let modelkey = "iPhone Xs Max";
         util.post('/api/index/getSystemInfo', {modelkey}).then(res=>{
-          console.log(res);
+           
           res.data.image = util.getImageFullUrl(res.data.image);
           let myPhoneInfo = res.data;
           that.setData({
@@ -94,7 +94,6 @@ Page({
   },
   // 领取新人券
   getNewCoupon(){
-    console.log('getNewCoupon');
 
     wx.navigateTo({
       url: '/pages/login/login',
@@ -106,7 +105,6 @@ Page({
   },
   // 关闭model
   closeModel(){
-    console.log('closeModel');
     this.setData({
       isShowModel: false
     });

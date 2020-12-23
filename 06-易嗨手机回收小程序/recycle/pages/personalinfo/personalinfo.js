@@ -23,7 +23,7 @@ Page({
     util.post('/api/user/getUserInfo', {
       userid
     }).then(res => {
-      console.log(res);
+       
       wx.setStorage({
         data: res.data,
         key: 'userdata',
@@ -71,7 +71,7 @@ Page({
     data.userid = userInfo.uid;
     data.avatar = userInfo.avatarUrl;
     util.post('/api/user/editUserInfo', data).then(res => {
-      console.log(res);
+       
       if (res.code == 1) {
         wx.setStorage({
           data: data,

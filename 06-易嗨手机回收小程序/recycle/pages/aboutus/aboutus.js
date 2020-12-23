@@ -20,7 +20,6 @@ Page({
   },
   init() {
     util.post("/api/index/getAbout",).then(res=>{
-      console.log(res);
       that.setData({
         nodes: res.data.about
       });
@@ -39,7 +38,6 @@ Page({
               cancelColor: 'cancelColor',
               content: `成功`
             });
-            console.log('打开文档成功')
           }
         })
       }

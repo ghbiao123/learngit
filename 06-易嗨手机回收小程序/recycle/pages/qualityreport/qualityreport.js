@@ -35,7 +35,7 @@ Page({
     util.post("/api/products/testReport", {
       ordersn
     }).then(res => {
-      console.log(res);
+       
       let data = res.data;
       let time = util.getToday(data.testtime * 1000);
       data.testtime = time.date;
@@ -47,7 +47,6 @@ Page({
         });
       }
 
-      console.log(data.pictures);
       that.setData({
         data
       });

@@ -15,7 +15,8 @@ Page({
     reqImageUrl: [],
     currentPageId: 0,
     changefee: 0,
-    showChangePrice: false
+    showChangePrice: false,
+    imei: ""
   },
 
   /**
@@ -37,7 +38,7 @@ Page({
     wx.getStorage({
       key: 'newstaffmachine',
       success(res) {
-        console.log(res);
+         
         that.data.order = res.data;
         let order = res.data;
         let showChangePrice = order.estimate_type == 1 ? true : false;
@@ -57,7 +58,7 @@ Page({
     // util.post('/api/order/orderDetail', {
     //   orderid
     // }).then(res => {
-    //   console.log(res);
+    //    
     //   that.data.order = res.data;
     //   let order = res.data;
     //   order.coupon_fee = order.coupon_fee ? order.coupon_fee * 1 : 0;
@@ -77,6 +78,9 @@ Page({
   },
   // 下一步
   nextPage() {
+    if(!this.data.imei.toString().trim()){
+      return util.showSuccess("请输入IMEI号");
+    }
     this.setData({
       currentPageId: 1
     });
@@ -107,7 +111,6 @@ Page({
       changefee: (this.data.changefee ? this.data.changefee : 0),
       gradename: this.data.order.gradename
     };
-   console.log("submit" ,data);
 
     let needData = ['imei', 'pname'];
     
@@ -115,7 +118,7 @@ Page({
       return util.showSuccess('请完善信息');
     }
     util.post('/api/order/testingMachineOrder', data).then(res => {
-      console.log(res);
+       
       if (res.code == 1) {
         return util.showSuccess(res.msg, function () {
           wx.redirectTo({
@@ -186,7 +189,7 @@ Page({
       pricevalue
     }
     util.post("/api/order/doOrderInfo", data).then(res => {
-      console.log(res);
+       
       order.coupon_fee = res.data.cinfo.par_value ? res.data.cinfo.par_value : 0;
       order.total_amount = (Number(order.estimate_fee) + Number(order.coupon_fee) + Number(changefee)).toFixed(2) * 1;
       this.setData({
@@ -223,14 +226,14 @@ Page({
   },
   // 选择身份证照片
   chooseIdcard(res) {
-    console.log(res);
+     
     // image detail.image_path = 'wxfile://tmp_c7a5766c71bbe2b04f1003358e27a37f6e98207a5093a67b.png';
     wx.uploadFile({
       filePath: res.detail.image_path,
       name: 'file',
       url: util.getSiteRoot() + '/api/common/upload',
       success(ret) {
-        console.log(ret);
+         
 
         that.data.ppic = JSON.parse(ret.data).data.url;
 
@@ -280,7 +283,6 @@ Page({
             },
           })
 
-          console.log('invokeService success', invokeRes)
           // wx.showModal({
           //   title: 'success',
           //   content: JSON.stringify(invokeRes),
@@ -304,13 +306,11 @@ Page({
             ocr_type: 1,
           },
         }).then(res => {
-          console.log('invokeService success', res)
           // wx.showModal({
           //   title: 'cost',
           //   content: (Date.now() - d) + '',
           // })
         }).catch(err => {
-          console.error('invokeService fail', err)
           // wx.showModal({
           //   title: 'fail',
           //   content: err + '',
@@ -328,7 +328,7 @@ Page({
     wx.chooseImage({
       count: 4,
       success(res) {
-        console.log(res);
+         
         // 所选图片数组
         let path = res.tempFilePaths;
         let imageUrl = that.data.imageUrl;
@@ -340,7 +340,7 @@ Page({
             name: 'file',
             url: util.getSiteRoot() + '/api/common/upload',
             success(ret) {
-              console.log(ret);
+               
               let url = JSON.parse(ret.data).data.url;
               that.data.reqImageUrl.push(url);
             }
@@ -395,7 +395,7 @@ Page({
         util.post('/api/products/getModelConfigInfo', {
           cstr
         }).then(res => {
-          console.log(res);
+           
           order.model_info.cinfo = res.data;
           that.setData({
             order,

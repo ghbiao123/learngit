@@ -22,7 +22,7 @@ Page({
       staffid: that.data.staffid,
       aoid: that.data.aoid,
     }).then(res=>{
-      console.log(res);
+       
       res.data.configure = (res.data.configure ? res.data.configure.replace(/；/g, "\n") : "");
       res.data.describe = (res.data.describe ? res.data.describe.replace(/；/g, "\n") : "");
       that.setData({
@@ -46,7 +46,7 @@ Page({
       staffid: that.data.staffid,
       aoid: that.data.aoid
     }).then(res=>{
-      console.log(res);
+       
       if(res.code == 1){
 
         that.setData({

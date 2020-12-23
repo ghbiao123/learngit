@@ -38,9 +38,14 @@ page{
 .send-method,
 .select-all{
   display: flex;
-  height: 100rpx;
-  line-height: 100rpx;
+  min-height: 65rpx;
+  line-height: 65rpx;
   padding: 0 20rpx;
+  font-size: 28rpx;
+}
+.send-method{
+  display: flex;
+  flex-direction: column;
 }
 .m-l-40{
   margin-left: 40rpx;
@@ -48,4 +53,9 @@ page{
 
 .cell-card{
   margin-top: 0;
+}
+.number-input{
+  height: 65rpx;
+  line-height: 65rpx;
+  width: 500rpx;
 }

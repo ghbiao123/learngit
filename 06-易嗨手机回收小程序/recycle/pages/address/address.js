@@ -16,7 +16,6 @@ Page({
   onLoad: function (options) {
     that = this;
     util.post("/api/user/getPlatforminfo").then(res => {
-      console.log(res);
       that.setData({
         data: res.data
       });

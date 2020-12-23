@@ -17,7 +17,7 @@ Page({
     that = this;
     let staffid = wx.getStorageSync('staffid');
     util.post('/api/user/getStaffInfo', {staffid}).then(res=>{
-      console.log(res);
+       
       wx.setStorage({
         data: res.data,
         key: 'staffinfo',

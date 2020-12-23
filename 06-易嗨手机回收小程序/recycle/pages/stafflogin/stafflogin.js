@@ -30,7 +30,7 @@ Page({
       }
     }
     util.post('/api/login/loginByStaff', data).then(res=>{
-      console.log(res);
+       
       if(res.code == 1){
         util.showSuccess(res.msg, function(){
           wx.setStorage({

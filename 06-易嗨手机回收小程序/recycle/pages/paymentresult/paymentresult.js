@@ -13,9 +13,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.setData({
-    //   method: options.method
-    // });
+    this.setData({
+      method: options.method
+    });
+
+    setTimeout(()=>{
+      wx.reLaunch({
+        url: '/pages/staffinfo/staffinfo',
+      });
+    }, 1600);
+
   },
 
   /**

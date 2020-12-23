@@ -16,7 +16,6 @@ Page({
   onLoad: function (options) {
     that = this;
     this.data.pageOption = options;
-    console.log(options);
     this.data._data = wx.getStorageSync('currentmachine');
   },
   // 人工回收

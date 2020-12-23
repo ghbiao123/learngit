@@ -32,7 +32,7 @@ Page({
       userid,
       available: 9
     }).then(res => {
-      console.log(res);
+       
       that.setData({
         list: res.data
       });

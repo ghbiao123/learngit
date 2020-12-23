@@ -18,7 +18,6 @@ Component({
       wx.setClipboardData({
         data: text,
         success(res){
-          console.log(res);
         }
       });
     },
@@ -30,7 +29,6 @@ Component({
       util.post("/api/order/isValidityOrder", {
         assessid
       }).then(res=>{
-        console.log(res);
         if(res.code == 1){
           wx.setStorage({
             data: data,

@@ -47,7 +47,6 @@ Page({
 
     this.data.pageOption = options;
 
-    console.log(options);
 
     // init 
     this.init();
@@ -80,7 +79,7 @@ Page({
             name: 'file',
             url: util.getSiteRoot() + '/api/common/upload',
             success(ret) {
-              console.log(ret);
+               
               let url = JSON.parse(ret.data).data.url;
               that.data.reqImageUrl.push(url);
             }
@@ -123,7 +122,6 @@ Page({
 
     // 请求数据
     util.post(url, data).then(res => {
-      console.log(res.data);
 
       if (res.code == -1) {
         return util.showSuccess(res.msg, function () {
@@ -188,7 +186,7 @@ Page({
       progressData.all = _data.other.length + currentIndex;
 
       calculateHeight.calculateHeight().then(res=>{
-        console.log(res);
+         
         let scrollHeight = res;
         that.setData({
           type: this.data.type,
@@ -222,7 +220,6 @@ Page({
   },
   // 获取用户手机号
   getPhoneNum(e) {
-    console.log(e);
     if (e.detail.iv) {
       // 用户同意获取手机号
       // 将用户手机号更新到storage（‘currentphone’）
@@ -236,7 +233,7 @@ Page({
             iv: encodeURI(e.detail.iv)
           };
           util.post('/api/login/getWxBindMobile', data).then(ret => {
-            console.log(ret);
+             
             if(ret.code == -3){
               return util.showSuccess(ret.msg);
             }
@@ -451,8 +448,6 @@ Page({
 
     // 共两种情况：  系统估价，人工估价
 
-    console.log(data);
-
     // 先判断人工估价
     if (this.data.type == 'pc' && this.data._data.bid != 1) {
       /*
@@ -547,7 +542,7 @@ Page({
           }
 
           util.post("/api/order/calculatePricePcNa", d).then(res=>{
-            console.log(res);
+             
             if(res.code == 1){
               wx.redirectTo({
                 url: '/pages/manualresult/manualresult',

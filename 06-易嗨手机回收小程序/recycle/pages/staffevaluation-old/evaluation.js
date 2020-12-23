@@ -33,7 +33,6 @@ Page({
 
     this.data.pageOption = options;
 
-    console.log(options);
 
     // init 
     this.init();
@@ -64,7 +63,7 @@ Page({
             name: 'file',
             url: util.getSiteRoot() + '/api/common/upload',
             success(ret) {
-              console.log(ret);
+               
               let url = JSON.parse(ret.data).data.url;
               that.data.reqImageUrl.push(url);
             }
@@ -107,7 +106,7 @@ Page({
 
     // 请求数据
     util.post(url, data).then(res => {
-      console.log(res);
+       
 
       if (res.code == -1) {
         return util.showSuccess(res.msg, function () {
