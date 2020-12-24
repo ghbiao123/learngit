@@ -101,15 +101,15 @@ Page({
       orderid: this.data.order.id,
       staffid,
       estimatefee: this.data.order.estimate_fee,
-      configureinfo: this.data.order.configure_info || this.data.order.model_info.configure,
-      describeinfo: this.data.order.describe_info || this.data.order.model_info.describe,
+      configureinfo: this.data.order.configure_info || this.data.order.model_info.configure || "",
+      describeinfo: this.data.order.describe_info || this.data.order.model_info.describe || "",
       pictures: this.data.reqImageUrl,
       imei: this.data.imei,
-      pname: (this.data.idCard && this.data.idCard.name) || " ",
-      pidcard: (this.data.idCard && this.data.idCard.id) || " ",
-      ppic: this.data.ppic  || " ",
+      pname: (this.data.idCard && this.data.idCard.name) || "",
+      pidcard: (this.data.idCard && this.data.idCard.id) || "",
+      ppic: this.data.ppic  || "",
       changefee: (this.data.changefee ? this.data.changefee : 0),
-      gradename: this.data.order.gradename
+      gradename: this.data.order.gradename || "",
     };
 
     let needData = ['imei', 'pname'];
@@ -148,10 +148,10 @@ Page({
   // 设置新配置项
   resetConfigConfirm() {
     if (this.data.newConfig.cinfo) {
-      this.data.order.model_info.cinfo = this.data.newConfig.cinfo;
+      this.data.order.model_info.configure = this.data.newConfig.cinfo;
     }
     if (this.data.newConfig.des) {
-      this.data.order.model_info.des = this.data.newConfig.des;
+      this.data.order.model_info.describe = this.data.newConfig.des;
     }
     util.showSuccess('已修改');
     this.setData({
