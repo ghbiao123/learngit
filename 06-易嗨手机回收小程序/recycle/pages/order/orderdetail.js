@@ -36,6 +36,7 @@ Page({
         let t = util.getToday(detail.createtime*1000);
         detail.createtime = t.date + ' ' + t.time;
         detail.model_info.image = util.getImageFullUrl(detail.model_info.image);
+        detail.total_amount = detail.staff_order_id > 0 ? detail.stafforderinfo.total_amount * 1 : detail.total_amount * 1;
         // detail.model_info.des = detail.model_info.des.join('；')
         that.setData({
           detail: res.data

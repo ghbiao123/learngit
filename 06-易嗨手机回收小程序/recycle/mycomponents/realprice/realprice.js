@@ -26,9 +26,21 @@ Component({
           newVal
         });
       }
-    }
+    },
+    // staffOrderId: {
+    //   type: Number,
+    //   value: 0,
+    //   observer(newVal){
+        
+    //   }
+    // }
   },
-   data:{
+  observers: {
+    // "status,staffOrderId": (newStatus, newOrderid)=>{
+
+    // }
+  },
+  data:{
      name: "预估价格",
    }
 });

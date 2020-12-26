@@ -83,8 +83,8 @@
         </view>
       </view>
 
-      <view wx:if="{{order.recoverytype == 2}}" class="tit-no-bg">身份证拍照识别</view>
-      <view wx:if="{{order.recoverytype == 2}}" class="cell-card">
+      <view wx:if="{{order.recovery_type == 1}}" class="tit-no-bg">身份证拍照识别</view>
+      <view wx:if="{{order.recovery_type == 1}}" class="cell-card">
         <view class="idcard">
           <view class="idcard-image">
             <ocr-navigator bind:onSuccess="chooseIdcard" certificateType="idCard" opposite="{{false}}">

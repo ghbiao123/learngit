@@ -141,10 +141,10 @@
 					<view style="display: flex;">
 						<!-- <text>2020-07-22 10:00</text>
 						<text class="color-b">修改</text> -->
-						<picker mode="date" bindchange="dateChange">
+						<picker mode="date" start="{{datePickerStart}}" bindchange="dateChange">
 							<input disabled class="pick-input" value="{{orderDate}}" placeholder="选择预约日期"></input>
 						</picker>
-						<picker mode="time" start="10:00" end="22:00" bindchange="timeChange">
+						<picker mode="time" start="{{timePickerStart}}" end="22:00" bindchange="timeChange">
 							<input disabled class="pick-input" value="{{orderTime}}" placeholder="选择预约时间"></input>
 						</picker>
 					</view>

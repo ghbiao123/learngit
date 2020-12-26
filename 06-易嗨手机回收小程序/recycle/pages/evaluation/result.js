@@ -17,7 +17,10 @@ Page({
     inputExpressData: {},
     isCoupon: true,
     reQuery: true,
-    isGetExpress: false
+    isGetExpress: false,
+    provence: '',
+    city: '',
+    country: ''
   },
 
   /**
@@ -39,6 +42,10 @@ Page({
   },
   // onload init ()
   onLoadInit() {
+
+
+
+
     // get parma
     let data = this.data.pageOption;
     // user id
@@ -359,6 +366,17 @@ Page({
   },
   // init()
   init() {
+
+
+    // 初始化当前预约时间
+    let oDate = util.getToday();
+    let datePickerStart = oDate.date.replace(/\//g, "-");
+    let timePickerStart = oDate.time.substring(0, 5);
+    this.setData({
+      datePickerStart,
+      timePickerStart
+    });
+
 
     let data = this.data.pageOption;
 
