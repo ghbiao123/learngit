@@ -67,9 +67,9 @@ Page({
       that.data.totalPrice = that.data.couponPrice + that.data.price;
 
       let regionData = info.uinfo_h.region ? info.uinfo_h.region.split(",") : [];
-      let provence = regionData[0],
-        city = regionData[1],
-        country = regionData[2];
+      let provence = regionData[0] || "",
+        city = regionData[1] || "",
+        country = regionData[2] || "";
       let freight = util.getImageFullUrl(info.freight);
       that.setData({
         price: that.data.price,
@@ -272,7 +272,7 @@ Page({
     if (data.recoverytype == 1) {
       data.uregion = `${that.data.provence},${that.data.city},${that.data.country}`;
       needKey.uaddress = '';
-      needKey.uregion = '';
+      // needKey.uregion = '';
     } else if (data.recoverytype == 2) {
       needKey.ubank = '';
       needKey.ubankcard = '';
@@ -293,6 +293,10 @@ Page({
       if (!data[key]) {
         return util.showSuccess('请完善信息');
       }
+    }
+
+    if(that.data.country == ""){
+      return util.showSuccess('请完善上门地址');
     }
     
     util.post('/api/order/placeOrder', data).then(res => {
