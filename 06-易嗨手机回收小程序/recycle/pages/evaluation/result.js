@@ -373,13 +373,7 @@ Page({
 
 
     // 初始化当前预约时间
-    let oDate = util.getToday();
-    let datePickerStart = oDate.date.replace(/\//g, "-");
-    let timePickerStart = oDate.time.substring(0, 5);
-    this.setData({
-      datePickerStart,
-      timePickerStart
-    });
+    this.checkStartTime();
 
 
     let data = this.data.pageOption;
@@ -548,12 +542,54 @@ Page({
   // radios chang 事件
   radioChange(e) {
   },
+  checkStartTime(date){
+    date = date ? date : new Date();
+    let oDate = util.getToday(date);
+    let today = util.getToday();
+    let datePickerStart = today.date.replace(/\//g, "-"),
+        timePickerStart = today.time.substring(0, 5);
+
+    if(oDate.date == today.date){
+      // 当前日期为当天
+
+      let nowTime = Number(today.time.split(":").toString());
+      // 判断当前日期是在8:00-22:00之间
+      if( nowTime >= 80000 && nowTime <= 220000){
+
+      }
+      // 判断当前日期是在00:00-08:00之间
+      if( nowTime >= 0 && nowTime < 80000){
+        timePickerStart = "08:00";
+      }
+      // 判断当前日期是在22:00-00:00之间
+      if( nowTime > 220000 && nowTime < 235959){
+        timePickerStart = "08:00";
+        let t = new Date();
+        t.setDate(t.getDate() + 1);
+        datePickerStart = t.toLocaleDateString().replace(/\//, "-");
+      }
+
+
+    }else{
+      // 当前日期不是当天，明天或以后的日期
+      timePickerStart = "08:00";
+      // datePickerStart = date;
+    }
+
+    that.setData({
+      timePickerStart,
+      datePickerStart
+    });
+
+  },
   // 选择日期
   dateChange(e) {
     let orderDate = e.detail.value;
+    this.checkStartTime(orderDate);
     this.setData({
       orderDate
     });
+    
   },
   // 选择时间
   timeChange(e) {
