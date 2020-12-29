@@ -17,11 +17,11 @@ Page({
       method: options.method
     });
 
-    setTimeout(()=>{
-      wx.reLaunch({
-        url: '/pages/staffinfo/staffinfo',
-      });
-    }, 1600);
+    // setTimeout(()=>{
+    //   wx.reLaunch({
+    //     url: '/pages/staffinfo/staffinfo',
+    //   });
+    // }, 1600);
 
   },
 

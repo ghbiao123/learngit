@@ -1,6 +1,6 @@
 <view class="container">
   <view class="cell-item" data-idx="{{index}}" bindtap="getEvaluation" wx:for="{{list}}" wx:key="index">
-    {{item.name}}
+    {{index+1}}. {{item.name}}
   </view>
   <!-- 若无机型跳转页面按钮 -->
   <!-- <btntopage></btntopage> -->

@@ -72,9 +72,20 @@ Page({
   },
   // 返回上一页
   goBack(){
-    wx.navigateBack({
-      delta: 1,
+    let data = this.data.order;
+    wx.setStorage({
+      data: data,
+      key: 'staffmachine',
+      success(res){
+        wx.redirectTo({
+          // id=>mid,cid=>cid,orderid=>orderid
+          url: `/pages/staffevaluation/evaluation?id=${data.m_id}&cid=${data.c_id}&orderid=${data.id}`,
+        });
+      }
     });
+    // wx.navigateBack({
+    //   delta: 1,
+    // });
   },
   // 下一步
   nextPage() {
@@ -110,6 +121,7 @@ Page({
       ppic: this.data.ppic  || "",
       changefee: (this.data.changefee ? this.data.changefee : 0),
       gradename: this.data.order.gradename || "",
+      couponmainid: this.data.order.couponmainid || 0,
     };
 
     let needData = ['imei', 'pname'];
@@ -190,7 +202,8 @@ Page({
     }
     util.post("/api/order/doOrderInfo", data).then(res => {
        
-      order.coupon_fee = res.data.cinfo.par_value ? res.data.cinfo.par_value : 0;
+      order.coupon_fee = res.data.cinfo.par_value ? res.data.cinfo.par_value * 1 : 0;
+      order.couponmainid = res.data.cinfo.id ? res.data.cinfo.id : 0;
       order.total_amount = (Number(order.estimate_fee) + Number(order.coupon_fee) + Number(changefee)).toFixed(2) * 1;
       this.setData({
         order,

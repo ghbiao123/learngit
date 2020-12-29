@@ -43,9 +43,6 @@ Page({
   // onload init ()
   onLoadInit() {
 
-
-
-
     // get parma
     let data = this.data.pageOption;
     // user id
@@ -55,7 +52,7 @@ Page({
       userid,
       pricevalue: data.price
     }).then(res => {
-       
+      //  初始化用户信息、价格、省、市、区，省份列表
 
       let info = res.data;
 
@@ -101,6 +98,42 @@ Page({
 
       }
 
+      if(provence&&city){
+        let provenceItem = info.plist.filter(v=>v.name == provence)[0];
+        return {
+          id: provenceItem.id,
+          city
+        }
+      }
+
+    }).then(data=>{
+
+      // 获取城市列表
+      util.post("/api/order/area", {
+        areaid: data.id,
+        key: 1
+      }).then(res => {
+
+        let cityItem = res.data.filter(v=>v.name == data.city)[0];
+
+        that.setData({
+          cityList: res.data
+        });
+        return {
+          id: cityItem.id
+        }
+      }).then(data=>{
+        
+        // 获取区域列表
+        util.post("/api/order/area", {
+          areaid: data.id,
+          key: 2
+        }).then(res => {
+          that.setData({
+            countryList: res.data,
+          });
+        });
+      });
     });
   },
   // 是否显示快递回收上门服务

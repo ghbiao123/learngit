@@ -44,7 +44,7 @@ Page({
     if(!data.checkname) return util.showSuccess("请输入收款方真实姓名");
     util.post("/api/order/paymentForWx", data).then(res=>{
       if(res.code == 1){
-        wx.reLaunch({
+        wx.redirectTo({
           url: '/pages/paymentresult/paymentresult?method=wechat',
         });
       }else{
@@ -65,7 +65,7 @@ Page({
     util.post("/api/order/paymentForUnionPay", data).then(res=>{
        
       if(res.code == 1){
-        wx.reLaunch({
+        wx.redirectTo({
           url: '/pages/paymentresult/paymentresult?method=union',
         });
       }else{

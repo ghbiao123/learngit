@@ -525,7 +525,7 @@ Page({
           key: 'newstaffmachine',
           success() {
             // 跳转新页面
-            wx.navigateTo({
+            wx.redirectTo({
               url: '/pages/stafforder/stafforder',
             });
           }
@@ -539,22 +539,26 @@ Page({
       oldOption.describe_info = needId.describeId.value;
     }
 
-
+    // 进行系统估价
     util.post(url, data).then(res => {
 
       // 当前估价机器 Storage
       let newData = Object.assign({}, data);
       let pricevalue = res.data.totalprice;
       oldOption.gradename = res.data.gradename;
+      let orderid = wx.getStorageSync('staffmachine').id;
       util.post("/api/order/doOrderInfo", {
         userid: oldOption.user_id,
-        pricevalue
+        pricevalue,
+        orderid
       }).then(ret => {
          
         if (Number(ret.data.cinfo.par_value)) {
           oldOption.coupon_fee = ret.data.cinfo.par_value * 1;
+          oldOption.couponmainid = ret.data.cinfo.id;
         }else{
           oldOption.coupon_fee = 0;
+          oldOption.couponmainid = 0;
         }
         oldOption.estimate_fee = pricevalue * 1;
         oldOption.total_amount = oldOption.coupon_fee + oldOption.estimate_fee;
@@ -562,7 +566,7 @@ Page({
           data: oldOption,
           key: 'newstaffmachine',
           success() {
-            wx.navigateTo({
+            wx.redirectTo({
               url: '/pages/stafforder/stafforder',
             });
           }

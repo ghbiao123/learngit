@@ -44,7 +44,7 @@
             <block wx:if="{{true}}">
               <image hidden mode="aspectFit" class="vtab-cont-list-image" src="{{it.image}}"></image>
               <view class="vtab-cont-list-info">
-                <view class="vtab-cont-list-info-name l-h-100 ellipsis-text">{{it.name}}</view>
+                <view class="vtab-cont-list-info-name l-h-100 ellipsis-text">{{idx+1}}. {{it.name}}</view>
                 <view hidden class="vtab-cont-list-info-name ellipsis-text">最高可卖：<text
                     class="color">￥{{it.maxprice}}</text></view>
               </view>
