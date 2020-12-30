@@ -1,6 +1,6 @@
 <view class="container">
   <swiper class="swiper" current="{{currentPageId}}">
-    <swiper-item class="swiper-item">
+    <swiper-item class="swiper-item" catchtouchmove='catchTouchMove'>
       <view class="tit-no-bg">订单明细</view>
       <view class="cell-card">
         <view hidden="{{!showChangePrice}}" class="cell-item">

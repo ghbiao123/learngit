@@ -70,6 +70,10 @@ Page({
 
     // });
   },
+  // 禁止滑块滑动
+  catchTouchMove(e){
+    return false;
+  },
   // 返回上一页
   goBack(){
     let data = this.data.order;
