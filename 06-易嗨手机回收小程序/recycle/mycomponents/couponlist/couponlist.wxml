@@ -1,6 +1,6 @@
 <view class="list" >
   
-  <view class="list-item {{item.status == 1 ? 's-gray':''}} {{item.status == 2 ? 's-gray':''}}" wx:for="{{newList}}" wx:key="index">
+  <view class="list-item {{item.mno_u >= item.mno ? 's-gray':''}} {{item.status == 1 ? 's-gray':''}} {{item.status == 2 ? 's-gray':''}}" wx:for="{{newList}}" wx:key="index">
     <view class="price">
       <view class="price-val">{{item.par_value}}</view>
       <view class="price-txt">加价券</view>
@@ -14,6 +14,7 @@
       {{item.status == 0 ? "未使用" : ""}}
       {{item.status == 1 ? "已使用" : ""}}
       {{item.status == 2 ? "已过期" : ""}}
+      {{item.mno_u >= item.mno ? "已领完" : ""}}
     </view>
   </view>
 
