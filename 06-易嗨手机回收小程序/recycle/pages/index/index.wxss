@@ -337,6 +337,7 @@
   width: 320rpx;
   height: 434rpx;
   /* overflow: hidden; */
+  transform: scale(1.2);
 }
 .close-model{
   display: block;
