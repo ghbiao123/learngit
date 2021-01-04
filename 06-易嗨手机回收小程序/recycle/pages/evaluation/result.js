@@ -20,7 +20,8 @@ Page({
     isGetExpress: false,
     provence: '',
     city: '',
-    country: ''
+    country: '',
+    arrDatePickerValue: [0,0]
   },
 
   /**
@@ -405,9 +406,25 @@ Page({
   init() {
 
 
-    // 初始化当前预约时间
+    // 初始化当前预约时间的开始时间
     this.checkStartTime();
 
+    // 初始化预约时间的选项
+    {
+      let arrDatePicker = [
+        ["今天", "明天", "后天", " "],
+        []
+      ];
+      for(let i = 0;i < 7;i++){
+        let todayDate = new Date();
+        todayDate.setDate(todayDate.getDate() + i);
+        let strDate = util.getToday(todayDate.getTime()).date.replace(/\//g, "-");
+        arrDatePicker[1].push(strDate);
+      }
+      that.setData({
+        arrDatePicker
+      });
+    }
 
     let data = this.data.pageOption;
 
@@ -436,22 +453,7 @@ Page({
       });
     }
 
-    // 获取用户地址
-
-    // let userInfo = wx.getStorageSync('userinfo');
-    // if (userInfo) {
-    //   util.post('/api/user/getUserInfo', {
-    //     userid: userInfo.uid
-    //   }).then(res => {
-    //      
-    //     if (res.code == 1) {
-    //       wx.setStorage({
-    //         data: res.data,
-    //         key: 'userdata',
-    //       });
-    //     }
-    //   });
-    // } else {}
+   
 
 
   },
@@ -615,9 +617,20 @@ Page({
     });
 
   },
+  // date picker column change
+  dateColumnChange(e){
+    let arrDatePickerValue = this.data.arrDatePickerValue;
+    let value = e.detail.value;
+    arrDatePickerValue[0] = Math.min(3, value);
+    arrDatePickerValue[1] = value;
+    this.setData({
+      arrDatePickerValue
+    });
+
+  },
   // 选择日期
   dateChange(e) {
-    let orderDate = e.detail.value;
+    let orderDate = this.data.arrDatePicker[1][e.detail.value[1]];
     this.checkStartTime(orderDate);
     this.setData({
       orderDate

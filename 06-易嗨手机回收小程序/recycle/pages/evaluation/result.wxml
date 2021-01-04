@@ -141,7 +141,10 @@
 					<view style="display: flex;">
 						<!-- <text>2020-07-22 10:00</text>
 						<text class="color-b">修改</text> -->
-						<picker mode="date" start="{{datePickerStart}}" bindchange="dateChange">
+						<!-- <picker mode="date" start="{{datePickerStart}}" bindchange="dateChange">
+							<input disabled class="pick-input" value="{{orderDate}}" placeholder="选择预约日期"></input>
+						</picker> -->
+						<picker mode="multiSelector" range="{{arrDatePicker}}" value="{{arrDatePickerValue}}" bindcolumnchange="dateColumnChange" bindchange="dateChange">
 							<input disabled class="pick-input" value="{{orderDate}}" placeholder="选择预约日期"></input>
 						</picker>
 						<picker mode="time" start="{{timePickerStart}}" end="22:00" bindchange="timeChange">
