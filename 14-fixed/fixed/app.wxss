@@ -5,7 +5,7 @@
 }
 
 page{
-  background-color: #f6f6f6;
+  background-color: #f5f5f5;
 }
 
 image{
@@ -33,7 +33,6 @@ image{
 
 /* 白色卡片 */
 .cell-card{
-  margin: 20rpx auto 0;
   width: 670rpx;
   padding: 20rpx;
   background-color: #fff;
@@ -78,6 +77,10 @@ image{
 /* 文字居中 */
 .t-a-c{
   text-align: center;
+}
+/* 文字居左 */
+.t-a-l{
+  text-align: left;
 }
 
 /* 文字不换行，超出隐藏 */
