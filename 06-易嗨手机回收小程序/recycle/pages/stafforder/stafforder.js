@@ -202,7 +202,8 @@ Page({
     let pricevalue = (Number(order.estimate_fee) + Number(changefee));
     let data = {
       userid: order.user_id,
-      pricevalue
+      pricevalue,
+      orderid: order.id
     }
     util.post("/api/order/doOrderInfo", data).then(res => {
        

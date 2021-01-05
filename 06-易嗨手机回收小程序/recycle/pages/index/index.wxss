@@ -142,6 +142,7 @@
   left: 20rpx;
   width: 210rpx;
   height: 180rpx;
+  transform: scale(1.1);
 }
 .myphone-button{
   position: absolute;
@@ -235,6 +236,7 @@
 .types-icon{
   width: 115rpx;
   height: 90rpx;
+  transform: scale(1.1);
 }
 .types-name{
   padding-top: 10rpx;
@@ -301,6 +303,7 @@
   margin-top: 30rpx;
   width: 220rpx;
   height: 130rpx;
+  transform: scale(1.1);
 }
 .name{
   font-size: 28rpx;
@@ -337,7 +340,7 @@
   width: 320rpx;
   height: 434rpx;
   /* overflow: hidden; */
-  transform: scale(1.2);
+  transform: scale(1.44);
 }
 .close-model{
   display: block;

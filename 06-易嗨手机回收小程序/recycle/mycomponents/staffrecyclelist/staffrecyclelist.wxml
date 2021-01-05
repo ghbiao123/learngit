@@ -21,12 +21,12 @@
         </view>
         <!-- <view class="info ellipsis-text">{{item.model_info.cinfo? item.model_info.cinfo:''}}</view> -->
         <view class="info ellipsis-text">成交方式:{{item.recovery_type == 1 ? "上门回收" : "快递回收"}}</view>
-        <block wx:if="{{item.order_status == 0}}">
+        <block wx:if="{{item.order_status == 0 || item.order_status == 4}}">
           <view class="info">预估价：¥{{item.estimate_fee}}</view>
           <view class="info">加价券：¥{{item.coupon_fee}}</view>
           <view class="info">结算价：¥{{item.total_amount}}</view>
         </block>
-        <view wx:if="{{item.order_status != 0}}" class="info">
+        <view wx:if="{{item.order_status == 1 || item.order_status == 2 || item.order_status == 3}}" class="info">
           <realprice status="{{item.order_status}}" price="{{item.stafforderinfo.total_amount}}"></realprice>
         </view>
         <block wx:if="{{item.recovery_type == 1}}">
