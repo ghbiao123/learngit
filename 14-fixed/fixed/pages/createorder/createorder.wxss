@@ -1,0 +1,7 @@
+/* pages/createorder/createorder.wxss */
+.container{
+  padding-bottom: 60rpx;
+}
+.btn-submit{
+  margin-top: 60rpx;
+}

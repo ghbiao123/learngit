@@ -12,17 +12,23 @@ Component({
     theme:{
       type:String,
       value:'#f5f5f5'
+    },
+    disabled: {
+      type: Boolean,
+      value: false
     }
   },
   data:{
     isFocus: false,
-    result:''
+    result:'',
+    disabled: ""
   },
   created(){
     that = this;
   },
   methods:{
     onTap(){
+      if(this.data.disabled) return;
       that.setData({  isFocus:true  });
     },
     clearValue(){
