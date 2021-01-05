@@ -63,6 +63,24 @@
         {
           "name": "pages/createorder/createorder",
           "pathName": "pages/createorder/createorder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/search/search",
+          "pathName": "pages/search/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/main/main",
+          "pathName": "pages/main/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
           "scene": null
         }
       ]

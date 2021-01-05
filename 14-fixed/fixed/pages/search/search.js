@@ -1,4 +1,6 @@
 // pages/search/search.js
+let that;
+let util = require("../../utils/util");
 Page({
 
   /**
@@ -12,6 +14,37 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
+
+    // init()
+    this.init();
+  },
+
+  // init()
+  init(){
+    
+    // 初始化内容高度
+    this.calculateHeight();
+
+  },
+  // 计算主要内容高度
+  calculateHeight(){
+
+    let windowHeight = wx.getSystemInfoSync().windowHeight;
+    let query = wx.createSelectorQuery();
+    query.select(".searchbar").boundingClientRect();
+    query.exec(res=>{
+      let contHeight = windowHeight - res[0].height;
+      let newQuery = wx.createSelectorQuery();
+      newQuery.select(".tab-box").boundingClientRect();
+      newQuery.exec(ret=>{
+        let contScrollHeight = contHeight - ret[0].height -10;
+        that.setData({
+          contHeight,
+          contScrollHeight
+        });
+      });
+    });
 
   },
 

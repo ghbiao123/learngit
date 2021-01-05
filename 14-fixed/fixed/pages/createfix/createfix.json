@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "cell": "/mycomponents/cell/cell",
+    "btn": "/mycomponents/btn/btn"
+  }
 }
