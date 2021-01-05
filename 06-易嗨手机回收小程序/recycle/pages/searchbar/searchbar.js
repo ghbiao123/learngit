@@ -70,6 +70,7 @@ Page({
     that.setData({
       showList: false,
     });
+
     let mid = e.currentTarget.dataset.id;
     let mname = e.currentTarget.dataset.name;
     let cid = e.currentTarget.dataset.cid;
@@ -77,6 +78,10 @@ Page({
     
     let idx = e.currentTarget.dataset.idx;
     let data = this.data.result[idx];
+
+    // 增添搜索记录
+    this.addStorageData(mname);
+
 
     if (userInfo) {
       util.post('/api/products/searchStatistics', {
@@ -99,9 +104,7 @@ Page({
     });
 
     return;
-    wx.navigateTo({
-      url: '/pages',
-    });
+    
 
 
   },

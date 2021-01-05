@@ -16,6 +16,7 @@ page{
 .tip{
   padding: 0 10rpx;
   width: auto;
+  max-width: 670rpx;
   height: 55rpx;
   margin: 25rpx 25rpx 0  0;
   line-height: 55rpx;

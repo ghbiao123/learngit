@@ -1,6 +1,6 @@
 <view class="content">
 	<scarch-bar isFocus bind:getinput="getInputText" bind:searchbar="result" theme="#ffffff" placeholder="搜索品牌或者机型"></scarch-bar>
-	<view wx:if="{{showList}}" class="list" wx:for="{{result}}" wx:key="index" data-idx="{{index}}" data-name="{{item.name}}"
+	<view wx:if="{{showList}}" class="list ellipsis-text" wx:for="{{result}}" wx:key="index" data-idx="{{index}}" data-name="{{item.name}}"
 		data-id="{{item.id}}" data-cid="{{item.cid}}" bindtap="getEvaluation">
 		{{item.name}}
 	</view>
@@ -14,7 +14,7 @@
 			</image>
 		</view>
 		<view class="tip-content">
-			<view class="tip" bindtap="getItem" data-key="{{item}}" wx:for="{{Storage}}" wx:key="index">{{item}}</view>
+			<view class="tip ellipsis-text" bindtap="getItem" data-key="{{item}}" wx:for="{{Storage}}" wx:key="index">{{item}}</view>
 		</view>
 		<view class="tit-no-bg">热门搜索</view>
 		<view class="tip-content">
