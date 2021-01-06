@@ -1,0 +1,97 @@
+<!--index.wxml-->
+<view class="container">
+
+  <!-- 头部搜索 -->
+  <navigator hover-class="none" url="/pages/searchlist/searchlist">
+    <searchbar theme="#ffffff" placeholder="搜索维修项目" coverholder="搜索维修项目" disabled></searchbar>
+  </navigator>
+
+  <!-- banner -->
+  <swiper circular autoplay class="banner-swiper">
+    <swiper-item wx:for="000" wx:key="index" class="banner-swiper-item">
+      <navigator hover-class="none" url="#">
+        <image class="banner-item" mode="aspectFit" src="/images/banner.png"></image>
+      </navigator>
+    </swiper-item>
+  </swiper>
+
+  <!-- create order -->
+  <view class="b-b-line">
+    <view class="create m-t-20">
+      <navigator hover-class="none" url="/pages/createorder/createorder" open-type="switchTab">
+        <view class="create-order" hover-class="create-order-hover">
+          <view>创建订单</view>
+          <image class="create-icon" src="/images/createorder-icon.png"></image>
+        </view>
+      </navigator>
+
+      <navigator hover-class="none" url="/pages/createfix/createfix" open-type="switchTab">
+        <view class="create-fix" hover-class="create-fix-hover">
+          <view>创建保修</view>
+          <image class="create-icon" src="/images/createfix-icon.png"></image>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+  <!-- menu -->
+  <view class="menu-box b-b-line">
+    <view class="tit-no-bg">
+      维修项目
+    </view>
+    <view class="menu">
+      <navigator hover-class="none" url="">
+        <icontext src="/images/index-1.png" lHeight="60" iconW="64" iconH="64" size="26" color="#666666" cont="基础设施">
+        </icontext>
+      </navigator>
+      <navigator hover-class="none" url="">
+        <icontext src="/images/index-2.png" lHeight="60" iconW="64" iconH="64" size="26" color="#666666" cont="仪器设备">
+        </icontext>
+      </navigator>
+      <navigator hover-class="none" url="">
+        <icontext src="/images/index-3.png" lHeight="60" iconW="64" iconH="64" size="26" color="#666666" cont="咨询服务">
+        </icontext>
+      </navigator>
+    </view>
+    <view class="menu">
+      <navigator hover-class="none" url="">
+        <icontext src="/images/index-4.png" lHeight="60" iconW="64" iconH="64" size="26" color="#666666" cont="物流">
+        </icontext>
+      </navigator>
+      <navigator hover-class="none" url="">
+        <icontext src="/images/index-5.png" lHeight="60" iconW="64" iconH="64" size="26" color="#666666" cont="采购">
+        </icontext>
+      </navigator>
+      <navigator hover-class="none" url="">
+        <icontext src="/images/index-6.png" lHeight="60" iconW="64" iconH="64" size="26" color="#666666" cont="行政后勤">
+        </icontext>
+      </navigator>
+    </view>
+  </view>
+
+  <!-- the best worker -->
+  <view class="b-b-line worker-swiper-box">
+    <view class="worker-swiper-cont">
+      <view class="tit-no-bg">本月优秀师傅评选</view>
+      <view class="swiper-box">
+        <image class="swiper-direction" src="/images/index-lt.png"></image>
+        <swiper class="worker-swiper" autoplay circular>
+          <swiper-item wx:for="000" wx:key="index" class="worker-swiper-item">
+            <view class="worker-item" wx:for="000" wx:key="index" hover-class="worker-item-hover">
+              <image class="worker-avatar" mode="aspectFit" src="/images/zhengjianzhao.jpg"></image>
+              <view class="name">哈利·波特</view>
+            </view>
+          </swiper-item>
+        </swiper>
+        <image class="swiper-direction" src="/images/index-rt.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- telephone -->
+  <view class="telephone b-b-line">
+    <image class="telephone-icon" src="/images/index-phone.png"></image>
+    <view>咨询/投诉电话：2131445552</view>
+  </view>
+
+</view>

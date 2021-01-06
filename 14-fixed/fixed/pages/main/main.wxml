@@ -1,0 +1,76 @@
+<view class="container">
+  <!-- 头部登录 -->
+  <view class="header b-b-line">
+    <!-- 已登录 -->
+    <view wx:if="{{isLogin}}" class="header-cont">
+      <!-- <image class="avatar" mode="aspectFit" src="/images/default-avatar.png"></image> -->
+      <view class="avatar">
+        <open-data type="userAvatarUrl" class="avatar"></open-data>
+      </view>
+      <view class="userinfo">
+        <view class="user-name">姓名<open-data type="userNickName"></open-data></view>
+        <view class="user-phone">123456890</view>
+      </view>
+
+      <view class="user-detail" hover-class="user-detail-hover">个人资料</view>
+
+    </view>
+    <!-- 未登录 -->
+    <view wx:else class="header-cont">
+      <image class="avatar" mode="aspectFit" src="/images/default-avatar.png"></image>
+      <view class="userinfo">
+        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="login">立即登录</button>
+      </view>
+    </view>
+
+  </view>
+
+  <!-- 用户订单 -->
+  <view class="userorder b-b-line" >
+    <!-- 全部订单 -->
+    <view class="userorder-title">
+      <view>我的订单</view>
+      <view class="userorder-all">
+        <view class="all-text">全部订单</view>
+        <image class="all-icon" src="/images/rt.png"></image>
+      </view>
+    </view>
+
+    <!-- 订单分类 -->
+    <view class="order-sort">
+      <view class="sort-item" hover-class="sort-item-hover">
+        <image class="sort-icon" mode="aspectFit" src="/images/main-4.png"></image>
+        <view class="sort-name">已申请</view>
+        <view class="sort-count">(2)</view>
+      </view>
+      <view class="sort-item" hover-class="sort-item-hover">
+        <image class="sort-icon" mode="aspectFit" src="/images/main-5.png"></image>
+        <view class="sort-name">预下单</view>
+        <view class="sort-count">(2)</view>
+      </view>
+      <view class="sort-item" hover-class="sort-item-hover">
+        <image class="sort-icon" mode="aspectFit" src="/images/main-6.png"></image>
+        <view class="sort-name">已付款</view>
+        <view class="sort-count">(2)</view>
+      </view>
+      <view class="sort-item" hover-class="sort-item-hover">
+        <image class="sort-icon" mode="aspectFit" src="/images/main-7.png"></image>
+        <view class="sort-name">维修完成</view>
+        <view class="sort-count">(2)</view>
+      </view>
+      <view class="sort-item" hover-class="sort-item-hover">
+        <image class="sort-icon" mode="aspectFit" src="/images/main-8.png"></image>
+        <view class="sort-name">订单完成</view>
+        <view class="sort-count">(2)</view>
+      </view>
+    </view>
+
+
+  </view>
+
+  <!-- menu -->
+  <cell icon="/images/main-1.png" title="我的报修" hover footer></cell>
+  <cell icon="/images/main-2.png" title="隐私条款" hover footer></cell>
+  <cell icon="/images/main-3.png" title="申请成为师傅" hover footer></cell>
+
+</view>

@@ -1,0 +1,140 @@
+/**app.wxss**/
+@import '/components/weui-wxss/dist/style/weui.wxss';
+@import "/mycomponents/btn/btn.wxss";
+.container {
+  margin: 0;
+  color: #333333;
+}
+
+page{
+  background-color: #fff;
+}
+
+image{
+  vertical-align: top;
+  border: 0;
+}
+/* 上外边距 20rpx */
+.m-t-20{
+  margin-top: 20rpx !important;
+}
+
+
+/* 页面大部分公共样式 */
+
+/* 白色卡片 */
+.cell-card{
+  width: 670rpx;
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+/* 
+  白色卡片下样式
+*/
+.cell-item{
+  display: flex;
+  justify-content: space-between;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  color: #606060;
+}
+
+.tit-no-bg{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 710rpx;
+  height: 75rpx;
+  line-height: 75rpx;
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+}
+
+/* 下边框 */
+.b-b-g{
+  border-bottom: 1rpx solid #E5E5E5;
+}
+.b-t-g{
+  border-top: 1rpx solid #E5E5E5;
+}
+
+/* 下边框灰色细线 */
+.b-b-line{
+  border-bottom: 20rpx solid #F5F5F5;
+}
+
+/* 文字居右 */
+.t-a-r{
+  text-align: right;
+}
+/* 文字居中 */
+.t-a-c{
+  text-align: center;
+}
+/* 文字居左 */
+.t-a-l{
+  text-align: left;
+}
+
+/* 文字不换行，超出隐藏 */
+.ellipsis-text{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+
+/* form style */
+.form-title{
+  display: flex;
+  color: #1A1A1A;
+  font-size: 30rpx;
+  line-height: 100rpx;
+  text-indent: 20rpx;
+}
+.form-title-tip{
+  font-size: 26rpx;
+  text-indent: 30rpx;
+  color: #CCCCCC;
+}
+.form-textarea{
+  display: flex;
+  margin: 0 auto 30rpx;
+  padding: 20rpx;
+  width: 670rpx;
+  height: 220rpx;
+  background-color: #F5F5F5;
+}
+
+.form-picture-box{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding-bottom: 30rpx;
+  width: 710rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+.form-picture-item{
+  position: relative;
+  margin: 20rpx 13rpx 0;
+  width: 150rpx;
+  height: 150rpx;
+  box-shadow: 0 0 16rpx rgba(0, 0, 0, .2);
+}
+.form-picture{
+  width: 150rpx;
+  height: 150rpx;
+}
+.form-cancel{
+  position: absolute;
+  top: -30rpx;
+  right: -30rpx;
+  z-index: 10;
+}
+
+
+
+

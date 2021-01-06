@@ -1,0 +1,70 @@
+<view class="container">
+  <form bindsubmit="submit">
+
+    <cell title="订单标题">
+      <input type="text" class="t-a-r" placeholder="请输入标题" slot="value" />
+    </cell>
+
+    <picker mode="date">
+      <cell title="一级分类" footer>
+        <input type="text" disabled class="t-a-r" placeholder="请选择一级分类" slot="value" />
+      </cell>
+    </picker>
+
+    <picker mode="date">
+      <cell title="二级分类" footer>
+        <input type="text" disabled class="t-a-r" placeholder="请选择二级分类" slot="value" />
+      </cell>
+    </picker>
+
+    <picker mode="date">
+      <cell title="三级分类" footer>
+        <input type="text" disabled class="t-a-r" placeholder="请选择三级分类" slot="value" />
+      </cell>
+    </picker>
+
+    <picker mode="date">
+      <cell title="服务项目" footer>
+        <input type="text" disabled class="t-a-r" placeholder="请选择服务项目" slot="value" />
+      </cell>
+    </picker>
+
+    <cell title="数量">
+      <input type="text" class="t-a-r" placeholder="请输入维修数量" slot="value" />
+    </cell>
+
+    <view class="form-title">
+      报修内容
+    </view>
+    <textarea placeholder="请输入报修内容" class="form-textarea"></textarea>
+
+    <view class="form-title b-t-g">
+      <view>照片</view>
+      <view class="form-title-tip">请上传照片，最多上传8张</view>
+    </view>
+
+    <view class="form-picture-box">
+      <view class="form-picture-item" wx:for="000" wx:key="index">
+        <icon type="cancel" size="25" class="form-cancel" color="#ccc"></icon>
+        <image class="form-picture" mode="aspectFit" src="/images/add.png"></image>
+      </view>
+
+      <image class="form-picture-item" src="/images/add.png"></image>
+    </view>
+
+    <cell title="公司名称">
+      <input type="text" class="t-a-r" placeholder="请输入公司名称" slot="value" />
+    </cell>
+
+    <cell title="联系人">
+      <input type="text" class="t-a-r" placeholder="请输入联系人姓名" slot="value" />
+    </cell>
+
+    <cell title="联系方式">
+      <input type="text" class="t-a-r" placeholder="请输入联系方式" slot="value" />
+    </cell>
+
+    <button class="clear normal btn-submit" hover-class="normal-hover" form-type="submit">提交</button>
+
+  </form>
+</view>

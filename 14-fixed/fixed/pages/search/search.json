@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "searchbar": "/mycomponents/searchbar/searchbar"
+  }
+}

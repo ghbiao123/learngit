@@ -1,0 +1,27 @@
+<view class="content">
+  <view class="list" wx:for="{{list}}" wx:key="index">
+    <view class="cont">
+      <view class="list-head">
+        <view>订单号：20121012</view>
+        <view class="color-blue">已申请</view>
+      </view>
+
+      <view class="list-cont">
+        <view class="cont-item">
+          <view class="cont-left">项目名称：换灯泡</view>
+          <view class="cont-right">维修师傅：***</view>
+        </view>
+        <view class="cont-item">
+          <view class="cont-left">预付款：***</view>
+          <view class="cont-right">尾款：***</view>
+        </view>
+        <view class="cont-item">下单时间：2020-10-20 10:00</view>
+      </view>
+
+      <view class="list-foot">
+        <btn type="detail">查看详情</btn>
+      </view>
+
+    </view>
+  </view>
+</view>
