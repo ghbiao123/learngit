@@ -1,0 +1,26 @@
+/* pages/orderdetail/orderdetail.wxss */
+.order-tip{
+  display: flex;
+  align-items:center;
+  padding: 0 20rpx;
+  height: 46rpx;
+  background-color: #F5F5F5;
+}
+.tip-icon{
+  width: 24rpx;
+  height: 24rpx;
+}
+.tip-text{
+  text-indent: 20rpx;
+  font-size: 24rpx;
+  color: #CCCCCC;
+}
+.order-status{
+  padding: 30rpx 0 0;
+  height: 120rpx;
+  display: flex;
+  justify-content: center;
+}
+
+
+

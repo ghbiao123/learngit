@@ -90,6 +90,9 @@ image{
 .color-red{
   color: #EF2A22;
 }
+.color-blue{
+  color: #1D7FD6;
+}
 
 /* form style */
 .form-title{
@@ -147,7 +150,8 @@ image{
   position: fixed;
   left: 0;
   bottom: 0;
-  width: 100%;
+  width: 710rpx;
+  padding: 0 20rpx;
   height: 98rpx;
   display: flex;
   align-items: center;
@@ -156,3 +160,32 @@ image{
 }
 
 
+/* 点点 */
+.dot-x{
+  margin: 30rpx 10rpx 0;
+  position: relative;
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 50%;
+  background: #FEB855;
+}
+.dot-x::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 14rpx;
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 50%;
+  background: #FEB855;
+}
+.dot-x::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -14rpx;
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 50%;
+  background: #FEB855;
+}

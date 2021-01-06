@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "btn": "/mycomponents/btn/btn",
+    "status": "/mycomponents/status/status"
+  },
+  "navigationBarTitleText": "订单详情",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

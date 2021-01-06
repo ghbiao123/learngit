@@ -1,0 +1,32 @@
+/* pages/orderstatus/orderstatus.wxss */
+.status{
+  width: 120rpx;
+  height: auto;
+  text-align: center;
+  font-size: 24rpx;
+  color: #CCCCCC;
+}
+.image-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10rpx auto;
+  width: 48rpx;
+  height: 48rpx;
+  background-color: #CCCCCC;
+  border-radius: 50%;
+}
+.image{
+  width: 20rpx;
+  height: 20rpx;
+}
+.text{
+  padding: 0 0 5rpx 0;
+  font-size: 24rpx;
+}
+.status-s{
+  color: #FEB855;
+}
+.status-bg-s{
+  background-color: #FEB855;
+}

@@ -1,0 +1,24 @@
+<view class="btn-container">
+
+  <view class="order-tip">
+    <image class="tip-icon" src="/images/tip.png"></image>
+    <view class="tip-text">订单内容有变化，请下拉刷新……</view>
+  </view>
+
+  <view class="order-status b-b-line">
+    <status selected icon="/images/status-1.png" text="已支付预付"></status>
+    <view class="dot-x"></view>
+    <status selected icon="/images/status-1.png" text="已支付预付"></status>
+    <view class="dot-x"></view>
+    <status selected icon="/images/status-1.png" text="已支付预付"></status>
+    <view class="dot-x"></view>
+    <status selected icon="/images/status-1.png" text="已支付预付"></status>
+    <view class="dot-x"></view>
+    <status selected icon="/images/status-1.png" text="已支付预付"></status>
+  </view>
+
+
+  <view class="bottom-btn-box" style="justify-content: flex-end;">
+    <btn type="cancel">取消订单</btn>
+  </view>
+</view>

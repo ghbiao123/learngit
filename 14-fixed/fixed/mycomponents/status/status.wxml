@@ -1,0 +1,8 @@
+<view class="status">
+  <view class="image-box {{selected?'status-bg-s':''}}">
+    <image src="{{icon}}" class="image"></image>
+  </view>
+  <view class="text {{selected?'status-s':''}}">{{text}}</view>
+</view>
+
+

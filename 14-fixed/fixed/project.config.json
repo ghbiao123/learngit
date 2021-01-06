@@ -117,6 +117,18 @@
         {
           "name": "pages/orderlist/orderlist",
           "pathName": "pages/orderlist/orderlist",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/orderstatus/orderstatus",
+          "pathName": "pages/orderstatus/orderstatus",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/orderdetail/orderdetail",
+          "pathName": "pages/orderdetail/orderdetail",
           "scene": null
         }
       ]

@@ -1,0 +1,7 @@
+<view class="container">
+  <view style="display: flex;">
+    <status selected icon="/images/status-1.png" text="已支付预付"></status>
+    <view class="dot-x"></view>
+    <status selected icon="/images/status-1.png" text="已支付预付"></status>
+  </view>
+</view>

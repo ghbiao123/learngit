@@ -10,7 +10,10 @@
     "pages/changeperinfo/changeperinfo",
     "pages/personalverify/personalverify",
     "pages/orderlist/orderlist",
-    "pages/projectdetail/projectdetail"
+    "pages/projectdetail/projectdetail",
+    "pages/orderstatus/orderstatus",
+    "pages/orderdetail/orderdetail"
+    
   ],
   "tabBar": {
     "color": "#CCCCCC",
