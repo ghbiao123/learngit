@@ -1,0 +1,19 @@
+<view class="btn-container">
+
+  <image class="image" src="/images/project.png" mode="aspectFit"></image>
+
+  <view class="project-info b-b-line">
+    <view class="name">水泵（供水系统）</view>
+    <view class="location">基础设施 - 水</view>
+  </view>
+
+  <view class="project-introduce">
+    每一款产品都存在瑕疵，只要是存在这个世界上的东西，它都会随着时间的推移变的老化，出现问题。净水器制造工艺虽然已经成熟，但也会出现问题，下面，我们来总结一下家用RO反渗透净水器(纯水机)，不带电的机器（超滤净水器）不在此维修范围，在工作过程中可能会出现哪些故障？又怎么把这些小问题修复呢。
+
+  </view>
+
+  <view class="bottom-btn-box">
+    <btn type="normal" bind:getTap="">创建订单</btn>
+  </view>
+
+</view>

@@ -2,5 +2,5 @@
   "usingComponents": {
     "cell": "/mycomponents/cell/cell"
   },
-  "navigationBarTitleText": "我的"
+  "navigationBarTitleText": "修改个人资料"
 }

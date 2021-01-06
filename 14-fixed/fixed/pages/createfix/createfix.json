@@ -2,5 +2,6 @@
   "usingComponents": {
     "cell": "/mycomponents/cell/cell",
     "btn": "/mycomponents/btn/btn"
-  }
+  },
+  "navigationBarTitleText": "创建保修"
 }

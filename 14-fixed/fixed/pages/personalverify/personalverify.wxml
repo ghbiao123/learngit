@@ -1,0 +1,40 @@
+<view class="container">
+  <view class="item">
+    <view class="item-name">
+      <text class="color-red">*</text>姓名                            
+    </view>
+    <input type="text" class="t-a-r" placeholder="请输入姓名"/>
+  </view>
+
+  <view class="item">
+    <view class="item-name">
+      <view>身份证（选填）</view>
+      <view class="item-name-tip">请上传身份证照片</view>
+    </view>
+    <view class="image-box">
+      <image class="image" src="/images/idcard.png"></image>
+    </view>
+  </view>
+
+  <view class="item">
+    <view class="item-name">
+      <text class="color-red">*</text>公司名称                            
+    </view>
+    <input type="text" class="t-a-r" placeholder="请输入公司名称"/>
+  </view>
+
+  <view class="item">
+    <view class="item-name">
+      <view><text class="color-red">*</text>营业执照</view>
+      <view class="item-name-tip">请上传营业执照</view>
+    </view>
+    <view class="image-box">
+      <image class="image" src="/images/ying.png"></image>
+    </view>
+  </view>
+
+  <view class="btn-box">
+    <btn type="normal">提交</btn>
+  </view>
+
+</view>

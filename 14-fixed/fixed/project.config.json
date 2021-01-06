@@ -81,6 +81,42 @@
         {
           "name": "pages/index/index",
           "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/personalinfo/personalinfo",
+          "pathName": "pages/personalinfo/personalinfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/changeperinfo/changeperinfo",
+          "pathName": "pages/changeperinfo/changeperinfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/changeperinfo/changeperinfo",
+          "pathName": "pages/changeperinfo/changeperinfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/personalverify/personalverify",
+          "pathName": "pages/personalverify/personalverify",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/projectdetail/projectdetail",
+          "pathName": "pages/projectdetail/projectdetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/orderlist/orderlist",
+          "pathName": "pages/orderlist/orderlist",
           "scene": null
         }
       ]

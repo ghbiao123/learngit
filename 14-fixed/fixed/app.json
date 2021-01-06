@@ -5,7 +5,12 @@
     "pages/createorder/createorder",
     "pages/createfix/createfix",
     "pages/search/search",
-    "pages/searchlist/searchlist"
+    "pages/searchlist/searchlist",
+    "pages/personalinfo/personalinfo",
+    "pages/changeperinfo/changeperinfo",
+    "pages/personalverify/personalverify",
+    "pages/orderlist/orderlist",
+    "pages/projectdetail/projectdetail"
   ],
   "tabBar": {
     "color": "#CCCCCC",

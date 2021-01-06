@@ -1,0 +1,29 @@
+<view class="container">
+  <!-- tab -->
+  <view class="tab-box b-b-line">
+    <scroll-view class="tab-scroll" scroll-x>
+      <view class="tab" style="width:{{170*10}}rpx;">
+        <view class="tab-item" wx:for="0000000000" wx:key="index">
+          <view class="tab-name">维修完成(1)</view>
+          <view class="tab-s-line"></view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="filter">
+      <image class="filter-icon" src="/images/filter.png"></image>
+    </view>
+  </view>
+
+  <!-- cont -->
+  <scroll-view scroll-y class="cont-scroll" style="height:{{contHeight}}px;">
+    <orderlist list="{{[1,2,3,4,5,6]}}"></orderlist>
+  </scroll-view>
+  
+
+  <!-- filter -->
+  <view hidden class="filter-box" style="height:{{contHeight}}px;">
+    <view class="filter-cont">
+      <view class="filter-item" wx:for="0000000000" wx:key="index">已下单(1)</view>
+    </view>
+  </view>
+</view>

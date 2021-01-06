@@ -1,0 +1,28 @@
+/* pages/changeperinfo/changeperinfo.wxss */
+.avatar-box {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  width: 710rpx;
+  height: 140rpx;
+  font-size: 30rpx;
+  color: #1A1A1A;
+  border-bottom: 1rpx solid #EEEEEE;
+}
+.avatar-title{
+  width: 600rpx;
+}
+
+.avatar{
+  width: 80rpx;
+  height: 80rpx;
+}
+.rt{
+  width: 23rpx;
+  height: 23rpx;
+}
+
+
+.btn{
+  margin-top: 60rpx;
+}

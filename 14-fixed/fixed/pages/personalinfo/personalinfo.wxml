@@ -1,0 +1,14 @@
+<view class="container">
+  <cell title="公司名称" cont="锤子科技"></cell>
+  <cell title="公司地址" cont="北京市朝阳区望京街道利泽中园101号启明国际大厦"></cell>
+  <cell title="员工工号" cont="20201101"></cell>
+  <cell title="姓名" cont="张三"></cell>
+  <cell title="身份证号" cont="310115192993455432"></cell>
+  <cell title="电话" cont="18012341234"></cell>
+  <cell title="认证状态" cont="未认证"></cell>
+
+  <view class="button-box">
+    <btn url="/pages/personalverify/personalverify" type="verify">认证</btn>
+    <btn url="/pages/changeperinfo/changeperinfo" type="change">修改个人信息</btn>
+  </view>
+</view>
