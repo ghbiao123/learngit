@@ -9,6 +9,7 @@
       <view class="info-introduce">{{item.aname}}{{item.title}}{{item.par_value}}元加价券</view>
       <view class="info-condition">满{{item.limit_price}}可用</view>
       <view wx:if="{{item.etime}}" class="info-time">{{item.stime}} - {{item.etime}}</view>
+      <view wx:if="{{item.ruletext||item.rule_text}}" class="info-time">{{item.ruletext||item.rule_text}}</view>
     </view>
     <view class="status">
       {{item.status == 0 ? "未使用" : ""}}

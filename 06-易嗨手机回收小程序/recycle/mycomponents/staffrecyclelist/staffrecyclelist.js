@@ -90,6 +90,12 @@ Component({
           url: '/pages/paymentmethod/paymentmethod?orderid='+ data.id,
         });
       }
+      // 已完成
+      if(data.order_status == 2){
+        wx.navigateTo({
+          url: '/pages/stafforderdetail/stafforderdetail?orderid='+ data.id,
+        });
+      }
     }
   }
 });

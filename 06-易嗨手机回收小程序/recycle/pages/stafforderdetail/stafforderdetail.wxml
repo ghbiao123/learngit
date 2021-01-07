@@ -1,0 +1,41 @@
+<view class="container">
+  <view class="cell-card">
+    <view class="cell-item">
+      <view class="cell-name">机器名称</view>
+      <view class="cell-cont">{{detail.model_info.name}}</view>
+    </view>
+    <view class="cell-item">
+      <view class="cell-name">成交方式</view>
+      <view class="cell-cont">{{detail.recovery_type == 1 ? "上门回收" : "快递回收"}}</view>
+    </view>
+    <view class="cell-item">
+      <view class="cell-name">成交价格</view>
+      <view class="cell-cont">{{detail.stafforderinfo.total_amount * 1}}</view>
+    </view>
+    <view class="cell-item">
+      <view class="cell-name">加价券</view>
+      <view class="cell-cont">{{detail.stafforderinfo.coupon_fee * 1}}</view>
+    </view>
+    <view class="cell-item">
+      <view class="cell-name">人工调整</view>
+      <view class="cell-cont">{{detail.stafforderinfo.change_fee * 1}}</view>
+    </view>
+    <view class="cell-item">
+      <view class="cell-name">配置信息</view>
+      <view class="cell-cont">{{detail.model_info.cinfo}}</view>
+    </view>
+    <view class="cell-item">
+      <view class="cell-name">机器信息</view>
+      <view class="cell-cont">{{detail.model_info.des}}</view>
+    </view>
+    
+  </view>
+</view>
+
+
+
+
+
+
+
+

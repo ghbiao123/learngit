@@ -1,0 +1,7 @@
+/* pages/stafforderdetail/stafforderdetail.wxss */
+.cell-item{
+  height: auto;
+  line-height: 1.5;
+  padding: 27rpx 0;
+  min-height: 45rpx;
+}

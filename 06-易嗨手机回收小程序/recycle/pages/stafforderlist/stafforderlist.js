@@ -17,6 +17,13 @@ Page({
     that = this;
     let type = options.type;
     this.data.type = options.type;
+
+    util.post("/api/order/orderDetail", {
+      orderid: 42
+    }).then(res=>{
+      console.log(res);
+    });
+
   },
   // 获取列表数据
   getList(){

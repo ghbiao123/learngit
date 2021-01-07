@@ -23,7 +23,7 @@
       <view class="orderinfo-cont">{{data.name}}</view>
     </view>
     <view class="orderinfo-content">
-      <view class="orderinfo-name">估价金额</view>
+      <view class="orderinfo-name">预估价格</view>
       <view class="orderinfo-cont color-red">¥{{data.totalPrice}}</view>
     </view>
     <view class="orderinfo-content" wx:if="{{data.forecastTime}}">

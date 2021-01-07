@@ -47,7 +47,8 @@
     "pages/waitevaluationdetail/waitevaluationdetail",
     "pages/waitevaluatedlist/waitevaluatedlist",
     "pages/waitevaluateddetail/waitevaluateddetail",
-    "pages/remarklist/remarklist"
+    "pages/remarklist/remarklist",
+    "pages/stafforderdetail/stafforderdetail"
   ],
   "usingComponents": {
     "btntopage": "/mycomponents/btntopage/btntopage",
