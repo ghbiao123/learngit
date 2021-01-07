@@ -17,8 +17,151 @@
     <status selected icon="/images/status-1.png" text="已支付预付"></status>
   </view>
 
+  <view class="cell-cont b-b-line">
+    <view class="cell-cont-title">
+      <view>订单信息</view>
+      <view class="color-blue">已申请</view>
+    </view>
 
-  <view class="bottom-btn-box" style="justify-content: flex-end;">
-    <btn type="cancel">取消订单</btn>
+    <view class="cell-cont-item">
+      <view class="cell-key">订单号：</view>
+      <view class="cell-val">20121012</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">订单标题：</view>
+      <view class="cell-val">灯泡坏了</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">维修一级类别：</view>
+      <view class="cell-val">基础设施</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">维修二级类别：</view>
+      <view class="cell-val">电</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">维修三级类别：</view>
+      <view class="cell-val">灯泡灯泡</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">服务项目：</view>
+      <view class="cell-val">安装</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">订单内容：</view>
+      <view class="cell-val">灯泡灯泡</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">照片：</view>
+      <view class="cell-val">
+        <image class="cell-image" src="/images/1.png" mode="aspectFit"></image>
+        <image class="cell-image" src="/images/1.png" mode="aspectFit"></image>
+        <image class="cell-image" src="/images/1.png" mode="aspectFit"></image>
+        <image class="cell-image" src="/images/1.png" mode="aspectFit"></image>
+        <image class="cell-image" src="/images/1.png" mode="aspectFit"></image>
+        <image class="cell-image" src="/images/1.png" mode="aspectFit"></image>
+        <image class="cell-image" src="/images/1.png" mode="aspectFit"></image>
+        <image class="cell-image" src="/images/1.png" mode="aspectFit"></image>
+      </view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">公司名称：</view>
+      <view class="cell-val">灯泡灯泡</view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">联系人：</view>
+      <view class="cell-val">灯泡灯泡</view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">联系方式：</view>
+      <view class="cell-val">灯泡灯泡</view>
+    </view>
+
+  </view>
+
+  <view class="cell-cont b-b-line">
+    <view class="cell-cont-title">
+      <view>订单信息</view>
+      <view class="color-blue">师傅指派中</view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">师傅名字：</view>
+      <view class="cell-val">灯泡灯泡</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">联系方式：</view>
+      <view class="cell-val">灯泡灯泡</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">上门维修时间：</view>
+      <view class="cell-val">***</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">照片：</view>
+      <view class="cell-val">***</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">反馈：</view>
+      <view class="cell-val">***</view>
+    </view>
+  </view>
+
+  <view class="cell-cont b-b-line">
+    <view class="cell-cont-title">
+      <view>业务员信息</view>
+      <view class="color-blue">业务员指派中</view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">业务联系人：</view>
+      <view class="cell-val">灯泡灯泡</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">联系方式：</view>
+      <view class="cell-val">灯泡灯泡</view>
+    </view>
+    
+  </view>
+
+  <view class="cell-cont b-b-line">
+    <view class="cell-cont-title">
+      <view>下单信息</view>
+      <!-- <view class="color-blue">业务员指派中</view> -->
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">预付款：</view>
+      <view class="cell-val color-red">灯泡灯泡</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">尾款：</view>
+      <view class="cell-val color-red">灯泡灯泡</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">下单时间：</view>
+      <view class="cell-val">灯泡灯泡</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">预计完成时间：</view>
+      <view class="cell-val">灯泡灯泡</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">合同状态：未签署</view>
+      <view class="cell-val color-blue" style="text-decoration:underline;">查看合同</view>
+    </view>
+    
+  </view>
+
+  <view class="bottom-btn-box" style="justify-content: space-between;">
+    <view style="width: 380rpx;">
+      <text style="font-size: 26rpx;">合计：</text><text style="font-size: 26rpx;" class="color-red">¥200</text>
+    </view>
+    <btn type="detail">上传凭证</btn>
+    <btn type="update">立即支付</btn>
+    <!-- <btn type="cancel">取消订单</btn> -->
   </view>
 </view>

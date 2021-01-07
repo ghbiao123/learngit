@@ -22,5 +22,36 @@
   justify-content: center;
 }
 
+.cell-cont{
+  padding: 30rpx 20rpx;
+}
+.cell-cont-title{
+  display: flex;
+  justify-content: space-between;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+  color: #333;
+}
 
-
+.cell-cont-item{
+  display: flex;
+  min-height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+}
+.cell-key{
+  color: #999999;
+}
+.cell-val{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 600rpx;
+  text-indent: 20rpx;
+  color: #333;
+}
+.cell-image{
+  margin: 0 15rpx 20rpx;
+  width: 120rpx;
+  height: 120rpx;
+}
