@@ -19,5 +19,15 @@ Component({
         });
       }
     }
+  },
+  methods: {
+    showRule(e){
+      let text = e.currentTarget.dataset.text;
+      wx.showModal({
+        showCancel: false,
+        title: '使用规则',
+        content: text,
+      });
+    }
   }
 });
