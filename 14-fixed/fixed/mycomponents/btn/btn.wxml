@@ -1,8 +1,7 @@
 <!-- type: normal verify change detail cancel update -->
-<button class="clear {{type == 'normal'?'normal':''}} {{type == 'verify'?'verify':''}} {{type == 'change'?'change':''}} {{type == 'detail'?'detail':''}} {{type == 'cancel'?'cancel':''}} {{type == 'update'?'update':''}}" 
+<button class="clear {{type}}" 
         bindtap="tap"
-        form-type="{{formType}}"
-        hover-class="{{type == 'normal'?'normal-hover':''}} {{type == 'verify'?'verify-hover':''}} {{type == 'change'?'change-hover':''}} {{type == 'detail'?'detail-hover':''}} {{type == 'cancel'?'cancel-hover':''}} {{type == 'update'?'update-hover':''}}"
+        hover-class="{{type+'-hover'}}"
         >
   <slot></slot>
 </button>

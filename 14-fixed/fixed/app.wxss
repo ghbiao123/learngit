@@ -95,6 +95,15 @@ image{
 .color-blue{
   color: #1D7FD6 !important;
 }
+.color-gray{
+  color: #999999 !important;
+}
+.color-green{
+  color: #45D49E !important;
+}
+.color-yellow{
+  color: #FEB855 !important;
+}
 
 /* form style */
 .form-title{

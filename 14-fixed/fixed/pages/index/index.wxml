@@ -8,9 +8,9 @@
 
   <!-- banner -->
   <swiper circular autoplay class="banner-swiper">
-    <swiper-item wx:for="000" wx:key="index" class="banner-swiper-item">
-      <navigator hover-class="none" url="#">
-        <image class="banner-item" mode="aspectFit" src="/images/banner.png"></image>
+    <swiper-item wx:for="{{pageData.topBannerList}}" wx:key="index" class="banner-swiper-item">
+      <navigator hover-class="none" url="/pages/pagerichtext/pagerichtext?id={{item.id}}&type=1&frompage=index">
+        <image class="banner-item" mode="aspectFit" src="{{item.lunboimage}}"></image>
       </navigator>
     </swiper-item>
   </swiper>
@@ -39,21 +39,17 @@
     <view class="tit-no-bg">
       维修项目
     </view>
-    <view class="menu">
-      <navigator hover-class="none" url="">
-        <icontext src="/images/index-1.png" lHeight="60" iconW="64" iconH="64" size="26" color="#666666" cont="基础设施">
-        </icontext>
-      </navigator>
-      <navigator hover-class="none" url="">
-        <icontext src="/images/index-2.png" lHeight="60" iconW="64" iconH="64" size="26" color="#666666" cont="仪器设备">
-        </icontext>
-      </navigator>
-      <navigator hover-class="none" url="">
-        <icontext src="/images/index-3.png" lHeight="60" iconW="64" iconH="64" size="26" color="#666666" cont="咨询服务">
-        </icontext>
-      </navigator>
+    <view class="menu" wx:for="{{pageData.projectList}}" wx:key="index">
+
+      <block wx:for="{{item}}" wx:key="index" wx:for-item="itm" wx:for-index="idx">
+        <navigator hover-class="none" url="/pages/search/search?lv1={{itm.id}}&frompage=index">
+          <icontext src="{{itm.flimage}}" lHeight="60" iconW="64" iconH="64" size="26" color="#666666" cont="{{itm.name}}">
+          </icontext>
+        </navigator>
+      </block>
+      
     </view>
-    <view class="menu">
+    <!-- <view class="menu">
       <navigator hover-class="none" url="">
         <icontext src="/images/index-4.png" lHeight="60" iconW="64" iconH="64" size="26" color="#666666" cont="物流">
         </icontext>
@@ -66,24 +62,26 @@
         <icontext src="/images/index-6.png" lHeight="60" iconW="64" iconH="64" size="26" color="#666666" cont="行政后勤">
         </icontext>
       </navigator>
-    </view>
+    </view> -->
   </view>
 
   <!-- the best worker -->
   <view class="b-b-line worker-swiper-box">
     <view class="worker-swiper-cont">
-      <view class="tit-no-bg">本月优秀师傅评选</view>
+      <view class="tit-no-bg">{{pageData.bottomBanner.title}}</view>
       <view class="swiper-box">
-        <image class="swiper-direction" src="/images/index-lt.png"></image>
-        <swiper class="worker-swiper" autoplay circular>
-          <swiper-item wx:for="000" wx:key="index" class="worker-swiper-item">
-            <view class="worker-item" wx:for="000" wx:key="index" hover-class="worker-item-hover">
-              <image class="worker-avatar" mode="aspectFit" src="/images/zhengjianzhao.jpg"></image>
-              <view class="name">哈利·波特</view>
+        <image bindtap="prev" class="swiper-direction" src="/images/index-lt.png"></image>
+        <swiper class="worker-swiper" autoplay circular current="{{selected}}" bindchange="bottomBannerChange">
+          <swiper-item wx:for="{{pageData.bottomBanner.list}}" wx:key="index" class="worker-swiper-item">
+            <view class="worker-item" wx:for="{{item}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" hover-class="worker-item-hover">
+              <navigator hover-class="none" url="/pages/pagerichtext/pagerichtext?id={{itm.id}}&type=2&frompage=index">
+                <image class="worker-avatar" mode="aspectFit" src="{{itm.showimage}}"></image>
+                <view class="name">{{itm.describe}}</view>
+              </navigator>
             </view>
           </swiper-item>
         </swiper>
-        <image class="swiper-direction" src="/images/index-rt.png"></image>
+        <image bindtap="next" class="swiper-direction" src="/images/index-rt.png"></image>
       </view>
     </view>
   </view>

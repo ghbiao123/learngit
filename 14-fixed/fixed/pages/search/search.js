@@ -26,6 +26,10 @@ Page({
     // 初始化内容高度
     this.calculateHeight();
 
+    // 查询一级分类
+    this.lv1();
+
+    this.lv2();
   },
   // 计算主要内容高度
   calculateHeight(){
@@ -46,6 +50,21 @@ Page({
       });
     });
 
+  },
+
+  // 查询一级分类
+  lv1(){
+    util.post("/api/shou_ye/getFirsLevel").then(res=>{
+      console.log(res);
+    });
+  },
+  // 查询二级分类
+  lv2(id){
+    util.post("/api/shou_ye/getservers",{levelone_id: id}).then(res=>{
+      console.log(res);
+      
+
+    });
   },
 
   /**

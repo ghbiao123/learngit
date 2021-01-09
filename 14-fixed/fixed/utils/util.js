@@ -10,14 +10,13 @@ function getSiteRoot() {
 // post 请求
 function post(url, data = {}) {
 
-  let ROOT_URL = getSiteRoot();
+  let ROOT_URL = getSiteRoot() + "/index.php";
 
   let status = 0;
 
   setTimeout(() => {
     if (status) return;
     wx.showLoading({
-      title: '加载中',
       mask: true
     });
   }, 800);
@@ -256,6 +255,23 @@ function getToPoint(num) {
   return n / 100;
 }
 
+// 将图片添加为完整路径
+function getImageFullUrl(arr, key){
+  if(!arr||arr.length==0){
+    return [];
+  }
+  if(!key){
+    // key 不存在
+    return getSiteRoot() + arr;
+  }else{
+    // key 存在
+    let newArr = arr.map(v=>{
+      v[key] = getSiteRoot() + v[key];
+      return v
+    });
+    return newArr;
+  }
+}
 
 
 module.exports = {
@@ -272,5 +288,6 @@ module.exports = {
   getCaptcha, // 验证手机号并获取验证码
   getSiteRoot, // 获取api接口根
   updateManager, // 小程序主动更新
+  getImageFullUrl, // 将图片添加为完整路径
 }
 

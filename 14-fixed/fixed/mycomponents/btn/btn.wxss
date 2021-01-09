@@ -82,3 +82,17 @@
   background: #9fcef7;
   color: #fff;
 }
+
+.done{
+  width: 290rpx !important;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 10rpx;
+  color: #fff;
+  background-image: linear-gradient(to bottom, #8EBFEB, #1E80D6);
+  font-size: 26rpx;
+}
+.done-hover{
+  background: #9fcef7;
+  color: #fff;
+}

@@ -12,7 +12,9 @@
     "pages/orderlist/orderlist",
     "pages/projectdetail/projectdetail",
     "pages/orderstatus/orderstatus",
-    "pages/orderdetail/orderdetail"
+    "pages/orderdetail/orderdetail",
+    "pages/uploadvoucher/uploadvoucher",
+    "pages/pagerichtext/pagerichtext"
     
   ],
   "tabBar": {

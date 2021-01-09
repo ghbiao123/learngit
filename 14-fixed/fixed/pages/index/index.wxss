@@ -4,6 +4,7 @@
   margin: 0 auto;
   width: 710rpx;
   height: 420rpx;
+  border-radius: 10rpx;
 }
 
 .create{

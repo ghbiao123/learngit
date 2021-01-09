@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="title">
+    付款凭证
+    <text class="title-tip">请上传付款凭证</text>
+  </view>
+
+  <view class="form-picture-box">
+    <view class="form-picture-item">
+      <image class="form-picture" src="/images/add.png"></image>
+      <icon size="25" class="form-cancel" type="cancel" color="#ccc"></icon>
+    </view>
+    <image class="form-picture-item" src="/images/add.png"></image>
+  </view>
+
+</view>
