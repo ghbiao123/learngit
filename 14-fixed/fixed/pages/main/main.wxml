@@ -3,16 +3,23 @@
   <view class="header b-b-line">
     <!-- 已登录 -->
     <view wx:if="{{isLogin}}" class="header-cont">
-      <!-- <image class="avatar" mode="aspectFit" src="/images/default-avatar.png"></image> -->
-      <view class="avatar">
+      <image wx:if="{{userInfo.headimage}}" class="avatar" mode="aspectFit" src="{{userInfo.headimage}}"></image>
+      <view class="avatar" wx:if="{{!userInfo.headimage}}">
         <open-data type="userAvatarUrl" class="avatar"></open-data>
       </view>
       <view class="userinfo">
-        <view class="user-name">姓名<open-data type="userNickName"></open-data></view>
-        <view class="user-phone">123456890</view>
+        <view class="user-name">
+          {{userInfo.name}}
+          <block wx:if="{{!userInfo.name}}">
+            <open-data type="userNickName"></open-data>
+          </block>
+        </view>
+        <view class="user-phone">{{userInfo.phone}}</view>
       </view>
 
-      <view class="user-detail" hover-class="user-detail-hover">个人资料</view>
+      <view class="user-detail" hover-class="user-detail-hover">
+        <navigator url="/pages/personalinfo/personalinfo" hover-class="none">个人资料</navigator>
+      </view>
 
     </view>
     <!-- 未登录 -->

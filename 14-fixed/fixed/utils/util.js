@@ -147,12 +147,11 @@ function getUserInfo(e, callBack) {
     success(res) {
       let data = {
         code: res.code,
-        userInfo: e.detail.rawData,
-        encrypted_data: e.detail.encryptedData,
+        // userInfo: e.detail.rawData,
+        encryptedData: e.detail.encryptedData,
         iv: e.detail.iv,
       }
-      post("url", data).then(res => {
-        console.log(res);
+      post("/api/wxlogin/userlogin", data).then(res => {
         callBack&&callBack(res);
       });
     }

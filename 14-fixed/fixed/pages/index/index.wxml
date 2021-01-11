@@ -42,7 +42,7 @@
     <view class="menu" wx:for="{{pageData.projectList}}" wx:key="index">
 
       <block wx:for="{{item}}" wx:key="index" wx:for-item="itm" wx:for-index="idx">
-        <navigator hover-class="none" url="/pages/search/search?lv1={{itm.id}}&frompage=index">
+        <navigator hover-class="none" url="/pages/search/search?lv1id={{itm.id}}&frompage=index">
           <icontext src="{{itm.flimage}}" lHeight="60" iconW="64" iconH="64" size="26" color="#666666" cont="{{itm.name}}">
           </icontext>
         </navigator>

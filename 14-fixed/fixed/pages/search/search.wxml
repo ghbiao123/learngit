@@ -8,17 +8,8 @@
     <!-- 左侧一级类目 -->
     <view class="vtab-box" style="height: {{contHeight}}px;">
       <view class="m-t-20">
-        <view class="vtab-item vtab-item-s">
-          基础设施
-        </view>
-        <view class="vtab-item">
-          行政后勤
-        </view>
-        <view class="vtab-item vtab-item-s">
-          仪器设备
-        </view>
-        <view class="vtab-item">
-          咨询服务
+        <view class="vtab-item {{ item.id == lv1Id ? 'vtab-item-s' : ''}}" data-id="{{item.id}}" bindtap="getLv1" wx:for="{{arrLv1}}" wx:key="index">
+          {{item.name}}
         </view>
         
       </view>
@@ -30,28 +21,31 @@
       <view class="tab-box">
         <scroll-view class="tab-scroll" scroll-x>
           <view class="tab-cont" style="width:{{180*5}}rpx;">
-            <view class="tab-item tab-item-s">水</view>
-            <view class="tab-item">电暖气啊啊</view>
-            <view class="tab-item tab-item-s">电暖</view>
-            <view class="tab-item tab-item-s">电暖</view>
-            <view class="tab-item tab-item-s">电暖</view>
+            <view class="tab-item {{(item.id == lv2Id) ? 'tab-item-s' : ''}}" data-idx="{{index}}" data-id="{{item.id}}" bindtap="getLv2" wx:for="{{arrLv2}}" wx:key="index">{{item.name}}</view>
           </view>
         </scroll-view>
       </view>
       <!-- 三级类目 -->
       <view class="cont-box">
-        <scroll-view class="cont-scroll" scroll-y style="height:{{contScrollHeight}}px;">
-          <view class="cont-title">
-            水
-          </view>
-          <view class="cont-list" wx:for="0000000000" wx:key="index">
-            <image class="list-image" mode="aspectFit" src="/images/project.png"></image>
-            <view class="list-info">
-              <view class="list-name">水泵（供水系统）</view>
-              <view class="list-msg">针对水泵（供水系统）在使针对水泵（供水系统）在使用中所产生的问题进行专业的维修用中所产生的问题进行专业的维修</view>
-            </view>
-          </view>
-        </scroll-view>
+
+        <swiper class="cont-swiper" bindchange="contSwiperChange" current="{{contCurrent}}" vertical style="height:{{contScrollHeight}}px;">
+          <swiper-item wx:for="{{arrLv3}}" wx:key="index" class="cont-swiper-item" style="height:{{contScrollHeight}}px;">
+            <scroll-view class="cont-scroll" scroll-y style="height:{{contScrollHeight}}px;">
+              <view class="cont-title">
+                {{item.leveltwo_name}}
+              </view>
+              <view class="cont-list" hover-class="cont-list-hover" data-idx="{{idx}}" bindtap="getLv3" wx:for="{{item.server_arr}}" wx:for-item="itm" wx:for-index="idx"  wx:key="idx">
+                <image class="list-image" mode="aspectFit" src="{{itm.xmimage}}"></image>
+                <view class="list-info">
+                  <view class="list-name">{{itm.name}}</view>
+                  <view class="list-msg">{{itm.xmjieshao}}</view>
+                </view>
+              </view>
+            </scroll-view>
+          </swiper-item>
+        </swiper>
+
+  
       </view>
 
     </view>

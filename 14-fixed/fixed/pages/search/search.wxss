@@ -86,6 +86,14 @@
   height: 130rpx;
   border-bottom: 1rpx solid #EEEEEE;
 }
+.cont-list-hover{
+  background-color: #F5F5F5;
+}
+.cont-swiper,
+.cont-swiper-item,
+.cont-scroll{
+  width: 530rpx;
+}
 
 .list-image {
   width: 130rpx;
