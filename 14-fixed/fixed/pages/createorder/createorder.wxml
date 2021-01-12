@@ -2,41 +2,37 @@
   <form bindsubmit="submit">
 
     <cell title="订单标题">
-      <input type="text" class="t-a-r" placeholder="请输入标题" slot="value" />
+      <input type="text" name="order_name" value="{{clearValue}}" class="t-a-r" placeholder="请输入标题" slot="value" />
     </cell>
 
-    <picker mode="date">
+    <picker mode="selector" range="{{levelData.arrLv1}}" range-key="name" bindchange="lv1Change">
       <cell title="一级分类" footer>
-        <input type="text" disabled class="t-a-r" placeholder="请选择一级分类" slot="value" />
+        <input type="text" value="{{levelData.lv1}}" disabled class="t-a-r" placeholder="请选择一级分类" slot="value" />
       </cell>
     </picker>
 
-    <picker mode="date">
+    <picker mode="selector" disabled="{{!levelData.lv1}}" range="{{levelData.arrLv2}}" range-key="name" bindchange="lv2Change">
       <cell title="二级分类" footer>
-        <input type="text" disabled class="t-a-r" placeholder="请选择二级分类" slot="value" />
+        <input type="text" value="{{levelData.lv2}}" disabled class="t-a-r" placeholder="请选择二级分类" slot="value" />
       </cell>
     </picker>
 
-    <picker mode="date">
+    <picker mode="selector" disabled="{{!levelData.lv2}}" range="{{levelData.arrLv3}}" range-key="name" bindchange="lv3Change">
       <cell title="三级分类" footer>
-        <input type="text" disabled class="t-a-r" placeholder="请选择三级分类" slot="value" />
+        <input type="text" value="{{levelData.lv3}}" disabled class="t-a-r" placeholder="请选择三级分类" slot="value" />
       </cell>
     </picker>
 
-    <picker mode="date">
+    <picker mode="selector" range="{{arrServer}}" range-key="name" bindchange="serverChange">
       <cell title="服务项目" footer>
-        <input type="text" disabled class="t-a-r" placeholder="请选择服务项目" slot="value" />
+        <input type="text" value="{{levelData.server}}" disabled class="t-a-r" placeholder="请选择服务项目" slot="value" />
       </cell>
     </picker>
-
-    <cell title="数量">
-      <input type="text" class="t-a-r" placeholder="请输入维修数量" slot="value" />
-    </cell>
 
     <view class="form-title">
       报修内容
     </view>
-    <textarea placeholder="请输入报修内容" class="form-textarea"></textarea>
+    <textarea value="{{clearValue}}" name="baoxiu" placeholder="请输入报修内容" class="form-textarea"></textarea>
 
     <view class="form-title b-t-g">
       <view>照片</view>
@@ -44,24 +40,28 @@
     </view>
 
     <view class="form-picture-box">
-      <view class="form-picture-item" wx:for="000" wx:key="index">
-        <icon type="cancel" size="25" class="form-cancel" color="#ccc"></icon>
-        <image class="form-picture" mode="aspectFit" src="/images/add.png"></image>
+      <view class="form-picture-item" wx:for="{{reqData.orderimages}}" wx:key="index">
+        <icon data-idx="{{index}}" bindtap="deleteImage" type="cancel" size="25" class="form-cancel" color="#ccc"></icon>
+        <image class="form-picture" mode="aspectFit" src="{{item}}"></image>
       </view>
 
-      <image class="form-picture-item" src="/images/add.png"></image>
+      <image bindtap="addImage" class="form-picture-item" src="/images/add.png"></image>
     </view>
 
     <cell title="公司名称">
-      <input type="text" class="t-a-r" placeholder="请输入公司名称" slot="value" />
+      <input type="text" name="company_name" value="{{clearValue}}" class="t-a-r" placeholder="请输入公司名称" slot="value" />
     </cell>
 
     <cell title="联系人">
-      <input type="text" class="t-a-r" placeholder="请输入联系人姓名" slot="value" />
+      <input type="text" name="lianxiren" value="{{clearValue}}" class="t-a-r" placeholder="请输入联系人姓名" slot="value" />
     </cell>
 
     <cell title="联系方式">
-      <input type="text" class="t-a-r" placeholder="请输入联系方式" slot="value" />
+      <input type="text" name="lianxiphone" value="{{clearValue}}" class="t-a-r" placeholder="请输入联系方式" slot="value" />
+    </cell>
+
+    <cell title="联系地址">
+      <input type="text" name="service_address" value="{{clearValue}}" class="t-a-r" placeholder="请输入联系地址" slot="value" />
     </cell>
 
     <button class="clear normal btn-submit" hover-class="normal-hover" form-type="submit">提交</button>

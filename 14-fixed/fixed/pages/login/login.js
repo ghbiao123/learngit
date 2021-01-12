@@ -1,43 +1,40 @@
-// pages/projectdetail/projectdetail.js
+// pages/login/login.js
 let that;
-let util = require("../../utils/util");
-let app = getApp();
+let util = require('../../utils/util');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    that = this;
-
-    this.data.pageOption = options;
-    // 初始化数据
-    this.init();
+    let lunchOption = wx.getLaunchOptionsSync();
+    this.data.agentid = lunchOption.query.agentid;
   },
-  // init
-  init(){
-    let levelthree_id = this.data.pageOption.lv3id;
-    util.post("/api/shou_ye/getServerDetail", {levelthree_id}).then(res=>{
-      let detail = res.data;
-      detail.xmimage = util.getImageFullUrl(detail.xmimage);
-      that.setData({
-        detail
-      });
-    });
-
-  },
-  // createOrder
-  createOrder(){
-    app.globalData.createOrderId = that.data.pageOption;
-    wx.switchTab({
-      url: `/pages/createorder/createorder`,
+  getUserInfo(e){
+    let that = this;
+    e.detail.agentid = this.data.agentid ? this.data.agentid : 0;
+    util.getUserInfo(e, function(res){
+      if(res.code == 1){
+        let msg = res.data.couponmsg || "登录成功";
+        util.showSuccess( msg, function(){
+          if(that.data.agentid){
+            wx.reLaunch({
+              url: '/pages/index/index',
+            });
+          }else{
+            wx.navigateBack({
+              delta: 1,
+            });
+          }
+        });
+      }
     });
   },
   /**
