@@ -77,10 +77,36 @@ Page({
       // that.setData({arrIsGot});
       if(res.code == 1){
         that.init();
-        util.showSuccess(res.msg);
+        util.showSuccess(res.msg, function(){
+
+          // 如果从估价结果result页面跳转来，领取之后自动跳转回去
+          if(that.data.fromPage == "result"){
+            wx.navigateBack({
+              delta: 1,
+            });
+          }
+        });
+
       }
     });
   },
+
+  // 用券回收
+  getRecycle(){
+
+    // 如果从估价结果result页面跳转来，领取之后自动跳转回去
+    if(that.data.fromPage == "result"){
+      wx.navigateBack({
+        delta: 1,
+      });
+    }else{
+      wx.navigateTo({
+        url: '/pages/search/search',
+      });
+    }
+      
+  },
+
   // tab selected
   tabSelected(e){
     let selected = e.currentTarget.dataset.id;

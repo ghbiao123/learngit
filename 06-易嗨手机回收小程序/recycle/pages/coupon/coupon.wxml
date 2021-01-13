@@ -37,7 +37,7 @@
             <view class="notes">“已领取”</view>
             <view class="cell-item">
               <view class="check-coupon" hover-class="check-hover"><navigator url="/pages/mycouponlist/mycouponlist" hover-class="none">查看优惠券</navigator></view>
-              <view class="check-coupon recycle-coupon" hover-class="recycle-hover"><navigator url="/pages/search/search" hover-class="none">用券回收</navigator></view>
+              <view class="check-coupon recycle-coupon" bindtap="getRecycle" hover-class="recycle-hover">用券回收</view>
             </view>
           </view>
         </view>
