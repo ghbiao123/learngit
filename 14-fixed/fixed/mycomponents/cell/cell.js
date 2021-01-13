@@ -36,9 +36,9 @@ Component({
     navigateTo(){
       let url = this.data.link;
       if(!url) return;
-      // wx.navigateTo({
-      //   url,
-      // });
+      wx.navigateTo({
+        url,
+      });
     }
   }
 });

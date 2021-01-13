@@ -1,4 +1,6 @@
 // pages/orderdetail/orderdetail.js
+let util = require("../../utils/util");
+let that;
 Page({
 
   /**
@@ -12,8 +14,33 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
+
+    this.data.pageOption = options;
+
+    this.init();
 
   },
+
+  init(){
+    let userInfo = wx.getStorageSync('userinfo');
+
+    util.post("/api/orders/getOrderDetail", {
+      users_id: userInfo.id,
+      orders_id: that.data.pageOption.id
+    }).then(res=>{
+      console.log(res);
+      let order = res.data;
+
+      that.setData({
+        order
+      });
+
+    });
+
+
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

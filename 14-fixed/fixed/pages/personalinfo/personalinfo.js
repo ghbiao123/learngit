@@ -1,4 +1,6 @@
 // pages/personalinfo/personalinfo.js
+let util = require("../../utils/util");
+let that;
 Page({
 
   /**
@@ -12,9 +14,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
+
 
   },
+  // init
+  init(){
+    let userInfo = wx.getStorageSync('userinfo');
+    let users_id = userInfo.id;
+    util.post("/api/personal/getPersonalData", {users_id}).then(res=>{
 
+      that.setData({
+        detail: res.data
+      });
+
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -26,7 +41,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.init();
   },
 
   /**

@@ -24,7 +24,7 @@
 
 .list-cont{
   padding: 10rpx;
-  width: 100%;
+  /* width: 100%; */
   border-bottom: 1rpx solid #E5E5E5;
 }
 .cont-item{
@@ -45,4 +45,16 @@
 
 .color-blue{
   color: #4F93D0;
+}
+.color-red{
+  color: #EF2A22 !important;
+}
+.color-gray{
+  color: #999999 !important;
+}
+.color-green{
+  color: #45D49E !important;
+}
+.color-yellow{
+  color: #FEB855 !important;
 }

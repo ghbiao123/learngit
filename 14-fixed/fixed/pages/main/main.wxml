@@ -45,30 +45,30 @@
 
     <!-- 订单分类 -->
     <view class="order-sort">
-      <view class="sort-item" hover-class="sort-item-hover">
+      <view class="sort-item" bindtap="getList" data-status="{{orderStatus[1].status}}" hover-class="sort-item-hover">
         <image class="sort-icon" mode="aspectFit" src="/images/main-4.png"></image>
         <view class="sort-name">已申请</view>
-        <view class="sort-count">(2)</view>
+        <view class="sort-count">({{orderStatus[1].count || 0}})</view>
       </view>
-      <view class="sort-item" hover-class="sort-item-hover">
+      <view class="sort-item" bindtap="getList" data-status="{{orderStatus[3].status}}" hover-class="sort-item-hover">
         <image class="sort-icon" mode="aspectFit" src="/images/main-5.png"></image>
-        <view class="sort-name">预下单</view>
-        <view class="sort-count">(2)</view>
+        <view class="sort-name">已下单</view>
+        <view class="sort-count">({{orderStatus[3].count || 0}})</view>
       </view>
-      <view class="sort-item" hover-class="sort-item-hover">
+      <view class="sort-item" bindtap="getList" data-status="{{orderStatus[11].status}}" hover-class="sort-item-hover">
         <image class="sort-icon" mode="aspectFit" src="/images/main-6.png"></image>
         <view class="sort-name">已付款</view>
-        <view class="sort-count">(2)</view>
+        <view class="sort-count">({{orderStatus[11].count || 0}})</view>
       </view>
-      <view class="sort-item" hover-class="sort-item-hover">
+      <view class="sort-item" bindtap="getList" data-status="{{orderStatus[10].status}}" hover-class="sort-item-hover">
         <image class="sort-icon" mode="aspectFit" src="/images/main-7.png"></image>
         <view class="sort-name">维修完成</view>
-        <view class="sort-count">(2)</view>
+        <view class="sort-count">({{orderStatus[10].count || 0}})</view>
       </view>
-      <view class="sort-item" hover-class="sort-item-hover">
+      <view class="sort-item" bindtap="getList" data-status="{{orderStatus[13].status}}" hover-class="sort-item-hover">
         <image class="sort-icon" mode="aspectFit" src="/images/main-8.png"></image>
         <view class="sort-name">订单完成</view>
-        <view class="sort-count">(2)</view>
+        <view class="sort-count">({{orderStatus[13].count || 0}})</view>
       </view>
     </view>
 
@@ -76,8 +76,12 @@
   </view>
 
   <!-- menu -->
-  <cell icon="/images/main-1.png" title="我的报修" hover footer></cell>
+  <view bindtap="getFixList">
+    <cell icon="/images/main-1.png" title="我的报修" hover footer></cell>
+  </view>
   <cell icon="/images/main-2.png" title="隐私条款" hover footer></cell>
-  <cell icon="/images/main-3.png" title="申请成为师傅" hover footer></cell>
+  <view bindtap="applyWoker">
+    <cell icon="/images/main-3.png" title="申请成为师傅" hover footer></cell>
+  </view>
 
 </view>

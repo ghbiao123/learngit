@@ -19,6 +19,45 @@ Page({
   },
   // 数据初始化
   init(){
+    let userInfo = this.data.userInfo ? this.data.userInfo : wx.getStorageSync('userinfo');
+
+    if(!userInfo) return;
+
+    util.post("/api/orders/getStatusList", {users_id: userInfo.id}).then(res=>{
+      let orderStatus = res.data.sort((a, b) => {
+        return a.status - b.status;
+      });
+
+      that.setData({
+        orderStatus
+      });
+
+      wx.stopPullDownRefresh({
+        success: (res) => {},
+      });
+    });
+
+  },
+  // 跳转列表
+  getList(e){
+    let status = e.currentTarget.dataset.status;
+
+    if(!this.data.isLogin) return util.showSuccess("请您先登录");
+
+    wx.navigateTo({
+      url: `/pages/orderlist/orderlist?status=${status}&userid=${that.data.userInfo.id}`,
+    });
+
+
+  },
+
+  // getFixList
+  getFixList(){
+
+
+  },
+  // 申请成为师傅
+  applyWoker(){
 
   },
 
@@ -75,6 +114,8 @@ Page({
    */
   onShow: function () {
     util.checkIsLogin.call(this);
+
+    this.init();
   },
 
   /**
@@ -95,7 +136,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.init();
   },
 
   /**
