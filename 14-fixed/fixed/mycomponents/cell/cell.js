@@ -35,9 +35,7 @@ Component({
   methods: {
     navigateTo(){
       let url = this.data.link;
-      console.log("没有链接")
       if(!url) return;
-      console.log("已跳转链接")
       // wx.navigateTo({
       //   url,
       // });

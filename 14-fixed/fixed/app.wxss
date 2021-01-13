@@ -155,17 +155,17 @@ image{
 
 /* 底部固定位置按钮 */
 .btn-container{
-  padding-bottom: 98rpx;
+  padding-bottom: 130rpx;
 }
 .bottom-btn-box{
   position: fixed;
   left: 0;
   bottom: 0;
   width: 710rpx;
-  padding: 0 20rpx;
-  height: 98rpx;
+  padding: 20rpx 20rpx 0;
+  height: 110rpx;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   background-color: #fff;
   box-shadow: 0 0 4rpx rgba(102, 102, 102, 1);
