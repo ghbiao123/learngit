@@ -15,7 +15,8 @@
     "pages/orderdetail/orderdetail",
     "pages/uploadvoucher/uploadvoucher",
     "pages/pagerichtext/pagerichtext",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/readPDF/readPDF"
     
   ],
   "tabBar": {

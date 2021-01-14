@@ -5,11 +5,15 @@
   </view>
 
   <view class="form-picture-box">
-    <view class="form-picture-item">
-      <image class="form-picture" src="/images/add.png"></image>
-      <icon size="25" class="form-cancel" type="cancel" color="#ccc"></icon>
+    <view class="form-picture-item" wx:for="{{reqData.voucherimages}}" wx:key="index">
+      <image class="form-picture" src="{{item}}"></image>
+      <icon data-idx="{{index}}" bindtap="deleteImage" size="25" class="form-cancel" type="cancel" color="#ccc"></icon>
     </view>
-    <image class="form-picture-item" src="/images/add.png"></image>
+    <image bindtap="addImage" class="form-picture-item" src="/images/add.png"></image>
+  </view>
+
+  <view class="m-t-20" bindtap="submit">
+    <btn type="normal">提交</btn>
   </view>
 
 </view>

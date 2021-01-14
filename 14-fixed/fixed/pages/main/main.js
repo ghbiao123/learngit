@@ -54,6 +54,9 @@ Page({
   // getFixList
   getFixList(){
 
+    wx.navigateTo({
+      url: `/pages/fixlist/fixlist?userid=${that.data.userInfo.id}&status=0`,
+    });
 
   },
   // 申请成为师傅

@@ -104,6 +104,9 @@ image{
 .color-yellow{
   color: #FEB855 !important;
 }
+.cover-gray{
+  filter: grayscale(100%);
+}
 
 /* form style */
 .form-title{
