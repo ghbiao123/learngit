@@ -37,12 +37,22 @@ Page({
       });
     });
 
+    util.post("/api/wxlogin/getUserData", {
+      users_id: userInfo.id
+    }).then(res=>{
+      
+      that.setData({
+        userInfo: res.data
+      });
+
+    });
+
   },
   // 跳转列表
   getList(e){
+    if(!this.data.isLogin) return util.showSuccess("请您先登录");
     let status = e.currentTarget.dataset.status;
 
-    if(!this.data.isLogin) return util.showSuccess("请您先登录");
 
     wx.navigateTo({
       url: `/pages/orderlist/orderlist?status=${status}&userid=${that.data.userInfo.id}`,
@@ -53,6 +63,7 @@ Page({
 
   // getFixList
   getFixList(){
+    if(!this.data.isLogin) return util.showSuccess("请您先登录");
 
     wx.navigateTo({
       url: `/pages/fixlist/fixlist?userid=${that.data.userInfo.id}&status=0`,
@@ -61,6 +72,31 @@ Page({
   },
   // 申请成为师傅
   applyWoker(){
+    if(!that.data.userInfo) return util.showSuccess("请您先登录");
+    let status = that.data.userInfo.jueselist;
+
+    if(status == 2){
+      // 已成为师傅
+
+      wx.navigateTo({
+        url: '/pages/workerpage/workerpage',
+      });
+
+    }   
+    
+    if(status == 1){
+      // 申请成为师傅
+
+      wx.navigateTo({
+        url: '/pages/applyworker/applyworker',
+      });
+
+    }
+
+  },
+
+  // 更新用户信息
+  updateUserData(){
 
   },
 
@@ -84,6 +120,7 @@ Page({
       renzhenglist_text: "Renzhenglist 1",
       jueselist_text: "",
       pay_methodlist_text: "",
+      apply_status: 2,
       headimage: "http://equipment.do/uploads/20210108/32b1d7da3f7d03e5a18e7293f33a6133.png"
     }
 

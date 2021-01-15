@@ -26,10 +26,11 @@ Page({
     let userInfo = wx.getStorageSync('userinfo');
 
     // 获取订单详情
-    util.post("/api/repair/getRepairDetail", {
-      // users_id: userInfo.id,
-      repair_id: that.data.pageOption.id
+    util.post("/api/worker/getOrderDetail", {
+      users_id: userInfo.id,
+      orders_id: that.data.pageOption.id
     }).then(res=>{
+      console.log(res);
       let order = res.data;
 
       that.setData({
@@ -41,16 +42,16 @@ Page({
 
     // 获取订单合同
 
-    // util.post("/api/orders/getHetong", {
-    //   users_id: userInfo.id,
-    //   // orders_id: that.data.pageOption.id
-    //   orders_id: 4
-    // }).then(res=>{
-    //   console.log(res);
+    util.post("/api/orders/getHetong", {
+      users_id: userInfo.id,
+      // orders_id: that.data.pageOption.id
+      orders_id: 4
+    }).then(res=>{
+      console.log(res);
 
-    //   that.data.pdfUrl = util.getSiteRoot() + res.data;
+      that.data.pdfUrl = util.getSiteRoot() + res.data;
 
-    // });
+    });
 
 
   },
@@ -143,22 +144,6 @@ Page({
     });
   },
 
-  // 取消订单
-  cancelOrder(){
-    util.post("/api/repair/cancelRepair", {
-      users_id: this.data.userId,
-      repair_id: this.data.order.id
-    }).then(res=>{
-      if(res.code == 2001){
-        util.showSuccess(res.msg, function(){
-          // 
-          that.init();
-        });
-      }else{
-        util.showSuccess(res.msg);
-      }
-    });
-  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

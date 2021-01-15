@@ -2,7 +2,7 @@
   "usingComponents": {
     "fixlist": "/mycomponents/fixlist/fixlist"
   },
-  "navigationBarTitleText": "我的订单",
+  "navigationBarTitleText": "我的报修",
   "enablePullDownRefresh": true,
   "backgroundTextStyle": "dark"
 }

@@ -9,7 +9,7 @@ Component({
     getDetail(e){
       let id = e.currentTarget.dataset.id;
       wx.navigateTo({
-        url: '/pages/fixdetail/fixdetail?id=' + id,
+        url: '/pages/workerprojectdetail/workerprojectdetail?id=' + id,
       });
     },
     getCancel(e){

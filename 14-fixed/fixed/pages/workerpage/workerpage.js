@@ -29,11 +29,25 @@ Page({
     // calculate height
     this.calculateHeight();
 
-    // getStatus
-    this.getStatus();
+    // 获取用户信息
+    let userInfo = this.data.userInfo ? this.data.userInfo : wx.getStorageSync('userinfo');
+    util.post("/api/worker/getWorkerDetail", {
+      users_id: userInfo.id
+    }).then(res=>{
+      let orderStatus = res.data.ordercount;
+      that.setData({
+        userInfo: res.data,
+        orderStatus
+      });
 
-    // 获取列表
-    this.getList();
+      that.data.pageOption.userid = res.data.id;
+      that.data.pageOption.status = res.data.ordercount[0].status;
+
+      // 获取列表
+      that.getList();
+
+    });
+
 
   },
 
@@ -44,7 +58,7 @@ Page({
       if(res.code == 2001){
         util.showSuccess(res.msg, function(){
           // getStatus
-          that.getStatus();
+          that.init();
 
           // 获取列表
           that.getList();
@@ -56,7 +70,7 @@ Page({
 
   // 获取列表
   getList(){
-    util.post("/api/repair/getRepairList", {
+    util.post("/api/worker/getOrdersList", {
       users_id: that.data.pageOption.userid,
       status: that.data.pageOption.status
     }).then(res=>{
@@ -123,15 +137,28 @@ Page({
   },
 
   // calculate height
-  calculateHeight(){
+  async calculateHeight (){
+
     let sysHeight = wx.getSystemInfoSync().windowHeight;
-    let query = wx.createSelectorQuery();
-    query.select(".tab-box").boundingClientRect();
-    query.exec(res=>{
-      let contHeight = sysHeight - res[0].height;
-      that.setData({
-        contHeight
+    let headHeight = await new Promise((resolve, reject)=>{
+      let query = wx.createSelectorQuery();
+      query.select(".header").boundingClientRect();
+      query.exec(res=>{
+        resolve(res[0].height);
       });
+    });
+    let tabHeight = await new Promise((resolve, reject)=>{
+      let query = wx.createSelectorQuery();
+      query.select(".tab-box").boundingClientRect();
+      query.exec(res=>{
+        resolve(res[0].height);
+      });
+    });
+
+    let contHeight = sysHeight - headHeight - tabHeight;
+
+    that.setData({
+      contHeight
     });
   },
 
@@ -167,8 +194,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    // getStatus
-    this.getStatus();
+    this.init();
   },
 
   /**

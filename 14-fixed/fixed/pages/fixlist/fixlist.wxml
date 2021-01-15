@@ -16,7 +16,7 @@
 
   <!-- cont -->
   <scroll-view bindscrolltolower="getList" scroll-y class="cont-scroll" style="height:{{contHeight}}px;">
-    <fixlist list="{{list}}"></fixlist>
+    <fixlist bind:cancel="cancel" list="{{list}}"></fixlist>
 
     <view wx:if="{{list.length == 0}}" class="cell-card t-a-c">暂无数据</view>
 

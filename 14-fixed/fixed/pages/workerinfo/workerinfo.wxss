@@ -1,0 +1,6 @@
+/* pages/personalinfo/personalinfo.wxss */
+.button-box{
+  display: flex;
+  justify-content: space-between;
+  padding: 60rpx 20rpx;
+}

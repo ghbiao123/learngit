@@ -1,0 +1,33 @@
+<view class="content">
+  <view class="list" wx:for="{{list}}" wx:key="index">
+    <view class="cont">
+      <view class="list-head">
+        <view>报修号：{{item.ordernum}}</view>
+        
+        <!-- fix -->
+        <view wx:if="{{item.status == 40}}" class="color-blue">已派单</view>
+        <view wx:if="{{item.status == 45}}" class="color-gray">维修中</view>
+        <view wx:if="{{item.status == 50}}" class="color-yellow">已完成</view>
+
+      </view>
+
+      <view class="list-cont">
+        <view class="cont-item">
+          <view class="cont-left">报修标题：{{item.order_name}}</view>
+        </view>
+        <view class="cont-item">下单时间：{{item.createtime}}</view>
+        <view class="cont-item">预计完成时间：{{item.complete_time}}</view>
+      </view>
+
+      <view class="list-foot">
+        <view data-id="{{item.id}}" bindtap="getDetail">
+          <btn type="detail">查看详情</btn>
+        </view>
+        <!-- <view wx:if="{{item.repair_status == 0}}" style="margin-left:20rpx;" data-id="{{item.id}}" bindtap="getCancel">
+          <btn type="cancel">取消</btn>
+        </view> -->
+      </view>
+
+    </view>
+  </view>
+</view>

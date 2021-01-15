@@ -24,6 +24,7 @@ image{
 
 /* 白色卡片 */
 .cell-card{
+  margin:  0 auto;
   width: 670rpx;
   padding: 20rpx;
   background-color: #fff;

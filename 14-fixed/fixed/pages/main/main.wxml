@@ -79,9 +79,9 @@
   <view bindtap="getFixList">
     <cell icon="/images/main-1.png" title="我的报修" hover footer></cell>
   </view>
-  <cell icon="/images/main-2.png" title="隐私条款" hover footer></cell>
+  <cell link="/pages/clause/clause" icon="/images/main-2.png" title="隐私条款" hover footer></cell>
   <view bindtap="applyWoker">
-    <cell icon="/images/main-3.png" title="申请成为师傅" hover footer></cell>
+    <cell icon="/images/main-3.png" title="{{userInfo.jueselist == 2? '师傅端':'申请成为师傅'}}" hover footer></cell>
   </view>
 
 </view>

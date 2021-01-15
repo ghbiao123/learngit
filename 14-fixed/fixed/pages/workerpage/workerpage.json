@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "workerlist": "/mycomponents/workerlist/workerlist"
+  },
+  "navigationBarTitleText": "申请成为师傅",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}
