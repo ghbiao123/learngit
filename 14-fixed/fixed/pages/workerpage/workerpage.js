@@ -37,7 +37,8 @@ Page({
       let orderStatus = res.data.ordercount;
       that.setData({
         userInfo: res.data,
-        orderStatus
+        orderStatus,
+        tabSelected: 0
       });
 
       that.data.pageOption.userid = res.data.id;
@@ -75,8 +76,11 @@ Page({
       status: that.data.pageOption.status
     }).then(res=>{
       let list = res.data;
+      let orderStatus = that.data.orderStatus;
+      orderStatus[that.data.tabSelected].count = list.length;
       that.setData({
-        list
+        list,
+        orderStatus
       });
     });
   },
@@ -173,7 +177,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.init();
   },
 
   /**

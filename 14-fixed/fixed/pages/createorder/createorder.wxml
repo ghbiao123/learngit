@@ -42,7 +42,7 @@
     <view class="form-picture-box">
       <view class="form-picture-item" wx:for="{{reqData.orderimages}}" wx:key="index">
         <icon data-idx="{{index}}" bindtap="deleteImage" type="cancel" size="25" class="form-cancel" color="#ccc"></icon>
-        <image class="form-picture" mode="aspectFit" src="{{item}}"></image>
+        <image class="form-picture" mode="aspectFit" src="{{item}}" bindtap="showImage" data-idx="{{index}}" data-key="orderimages"></image>
       </view>
 
       <image bindtap="addImage" class="form-picture-item" src="/images/add.png"></image>

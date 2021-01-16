@@ -36,6 +36,7 @@ Page({
   // createOrder
   createOrder(){
     app.globalData.createOrderId = that.data.pageOption;
+    console.log(app.globalData.createOrderId);
     wx.switchTab({
       url: `/pages/createorder/createorder`,
     });

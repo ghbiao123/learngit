@@ -63,18 +63,10 @@
     <view class="cell-cont-item">
       <view class="cell-key">照片：</view>
       <view class="cell-val">
-        <!-- <block wx:if="{{order.shifuDetail.fkimages && order.shifuDetail.fkimages.length != 0}}">
-          <image wx:for="{{order.shifuDetail.fkimages}}" class="cell-image" src="{{item}}" mode="aspectFit"></image>
+        <block wx:if="{{order.orderDetail.orderimages && order.orderDetail.orderimages.length != 0}}">
+          <image wx:for="{{order.orderDetail.orderimages}}" class="cell-image" src="{{item}}" mode="aspectFit" bindtap="showImage" data-idx="{{index}}" data-key="orderimages"></image>
         </block>
-        <view wx:else>***</view> -->
-        <image class="cell-image" src="/images/1.png" mode="aspectFit"></image>
-        <image class="cell-image" src="/images/1.png" mode="aspectFit"></image>
-        <image class="cell-image" src="/images/1.png" mode="aspectFit"></image>
-        <image class="cell-image" src="/images/1.png" mode="aspectFit"></image>
-        <image class="cell-image" src="/images/1.png" mode="aspectFit"></image>
-        <image class="cell-image" src="/images/1.png" mode="aspectFit"></image>
-        <image class="cell-image" src="/images/1.png" mode="aspectFit"></image>
-        <image class="cell-image" src="/images/1.png" mode="aspectFit"></image>
+        <view wx:else>***</view>
       </view>
     </view>
 

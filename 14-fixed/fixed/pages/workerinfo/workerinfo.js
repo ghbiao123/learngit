@@ -24,11 +24,25 @@ Page({
     let users_id = userInfo.id;
     util.post("/api/personal/getPersonalData", {users_id}).then(res=>{
 
+      let detail = res.data;
+
+      detail.certimages = detail.certimages ? detail.certimages.split(",") : '';
+      detail.sfzimages = detail.sfzimages ? detail.sfzimages.split(",") : '';
+      detail.cardimage = detail.cardimage ? detail.cardimage.split(",") : '';
+
       that.setData({
-        detail: res.data
+        detail
       });
 
     });
+  },
+
+   // 展示图片
+   showImage(e){
+    let key = e.currentTarget.dataset.key;
+    let idx = e.currentTarget.dataset.idx;
+    let arr = this.data.detail[key] || this.data.reqData[key];
+    util.showImage(arr, idx);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -63,3 +63,7 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.btn-box{
+  padding-top: 30rpx;
+}

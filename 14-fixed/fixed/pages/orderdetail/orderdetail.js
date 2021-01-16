@@ -32,7 +32,7 @@ Page({
     }).then(res=>{
       console.log(res);
       let order = res.data;
-
+      order.orderDetail.orderimages = order.orderDetail.orderimages ? order.orderDetail.orderimages.split(",") : '';
       that.setData({
         order,
         userId: userInfo.id
@@ -48,8 +48,9 @@ Page({
       orders_id: 4
     }).then(res=>{
       console.log(res);
-
-      that.data.pdfUrl = util.getSiteRoot() + res.data;
+      if(res.code == 2001){ 
+        that.data.pdfUrl = util.getSiteRoot() + res.data;
+      }
 
     });
 
@@ -110,11 +111,15 @@ Page({
     });
 
   },
-
+  showImage(e){
+    let key = e.currentTarget.dataset.key;
+    let idx = e.currentTarget.dataset.idx;
+    let arr = this.data.order.orderDetail[key] || this.data.order.shifuDetail[key];
+    util.showImage(arr, idx);
+  },
   // openPDF
   openPDF(e){
-
-    if( ! this.data.pdfUrl.slice(-3) == "pdf"){
+    if( !(this.data.pdfUrl.slice(-3) == "pdf")){
       return util.showSuccess("还未生成合同，请下拉刷新后再试");
     }
 

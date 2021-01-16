@@ -109,20 +109,33 @@ Page({
      */
 
     let data = {
-      id: 1,
-      name: "测试",
-      phone: "15165485670",
-      sfzh: "370982199407213875",
-      staffnum: 123456,
-      company_name: "阿里巴巴",
-      company_address: "创智谷",
-      renzhenglist: "1",
-      renzhenglist_text: "Renzhenglist 1",
-      jueselist_text: "",
-      pay_methodlist_text: "",
-      apply_status: 2,
-      headimage: "http://equipment.do/uploads/20210108/32b1d7da3f7d03e5a18e7293f33a6133.png"
+      "id": 1,
+        "name": "测aa试",
+        "phone": "15165485670",
+        "sfzh": "370982199407213875",
+        "staffnum": "1234aa56",
+        "company_name": "阿里巴巴",
+        "company_address": "创aa智谷",
+        "renzhenglist": "1",
+        "headimage": "http://equipment.do/uploads/20210108/32b1d7da3f7d03e5a18e7293f33a6133.png",
+        "sfzimages": "http://equipment.do/uploads/20210115/3571f14913c71b4e3666c991e622ce2a.jpg,http://equipment.do/uploads/20210115/4673f182c41e980072532a5de21121d5.jpg",
+        "yingyeimage": "",
+        "jueselist": "2",
+        "sfaddress": "1323123",
+        "gongzhong": "木工",
+        "certimages": "http://equipment.do/uploads/20210115/ccc08293017dc867707b687e71f888b1.jpg,http://equipment.do/uploads/20210115/1c677ccad59a22958424dd82117d3d36.jpg,http://equipment.do/uploads/20210115/937dc9ffd6eb142aca57431cfcf51303.jpg,http://equipment.do/uploads/20210115/392c4e0220348be900b3452e433aaaf2.jpg,http://equipment.do/uploads/20210115/a929c6ff3cea182026301b24cb6fc57a.jpg,http://equipment.do/uploads/20210115/094a4206fb2e4f90379ab4caeda14448.jpg,http://equipment.do/uploads/20210115/8d8a52c91cefda82777db470e3b730c5.jpg,http://equipment.do/uploads/20210115/9380e90c9a273fd8dd6c2066c7742085.jpeg",
+        "cardimage": "",
+        "train": "",
+        "skill": "沙发斯蒂芬",
+        "banknum": 123123,
+        "bankdetail": "大师法撒旦法",
+        "pay_methodlist": "0",
+        "wx_openid": "oqg0r47xJY8y21GXMEGF--1ntCww"
     }
+
+    data.sfzimages = data.sfzimages ? data.sfzimages.split(",") : '';
+    data.certimages = data.certimages ? data.certimages.split(",") : '';
+    data.cardimage = data.cardimage ? data.cardimage.split(",") : '';
 
     that.setData({
       isLogin: true,

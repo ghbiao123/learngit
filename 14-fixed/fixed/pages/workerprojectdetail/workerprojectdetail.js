@@ -8,7 +8,11 @@ Page({
    */
   data: {
     pdfUrl: "",
-    isCheck: false
+    isCheck: false,
+    reqData: {
+      fkneirong: "",
+      fkimages: []
+    }
   },
 
   /**
@@ -22,17 +26,17 @@ Page({
 
   },
 
-  init(){
+  init() {
     let userInfo = wx.getStorageSync('userinfo');
 
     // 获取订单详情
     util.post("/api/worker/getOrderDetail", {
       users_id: userInfo.id,
       orders_id: that.data.pageOption.id
-    }).then(res=>{
-      console.log(res);
+    }).then(res => {
       let order = res.data;
-
+      order.orderimages = order.orderimages ? order.orderimages.split(",") : '';
+      order.fkimages = order.fkimages ? order.fkimages.split(",") : '';
       that.setData({
         order,
         userId: userInfo.id
@@ -46,8 +50,7 @@ Page({
       users_id: userInfo.id,
       // orders_id: that.data.pageOption.id
       orders_id: 4
-    }).then(res=>{
-      console.log(res);
+    }).then(res => {
 
       that.data.pdfUrl = util.getSiteRoot() + res.data;
 
@@ -55,42 +58,141 @@ Page({
 
 
   },
-  // 下载PDF
-  downloadPDF(){
+  // textInput
+  textInput(e){
+    this.data.reqData.fkneirong = e.detail.value;
+  },
+  // 展示图片
+  showImage(e){
+    let key = e.currentTarget.dataset.key;
+    let idx = e.currentTarget.dataset.idx;
+    let arr = this.data.order[key] || this.data.reqData[key];
+    util.showImage(arr, idx);
+  },
+  // add image
+  addImage() {
+    // let count = 8 - this.data.reqData.orderimages.length;
+    // if (count <= 0) {
+    //   util.showSuccess("最多上传8张图片");
+    //   return;
+    // }
+    wx.chooseImage({
+      count: 9,
+      success(res) {
+        let arr = res.tempFilePaths;
+        arr.forEach(v => {
+          wx.uploadFile({
+            filePath: v,
+            name: 'image',
+            url: util.getSiteRoot() + "/index.php/api/personal/upload",
+            success(ret) {
+              let reqData = that.data.reqData;
+              // if (reqData.fkimages.length >= 8) {
+              //   return
+              // }
+              let url = util.getSiteRoot() + JSON.parse(ret.data).data.replace(/\\/g, "/");
+              reqData.fkimages.push(url);
+              that.setData({
+                reqData
+              });
+            }
+          });
+        });
+      }
+    });
 
-    if(!this.data.isCheck) return util.showSuccess("请先查看合同");
+  },
+
+  // delete image
+  deleteImage(e) {
+    let idx = e.currentTarget.dataset.idx;
+
+    let reqData = this.data.reqData;
+    reqData.fkimages.splice(idx, 1);
+
+    that.setData({
+      reqData
+    });
+
+  },
+  // startFix
+  startFix(e){
+    let data = {};
+    data.users_id = this.data.userId;
+    data.order_id = this.data.order.id;
+    util.post("/api/worker/startWorker", data).then(res=>{
+      console.log(res);
+      if(res.code == 2001){
+        util.showSuccess(res.msg, function(){
+          let order = that.data.order;
+          order.status = 45;
+          that.setData({
+            order
+          });
+        })
+      }else{
+        util.showSuccess(res.msg);
+      }
+
+    });
+  },
+  // submit()
+  submit(){
+    let data = this.data.reqData;
+    data.users_id = this.data.userId;
+    data.order_id = this.data.order.id;
+
+    util.post("/api/worker/workerSubmitFk", data).then(res=>{
+      console.log(res);
+      if(res.code == 2001){
+        util.showSuccess(res.msg, function(){
+          wx.navigateBack({
+            delta: 1,
+          });
+        })
+      }else{
+        util.showSuccess(res.msg);
+      }
+
+    });
+
+  },
+  // 下载PDF
+  downloadPDF() {
+
+    if (!this.data.isCheck) return util.showSuccess("请先查看合同");
 
     wx.downloadFile({
       url: that.data.pdfUrl,
-      success(res){
+      success(res) {
         console.log(res);
         wx.saveFile({
           tempFilePath: res.tempFilePath,
-          success(ret){
+          success(ret) {
             console.log(ret);
           }
         })
       },
-      fail(err){
+      fail(err) {
         console.log(err);
       }
     });
   },
   // 签署合同
-  signIn(){
-    if(!this.data.isCheck) return util.showSuccess("请先查看合同");
+  signIn() {
+    if (!this.data.isCheck) return util.showSuccess("请先查看合同");
 
-    if(!that.data.order.orderDetail.status == 20) return util.showSuccess("还未确认销售，请稍等");
-    
+    if (!that.data.order.orderDetail.status == 20) return util.showSuccess("还未确认销售，请稍等");
+
     let userInfo = wx.getStorageSync('userinfo');
     util.post("/api/orders/signature", {
       users_id: userInfo.id,
       // orders_id: that.data.pageOption.id,
       orders_id: 4,
-    }).then(res=>{
+    }).then(res => {
       console.log(res);
 
-      if(res.code == 2001){
+      if (res.code == 2001) {
 
         let order = that.data.order;
 
@@ -112,9 +214,9 @@ Page({
   },
 
   // openPDF
-  openPDF(e){
+  openPDF(e) {
 
-    if( ! this.data.pdfUrl.slice(-3) == "pdf"){
+    if (!this.data.pdfUrl.slice(-3) == "pdf") {
       return util.showSuccess("还未生成合同，请下拉刷新后再试");
     }
 
@@ -136,7 +238,7 @@ Page({
 
     wx.navigateTo({
       url: '/pages/readPDF/readPDF?url=' + this.data.pdfUrl,
-      success(){
+      success() {
         that.setData({
           isCheck: true
         });

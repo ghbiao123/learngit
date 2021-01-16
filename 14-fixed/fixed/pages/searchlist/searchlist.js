@@ -1,4 +1,7 @@
 // pages/searchlist/searchlist.js
+let that;
+let util = require("../../utils/util");
+let app = getApp();
 Page({
 
   /**
@@ -12,9 +15,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
 
   },
-
+  getKeyWords(e){
+    util.post("/api/shou_ye/searchItem", {
+      name: e.detail
+    }).then(res=>{
+      that.setData({
+        list: res.data
+      });
+    });
+  },
+  create(e){
+    let idx = e.currentTarget.dataset.idx;
+    let data = this.data.list[idx];
+    app.globalData.createOrderId = {
+      lv1id: data.levelone_id,
+      lv2id: data.leveltwo_id,
+      lv3id: data.id,
+    }
+    wx.switchTab({
+      url: '/pages/createorder/createorder',
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

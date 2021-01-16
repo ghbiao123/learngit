@@ -44,6 +44,7 @@ Page({
 
     this.data.pageOption = app.globalData.createOrderId;
 
+    console.log(app.globalData.createOrderId);
 
     this.init();
 
@@ -101,7 +102,12 @@ Page({
     });
 
   },
-
+  showImage(e){
+    let key = e.currentTarget.dataset.key;
+    let idx = e.currentTarget.dataset.idx;
+    let arr = this.data.reqData[key];
+    util.showImage(arr, idx);
+  },
   // add image
   addImage(){
     let count = 8 - this.data.reqData.orderimages.length;

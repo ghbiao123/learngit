@@ -272,6 +272,14 @@ function getImageFullUrl(arr, key){
   }
 }
 
+// 展示图片
+function showImage(arr, index){
+  wx.previewImage({
+    urls: arr,
+    current: arr[index]
+  });
+}
+
 
 module.exports = {
   getToday, // 获取当前日期，时间，周几
@@ -288,5 +296,6 @@ module.exports = {
   getSiteRoot, // 获取api接口根
   updateManager, // 小程序主动更新
   getImageFullUrl, // 将图片添加为完整路径
+  showImage, // 展示图片
 }
 

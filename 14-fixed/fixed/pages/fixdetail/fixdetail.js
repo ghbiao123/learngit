@@ -31,7 +31,7 @@ Page({
       repair_id: that.data.pageOption.id
     }).then(res=>{
       let order = res.data;
-
+      order.repairimages = order.repairimages ? order.repairimages.split(",") : '';
       that.setData({
         order,
         userId: userInfo.id
@@ -53,6 +53,12 @@ Page({
     // });
 
 
+  },
+  showImage(e){
+    let key = e.currentTarget.dataset.key;
+    let idx = e.currentTarget.dataset.idx;
+    let arr = this.data.order[key];
+    util.showImage(arr, idx);
   },
   // 下载PDF
   downloadPDF(){

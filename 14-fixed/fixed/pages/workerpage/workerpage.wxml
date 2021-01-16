@@ -20,13 +20,18 @@
       </view>
 
       <view class="btn-box">
+        
         <view class="user-detail" hover-class="user-detail-hover">
+          <navigator hover-class="none" url="/pages/workerinfo/workerinfo">
+            个人资料
+          </navigator>
+        </view>
+        <!-- <view class="user-detail" hover-class="user-detail-hover">
           用户端
-        </view>
-        <view class="user-detail worker" hover-class="worker-hover">
+        </view> -->
+        <!-- <view class="user-detail worker" hover-class="worker-hover">
           师傅端
-          <!-- <navigator url="/pages/personalinfo/personalinfo" hover-class="none"></navigator> -->
-        </view>
+        </view> -->
       </view>
 
     </view>

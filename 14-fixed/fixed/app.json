@@ -23,8 +23,8 @@
     "pages/applyworker/applyworker",
     "pages/workerpage/workerpage",
     "pages/workerinfo/workerinfo",
-    "pages/workerprojectdetail/workerprojectdetail"
-    
+    "pages/workerprojectdetail/workerprojectdetail",
+    "pages/workerchangeperinfo/workerchangeperinfo"
     
   ],
   "tabBar": {

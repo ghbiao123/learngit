@@ -1,2 +1,5 @@
-<!--pages/searchlist/searchlist.wxml-->
-<text>pages/searchlist/searchlist.wxml</text>
+<searchbar theme="#ffffff" placeholder="搜索维修项目" coverholder="搜索维修项目" bind:mysearchbar="getKeyWords"></searchbar>
+
+<view class="cell-card m-t-20">
+  <view wx:for="{{list}}" wx:key="index" data-idx="{{index}}" bindtap="create" class="cell-item">{{item.name}}</view>
+</view>
