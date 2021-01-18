@@ -88,7 +88,6 @@ Page({
       });
     });
 
-
     // 服务项
     util.post("/api/shou_ye/getServer").then(res => {
       that.setData({

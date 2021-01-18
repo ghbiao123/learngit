@@ -1,7 +1,41 @@
 <view class="container">
-  <view style="display: flex;">
-    <status selected icon="/images/status-1.png" text="已支付预付"></status>
-    <view class="dot-x"></view>
-    <status selected icon="/images/status-1.png" text="已支付预付"></status>
+  <view class="status-box">
+    <status selected="{{status >= 5}}" icon="/images/status-1.png" text="已下单"></status>
+    <view class="{{status >= 5 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{status >= 10}}" icon="/images/status-2.png" text="待审核"></status>
+    <view class="{{status >= 10 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{status >= 15}}" icon="/images/status-3.png" text="已审核"></status>
+    <view class="{{status >= 15 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{status >= 20}}" icon="/images/status-4.png" text="销售确认"></status>
+    <view class="{{status >= 20 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{status >= 25}}" icon="/images/status-5.png" text="合同确认"></status>
+  </view>
+  <view class="status-box status-r">
+    <view class="{{status >= 25 ? 'dot-y-s':'dot-y'}}"></view>
+  </view>
+  <view class="status-box">
+    <status selected="{{status >= 30}}" icon="/images/status-6.png" text="已预付款"></status>
+    <view class="{{status >= 30 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{status >= 35}}" icon="/images/status-7.png" text="平台确认(一次)"></status>
+    <view class="{{status >= 35 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{status >= 40}}" icon="/images/status-8.png" text="指派师傅"></status>
+    <view class="{{status >= 40 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{status >= 45}}" icon="/images/status-9.png" text="维修中"></status>
+    <view class="{{status >= 45 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{status >= 50}}" icon="/images/status-10.png" text="维修完成"></status>
+  </view>
+  <view class="status-box">
+    <view class="{{status >= 50 ? 'dot-y-s':'dot-y'}}"></view>
+  </view>
+  <view class="status-box" style="justify-content: flex-start;">
+    <status selected="{{status >= 55}}" icon="/images/status-11.png" text="已付尾款"></status>
+    <view class="{{status >= 55 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{status >= 60}}" icon="/images/status-12.png" text="平台确认(二次)"></status>
+    <view class="{{status >= 60 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{status >= 65}}" icon="/images/status-13.png" text="订单完成"></status>
+    <!-- <view class="{{status >= 40 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{status >= 45}}" icon="/images/status-14.png" text="已支付预付"></status> -->
+    <!-- <view class="{{status >= 45 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{status >= 50}}" icon="/images/status-1.png" text="已支付预付"></status> -->
   </view>
 </view>

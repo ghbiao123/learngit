@@ -19,8 +19,6 @@ Page({
 
     this.data.pageOption = options;
 
-    // init
-    this.init();
   },
 
   // init
@@ -38,11 +36,10 @@ Page({
       that.setData({
         userInfo: res.data,
         orderStatus,
-        tabSelected: 0
       });
 
       that.data.pageOption.userid = res.data.id;
-      that.data.pageOption.status = res.data.ordercount[0].status;
+      that.data.pageOption.status = res.data.ordercount[that.data.tabSelected].status;
 
       // 获取列表
       that.getList();
@@ -81,6 +78,10 @@ Page({
       that.setData({
         list,
         orderStatus
+      });
+
+      wx.stopPullDownRefresh({
+        success: (res) => {},
       });
     });
   },

@@ -6,15 +6,17 @@
   </view>
 
   <view class="order-status b-b-line">
-    <status selected icon="/images/status-1.png" text="已支付预付"></status>
-    <view class="dot-x"></view>
-    <status selected icon="/images/status-1.png" text="已支付预付"></status>
-    <view class="dot-x"></view>
-    <status selected icon="/images/status-1.png" text="已支付预付"></status>
-    <view class="dot-x"></view>
-    <status selected icon="/images/status-1.png" text="已支付预付"></status>
-    <view class="dot-x"></view>
-    <status selected icon="/images/status-1.png" text="已支付预付"></status>
+    <status selected="{{order.orderDetail.status >= 5}}" icon="/images/status-1.png" text="已下单"></status>
+    <view class="{{order.orderDetail.status >= 5 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{order.orderDetail.status >= 25}}" icon="/images/status-5.png" text="合同确认"></status>
+    <view class="{{order.orderDetail.status >= 25 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{order.orderDetail.status >= 45}}" icon="/images/status-9.png" text="维修中"></status>
+    <view class="{{order.orderDetail.status >= 45 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{order.orderDetail.status >= 50}}" icon="/images/status-10.png" text="维修完成"></status>
+    <view class="{{order.orderDetail.status >= 50 ? 'dot-x-s':'dot-x'}}"></view>
+    <navigator url="/pages/orderstatus/orderstatus?status={{order.orderDetail.status}}">
+      <status selected="{{false}}" icon="/images/status-more.png" text="查看更多"></status>
+    </navigator>
   </view>
 
   <view class="cell-cont b-b-line">
@@ -25,7 +27,7 @@
       <!-- <view class="color-gray">已派单，师傅上门</view> -->
       <!-- <view class="color-green">维修完成</view> -->
       <!-- <view class="color-yellow">订单完成</view> -->
-      <view wx:if="{{order.orderDetail.status == 15}}" class="color-blue">已申请</view>
+      <view wx:if="{{order.orderDetail.status == 15}}" class="color-blue">已下单</view>
       <view wx:if="{{order.orderDetail.status == 25}}" class="color-red">合同确认</view>
       <view wx:if="{{order.orderDetail.status == 45}}" class="color-gray">维修中</view>
       <view wx:if="{{order.orderDetail.status == 50}}" class="color-green">维修完成</view>
@@ -38,23 +40,23 @@
     </view>
     <view class="cell-cont-item">
       <view class="cell-key">订单标题：</view>
-      <view class="cell-val">{{order.orderDetail.order_name}}</view>
+      <view class="cell-val">{{order.orderDetail.order_name || '***'}}</view>
     </view>
     <view class="cell-cont-item">
       <view class="cell-key">维修一级类别：</view>
-      <view class="cell-val">{{order.orderDetail.levelone_name}}</view>
+      <view class="cell-val">{{order.orderDetail.levelone_name || '***'}}</view>
     </view>
     <view class="cell-cont-item">
       <view class="cell-key">维修二级类别：</view>
-      <view class="cell-val">{{order.orderDetail.leveltwo_name}}</view>
+      <view class="cell-val">{{order.orderDetail.leveltwo_name || '***'}}</view>
     </view>
     <view class="cell-cont-item">
       <view class="cell-key">维修三级类别：</view>
-      <view class="cell-val">{{order.orderDetail.levelthree_name}}</view>
+      <view class="cell-val">{{order.orderDetail.levelthree_name || '***'}}</view>
     </view>
     <view class="cell-cont-item">
       <view class="cell-key">服务项目：</view>
-      <view class="cell-val">{{order.orderDetail.servers_name}}</view>
+      <view class="cell-val">{{order.orderDetail.servers_name || '***'}}</view>
     </view>
     <view class="cell-cont-item">
       <view class="cell-key">订单内容：</view>
@@ -64,7 +66,7 @@
       <view class="cell-key">照片：</view>
       <view class="cell-val">
         <block wx:if="{{order.orderDetail.orderimages && order.orderDetail.orderimages.length != 0}}">
-          <image wx:for="{{order.orderDetail.orderimages}}" class="cell-image" src="{{item}}" mode="aspectFit" bindtap="showImage" data-idx="{{index}}" data-key="orderimages"></image>
+          <image wx:for="{{order.orderDetail.orderimages}}" wx:key="index" class="cell-image" src="{{item}}" mode="aspectFit" bindtap="showImage" data-idx="{{index}}" data-key="orderimages"></image>
         </block>
         <view wx:else>***</view>
       </view>
@@ -110,7 +112,7 @@
       <view class="cell-key">照片：</view>
       <view class="cell-val">
         <block wx:if="{{order.shifuDetail.fkimages && order.shifuDetail.fkimages.length != 0}}">
-          <image wx:for="{{order.shifuDetail.fkimages}}" class="cell-image" src="{{item}}" mode="aspectFit"></image>
+          <image wx:for="{{order.shifuDetail.fkimages}}" class="cell-image" src="{{item}}" mode="aspectFit" bindtap="showImage" data-idx="{{index}}" data-key="fkimages"></image>
         </block>
         <view wx:else>***</view>
       </view>
@@ -146,11 +148,11 @@
 
     <view class="cell-cont-item">
       <view class="cell-key">预付款：</view>
-      <view class="cell-val color-red">￥{{order.order_information.salesman_phone || "0"}}</view>
+      <view class="cell-val color-red">￥{{order.order_information.yf_price || "0"}}</view>
     </view>
     <view class="cell-cont-item">
       <view class="cell-key">尾款：</view>
-      <view class="cell-val color-red">￥{{order.order_information.salesman_phone || "0"}}</view>
+      <view class="cell-val color-red">￥{{order.order_information.wk_price || "0"}}</view>
     </view>
     <view class="cell-cont-item">
       <view class="cell-key">下单时间：</view>
@@ -179,7 +181,7 @@
         <icontext boxH="100" iconW="48" iconH="48" src="/images/PDF.png" cont="下载合同" color="#4F93D0"></icontext>
       </view>
 
-      <view bindtap="signIn">
+      <view bindtap="signIn" wx:if="{{order.orderDetail.status == 20}}">
         <btn type="normal">确认签署</btn>
       </view>
 
@@ -193,7 +195,7 @@
   <view wx:if="{{order.orderDetail.status == 25 || order.orderDetail.status == 15}}" class="bottom-btn-box" style="justify-content: space-between;">
     <view style="width: 380rpx;">
       <block wx:if="{{order.orderDetail.status == 25}}">
-        <text style="font-size: 26rpx;">合计：</text><text style="font-size: 26rpx;" class="color-red">¥200</text>
+        <text style="font-size: 26rpx;">合计：</text><text style="font-size: 26rpx;" class="color-red">¥{{order.order_information.yf_price}}</text>
       </block>
     </view>
     <block wx:if="{{order.orderDetail.status == 25}}">
@@ -208,7 +210,7 @@
   <!-- 余款 -->
   <view wx:if="{{order.orderDetail.status == 50}}" class="bottom-btn-box" style="justify-content: space-between;">
     <view style="width: 240rpx;">
-      <text style="font-size: 26rpx;">合计：</text><text style="font-size: 26rpx;" class="color-red">¥200</text>
+      <text style="font-size: 26rpx;">合计：</text><text style="font-size: 26rpx;" class="color-red">¥{{order.order_information.wk_price}}</text>
     </view>
     <btn type="detail" url="/pages/uploadvoucher/uploadvoucher?order_id={{order.orderDetail.id}}&type=2&users_id={{userId}}">上传凭证</btn>
     <btn type="done">维修完成，确认支付</btn>

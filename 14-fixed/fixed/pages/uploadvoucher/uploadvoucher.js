@@ -23,7 +23,12 @@ Page({
     console.log(this.data.reqData);
 
   },
-
+  showImage(e){
+    let key = e.currentTarget.dataset.key;
+    let idx = e.currentTarget.dataset.idx;
+    let arr = this.data.reqData.voucherimages;
+    util.showImage(arr, idx);
+  },
   // submit
   submit(){
     console.log(this.data.reqData);

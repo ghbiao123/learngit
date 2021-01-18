@@ -1,1 +1,10 @@
 /* pages/orderstatus/orderstatus.wxss */
+.status-box{
+  display: flex;
+  justify-content: space-between;
+  padding: 10rpx 20rpx;
+}
+
+.status-r{
+  justify-content: flex-end;
+}

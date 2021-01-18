@@ -103,16 +103,22 @@
     <view class="cell-cont-title">
       <view>师傅反馈</view>
     </view>
-
+    <view class="cell-cont-item" wx:if="{{order.fkneirong}}">
+      <view class="cell-key">
+        <view>记录：</view>
+      </view>
+      <view class="cell-val">{{order.fkneirong}}</view>
+    </view>
     <view class="cell-cont-item">
       <view class="cell-key">反馈内容：</view>
     </view>
-    <textarea bindinput="textInput" class="form-textarea" placeholder="请输入反馈内容"></textarea>
+    <textarea bindinput="textInput" value="{{reqData.fkneirong}}" class="form-textarea" placeholder="请输入反馈内容"></textarea>
 
     <view class="cell-cont-item">
       <view class="cell-key">照片：</view>
     </view>
     <view class="form-picture-box">
+      <image class="form-picture-item" wx:for="{{order.arrfk}}" wx:key="index" src="{{item}}" mode="aspectFit"  bindtap="showImage" data-idx="{{index}}" data-key="arrfk"></image>
       <view class="form-picture-item" wx:for="{{reqData.fkimages}}" wx:key="index">
         <icon data-idx="{{index}}" bindtap="deleteImage" type="cancel" size="25" class="form-cancel" color="#ccc">
         </icon>

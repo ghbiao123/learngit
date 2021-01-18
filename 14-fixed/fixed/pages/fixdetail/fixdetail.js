@@ -36,7 +36,9 @@ Page({
         order,
         userId: userInfo.id
       });
-
+      wx.stopPullDownRefresh({
+        success: (res) => {},
+      });
     });
 
     // 获取订单合同
@@ -199,9 +201,9 @@ Page({
    */
   onPullDownRefresh: function (e) {
     console.log(e);
-    wx.stopPullDownRefresh({
-      success: (res) => {},
-    });
+    // 获取列表
+    this.init();
+    
   },
 
   /**

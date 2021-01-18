@@ -19,8 +19,7 @@ Page({
 
     this.data.pageOption = options;
 
-    // init
-    this.init();
+    
   },
 
   // init
@@ -32,8 +31,7 @@ Page({
     // getStatus
     this.getStatus();
 
-    // 获取列表
-    this.getList();
+    
 
   },
 
@@ -61,8 +59,10 @@ Page({
       status: that.data.pageOption.status
     }).then(res=>{
       let list = res.data;
+      let tabSelected = that.data.tabSelected;
       that.setData({
-        list
+        list,
+        tabSelected,
       });
     });
   },
@@ -111,6 +111,9 @@ Page({
         return false
       });
 
+      // 获取列表
+      that.getList();
+
       that.setData({
         orderStatus,
         tabSelected
@@ -146,7 +149,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // init
+    this.init();
   },
 
   /**

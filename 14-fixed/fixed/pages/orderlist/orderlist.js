@@ -32,8 +32,7 @@ Page({
     // getStatus
     this.getStatus();
 
-    // 获取列表
-    this.getList();
+    
 
   },
 
@@ -106,7 +105,8 @@ Page({
         orderStatus,
         tabSelected
       });
-
+      // 获取列表
+      that.getList();
       wx.stopPullDownRefresh({
         success: (res) => {},
       });

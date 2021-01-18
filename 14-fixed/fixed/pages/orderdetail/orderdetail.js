@@ -33,25 +33,30 @@ Page({
       console.log(res);
       let order = res.data;
       order.orderDetail.orderimages = order.orderDetail.orderimages ? order.orderDetail.orderimages.split(",") : '';
+      order.shifuDetail.fkimages = order.shifuDetail.fkimages ? order.shifuDetail.fkimages.split(",") : '';
       that.setData({
         order,
         userId: userInfo.id
       });
-
+      wx.stopPullDownRefresh({
+        success: (res) => {},
+      });
     });
 
     // 获取订单合同
 
     util.post("/api/orders/getHetong", {
       users_id: userInfo.id,
-      // orders_id: that.data.pageOption.id
-      orders_id: 4
+      orders_id: that.data.pageOption.id,
+      // orders_id: 4
     }).then(res=>{
       console.log(res);
       if(res.code == 2001){ 
         that.data.pdfUrl = util.getSiteRoot() + res.data;
       }
-
+      wx.stopPullDownRefresh({
+        success: (res) => {},
+      });
     });
 
 
@@ -81,13 +86,13 @@ Page({
   signIn(){
     if(!this.data.isCheck) return util.showSuccess("请先查看合同");
 
-    if(!that.data.order.orderDetail.status == 20) return util.showSuccess("还未确认销售，请稍等");
+    // if(!that.data.order.orderDetail.status == 20) return util.showSuccess("还未确认销售，请稍等");
     
     let userInfo = wx.getStorageSync('userinfo');
     util.post("/api/orders/signature", {
       users_id: userInfo.id,
-      // orders_id: that.data.pageOption.id,
-      orders_id: 4,
+      orders_id: that.data.pageOption.id,
+      // orders_id: 4,
     }).then(res=>{
       console.log(res);
 
@@ -95,12 +100,12 @@ Page({
 
         let order = that.data.order;
 
-        // order.order_information.contract_status = 1;
-        // order.orderDetail.status = 25;
+        order.order_information.contract_status = 1;
+        order.orderDetail.status = 25;
 
-        // that.setData({
-        //   order
-        // });
+        that.setData({
+          order
+        });
 
         that.init();
 
@@ -182,10 +187,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function (e) {
-    console.log(e);
-    wx.stopPullDownRefresh({
-      success: (res) => {},
-    });
+    this.init();
+    
   },
 
   /**

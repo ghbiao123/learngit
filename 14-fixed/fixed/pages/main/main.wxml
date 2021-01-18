@@ -45,11 +45,11 @@
 
     <!-- 订单分类 -->
     <view class="order-sort">
-      <view class="sort-item" bindtap="getList" data-status="{{orderStatus[1].status}}" hover-class="sort-item-hover">
+      <!-- <view class="sort-item" bindtap="getList" data-status="{{orderStatus[1].status}}" hover-class="sort-item-hover">
         <image class="sort-icon" mode="aspectFit" src="/images/main-4.png"></image>
         <view class="sort-name">已申请</view>
         <view class="sort-count">({{orderStatus[1].count || 0}})</view>
-      </view>
+      </view> -->
       <view class="sort-item" bindtap="getList" data-status="{{orderStatus[3].status}}" hover-class="sort-item-hover">
         <image class="sort-icon" mode="aspectFit" src="/images/main-5.png"></image>
         <view class="sort-name">已下单</view>

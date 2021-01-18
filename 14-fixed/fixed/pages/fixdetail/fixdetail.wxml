@@ -6,15 +6,9 @@
   </view> -->
 
   <view class="order-status b-b-line">
-    <status selected icon="/images/status-1.png" text="已支付预付"></status>
-    <view class="dot-x"></view>
-    <status selected icon="/images/status-1.png" text="已支付预付"></status>
-    <view class="dot-x"></view>
-    <status selected icon="/images/status-1.png" text="已支付预付"></status>
-    <view class="dot-x"></view>
-    <status selected icon="/images/status-1.png" text="已支付预付"></status>
-    <view class="dot-x"></view>
-    <status selected icon="/images/status-1.png" text="已支付预付"></status>
+    <status selected="{{order.repair_status >= 0}}" icon="/images/status-1.png" text="已下单"></status>
+    <view class="{{order.repair_status >= 0 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{order.repair_status >= 2}}" icon="/images/status-5.png" text="已转订单"></status>
   </view>
 
   <view class="cell-cont b-b-line">

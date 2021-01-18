@@ -23,6 +23,7 @@ Page({
 
     this.data.pageOption = options;
 
+    this.init();
 
   },
 
@@ -36,10 +37,16 @@ Page({
     }).then(res => {
       let order = res.data;
       order.orderimages = order.orderimages ? order.orderimages.split(",") : '';
-      order.fkimages = order.fkimages ? order.fkimages.split(",") : '';
+      order.arrfk = order.fkimages ? order.fkimages.split(",") : '';
+      order.fkimages = '';
+      let reqData = {
+        fkneirong: "",
+        fkimages: []
+      }
       that.setData({
         order,
-        userId: userInfo.id
+        userId: userInfo.id,
+        reqData,
       });
 
     });
@@ -146,9 +153,10 @@ Page({
       console.log(res);
       if(res.code == 2001){
         util.showSuccess(res.msg, function(){
-          wx.navigateBack({
-            delta: 1,
-          });
+          // wx.navigateBack({
+          //   delta: 1,
+          // });
+          that.init();
         })
       }else{
         util.showSuccess(res.msg);
@@ -258,7 +266,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.init();
+    
   },
 
   /**
