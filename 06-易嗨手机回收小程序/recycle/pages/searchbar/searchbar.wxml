@@ -1,8 +1,10 @@
 <view class="content">
-	<scarch-bar isFocus bind:getinput="getInputText" bind:searchbar="result" theme="#ffffff" placeholder="搜索品牌或者机型"></scarch-bar>
+	<view class="searchbar">
+		<scarch-bar isFocus bind:getinput="getInputText" bind:searchbar="result" theme="#ffffff" placeholder="搜索品牌或者机型"></scarch-bar>
+	</view>
 	<view wx:if="{{showList}}" class="list ellipsis-text" wx:for="{{result}}" wx:key="index" data-idx="{{index}}" data-name="{{item.name}}"
 		data-id="{{item.id}}" data-cid="{{item.cid}}" bindtap="getEvaluation">
-		{{item.name}}
+		{{index*1+1}}.{{item.name}}
 	</view>
 	<view wx:if="{{showList && result.length == 0}}" class="m-t-20">
 		<btntopage></btntopage>

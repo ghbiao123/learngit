@@ -1,6 +1,6 @@
 <block wx:if="{{result[0]}}">
 	<view class="list ellipsis-text" wx:for="{{result}}" wx:key="index" data-name="{{item.name}}" data-id="{{item.id}}" data-cid="{{item.cid}}" bindtap="getEvaluation">
-		{{item.name}}
+		{{index*1+1}}.{{item.name}}
 	</view>
 </block>
 <block wx:else>

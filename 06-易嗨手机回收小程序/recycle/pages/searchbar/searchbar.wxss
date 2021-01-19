@@ -2,6 +2,17 @@
 page{
   background-color: #fff;
 }
+.content{
+  padding-top: 96rpx;
+}
+.searchbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 96rpx;
+  background-color: #fff;
+}
 .tit-no-bg{
   justify-content: space-between;
 }

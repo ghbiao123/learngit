@@ -76,7 +76,7 @@
   height: 100rpx;
 }
 .vtab-cont-list-info{
-  width: 350rpx;
+  width: 490rpx;
   height: 80rpx;
 }
 .vtab-cont-list-info-name{
