@@ -53,7 +53,10 @@ Page({
   },
 
   // 获取营业执照
-  getLicence(){
+  getLicence(e){
+
+    let key = e.currentTarget.dataset.key;
+
     wx.chooseImage({
       count: 1,
       success(res) {
@@ -65,7 +68,7 @@ Page({
           success(ret) {
             let reqData = that.data.reqData;
             let url = util.getSiteRoot() + JSON.parse(ret.data).data.replace(/\\/g, "/");
-            reqData.yingyeimage = url;
+            reqData[key]  = url;
             that.setData({
               reqData,
             });

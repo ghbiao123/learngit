@@ -11,8 +11,8 @@
       <view><text class="color-red">*</text>身份证</view>
       <view class="item-name-tip">请上传身份证照片</view>
     </view>
-    <view class="image-box">
-      <image class="image" src="{{reqData.sfzimages?reqData.sfzimages:'/images/idcard.png'}}"></image>
+    <view class="image-box" data-key="sfzimages" bindtap="getLicence">
+      <image class="image" mode="aspectFit" src="{{reqData.sfzimages?reqData.sfzimages:'/images/idcard.png'}}"></image>
     </view>
   </view>
 
@@ -28,8 +28,8 @@
       <view><text class="color-red">*</text>营业执照</view>
       <view class="item-name-tip">请上传营业执照</view>
     </view>
-    <view class="image-box" bindtap="getLicence">
-      <image class="image" src="{{reqData.yingyeimage?reqData.yingyeimage:'/images/ying.png'}}"></image>
+    <view class="image-box" data-key="yingyeimage" bindtap="getLicence">
+      <image class="image" mode="aspectFit" src="{{reqData.yingyeimage?reqData.yingyeimage:'/images/ying.png'}}"></image>
     </view>
   </view>
 

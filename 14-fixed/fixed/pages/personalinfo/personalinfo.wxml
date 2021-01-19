@@ -8,7 +8,7 @@
   <cell title="认证状态" cont="{{detail.renzhenglist==0?'未认证':'已认证'}}"></cell>
 
   <view class="button-box">
-    <block wx:if="{{detail.renzhenglist == 0}}">
+    <block wx:if="{{detail.renzhenglist == 1}}">
       <btn url="/pages/personalverify/personalverify" type="verify">认证</btn>
     </block>
     <block wx:if="{{detail.renzhenglist == 1}}">
