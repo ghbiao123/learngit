@@ -7,7 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    list: [], // 当前品牌展示列表
+    search: [], // 页面搜索结果列表
+    result: [], // 页面展示列表
   },
 
   /**
@@ -23,9 +25,33 @@ Page({
   init(){
     util.post('/api/products/getOeModelList', this.data.pageOptions).then(res=>{
        
-      let list = res.data;
+      that.data.list = res.data;
       this.setData({
-        list
+        result: that.data.list
+      });
+    });
+  },
+  getInputText(e){
+    let keywords = e.detail;
+    if(!keywords.trim()) {
+      let list = that.data.list;
+      that.setData({
+        result: list
+      });
+      return;
+    };
+    util.post('/api/products/searchEmodel', {
+      keywords
+    }).then(res => {
+      // let arrRet = [...res.data];
+      that.data.search = res.data.filter( v => {
+        return v.cid == that.data.pageOptions.type && that.data.pageOptions.bid == that.data.pageOptions.bid
+      });
+       
+      let result = that.data.search.length == 0 ? that.data.list : that.data.search;
+
+      that.setData({
+        result
       });
     });
   },
