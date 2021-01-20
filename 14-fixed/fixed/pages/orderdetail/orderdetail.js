@@ -61,6 +61,25 @@ Page({
 
 
   },
+  // pay
+  pay(e){
+    let key = e.currentTarget.dataset.key;
+    let data = {
+      users_id: that.data.userId,
+    }
+    if(key == 'rest'){
+      data.type = 2;
+      data.orderNumber = that.data.order.orderDetail.wkordernum;
+    }
+    if(key == 'advance'){
+      data.orderNumber = that.data.order.orderDetail.ordernum;
+      data.type = 1;
+
+    }
+    util.post("/api/orders/unifiedOrder", data).then(res=>{
+      console.log(res);
+    });
+  },
   // 下载PDF
   downloadPDF(){
 

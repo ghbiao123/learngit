@@ -46,7 +46,7 @@ Page({
 
     console.log(app.globalData.createOrderId);
 
-    this.init();
+
 
   },
   // init
@@ -279,9 +279,12 @@ Page({
 
     if(userInfo.renzhenglist == 0){
       // 未认证，需要认证
-      wx.navigateTo({
-        url: '/pages/personalverify/personalverify',
-      });
+      util.showSuccess("请先认证", function(){
+        wx.navigateTo({
+          url: '/pages/personalverify/personalverify',
+        });
+      })
+      return
     }
 
     util.post("/api/orders/placeOrder", reqData).then(res=>{
@@ -331,7 +334,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.init();
   },
 
   /**

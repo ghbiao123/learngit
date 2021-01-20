@@ -42,7 +42,6 @@ Page({
       users_id: that.data.pageOption.userid,
       status: that.data.pageOption.status
     }).then(res=>{
-      console.log(res);
       let list = res.data;
       that.setData({
         list

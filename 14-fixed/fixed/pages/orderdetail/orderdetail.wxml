@@ -112,7 +112,7 @@
       <view class="cell-key">照片：</view>
       <view class="cell-val">
         <block wx:if="{{order.shifuDetail.fkimages && order.shifuDetail.fkimages.length != 0}}">
-          <image wx:for="{{order.shifuDetail.fkimages}}" class="cell-image" src="{{item}}" mode="aspectFit" bindtap="showImage" data-idx="{{index}}" data-key="fkimages"></image>
+          <image wx:for="{{order.shifuDetail.fkimages}}" wx:key="index" class="cell-image" src="{{item}}" mode="aspectFit" bindtap="showImage" data-idx="{{index}}" data-key="fkimages"></image>
         </block>
         <view wx:else>***</view>
       </view>
@@ -200,7 +200,7 @@
     </view>
     <block wx:if="{{order.orderDetail.status == 25}}">
       <btn type="detail" url="/pages/uploadvoucher/uploadvoucher?order_id={{order.orderDetail.id}}&type=1&users_id={{userId}}">上传凭证</btn>
-      <btn type="update">立即支付</btn>
+      <btn type="update" bind:getTap="pay" data-key="advance">立即支付</btn>
     </block>
     <view bindtap="cancelOrder" wx:if="{{order.orderDetail.status == 15}}">
       <btn type="cancel">取消订单</btn>
@@ -213,6 +213,6 @@
       <text style="font-size: 26rpx;">合计：</text><text style="font-size: 26rpx;" class="color-red">¥{{order.order_information.wk_price}}</text>
     </view>
     <btn type="detail" url="/pages/uploadvoucher/uploadvoucher?order_id={{order.orderDetail.id}}&type=2&users_id={{userId}}">上传凭证</btn>
-    <btn type="done">维修完成，确认支付</btn>
+    <btn type="done" bind:getTap="pay" data-key="rest">维修完成，确认支付</btn>
   </view>
 </view>

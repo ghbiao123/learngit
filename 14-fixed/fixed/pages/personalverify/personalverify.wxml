@@ -18,6 +18,14 @@
 
   <view class="item">
     <view class="item-name">
+      <text class="color-red">*</text>身份证号                            
+    </view>
+    <input type="text" bindinput="inputText" data-key="sfzh" class="t-a-r" placeholder="请输入身份证号"/>
+  </view>
+
+
+  <view class="item">
+    <view class="item-name">
       <text class="color-red">*</text>公司名称                            
     </view>
     <input type="text" bindinput="inputText" data-key="company_name" class="t-a-r" placeholder="请输入公司名称"/>

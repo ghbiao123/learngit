@@ -51,7 +51,7 @@
       <view class="cell-key">照片：</view>
       <view class="cell-val">
         <block wx:if="{{order.repairimages && order.repairimages.length != 0}}">
-          <image wx:for="{{order.repairimages}}" class="cell-image" src="{{item}}" mode="aspectFit" bindtap="showImage" data-idx="{{index}}" data-key="repairimages"></image>
+          <image wx:for="{{order.repairimages}}" wx:key="index" class="cell-image" src="{{item}}" mode="aspectFit" bindtap="showImage" data-idx="{{index}}" data-key="repairimages"></image>
         </block>
         <view wx:else>***</view>
       </view>

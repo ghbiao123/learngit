@@ -13,7 +13,7 @@
   <view class="status-box status-r">
     <view class="{{status >= 25 ? 'dot-y-s':'dot-y'}}"></view>
   </view>
-  <view class="status-box">
+  <view class="status-box" style="flex-direction: row-reverse;">
     <status selected="{{status >= 30}}" icon="/images/status-6.png" text="已预付款"></status>
     <view class="{{status >= 30 ? 'dot-x-s':'dot-x'}}"></view>
     <status selected="{{status >= 35}}" icon="/images/status-7.png" text="平台确认(一次)"></status>

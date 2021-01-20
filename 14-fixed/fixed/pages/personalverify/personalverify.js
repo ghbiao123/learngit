@@ -40,9 +40,31 @@ Page({
         return util.showSuccess("请完善信息");
       }
     }
-
+    let userInfo = wx.getStorageSync('userinfo');
+    that.data.reqData.users_id = userInfo.id;
     util.post("/api/personal/updatePersonalData", that.data.reqData).then(res=>{
       console.log(res);
+      if(res.code == 2001){
+        // renzhenglist 
+        // 认证成功之后修改storage
+        util.showSuccess(res.msg, function(){
+          wx.navigateBack({
+            delta: 1,
+          });
+        });
+        
+        userInfo.renzhenglist = 1;
+        wx.setStorage({
+          data: userInfo,
+          key: 'userinfo',
+          success(){
+            
+          }
+        });
+      }
+
+      util.showSuccess(res.msg);
+
     });
   },
 
