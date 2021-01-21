@@ -135,7 +135,7 @@ function updateManager() {
 // 微信授权登录, 未完成
 function getUserInfo(e, callBack) {
 
-  if (e.detail.errMsg !== "getUserInfo:ok") {
+  if (e.detail.errMsg !== "getPhoneNumber:ok") {
     wx.showToast({
       title: '登录失败请重试',
       icon: "none"

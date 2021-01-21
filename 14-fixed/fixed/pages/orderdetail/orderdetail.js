@@ -8,7 +8,7 @@ Page({
    */
   data: {
     pdfUrl: "",
-    isCheck: false
+    isCheck: true
   },
 
   /**
@@ -61,6 +61,21 @@ Page({
 
 
   },
+  // fixDone
+  fixDone(){
+    util.post("/api/orders/confirmCompletion", {
+      users_id: that.data.userId,
+      orders_id: that.data.order.orderDetail.id,
+    }).then(res=>{
+      if(res.code == 2001){
+        util.showSuccess(res.msg, function(){
+          that.init();
+        });
+      }else{
+        util.showSuccess(res.msg);
+      }
+    });
+  },
   // pay
   pay(e){
     let key = e.currentTarget.dataset.key;
@@ -78,6 +93,16 @@ Page({
     }
     util.post("/api/orders/unifiedOrder", data).then(res=>{
       console.log(res);
+      wx.requestPayment({
+        nonceStr: res.nonceStr,
+        package: res.package,
+        paySign: res.paySign,
+        timeStamp: res.timeStamp,
+        signType: res.signType,
+        success(){
+          that.init();
+        }
+      })
     });
   },
   // 下载PDF
@@ -87,14 +112,19 @@ Page({
 
     wx.downloadFile({
       url: that.data.pdfUrl,
+      filePath: wx.env.USER_DATA_PATH + '/机械设备维修维保合同.pdf',
       success(res){
         console.log(res);
-        wx.saveFile({
-          tempFilePath: res.tempFilePath,
-          success(ret){
-            console.log(ret);
+        
+        wx.openDocument({
+          filePath: res.filePath,
+          showMenu: true,
+          success(){
+            
           }
-        })
+        });
+
+        
       },
       fail(err){
         console.log(err);
@@ -172,7 +202,22 @@ Page({
       }
     });
   },
-
+  // cancel
+  cancelOrder(e){
+    util.post("/api/orders/cancelOrder", {
+      users_id: that.data.userId,
+      orders_id: that.data.order.orderDetail.id,
+    }).then(res=>{
+      if(res.code == 2001){
+        util.showSuccess(res.msg, function(){
+          that.init();
+        });
+      }else{
+        util.showSuccess(res.msg);
+        
+      }
+    });
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

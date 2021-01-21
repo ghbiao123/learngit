@@ -17,18 +17,29 @@ Page({
     let lunchOption = wx.getLaunchOptionsSync();
     this.data.agentid = lunchOption.query.agentid;
   },
-  getUserInfo(e){
+  getUserInfo(e) {
     let that = this;
     e.detail.agentid = this.data.agentid ? this.data.agentid : 0;
-    util.getUserInfo(e, function(res){
-      if(res.code == 1){
+    util.getUserInfo(e, function (res) {
+      if (res.code == 2001) {
         let msg = res.data.couponmsg || "登录成功";
-        util.showSuccess( msg, function(){
-          if(that.data.agentid){
+        let data = res.data;
+        data.sfzimages = data.sfzimages ? data.sfzimages.split(",") : '';
+        data.certimages = data.certimages ? data.certimages.split(",") : '';
+        data.cardimage = data.cardimage ? data.cardimage.split(",") : '';
+        data.yingyeimage = data.yingyeimage ? data.yingyeimage.split(",") : '';
+
+        wx.setStorage({
+          data: data,
+          key: 'userinfo',
+        });
+        util.showSuccess(msg, function () {
+
+          if (that.data.agentid) {
             wx.reLaunch({
               url: '/pages/index/index',
             });
-          }else{
+          } else {
             wx.navigateBack({
               delta: 1,
             });

@@ -169,11 +169,11 @@
         <text wx:if="{{order.order_information.contract_status == 1}}" class="color-blue">已签署 </text>
       </view>
       <!-- 未签署合同 -->
-      <view bindtap="openPDF" wx:if="{{order.order_information.contract_status == 0}}" class="cell-val color-blue"
-        style="text-decoration:underline;"> 查看合同</view>
+      <!-- <view bindtap="openPDF" wx:if="{{order.order_information.contract_status == 0}}" class="cell-val color-blue"
+        style="text-decoration:underline;"> 查看合同</view> -->
       <!-- 已签署合同 -->
-      <view bindtap="openPDF" wx:if="{{order.order_information.contract_status == 1}}" class="cell-key"
-        style="text-decoration:underline;"> 查看合同</view>
+      <!-- <view bindtap="openPDF" wx:if="{{order.order_information.contract_status == 1}}" class="cell-key"
+        style="text-decoration:underline;"> 查看合同</view> -->
     </view>
 
     <view class="sign {{isCheck || order.order_information.contract_status == 1? '':'cover-gray'}}">
@@ -192,7 +192,7 @@
 
   <!-- 订单已签署，则隐藏按钮 -->
   <!-- 预付款 -->
-  <view wx:if="{{order.orderDetail.status == 25 || order.orderDetail.status == 15}}" class="bottom-btn-box" style="justify-content: space-between;">
+  <view wx:if="{{order.orderDetail.status ==10 || order.orderDetail.status == 25}}" class="bottom-btn-box" style="justify-content: space-between;">
     <view style="width: 380rpx;">
       <block wx:if="{{order.orderDetail.status == 25}}">
         <text style="font-size: 26rpx;">合计：</text><text style="font-size: 26rpx;" class="color-red">¥{{order.order_information.yf_price}}</text>
@@ -202,9 +202,14 @@
       <btn type="detail" url="/pages/uploadvoucher/uploadvoucher?order_id={{order.orderDetail.id}}&type=1&users_id={{userId}}">上传凭证</btn>
       <btn type="update" bind:getTap="pay" data-key="advance">立即支付</btn>
     </block>
-    <view bindtap="cancelOrder" wx:if="{{order.orderDetail.status == 15}}">
+    <view bindtap="cancelOrder" wx:if="{{order.orderDetail.status == 10}}">
       <btn type="cancel">取消订单</btn>
     </view>
+  </view>
+
+  <!-- 维修完成 -->
+  <view wx:if="{{order.orderDetail.status == 45}}" class="bottom-btn-box" style="justify-content: center;">
+    <btn type="normal" bind:getTap="fixDone">维修完成</btn>
   </view>
 
   <!-- 余款 -->

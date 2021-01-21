@@ -10,7 +10,9 @@
       </view>
       <view class="userinfo">
         <view class="user-name">
-          {{userInfo.name}}
+          <view>{{userInfo.name}}</view>
+          <image wx:if="{{userInfo.renzhenglist == 1}}" class="user-verify" src="/images/verify.png"></image>
+          <view wx:if="{{userInfo.renzhenglist == 1}}" class="user-verify-text">企业已认证</view>
           <block wx:if="{{!userInfo.name}}">
             <open-data type="userNickName"></open-data>
           </block>

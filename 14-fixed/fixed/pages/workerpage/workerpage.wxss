@@ -22,7 +22,19 @@
   line-height: 2;
 }
 .user-name{
+  display: flex;
+  align-items: center;
   font-size: 36rpx;
+}
+.user-verify{
+  width: 28rpx;
+  height: 28rpx;
+  margin: 10rpx;
+}
+.user-verify-text{
+  text-indent: 0;
+  font-size: 24rpx;
+  color: #FEB855;
 }
 .user-phone{
   font-size: 24rpx;

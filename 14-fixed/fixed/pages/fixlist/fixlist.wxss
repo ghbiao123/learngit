@@ -24,9 +24,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
   height: 90rpx;
   min-width: 650rpx;
-  padding-left: 20rpx;
+  /* padding-left: 20rpx; */
 }
 .tab-item{
   padding: 0 10rpx;

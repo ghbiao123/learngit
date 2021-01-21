@@ -44,10 +44,6 @@ Page({
 
     this.data.pageOption = app.globalData.createOrderId;
 
-    console.log(app.globalData.createOrderId);
-
-
-
   },
   // init
   init(){
@@ -100,6 +96,19 @@ Page({
         arrServer: res.data
       });
     });
+
+    // if(app.globalData.createOrderId.lv1id){
+    //   wx.getStorage({
+    //     key: 'userinfo',
+    //     success(res){
+    //       let userInfo = res.data;
+    //       that.setData({
+    //         userInfo
+    //       });
+    //     }
+    //   });
+    // }
+
 
   },
   showImage(e){
@@ -334,6 +343,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log(app.globalData.createOrderId);
     this.init();
   },
 

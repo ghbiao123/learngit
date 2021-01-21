@@ -38,7 +38,9 @@
     <view class="userorder-title">
       <view>我的订单</view>
       <view class="userorder-all">
-        <view class="all-text">全部订单</view>
+        <view class="all-text" bindtap="getList" data-status="{{orderStatus[3].status}}" hover-class="sort-item-hover">
+          全部订单
+        </view>
         <image class="all-icon" src="/images/rt.png"></image>
       </view>
     </view>

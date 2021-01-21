@@ -1,14 +1,14 @@
 <view class="container">
-  <cell title="公司名称" cont="{{detail.company_name}}"></cell>
-  <cell title="公司地址" cont="{{detail.company_address}}"></cell>
-  <cell title="员工工号" cont="{{detail.staffnum}}"></cell>
-  <cell title="姓名" cont="{{detail.name}}"></cell>
-  <cell title="身份证号" cont="{{detail.sfzh}}"></cell>
-  <cell title="电话" cont="{{detail.phone}}"></cell>
+  <cell title="公司名称" cont="{{detail.company_name || ''}}"></cell>
+  <cell title="公司地址" cont="{{detail.company_address || ''}}"></cell>
+  <cell title="员工工号" cont="{{detail.staffnum || ''}}"></cell>
+  <cell title="姓名" cont="{{detail.name || ''}}"></cell>
+  <cell title="身份证号" cont="{{detail.sfzh || ''}}"></cell>
+  <cell title="电话" cont="{{detail.phone || ''}}"></cell>
   <cell title="认证状态" cont="{{detail.renzhenglist==0?'未认证':'已认证'}}"></cell>
 
   <view class="button-box">
-    <block wx:if="{{detail.renzhenglist == 1}}">
+    <block wx:if="{{detail.renzhenglist == 0}}">
       <btn url="/pages/personalverify/personalverify" type="verify">认证</btn>
     </block>
     <block wx:if="{{detail.renzhenglist == 1}}">
