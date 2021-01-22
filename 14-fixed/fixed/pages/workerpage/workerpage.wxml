@@ -4,7 +4,7 @@
   <view class="header b-b-line">
     <!-- 已登录 -->
     <view class="header-cont">
-      <image wx:if="{{userInfo.headimage}}" class="avatar" mode="aspectFit" src="{{userInfo.headimage}}"></image>
+      <image wx:if="{{userInfo.headimage}}" class="avatar" mode="aspectFill" src="{{userInfo.headimage}}"></image>
       <view class="avatar" wx:if="{{!userInfo.headimage}}">
         <open-data type="userAvatarUrl" class="avatar"></open-data>
       </view>

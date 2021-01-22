@@ -26,7 +26,8 @@
     </view>
     <view class="form-picture-box">
       <view class="form-picture-item" wx:for="{{reqData.certimages}}" wx:key="index">
-        <icon data-key="certimages" data-idx="{{index}}" bindtap="deleteImage" type="cancel" size="25" class="form-cancel" color="#ccc"></icon>
+        <icon data-key="certimages" data-idx="{{index}}" bindtap="deleteImage" type="cancel" size="25"
+          class="form-cancel" color="#ccc"></icon>
         <image class="form-picture" mode="aspectFit" src="{{item}}"></image>
       </view>
       <image data-key="certimages" bindtap="addImage" class="form-picture-item" src="/images/add.png"></image>
@@ -38,7 +39,8 @@
     </view>
     <view class="form-picture-box">
       <view class="form-picture-item" wx:for="{{reqData.zhengjianimage}}" wx:key="index">
-        <icon data-key="zhengjianimage" data-idx="{{index}}" bindtap="deleteImage" type="cancel" size="25" class="form-cancel" color="#ccc"></icon>
+        <icon data-key="zhengjianimage" data-idx="{{index}}" bindtap="deleteImage" type="cancel" size="25"
+          class="form-cancel" color="#ccc"></icon>
         <image class="form-picture" mode="aspectFit" src="{{item}}"></image>
       </view>
       <image data-key="zhengjianimage" bindtap="addImage" class="form-picture-item" src="/images/add.png"></image>
@@ -49,10 +51,15 @@
       <view class="form-title-tip">请上传身份证正反面照片</view>
     </view>
     <view class="form-picture-box">
-      <image data-key="sfzimages" data-idx="1" bindtap="addImage" class="form-picture-item" src="{{reqData.sfzimages[0] ? reqData.sfzimages[0] : '/images/IDcard-font.png'}}"></image>
-      <image data-key="sfzimages" data-idx="2" bindtap="addImage" class="form-picture-item" src="{{reqData.sfzimages[1] ? reqData.sfzimages[1] : '/images/IDcard-back.png'}}"></image>
+      <image data-key="sfzimages" data-idx="1" bindtap="addImage" class="form-picture-item"
+        src="{{reqData.sfzimages[0] ? reqData.sfzimages[0] : '/images/IDcard-font.png'}}"></image>
+      <image data-key="sfzimages" data-idx="2" bindtap="addImage" class="form-picture-item"
+        src="{{reqData.sfzimages[1] ? reqData.sfzimages[1] : '/images/IDcard-back.png'}}"></image>
     </view>
-
+    
+    <cell title="培训">
+      <input type="text" name="train" value="{{clearValue}}" class="t-a-r" placeholder="请输入培训技能" slot="value" />
+    </cell>
     <view class="form-title">
       个人擅长
     </view>

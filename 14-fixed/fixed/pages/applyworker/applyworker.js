@@ -20,7 +20,8 @@ Page({
       zhengjianimage: [],
       sfzimages: [],
       skill: "",
-      peixun: "",
+      // peixun: "",
+      train: "",
       banknum: "",
       bankdetail: ""
     },
@@ -251,12 +252,12 @@ Page({
       return util.showSuccess("请上传身份证正反面照片");
     }
 
-    if(userInfo.renzhenglist == 0){
-      // 未认证，需要认证
-      wx.navigateTo({
-        url: '/pages/personalverify/personalverify',
-      });
-    }
+    // if(userInfo.renzhenglist == 0){
+    //   // 未认证，需要认证
+    //   wx.navigateTo({
+    //     url: '/pages/personalverify/personalverify',
+    //   });
+    // }
 
     util.post("/api/apply/apply", reqData).then(res=>{
       if(res.code == 2001){

@@ -1,7 +1,7 @@
 // pages/createorder/createorder.js
 let util = require("../../utils/util");
 let that;
-let app = getApp();
+
 Page({
 
   /**
@@ -41,8 +41,6 @@ Page({
    */
   onLoad: function (options) {
     that = this;
-
-    this.data.pageOption = app.globalData.createOrderId;
 
   },
   // init
@@ -343,6 +341,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let app = getApp();
+    this.data.pageOption = app.globalData.createOrderId;
     console.log(app.globalData.createOrderId);
     this.init();
   },

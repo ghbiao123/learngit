@@ -101,6 +101,9 @@ Page({
         signType: res.signType,
         success(){
           that.init();
+        },
+        fail(){
+          that.init();
         }
       })
     });
@@ -108,7 +111,11 @@ Page({
   // 下载PDF
   downloadPDF(){
 
-    if(!this.data.isCheck) return util.showSuccess("请先查看合同");
+    // if(!this.data.isCheck) return util.showSuccess("请先查看合同");
+
+    if( !(this.data.pdfUrl.slice(-3) == "pdf")){
+      return util.showSuccess("还未生成合同，请下拉刷新后再试");
+    }
 
     wx.downloadFile({
       url: that.data.pdfUrl,
@@ -120,7 +127,7 @@ Page({
           filePath: res.filePath,
           showMenu: true,
           success(){
-            
+             
           }
         });
 
