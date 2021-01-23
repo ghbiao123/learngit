@@ -89,7 +89,7 @@
   <!-- telephone -->
   <view class="telephone b-b-line">
     <image class="telephone-icon" src="/images/index-phone.png"></image>
-    <view>咨询/投诉电话：2131445552</view>
+    <view bindtap="makePhoneCall">咨询/投诉电话：{{pageData.phoneNum}}</view>
   </view>
 
 </view>

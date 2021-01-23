@@ -24,8 +24,12 @@ Page({
         bottomBanner: {
           title: "",
           list: []
-        }
+        },
+        phoneNum: ''
       }
+
+      // phone number
+      pageData.phoneNum = res.data.phoneNum;
 
       // top banner
       pageData.topBannerList = util.getImageFullUrl( res.data.toplunbo, "lunboimage");
@@ -58,6 +62,15 @@ Page({
     });
 
 
+  },
+
+  makePhoneCall(e){
+    if(!this.data.pageData.phoneNum){
+      return;
+    }
+    wx.makePhoneCall({
+      phoneNumber: this.data.pageData.phoneNum,
+    });
   },
 
   bottomBannerChange(e){
