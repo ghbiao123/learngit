@@ -55,16 +55,59 @@ Page({
     }
     this.getList(key);
   },
-  getList(keywords) {
-    util.post('/api/products/searchEmodel', {
-      keywords
-    }).then(res => {
-       
-      that.setData({
-        showList: true,
-        result: res.data
+  async getList(keywords) {
+    keywords = keywords.replace(/\s/g, "");
+
+    let arrKeys = [];
+
+    let reg = /[0-9a-zA-Z_]{1,}/g;
+    let ret = reg.exec(keywords);
+    let char = ret ? ret[0] : "";
+    if(char){
+      // 有数字，字母 
+      arrKeys = keywords.split(char);
+      arrKeys.push(char);
+    }else{
+      // 没有数字字母
+      arrKeys.push(keywords);
+    }
+
+    
+
+    arrKeys = arrKeys.filter(v=>{
+      if(v) return v;
+    });
+
+    let list = await new Promise((resolve, reject)=>{
+      util.post('/api/products/searchEmodel', {
+        keywords: arrKeys[0]
+      }).then(res => {
+        resolve(res.data);
       });
     });
+
+    if(arrKeys[1]){ 
+      list = list.filter(v=>{
+        let name = v.name.toLocaleLowerCase().replace(/\s/g, "");
+        let key = arrKeys[1].toLocaleLowerCase();
+        if(name.indexOf(key)>=0)  return v;
+      });
+    }
+
+    that.setData({
+      showList: true,
+      result: list
+    });
+
+    // util.post('/api/products/searchEmodel', {
+    //   keywords
+    // }).then(res => {
+       
+    //   that.setData({
+    //     showList: true,
+    //     result: res.data
+    //   });
+    // });
   },
   getEvaluation(e) {
     that.setData({
