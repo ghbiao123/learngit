@@ -2,16 +2,16 @@
   <form bindsubmit="submit">
 
     <cell title="姓名">
-      <input type="text" name="name" value="{{userInfo.name}}" class="t-a-r" placeholder="请输入姓名" slot="value" />
+      <input type="text" name="name" value="{{userInfo.name || reqData.name}}" class="t-a-r" placeholder="请输入姓名" slot="value" />
     </cell>
     <cell title="身份证号">
-      <input type="text" name="sfzh" value="{{userInfo.sfzh}}" class="t-a-r" placeholder="请输入身份证号" slot="value" />
+      <input type="text" name="sfzh" value="{{userInfo.sfzh || reqData.sfzh}}" class="t-a-r" placeholder="请输入身份证号" slot="value" />
     </cell>
     <cell title="电话">
-      <input type="text" name="phone" value="{{userInfo.phone}}" class="t-a-r" placeholder="请输入电话" slot="value" />
+      <input type="text" name="phone" value="{{userInfo.phone || reqData.phone}}" class="t-a-r" placeholder="请输入电话" slot="value" />
     </cell>
     <cell title="位置">
-      <input type="text" name="sfaddress" value="{{clearValue}}" class="t-a-r" placeholder="请输入位置" slot="value" />
+      <input type="text" name="sfaddress" value="{{reqData.sfaddress}}" class="t-a-r" placeholder="请输入位置" slot="value" />
     </cell>
 
     <picker mode="selector" range="{{arrServer}}" range-key="name" bindchange="serverChange">
@@ -51,26 +51,26 @@
       <view class="form-title-tip">请上传身份证正反面照片</view>
     </view>
     <view class="form-picture-box">
-      <image data-key="sfzimages" data-idx="1" bindtap="addImage" class="form-picture-item"
+      <image mode="aspectFit" data-key="sfzimages" data-idx="1" bindtap="addImage" class="form-picture-item"
         src="{{reqData.sfzimages[0] ? reqData.sfzimages[0] : '/images/IDcard-font.png'}}"></image>
-      <image data-key="sfzimages" data-idx="2" bindtap="addImage" class="form-picture-item"
+      <image mode="aspectFit" data-key="sfzimages" data-idx="2" bindtap="addImage" class="form-picture-item"
         src="{{reqData.sfzimages[1] ? reqData.sfzimages[1] : '/images/IDcard-back.png'}}"></image>
     </view>
     
     <cell title="培训">
-      <input type="text" name="train" value="{{clearValue}}" class="t-a-r" placeholder="请输入培训技能" slot="value" />
+      <input type="text" name="train" value="{{reqData.train}}" class="t-a-r" placeholder="请输入培训技能" slot="value" />
     </cell>
     <view class="form-title">
       个人擅长
     </view>
-    <textarea value="{{clearValue}}" name="skill" placeholder="请输入擅长的事项" class="form-textarea"></textarea>
+    <textarea value="{{reqData.skill}}" name="skill" placeholder="请输入擅长的事项" class="form-textarea"></textarea>
 
     <cell title="银行卡卡号">
-      <input type="text" name="banknum" value="{{clearValue}}" class="t-a-r" placeholder="请输入银行卡卡号" slot="value" />
+      <input type="text" name="banknum" value="{{reqData.banknum}}" class="t-a-r" placeholder="请输入银行卡卡号" slot="value" />
     </cell>
 
     <cell title="银行卡分行信息">
-      <input type="text" name="bankdetail" value="{{clearValue}}" class="t-a-r" placeholder="请输入银行卡分行信息" slot="value" />
+      <input type="text" name="bankdetail" value="{{reqData.bankdetail}}" class="t-a-r" placeholder="请输入银行卡分行信息" slot="value" />
     </cell>
 
 

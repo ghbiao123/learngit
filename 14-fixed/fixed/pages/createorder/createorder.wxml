@@ -49,19 +49,19 @@
     </view>
 
     <cell title="公司名称">
-      <input type="text" name="company_name" value="{{clearValue}}" class="t-a-r" placeholder="请输入公司名称" slot="value" />
+      <input type="text" name="company_name" value="{{userInfo.company_name}}" class="t-a-r" placeholder="请输入公司名称" slot="value" />
     </cell>
 
     <cell title="联系人">
-      <input type="text" name="lianxiren" value="{{clearValue}}" class="t-a-r" placeholder="请输入联系人姓名" slot="value" />
+      <input type="text" name="lianxiren" value="{{userInfo.name}}" class="t-a-r" placeholder="请输入联系人姓名" slot="value" />
     </cell>
 
     <cell title="联系方式">
-      <input type="text" name="lianxiphone" value="{{clearValue}}" class="t-a-r" placeholder="请输入联系方式" slot="value" />
+      <input type="text" name="lianxiphone" value="{{userInfo.phone}}" class="t-a-r" placeholder="请输入联系方式" slot="value" />
     </cell>
 
     <cell title="联系地址">
-      <input type="text" name="service_address" value="{{clearValue}}" class="t-a-r" placeholder="请输入联系地址" slot="value" />
+      <input type="text" name="service_address" value="{{userInfo.company_address}}" class="t-a-r" placeholder="请输入联系地址" slot="value" />
     </cell>
 
     <button class="clear normal btn-submit" hover-class="normal-hover" form-type="submit">提交</button>

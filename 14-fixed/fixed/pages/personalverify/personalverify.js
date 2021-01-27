@@ -13,7 +13,24 @@ Page({
       sfzh: "",
       company_name: "",
       yingyeimage: "",
-    }
+      applypay_methodlist: "3"
+    },
+    payType: [
+      {
+        id: "0",
+        name: "现结",
+      },
+      {
+        id: "1",
+        name: "月结",
+      },
+      {
+        id: "2",
+        name: "年结",
+      },
+    ],
+    isShow: false,
+    payMethod: "",
   },
 
   /**
@@ -22,9 +39,33 @@ Page({
   onLoad: function (options) {
     that = this;
 
+    wx.getStorage({
+      key: 'verify',
+      success(res){
+        that.setData({
+          reqData: res.data
+        });
+      }
+    });
 
   },
 
+  // typeChange
+  typeChange(e){
+    console.log(e);
+    let reqData = this.data.reqData;
+    let payMethod = this.data.payMethod;
+    reqData.applypay_methodlist = this.data.payType[e.detail.value].id;
+    payMethod = this.data.payType[e.detail.value].name;
+
+    this.setData({
+      reqData,
+      payMethod
+    });
+
+  },
+
+  // submit
   submit(){
     console.log(that.data.reqData);
     let data = that.data.reqData;
@@ -40,6 +81,9 @@ Page({
         return util.showSuccess("请完善信息");
       }
     }
+    if(this.data.isShow && this.data.reqData.applypay_methodlist==3){
+      return util.showSuccess("请完选择支付方式");
+    }
     let userInfo = wx.getStorageSync('userinfo');
     that.data.reqData.users_id = userInfo.id;
     util.post("/api/personal/updatePersonalData", that.data.reqData).then(res=>{
@@ -47,6 +91,12 @@ Page({
       if(res.code == 2001){
         // renzhenglist 
         // 认证成功之后修改storage
+
+        wx.setStorage({
+          data: that.data.reqData,
+          key: 'verify',
+        });
+
         util.showSuccess(res.msg, function(){
           wx.navigateBack({
             delta: 1,
@@ -72,6 +122,40 @@ Page({
   inputText(e){
     let key = e.currentTarget.dataset.key;
     this.data.reqData[key] = e.detail.value;
+  },
+
+  businessSuccess(e){
+    console.log(e);
+    this.data.reqData.company_name = e.detail.enterprise_name.text;
+
+    util.post("/api/personal/checkCompany", {
+      company_name: "上海招银行"
+    }).then(res=>{
+      console.log(res);
+      if(res.code == 2001){
+        // 后台维护了企业名称
+
+      }else if(res.code == 3001){
+        // 后台未维护企业名称
+        that.setData({
+          isShow: true
+        });
+      }
+    });
+
+    wx.uploadFile({
+      filePath: e.detail.image_path,
+      name: 'image',
+      url: util.getSiteRoot() + "/index.php/api/personal/upload",
+      success(ret) {
+        let reqData = that.data.reqData;
+        let url = util.getSiteRoot() + JSON.parse(ret.data).data.replace(/\\/g, "/");
+        reqData.yingyeimage  = url;
+        that.setData({
+          reqData,
+        });
+      }
+    });
   },
 
   // 获取营业执照

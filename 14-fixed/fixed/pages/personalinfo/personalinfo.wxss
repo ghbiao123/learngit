@@ -4,3 +4,15 @@
   justify-content: space-between;
   padding: 60rpx 20rpx;
 }
+.logout{
+  width: 710rpx !important;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #999999;
+  font-size: 34rpx;
+  border: 1rpx solid #999999;
+}
+.logout-hover{
+  background: #999999;
+  color: #fff;
+}

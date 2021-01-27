@@ -49,6 +49,16 @@ Page({
       });
     });
 
+    wx.getStorage({
+      key: 'apply',
+      success(res){
+        let apply = res.data;
+        that.setData({
+          reqData: apply
+        });
+      }
+    });
+
     let userInfo = this.data.userInfo ? this.data.userInfo : wx.getStorageSync('userinfo');
     util.post("/api/wxlogin/getUserData", {
       users_id: userInfo.id
@@ -261,6 +271,13 @@ Page({
 
     util.post("/api/apply/apply", reqData).then(res=>{
       if(res.code == 2001){
+
+        // 用户申请成功，将申请的数据放到storage
+        wx.setStorage({
+          data: reqData,
+          key: 'apply',
+        });
+
         util.showSuccess(res.msg, function(){
           wx.navigateBack({
             delta: 1,

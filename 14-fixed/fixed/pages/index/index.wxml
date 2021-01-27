@@ -27,7 +27,7 @@
 
       <navigator hover-class="none" url="/pages/createfix/createfix" open-type="switchTab">
         <view class="create-fix" hover-class="create-fix-hover">
-          <view>创建保修</view>
+          <view>创建报修</view>
           <image class="create-icon" src="/images/createfix-icon.png"></image>
         </view>
       </navigator>

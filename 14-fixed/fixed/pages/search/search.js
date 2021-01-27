@@ -128,6 +128,8 @@ Page({
   // cont swiper change
   contSwiperChange(e){
 
+    this.data.contCurrent = e.detail.current;
+
     let lv2Id = this.data.arrLv2[e.detail.current].id;
 
     that.setData({

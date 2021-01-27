@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "btn": "/mycomponents/btn/btn"
+    "btn": "/mycomponents/btn/btn",
+    "ocr-navigator": "plugin://ocr-plugin/ocr-navigator"
   },
   "navigationBarTitleText": "认证"
 }

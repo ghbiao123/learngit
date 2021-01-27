@@ -1,7 +1,7 @@
 <view class="container">
   <form bindsubmit="submit">
 
-    <cell title="保修标题">
+    <cell title="报修标题">
       <input type="text" name="repair_name" value="{{clearValue}}" class="t-a-r" placeholder="请输入标题" slot="value" />
     </cell>
 

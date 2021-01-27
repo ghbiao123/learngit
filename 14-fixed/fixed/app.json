@@ -64,5 +64,11 @@
     "navigationBarTextStyle":"black"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "plugins": {
+    "ocr-plugin": {
+      "version": "3.0.4",
+      "provider": "wx4418e3e031e551be"
+    }
+  }
 }

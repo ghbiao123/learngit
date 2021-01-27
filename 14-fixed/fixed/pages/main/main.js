@@ -21,7 +21,14 @@ Page({
   init() {
     let userInfo = this.data.userInfo ? this.data.userInfo : wx.getStorageSync('userinfo');
 
-    if (!userInfo) return;
+    if (!userInfo) {
+
+      this.setData({
+        orderStatus: []
+      });
+
+      return
+    };
 
     util.post("/api/orders/getStatusList", {
       users_id: userInfo.id
@@ -42,6 +49,8 @@ Page({
     util.post("/api/wxlogin/getUserData", {
       users_id: userInfo.id
     }).then(res => {
+
+      // 检测用户是否认证或申请成为师傅，并清除storage
 
       that.setData({
         userInfo: res.data

@@ -31,11 +31,19 @@ function post(url, data = {}) {
       method: "POST",
       data: data,
       success(res) {
-
+      
         status = 1;
 
         if (res.statusCode !== 200) {
-          showError("您的网络出错啦");
+          wx.showModal({
+            showCancel: false,
+            confirmText: "重新加载",
+            title: "提示",
+            content: "网络异常或加载失败",
+            success(res){
+              
+            }
+          });
           return;
         }
 
@@ -148,8 +156,8 @@ function getUserInfo(e, callBack) {
       let data = {
         code: res.code,
         // userInfo: e.detail.rawData,
-        encryptedData: e.detail.encryptedData,
-        iv: e.detail.iv,
+        encryptedData: encodeURIComponent(e.detail.encryptedData),
+        iv: encodeURIComponent(e.detail.iv),
       }
       post("/api/wxlogin/userlogin", data).then(res => {
         callBack&&callBack(res);

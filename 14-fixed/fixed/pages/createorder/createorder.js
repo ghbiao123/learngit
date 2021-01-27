@@ -95,18 +95,15 @@ Page({
       });
     });
 
-    // if(app.globalData.createOrderId.lv1id){
-    //   wx.getStorage({
-    //     key: 'userinfo',
-    //     success(res){
-    //       let userInfo = res.data;
-    //       that.setData({
-    //         userInfo
-    //       });
-    //     }
-    //   });
-    // }
-
+    wx.getStorage({
+      key: 'userinfo',
+      success(res){
+        let userInfo = res.data;
+        that.setData({
+          userInfo
+        });
+      }
+    });
 
   },
   showImage(e){

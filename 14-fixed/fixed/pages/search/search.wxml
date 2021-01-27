@@ -19,9 +19,9 @@
     <view class="main-cont" style="height: {{contHeight}}px;">
       <!-- 二级类目 -->
       <view class="tab-box">
-        <scroll-view class="tab-scroll" scroll-x>
+        <scroll-view class="tab-scroll" scroll-x scroll-into-view="id{{lv2Id-1}}">
           <view class="tab-cont" style="width:{{180*5}}rpx;">
-            <view class="tab-item {{(item.id == lv2Id) ? 'tab-item-s' : ''}}" data-idx="{{index}}" data-id="{{item.id}}" bindtap="getLv2" wx:for="{{arrLv2}}" wx:key="index">{{item.name}}</view>
+            <view id="id{{item.id}}" class="tab-item {{(item.id == lv2Id) ? 'tab-item-s' : ''}}" data-idx="{{index}}" data-id="{{item.id}}" bindtap="getLv2" wx:for="{{arrLv2}}" wx:key="index">{{item.name}}</view>
           </view>
         </scroll-view>
       </view>

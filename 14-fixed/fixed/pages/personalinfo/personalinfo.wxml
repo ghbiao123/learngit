@@ -17,3 +17,5 @@
     <btn url="/pages/changeperinfo/changeperinfo" type="change">修改个人信息</btn>
   </view>
 </view>
+
+<button class="clear logout" hover-class="logout-hover" bindtap="logOut">退出登录</button>
