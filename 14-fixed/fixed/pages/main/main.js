@@ -19,8 +19,8 @@ Page({
   },
   // 数据初始化
   init() {
-    let userInfo = this.data.userInfo ? this.data.userInfo : wx.getStorageSync('userinfo');
-
+    let userInfo = this.data.isLogin ? this.data.userInfo : wx.getStorageSync('userinfo');
+    
     if (!userInfo) {
 
       this.setData({
@@ -50,10 +50,22 @@ Page({
       users_id: userInfo.id
     }).then(res => {
 
+      let userInfo = res.data;
       // 检测用户是否认证或申请成为师傅，并清除storage
 
+      if(userInfo.renzhenglist == 1){
+        wx.removeStorage({
+          key: 'verify',
+        });
+      }
+      if(userInfo.apply_status == 2){
+        wx.removeStorage({
+          key: 'apply',
+        });
+      }
+
       that.setData({
-        userInfo: res.data
+        userInfo
       });
 
     });

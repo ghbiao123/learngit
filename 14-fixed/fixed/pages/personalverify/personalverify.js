@@ -42,8 +42,15 @@ Page({
     wx.getStorage({
       key: 'verify',
       success(res){
+        let reqData = res.data;
+        let payMethod = "";
+        if(reqData.applypay_methodlist != 3){
+          payMethod = that.data.payType[reqData.applypay_methodlist].name;
+        }
+
         that.setData({
-          reqData: res.data
+          reqData,
+          payMethod,
         });
       }
     });
@@ -129,11 +136,17 @@ Page({
     this.data.reqData.company_name = e.detail.enterprise_name.text;
 
     util.post("/api/personal/checkCompany", {
-      company_name: "上海招银行"
+      company_name: this.data.reqData.company_name
     }).then(res=>{
       console.log(res);
       if(res.code == 2001){
         // 后台维护了企业名称
+
+        that.data.reqData.applypay_methodlist = 3;
+        
+        that.setData({
+          isShow: false,
+        });
 
       }else if(res.code == 3001){
         // 后台未维护企业名称
