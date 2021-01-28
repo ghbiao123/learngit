@@ -70,6 +70,7 @@ Page({
   showModel(){
     wx.getSystemInfo({
       success: (result) => {
+        console.log(result);
         util.showError(result.model, function(){
           wx.setClipboardData({
             data: result.model,

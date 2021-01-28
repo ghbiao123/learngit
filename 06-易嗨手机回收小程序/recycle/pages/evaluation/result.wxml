@@ -147,7 +147,7 @@
 						<picker mode="multiSelector" range="{{arrDatePicker}}" value="{{arrDatePickerValue}}" bindcolumnchange="dateColumnChange" bindchange="dateChange">
 							<input disabled class="pick-input" value="{{orderDate}}" placeholder="选择预约日期"></input>
 						</picker>
-						<picker mode="time" start="{{timePickerStart}}" end="22:00" bindchange="timeChange">
+						<picker mode="time" value="{{timePickerStart}}" start="{{timePickerStart}}" end="22:00" bindchange="timeChange">
 							<input disabled class="pick-input" value="{{orderTime}}" placeholder="选择预约时间"></input>
 						</picker>
 					</view>

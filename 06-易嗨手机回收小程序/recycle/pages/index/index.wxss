@@ -1,10 +1,10 @@
-.banner{
+.banner {
   position: relative;
   width: 750rpx;
   height: 280rpx;
 }
 
-.banner-bg{
+.banner-bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -14,7 +14,7 @@
 
 .banner-swiper,
 .banner-swiper-item,
-.banner-image{
+.banner-image {
   margin: 0 auto;
   width: 710rpx;
   height: 280rpx;
@@ -23,7 +23,7 @@
 }
 
 /* index - title  */
-.left-red-line{
+.left-red-line {
   margin-top: 20rpx;
   padding-left: 20rpx;
   height: 35rpx;
@@ -31,61 +31,71 @@
   border-left: 4rpx solid #C1402A;
 }
 
-.add-price{
+.add-price {
   margin: 0 auto;
   width: 670rpx;
   height: 150rpx;
 }
 
 /* banner 下边 回收手机 */
-.my-old-phone{
+.my-old-phone {
   margin: 20rpx auto 0;
   width: 710rpx;
   height: 216rpx;
   overflow: hidden;
   border-radius: 20rpx;
 }
+
 .recycle-phone,
-.get-coupon{
+.get-coupon {
   position: relative;
 }
-.recycle-phone{
+
+.recycle-phone {
   height: 126rpx;
 }
-.get-coupon{
+
+.get-coupon {
   height: 90rpx;
 }
-.my-old-phone-bg{
+
+.my-old-phone-bg {
   width: 710rpx;
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
 }
-.recycle-phone-cont{
+
+.recycle-phone-cont {
   display: flex;
   width: 710rpx;
   height: 126rpx;
 }
-.recycle-icon{
+
+.recycle-icon {
   margin: 20rpx 0 0 20rpx;
   width: 86rpx;
 }
-.recycle-content{
+
+.recycle-content {
   margin: 20rpx 0 0 20rpx;
   width: 400rpx;
 }
-.recycle-content-tit{
+
+.recycle-content-tit {
   line-height: 43rpx;
   font-size: 36rpx;
   color: #333;
 }
-.recycle-content-subtitle{
+
+.recycle-content-subtitle {
   line-height: 43rpx;
   font-size: 24rpx;
   color: #999999;
 }
-.evaluation-free{
+
+.evaluation-free {
   margin-top: 39rpx;
   padding: 0;
   width: 140rpx !important;
@@ -95,21 +105,25 @@
   border-radius: 24rpx;
   background-color: #f74444;
 }
-.coupon-content{
+
+.coupon-content {
   display: flex;
   justify-content: center;
 }
-.coupon-content-icon{
+
+.coupon-content-icon {
   margin: 28rpx 20rpx 0 0;
   width: 34rpx;
 }
-.coupon-content-text{
+
+.coupon-content-text {
   height: 90rpx;
   line-height: 90rpx;
   font: normal 28rpx/90rpx '';
   color: #333333;
 }
-.myphone{
+
+.myphone {
   margin: 20rpx auto 0;
   position: relative;
   width: 710rpx;
@@ -117,26 +131,30 @@
   overflow: hidden;
   border-radius: 20rpx;
 }
-.myphone-bg{
+
+.myphone-bg {
   position: absolute;
   left: 0;
   top: 0;
   width: 710rpx;
 }
-.myphone-content{
+
+.myphone-content {
   margin: 30rpx 0 0 38rpx;
   display: flex;
   width: 640rpx;
   height: 240rpx;
 }
-.myphone-content-image{
+
+.myphone-content-image {
   position: relative;
   width: 280rpx;
   height: 240rpx;
   border-radius: 10rpx;
   overflow: hidden;
 }
-.myphone-image{
+
+.myphone-image {
   position: absolute;
   top: 30rpx;
   left: 20rpx;
@@ -144,7 +162,8 @@
   height: 180rpx;
   transform: scale(1.1);
 }
-.myphone-button{
+
+.myphone-button {
   position: absolute;
   right: 0;
   top: 0;
@@ -155,48 +174,59 @@
   background-color: #a1225c;
   border-radius: 0 0 0 10rpx;
 }
-.myphone-button-icon{
+
+.myphone-button-icon {
   margin: 11rpx 0 0 11rpx;
   width: 20rpx;
 }
-.myphone-button-text{
+
+.myphone-button-text {
   font-size: 24rpx;
   color: #fff;
 }
 
-.myphone-content-info{
+.myphone-content-info {
   margin-left: 20rpx;
   position: relative;
   width: 315rpx;
   height: 240rpx;
 }
-.myphone-info-title{
+
+.myphone-info-title {
   position: absolute;
   top: 5rpx;
   left: 5rpx;
   font-size: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.myphone-info-descr{
+
+.myphone-info-descr {
   position: absolute;
   top: 40rpx;
   left: 5rpx;
   font-size: 24rpx;
 }
-.myphone-info-price{
+
+.myphone-info-price {
   position: absolute;
   top: 96rpx;
   left: 5rpx;
   color: #f74847;
 }
-.myphone-info-price-type{
+
+.myphone-info-price-type {
   font-size: 20rpx;
   vertical-align: bottom;
 }
-.myphone-info-price-value{
+
+.myphone-info-price-value {
   font-size: 34rpx;
   vertical-align: bottom;
 }
-.myphone-info-button{
+
+.myphone-info-button {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -209,10 +239,12 @@
   border-radius: 32rpx;
   background-image: linear-gradient(to right, #f98382 0%, #f74544 100%);
 }
-.myphone-info-button-hover{
+
+.myphone-info-button-hover {
   background-image: linear-gradient(to right, #f98382 0%, #f98382 100%);
 }
-.myphone-info-icon{
+
+.myphone-info-icon {
   position: absolute;
   bottom: 64rpx;
   right: 0;
@@ -220,77 +252,86 @@
 }
 
 
-.types{
+.types {
   display: flex;
   justify-content: space-between;
 }
-.types-vertical-line{
+
+.types-vertical-line {
   width: 1rpx;
   height: 140rpx;
   background-color: #f5f5f5;
 }
-.types-item{
+
+.types-item {
   width: 130rpx;
   height: 140rpx;
 }
-.types-icon{
+
+.types-icon {
   width: 115rpx;
   height: 90rpx;
   transform: scale(1.1);
 }
-.types-name{
+
+.types-name {
   padding-top: 10rpx;
   color: #000;
   font-size: 24rpx;
 }
 
-.steps{
+.steps {
   display: flex;
   justify-content: space-between;
 }
-.steps-item{
+
+.steps-item {
   width: 120rpx;
   height: 120rpx;
   text-align: center;
 }
-.steps-icon{
+
+.steps-icon {
   width: 50rpx;
   height: 50rpx;
 }
-.steps-name{
+
+.steps-name {
   margin-top: 10rpx;
   font-size: 24rpx;
   color: #666666;
 }
-.rt{
+
+.rt {
   width: 12rpx;
   height: 120rpx;
 }
-.rt-icon{
+
+.rt-icon {
   margin-top: 16rpx;
   width: 12rpx;
   height: 21rpx;
 }
 
-.fire{
+.fire {
   margin: 15rpx 10rpx 0 0;
   width: 35rpx;
   height: 45rpx;
 }
 
-.scroll-view{
+.scroll-view {
   width: 750rpx;
   height: 370prx;
 }
 
-.scroll-content{
+.scroll-content {
   display: flex;
   padding-right: 20rpx;
   min-width: 750rpx;
   height: 370rpx;
 }
 
-.scroll-item{
+.scroll-item {
   margin-left: 20rpx;
   width: 270rpx;
   height: 370rpx;
@@ -299,30 +340,33 @@
   text-align: center;
   background-color: #fff;
 }
-.scroll-image{
+
+.scroll-image {
   margin-top: 30rpx;
   width: 220rpx;
   height: 130rpx;
   transform: scale(1.1);
 }
-.name{
+
+.name {
   font-size: 28rpx;
   line-height: 50rpx;
   padding-top: 12rpx;
 }
 
-.price{
+.price {
   color: #F74444;
   font-size: 32rpx;
   line-height: 70rpx;
 }
-.max-price{
+
+.max-price {
   font-size: 25rpx;
   line-height: 1.5;
 }
 
 /* 弹窗样式 */
-.showmodel{
+.showmodel {
   position: fixed;
   top: 0;
   left: 0;
@@ -330,7 +374,8 @@
   height: 100vh;
   background-color: rgba(157, 157, 157, 0.4);
 }
-.modelbox{
+
+.modelbox {
   position: absolute;
   left: 0;
   top: 0;
@@ -342,35 +387,42 @@
   /* overflow: hidden; */
   transform: scale(1.44);
 }
-.close-model{
+
+.close-model {
   display: block;
   position: absolute;
   right: -20rpx;
   top: 0;
   z-index: 10;
 }
+
 .model-bg,
-.model-item{
+.model-item {
   position: absolute;
   top: 0;
   left: 0;
   width: 320rpx;
   height: 434rpx;
 }
-.model-bg{
+
+.model-bg {
   z-index: -1;
 }
-.model-text{
+
+.model-text {
   padding-top: 120rpx;
   text-align: center;
   color: #C7402C;
 }
-.model-title{
+
+.model-title {
   font-size: 42rpx;
 }
-.model-cont{
+
+.model-cont {
   font-size: 32rpx;
 }
-.model-tip{
+
+.model-tip {
   font-size: 22rpx;
 }

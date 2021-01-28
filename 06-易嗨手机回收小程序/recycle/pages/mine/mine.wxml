@@ -92,14 +92,6 @@
 			</view>
 		</navigator>
 
-		<view hidden hover-class="line-hover" bindtap="showModel" class="cell-item">
-			<view class="cell-lt">
-				<image mode="aspectFit" class="cell-icon" src="/images/qr.png"></image>
-				<view>我的机器型号</view>
-			</view>
-			<image class="cell-rt" src="/images/rt2.png"></image>
-		</view>
-
 		<navigator hover-class="line-hover" url="/pages/address/address">
 			<view class="cell-item">
 				<view class="cell-lt">
@@ -131,6 +123,14 @@
 				<image class="cell-rt" src="/images/rt2.png"></image>
 			</view>
 		</navigator>
+
+		<view hover-class="line-hover" bindtap="showModel" class="cell-item">
+			<view class="cell-lt">
+				<image mode="aspectFit" class="cell-icon" src="/images/qr.png"></image>
+				<view>我的机器型号</view>
+			</view>
+			<image class="cell-rt" src="/images/rt2.png"></image>
+		</view>
 
 	</view>
 
