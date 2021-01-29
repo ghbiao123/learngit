@@ -34,6 +34,14 @@ Page({
       let order = res.data;
       order.orderDetail.orderimages = order.orderDetail.orderimages ? order.orderDetail.orderimages.split(",") : '';
       order.shifuDetail.fkimages = order.shifuDetail.fkimages ? order.shifuDetail.fkimages.split(",") : '';
+
+      if(order.shifuDetail.fkimages.length > 0){
+        order.shifuDetail.fkimages = order.shifuDetail.fkimages.filter(v=>{
+          if(v) return v;
+        });
+      }
+
+      
       that.setData({
         order,
         userId: userInfo.id
@@ -119,12 +127,12 @@ Page({
 
     wx.downloadFile({
       url: that.data.pdfUrl,
-      filePath: wx.env.USER_DATA_PATH + '/机械设备维修维保合同.pdf',
+      // filePath: wx.env.USER_DATA_PATH + '/机械设备维修维保合同.pdf',
       success(res){
         console.log(res);
         
         wx.openDocument({
-          filePath: res.filePath,
+          filePath: res.tempFilePath,
           showMenu: true,
           success(){
              

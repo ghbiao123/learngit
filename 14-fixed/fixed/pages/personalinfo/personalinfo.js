@@ -36,7 +36,7 @@ Page({
     wx.removeStorage({
       key: 'userinfo',
       success(){
-        util.showSuccess("已退处登录", function(){
+        util.showSuccess("已退出登录", function(){
           wx.navigateBack({
             delta: 1,
           });

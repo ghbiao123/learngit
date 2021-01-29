@@ -93,7 +93,7 @@
     <view class="cell-cont-title">
       <view>订单信息</view>
       <!-- <view wx:if="{{order.shifuDetail.shifu_name}}" class="color-blue">师傅指派中</view> -->
-      <view class="color-blue">师傅指派中</view>
+      <view wx:if="{{!order.shifuDetail.shifu_name}}" class="color-blue">师傅指派中</view>
     </view>
 
     <view class="cell-cont-item">
@@ -126,7 +126,7 @@
   <view class="cell-cont b-b-line">
     <view class="cell-cont-title">
       <view>业务员信息</view>
-      <view class="color-blue">业务员指派中</view>
+      <view wx:if="{{!order.salesman.salesman_name}}" class="color-blue">业务员指派中</view>
     </view>
 
     <view class="cell-cont-item">

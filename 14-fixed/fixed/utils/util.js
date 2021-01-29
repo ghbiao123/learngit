@@ -151,20 +151,35 @@ function getUserInfo(e, callBack) {
     return;
   }
 
-  wx.login({
-    success(res) {
-      let data = {
-        code: res.code,
-        // userInfo: e.detail.rawData,
-        encryptedData: encodeURIComponent(e.detail.encryptedData),
-        iv: encodeURIComponent(e.detail.iv),
-      }
+  let data = {
+    // userInfo: e.detail.rawData,
+    encryptedData: encodeURIComponent(e.detail.encryptedData),
+    iv: encodeURIComponent(e.detail.iv),
+  }
+
+  wx.checkSession({
+    success: (res) => {
+      let code = wx.getStorageSync('code');
+      data.code = code;
       post("/api/wxlogin/userlogin", data).then(res => {
         callBack&&callBack(res);
       });
+    },
+    fail(){
+      wx.login({
+        success(res){
+          data.code = res.code;
+          wx.setStorage({
+            data: data.code,
+            key: 'code',
+          });
+          post("/api/wxlogin/userlogin", data).then(res => {
+            callBack&&callBack(res);
+          });
+        }
+      })
     }
-  });
-
+  })
 
 }
 

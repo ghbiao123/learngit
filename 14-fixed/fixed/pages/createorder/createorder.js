@@ -102,6 +102,11 @@ Page({
         that.setData({
           userInfo
         });
+      },
+      fail(){
+        that.setData({
+          userInfo: {}
+        });
       }
     });
 

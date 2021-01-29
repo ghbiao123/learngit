@@ -16,6 +16,7 @@ Page({
   onLoad: function (options) {
     that = this;
 
+
   },
   // 数据初始化
   init() {
@@ -63,6 +64,11 @@ Page({
           key: 'apply',
         });
       }
+
+      wx.setStorage({
+        data: userInfo,
+        key: 'userinfo',
+      });
 
       that.setData({
         userInfo

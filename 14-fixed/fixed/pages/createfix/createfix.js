@@ -40,9 +40,6 @@ Page({
 
     this.data.pageOption = app.globalData.createOrderId;
 
-
-    this.init();
-
   },
   // init
   init() {
@@ -93,6 +90,22 @@ Page({
       that.setData({
         arrServer: res.data
       });
+    });
+
+    // 初始化用户信息
+    wx.getStorage({
+      key: 'userinfo',
+      success(res){
+        let userInfo = res.data;
+        that.setData({
+          userInfo
+        });
+      },
+      fail(){
+        that.setData({
+          userInfo: {}
+        });
+      }
     });
 
   },
@@ -318,7 +331,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.init();
   },
 
   /**

@@ -2,7 +2,7 @@
   "usingComponents": {
     "workerlist": "/mycomponents/workerlist/workerlist"
   },
-  "navigationBarTitleText": "申请成为师傅",
+  "navigationBarTitleText": "师傅端",
   "enablePullDownRefresh": true,
   "backgroundTextStyle": "dark"
 }

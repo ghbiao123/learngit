@@ -160,7 +160,11 @@ Page({
       if(res.code == 2001){
         util.showSuccess(res.msg, function(){
           // 
-          that.init();
+          // that.init();
+          wx.navigateBack({
+            delta: 1,
+          });
+          
         });
       }else{
         util.showSuccess(res.msg);

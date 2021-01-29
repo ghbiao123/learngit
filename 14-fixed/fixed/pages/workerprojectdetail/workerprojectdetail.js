@@ -149,6 +149,11 @@ Page({
     data.users_id = this.data.userId;
     data.order_id = this.data.order.id;
 
+
+    if(!data.fkneirong && !data.fkimages.toString()){
+      return util.showSuccess("请填写反馈内容");
+    }
+
     util.post("/api/worker/workerSubmitFk", data).then(res=>{
       console.log(res);
       if(res.code == 2001){

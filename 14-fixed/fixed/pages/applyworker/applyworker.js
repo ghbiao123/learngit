@@ -149,7 +149,12 @@ Page({
     });
 
   },
+  // iptChange
+  iptChange(e){
 
+    this.data.reqData[e.currentTarget.dataset.key] = e.detail.value;
+
+  },
   // lv1Change
   lv1Change(e){
     let idx = e.detail.value;
