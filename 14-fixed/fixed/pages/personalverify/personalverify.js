@@ -94,7 +94,7 @@ Page({
     let userInfo = wx.getStorageSync('userinfo');
     that.data.reqData.users_id = userInfo.id;
     util.post("/api/personal/updatePersonalData", that.data.reqData).then(res=>{
-      console.log(res);
+       
       if(res.code == 2001){
         // renzhenglist 
         // 认证成功之后修改storage
@@ -138,7 +138,7 @@ Page({
     util.post("/api/personal/checkCompany", {
       company_name: this.data.reqData.company_name
     }).then(res=>{
-      console.log(res);
+       
       if(res.code == 2001){
         // 后台维护了企业名称
 

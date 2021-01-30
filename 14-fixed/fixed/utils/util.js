@@ -31,7 +31,7 @@ function post(url, data = {}) {
       method: "POST",
       data: data,
       success(res) {
-      
+
         status = 1;
 
         if (res.statusCode !== 200) {
@@ -40,8 +40,8 @@ function post(url, data = {}) {
             confirmText: "重新加载",
             title: "提示",
             content: "网络异常或加载失败",
-            success(res){
-              
+            success(res) {
+
             }
           });
           return;
@@ -153,28 +153,60 @@ function getUserInfo(e, callBack) {
 
   let data = {
     // userInfo: e.detail.rawData,
-    encryptedData: encodeURIComponent(e.detail.encryptedData),
-    iv: encodeURIComponent(e.detail.iv),
+    encryptedData: e.detail.encryptedData,
+    iv: e.detail.iv,
   }
+
+  // wx.login({
+  //   success(res){
+  //     let code = res.code;
+  //     post("/api/wxlogin/getSession", {
+  //       code
+  //     }).then(res => {
+  //       
+  //       data.openid = res.data.openid;
+  //       data.session_key = res.data.session_key;
+
+  //       post("/api/wxlogin/userlogin", data).then(res=>{
+  //         
+  //         callBack&&callBack(res);
+  //       });
+
+  //     });
+  //   }
+  // });
+
+
+
 
   wx.checkSession({
     success: (res) => {
-      let code = wx.getStorageSync('code');
-      data.code = code;
-      post("/api/wxlogin/userlogin", data).then(res => {
-        callBack&&callBack(res);
+      wx.getStorage({
+        key: 'login',
+        success(ret){
+          data = Object.assign(data, ret.data);
+          post("/api/wxlogin/userlogin", data).then(res => {
+            callBack && callBack(res);
+          });
+        }
       });
+      
     },
-    fail(){
+    fail() {
       wx.login({
-        success(res){
-          data.code = res.code;
+        success(res) {
           wx.setStorage({
-            data: data.code,
+            data: res.code,
             key: 'code',
           });
-          post("/api/wxlogin/userlogin", data).then(res => {
-            callBack&&callBack(res);
+          post("/api/wxlogin/getSession", {
+            code: res.code
+          }).then(res => {
+            data.openid = res.data.openid;
+            data.session_key = res.data.session_key;
+            post("/api/wxlogin/userlogin", data).then(res => {
+              callBack && callBack(res);
+            });
           });
         }
       })
@@ -278,16 +310,16 @@ function getToPoint(num) {
 }
 
 // 将图片添加为完整路径
-function getImageFullUrl(arr, key){
-  if(!arr||arr.length==0){
+function getImageFullUrl(arr, key) {
+  if (!arr || arr.length == 0) {
     return [];
   }
-  if(!key){
+  if (!key) {
     // key 不存在
     return getSiteRoot() + arr;
-  }else{
+  } else {
     // key 存在
-    let newArr = arr.map(v=>{
+    let newArr = arr.map(v => {
       v[key] = getSiteRoot() + v[key];
       return v
     });
@@ -296,7 +328,7 @@ function getImageFullUrl(arr, key){
 }
 
 // 展示图片
-function showImage(arr, index){
+function showImage(arr, index) {
   wx.previewImage({
     urls: arr,
     current: arr[index]
@@ -321,4 +353,3 @@ module.exports = {
   getImageFullUrl, // 将图片添加为完整路径
   showImage, // 展示图片
 }
-

@@ -48,7 +48,7 @@ Page({
     //   // orders_id: that.data.pageOption.id
     //   orders_id: 4
     // }).then(res=>{
-    //   console.log(res);
+    //    
 
     //   that.data.pdfUrl = util.getSiteRoot() + res.data;
 
@@ -70,7 +70,7 @@ Page({
     wx.downloadFile({
       url: that.data.pdfUrl,
       success(res){
-        console.log(res);
+         
         wx.saveFile({
           tempFilePath: res.tempFilePath,
           success(ret){
@@ -95,7 +95,7 @@ Page({
       // orders_id: that.data.pageOption.id,
       orders_id: 4,
     }).then(res=>{
-      console.log(res);
+       
 
       if(res.code == 2001){
 

@@ -128,7 +128,6 @@ Page({
     data.users_id = this.data.userId;
     data.order_id = this.data.order.id;
     util.post("/api/worker/startWorker", data).then(res=>{
-      console.log(res);
       if(res.code == 2001){
         util.showSuccess(res.msg, function(){
           let order = that.data.order;
@@ -155,7 +154,7 @@ Page({
     }
 
     util.post("/api/worker/workerSubmitFk", data).then(res=>{
-      console.log(res);
+       
       if(res.code == 2001){
         util.showSuccess(res.msg, function(){
           // wx.navigateBack({
@@ -178,7 +177,7 @@ Page({
     wx.downloadFile({
       url: that.data.pdfUrl,
       success(res) {
-        console.log(res);
+         
         wx.saveFile({
           tempFilePath: res.tempFilePath,
           success(ret) {
@@ -203,7 +202,7 @@ Page({
       // orders_id: that.data.pageOption.id,
       orders_id: 4,
     }).then(res => {
-      console.log(res);
+       
 
       if (res.code == 2001) {
 

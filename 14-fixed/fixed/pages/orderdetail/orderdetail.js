@@ -30,7 +30,7 @@ Page({
       users_id: userInfo.id,
       orders_id: that.data.pageOption.id
     }).then(res=>{
-      console.log(res);
+       
       let order = res.data;
       order.orderDetail.orderimages = order.orderDetail.orderimages ? order.orderDetail.orderimages.split(",") : '';
       order.shifuDetail.fkimages = order.shifuDetail.fkimages ? order.shifuDetail.fkimages.split(",") : '';
@@ -58,7 +58,7 @@ Page({
       orders_id: that.data.pageOption.id,
       // orders_id: 4
     }).then(res=>{
-      console.log(res);
+       
       if(res.code == 2001){ 
         that.data.pdfUrl = util.getSiteRoot() + res.data;
       }
@@ -100,7 +100,7 @@ Page({
 
     }
     util.post("/api/orders/unifiedOrder", data).then(res=>{
-      console.log(res);
+       
       wx.requestPayment({
         nonceStr: res.nonceStr,
         package: res.package,
@@ -125,14 +125,17 @@ Page({
       return util.showSuccess("还未生成合同，请下拉刷新后再试");
     }
 
+    let arrName = that.data.pdfUrl.split("/");
+    let fileName = arrName[arrName.length-1];
+
     wx.downloadFile({
       url: that.data.pdfUrl,
-      // filePath: wx.env.USER_DATA_PATH + '/机械设备维修维保合同.pdf',
+      filePath: wx.env.USER_DATA_PATH + "/" + fileName,
       success(res){
-        console.log(res);
+         
         
         wx.openDocument({
-          filePath: res.tempFilePath,
+          filePath: res.filePath,
           showMenu: true,
           success(){
              
@@ -158,7 +161,7 @@ Page({
       orders_id: that.data.pageOption.id,
       // orders_id: 4,
     }).then(res=>{
-      console.log(res);
+       
 
       if(res.code == 2001){
 

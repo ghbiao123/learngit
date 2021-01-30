@@ -16,12 +16,11 @@ Page({
   onLoad: function (options) {
     that = this;
 
-
   },
   // 数据初始化
   init() {
     let userInfo = this.data.isLogin ? this.data.userInfo : wx.getStorageSync('userinfo');
-    
+
     if (!userInfo) {
 
       this.setData({
@@ -54,16 +53,21 @@ Page({
       let userInfo = res.data;
       // 检测用户是否认证或申请成为师傅，并清除storage
 
-      if(userInfo.renzhenglist == 1){
+      if (userInfo.renzhenglist == 1) {
         wx.removeStorage({
           key: 'verify',
         });
       }
-      if(userInfo.apply_status == 2){
+      if (userInfo.apply_status == 2) {
         wx.removeStorage({
           key: 'apply',
         });
       }
+
+      userInfo.sfzimages = userInfo.sfzimages ? userInfo.sfzimages.split(",") : [];
+      userInfo.certimages = userInfo.certimages ? userInfo.certimages.split(",") : [];
+      userInfo.cardimage = userInfo.cardimage ? userInfo.cardimage.split(",") : [];
+      userInfo.yingyeimage = userInfo.yingyeimage ? userInfo.yingyeimage.split(",") : [];
 
       wx.setStorage({
         data: userInfo,
@@ -131,22 +135,22 @@ Page({
 
   // 获取手机号
   getPhoneNumber(e) {
-    console.log(e);
+    // console.log(e);
     /**
      *  staffnum 员工编号
         renzhenglist   0=未认证  1 等于认证
      */
 
     util.getUserInfo(e, function (res) {
-      console.log(res);
+      //  
 
       if (res.code == 2001) {
 
         let data = res.data;
-        data.sfzimages = data.sfzimages ? data.sfzimages.split(",") : '';
-        data.certimages = data.certimages ? data.certimages.split(",") : '';
-        data.cardimage = data.cardimage ? data.cardimage.split(",") : '';
-        data.yingyeimage = data.yingyeimage ? data.yingyeimage.split(",") : '';
+        data.sfzimages = data.sfzimages ? data.sfzimages.split(",") : [];
+        data.certimages = data.certimages ? data.certimages.split(",") : [];
+        data.cardimage = data.cardimage ? data.cardimage.split(",") : [];
+        data.yingyeimage = data.yingyeimage ? data.yingyeimage.split(",") : [];
 
         that.setData({
           isLogin: true,
@@ -156,8 +160,8 @@ Page({
         wx.setStorage({
           data: data,
           key: 'userinfo',
-          success(){
-            if(!data.name){
+          success() {
+            if (!data.name) {
               wx.navigateTo({
                 url: '/pages/changeperinfo/changeperinfo',
               });

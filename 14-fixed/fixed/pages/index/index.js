@@ -61,6 +61,25 @@ Page({
 
     });
 
+    // 初始化code session——key
+    wx.login({
+      success(res){
+        let code = res.code;
+        util.post("/api/wxlogin/getSession", {
+          code
+        }).then(res => {
+          let data = {
+            code: code
+          }
+          data.openid = res.data.openid;
+          data.session_key = res.data.session_key;
+         wx.setStorage({
+           data: data,
+           key: 'login',
+         });
+        });
+      }
+    });
 
   },
 

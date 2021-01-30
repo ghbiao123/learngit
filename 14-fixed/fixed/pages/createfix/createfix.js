@@ -62,7 +62,7 @@ Page({
       util.post("/api/shou_ye/getservers", {
         levelone_id: that.data.pageOption.lv1id
       }).then(res => {
-        console.log(res);
+         
 
         levelData.arrLv2 = res.data.leveltwo;
         levelData.lv2 = res.data.leveltwo.filter(v => v.id == that.data.pageOption.lv2id)[0].name;
