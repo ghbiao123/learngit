@@ -313,7 +313,11 @@ Page({
           reqData,
           clearValue: ""
         });
-        util.showSuccess(res.msg);
+        util.showSuccess(res.msg, function(){
+          wx.switchTab({
+            url: '/pages/main/main',
+          });
+        });
       } else {
         util.showSuccess(res.msg);
       }

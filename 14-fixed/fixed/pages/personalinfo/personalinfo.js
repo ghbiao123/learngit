@@ -28,6 +28,16 @@ Page({
         detail: res.data
       });
 
+      wx.setStorage({
+        data: res.data,
+        key: 'userinfo',
+        success(){
+          wx.stopPullDownRefresh({
+            success: (res) => {},
+          });
+        }
+      });
+
     });
   },
 
@@ -76,7 +86,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.init();
   },
 
   /**

@@ -6,14 +6,19 @@
   </view>
   <form bindsubmit="submit">
     <cell title="姓名">
-      <input name="name" placeholder="请输入姓名" value="{{reqData.name}}" class="t-a-r" type="text" slot="value" />
+      <input name="name" placeholder="请输入姓名" bindinput="iptChange" data-key="name" value="{{reqData.name}}" class="t-a-r" type="text" slot="value" />
     </cell>
     <cell title="电话">
-      <input name="phone" placeholder="请输入电话" value="{{reqData.phone}}" class="t-a-r" type="text" slot="value" />
+      <input name="phone" placeholder="请输入电话" bindinput="iptChange" data-key="phone" value="{{reqData.phone}}" class="t-a-r" type="text" slot="value" />
     </cell>
-    <cell title="类型(工种)">
+    <!-- <cell title="类型(工种)">
       <input name="gongzhong" placeholder="请输入类型(工种)" value="{{reqData.gongzhong}}" class="t-a-r" type="text" slot="value" />
-    </cell>
+    </cell> -->
+    <picker mode="selector" range="{{arrServer}}" range-key="name" bindchange="serverChange">
+      <cell title="类型(工种)" footer>
+        <input type="text" value="{{reqData.gongzhong}}" disabled class="t-a-r" placeholder="请选择类型(工种)" slot="value" />
+      </cell>
+    </picker>
 
 
     <view class="form-title b-t-g">
@@ -35,10 +40,10 @@
 
 
     <cell title="银行卡卡号">
-      <input name="banknum" placeholder="请输入银行卡卡号" value="{{reqData.banknum}}" class="t-a-r" type="text" slot="value" />
+      <input name="banknum" bindinput="iptChange" data-key="banknum" placeholder="请输入银行卡卡号" value="{{reqData.banknum}}" class="t-a-r form-input" type="text" slot="value" />
     </cell>
     <cell title="银行卡分行信息">
-      <input name="bankdetail" placeholder="请输入银行卡分行信息" value="{{reqData.bankdetail}}" class="t-a-r" type="text" slot="value" />
+      <input name="bankdetail" bindinput="iptChange" data-key="bankdetail" placeholder="请输入银行卡分行信息" value="{{reqData.bankdetail}}" class="t-a-r form-input" type="text" slot="value" />
     </cell>
 
     <button class="clear normal btn" hover-class="normal-hover" form-type="submit">提交</button>

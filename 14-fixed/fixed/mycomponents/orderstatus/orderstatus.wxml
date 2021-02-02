@@ -1,0 +1,21 @@
+<view wx:if="{{status == 0}}" class="color-gray">已取消</view>
+
+<view wx:if="{{status == 5}}" class="color-blue">已下单</view>
+<view wx:if="{{status == 10}}" class="color-blue">已下单</view>
+<view wx:if="{{status == 15}}" class="color-blue">已下单</view>
+<view wx:if="{{status == 20}}" class="color-blue">已下单</view>
+
+<view wx:if="{{status == 25}}" class="color-red">合同确认</view>
+
+<view wx:if="{{status == 30}}" class="color-gray">已预付款</view>
+<view wx:if="{{status == 35}}" class="color-gray">已预付款</view>
+<view wx:if="{{status == 40}}" class="color-gray">已预付款</view>
+
+<view wx:if="{{status == 45}}" class="color-blue">维修中</view>
+
+<view wx:if="{{status == 50}}" class="color-green">维修完成</view>
+
+<view wx:if="{{status == 55}}" class="color-blue">已付余款</view>
+<view wx:if="{{status == 60}}" class="color-blue">已付余款</view>
+
+<view wx:if="{{status == 65}}" class="color-yellow">订单完成</view>

@@ -6,10 +6,10 @@
   </view>
   <form bindsubmit="submit">
     <cell title="公司名称">
-      <input name="company_name" placeholder="请输入公司名称" value="{{userInfo.company_name}}" class="t-a-r" type="text" slot="value" />
+      <input name="company_name" placeholder="请输入公司名称" value="{{userInfo.company_name}}" class="t-a-r form-input" type="text" slot="value" />
     </cell>
     <cell title="公司地址">
-      <input name="company_address" placeholder="请输入公司地址" value="{{userInfo.company_address}}" class="t-a-r" type="text" slot="value" />
+      <input name="company_address" placeholder="请输入公司地址" value="{{userInfo.company_address}}" class="t-a-r form-input" type="text" slot="value" />
     </cell>
     <cell title="员工工号">
       <input name="staffnum" placeholder="请输入员工工号" value="{{userInfo.staffnum}}" class="t-a-r" type="text" slot="value" />

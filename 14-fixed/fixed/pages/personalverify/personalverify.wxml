@@ -24,24 +24,24 @@
   </view>
 
 
-  <!-- <view class="item">
+  <view class="item">
     <view class="item-name">
       <text class="color-red">*</text>公司名称                            
     </view>
-    <input type="text" bindinput="inputText" data-key="company_name" class="t-a-r" placeholder="请输入公司名称"/>
-  </view> -->
+    <input type="text" bindblur="getBlur" value="{{reqData.company_name}}" bindinput="inputText" data-key="company_name" class="t-a-r form-input" placeholder="请输入公司名称"/>
+  </view>
 
   <view class="item">
     <view class="item-name">
       <view><text class="color-red">*</text>营业执照</view>
       <view class="item-name-tip">请上传营业执照</view>
     </view>
-    <!-- <view class="image-box" data-key="yingyeimage" bindtap="getLicence"> -->
-    <view class="image-box" data-key="yingyeimage">
-      <ocr-navigator bind:onSuccess="businessSuccess" certificateType="businessLicense">
-        <image class="image" mode="aspectFit" src="{{reqData.yingyeimage?reqData.yingyeimage:'/images/ying.png'}}">
-        </image>
-      </ocr-navigator>
+    <view class="image-box" data-key="yingyeimage" bindtap="getLicence">
+    <!-- <view class="image-box" data-key="yingyeimage"> -->
+      <image class="image" mode="aspectFit" src="{{reqData.yingyeimage?reqData.yingyeimage:'/images/ying.png'}}">
+      </image>
+          <!-- <ocr-navigator bind:onSuccess="businessSuccess" certificateType="businessLicense">
+      </ocr-navigator> -->
     </view>
   </view>
 

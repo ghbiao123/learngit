@@ -56,7 +56,7 @@ Page({
     //   return;
     // }
     wx.chooseImage({
-      count: 9,
+      count: 8,
       success(res) {
         let arr = res.tempFilePaths;
         arr.forEach(v => {

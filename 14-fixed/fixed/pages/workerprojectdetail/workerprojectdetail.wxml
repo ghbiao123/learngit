@@ -22,7 +22,7 @@
       <view>订单信息</view>
       <view wx:if="{{order.status == 40}}" class="color-blue">已派单</view>
       <view wx:if="{{order.status == 45}}" class="color-gray">维修中</view>
-      <view wx:if="{{order.status == 50}}" class="color-yellow">已完成</view>
+      <view wx:if="{{order.status >= 50}}" class="color-yellow">已完成</view>
     </view>
 
     <view class="cell-cont-item">
@@ -137,7 +137,7 @@
     <btn type="normal">提交反馈完成订单</btn>
   </view>
 
-  <view wx:if="{{order.status == 50}}" class="cell-cont b-b-line">
+  <view wx:if="{{order.status >= 50}}" class="cell-cont b-b-line">
     <view class="cell-cont-title">
       <view>师傅反馈</view>
     </view>
@@ -151,12 +151,12 @@
       <view class="cell-key">照片：</view>
     </view>
     <view class="form-picture-box">
-      <image wx:for="{{order.fkimages}}" wx:key="index" 
+      <image wx:for="{{order.arrfk}}" wx:key="index" 
         mode="aspectFit"
         class="form-picture-item" src="{{item}}"
         bindtap="showImage"
         data-idx="{{index}}"
-        data-key="fkimages"
+        data-key="arrfk"
         ></image>
     </view>
 

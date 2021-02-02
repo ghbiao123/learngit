@@ -22,16 +22,7 @@
   <view class="cell-cont b-b-line">
     <view class="cell-cont-title">
       <view>订单信息</view>
-      <!-- <view class="color-blue">已申请</view> -->
-      <!-- <view class="color-red">已下单</view> -->
-      <!-- <view class="color-gray">已派单，师傅上门</view> -->
-      <!-- <view class="color-green">维修完成</view> -->
-      <!-- <view class="color-yellow">订单完成</view> -->
-      <view wx:if="{{order.orderDetail.status == 15}}" class="color-blue">已下单</view>
-      <view wx:if="{{order.orderDetail.status == 25}}" class="color-red">合同确认</view>
-      <view wx:if="{{order.orderDetail.status == 45}}" class="color-gray">维修中</view>
-      <view wx:if="{{order.orderDetail.status == 50}}" class="color-green">维修完成</view>
-      <view wx:if="{{order.orderDetail.status == 65}}" class="color-yellow">订单完成</view>
+      <orderstatus status="{{order.orderDetail.status}}"></orderstatus>
     </view>
 
     <view class="cell-cont-item">
@@ -85,6 +76,11 @@
     <view class="cell-cont-item">
       <view class="cell-key">联系方式：</view>
       <view class="cell-val">{{order.orderDetail.lianxiphone}}</view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">发票状态：</view>
+      <view class="cell-val">{{order.orderDetail.fapiao == 0 ? '未开发票' : '已开发票'}}</view>
     </view>
 
   </view>

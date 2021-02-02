@@ -15,8 +15,7 @@ Page({
       yingyeimage: "",
       applypay_methodlist: "3"
     },
-    payType: [
-      {
+    payType: [{
         id: "0",
         name: "现结",
       },
@@ -41,10 +40,10 @@ Page({
 
     wx.getStorage({
       key: 'verify',
-      success(res){
+      success(res) {
         let reqData = res.data;
         let payMethod = "";
-        if(reqData.applypay_methodlist != 3){
+        if (reqData.applypay_methodlist != 3) {
           payMethod = that.data.payType[reqData.applypay_methodlist].name;
         }
 
@@ -56,9 +55,33 @@ Page({
     });
 
   },
+  getBlur(e) {
+    let val = e.detail.value;
+    console.log(val);
+    util.post("/api/personal/checkCompany", {
+      company_name: val
+    }).then(res => {
+
+      if (res.code == 2001) {
+        // 后台维护了企业名称
+
+        that.data.reqData.applypay_methodlist = 3;
+
+        that.setData({
+          isShow: false,
+        });
+
+      } else if (res.code == 3001) {
+        // 后台未维护企业名称
+        that.setData({
+          isShow: true
+        });
+      }
+    });
+  },
 
   // typeChange
-  typeChange(e){
+  typeChange(e) {
     console.log(e);
     let reqData = this.data.reqData;
     let payMethod = this.data.payMethod;
@@ -73,8 +96,7 @@ Page({
   },
 
   // submit
-  submit(){
-    console.log(that.data.reqData);
+  submit() {
     let data = that.data.reqData;
     let needData = {
       sfzimages: "",
@@ -83,19 +105,19 @@ Page({
       company_name: "",
       yingyeimage: "",
     }
-    for(let key in needData){
-      if(!data[key]) {
+    for (let key in needData) {
+      if (!data[key]) {
         return util.showSuccess("请完善信息");
       }
     }
-    if(this.data.isShow && this.data.reqData.applypay_methodlist==3){
+    if (this.data.isShow && this.data.reqData.applypay_methodlist == 3) {
       return util.showSuccess("请完选择支付方式");
     }
     let userInfo = wx.getStorageSync('userinfo');
     that.data.reqData.users_id = userInfo.id;
-    util.post("/api/personal/updatePersonalData", that.data.reqData).then(res=>{
-       
-      if(res.code == 2001){
+    util.post("/api/personal/updatePersonalData", that.data.reqData).then(res => {
+
+      if (res.code == 2001) {
         // renzhenglist 
         // 认证成功之后修改storage
 
@@ -104,20 +126,20 @@ Page({
           key: 'verify',
         });
 
-        util.showSuccess(res.msg, function(){
+        util.showSuccess(res.msg, function () {
           wx.navigateBack({
             delta: 1,
           });
         });
-        
-        userInfo.renzhenglist = 1;
-        wx.setStorage({
-          data: userInfo,
-          key: 'userinfo',
-          success(){
-            
-          }
-        });
+
+        // userInfo.renzhenglist = 1;
+        // wx.setStorage({
+        //   data: userInfo,
+        //   key: 'userinfo',
+        //   success(){
+
+        //   }
+        // });
       }
 
       util.showSuccess(res.msg);
@@ -126,29 +148,29 @@ Page({
   },
 
   // inputText
-  inputText(e){
+  inputText(e) {
     let key = e.currentTarget.dataset.key;
     this.data.reqData[key] = e.detail.value;
   },
 
-  businessSuccess(e){
+  businessSuccess(e) {
     console.log(e);
     this.data.reqData.company_name = e.detail.enterprise_name.text;
 
     util.post("/api/personal/checkCompany", {
       company_name: this.data.reqData.company_name
-    }).then(res=>{
-       
-      if(res.code == 2001){
+    }).then(res => {
+
+      if (res.code == 2001) {
         // 后台维护了企业名称
 
         that.data.reqData.applypay_methodlist = 3;
-        
+
         that.setData({
           isShow: false,
         });
 
-      }else if(res.code == 3001){
+      } else if (res.code == 3001) {
         // 后台未维护企业名称
         that.setData({
           isShow: true
@@ -163,7 +185,7 @@ Page({
       success(ret) {
         let reqData = that.data.reqData;
         let url = util.getSiteRoot() + JSON.parse(ret.data).data.replace(/\\/g, "/");
-        reqData.yingyeimage  = url;
+        reqData.yingyeimage = url;
         that.setData({
           reqData,
         });
@@ -172,7 +194,7 @@ Page({
   },
 
   // 获取营业执照
-  getLicence(e){
+  getLicence(e) {
 
     let key = e.currentTarget.dataset.key;
 
@@ -187,7 +209,7 @@ Page({
           success(ret) {
             let reqData = that.data.reqData;
             let url = util.getSiteRoot() + JSON.parse(ret.data).data.replace(/\\/g, "/");
-            reqData[key]  = url;
+            reqData[key] = url;
             that.setData({
               reqData,
             });

@@ -7,7 +7,7 @@
         <!-- fix -->
         <view wx:if="{{item.status == 40}}" class="color-blue">已派单</view>
         <view wx:if="{{item.status == 45}}" class="color-gray">维修中</view>
-        <view wx:if="{{item.status == 50}}" class="color-yellow">已完成</view>
+        <view wx:if="{{item.status >= 50}}" class="color-yellow">已完成</view>
 
       </view>
 

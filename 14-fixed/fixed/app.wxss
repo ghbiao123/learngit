@@ -156,6 +156,9 @@ image{
   right: -30rpx;
   z-index: 10;
 }
+.form-input{
+  width: 480rpx;
+}
 
 /* 底部固定位置按钮 */
 .btn-container{

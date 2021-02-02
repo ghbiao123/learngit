@@ -2,7 +2,7 @@
   <form bindsubmit="submit">
 
     <cell title="报修标题">
-      <input type="text" name="repair_name" value="{{clearValue}}" class="t-a-r" placeholder="请输入标题" slot="value" />
+      <input type="text" name="repair_name" value="{{clearValue}}" class="t-a-r form-input" placeholder="请输入标题" slot="value" />
     </cell>
 
     <!-- <picker mode="selector" range="{{levelData.arrLv1}}" range-key="name" bindchange="lv1Change">
@@ -49,7 +49,7 @@
     </view>
 
     <cell title="公司名称">
-      <input type="text" name="company_name" value="{{userInfo.company_name}}" class="t-a-r" placeholder="请输入公司名称" slot="value" />
+      <input type="text" name="company_name" value="{{userInfo.company_name}}" class="t-a-r form-input" placeholder="请输入公司名称" slot="value" />
     </cell>
 
     <cell title="联系人">
@@ -61,10 +61,12 @@
     </cell>
 
     <cell title="联系地址">
-      <input type="text" name="repair_address" value="{{userInfo.company_address}}" class="t-a-r" placeholder="请输入联系地址" slot="value" />
+      <input type="text" name="repair_address" value="{{userInfo.company_address}}" class="t-a-r form-input" placeholder="请输入联系地址" slot="value" />
     </cell>
 
     <button class="clear normal btn-submit" hover-class="normal-hover" form-type="submit">提交</button>
 
   </form>
 </view>
+
+<cover userInfo="{{userInfo}}"></cover>

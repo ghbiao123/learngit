@@ -56,6 +56,12 @@ Page({
 
 
   },
+  getDetail(e){
+    wx.navigateTo({
+      url: '/pages/orderdetail/orderdetail?id=' + that.data.order.order_id,
+    });
+  },
+
   showImage(e){
     let key = e.currentTarget.dataset.key;
     let idx = e.currentTarget.dataset.idx;

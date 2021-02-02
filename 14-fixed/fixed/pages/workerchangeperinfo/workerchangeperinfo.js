@@ -10,7 +10,9 @@ Page({
     avatar: "",
     reqData: {
 
-    }
+    },
+    arrServer: []
+
   },
 
   /**
@@ -30,6 +32,32 @@ Page({
           avatar
         });
       }
+    });
+
+    // 服务项
+    util.post("/api/shou_ye/getGongzhong").then(res=>{
+      that.setData({
+        arrServer: res.data
+      });
+    });
+
+  },
+
+  // ipt change
+  iptChange(e){
+    this.data.reqData[e.currentTarget.dataset.key] = e.detail.value;
+  },
+// serverchange
+  serverChange(e){
+
+    let idx = e.detail.value;
+    let val = this.data.arrServer[idx];
+
+    let reqData = this.data.reqData;
+    reqData.gongzhong = val.name;
+
+    this.setData({
+      reqData
     });
 
   },

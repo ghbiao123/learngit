@@ -3,5 +3,7 @@
     "cell": "/mycomponents/cell/cell",
     "btn": "/mycomponents/btn/btn"
   },
-  "navigationBarTitleText": "个人资料"
+  "navigationBarTitleText": "个人资料",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
 }

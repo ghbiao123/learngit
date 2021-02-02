@@ -59,7 +59,10 @@
 
     <view class="cell-cont-item">
       <view class="cell-key">报修时间：</view>
-      <view class="cell-val">{{order.createtime}}</view>
+      <view class="cell-val" style="width: 440rpx;">{{order.createtime}}</view>
+      <block wx:if="{{order.repair_status == 2}}">
+        <btn bind:getTap="getDetail" type="detail">查看详情</btn>
+      </block>
     </view>
 
   </view>
