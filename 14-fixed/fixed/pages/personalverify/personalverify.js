@@ -13,6 +13,7 @@ Page({
       sfzh: "",
       company_name: "",
       yingyeimage: "",
+      company_address: "",
       applypay_methodlist: "3"
     },
     payType: [{
@@ -76,6 +77,8 @@ Page({
         that.setData({
           isShow: true
         });
+
+        that.data.reqData.applypay_methodlist = 3;
       }
     });
   },
@@ -104,6 +107,7 @@ Page({
       sfzh: "",
       company_name: "",
       yingyeimage: "",
+      company_address: "",
     }
     for (let key in needData) {
       if (!data[key]) {

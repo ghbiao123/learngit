@@ -65,9 +65,11 @@ Page({
   // submit
   submit(e) {
     let data = e.detail.value;
+    console.log(data);
     data.headimage = this.data.avatar;
     data.users_id = this.data.reqData.id;
     data.certimages = this.data.reqData.certimages;
+    data.gongzhong = this.data.reqData.gongzhong;
     util.post("/api/personal/updatePersonalData", data).then(res => {
       if (res.code == 2001) {
         util.showSuccess(res.msg, function () {
