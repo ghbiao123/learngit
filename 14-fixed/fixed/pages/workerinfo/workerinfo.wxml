@@ -2,7 +2,7 @@
   <cell title="姓名" cont="{{detail.name}}"></cell>
   <cell title="身份证号" cont="{{detail.sfzh}}"></cell>
   <cell title="电话" cont="{{detail.phone}}"></cell>
-  <cell title="位置" cont="{{detail.company_address}}"></cell>
+  <cell title="位置" cont="{{detail.sfaddress}}"></cell>
   <cell title="类型(工种)" cont="{{detail.gongzhong}}"></cell>
   <!-- 
     证书,证件照,身份证照片

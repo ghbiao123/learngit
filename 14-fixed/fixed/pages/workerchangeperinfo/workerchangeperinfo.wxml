@@ -5,48 +5,81 @@
     <image class="rt" src="/images/rt.png"></image>
   </view>
   <form bindsubmit="submit">
+
     <cell title="姓名">
-      <input name="name" placeholder="请输入姓名" bindinput="iptChange" data-key="name" value="{{reqData.name}}" class="t-a-r" type="text" slot="value" />
+      <input type="text" data-key="name" bindinput="iptChange" name="name" value="{{reqData.name}}" class="t-a-r" placeholder="请输入姓名" slot="value" />
+    </cell>
+    <cell title="身份证号">
+      <input type="text" data-key="sfzh" bindinput="iptChange" name="sfzh" value="{{reqData.sfzh}}" class="t-a-r" placeholder="请输入身份证号" slot="value" />
     </cell>
     <cell title="电话">
-      <input name="phone" placeholder="请输入电话" bindinput="iptChange" data-key="phone" value="{{reqData.phone}}" class="t-a-r" type="text" slot="value" />
+      <input type="text" data-key="phone" bindinput="iptChange" name="phone" value="{{reqData.phone}}" class="t-a-r" placeholder="请输入电话" slot="value" />
     </cell>
-    <!-- <cell title="类型(工种)">
-      <input name="gongzhong" placeholder="请输入类型(工种)" value="{{reqData.gongzhong}}" class="t-a-r" type="text" slot="value" />
-    </cell> -->
+    <cell title="位置">
+      <input type="text" data-key="sfaddress" bindinput="iptChange" name="sfaddress" value="{{reqData.sfaddress}}" class="t-a-r form-input" placeholder="请输入位置" slot="value" />
+    </cell>
+
     <picker mode="selector" range="{{arrServer}}" range-key="name" bindchange="serverChange">
       <cell title="类型(工种)" footer>
         <input type="text" value="{{reqData.gongzhong}}" disabled class="t-a-r" placeholder="请选择类型(工种)" slot="value" />
       </cell>
     </picker>
 
-
     <view class="form-title b-t-g">
       <view>证书</view>
-      <!-- <view class="form-title-tip">请上传照片，最多上传8张</view> -->
+      <view class="form-title-tip">请上传照片，最多上传8张</view>
     </view>
     <view class="form-picture-box">
       <view class="form-picture-item" wx:for="{{reqData.certimages}}" wx:key="index">
-        <icon data-idx="{{index}}" bindtap="deleteImage" type="cancel" size="25" class="form-cancel" color="#ccc"></icon>
-        <image class="form-picture" mode="aspectFit" src="{{item}}" bindtap="showImage" data-idx="{{index}}" data-key="certimages"></image>
+        <icon data-key="certimages" data-idx="{{index}}" bindtap="deleteImage" type="cancel" size="25"
+          class="form-cancel" color="#ccc"></icon>
+        <image class="form-picture" mode="aspectFit" src="{{item}}"></image>
       </view>
-      <image bindtap="addImage" class="form-picture-item" src="/images/add.png"></image>
+      <image data-key="certimages" bindtap="addImage" class="form-picture-item" src="/images/add.png"></image>
     </view>
 
+    <view class="form-title b-t-g">
+      <view>证件照</view>
+      <view class="form-title-tip">请上传证件照</view>
+    </view>
+    <view class="form-picture-box">
+      <view class="form-picture-item" wx:for="{{reqData.cardimage}}" wx:key="index">
+        <icon data-key="cardimage" data-idx="{{index}}" bindtap="deleteImage" type="cancel" size="25"
+          class="form-cancel" color="#ccc"></icon>
+        <image class="form-picture" mode="aspectFit" src="{{item}}"></image>
+      </view>
+      <image data-key="cardimage" bindtap="addImage" class="form-picture-item" src="/images/add.png"></image>
+    </view>
+
+    <view class="form-title b-t-g">
+      <view>身份证</view>
+      <view class="form-title-tip">请上传身份证正反面照片</view>
+    </view>
+    <view class="form-picture-box">
+      <image mode="aspectFit" data-key="sfzimages" data-idx="1" bindtap="addImage" class="form-picture-item"
+        src="{{reqData.sfzimages[0] ? reqData.sfzimages[0] : '/images/IDcard-font.png'}}"></image>
+      <image mode="aspectFit" data-key="sfzimages" data-idx="2" bindtap="addImage" class="form-picture-item"
+        src="{{reqData.sfzimages[1] ? reqData.sfzimages[1] : '/images/IDcard-back.png'}}"></image>
+    </view>
+    
+    <cell title="培训">
+      <input type="text" data-key="train" bindinput="iptChange" name="train" value="{{reqData.train}}" class="t-a-r" placeholder="请输入培训技能" slot="value" />
+    </cell>
     <view class="form-title">
       个人擅长
     </view>
-    <textarea value="{{reqData.skill}}" name="skill" placeholder="请输入擅长的事项" class="form-textarea"></textarea>
-
+    <textarea value="{{reqData.skill}}" data-key="skill" bindinput="iptChange" name="skill" placeholder="请输入擅长的事项" class="form-textarea"></textarea>
 
     <cell title="银行卡卡号">
-      <input name="banknum" bindinput="iptChange" data-key="banknum" placeholder="请输入银行卡卡号" value="{{reqData.banknum}}" class="t-a-r form-input" type="text" slot="value" />
-    </cell>
-    <cell title="银行卡分行信息">
-      <input name="bankdetail" bindinput="iptChange" data-key="bankdetail" placeholder="请输入银行卡分行信息" value="{{reqData.bankdetail}}" class="t-a-r form-input" type="text" slot="value" />
+      <input type="text" name="banknum" data-key="banknum" bindinput="iptChange" value="{{reqData.banknum}}" class="t-a-r form-input" placeholder="请输入银行卡卡号" slot="value" />
     </cell>
 
-    <button class="clear normal btn" hover-class="normal-hover" form-type="submit">提交</button>
+    <cell title="银行卡分行信息">
+      <input type="text" name="bankdetail" data-key="bankdetail" bindinput="iptChange" value="{{reqData.bankdetail}}" class="t-a-r form-input" placeholder="请输入银行卡分行信息" slot="value" />
+    </cell>
+
+
+    <button class="clear normal btn-submit" hover-class="normal-hover" form-type="submit">提交</button>
 
   </form>
 </view>

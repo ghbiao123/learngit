@@ -34,6 +34,11 @@ Page({
         detail
       });
 
+      wx.setStorage({
+        data: detail,
+        key: 'userinfo',
+      });
+
     });
   },
 
