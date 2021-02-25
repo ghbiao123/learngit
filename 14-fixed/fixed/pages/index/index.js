@@ -81,6 +81,24 @@ Page({
       }
     });
 
+    wx.getStorage({
+      key: 'pageurl',
+      success(res){
+        let url = res.data;
+        if(url){
+          wx.navigateTo({
+            url,
+          });
+        }
+      },
+      complete(){
+        wx.setStorage({
+          data: "",
+          key: 'pageurl',
+        });
+      }
+    });
+
   },
 
   makePhoneCall(e){
@@ -117,6 +135,15 @@ Page({
       selected
     });
 
+  },
+
+  onShow(){
+    setTimeout(()=>{
+      wx.setStorage({
+        data: "",
+        key: 'pageurl',
+      });
+    }, 200);
   },
 
   onShareAppMessage: function () {

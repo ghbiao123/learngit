@@ -80,6 +80,11 @@ Page({
 
     });
 
+    wx.setStorage({
+      data: "",
+      key: 'pageurl',
+    });
+
   },
   // 跳转列表
   getList(e) {

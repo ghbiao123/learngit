@@ -9,6 +9,7 @@ App({
 
     // 小程序主动检查更新
     util.updateManager();
+
     
   },
   globalData:{

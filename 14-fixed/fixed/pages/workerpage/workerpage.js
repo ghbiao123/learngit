@@ -46,6 +46,11 @@ Page({
 
     });
 
+   wx.setStorage({
+     data: "/pages/workerpage/workerpage",
+     key: 'pageurl',
+   });
+
 
   },
 
