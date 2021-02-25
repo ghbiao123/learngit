@@ -71,6 +71,7 @@ Page({
     // 获取本机机型
     wx.getSystemInfo({
       success: (result) => {
+        console.log(result);
         let modelkey = result.model;
         // let modelkey = "iPhone Xs Max";
         util.post('/api/index/getSystemInfo', {modelkey}).then(res=>{

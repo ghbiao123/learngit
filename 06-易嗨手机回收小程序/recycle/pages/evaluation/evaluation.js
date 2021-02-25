@@ -51,7 +51,7 @@ Page({
     // init 
     this.init();
 
-    
+
   },
 
   // 删除图片
@@ -79,7 +79,7 @@ Page({
             name: 'file',
             url: util.getSiteRoot() + '/api/common/upload',
             success(ret) {
-               
+
               let url = JSON.parse(ret.data).data.url;
               that.data.reqImageUrl.push(url);
             }
@@ -138,14 +138,38 @@ Page({
        * 电脑配置信息：pc_processor，pc_ram，pc_videocard，pc_ssd，pc_harddisk
        */
       let configKeys = {
-        "phone_model": {title: "机器型号", name: "phonemodel"},
-        "phone_color": {title: "机器颜色", name: "phonecolor"},
-        "phone_storage": {title: "存储空间", name: "phonestorage"},
-        "pc_processor": {title: "处理器", name: "pc_processor"},
-        "pc_ram": {title: "内存", name: "pc_ram"},
-        "pc_videocard": {title: "显卡", name: "pc_videocard"},
-        "pc_ssd": {title: "固态硬盘", name: "pc_ssd"},
-        "pc_harddisk": {title: "机械硬盘", name: "pc_harddisk"},
+        "phone_model": {
+          title: "机器型号",
+          name: "phonemodel"
+        },
+        "phone_color": {
+          title: "机器颜色",
+          name: "phonecolor"
+        },
+        "phone_storage": {
+          title: "存储空间",
+          name: "phonestorage"
+        },
+        "pc_processor": {
+          title: "处理器",
+          name: "pc_processor"
+        },
+        "pc_ram": {
+          title: "内存",
+          name: "pc_ram"
+        },
+        "pc_videocard": {
+          title: "显卡",
+          name: "pc_videocard"
+        },
+        "pc_ssd": {
+          title: "固态硬盘",
+          name: "pc_ssd"
+        },
+        "pc_harddisk": {
+          title: "机械硬盘",
+          name: "pc_harddisk"
+        },
       }
       let currentIndex = 0;
       let arrConfigOption = [];
@@ -166,8 +190,8 @@ Page({
       _data.image = util.getImageFullUrl(_data.image);
 
       // 将唯一一个多选选项排到最后
-      for(let i = 0;i<_data.other.length;i++){
-        if(_data.other[i].multikey == 1){
+      for (let i = 0; i < _data.other.length; i++) {
+        if (_data.other[i].multikey == 1) {
           let item = _data.other.splice(i, 1);
           _data.other.push(item[0]);
         }
@@ -185,8 +209,8 @@ Page({
       let progressData = that.data.progressData;
       progressData.all = _data.other.length + currentIndex;
 
-      calculateHeight.calculateHeight().then(res=>{
-         
+      calculateHeight.calculateHeight().then(res => {
+
         let scrollHeight = res;
         that.setData({
           type: this.data.type,
@@ -203,7 +227,7 @@ Page({
 
       });
 
-      
+
 
 
     });
@@ -233,8 +257,8 @@ Page({
             iv: encodeURI(e.detail.iv)
           };
           util.post('/api/login/getWxBindMobile', data).then(ret => {
-             
-            if(ret.code == -3){
+
+            if (ret.code == -3) {
               return util.showSuccess(ret.msg);
             }
             let userInfo = wx.getStorageSync('userinfo');
@@ -267,8 +291,11 @@ Page({
   // 选择选项
   radioChange(event) {
     let e = event.detail;
+    // 所选选项的id
     let val = e.detail.value;
+    // 所选选项在other的第几个
     let id = e.currentTarget.dataset.id;
+    
     if (val.indexOf('none') >= 0) {
       let arrChecked = this.data.arrChecked.fill(false);
       arrChecked[0] = true;
@@ -282,37 +309,50 @@ Page({
      */
     let currentIndex = this.data.currentIndex;
     let showCode = [];
-    let hiddenCode, hideCode = this.data.hideCode;
+    let hiddenCode = [],
+      hideCode = this.data.hideCode;
     let progressData = this.data.progressData;
-    if (this.data.type == 'mobile') {
-      hiddenCode = ['1', '3', '5'];
-      showCode = ['2', '4'];
-    } else if (this.data.type == 'pc') {
-      hiddenCode = ['34', '36', '2'];
-      showCode = ['35', '1'];
+
+    // if (this.data.type == 'mobile') {
+    //   hiddenCode = ['1', '3', '5'];
+    //   showCode = ['2', '4'];
+    // } else if (this.data.type == 'pc') {
+    //   hiddenCode = ['34', '36', '2'];
+    //   showCode = ['35', '1'];
+    // }
+
+    // if (hiddenCode.indexOf(val) == 0 || hiddenCode.indexOf(val) == 1) {
+    //   // 5 -all hidden 第五个选项的判断
+    //   // hideCode = this.data.type == 'pc' ? 6 : 4;
+    //   hideCode = currentIndex + 1;
+    //   progressData.all = hideCode;
+
+    // } else if (hiddenCode.indexOf(val) == 2) {
+    //   // 6 - all hidden 第六个选项的判断
+    //   // hideCode = this.data.type == 'pc' ? 7 : 5;
+    //   hideCode = currentIndex + 2;
+
+    //   progressData.all = hideCode;
+
+    // hideCode
+    let isHidden = 0;
+    if(this.data._data.other[id]){
+      isHidden = this.data._data.other[id][_key].filter(v => v.id == val)[0].endkey;
     }
-
-    if (hiddenCode.indexOf(val) == 0 || hiddenCode.indexOf(val) == 1) {
-      // 5 -all hidden 第五个选项的判断
-      // hideCode = this.data.type == 'pc' ? 6 : 4;
-      hideCode = currentIndex + 1;
+    if (isHidden == 1) {
+      // 选到特定选项
+      hideCode = e.currentTarget.dataset.idx + 1;
       progressData.all = hideCode;
-
-    } else if (hiddenCode.indexOf(val) == 2) {
-      // 6 - all hidden 第六个选项的判断
-      // hideCode = this.data.type == 'pc' ? 7 : 5;
-      hideCode = currentIndex + 2;
-
-      progressData.all = hideCode;
-
     } else {
-      if (hideCode < 8 && showCode.indexOf(val) < 0) {
+      progressData.all = this.data._data.other.length + currentIndex;
+      hideCode = 555;
+      // if (hideCode < 8 && showCode.indexOf(val) < 0) {
 
-      }else{
-        // progressData.all = this.data._data.other.length + (this.data.type == 'pc' ? 5 : 3);
-        progressData.all = this.data._data.other.length + currentIndex;
-        hideCode = 555;
-      }
+      // } else {
+      //   // progressData.all = this.data._data.other.length + (this.data.type == 'pc' ? 5 : 3);
+      //   progressData.all = this.data._data.other.length + currentIndex;
+      //   hideCode = 555;
+      // }
     }
     this.setData({
       hideCode,
@@ -326,7 +366,7 @@ Page({
       if (id != this.data._data.other.length - 1) {
         this.data.reqData.inquiryinfo[id] = this.data._data.other[id][_key].filter(v => v.id == val)[0];
       } else if (id == this.data._data.other.length - 1) {
-        if(val.indexOf("none") >= 0){
+        if (val.indexOf("none") >= 0) {
           val.unshift("none");
         }
         this.data.reqData.inquiryinfo.last = val;
@@ -357,7 +397,7 @@ Page({
     // 关闭actionsheet
     // this.close();
 
-    if(that.data.progressData.chose != that.data.progressData.all){
+    if (that.data.progressData.chose != that.data.progressData.all) {
       return util.showSuccess("请完善选项");
     }
 
@@ -510,7 +550,7 @@ Page({
         // 当前估价机器 Storage
         let newData = Object.assign({}, data);
         newData.cid = that.data._data.cid;
-        if(that.data.type == 'pc' && that.data._data.bid == 1){
+        if (that.data.type == 'pc' && that.data._data.bid == 1) {
           newData.pcharddisk = that.data.reqData.pc_harddisk;
           newData.pcprocessor = that.data.reqData.pc_processor;
         }
@@ -521,8 +561,8 @@ Page({
 
         if (res.code == 1) {
           callBack && callBack(res);
-        }else if(res.code == -5){
-          
+        } else if (res.code == -5) {
+
           let userInfo = wx.getStorageSync('userinfo');
           let userid = userInfo.uid;
           let d = {
@@ -541,13 +581,13 @@ Page({
             }
           }
 
-          util.post("/api/order/calculatePricePcNa", d).then(res=>{
-             
-            if(res.code == 1){
+          util.post("/api/order/calculatePricePcNa", d).then(res => {
+
+            if (res.code == 1) {
               wx.redirectTo({
                 url: '/pages/manualresult/manualresult',
               });
-            }else{
+            } else {
               util.showSuccess(res.msg);
             }
           });

@@ -20,7 +20,9 @@
       <view class="cell-card" hidden="{{!arrSelected[index].isShow}}">
         <radio-group data-idx="{{index}}" data-id="{{item.name}}" bindchange="radioChange">
           <radio wx:for="{{item.data}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
-            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+            color="#C7402C" value="{{itm.id}}">
+            <text style="display: inline-block; width: 325px;">{{itm.name}}</text>
+          </radio>
         </radio-group>
       </view>
     </block>
@@ -47,7 +49,9 @@
           <block wx:if="{{index != arrOther.length-1}}">
             <radio-group data-idx="{{index + currentIndex}}" data-id="{{index}}" bindchange="radioChange">
               <radio wx:for="{{item[key]}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
-                color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+                color="#C7402C" value="{{itm.id}}">
+                <text style="display: inline-block; width: 325px;">{{itm.name}}</text>
+                </radio>
             </radio-group>
           </block>
           <block wx:else>

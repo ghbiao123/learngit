@@ -42,7 +42,11 @@ Page({
           });
         });
       } else if (res.code == 1) {
-        let list = res.data;
+        let list = res.data.map(v=>{
+          let t = util.getToday(v.createtime * 1000);
+          v.createtime = t.date + ' ' + t.time;
+          return v;
+        });
         that.setData({
           list
         });

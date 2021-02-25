@@ -1,4 +1,7 @@
 Component({
+  options: {
+    addGlobalClass: true
+  },
   properties:{
     arrConfig: {
       type: Array,
@@ -98,7 +101,8 @@ Component({
       
       // 所选选项的id
       let id = e.detail.value;
-      // 显示所选val
+      
+      // 显示所选val, idx为当前列表第几个选项
       let idx = e.currentTarget.dataset.idx;
       this.showValue(idx, id);
 

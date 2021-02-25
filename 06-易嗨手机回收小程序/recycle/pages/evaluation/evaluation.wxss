@@ -44,11 +44,11 @@
 .cell-card{
   margin-top: 0rpx;
 }
-.radio{
+/* .radio{
   display: block;
   line-height: 75rpx;
   padding: 10rpx 0;
-}
+} */
 
 checkbox .wx-checkbox-input {
   border-radius: 50%;

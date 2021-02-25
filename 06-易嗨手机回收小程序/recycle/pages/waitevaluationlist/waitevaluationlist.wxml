@@ -3,6 +3,7 @@
 		<view class="title">机器信息</view>
 		<view class="title">{{item.name}}</view>
 		<view class="content">联系方式：{{item.userinfo.mobile}}</view>
+		<view class="content">创建时间：{{item.createtime}}</view>
 	</navigator>
 </view>
 
