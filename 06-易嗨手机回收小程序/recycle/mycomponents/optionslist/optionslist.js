@@ -143,6 +143,11 @@ Component({
       this.setData({
         arrSelected
       });
+    },
+    // tipTap
+    tipTap(e){
+      let tip = e.currentTarget.dataset.tip;
+      this.triggerEvent('tiptap', {tip});
     }
   }
 });

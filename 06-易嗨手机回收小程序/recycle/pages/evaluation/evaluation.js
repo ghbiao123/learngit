@@ -37,6 +37,7 @@ Page({
       }
     ],
     isLogin: false,
+    showOneButtonDialog: false
   },
 
   /**
@@ -52,6 +53,21 @@ Page({
     this.init();
 
 
+  },
+
+  // getTip
+  getTip(e){
+    let tip = e.detail.tip;
+    // console.log(id);
+    this.setData({
+      showOneButtonDialog: true,
+      dialogTip: tip
+    });
+  },
+  tapDialogButton(){
+    this.setData({
+      showOneButtonDialog: false
+    });
   },
 
   // 删除图片
@@ -179,7 +195,8 @@ Page({
           currentIndex++;
           let data = {
             ...title,
-            data: _data[key]
+            data: _data[key],
+            tip: _data[`${key}_note`]
           }
           arrConfigOption.push(data);
         }

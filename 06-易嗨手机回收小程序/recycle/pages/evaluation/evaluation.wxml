@@ -15,9 +15,17 @@
 
 
 
-    <optionlist arrConfig="{{arrConfigOption}}" arrOther="{{_data.other}}" currentIndex="{{currentIndex}}"
-      hideCode="{{hideCode}}" arrChecked="{{arrChecked}}" arrSelected="{{arrSelected}}" bind:radioChange="radioChange"
-      scrollHeight="{{scrollHeight}}" key="{{_key}}"></optionlist>
+    <optionlist 
+      arrConfig="{{arrConfigOption}}" 
+      arrOther="{{_data.other}}" 
+      currentIndex="{{currentIndex}}"
+      hideCode="{{hideCode}}" 
+      arrChecked="{{arrChecked}}" 
+      arrSelected="{{arrSelected}}" 
+      bind:radioChange="radioChange"
+      bind:tiptap="getTip"
+      scrollHeight="{{scrollHeight}}" 
+      key="{{_key}}"></optionlist>
 
     <view wx:if="{{type == '1mobile'}}" class="cont">
 
@@ -200,7 +208,10 @@
       <button bindtap="getResult" class="button-clear m-t-20" hover-class="btn-hover">立即估价</button>
     </view>
 
-
+    <mp-dialog title="提示" show="{{showOneButtonDialog}}" bindbuttontap="tapDialogButton" buttons="{{[{text: '确定'}]}}">
+      <rich-text style="width: 272px;" nodes="{{dialogTip}}"></rich-text>
+      <!-- <image style="/images/contact.png"></image> -->
+    </mp-dialog>
 
   </view>
 </view>

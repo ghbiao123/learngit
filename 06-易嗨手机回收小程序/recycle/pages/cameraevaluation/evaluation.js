@@ -35,7 +35,8 @@ Page({
       }
     ],
     checkbox: [],
-    isLogin: false
+    isLogin: false,
+    showOneButtonDialog: false
   },
 
   /**
@@ -50,6 +51,21 @@ Page({
     // init 
     this.init();
 
+  },
+
+  // getTip
+  getTip(e){
+    let tip = e.detail.tip;
+    // console.log(id);
+    this.setData({
+      showOneButtonDialog: true,
+      dialogTip: tip
+    });
+  },
+  tapDialogButton(){
+    this.setData({
+      showOneButtonDialog: false
+    });
   },
 
   // 输入设备型号

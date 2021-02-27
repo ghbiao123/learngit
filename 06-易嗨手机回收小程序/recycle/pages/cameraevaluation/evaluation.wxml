@@ -21,17 +21,12 @@
       </view>
     </view>
 
-      <!-- 
+    <!-- 
         arrSelected="{{arrSelected}}" 
         currentIndex="{{currentIndex}}"
       -->
-    <optionlist 
-      arrOther="{{_data}}"
-      arrChecked="{{arrChecked}}"
-      bind:radioChange="radioChange"
-      scrollHeight="{{scrollHeight}}"
-      key="{{_key}}"
-      ></optionlist>
+    <optionlist arrOther="{{_data}}" arrChecked="{{arrChecked}}" bind:tiptap="getTip" bind:radioChange="radioChange"
+      scrollHeight="{{scrollHeight}}" key="{{_key}}"></optionlist>
 
     <!-- <block wx:for="{{_data}}" wx:key="index">
 
@@ -77,6 +72,11 @@
 
   </view>
 </view>
+
+<mp-dialog title="提示" show="{{showOneButtonDialog}}" bindbuttontap="tapDialogButton" buttons="{{[{text: '确定'}]}}">
+  <rich-text style="width: 272px;" nodes="{{dialogTip}}"></rich-text>
+  <!-- <image style="/images/contact.png"></image> -->
+</mp-dialog>
 
 <!-- <mp-actionSheet bindactiontap="getResult" show="{{showActionsheet}}" actions="{{groups}}">
 </mp-actionSheet> -->
