@@ -354,7 +354,11 @@ Page({
     // hideCode
     let isHidden = 0;
     if(this.data._data.other[id]){
-      isHidden = this.data._data.other[id][_key].filter(v => v.id == val)[0].endkey;
+      let oOption = this.data._data.other[id][_key].filter(v => v.id == val);
+      if(oOption[0] && oOption[0].endkey){
+        isHidden = oOption[0].endkey;
+        // isHidden = this.data._data.other[id][_key].filter(v => v.id == val)[0].endkey;
+      }
     }
     if (isHidden == 1) {
       // 选到特定选项
