@@ -1,0 +1,64 @@
+<view class="container">
+
+  <view class="head">
+    <block wx:if="true">
+      <image class="head-image" src="/images/w.png"></image>
+      <view>待付款</view>
+    </block>
+    <block wx:if="">
+      <image class="head-image" src="/images/w.png"></image>
+      <view>待付款</view>
+    </block>
+  </view>
+
+  <view class="tit-no-bg">商品清单</view>
+
+  <view class="goods-box">
+    <image class="goods-image" src="/images/banner.png" mode="aspectFit"></image>
+    <view class="goods-info">
+      <view class="goods-name">
+        新疆一级库尔勒香梨约600g
+      </view>
+      <view class="goods-price"><text class="f-s-24">￥</text>9.9</view>
+    </view>
+
+  </view>
+
+  <view class="tit-no-bg">订单信息</view>
+
+  <view class="order-box">
+    <view class="order-info">
+      <view class="info-key">订单号</view>
+      <view class="info-val">20210203039301</view>
+    </view>
+    <view class="order-info">
+      <view class="info-key">下单时间</view>
+      <view class="info-val">2021-02-01 10:00</view>
+    </view>
+    <view class="order-info">
+      <view class="info-key">订单状态</view>
+      <view class="info-val">已完成</view>
+    </view>
+  </view>
+
+
+
+
+
+
+
+  <view class="btn-box">
+    <view class="bg-white">
+      <!-- <navigator hover-class="none" open-type="switchTab" url="/pages/index/index">
+        <icontext size="22" boxH="80" lHeight="30" color="#ccc" iconW="42" iconH="42" cont="回首页" src="/images/index.png"></icontext>
+      </navigator>
+      <button class="contact-btn" open-type="contact">
+        <icontext size="22" boxH="80" lHeight="30" color="#ccc" iconW="42" iconH="42" cont="客服" src="/images/contact.png"></icontext>
+      </button> -->
+    </view>
+    <view class="bg-orange">
+      <!-- <image class="pay-icon" src="/images/go.png"></image> -->
+      <view class="m-l-20">立即支付</view>
+    </view>
+  </view>
+</view>

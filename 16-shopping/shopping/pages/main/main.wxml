@@ -1,0 +1,54 @@
+<view class="container">
+  <view class="head">
+    <view class="userinfo">
+      <view class="user-avatar">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <!-- 已登录 -->
+      <block wx:if="{{isLogin}}">
+        <view class="user-name">用户昵称</view>
+      </block>
+      <!-- 未登录 -->
+      <block wx:if="{{!isLogin}}">
+        <button class="user-name" bindgetuserinfo="getUserInfo" open-type="getUserInfo">登录</button>
+      </block>
+    </view>
+  </view>
+
+  <view class="cell-card m-t-20">
+    <view class="user-order">
+      <view class="myorder">我的订单</view>
+      <navigator hover-class="none" url="/pages/order/order?type=0">
+        <view class="allorder" hover-class="gray-hover">
+          <view>全部订单</view>
+          <image class="rt" src="/images/rt.png"></image>
+        </view>
+      </navigator>
+    </view>
+    <view class="order-option">
+      <navigator hover-class="none" url="/pages/order/order?type=0">
+        <icontext cont="全部订单" src="/images/main-1.png" iconW="54" iconH="54">
+        </icontext>
+      </navigator>
+
+      <navigator hover-class="none" url="/pages/order/order?type=1">
+        <icontext cont="待付款" src="/images/main-2.png" iconW="54" iconH="54"></icontext>
+      </navigator>
+
+      <navigator hover-class="none" url="/pages/order/order?type=2">
+        <icontext cont="已完成" src="/images/main-3.png" iconW="54" iconH="54"></icontext>
+      </navigator>
+    </view>
+  </view>
+
+  <view class="cell-card m-t-20">
+    <cell icon="/images/main-4.png" hover footer>
+      <button hover-class="gray-hover" class="contact" open-type="contact">客服</button>
+    </cell>
+    <cell title="使用说明" icon="/images/main-5.png" hover link="/pages/notice/notice" footer></cell>
+    <cell title="我的帮助" icon="/images/main-6.png" hover link="/pages/notice/notice" footer></cell>
+    <cell title="法律声明" icon="/images/main-7.png" hover link="/pages/notice/notice" footer></cell>
+  </view>
+
+
+</view>

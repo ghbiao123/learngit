@@ -1,0 +1,4 @@
+<view hover-class="hover" class="icontext" style="background-color: {{theme}}; width: {{boxW}}rpx; height: {{boxH}}rpx;">
+  <image class="icon" src="{{src}}" style="width: {{iconW}}rpx; height: {{iconH}}rpx;" src="{{src}}"></image>
+  <view class="text" style="font-size: {{size}}rpx; line-height: {{lHeight}}rpx; color: {{color}};">{{cont}}</view>
+</view>

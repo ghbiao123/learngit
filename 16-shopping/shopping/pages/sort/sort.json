@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "searchbar": "/mycomponents/searchbar/searchbar",
+    "goodslist": "/mycomponents/goodslist/goodslist",
+    "tab": "/mycomponents/tab/tab"
+  }
+}

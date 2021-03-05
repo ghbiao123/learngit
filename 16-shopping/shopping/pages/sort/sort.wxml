@@ -1,0 +1,14 @@
+<view class="container">
+  <view>
+    <searchbar theme="#ffffff" disabled></searchbar>
+  </view>
+  <tab bind:getSelected="getTabId" title="{{tabTitle}}"></tab>
+
+  <view class="sort">
+    <view bindtap="getTap" data-idx="0" class="sort-item {{selected[0]? 'top':'bottom'}}">默认</view>
+    <view bindtap="getTap" data-idx="1" class="sort-item {{selected[1]? 'top':'bottom'}}">销量</view>
+    <view bindtap="getTap" data-idx="2" class="sort-item {{selected[2]? 'top':'bottom'}}">价格</view>
+  </view>
+
+  <goodslist list="{{[1,2,3]}}"></goodslist>
+</view>

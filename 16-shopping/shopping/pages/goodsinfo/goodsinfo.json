@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "icontext": "/mycomponents/icontext/icontext",
+    "parser": "/mycomponents/parser/parser"
+  }
+}

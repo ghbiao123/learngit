@@ -1,0 +1,45 @@
+<view class="container">
+  <searchbar disabled theme="#F2B454"></searchbar>
+  <view class="banner">
+    <view class="banner-bg"></view>
+    <swiper class="banner-swiper" autoplay circular>
+      <swiper-item class="banner-swiper-item" wx:for="000" wx:key="index">
+        <image class="banner-image" src="/images/banner.png"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <view class="notice">
+    <view class="notice-tit">公告</view>
+    <view>新品上市，敬请尝鲜～～～</view>
+  </view>
+
+  <view class="cell-card">
+    <view class="hot-title">热门商品</view>
+    <view class="hot-line"></view>
+    <view class="content">
+      <view class="content-left">
+        <view class="goods" hover-class="gray-hover" wx:for="{{lList}}" wx:key="index" data-id="{{item}}" bindtap="getGoodsDetail">
+          <image class="goods-image" src="/images/banner.png" mode="aspectFit"></image>
+          <view class="goods-name">新疆一级库尔勒香梨约600g</view>
+          <view class="goods-info">
+            <view class="goods-sale">已售100件</view>
+            <view class="goods-price"><text class="f-s-24">￥</text>9.9</view>
+          </view>
+        </view>
+      </view>
+      <view class="content-right">
+        <view class="goods" hover-class="gray-hover" wx:for="{{rList}}" wx:key="index" data-id="{{item}}" bindtap="getGoodsDetail">
+          <image class="goods-image" src="/images/banner.png" mode="aspectFit"></image>
+          <view class="goods-name">新疆一级库尔勒香梨约600g</view>
+          <view class="goods-info">
+            <view class="goods-sale">已售100件</view>
+            <view class="goods-price"><text class="f-s-24">￥</text>9.9</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+</view>

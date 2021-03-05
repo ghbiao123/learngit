@@ -1,0 +1,7 @@
+<!-- type: normal verify change detail cancel update -->
+<button class="clear {{type}}" 
+        bindtap="tap"
+        hover-class="{{type+'-hover'}}"
+        >
+  <slot></slot>
+</button>

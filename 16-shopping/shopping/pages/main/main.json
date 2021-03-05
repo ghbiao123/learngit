@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "icontext": "/mycomponents/icontext/icontext",
+    "cell": "/mycomponents/cell/cell"
+  }
+}

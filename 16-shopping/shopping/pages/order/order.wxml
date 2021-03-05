@@ -1,0 +1,5 @@
+<view class="container">
+  <tab title="{{arrTitle}}"></tab>
+  <orderlist list="{{arrTitle}}"></orderlist>
+</view>
+

@@ -1,0 +1,10 @@
+<view class="tab">
+  <scroll-view class="tab-scroll" scroll-x scroll-with-animation scroll-into-view="id{{selected-1}}">
+    <view class="tab-box" style="width: {{162*title.length<700? 700:162*title.length}}rpx;">
+      <view class="tab-item" id="id{{index}}" wx:for="{{title}}" wx:key="index" data-idx="{{index}}" data-id="{{item.id}}" bindtap="getSelected">
+        <text class="{{selected == index ? 'tab-s':''}}">{{item.name}}</text>
+        <view hidden="{{selected == index ? false : true}}" class="line-s"></view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
