@@ -1,5 +1,8 @@
 <view class="container">
-  <searchbar disabled theme="#F2B454"></searchbar>
+  <navigator hover-class="none" url="/pages/searchlist/searchlist">
+    <searchbar disabled theme="#F2B454"></searchbar>
+  </navigator>
+
   <view class="banner">
     <view class="banner-bg"></view>
     <swiper class="banner-swiper" autoplay circular>

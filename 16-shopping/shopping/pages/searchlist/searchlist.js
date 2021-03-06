@@ -1,4 +1,4 @@
-// pages/notice/notice.js
+// pages/searchlist/searchlist.js
 Page({
 
   /**
@@ -12,22 +12,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
-    this.data.key = options.key;
-    this.init();
-  },
-
-  init(){
-    let pageData = {
-      use: {title: '使用说明', url:"",},
-      help: {title: '我的帮助', url:"",},
-      lay: {title: '法律声明', url:"",},
-    }
-
-    wx.setNavigationBarTitle({
-      title: pageData[this.data.key].title,
-    });
-
 
   },
 

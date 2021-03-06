@@ -2,5 +2,6 @@
   "usingComponents": {
     "tab": "/mycomponents/tab/tab",
     "orderlist": "/mycomponents/orderlist/orderlist"
-  }
+  },
+  "navigationBarTitleText": "我的订单"
 }

@@ -6,7 +6,8 @@
     "pages/goodsinfo/goodsinfo",
     "pages/orderinfo/orderinfo",
     "pages/order/order",
-    "pages/notice/notice"
+    "pages/notice/notice",
+    "pages/searchlist/searchlist"
   ],
   "tabBar": {
     "color": "#CCCCCC",

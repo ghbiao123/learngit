@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "searchbar": "/mycomponents/searchbar/searchbar"
-  }
+  },
+  "navigationBarTitleText": "首页"
 }

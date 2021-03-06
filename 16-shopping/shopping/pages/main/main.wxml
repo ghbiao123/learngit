@@ -15,7 +15,7 @@
     </view>
   </view>
 
-  <view class="cell-card m-t-20">
+  <view class="cell-card m-t-50">
     <view class="user-order">
       <view class="myorder">我的订单</view>
       <navigator hover-class="none" url="/pages/order/order?type=0">
@@ -45,9 +45,9 @@
     <cell icon="/images/main-4.png" hover footer>
       <button hover-class="gray-hover" class="contact" open-type="contact">客服</button>
     </cell>
-    <cell title="使用说明" icon="/images/main-5.png" hover link="/pages/notice/notice" footer></cell>
-    <cell title="我的帮助" icon="/images/main-6.png" hover link="/pages/notice/notice" footer></cell>
-    <cell title="法律声明" icon="/images/main-7.png" hover link="/pages/notice/notice" footer></cell>
+    <cell title="使用说明" icon="/images/main-5.png" hover link="/pages/notice/notice?key=use" footer></cell>
+    <cell title="我的帮助" icon="/images/main-6.png" hover link="/pages/notice/notice?key=help" footer></cell>
+    <cell title="法律声明" icon="/images/main-7.png" hover link="/pages/notice/notice?key=lay" footer></cell>
   </view>
 
 
