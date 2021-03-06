@@ -34,6 +34,12 @@ Page({
       let order = res.data;
       order.orderDetail.orderimages = order.orderDetail.orderimages ? order.orderDetail.orderimages.split(",") : '';
       order.shifuDetail.fkimages = order.shifuDetail.fkimages ? order.shifuDetail.fkimages.split(",") : '';
+      order.salesman.xsimages = order.salesman.xsimages ? order.salesman.xsimages.split(",") : '';
+      order.salesman.xsimages = order.salesman.xsimages.map(v=>{
+        v = util.getSiteRoot() + v;
+        return v;
+      });
+
 
       if(order.shifuDetail.fkimages.length > 0){
         order.shifuDetail.fkimages = order.shifuDetail.fkimages.filter(v=>{
@@ -186,7 +192,7 @@ Page({
   showImage(e){
     let key = e.currentTarget.dataset.key;
     let idx = e.currentTarget.dataset.idx;
-    let arr = this.data.order.orderDetail[key] || this.data.order.shifuDetail[key];
+    let arr = this.data.order.orderDetail[key] || this.data.order.shifuDetail[key] || this.data.order.salesman[key];
     util.showImage(arr, idx);
   },
   // openPDF

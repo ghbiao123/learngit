@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "btn": "/mycomponents/btn/btn"
+    "btn": "/mycomponents/btn/btn",
+    "parser": "/mycomponents/parser/parser"
   },
   "navigationBarTitleText": "项目详情"
 }

@@ -87,7 +87,7 @@
 
   <view class="cell-cont b-b-line">
     <view class="cell-cont-title">
-      <view>订单信息</view>
+      <view>师傅信息</view>
       <!-- <view wx:if="{{order.shifuDetail.shifu_name}}" class="color-blue">师傅指派中</view> -->
       <view wx:if="{{!order.shifuDetail.shifu_name}}" class="color-blue">师傅指派中</view>
     </view>
@@ -132,6 +132,15 @@
     <view class="cell-cont-item">
       <view class="cell-key">联系方式：</view>
       <view class="cell-val">{{order.salesman.salesman_phone || "***"}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">照片：</view>
+      <view class="cell-val">
+        <block wx:if="{{order.salesman.xsimages && order.salesman.xsimages.length != 0}}">
+          <image wx:for="{{order.salesman.xsimages}}" wx:key="index" class="cell-image" src="{{item}}" mode="aspectFit" bindtap="showImage" data-idx="{{index}}" data-key="xsimages"></image>
+        </block>
+        <view wx:else>***</view>
+      </view>
     </view>
 
   </view>

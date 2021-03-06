@@ -8,7 +8,7 @@
   </view>
 
   <view class="project-introduce">
-    {{detail.xmjieshao}}
+  <parser html="{{detail.xmjieshao}}"></parser>
     <view class="bottom-btn-box">
       <btn type="normal" bind:getTap="createOrder">创建订单</btn>
     </view>

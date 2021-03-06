@@ -38,7 +38,9 @@
                 <image class="list-image" mode="aspectFit" src="{{itm.xmimage}}"></image>
                 <view class="list-info">
                   <view class="list-name">{{itm.name}}</view>
-                  <view class="list-msg">{{itm.xmjieshao}}</view>
+                  <view class="list-msg">
+                    <parser html="{{itm.xmjieshao}}"></parser>
+                  </view>
                 </view>
               </view>
             </scroll-view>
