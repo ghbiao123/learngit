@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "parser": "/mycomponents/parser/parser"
   },
   "navigationBarTitleText": "详情"
 }

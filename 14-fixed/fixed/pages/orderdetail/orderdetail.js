@@ -35,10 +35,12 @@ Page({
       order.orderDetail.orderimages = order.orderDetail.orderimages ? order.orderDetail.orderimages.split(",") : '';
       order.shifuDetail.fkimages = order.shifuDetail.fkimages ? order.shifuDetail.fkimages.split(",") : '';
       order.salesman.xsimages = order.salesman.xsimages ? order.salesman.xsimages.split(",") : '';
-      order.salesman.xsimages = order.salesman.xsimages.map(v=>{
-        v = util.getSiteRoot() + v;
-        return v;
-      });
+      if(order.salesman.xsimages){
+        order.salesman.xsimages = order.salesman.xsimages.map(v=>{
+          v = util.getSiteRoot() + v;
+          return v;
+        });
+      }
 
 
       if(order.shifuDetail.fkimages.length > 0){

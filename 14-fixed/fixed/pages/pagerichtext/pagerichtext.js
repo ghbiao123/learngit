@@ -10,7 +10,8 @@ Page({
     reqData: {
       lunbo_id: 0,
       type: 0
-    }
+    },
+    siteUrl: util.getSiteRoot(),
   },
 
   /**

@@ -9,7 +9,8 @@ Page({
   data: {
     lv1Id: 0,
     lv2Id: 0,
-    contCurrent: 0
+    contCurrent: 0,
+    siteUrl: util.getSiteRoot(),
   },
 
   /**

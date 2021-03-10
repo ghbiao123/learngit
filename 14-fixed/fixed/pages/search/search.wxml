@@ -39,7 +39,7 @@
                 <view class="list-info">
                   <view class="list-name">{{itm.name}}</view>
                   <view class="list-msg">
-                    <parser html="{{itm.xmjieshao}}"></parser>
+                    <parser content="{{itm.xmdescribe}}" domain="{{siteUrl}}"></parser>
                   </view>
                 </view>
               </view>
