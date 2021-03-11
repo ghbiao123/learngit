@@ -1,3 +1,5 @@
+let util = require("../../utils/util");
+let that;
 // pages/main/main.js
 Page({
 
@@ -5,14 +7,45 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isLogin: true
+    isLogin: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
 
+    this.init();
+
+  },
+  // 初始化
+  init(){
+    util.checkIsLogin.call(this);
+  },
+  // getUserInfo
+  getUserInfo(e){
+    util.getUserInfo(e, (res)=>{
+      if(res.code == 1){
+        // 登录成功
+        let userInfo = e.detail.userInfo;
+        userInfo.userid = res.data.code;
+        wx.setStorage({
+          data: userInfo,
+          key: 'userinfo',
+        });
+
+        that.setData({
+          isLogin: true,
+          userInfo: userInfo
+        });
+
+        return util.showSuccess(res.msg);
+      }else{
+        return util.showSuccess(res.msg);
+      }
+      
+    });
   },
 
   /**

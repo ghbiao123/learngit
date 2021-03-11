@@ -148,12 +148,11 @@ function getUserInfo(e, callBack) {
     success(res) {
       let data = {
         code: res.code,
-        userInfo: e.detail.rawData,
-        encrypted_data: e.detail.encryptedData,
+        userinfo: e.detail.rawData,
+        encrypteddata: e.detail.encryptedData,
         iv: e.detail.iv,
       }
-      post("url", data).then(res => {
-        console.log(res);
+      post("/api/login/loginByUser", data).then(res => {
         callBack&&callBack(res);
       });
     }
@@ -255,8 +254,37 @@ function getToPoint(num) {
   let n = num.replace(/\%/g, "");
   return n / 100;
 }
+// 将图片添加为完整路径
+function getImageFullUrl(arr, key){
+  if(!arr||arr.length==0){
+    return [];
+  }
+  if(!key){
+    // key 不存在
+    return getSiteRoot() + arr;
+  }else{
+    // key 存在
+    let newArr = arr.map(v=>{
+      v[key] = getSiteRoot() + v[key];
+      return v
+    });
+    return newArr;
+  }
+}
 
+function getFormatNum(num){
+  if(num > 10000){
 
+    if( num%10000 > 1000){
+      return (num/10000).toFixed(1);
+    }else{
+      return num
+    }
+
+  }else{
+    return num
+  }
+}
 
 module.exports = {
   getToday, // 获取当前日期，时间，周几
@@ -271,6 +299,8 @@ module.exports = {
   getUserInfo, // button触发获取用户信息，code userinfo
   getCaptcha, // 验证手机号并获取验证码
   getSiteRoot, // 获取api接口根
-  updateManager, // 小程序主动更新
+  updateManager, // 小程序主动更新,
+  getImageFullUrl, // 拼接完整路径
+  getFormatNum, // 获取格式化数据
 }
 

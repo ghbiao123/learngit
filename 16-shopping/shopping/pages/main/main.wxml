@@ -6,7 +6,7 @@
       </view>
       <!-- 已登录 -->
       <block wx:if="{{isLogin}}">
-        <view class="user-name">用户昵称</view>
+        <view class="user-name">{{userInfo.nickName}}</view>
       </block>
       <!-- 未登录 -->
       <block wx:if="{{!isLogin}}">

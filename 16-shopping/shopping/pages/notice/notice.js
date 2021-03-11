@@ -1,3 +1,5 @@
+let util = require("../../utils/util");
+let that;
 // pages/notice/notice.js
 Page({
 
@@ -14,18 +16,29 @@ Page({
   onLoad: function (options) {
     console.log(options);
     this.data.key = options.key;
+    this.data.id = options.id;
     this.init();
   },
 
   init(){
     let pageData = {
-      use: {title: '使用说明', url:"",},
-      help: {title: '我的帮助', url:"",},
-      lay: {title: '法律声明', url:"",},
+      use: {title: '使用说明', url: "",},
+      help: {title: '我的帮助', url: "",},
+      lay: {title: '法律声明', url: "",},
+      notice: {title: '公告', url: "/api/homeindex/noticeDetail"}
     }
 
     wx.setNavigationBarTitle({
       title: pageData[this.data.key].title,
+    });
+
+    let data = {};
+    if(this.data.id){
+      data.id = this.data.id
+    }
+
+    util.post(pageData[this.data.key].url, data).then(res=>{
+      console.log(res);
     });
 
 

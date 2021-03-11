@@ -25,6 +25,7 @@
   display: flex;
   height: 75rpx;
   line-height: 75rpx;
+  overflow: hidden;
 }
 .notice-tit{
   margin: 18rpx 20rpx 0 20rpx;
@@ -35,6 +36,12 @@
   font-size: 24rpx;
   color: #F2B454;
   border: 1rpx solid #F2B454;
+}
+
+.notice-swiper,
+.notice-swiper-item{
+  width: 600rpx;
+  height: 75rpx;
 }
 
 /* .cell-card{
