@@ -1,0 +1,33 @@
+<view class="feedback" wx:for="{{fbList}}" wx:key="index">
+  <view class="cell-cont-item">
+    <view class="cell-key">照片：</view>
+    <view class="cell-val">
+      <block wx:if="{{item.images && item.images.length != 0}}">
+        <image 
+          wx:for="{{item.images}}" 
+          wx:key="index" 
+          wx:for-index="idx"
+          wx:for-item="itm"
+          class="cell-image" 
+          src="{{itm}}" 
+          mode="aspectFit"
+          bindtap="showImage" 
+          data-arridx="{{index}}" 
+          data-idx="{{idx}}"
+        >
+        </image>
+      </block>
+      <view wx:else>***</view>
+    </view>
+  </view>
+
+  <view class="cell-cont-item">
+      <view class="cell-key">反馈：</view>
+      <view class="cell-val">{{item.neirong || '***'}}</view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">反馈时间：</view>
+      <view class="cell-val">{{item.time || '***'}}</view>
+    </view>
+</view>

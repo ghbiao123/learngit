@@ -104,7 +104,7 @@
       <view class="cell-key">上门维修时间：</view>
       <view class="cell-val">{{order.shifuDetail.repair_time || "***"}}</view>
     </view>
-    <view class="cell-cont-item">
+    <!-- <view class="cell-cont-item">
       <view class="cell-key">照片：</view>
       <view class="cell-val">
         <block wx:if="{{order.shifuDetail.fkimages && order.shifuDetail.fkimages.length != 0}}">
@@ -112,11 +112,12 @@
         </block>
         <view wx:else>***</view>
       </view>
-    </view>
+    </view> -->
     <view class="cell-cont-item">
-      <view class="cell-key">反馈：</view>
-      <view class="cell-val">{{order.shifuDetail.fkneirong || "***"}}</view>
+      <view class="cell-key">反馈内容：</view>
+      <view class="cell-val">{{order.shifuDetail.fkneirong ? '' : "***"}}</view>
     </view>
+    <feedback list="{{order.shifuDetail.fkneirong}}"></feedback>
   </view>
 
   <view class="cell-cont b-b-line">

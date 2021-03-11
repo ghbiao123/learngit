@@ -107,8 +107,11 @@
       <view class="cell-key">
         <view>记录：</view>
       </view>
-      <view class="cell-val">{{order.fkneirong}}</view>
+      <!-- <view class="cell-val">{{order.fkneirong}}</view> -->
     </view>
+
+    <feedback list="{{order.fkneirong}}"></feedback>
+
     <view class="cell-cont-item">
       <view class="cell-key">反馈内容：</view>
     </view>

@@ -3,7 +3,8 @@
     "btn": "/mycomponents/btn/btn",
     "status": "/mycomponents/status/status",
     "icontext": "/mycomponents/icontext/icontext",
-    "orderstatus": "/mycomponents/orderstatus/orderstatus"
+    "orderstatus": "/mycomponents/orderstatus/orderstatus",
+    "feedback": "/mycomponents/feedback/feedback"
   },
   "navigationBarTitleText": "订单详情",
   "enablePullDownRefresh": true,

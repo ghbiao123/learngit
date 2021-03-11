@@ -1,0 +1,95 @@
+{
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/createorder/createorder",
+          "pathName": "pages/createorder/createorder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/search/search",
+          "pathName": "pages/search/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/main/main",
+          "pathName": "pages/main/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/personalinfo/personalinfo",
+          "pathName": "pages/personalinfo/personalinfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/changeperinfo/changeperinfo",
+          "pathName": "pages/changeperinfo/changeperinfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/changeperinfo/changeperinfo",
+          "pathName": "pages/changeperinfo/changeperinfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/personalverify/personalverify",
+          "pathName": "pages/personalverify/personalverify",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/projectdetail/projectdetail",
+          "pathName": "pages/projectdetail/projectdetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/orderlist/orderlist",
+          "pathName": "pages/orderlist/orderlist",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/orderstatus/orderstatus",
+          "pathName": "pages/orderstatus/orderstatus",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/orderdetail/orderdetail",
+          "pathName": "pages/orderdetail/orderdetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/workerprojectdetail/workerprojectdetail",
+          "pathName": "pages/workerprojectdetail/workerprojectdetail",
+          "query": "id=48",
+          "scene": null
+        }
+      ]
+    }
+  }
+}
