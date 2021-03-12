@@ -54,7 +54,8 @@ Page({
 
         v.goods_pictures = util.getImageFullUrl([v.goods_pictures])
         v.sales_volume = util.getFormatNum(v.sales_volume);
-        if(i%2){
+
+        if(i%2 == 0){
           hotGoods.list.l.push(v);
         }else{
           hotGoods.list.r.push(v);

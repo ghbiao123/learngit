@@ -7,14 +7,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    doMain: util.getSiteRoot(),
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
+    that = this;
     this.data.key = options.key;
     this.data.id = options.id;
     this.init();
@@ -22,9 +22,9 @@ Page({
 
   init(){
     let pageData = {
-      use: {title: '使用说明', url: "",},
-      help: {title: '我的帮助', url: "",},
-      lay: {title: '法律声明', url: "",},
+      use: {title: '使用说明', url: "/api/user/platformInfo?str=s1",},
+      help: {title: '我的帮助', url: "/api/user/platformInfo?str=s2",},
+      lay: {title: '法律声明', url: "/api/user/platformInfo?str=s3",},
       notice: {title: '公告', url: "/api/homeindex/noticeDetail"}
     }
 
@@ -38,7 +38,11 @@ Page({
     }
 
     util.post(pageData[this.data.key].url, data).then(res=>{
-      console.log(res);
+      let key = this.data.key;
+      that.setData({
+        notice: res.data,
+        key
+      });
     });
 
 

@@ -1,21 +1,40 @@
 // pages/goodsinfo/goodsinfo.js
+let util = require("../../utils/util");
+let that;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    doMain: util.getSiteRoot(),
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
     this.data.id = options.id;
     console.log(this.data.id);
+    this.init();
   },
 
+  init(){
+    util.post("/api/goodsinfo/goodsDetail", {
+      id: this.data.id
+    }).then(res=>{
+      console.log(res);
+      let detail = res.data;
+      detail.goods_pictures = util.getSiteRoot() + detail.goods_pictures;
+      that.setData({
+        detail
+      });
+    });
+  },
+  placeOrder(){
+    
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

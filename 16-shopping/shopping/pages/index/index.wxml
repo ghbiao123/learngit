@@ -28,7 +28,7 @@
     <view class="hot-line"></view>
     <view class="content">
       <view class="content-left">
-        <view class="goods" hover-class="gray-hover" wx:for="{{hotGoods.list.l}}" wx:key="index" data-id="{{item}}" bindtap="getGoodsDetail">
+        <view class="goods" hover-class="gray-hover" wx:for="{{hotGoods.list.l}}" wx:key="index" data-id="{{item.id}}" bindtap="getGoodsDetail">
           <image class="goods-image" src="{{item.goods_pictures}}" mode="aspectFit"></image>
           <view class="goods-name">{{item.goods_name}}</view>
           <view class="goods-info">
@@ -38,7 +38,7 @@
         </view>
       </view>
       <view class="content-right">
-        <view class="goods" hover-class="gray-hover" wx:for="{{hotGoods.list.r}}" wx:key="index" data-id="{{item}}" bindtap="getGoodsDetail">
+        <view class="goods" hover-class="gray-hover" wx:for="{{hotGoods.list.r}}" wx:key="index" data-id="{{item.id}}" bindtap="getGoodsDetail">
           <image class="goods-image" src="{{item.goods_pictures}}" mode="aspectFit"></image>
           <view class="goods-name">{{item.goods_name}}</view>
           <view class="goods-info">

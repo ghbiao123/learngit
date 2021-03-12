@@ -1,13 +1,13 @@
-<view wx:for="{{list}}" wx:key="index" data-id="{{item}}" bindtap="getGoodsDetail">
+<view wx:for="{{list}}" wx:key="index" data-id="{{item.id}}" bindtap="getGoodsDetail">
   <view class="list-box" hover-class="gray-hover" >
     <view class="list">
-      <image class="goods-image" src="/images/banner.png"></image>
+      <image class="goods-image" src="{{item.goods_pictures}}"></image>
       <view class="goods-info">
-        <view class="goods-name">新疆一级库尔勒香梨约600g新疆一级库尔勒香梨约600g</view>
-        <view class="goods-introduce">商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介</view>
+        <view class="goods-name">{{item.goods_name}}</view>
+        <view class="goods-introduce">{{item.brief_content}}</view>
         <view class="goods-sale-info">
-          <view class="goods-sale">已售100件</view>
-          <view class="goods-price"><text class="f-s-24">￥</text>9.9</view>
+          <view class="goods-sale">已售{{item.sales_volume}}件</view>
+          <view class="goods-price"><text class="f-s-24">￥</text>{{item.goods_price}}</view>
         </view>
       </view>
     </view>

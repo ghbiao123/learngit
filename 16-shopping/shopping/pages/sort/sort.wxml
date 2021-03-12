@@ -12,5 +12,5 @@
     <view bindtap="getTap" data-idx="2" class="sort-item {{selected[2]? 'top':'bottom'}}">价格</view>
   </view>
 
-  <goodslist list="{{[1,2,3]}}"></goodslist>
+  <goodslist goodsList="{{goodsList.list}}"></goodslist>
 </view>

@@ -2,5 +2,7 @@
   "usingComponents": {
     "searchbar": "/mycomponents/searchbar/searchbar"
   },
-  "navigationBarTitleText": "首页"
+  "navigationBarTitleText": "首页",
+  "navigationBarBackgroundColor": "#F2B454",
+  "navigationBarTextStyle": "white"
 }
