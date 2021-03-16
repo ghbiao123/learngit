@@ -31,6 +31,11 @@ Page({
           }else{
             wx.navigateBack({
               delta: 1,
+              fail(err){
+                wx.reLaunch({
+                  url: '/pages/index/index',
+                });
+              }
             });
           }
         });
