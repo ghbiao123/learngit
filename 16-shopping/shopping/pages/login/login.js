@@ -1,53 +1,45 @@
-let util = require("../../utils/util");
+// pages/login/login.js
 let that;
-// pages/main/main.js
+let util = require('../../utils/util');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isLogin: false
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    that = this;
-
-    this.init();
-
+    let lunchOption = wx.getLaunchOptionsSync();
+    this.data.agentid = lunchOption.query.agentid;
   },
-  // 初始化
-  init(){
-    util.checkIsLogin.call(this);
-  },
-  // getUserInfo
-  getUserInfo(e){
-    util.getUserInfo(e, (res)=>{
-      if(res.code == 1){
-        // 登录成功
-        let userInfo = e.detail.userInfo;
-        userInfo.userid = res.data.userid;
+  getUserInfo(e) {
+    let that = this;
+    e.detail.agentid = this.data.agentid ? this.data.agentid : 0;
+    util.getUserInfo(e, function (res) {
+      if (res.code == 1) {
+        let msg = res.msg || "登录成功";
+        let data = e.detail.userInfo;
+        data.userid = res.data.userid;
+
         wx.setStorage({
-          data: userInfo,
+          data: data,
           key: 'userinfo',
         });
+        util.showSuccess(msg, function () {
 
-        that.setData({
-          isLogin: true,
-          userInfo: userInfo
+          wx.navigateBack({
+            delta: 1,
+          });
+
         });
-
-        return util.showSuccess(res.msg);
-      }else{
-        return util.showSuccess(res.msg);
       }
-      
     });
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

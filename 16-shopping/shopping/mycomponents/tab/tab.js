@@ -6,6 +6,10 @@ Component({
     title: {
       type: Array,
       value: []
+    },
+    selected: {
+      type: Number,
+      value: 0
     }
   },
   methods: {

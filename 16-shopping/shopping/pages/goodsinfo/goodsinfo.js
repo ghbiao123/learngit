@@ -33,9 +33,47 @@ Page({
     });
   },
   placeOrder(){
-    
+    let userInfo = wx.getStorageSync('userinfo');
+    if(!userInfo){
+      return util.showError('请您先登录', function(){
+        wx.navigateTo({
+          url: '/pages/login/login',
+        });
+      });
+    }
+
+    let data = {
+      goodsid: this.data.id,
+      userid: userInfo.userid,
+    }
+
+    util.post("/api/order/placeOrder", data).then(res=>{
+      console.log(res);
+
+      wx.requestPayment({
+        nonceStr: res.data.nonceStr,
+        package: res.data.package,
+        paySign: res.data.paySign,
+        timeStamp: res.data.timeStamp,
+        signType: 'MD5',
+        success(res){
+          wx.navigateTo({
+            url: '/pages/order/order',
+          });
+        },
+        fail(err){
+          wx.navigateTo({
+            url: '/pages/order/order',
+          });
+        }
+      })
+
+    });
+
   },
   /**
+   * 
+   * 
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
@@ -82,5 +120,9 @@ Page({
    */
   onShareAppMessage: function () {
     console.log('share');
+    return {
+      title: '袋鼠霸王餐',
+      path: `/pages/goodsinfo/goodsinfo?id=${this.data.id}`,
+    }
   }
 })

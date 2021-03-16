@@ -41,6 +41,8 @@ Component({
     },
     getInput(e){
       this.data.result = e.detail.value;
+      this.triggerEvent('mysearchbar', e.detail.value);
+
     },
     getComfirm(e){
       this.triggerEvent('mysearchbar',e.detail.value);

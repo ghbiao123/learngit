@@ -1,8 +1,18 @@
+let util = require("../../utils/util");
 Component({
   properties: {
     list: {
       type: Array,
-      value: []
+      value: [],
+      observer(newVal, oldVal){
+        let orderList = newVal.map(v=>{
+          v.goodsinfo.goods_pictures = util.getSiteRoot() + v.goodsinfo.goods_pictures;
+          return v;
+        });
+        this.setData({
+          orderList
+        });
+      }
     }
   },
   methods: {

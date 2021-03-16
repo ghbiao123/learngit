@@ -1,5 +1,5 @@
 <view class="container">
-  <tab title="{{arrTitle}}"></tab>
-  <orderlist list="{{arrTitle}}"></orderlist>
+  <tab bind:getSelected="getSelected" selected="{{type}}" title="{{arrTitle}}"></tab>
+  <orderlist list="{{goodsList.list}}"></orderlist>
 </view>
 
