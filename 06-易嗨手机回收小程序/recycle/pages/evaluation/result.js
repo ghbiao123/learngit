@@ -70,8 +70,8 @@ Page({
         country = regionData[2] || "";
       let freight = util.getImageFullUrl(info.freight);
       that.setData({
-        price: that.data.price,
-        totalPrice: that.data.totalPrice,
+        // price: that.data.price,
+        // totalPrice: that.data.totalPrice,
         couponPrice: that.data.couponPrice,
         userData: info.uinfo_h,
         provenceList: info.plist,
@@ -80,6 +80,9 @@ Page({
         country,
         freight
       });
+      // 价格数字动态改变
+      this.numChange(that.data.price, 'price');
+      this.numChange(that.data.totalPrice, 'totalPrice');
       initUserInfo(info.uinfo_h);
 
       function initUserInfo(data) {
@@ -136,6 +139,33 @@ Page({
         });
       });
     });
+  },
+  
+  numChange(number, tagSource){
+    // console.log('====new number====',number)
+    var baseNumber = 0; //原数字
+    var difference = number - baseNumber //与原数字的差
+    var absDifferent = Math.abs(difference) //差取绝对值
+    var changeTimes = 10;
+    var changeTimes = absDifferent < changeTimes ? absDifferent : changeTimes //最多变化6次
+    var changeUnit = absDifferent < changeTimes ? 1 : Math.floor(difference / 6)  //绝对差除以变化次数
+    // 依次变化
+    for (var i = 0; i < changeTimes; i += 1){
+      // 使用闭包传入i值，用来判断是不是最后一次变化
+      (function(i){
+        setTimeout(()=>{
+          that.setData({
+            [tagSource]: that.data[tagSource] += changeUnit
+          })        
+          // 差值除以变化次数时，并不都是整除的，所以最后一步要精确设置新数字
+          if (i == changeTimes - 1 ){
+            that.setData({
+              [tagSource]: baseNumber + difference          
+            });
+          }
+        },100*(i+1))
+      })(i)
+    }  
   },
   // 是否显示快递回收上门服务
   getExpress(e) {
