@@ -1,0 +1,59 @@
+<view class="content">
+  <view class="head">
+    <image class="bg-up" src="/images/report-up.jpg"></image>
+  </view>
+  <view class="bg-middle" style="height: {{middleHeight}}rpx;"></view>
+  <image class="bg-down" src="/images/report-down.jpg"></image>
+
+  <!-- 主体内容部分 -->
+
+  <view class="cont">
+    <view class="cell-card">
+      <view class="cell-item">
+        <view class="cell-name">质检工程师：</view>
+        <view class="cell-cont">{{data.staffinfo}}</view>
+      </view>
+      <!-- <view class="cell-item">
+        <view class="cell-name">机器接收日期：</view>
+        <view class="cell-cont">{{data.time}}</view>
+      </view> -->
+      <view class="cell-item">
+        <view class="cell-name">机器质检日期：</view>
+        <view class="cell-cont">{{data.testtime}}</view>
+      </view>
+      <view class="cell-item">
+        <view class="cell-name">机器名称：</view>
+        <view class="cell-cont">{{data.modelinfo.name}}</view>
+      </view>
+      <view class="cell-item">
+        <view class="cell-name">机器价格：</view>
+        <view class="cell-cont">{{data.amount}}</view>
+      </view>
+      <view class="cell-item">
+        <view class="cell-name">IMEI：</view>
+        <view class="cell-cont">{{data.imei}}</view>
+      </view>
+      <view class="cell-item">
+        <view class="cell-name">配置信息：</view>
+        <view class="cell-cont">{{data.model_info.cinfo}}</view>
+      </view>
+      <view class="cell-item">
+        <view class="cell-name">机器信息：</view>
+        <view class="cell-cont">{{data.model_info.des}}</view>
+      </view>
+    </view>
+
+    <view class="image-box m-t-20">
+      <image class="image" mode="aspectFit" wx:for="{{data.pictures}}" wx:key="index" src="{{item}}" bindtap="showImage" data-id="{{index}}"></image>
+    </view>
+
+  </view>
+
+
+  <view class="copyright">
+    <view class="copyright-line"></view>
+    <view>易嗨机质检中心</view>
+    <view class="copyright-line"></view>
+  </view>
+
+</view>

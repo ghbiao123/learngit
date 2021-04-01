@@ -1,0 +1,13 @@
+.cell-card{
+  line-height: 1.5;
+}
+.title{
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.content{
+  color: #606060;
+  font-size: 28rpx;
+  line-height: 2;
+  /* background-color: #f5f5f5; */
+}

@@ -1,0 +1,227 @@
+<view class="container">
+
+	<view class="head">
+		<view class="price">
+			<text style="font-size:35rpx;">￥</text>
+			<text style="font-size:65rpx;">{{totalPrice}}</text>
+			<text hidden
+				style="font-size:25rpx; color: #262626; padding-left: 40rpx; vertical-align: middle;">预计下周下跌￥123</text>
+			<image hidden style="width: 17rpx; margin-left:5rpx; vertical-align: middle;" mode="widthFix"
+				src="/images/down.png"></image>
+			<text bindtap="resetPrice"  hover-class="using-userinfo" style="font-size: 24rpx; padding-left: 360rpx; color: #2693FF; ">重新询价</text>
+		</view>
+		<view class="calc-price">
+			<view class="triangle"></view>
+			<view>
+				<view class="prev-price">本机预估价</view>
+				<view class="prev-price-item">{{price}}</view>
+			</view>
+			<image class="plus" src="/images/plus.png"></image>
+			<view>
+				<view class="prev-price">是否使用增价卷</view>
+				<view class="prev-price-item">
+					<view class="prev-price-value" wx:if="{{couponPrice != 0}}">
+						<navigator url="/pages/coupon/coupon?type=mine&available=9" hover-class="none">
+							{{couponPrice}}
+						</navigator>
+						<view bindtap="chooseCoupon" class="prev-price-radio">
+							<image hidden="{{!isCoupon}}" src="/images/choose.png" mode="widthFix" class="prev-price-radio-icon"></image>
+						</view>
+					</view>
+					<view wx:if="{{couponPrice == 0}}">
+						<navigator url="/pages/coupon/coupon?type=mine&available=9&frompage=result" hover-class="none">
+							选择我的加价券
+						</navigator>
+					</view>
+				</view>
+			</view>
+
+		</view>
+	</view>
+
+	<view class="pick m-t-20">
+		<view class="btn-box">
+			<!-- <view bindtap="getSelected" data-id="0" class="btn {{selected==0?'btn-s':''}}">门店回收</view> -->
+			<view bindtap="getSelected" data-id="1" class="btn {{selected==1?'btn-s':''}}">上门回收</view>
+			<view bindtap="getSelected" data-id="2" class="btn {{selected==2?'btn-s':''}}">快递回收</view>
+		</view>
+		<view class="content m-t-20">
+			<!-- 门店回收 -->
+			<view class="cont" hidden="{{!(selected==0)}}">
+				<radio-group bindchange="radioChange">
+					<view class="radios" wx:for="index" wx:key="index">
+						<view>
+							<label for="{{item}}">淄博印象汇店</label>
+						</view>
+						<view>
+							<image class="phone" src="/images/phone.png"></image>
+							<radio id="{{item}}" color="#C7402C" value="{{index}}"></radio>
+						</view>
+					</view>
+				</radio-group>
+				<view class="radios">
+					<view>预约时间：</view>
+					<view style="display: flex;">
+						<!-- <text>2020-07-22 10:00</text>
+						<text class="color-b">修改</text> -->
+						<picker mode="date" bindchange="dateChange">
+							<input class="pick-input" value="{{orderDate}}" placeholder="选择预约日期"></input>
+						</picker>
+						<picker mode="selector" range="{{timeSelected}}" bindchange="timeChange">
+							<input class="pick-input" value="{{orderTime}}" placeholder="选择预约时间"></input>
+						</picker>
+					</view>
+				</view>
+			</view>
+
+			<!-- 上门回收 -->
+			<view class="cont" hidden="{{!(selected==1)}}">
+				<view class="radios">
+					<view>联系人</view>
+					<view class="color-b" bindtap="usingUserInfo" hover-class="using-userinfo">使用个人信息</view>
+				</view>
+				<view class="radios b-b-g radios-input">
+					<input data-selected="1" data-key="uname" bindinput="inputText" value="{{userData.username}}" class="input" placeholder="请输入联系人姓名"></input>
+				</view>
+				<view class="radios">
+					<view>联系方式</view>
+					<!-- <view class="color-b">修改</view> -->
+				</view>
+				<view class="radios b-b-g radios-input">
+					<input data-selected="1" data-key="uphone" bindinput="inputText" value="{{userData.mobile}}" class="input" placeholder="请输入联系人电话"></input>
+				</view>
+				<view class="radios">
+					<view>银行卡号</view>
+				</view>
+				<view class="radios b-b-g radios-input">
+					<input data-selected="1" data-key="ubankcard" bindinput="inputText" value="{{userData.bank}}" class="input" placeholder="请输入银行卡号"></input>
+				</view>
+				<view class="radios">
+					<view>开户行</view>
+				</view>
+				<view class="radios b-b-g radios-input">
+					<input data-selected="1" data-key="ubank" bindinput="inputText" value="{{userData.bCard}}" class="input" placeholder="请输入开户行"></input>
+				</view>
+				<view class="radios">
+					<view>上门地址</view>
+					<!-- <view class="color-b">修改</view> -->
+				</view>
+				<view class="radios radios-input">
+					<picker mode="region" bindchange="regionChange">
+						<input disabled value="{{userRegion || userData.region}}" class="input" placeholder="请选择省/市/区"></input>
+					</picker>
+						<image class="radios-picker-icon" mode="widthFix" src="/images/rt2.png"></image>
+				</view>
+
+				<view class="radios">
+					<view>详细地址</view>
+					<!-- <view class="color-b">修改</view> -->
+				</view>
+
+				<view class="radios b-b-g radios-input">
+					<input data-selected="1" data-key="uaddress" bindinput="inputText" value="{{userData.address}}" class="input" placeholder="详细地址：如道路、门牌号、小区、单元室等"></input>
+				</view>
+
+				<view class="radios">
+					<view>预约时间：</view>
+					<view style="display: flex;">
+						<!-- <text>2020-07-22 10:00</text>
+						<text class="color-b">修改</text> -->
+						<picker mode="date" bindchange="dateChange">
+							<input disabled class="pick-input" value="{{orderDate}}" placeholder="选择预约日期"></input>
+						</picker>
+						<picker mode="selector" range="{{timeSelected}}" bindchange="timeChange">
+							<input disabled class="pick-input" value="{{orderTime}}" placeholder="选择预约时间"></input>
+						</picker>
+					</view>
+				</view>
+
+				<view hidden class="radios text-tip">工作人员上门验收货物</view>
+
+			</view>
+
+			<!-- 快递回收 -->
+			<view class="cont" hidden="{{!(selected==2)}}">
+
+				<view class="radios">
+					<view>联系人</view>
+					<view class="color-b" bindinput="usingUserInfo" hover-class="using-userinfo">使用个人信息</view>
+				</view>
+				<view class="radios b-b-g radios-input">
+					<input data-selected="2" data-key="uname" bindinput="inputText" value="{{userData.username}}" class="input" placeholder="请输入联系人姓名"></input>
+				</view>
+				<view class="radios">
+					<view>联系方式</view>
+					<!-- <view class="color-b">修改</view> -->
+				</view>
+				<view class="radios b-b-g radios-input">
+					<input data-selected="2" data-key="uphone" bindinput="inputText" value="{{userData.mobile}}" class="input" placeholder="请输入联系人电话"></input>
+				</view>
+				<view class="radios">
+					<view>银行卡号</view>
+				</view>
+				<view class="radios b-b-g radios-input">
+					<input data-selected="2" data-key="ubankcard" bindinput="inputText" value="{{userData.bank}}" class="input" placeholder="请输入银行卡号"></input>
+				</view>
+				<view class="radios">
+					<view>开户行</view>
+				</view>
+				<view class="radios b-b-g radios-input">
+					<input data-selected="2" data-key="ubank" bindinput="inputText" value="{{userData.bCard}}" class="input" placeholder="请输入开户行"></input>
+				</view>
+				<view class="radios">
+					<view>上门地址</view>
+					<!-- <view class="color-b">修改</view> -->
+				</view>
+				<view class="radios radios-input b-b-g">
+					<picker mode="region" bindchange="regionChange">
+						<input disabled value="{{userRegion || userData.region}}" class="input" placeholder="请选择省/市/区"></input>
+					</picker>
+						<image class="radios-picker-icon" mode="widthFix" src="/images/rt2.png"></image>
+				</view>
+
+				<view class="radios">
+					<view>详细地址</view>
+					<!-- <view class="color-b">修改</view> -->
+				</view>
+
+				<view class="radios b-b-g radios-input">
+					<input data-selected="2" data-key="uaddress" bindinput="inputText" value="{{userData.address}}" class="input" placeholder="详细地址：如道路、门牌号、小区、单元室等"></input>
+				</view>
+
+				<view class="radios b-t-g">
+					<view>收件人姓名</view>
+					<!-- <view class="color-b">修改</view> -->
+				</view>
+				<view class="radios b-b-g">
+					<input class="input radios-input" disabled value="{{platformInfo.contactperson}}"></input>
+				</view>
+
+				<view class="radios">
+					<view>收件人电话</view>
+					<!-- <view class="color-b">修改</view> -->
+				</view>
+				<view class="radios b-b-g">
+					<input class="input  radios-input" disabled value="{{platformInfo.contactphone}}"></input>
+				</view>
+
+				<view class="radios">
+					<view>收件人地址</view>
+					<!-- <view class="color-b">修改</view> -->
+				</view>
+				<view class="radios b-b-g">
+					<input class="input  radios-input" disabled value="{{platformInfo.contactaddress}}"></input>
+				</view>
+
+			</view>
+
+		</view>
+	</view>
+
+	<view class="button">
+		<button bindtap="recycle" style="width: 560rpx !important;" hover-class="btn-hover" class="button-clear m-t-20">立即回收</button>
+		<button bindtap="scanCode" style="width: 90rpx !important;" hover-class="btn-hover" class="button-clear m-t-20">
+			<image style="width: 90rpx;" mode="widthFix" src="/images/sanf.png"></image>
+		</button>
+	</view>
+</view>

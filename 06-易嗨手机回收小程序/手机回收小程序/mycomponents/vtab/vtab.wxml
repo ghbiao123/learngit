@@ -1,0 +1,70 @@
+<view class="vtab">
+  <view class="vtab-list">
+    <scroll-view class="vtab-list-scroll" scroll-y scroll-into-view="vtab{{selected-4}}">
+      <block wx:for="{{vtab}}" wx:key="index">
+        <view id="vtab{{index}}" class="vtab-list-item {{selected==index? 'vtab-list-item-s':''}}"
+          data-index="{{index}}" data-id="{{item.ebrands.id || item.id}}" bindtap="getSelected">{{item.ebrands.name || item.name}}</view>
+      </block>
+    </scroll-view>
+  </view>
+
+
+  <!-- tabid == 4,5, -->
+  <view wx:if="{{tabid >= 4}}" class="vtab-content" style="background: #f5f5f5;">
+    <scroll-view scroll-y scroll-with-animation class="vtab-content-scroll" scroll-into-view="content{{selected}}">
+      <view id="content0" class="vtab-content-scroll-item" style="border-bottom: 6rpx solid #f5f5f5;">
+        <view class="vtab-content-scroll-title">{{vtab[selected].ebrands.name}}</view>
+        <!-- <block wx:for="{{vtabContent}}" wx:key="index" wx:for-index="idx" wx:for-item="it">
+        </block> -->
+        <view class="brand">
+          <view class="brand-item" wx:for="{{vtabContent}}" wx:key="index" data-name="{{item.ebrands.name}}" data-bid="{{item.bid}}" data-id="{{item.ebrands.id}}" bindtap="getItemList">
+            <image class="brand-logo" mode="aspectFit" src="{{item.ebrands.image}}"></image>
+          </view>
+        </view>
+        <view wx:if="{{tabid == 4}}">
+          <!-- 若无机型请点击按钮 -->
+          <!-- <btntopage></btntopage> -->
+        </view>
+
+      </view>
+    </scroll-view>
+  </view>
+
+
+  <!-- tabid == 1,2,3, -->
+
+  <view wx:if="{{tabid <= 3}}" class="vtab-content">
+    <scroll-view scroll-y scroll-with-animation class="vtab-content-scroll" scroll-into-view="content{{selected}}">
+      <view id="content0" class="vtab-content-scroll-item">
+        <view class="vtab-content-scroll-title">{{vtab[selected].ebrands.name}}</view>
+        <block wx:for="{{vtabContent}}" wx:key="index" wx:for-index="idx" wx:for-item="it">
+          <view class="vtab-cont-list {{(idx+1)%2==1?'bg-w':'bg-w'}}" hover-class="vtab-cont-list-hover" data-cid="{{it.cid}}" data-id="{{it.id}}"
+            bindtap="getEvaluation">
+            <!-- 无图标列表 -->
+            <block wx:if="{{true}}">
+              <image hidden mode="aspectFit" class="vtab-cont-list-image" src="{{it.image}}"></image>
+              <view class="vtab-cont-list-info">
+                <view class="vtab-cont-list-info-name l-h-100 ellipsis-text">{{idx+1}}. {{it.name}}</view>
+                <view hidden class="vtab-cont-list-info-name ellipsis-text">最高可卖：<text
+                    class="color">￥{{it.maxprice}}</text></view>
+              </view>
+              <image wx:if="{{idx < 3}}" class="vtab-cont-list-icon" src="/images/rank{{idx}}.png"></image>
+            </block>
+            <!-- 有图标列表 -->
+            <block wx:if="{{false}}">
+              <image mode="aspectFit" class="vtab-cont-list-image" src="{{it.image}}"></image>
+              <view class="vtab-cont-list-info">
+                <view class="vtab-cont-list-info-name ellipsis-text">{{it.name}}</view>
+                <view hidden class="vtab-cont-list-info-name l-h-50 ellipsis-text">最高可卖：<text
+                    class="color">￥{{it.maxprice}}</text></view>
+              </view>
+              <image wx:if="{{idx < 3}}" class="vtab-cont-list-icon" src="/images/rank{{idx}}.png"></image>
+            </block>
+          </view>
+        </block>
+        <!-- "若无机型，请点击"-》按钮 -->
+        <!-- <btntopage></btntopage> -->
+      </view>
+    </scroll-view>
+  </view>
+</view>

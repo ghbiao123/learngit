@@ -1,0 +1,14 @@
+<view class="cell-card">
+  <view class="cell-item">
+    <view class="cell-name">机器名称</view>
+    <view class="cell-cont">{{detail.name}}</view>
+  </view>
+</view>
+<view class="tit-no-bg">配置信息</view>
+<view class="cell-card"><text>{{detail.configure ? detail.configure : "无"}}</text></view>
+<view class="tit-no-bg">机器信息</view>
+<view class="cell-card"><text>{{detail.describe}}</text></view>
+
+<button class="button-clear m-t-20" hover-class="btn-hover" bindtap="evaluationPrice">{{btnText}}</button>
+
+<prompt isShow="{{isShowPrompt}}" bind:getPrompt="getPrice"></prompt>

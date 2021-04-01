@@ -1,0 +1,4 @@
+/* pages/personalinfo/personalinfo.wxss */
+.cell-card~.cell-card{
+  margin-top: 0;
+}

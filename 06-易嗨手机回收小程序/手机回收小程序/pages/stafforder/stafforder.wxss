@@ -1,0 +1,173 @@
+/* pages/stafforder/stafforder.wxss */
+
+.swiper{
+  height: 100vh;
+  overflow: hidden;
+}
+.swiper-item{
+  height: auto;
+}
+
+
+.cell-item{
+  justify-content: start;
+  padding-top: 20rpx;
+  height: 60rpx;
+  min-height: 60rpx;
+  line-height: 1.5;
+  font-size: 26rpx;
+}
+
+.name{
+  width: 135rpx;
+  color: #000;
+}
+.cont{
+  display: block;
+  width: 440rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.change{
+  padding-left: 20rpx;
+  color: #009CFF;
+}
+
+.cell-card ~ .cell-card{
+  background: transparent;
+}
+
+.add-image{
+  display: flex;
+  flex-wrap: wrap;
+}
+.add-image-item{
+  position: relative;
+  margin: 10rpx 12rpx 0 0;
+  width: 155rpx;
+  height: 110rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.cancel{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.add-image-item>.add-image-item{
+  margin-top: 0;
+  width: 155rpx;
+  height: 110rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.add-image-item:last-child{
+  margin-right: 0rpx;
+}
+
+.tmet{
+  display: flex;
+  margin: 20rpx auto;
+  width: 710rpx;
+}
+.tmet-name{
+  width: 170rpx;
+  font-size: 24rpx;
+  line-height: 60rpx;
+}
+.tmet-input-box{
+  width: 520rpx;
+  height: 60rpx;
+  border-radius: 20rpx;
+}
+.tmet-input-input{
+  width: 520rpx;
+  height: 60rpx;
+  text-indent: 10rpx;
+  font-size: 28rpx;
+  background-color: #fff;
+}
+.btn-box{
+  display: flex;
+  justify-content: space-around;
+}
+.idcard{
+  display: flex;
+}
+.idcard-image{
+  width: 230rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.idcard-info{
+  width: 440rpx;
+}
+.info{
+  display: flex;
+  line-height: 75rpx;
+}
+
+.idcard-name{
+  padding: 0 20rpx;
+  width: 120rpx;
+  font-size: 30rpx;
+}
+.idcard-input{
+  margin-top: 5rpx;
+  width: 280rpx;
+  height: 60rpx;
+  font-size: 25rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+
+
+.btn{
+  margin: 0;
+  padding: 0;
+  width: 300rpx !important;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-weight: normal;
+  border-radius: 40rpx;
+}
+
+.btn:nth-child(1){
+  color: #a0a0a0;
+  background-color: #fff;
+  border: 1rpx solid #a0a0a0;
+}
+.btn:nth-child(2){
+  color: #fff;
+  border: 1rpx solid #C7402C;
+  background-color: #C7402C;
+}
+
+.reset-config{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 750rpx;
+  height: 100vh;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.reset-config textarea{
+  margin: 0 auto;
+  height: 150rpx;
+  text-align: left;
+  background-color: #f5f5f5;
+}
+.reset-config-position{
+  margin-top: 200rpx;
+}
+.reset-config-btn{
+  display: flex;
+  justify-content: space-around;
+}
+
+

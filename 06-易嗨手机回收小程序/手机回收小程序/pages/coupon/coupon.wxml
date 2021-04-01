@@ -1,0 +1,55 @@
+<!-- <view wx:if="{{false}}" class="cell-card coupon" wx:for="{{list}}" wx:key="index">
+  <view class="price">
+    <view class="price-num">￥{{item.par_value || item.parvalue}}</view>
+    <view class="price-txt">满{{item.form_p}}可用</view>
+  </view>
+  <view class="text">
+    <view class="text-txt {{type == 'mine'? 'p-t-30':''}}">{{item.name}} 满{{item.form_p}}加{{item.par_value}}</view>
+    <view class="text-time" wx:if="{{type == 'add'}}">起：{{item.validstime_text}}</view>
+    <view class="text-time" wx:if="{{type == 'add'}}">止：{{item.validetime_text}}</view>
+  </view>
+  <view wx:if="{{type == 'add'}}" data-id="{{index}}" bindtap="getCoupon" class="button immediately" hover-class="btn-hover">{{arrIsGot[index]? '立即回收':'立即领取'}}</view>
+  <view wx:if="{{type == 'mine'}}" data-id="{{index}}" bindtap="useCoupon" class="button {{item.status == 0? 'immediately':''}}{{item.status == 1? 'done':''}}{{item.status == 2? 'overdue':''}}" hover-class="btn-hover">{{item.status_text}}</view>
+</view> -->
+
+<view class="container">
+  <view class="head">
+    <image class="head-bg" src="/images/couponpage-bg.png"></image>
+    <view class="head-title">用券中心</view>
+    <view class="head-tip">天天有惊喜 福利送不停</view>
+  </view>
+
+  <view class="content">
+    <view class="tab">
+      <view wx:for="{{list}}" wx:key="index" bindtap="tabSelected" data-id="{{index + 1}}"
+        class="tab-item {{selected == (index + 1) ? 'tab-selected' : ''}} {{((selected == (index + 1)) && (len == 2)) ? 'tab-selected tab-2-selected' : ''}} {{((selected == (index + 1)) && (len == 1)) ? 'tab-selected tab-1-selected' : ''}} {{len == 2 ? 'tab-2':''}} {{len == 1 ? 'tab-1':''}}">
+        {{item.title}}
+      </view>
+      <!-- <view bindtap="tabSelected" data-id="2" class="tab-item {{selected == 2 ? 'tab-selected b-r-l' : ''}}">国庆礼加价券</view>
+      <view bindtap="tabSelected" data-id="3" class="tab-item {{selected == 3 ? 'tab-selected b-l' : ''}}">双11礼加价券</view> -->
+    </view>
+    <block wx:for="{{list}}" wx:key="index">
+      <view wx:if="{{selected == (index+1)}}" class="tab-cont">
+        <view class="coupon-status">
+          <view wx:if="{{item.udo == 0}}" data-id="{{item.id}}" bindtap="getCoupon" class="check-coupon chose-coupon"
+          hover-class="chose-hover">一键领取</view>
+          <view wx:if="{{item.udo == 1}}">
+            <view class="notes">“已领取”</view>
+            <view class="cell-item">
+              <view class="check-coupon" hover-class="check-hover"><navigator url="/pages/mycouponlist/mycouponlist" hover-class="none">查看优惠券</navigator></view>
+              <view class="check-coupon recycle-coupon" bindtap="getRecycle" hover-class="recycle-hover">用券回收</view>
+            </view>
+          </view>
+        </view>
+        <!-- <view class="morewel t-a-c">更多领取福利</view> -->
+
+        <!-- 加价券列表 -->
+        <couponlist list="{{item.markupcoupon}}"></couponlist>
+
+      </view>
+    </block>
+    <!-- <view wx:if="{{selected == 2}}" class="tab-cont">国庆礼加价券</view>
+    <view wx:if="{{selected == 3}}" class="tab-cont">双11礼加价券</view> -->
+  </view>
+
+</view>

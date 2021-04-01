@@ -1,0 +1,4 @@
+<view class="cell-card">
+  <view class="cell-item">公司简介</view>
+  <parser html="{{nodes}}"></parser>
+</view>

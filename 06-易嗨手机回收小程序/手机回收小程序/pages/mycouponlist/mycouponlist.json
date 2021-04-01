@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "couponlist": "/mycomponents/couponlist/couponlist"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "prompt":"/mycomponents/myprompt/prompt"
+  },
+  "navigationBarTitleText": "待发货"
+}

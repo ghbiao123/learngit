@@ -1,0 +1,10 @@
+<block wx:if="{{result[0]}}">
+	<view class="list ellipsis-text" wx:for="{{result}}" wx:key="index" data-name="{{item.name}}" data-id="{{item.id}}" data-cid="{{item.cid}}" bindtap="getEvaluation">
+		{{index*1+1}}.{{item.name}}
+	</view>
+</block>
+<block wx:else>
+	<view class="t-a-c list">
+		暂无数据
+	</view>
+</block>

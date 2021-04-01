@@ -1,0 +1,16 @@
+/* pages/manualresult/manualresult.wxss */
+page{
+  background-color: #fff;
+}
+.cell-card{
+  text-align: justify;
+  text-indent: 2em;
+}
+.model{
+  text-align: center;
+  margin-top: 200rpx;
+}
+.model-success{
+  width: 120rpx;
+  height: 120rpx;
+}

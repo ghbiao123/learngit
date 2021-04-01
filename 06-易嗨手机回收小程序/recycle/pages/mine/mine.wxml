@@ -68,7 +68,10 @@
 			<view class="cell-item">
 				<view class="cell-lt">
 					<image mode="aspectFit" class="cell-icon" src="/images/main-searchmoney.png"></image>
-					<view>估价列表</view>
+					<view style="position: relative;">
+						<view>估价列表</view>
+						<view wx:if="{{evaluationCount > 0}}" class="dot" style="right: -40rpx; top: 14rpx;">{{evaluationCount}}</view>
+					</view>
 				</view>
 				<image class="cell-rt" src="/images/rt2.png"></image>
 			</view>
@@ -124,13 +127,13 @@
 			</view>
 		</navigator>
 
-		<view hover-class="line-hover" bindtap="showModel" class="cell-item">
+		<!-- <view hover-class="line-hover" bindtap="showModel" class="cell-item">
 			<view class="cell-lt">
 				<image mode="aspectFit" class="cell-icon" src="/images/qr.png"></image>
 				<view>我的机器型号</view>
 			</view>
 			<image class="cell-rt" src="/images/rt2.png"></image>
-		</view>
+		</view> -->
 
 	</view>
 

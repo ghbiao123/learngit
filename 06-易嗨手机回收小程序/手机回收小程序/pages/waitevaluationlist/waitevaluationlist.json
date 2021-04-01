@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "prompt": "/mycomponents/prompt/prompt"
+  },
+  "navigationBarTitleText": "待估价列表"
+}

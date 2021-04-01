@@ -1,0 +1,14 @@
+.button-clear{
+  margin-top: 40rpx;
+  padding: 0;
+  width: 500rpx !important;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #fff;
+  font-weight: normal;
+  background-color: #C1402A;
+  border-radius: 10rpx;
+}
+.btn-hover{
+  background-color: #fcd3d3 !important;
+}

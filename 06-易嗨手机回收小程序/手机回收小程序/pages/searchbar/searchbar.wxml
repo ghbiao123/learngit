@@ -1,0 +1,30 @@
+<view class="content">
+	<view class="searchbar">
+		<scarch-bar isFocus bind:getinput="getInputText" bind:searchbar="result" theme="#ffffff" placeholder="搜索品牌或者机型"></scarch-bar>
+	</view>
+	<view wx:if="{{showList}}" class="list ellipsis-text" wx:for="{{result}}" wx:key="index" data-idx="{{index}}" data-name="{{item.name}}"
+		data-id="{{item.id}}" data-cid="{{item.cid}}" bindtap="getEvaluation">
+		{{index*1+1}}.{{item.name}}
+	</view>
+	<view wx:if="{{showList && result.length == 0}}" class="m-t-20">
+		<btntopage></btntopage>
+	</view>
+	<view wx:if="{{!showList}}">
+		<view class="tit-no-bg" wx:if="{{Storage.length > 0}}">
+			<view>历史记录</view>
+			<image bindtap="clearStorageData" style="width: 28rpx; height: 28rpx; margin-top: 23rpx;" src="/images/clear.png">
+			</image>
+		</view>
+		<view class="tip-content">
+			<view class="tip ellipsis-text" bindtap="getItem" data-key="{{item}}" wx:for="{{Storage}}" wx:key="index">{{item}}</view>
+		</view>
+		<view class="tit-no-bg">热门搜索</view>
+		<view class="tip-content">
+			<view class="tip" bindtap="getItem" data-key="{{item}}" wx:for="{{hotList}}" wx:key="index">{{item.keywords}}
+			</view>
+		</view>
+	</view>
+
+
+
+</view>

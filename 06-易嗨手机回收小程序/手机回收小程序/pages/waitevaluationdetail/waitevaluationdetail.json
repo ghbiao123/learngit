@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "prompt": "/mycomponents/prompt/prompt"
+  }
+}

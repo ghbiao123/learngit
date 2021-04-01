@@ -1,0 +1,16 @@
+<view class="cell-card">
+  <textarea 
+    class="textarea" 
+    bindinput="textareaInput"
+    placeholder="请输入备注内容"
+    value="{{textarea}}"
+    ></textarea>
+    <button bindtap="confirmRemark" hover-class="btn-hover" class="button-clear m-t-20">提交</button>
+</view>
+
+<view class="cell-card" wx:if="{{list.length}}">
+  <block wx:for="{{list}}" wx:key="index">
+    <view class="time">{{item.createtime}}</view>
+    <view class="cell-item">{{item.remark}}</view>
+  </block>
+</view>

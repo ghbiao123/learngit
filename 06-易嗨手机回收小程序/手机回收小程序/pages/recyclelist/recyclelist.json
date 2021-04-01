@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "recyclelist": "/mycomponents/recyclelist/recyclelist"
+  },
+  "navigationBarTitleText": "估价列表"
+}

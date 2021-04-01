@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "mp-actionSheet": "/components/actionsheet/actionsheet",
+    "staffoptionlist": "/mycomponents/staffoptionslist/staffoptionslist"
+  },
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "工作人员验机",
+  "navigationBarTextStyle": "black"
+}

@@ -1,0 +1,10 @@
+<view class="container">
+
+  <navigator open-type="redirect" url="/pages/paymentchecking/paymentchecking?method=wechat&orderid={{orderid}}" class="button-clear m-t-50" hover-class="btn-hover">
+    微信
+  </navigator>
+  <navigator open-type="redirect" url="/pages/paymentchecking/paymentchecking?method=union&orderid={{orderid}}" class="button-clear m-t-50" hover-class="btn-hover">
+    银联
+  </navigator>
+
+</view>

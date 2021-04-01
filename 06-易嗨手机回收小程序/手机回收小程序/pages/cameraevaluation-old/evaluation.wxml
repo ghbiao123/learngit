@@ -1,0 +1,60 @@
+<view class="container">
+  <view class="content">
+
+    <view class="head">
+      <view class="progress">
+        {{progressData.chose}}/{{progressData.all}}
+        <view class="progress-s" style="width:{{progress}};"></view>
+      </view>
+      <!-- <image mode="aspectFit" class="image" src="{{_data.image}}"></image> -->
+      <view class="name">{{name}}</view>
+    </view>
+
+    <view class="cell-card m-t-20">小提示：选择结果与实际相符，有利于加快您的回收进度。</view>
+
+    <view hidden class="cell-card m-t-20">
+      <view class="cell-item">
+        <view class="cell-name t-a-c">设备型号</view>
+        <view class="cell-cont">
+          <input bindinput="modelInput" type="text" class="cell-input" placeholder="请输入设备型号" />
+        </view>
+      </view>
+    </view>
+
+    <block wx:for="{{_data}}" wx:key="index">
+
+      <view>
+        <view class="tit-no-bg">
+          {{index+1}}.{{item.name}}
+        </view>
+
+        <view class="cell-card">
+          <block wx:if="{{index != _data.length-1}}">
+            <radio-group data-id="{{index}}" bindchange="radioChange">
+              <radio wx:for="{{item[_key]}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+                color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+            </radio-group>
+          </block>
+          <block wx:else>
+            <checkbox-group data-id="{{index}}" bindchange="radioChange">
+              <checkbox wx:for="{{item[_key]}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+                color="#C7402C" value="{{itm.id}}" checked="{{arrChecked[idx]}}">{{itm.name}}</checkbox>
+            </checkbox-group>
+          </block>
+        </view>
+
+      </view>
+
+    </block>
+
+
+
+    <view class="button">
+      <button bindtap="getResult" class="button-clear m-t-20" hover-class="btn-hover">估价</button>
+    </view>
+
+  </view>
+</view>
+
+<mp-actionSheet bindactiontap="getResult" show="{{showActionsheet}}" actions="{{groups}}">
+</mp-actionSheet>

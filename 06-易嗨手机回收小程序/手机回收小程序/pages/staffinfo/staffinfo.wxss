@@ -1,0 +1,59 @@
+/* pages/staffinfo/staffinfo.wxss */
+
+.user-info{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 50rpx;
+  width: 750rpx;
+  height: 140rpx;
+  background-color: #fff;
+}
+.avatar{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 45rpx;
+  overflow: hidden;
+}
+.name{
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 30rpx;
+}
+.qrcode{
+  width: 90rpx;
+  height: 90rpx;
+}
+.order-type{
+  display: flex;
+  justify-content: space-around;
+}
+.type{
+  margin-top: 15rpx;
+  position: relative;
+  text-align: center;
+  width: 164rpx;
+}
+
+.dot{
+  position: absolute;
+  right: 15rpx;
+  top: -5rpx;
+  width: 30rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  color: #fff;
+  font-size: 20rpx;
+  background-color: #C7402C;
+  border-radius: 50%;
+}
+.type-icon{
+  display: block;
+  margin: 10rpx auto 0;
+  width: 55rpx;
+  height: 45rpx;
+}
+.type-txt{
+  padding-top: 30rpx;
+  font-size: 26rpx;
+  color: #606060;
+}

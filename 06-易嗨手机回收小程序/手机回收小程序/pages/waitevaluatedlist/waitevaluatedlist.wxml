@@ -1,0 +1,24 @@
+<view class="cell-card" wx:for="{{list}}" wx:key="index">
+	<navigator hover-class="none" url="/pages/waitevaluationdetail/waitevaluationdetail?aoid={{item.id}}">
+		<view class="title">机器信息</view>
+		<view class="title">{{item.name}}</view>
+		<view class="content">预估价：{{item.total_amount*1}}</view>
+		<view class="content">联系方式：{{item.userinfo.mobile?item.userinfo.mobile:''}}</view>
+		<view class="cell-item" catchtap="aaa">
+			<image hidden class="express-icon" src="/images/co-s.png"></image>
+			<view>备注</view>
+			<view>
+				<navigator hover-class="none" url="/pages/remarklist/remarklist?orderid={{item.id}}&frompage=evaluated">
+					<input bindinput="remarkInput" disabled value="{{item.staff_remark}}" class="order-input"
+					placeholder="请填写备注"></input>
+				</navigator>
+			</view>
+			<button hidden bindtap="confirmRemark" data-id="{{item.id}}" class="button-clear btn-confirm">确认</button>
+			<image class="scan-icon" mode="aspectFit" src="/images/rt2.png"></image>
+		</view>
+	</navigator>
+</view>
+
+<!-- <view wx:if="{{list.length == 0}}">
+	<view class="cell-card t-a-c">暂无数据</view>
+</view> -->

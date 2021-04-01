@@ -1,0 +1,7 @@
+<view class="cell-card" wx:for="{{list}}" wx:key="index">
+  <view class="cell-item">
+    <view>{{item.model_info.name}}</view>
+    <view>￥{{item.stafforderinfo.total_amount * 1}}</view>
+  </view>
+  <view>{{item.stafforderinfo.order_sn}}</view>
+</view>

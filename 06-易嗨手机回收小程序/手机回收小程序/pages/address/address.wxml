@@ -1,0 +1,16 @@
+<view class="cell-card">
+  <view class="cell-item">
+    <view class="cell-name">收货人：</view>
+    <view class="cell-cont">{{data.contactperson}}</view>
+  </view>
+  <view class="cell-item">
+    <view class="cell-name">手机号码：</view>
+    <view class="cell-cont">{{data.contactphone}}</view>
+  </view>
+  <view class="cell-item">
+    <view class="cell-name">所在地区：</view>
+    <view class="cell-cont">{{data.contactaddress}}</view>
+  </view>
+</view>
+
+<button class="button-clear m-t-20"  hover-class="btn-hover" bindtap="copy">点击复制</button>

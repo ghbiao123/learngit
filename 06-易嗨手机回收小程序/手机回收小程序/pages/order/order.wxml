@@ -1,0 +1,6 @@
+<view class="container">
+<view wx:if="{{list.length>=0}}">
+  <order-list list="{{list}}"></order-list>
+</view>
+<view wx:if="{{list.length==0}}" style="text-align: center; padding: 30rpx; font-size: 30rpx;">暂无数据</view>
+</view>

@@ -1,0 +1,20 @@
+/* pages/contact/contact.wxss */
+.contact{
+  display: block;
+  margin: 90rpx auto;
+  width: 404rpx;
+  height: 404rpx;
+}
+.txt{
+  padding: 10rpx;
+  margin: 0 auto;
+  width: 440rpx;
+  line-height: 1.5;
+  font-size: 25rpx;
+}
+.btn{
+  position: fixed;
+  bottom: 100rpx;
+  left: 40rpx;
+  border-radius: 45rpx;
+}

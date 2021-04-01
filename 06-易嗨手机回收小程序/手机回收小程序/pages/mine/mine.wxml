@@ -1,0 +1,137 @@
+<view class="container">
+	<view class="userinfo">
+		<!-- <image class="avatar" src="/images/a.jpg"></image> -->
+		<open-data class="avatar" type="userAvatarUrl"></open-data>
+		<view class="name" style="line-height: 100rpx;">
+			<!-- <view class="nick-name">
+				<open-data type="userNickName"></open-data>
+			</view> -->
+			<navigator hover-class="none" url="/pages/personalinfo/personalinfo">
+				<view hidden="{{!isLogin}}" class="user-phone">{{userInfo.nickName}}</view>
+			</navigator>
+			<view hidden="{{isLogin}}" class="user-phone">
+				<navigator url="/pages/login/login" hover-class="none">去登陆></navigator>
+			</view>
+		</view>
+		<navigator wx:if="{{!isLogin}}" hover-class="none" url="/pages/stafflogin/stafflogin">
+			<view class="staff-login" hover-class="line-hover">
+				<image class="staff-icon" src="/images/staff-login.png"></image>
+				<view class="staff-info">工作人员登录</view>
+			</view>
+		</navigator>
+	</view>
+
+	<view class="tit-no-bg">
+		我的订单
+	</view>
+
+	<view class="cell-card" style="margin-top: 0;">
+		<view class="order-step">
+			<navigator hover-class="line-hover" url="/pages/stafforderlist/stafforderlist?type=all">
+				<view class="order-step-item">
+					<image class="order-icon" src="/images/main1.png"></image>
+					<view class="order-name">全部</view>
+				</view>
+			</navigator>
+			<navigator hover-class="line-hover" url="/pages/stafforderlist/stafforderlist?type=send">
+				<view class="order-step-item">
+					<image class="order-icon" src="/images/main2.png"></image>
+					<view class="order-name">待验机</view>
+					<view wx:if="{{waitCheckCount > 0}}" class="dot">{{waitCheckCount}}</view>
+				</view>
+			</navigator>
+			<navigator hover-class="line-hover" url="/pages/stafforderlist/stafforderlist?type=check">
+				<view class="order-step-item">
+					<image class="order-icon" src="/images/main3.png"></image>
+					<view class="order-name">待付款</view>
+					<view wx:if="{{waitPayCount > 0}}" class="dot">{{waitPayCount}}</view>
+				</view>
+			</navigator>
+			<navigator hover-class="line-hover" url="/pages/stafforderlist/stafforderlist?type=done">
+				<view class="order-step-item">
+					<image class="order-icon" src="/images/main4.png"></image>
+					<view class="order-name">已完成</view>
+				</view>
+			</navigator>
+			<navigator hover-class="line-hover" url="/pages/stafforderlist/stafforderlist?type=cancel">
+				<view class="order-step-item">
+					<image class="order-icon" src="/images/main5.png"></image>
+					<view class="order-name">已取消</view>
+				</view>
+			</navigator>
+		</view>
+
+	</view>
+
+	<view class="cell-card">
+		<navigator hover-class="line-hover" url="/pages/recyclelist/recyclelist">
+			<view class="cell-item">
+				<view class="cell-lt">
+					<image mode="aspectFit" class="cell-icon" src="/images/main-searchmoney.png"></image>
+					<view>估价列表</view>
+				</view>
+				<image class="cell-rt" src="/images/rt2.png"></image>
+			</view>
+		</navigator>
+		<navigator hover-class="line-hover" url="/pages/mycouponlist/mycouponlist?type=mine&page=mine">
+			<view class="cell-item">
+				<view class="cell-lt">
+					<image mode="aspectFit" class="cell-icon" src="/images/main-coupon.png"></image>
+					<view>我的加价券</view>
+				</view>
+				<image class="cell-rt" src="/images/rt2.png"></image>
+			</view>
+		</navigator>
+		<navigator hidden hover-class="line-hover" url="/pages/coupon/coupon?type=add">
+			<view class="cell-item">
+				<view class="cell-lt">
+					<image mode="aspectFit" class="cell-icon" src="/images/qr.png"></image>
+					<view>领取回收加价卷</view>
+				</view>
+				<image class="cell-rt" src="/images/rt2.png"></image>
+			</view>
+		</navigator>
+
+		<navigator hover-class="line-hover" url="/pages/address/address">
+			<view class="cell-item">
+				<view class="cell-lt">
+					<image mode="aspectFit" class="cell-icon" src="/images/main-aboutus.png"></image>
+					<view>邮寄地址</view>
+				</view>
+				<image class="cell-rt" src="/images/rt2.png"></image>
+			</view>
+		</navigator>
+
+		<!-- <button class="contact" open-type="contact"> -->
+		<!-- </button> -->
+		<navigator hover-class="line-hover" url="/pages/contact/contact">
+			<view class="cell-item">
+				<view class="cell-lt">
+					<image mode="aspectFit" class="cell-icon" src="/images/main-contact.png"></image>
+					<view>联系客服</view>
+				</view>
+				<image class="cell-rt" src="/images/rt2.png"></image>
+			</view>
+		</navigator>
+
+		<navigator hover-class="line-hover" url="/pages/aboutus/aboutus">
+			<view class="cell-item">
+				<view class="cell-lt">
+					<image mode="aspectFit" class="cell-icon" src="/images/main-tip.png"></image>
+					<view>关于我们</view>
+				</view>
+				<image class="cell-rt" src="/images/rt2.png"></image>
+			</view>
+		</navigator>
+
+		<!-- <view hover-class="line-hover" bindtap="showModel" class="cell-item">
+			<view class="cell-lt">
+				<image mode="aspectFit" class="cell-icon" src="/images/qr.png"></image>
+				<view>我的机器型号</view>
+			</view>
+			<image class="cell-rt" src="/images/rt2.png"></image>
+		</view> -->
+
+	</view>
+
+</view>

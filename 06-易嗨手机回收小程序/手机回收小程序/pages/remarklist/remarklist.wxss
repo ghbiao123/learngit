@@ -1,0 +1,20 @@
+/* pages/remarklist/remarklist.wxss */
+.textarea{
+  padding: 10rpx;
+  width: 650rpx;
+  height: 180rpx;
+  line-height: 1.5;
+  border-radius: 10rpx;
+  background-color: #f5f5f5;
+}
+
+.time{
+  color: #999;
+  line-height: 1.5;
+}
+.cell-item{
+  padding: 0 0 30rpx;
+  height: auto;
+  min-height: 30rpx;
+  line-height: 1.5;
+}

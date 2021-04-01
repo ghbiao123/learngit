@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "scarch-bar": "/mycomponents/searchbar/searchbar"
+  }
+}

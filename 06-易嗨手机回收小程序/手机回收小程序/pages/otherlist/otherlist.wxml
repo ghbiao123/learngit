@@ -1,0 +1,13 @@
+<view class="container">
+
+  <view class="searchbar">
+		<scarch-bar bind:getinput="getInputText" bind:searchbar="result" theme="#ffffff" placeholder="搜索品牌或者机型"></scarch-bar>
+	</view>
+
+  <view class="item ellipsis-text" data-idx="{{index}}" bindtap="getEvaluation" wx:for="{{result}}" wx:key="index">
+    {{index+1}}. {{item.name}}
+  </view>
+  <!-- 若无机型跳转页面按钮 -->
+  <!-- <btntopage></btntopage> -->
+</view>
+  

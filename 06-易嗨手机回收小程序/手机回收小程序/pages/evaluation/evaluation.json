@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "mp-actionSheet": "/components/actionsheet/actionsheet",
+    "optionlist": "/mycomponents/optionslist/optionslist",
+    "mp-dialog": "/components/dialog/dialog"
+  },
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "回收估价",
+  "navigationBarTextStyle": "black"
+}

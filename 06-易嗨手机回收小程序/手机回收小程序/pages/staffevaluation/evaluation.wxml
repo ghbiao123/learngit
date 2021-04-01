@@ -1,0 +1,214 @@
+<view class="container">
+  <view class="content">
+
+    <view class="head">
+      <view class="progress">
+        {{progressData.chose}}/{{progressData.all}}
+        <view class="progress-s" style="width:{{progress}};"></view>
+      </view>
+      <!-- <image mode="aspectFit" class="image" src="{{_data.image}}"></image> -->
+      <view class="name">{{_data.name}}</view>
+      <!-- <view class="cell-card f-s-26 m-t-20">小提示：选择结果与实际相符，有利于加快您的回收进度。</view> -->
+    </view>
+
+    <staffoptionlist 
+      arrConfig="{{arrConfigOption}}" 
+      arrOther="{{_data.other}}" 
+      currentIndex="{{currentIndex}}"
+      hideCode="{{hideCode}}" 
+      arrChecked="{{arrChecked}}" 
+      arrSelected="{{arrSelected}}" 
+      bind:radioChange="radioChange"
+      scrollHeight="{{scrollHeight}}" 
+      key="{{_key}}"></staffoptionlist>
+
+
+    <view wx:if="{{type == '1mobile'}}" class="cont">
+
+      <!-- 遍历手机设备的配置信息 -->
+      <block wx:for="{{arrConfigOption}}" wx:key="index">
+        <view class="tit-no-bg">{{index + 1}}.{{item.title}}</view>
+        <view class="cell-card">
+          <radio-group data-id="{{item.name}}" bindchange="radioChange">
+            <radio wx:for="{{item.data}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+              color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+          </radio-group>
+        </view>
+      </block>
+
+      <!-- <view class="tit-no-bg">1.手机型号</view>
+      <view class="cell-card">
+        <radio-group data-id="phonemodel" bindchange="radioChange">
+          <radio wx:for="{{_data.phone_model}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+        </radio-group>
+      </view>
+
+      <view class="tit-no-bg">2.手机颜色</view>
+      <view class="cell-card">
+        <radio-group data-id="phonecolor" bindchange="radioChange">
+          <radio wx:for="{{_data.phone_color}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+        </radio-group>
+      </view>
+
+      <view class="tit-no-bg">3.存储空间</view>
+      <view class="cell-card">
+        <radio-group data-id="phonestorage" bindchange="radioChange">
+          <radio wx:for="{{_data.phone_storage}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+        </radio-group>
+      </view> -->
+
+      <block wx:for="{{_data.other}}" wx:key="index">
+
+        <view hidden="{{ index + currentIndex + 1 > hideCode}}">
+
+
+          <view class="tit-no-bg">
+            {{index + currentIndex +1}}.{{item.name}}
+          </view>
+
+          <view class="cell-card">
+            <block wx:if="{{index != _data.other.length-1}}">
+              <radio-group data-id="{{index}}" bindchange="radioChange">
+                <radio wx:for="{{item.inquiryinfo}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+                  color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+              </radio-group>
+            </block>
+            <block wx:else>
+              <checkbox-group data-id="{{index}}" bindchange="radioChange">
+                <checkbox wx:for="{{item.inquiryinfo}}" wx:key="index" wx:for-item="itm" wx:for-index="idx"
+                  class="radio" color="#C7402C" value="{{itm.id}}" checked="{{arrChecked[idx]}}">{{itm.name}}</checkbox>
+              </checkbox-group>
+            </block>
+          </view>
+
+        </view>
+
+      </block>
+
+    </view>
+
+    <view wx:if="{{type == '1pc'}}" class="cont">
+
+      <!-- 遍历computer设备的配置信息 -->
+      <block wx:for="{{arrConfigOption}}" wx:key="index">
+        <view class="tit-no-bg">{{index + 1}}.{{item.title}}</view>
+        <view class="cell-card">
+          <radio-group data-id="{{item.name}}" bindchange="radioChange">
+            <radio wx:for="{{item.data}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+              color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+          </radio-group>
+        </view>
+      </block>
+
+      <!-- <view class="tit-no-bg">1.处理器</view>
+      <view class="cell-card">
+        <radio-group data-id="pc_processor" bindchange="radioChange">
+          <radio wx:for="{{_data.pc_processor}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+        </radio-group>
+      </view>
+
+      <view class="tit-no-bg">2.内存</view>
+      <view class="cell-card">
+        <radio-group data-id="pc_ram" bindchange="radioChange">
+          <radio wx:for="{{_data.pc_ram}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+        </radio-group>
+      </view>
+
+      <view class="tit-no-bg">3.显卡</view>
+      <view class="cell-card">
+        <radio-group data-id="pc_videocard" bindchange="radioChange">
+          <radio wx:for="{{_data.pc_videocard}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+        </radio-group>
+      </view>
+
+      <view class="tit-no-bg">4.固态硬盘</view>
+      <view class="cell-card">
+        <radio-group data-id="pc_ssd" bindchange="radioChange">
+          <radio wx:for="{{_data.pc_ssd}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+        </radio-group>
+      </view>
+
+      <view class="tit-no-bg">5.机械硬盘</view>
+      <view class="cell-card">
+        <radio-group data-id="pc_harddisk" bindchange="radioChange">
+          <radio wx:for="{{_data.pc_harddisk}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+            color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+        </radio-group>
+      </view> -->
+
+      <block wx:for="{{_data.other}}" wx:key="index">
+
+        <view hidden="{{ index + currentIndex +1 > hideCode}}">
+
+          <view class="tit-no-bg">
+            {{index + currentIndex + 1}}.{{item.name}}
+          </view>
+
+          <view class="cell-card">
+            <block wx:if="{{index != _data.other.length-1}}">
+              <radio-group data-id="{{index}}" bindchange="radioChange">
+                <radio wx:for="{{item.inquiryinfopc}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+                  color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+              </radio-group>
+            </block>
+            <block wx:else>
+              <checkbox-group data-id="{{index}}" bindchange="radioChange">
+                <checkbox wx:for="{{item.inquiryinfopc}}" wx:key="index" wx:for-item="itm" wx:for-index="idx"
+                  class="radio" color="#C7402C" value="{{itm.id}}">{{itm.name}}</checkbox>
+              </checkbox-group>
+            </block>
+          </view>
+
+        </view>
+      </block>
+
+
+      <view wx:if="{{isUpdateImage}}">
+        <view class="tit-no-bg">
+          <!-- {{progressData.all+1}}.上传照片 -->
+          上传照片
+        </view>
+
+        <view class="cell-card">
+          小提示：照片完整越清晰，报价越准。
+        </view>
+
+        <view class="cell-card m-t-20" style="display: flex; flex-wrap: wrap; width: 600rpx; padding: 20rpx 105rpx;">
+          <view class="computer-image" wx:for="{{imageUrl}}" wx:key="index">
+            <image src="{{item}}" style="width: 155rpx; height: 110rpx;"></image>
+            <icon data-idx="{{index}}" bindtap="cancelImage" class="cancel" size="25" type="cancel" color="#999"></icon>
+          </view>
+          <image bindtap="chooseImage" src="/images/add.png" class="computer-image"></image>
+        </view>
+      </view>
+
+    </view>
+
+
+
+    <!-- <view wx:if="{{!isLogin}}" class="button">
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="button-clear m-t-20"
+        hover-class="btn-hover">立即估价</button>
+    </view>
+    <view wx:elif="{{isLogin && (userInfo.phonestatus == 0)}}" class="button">
+      <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNum" class="button-clear m-t-20"
+        hover-class="btn-hover">立即估价</button>
+    </view> -->
+    <view class="button">
+      <button bindtap="getResult" class="button-clear m-t-20" hover-class="btn-hover">提交</button>
+    </view>
+    
+
+
+  </view>
+</view>
+
+<!-- <mp-actionSheet bindactiontap="getResult" show="{{showActionsheet}}" actions="{{groups}}">
+</mp-actionSheet> -->

@@ -1,0 +1,61 @@
+/* pages/waitdeliver/waitdeliver.wxss */
+page{
+  background-color: #fff;
+}
+/* .content{
+  position: fixed;
+  top: 0;
+  left: 0;
+} */
+.scroll{
+  width: 100%;
+  height: 800rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.list{
+  width: 710rpx;
+  margin: 0 auto;
+  border-bottom: 2rpx solid #ccc;
+}
+.list:last-child{
+  border: none;
+}
+.list-item{
+  padding: 20rpx 0;
+}
+.item-line{
+  display: flex;
+  line-height: 1.5;
+}
+.cont{
+  padding-right: 20rpx;
+}
+
+.send-box{
+  height: 470rpx;
+}
+.send-method,
+.select-all{
+  display: flex;
+  min-height: 65rpx;
+  line-height: 65rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+}
+.send-method{
+  display: flex;
+  flex-direction: column;
+}
+.m-l-40{
+  margin-left: 40rpx;
+}
+
+.cell-card{
+  margin-top: 0;
+}
+.number-input{
+  height: 65rpx;
+  line-height: 65rpx;
+  width: 500rpx;
+}

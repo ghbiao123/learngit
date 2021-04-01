@@ -1,0 +1,73 @@
+<scroll-view class="scroll" scroll-with-animation scroll-into-view="id{{idx}}" scroll-y
+  style="height: {{scrollHeight}}rpx;">
+
+  <view class="cont">
+
+    <!-- 遍历设备的配置信息 -->
+    <block wx:for="{{arrConfig}}" wx:key="index">
+
+      <!-- 配置标题 -->
+      <view id="id{{index}}" class="tit-no-bg {{arrSelected[index].isShow ? '' : 'tit-no-bg-selected'}}">
+        <view>
+          {{index + 1}}.{{item.title}}
+        </view>
+        <view hidden="{{!arrSelected[index].value}}" class="title-selected">
+          <view class="title-selected-value {{arrSelected[index].newId == arrSelected[index].oldId ? '':'color-red'}}">
+            {{arrSelected[index].value}}
+          </view>
+          <view class="title-selected-change">
+            <view data-idx="{{index}}" bindtap="changeConfig" class="change-btn" hover-class="change-hover">修改</view>
+          </view>
+        </view>
+      </view>
+      <!-- 配置选项 -->
+      <view class="cell-card" hidden="{{!arrSelected[index].isShow}}">
+        <radio-group data-idx="{{index}}" data-id="{{item.name}}" bindchange="radioChange">
+          <radio wx:for="{{item.data}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+            color="#C7402C" value="{{itm.id}}" checked="{{itm.id == arrSelected[index].newId}}">{{itm.name}}</radio>
+        </radio-group>
+      </view>
+    </block>
+
+    <!-- 遍历设备其他的描述信息 -->
+    <block wx:for="{{arrOther}}" wx:key="index">
+
+      <view hidden="{{ index + currentIndex + 1 > hideCode}}">
+        <!-- 其他描述信息标题 -->
+        <view id="id{{index + currentIndex}}" class="tit-no-bg {{arrSelected[index + currentIndex].isShow ? '' : 'tit-no-bg-selected'}}">
+          <view>
+            {{index + currentIndex +1}}.{{item.name}}
+          </view>
+          <view hidden="{{!arrSelected[index + currentIndex].value}}" class="title-selected">
+            <view class="title-selected-value {{arrSelected[index + currentIndex].newId == arrSelected[index + currentIndex].oldId ? '':'color-red'}}">
+              {{arrSelected[index + currentIndex].value}}
+            </view>
+            <view class="title-selected-change">
+              <view data-idx="{{index + currentIndex}}" bindtap="changeConfig" class="change-btn" hover-class="change-hover">修改</view>
+            </view>
+          </view>
+        </view>
+        <!-- 其他描述信息选项 -->
+        <view class="cell-card" hidden="{{!arrSelected[index+ currentIndex].isShow}}">
+        <!-- 单选 -->
+          <block wx:if="{{index != arrOther.length-1}}">
+            <radio-group data-idx="{{index + currentIndex}}" data-id="{{index}}" bindchange="radioChange">
+              <radio wx:for="{{item[key]}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+                color="#C7402C" value="{{itm.id}}" checked="{{itm.id == arrSelected[index + currentIndex].newId}}">{{itm.name}}</radio>
+            </radio-group>
+          </block>
+          <!-- 多选 -->
+          <block wx:else>
+            <checkbox-group data-idx="{{index + currentIndex}}" data-id="{{index}}" bindchange="radioChange">
+              <checkbox wx:for="{{item[key]}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+                color="#C7402C" value="{{itm.id}}" checked="{{arrChecked[idx]}}">{{itm.name}}</checkbox>
+            </checkbox-group>
+          </block>
+        </view>
+
+      </view>
+
+    </block>
+
+  </view>
+</scroll-view>

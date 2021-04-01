@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "searchbar":"/mycomponents/searchbar/searchbar",
+    "tab":"/mycomponents/tab/tab",
+    "vtab":"/mycomponents/vtab/vtab"
+  },
+  "navigationBarTitleText": "易嗨机"
+}

@@ -1,0 +1,52 @@
+.cell-card{
+  line-height: 1.5;
+}
+.title{
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.content{
+  /* color: #dfdfdf; */
+  color: #606060;
+  font-size: 28rpx;
+  line-height: 2;
+  /* background-color: #f5f5f5; */
+}
+
+.cell-item{
+  display: flex;
+  /* justify-content: space-between; */
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  color: #606060;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+/* .cell-item:last-child{
+  border: none;
+} */
+
+.express-icon{
+  margin: 36rpx 20rpx 0 0;
+  width: 25rpx;
+  height: 25rpx;
+}
+
+.order-input{
+  margin-left: 20rpx;
+  width: 560rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.scan-icon{
+  margin-top: 35rpx;
+   width: 30rpx;
+   height: 30rpx;
+}
+
+.btn-confirm{
+  width: 100rpx !important;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+}

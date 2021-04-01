@@ -1,0 +1,19 @@
+<view class="tab">
+
+  <scroll-view class="scroll-tab" scroll-x scroll-with-animation scroll-into-view="selected{{selected-1}}">
+    <view class="tab-list" style="width:{{150*title.length}}rpx">
+      <view id="selected{{index}}" class="tab-item" style="width: {{30 * 3}}rpx;" wx:for="{{title}}" data-index="{{index}}" bindtap="getCurrentIndex" wx:key="index">
+        <view class="text {{selected == index? 'text-s':''}}">{{item.name}}</view>
+        <view class="text-underline {{selected == index? 'text-underline-s':''}}"></view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="tab-content">
+    <swiper class="swiper-cont" current="0">
+      <swiper-item class="swiper-cont" wx:for="{{[0]}}" wx:key="index">
+        <slot name="tab-content-{{index}}"></slot>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>

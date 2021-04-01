@@ -1,0 +1,5 @@
+<image class="contact" src="/images/contact.png"></image>
+<view class="txt"> {{data.introduction}}</view>
+<view class="txt">地址： {{data.address}}</view>
+<view class="txt">电话：{{data.phone}}</view>
+<button class="button-clear btn" hover-class="btn-hover" open-type="contact">点击联系客服</button>

@@ -1,0 +1,76 @@
+<block wx:for="{{list}}" wx:key="index">
+  <view class="order-list">
+    <view class="title">机器信息</view>
+    <view class="project" data-idx="{{index}}" data-id="{{item.id}}" bindtap="getDetail">
+      <view class="project-image" hidden>
+        <!-- 没有图片，待确认 -->
+        <image class="image" src="{{item.model_info.image}}" mode="aspectFit"></image>
+      </view>
+      <view class="project-info" style="width: 670rpx;">
+        <view class="project-name">
+          <view class="name">{{item.model_info.name}}</view>
+          <view
+            class="state {{item.order_status==0||item.order_status==1?'state-red':''}}{{item.order_status==2?'state-green':''}}{{item.order_status==3?'state-gray':''}}">
+            {{item.order_status==0 || item.order_status==4 ? '待验机':''}}
+            <!-- {{item.order_status==0&&item.recovery_type==2?'待发货':''}} -->
+            {{item.order_status==1?'待付款':''}}
+            {{item.order_status==2?'订单完成':''}}
+            {{item.order_status==3?'订单取消':''}}
+            <!-- {{item.order_status==4?'已发货':''}} -->
+          </view>
+        </view>
+        <!-- <view class="info ellipsis-text">{{item.model_info.cinfo? item.model_info.cinfo:''}}</view> -->
+        <view class="info ellipsis-text">成交方式:{{item.recovery_type == 1 ? "上门回收" : "快递回收"}}</view>
+        <block wx:if="{{item.order_status == 0 || item.order_status == 4}}">
+          <view class="info">预估价：¥{{item.estimate_fee}}</view>
+          <view class="info">加价券：¥{{item.coupon_fee}}</view>
+          <view class="info">结算价：¥{{item.total_amount}}</view>
+        </block>
+        <view wx:if="{{item.order_status == 1 || item.order_status == 2 || item.order_status == 3}}" class="info">
+          <realprice status="{{item.order_status}}" price="{{item.stafforderinfo.total_amount}}"></realprice>
+        </view>
+        <block wx:if="{{item.recovery_type == 1}}">
+          <view class="info">上门时间：{{item.dtd_time}}</view>
+          <view wx:if="{{item.order_status == 0}}" class="info">联系方式：{{item.uinfo_phone}}</view>
+          <view class="info">上门位置：{{item.uinfo_address}}</view>
+        </block>
+        <block wx:if="{{item.recovery_type == 2}}">
+          <view class="info">快递单号：{{item.c_no}}</view>
+          <view wx:if="{{item.order_status == 0}}" class="info">联系方式：{{item.uinfo_phone}}</view>
+        </block>
+        <block>
+          <view class="cell-item" catchtap="aaa">
+            <image hidden class="express-icon" src="/images/co-s.png"></image>
+            <view>备注</view>
+            <view>
+              <navigator hover-class="none" url="/pages/remarklist/remarklist?orderid={{item.id}}">
+                <input bindinput="remarkInput" disabled value="{{item.staff_remark}}" class="order-input"
+                placeholder="请填写备注"></input>
+              </navigator>
+            </view>
+            <button hidden bindtap="confirmRemark" data-id="{{item.id}}" class="button-clear btn-confirm">确认</button>
+            <image class="scan-icon" mode="aspectFit" src="/images/rt2.png"></image>
+          </view>
+          <!-- <button wx:if="{{ !item.c_no && (item.recovery_type==2) }}" data-idx="{{index}}" bindtap="confirmExpressOrder"
+            class="button-clear">确认发货</button> -->
+        </block>
+      </view>
+    </view>
+    <view class="title">订单信息</view>
+    <view class="order">
+      <view class="order-info">
+        <view class="order-info-name">订单编号：</view>
+        <view>
+          <view class="order-info-cont">
+            <text>{{item.order_sn}}</text>
+            <view class="copy" data-text="{{item.order_sn}}" bindtap="copyText">复制</view>
+          </view>
+        </view>
+      </view>
+      <view class="order-info">
+        <view class="order-info-name">下单时间：</view>
+        <view class="order-info-cont">{{item.createtime}}</view>
+      </view>
+    </view>
+  </view>
+</block>

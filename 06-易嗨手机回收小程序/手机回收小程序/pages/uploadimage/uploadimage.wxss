@@ -1,0 +1,39 @@
+/* pages/uploadimage/uploadimage.wxss */
+.tops{
+  padding: 0 20rpx;
+  line-height: 45rpx;
+  font-size: 30rpx;
+  background-color: #fff;
+}
+
+.cell-item{
+  display: flex;
+  justify-content: flex-start;
+}
+.cell-order{
+  width: 100rpx;
+  text-align: center;
+}
+.cell-title{
+  font-size: 35rpx;
+}
+.cell-content{
+  display: flex;
+  justify-content: space-around;
+}
+.cont,
+.image{
+  width: 280rpx;
+  height: 280rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.b{
+  background-color: #f7f4f8;
+  /* box-shadow: 0 0 0rpx 6rpx #c1402a inset; */
+}
+
+
+
+

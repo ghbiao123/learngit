@@ -1,0 +1,164 @@
+.vtab {
+  margin-top: 20rpx;
+  display: flex;
+  width: 750rpx;
+  overflow: hidden;
+}
+
+.vtab-list {
+  width: 160rpx;
+  height: 100%;
+  overflow: hidden;
+  background-color: #fff;
+  /* background-color: #ececec; */
+}
+
+.vtab-list-item {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #5E5E5E;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* background-color: #ececec; */
+}
+
+.vtab-list-item-s {
+  color: #C7402C;
+  background-color: #ffffff;
+
+}
+
+.vtab-content {
+  margin-left: 20rpx;
+  width: 550rpx;
+  height: 100%;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.vtab-cont-list {
+  display: flex;
+  /* padding: 10rpx 0; */
+  width: 550rpx;
+  height: 80rpx;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+
+.bg-w {
+  background-color: #fff;
+}
+
+.bg-p {
+  background-color: #FCF5F4;
+}
+
+.vtab-cont-list-hover {
+  background-color: #f5f5f5;
+}
+
+.vtab-content-scroll {
+  width: 550rpx;
+}
+
+.vtab-content-scroll-item {
+  border-bottom: 6rpx solid #fff;
+  /* border-bottom: 6rpx solid #C7402C; */
+}
+
+.vtab-content-scroll-item:last-child {
+  border-bottom: 6rpx solid #fff;
+}
+
+.vtab-content-scroll-title {
+  font-size: 30rpx;
+  line-height: 60rpx;
+  font-weight: bold;
+  background-color: #f6f6f6;
+}
+
+.vtab-cont-list-image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.vtab-cont-list-info {
+  width: 490rpx;
+  height: 80rpx;
+}
+
+.vtab-cont-list-info-name {
+  font-size: 28rpx;
+  /* font-weight: bold; */
+  text-indent: 20rpx;
+  line-height: 80rpx;
+}
+
+/* .l-h-100{
+  line-height: 100rpx;
+  
+}
+.l-h-50{
+  line-height: 50rpx;
+} */
+.color {
+  color: #C7402C;
+}
+
+.ellipsis-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.vtab-cont-list-icon {
+  margin-top: 24rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.vtab,
+.vtab-content-scroll,
+.vtab-list-scroll {
+  height: 82.08vh;
+}
+
+.vtab-list-scroll {
+  background-color: #f3f3f3;
+}
+
+
+
+.button-clear {
+  margin-top: 20rpx;
+  padding: 0;
+  width: 470rpx !important;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #fff;
+  font-weight: normal;
+  background-color: #C1402A;
+  border-radius: 10rpx;
+}
+
+
+/* tabid 为 4,5 的显示样式 */
+.brand {
+  width: 550rpx;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f5f5f5;
+}
+
+.brand-logo,
+.brand-item {
+  width: 170rpx;
+  height: 170rpx;
+}
+
+.brand-item {
+  margin: 10rpx 0 0 10rpx;
+}

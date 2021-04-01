@@ -1,0 +1,82 @@
+<view class="container">
+  <view class="content">
+
+    <view class="head">
+      <view class="progress">
+        {{progressData.chose}}/{{progressData.all}}
+        <view class="progress-s" style="width:{{progress}};"></view>
+      </view>
+      <!-- <image mode="aspectFit" class="image" src="{{_data.image}}"></image> -->
+      <view class="name">{{name}}</view>
+      <view class="m-t-20 f-s-26">小提示：选择结果与实际相符，有利于加快您的回收进度。</view>
+    </view>
+
+
+    <view hidden class="cell-card m-t-20">
+      <view class="cell-item">
+        <view class="cell-name t-a-c">设备型号</view>
+        <view class="cell-cont">
+          <input bindinput="modelInput" type="text" class="cell-input" placeholder="请输入设备型号" />
+        </view>
+      </view>
+    </view>
+
+    <!-- 
+        arrSelected="{{arrSelected}}" 
+        currentIndex="{{currentIndex}}"
+      -->
+    <optionlist arrOther="{{_data}}" arrChecked="{{arrChecked}}" bind:tiptap="getTip" bind:radioChange="radioChange"
+      scrollHeight="{{scrollHeight}}" key="{{_key}}"></optionlist>
+
+    <!-- <block wx:for="{{_data}}" wx:key="index">
+
+      <view>
+        <view class="tit-no-bg">
+          {{index+1}}.{{item.name}}
+        </view>
+
+        <view class="cell-card">
+          <block wx:if="{{index != _data.length-1}}">
+            <radio-group data-id="{{index}}" bindchange="radioChange">
+              <radio wx:for="{{item[_key]}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+                color="#C7402C" value="{{itm.id}}">{{itm.name}}</radio>
+            </radio-group>
+          </block>
+          <block wx:else>
+            <checkbox-group data-id="{{index}}" bindchange="radioChange">
+              <checkbox wx:for="{{item[_key]}}" wx:key="index" wx:for-item="itm" wx:for-index="idx" class="radio"
+                color="#C7402C" value="{{itm.id}}" checked="{{arrChecked[idx]}}">{{itm.name}}</checkbox>
+            </checkbox-group>
+          </block>
+        </view>
+
+      </view>
+
+    </block> -->
+
+    <!-- <view class="button">
+      <button bindtap="getResult" class="button-clear m-t-20" hover-class="btn-hover">立即估价</button>
+    </view> -->
+
+    <view wx:if="{{!isLogin}}" class="button">
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="button-clear m-t-20"
+        hover-class="btn-hover">立即估价</button>
+    </view>
+    <view wx:elif="{{isLogin && (userInfo.phonestatus == 0)}}" class="button">
+      <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNum" class="button-clear m-t-20"
+        hover-class="btn-hover">立即估价</button>
+    </view>
+    <view wx:else="{{isLogin && (userInfo.phonestatus == 1)}}" class="button">
+      <button bindtap="getResult" class="button-clear m-t-20" hover-class="btn-hover">立即估价</button>
+    </view>
+
+  </view>
+</view>
+
+<mp-dialog title="提示" show="{{showOneButtonDialog}}" bindbuttontap="tapDialogButton" buttons="{{[{text: '确定'}]}}">
+  <rich-text style="width: 272px;" nodes="{{dialogTip}}"></rich-text>
+  <!-- <image style="/images/contact.png"></image> -->
+</mp-dialog>
+
+<!-- <mp-actionSheet bindactiontap="getResult" show="{{showActionsheet}}" actions="{{groups}}">
+</mp-actionSheet> -->

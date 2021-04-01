@@ -1,0 +1,9 @@
+<view class="container">
+  <view wx:if="{{identy == 1}}">
+    <orderlist list="{{list}}"></orderlist>
+  </view>
+
+  <view wx:if="{{identy == 2}}">
+    <recyclelist list="{{list}}"></recyclelist>
+  </view>
+</view>

@@ -8,7 +8,8 @@ Page({
    */
   data: {
     waitCheckCount: 0,
-    waitPayCount: 0
+    waitPayCount: 0,
+    evaluationCount: 0,
   },
 
   /**
@@ -35,6 +36,7 @@ Page({
         that.setData({
           waitCheckCount: res.data.c1,
           waitPayCount: res.data.c2,
+          evaluationCount: res.data.ac,
         });
       });
 

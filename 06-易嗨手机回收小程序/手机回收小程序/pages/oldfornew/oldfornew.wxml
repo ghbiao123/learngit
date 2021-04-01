@@ -1,0 +1,5 @@
+<view class="content">
+  <view hidden class="cell-card cont-position">
+    <button class="button-clear">点击跳转商城小程序</button>
+  </view>
+</view>

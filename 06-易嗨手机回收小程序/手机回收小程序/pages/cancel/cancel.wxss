@@ -1,0 +1,6 @@
+/* pages/cancel/cancel.wxss */
+.radio{
+  display: block;
+  line-height: 75rpx;
+  padding: 10rpx 0;
+}

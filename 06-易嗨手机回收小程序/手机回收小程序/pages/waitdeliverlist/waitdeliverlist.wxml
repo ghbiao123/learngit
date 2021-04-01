@@ -1,0 +1,12 @@
+<view class="cell-card" bindtap="getDetail" data-id="{{item.id}}" wx:for="{{list}}" wx:key="index">
+  <view class="cell-item">
+    <view class="index">{{index + 1}}.</view>
+    <view class="cont">
+      <view>{{item.createtime}}</view>
+      <view>{{item.delivery_type_text}} {{item.c_no}}</view>
+    </view>
+    <view class="status">
+      {{item.status}}
+    </view>
+  </view>
+</view>
