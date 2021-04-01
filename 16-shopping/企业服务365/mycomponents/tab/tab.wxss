@@ -1,0 +1,38 @@
+.tab{
+  width: 750rpx;
+  height: 100rpx;
+  background: #ffffff;
+}
+.tab-scroll{
+  display: block;
+  padding: 0 25rpx;
+  width: 750rpx;
+  height: 100rpx;
+  overflow: hidden;
+}
+.tab-box{
+  display: flex;
+  justify-content: space-around;
+  min-width: 700rpx;
+}
+.tab-item{
+  position: relative;
+  padding: 0 25rpx;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+.tab-s{
+  color: #F2B454;
+}
+.line-s{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 54rpx;
+  height: 4rpx;
+  background-color: #F2B454;
+}

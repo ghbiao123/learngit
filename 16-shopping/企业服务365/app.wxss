@@ -1,0 +1,117 @@
+/**app.wxss**/
+@import '/components/weui-wxss/dist/style/weui.wxss';
+.container {
+  padding-bottom: 20rpx;
+}
+
+page{
+  background-color: #f5f5f5;
+  color: #333333;
+}
+
+image{
+  vertical-align: top;
+  border: 0;
+}
+/* 上外边距 20rpx */
+.m-t-20{
+  margin-top: 20rpx !important;
+}
+
+/* 自定义按钮样式 */
+.button-clear{
+  padding: 0;
+  width: 670rpx !important;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #fff;
+  font-weight: normal;
+  background-color: #C1402A;
+  border-radius: 10rpx;
+}
+
+/* 页面大部分公共样式 */
+
+/* 白色卡片 */
+.cell-card{
+  margin: 0 auto;
+  width: 670rpx;
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+/* 
+  白色卡片下样式
+*/
+.cell-item{
+  display: flex;
+  justify-content: space-between;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  color: #606060;
+}
+.cell-rt{
+  margin: 40rpx 20rpx 0 0;
+  width: 10rpx;
+  height: 20rpx;
+}
+
+.tit-no-bg{
+  display: flex;
+  margin: 0 auto;
+  width: 710rpx;
+  height: 75rpx;
+  line-height: 75rpx;
+  font-size: 26rpx;
+  color: #999999;
+  /* font-weight: bold; */
+}
+
+/* 下边框 */
+.b-b-g{
+  border-bottom: 1rpx solid #f6f6f6;
+}
+
+/* 文字居右 */
+.t-a-r{
+  text-align: right;
+}
+/* 文字居中 */
+.t-a-c{
+  text-align: center;
+}
+/* 文字居左 */
+.t-a-l{
+  text-align: left;
+}
+
+/* 文字不换行，超出隐藏 */
+.ellipsis-text{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.gray-hover{
+  background: #f5f5f5 !important;
+}
+
+.m-l-20{
+  margin-left: 20rpx;
+}
+.color-gold{
+  color: #F2B454;
+}
+.color-gray{
+  color: #999999;
+}
+
+
+
+
+
+
+
+
+

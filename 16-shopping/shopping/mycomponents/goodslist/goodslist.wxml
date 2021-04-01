@@ -6,7 +6,8 @@
         <view class="goods-name">{{item.goods_name}}</view>
         <view class="goods-introduce">{{item.brief_content}}</view>
         <view class="goods-sale-info">
-          <view class="goods-sale">已售{{item.sales_volume}}件</view>
+          <!-- <view class="goods-sale">已售{{item.sales_volume}}件</view> -->
+          <view class="goods-sale">剩余{{item.stock_amount}}件</view>
           <view class="goods-price"><text class="f-s-24">￥</text>{{item.goods_price}}</view>
         </view>
       </view>

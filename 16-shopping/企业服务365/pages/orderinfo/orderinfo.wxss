@@ -1,0 +1,96 @@
+/* pages/orderinfo/orderinfo.wxss */
+.container{
+  padding-bottom: 98rpx;
+}
+
+
+.btn-box{
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  width: 750rpx;
+  height: 98rpx;
+  background: #fff;
+}
+.bg-white,
+.bg-orange{
+  display: flex;
+  align-items: center;
+  width: 375rpx;
+  height: 98rpx;
+}
+.bg-white{
+  justify-content: space-around;
+}
+.bg-orange{
+  justify-content: center;
+  font-size: 32rpx;
+  color: #fff;
+  background: #F2B454;
+}
+.pay-icon{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.head{
+  display: flex;
+  align-items: center;
+  width: 750rpx;
+  height: 140rpx;
+  font-size: 32rpx;
+  color: #FFFFFF;
+  background: #F2B454;
+}
+.head-image{
+  margin: 0 20rpx;
+  width: 46rpx;
+  height: 46rpx;
+}
+
+.goods-box{
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  min-height: 160rpx;
+  background: #fff;
+}
+.goods-image{
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.f-s-24{
+  font-size: 24rpx;
+}
+
+.goods-price{
+  color: #EA1313;
+  font-size: 36rpx;
+}
+.goods-name{
+  width: 530rpx;
+  line-height: 45rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  min-height: 100rpx;
+  /* white-space: nowrap;
+  text-overflow: ellipsis; */
+  overflow: hidden;
+}
+
+.order-box{
+  padding: 20rpx;
+  min-height: 160rpx;
+  background: #fff;
+}
+.order-info{
+  display: flex;
+  justify-content: space-between;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  color: #666666;
+}
+
+
+

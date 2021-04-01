@@ -50,24 +50,30 @@ Page({
     util.post("/api/order/placeOrder", data).then(res=>{
       console.log(res);
 
-      wx.requestPayment({
-        nonceStr: res.data.nonceStr,
-        package: res.data.package,
-        paySign: res.data.paySign,
-        timeStamp: res.data.timeStamp,
-        signType: 'MD5',
-        success(res){
-          wx.navigateTo({
-            url: '/pages/order/order',
-          });
-        },
-        fail(err){
-          wx.navigateTo({
-            url: '/pages/order/order',
-          });
-        }
-      })
+      if(res.code == 1){
+        wx.requestPayment({
+          nonceStr: res.data.nonceStr,
+          package: res.data.package,
+          paySign: res.data.paySign,
+          timeStamp: res.data.timeStamp,
+          signType: 'MD5',
+          success(res){
+            wx.navigateTo({
+              url: '/pages/order/order',
+            });
+          },
+          fail(err){
+            wx.navigateTo({
+              url: '/pages/order/order',
+            });
+          }
+        })
+  
+      }else{
+        util.showSuccess(res.msg);
+      }
 
+      
     });
 
   },

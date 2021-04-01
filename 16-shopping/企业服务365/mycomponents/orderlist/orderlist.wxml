@@ -1,0 +1,36 @@
+<view class="content">
+  <view class="list" wx:for="{{orderList}}" wx:key="index">
+    <view class="cont">
+      <view class="list-head">
+        <view>订单号：{{item.order_sn}}</view>
+        <view wx:if="{{item.pay_status == 0}}" class="color-gold">待付款</view>
+        <view wx:if="{{item.pay_status == 1}}" class="color-gray">已完成</view>
+      </view>
+
+      <view class="list-cont">
+        <view class="cont-item">
+          <view class="cont-left">
+            <image class="cont-image" mode="aspectFit" src="{{item.goodsinfo.goods_pictures}}"></image>
+          </view>
+          <view class="cont-right">
+            <view class="goods-name">{{item.goodsinfo.goods_name}}</view>
+            <view class="goods-price"><text class="f-s-24">￥</text>{{item.goodsinfo.goods_price}}</view>
+          </view>
+        </view>
+
+      </view>
+
+      <view class="list-foot">
+        <view data-id="{{item.id}}" bindtap="getDetail">
+          <block wx:if="{{item.pay_status == 0}}">
+            <btn type="pay">去付款</btn>
+          </block>
+          <block wx:if="{{item.pay_status == 1}}">
+            <btn type="cancel">查看详情</btn>
+          </block>
+        </view>
+      </view>
+
+    </view>
+  </view>
+</view>

@@ -1,0 +1,35 @@
+/* pages/sort/sort.wxss */
+.sort{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 64rpx;
+  color: #999999;
+  font-size: 24rpx;
+}
+.sort-item{
+  position: relative;
+}
+.top::after{
+  content: '';
+  position: absolute;
+  right: -22rpx;
+  top: 14rpx;
+  width: 0;
+  height: 0;
+  border-left: 8rpx solid rgba(0, 0, 0, 0);
+  border-right: 8rpx solid rgba(0, 0, 0, 0);
+  border-top: 12rpx solid #999999;
+}
+
+.bottom::after{
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: -22rpx;
+  top: 14rpx;
+  border-left: 8rpx solid rgba(0, 0, 0, 0);
+  border-right: 8rpx solid rgba(0, 0, 0, 0);
+  border-bottom: 12rpx solid #999999;
+}

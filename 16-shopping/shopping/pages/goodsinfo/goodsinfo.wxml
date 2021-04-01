@@ -12,7 +12,8 @@
     <view class="goods-introduce">{{detail.category.category_name}}</view>
     <view class="goods-sale-info">
       <view class="goods-price"><text class="f-s-24">￥</text>{{detail.goods_price}}</view>
-      <view class="goods-sale m-l-20">已售{{detail.sales_volume}}件</view>
+      <!-- <view class="goods-sale m-l-20">已售{{detail.sales_volume}}件</view> -->
+      <view class="goods-sale m-l-20">剩余{{detail.stock_amount}}件</view>
     </view>
 
     <button class="share" open-type="share">

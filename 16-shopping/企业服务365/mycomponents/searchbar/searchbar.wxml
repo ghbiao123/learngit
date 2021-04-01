@@ -1,0 +1,12 @@
+<view class="search-box" style="background-color:{{theme}};">
+  <!-- focus -->
+  <view class="input-box" hidden="{{!isFocus}}">
+    <icon class="blur-icon input-icon" type="search" size="22" color="#ccc"></icon>
+    <input class="input" bindinput="getInput"  bindconfirm="getComfirm" placeholder="{{placeholder}}" value="{{value}}" focus="{{isFocus}}"></input>
+    <icon bindtap="clearValue" class="blur-icon clear-icon" color="#ccc" type="cancel"></icon>
+  </view>
+  <!-- blur -->
+  <view class="blur-box" style="background: {{theme==='#ffffff'? '#f5f5f5': '#ffffff'}};" bindtap="onTap" hidden="{{isFocus}}">
+    <icon class="blur-icon" type="search" size="22" color="#ccc"></icon><text>{{coverholder}}</text>
+  </view>
+</view>

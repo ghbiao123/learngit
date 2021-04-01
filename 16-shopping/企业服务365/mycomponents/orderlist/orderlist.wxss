@@ -1,0 +1,82 @@
+/* @import "../goodslist/goodslist.wxss"; */
+.content{
+  width: 100%;
+  border-top: 20rpx solid #F5F5F5;
+}
+.list{
+  background-color: #fff;
+  border-bottom: 20rpx solid #F5F5F5;
+  color: #333;
+}
+.cont{
+  margin: 0 auto;
+  width: 710rpx;
+}
+
+.list-head{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 80rpx;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+
+.list-cont{
+  padding: 20rpx 10rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+.cont-item{
+  display: flex;
+}
+.cont-left{
+  width: 140rpx;
+  height: 100rpx;
+}
+.cont-image{
+  margin: 0 auto;
+  width: 100rpx;
+  height: 100rpx;
+}
+.cont-right{
+  font-size: 24rpx;
+
+}
+.goods-name{
+  width: 510rpx;
+  line-height: 45rpx;
+  font-size: 26rpx;
+  font-weight: bold;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.f-s-24{
+  font-size: 24rpx;
+}
+.goods-sale{
+  color: #CCCCCC;
+  font-size: 24rpx;
+}
+.goods-price{
+  color: #EA1313;
+  font-size: 32rpx;
+}
+
+.list-foot{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 90rpx;
+}
+
+.color-blue{
+  color: #4F93D0;
+}
+.color-gold{
+  color: #F2B454;
+}
+.color-gray{
+  color: #999999;
+}

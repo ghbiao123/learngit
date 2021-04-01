@@ -17,8 +17,14 @@ Page({
   onLoad: function () {
     that = this;
 
+    // this.init();
+  },
+  
+  onShow(){
+    
     this.init();
   },
+
   init(){
 
     util.post("/api/homeindex/indexInfo").then(res=>{
@@ -28,6 +34,15 @@ Page({
         noticeList: res.data.noticelist
       });
     });
+
+    this.data.hotGoods = {
+      page: 1,
+      isMore: true,
+      list: {
+        l: [],
+        r: [],
+      }
+    }
 
 
     // 获取热门商品
@@ -88,7 +103,10 @@ Page({
   },
 
   onShareAppMessage: function () {
-
+    return {
+      title: '袋鼠霸王餐',
+      path: `/pages/index/index`,
+    }
   }
 
 })

@@ -1,0 +1,54 @@
+<view class="container">
+  <navigator hover-class="none" url="/pages/searchlist/searchlist">
+    <searchbar disabled theme="#F2B454"></searchbar>
+  </navigator>
+
+  <view class="banner">
+    <view class="banner-bg"></view>
+    <swiper class="banner-swiper" autoplay circular>
+      <swiper-item class="banner-swiper-item" wx:for="{{bannerList}}" wx:key="index">
+        <image class="banner-image" src="{{item.picture}}"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <view class="notice">
+    <view class="notice-tit">公告</view>
+    <swiper class="notice-swiper" autoplay circular vertical>
+      <swiper-item class="notice-swiper-item" wx:for="{{noticeList}}" wx:key="index">
+        <navigator url="/pages/notice/notice?key=notice&id={{item.id}}">
+          {{item.title}}
+        </navigator>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <view class="cell-card">
+    <view class="hot-title">热门商品</view>
+    <view class="hot-line"></view>
+    <view class="content">
+      <view class="content-left">
+        <view class="goods" hover-class="gray-hover" wx:for="{{hotGoods.list.l}}" wx:key="index" data-id="{{item.id}}" bindtap="getGoodsDetail">
+          <image class="goods-image" src="{{item.goods_pictures}}" mode="aspectFit"></image>
+          <view class="goods-name">{{item.goods_name}}</view>
+          <view class="goods-info">
+            <view class="goods-sale">已售{{item.sales_volume}}件</view>
+            <view class="goods-price"><text class="f-s-24">￥</text>{{item.goods_price}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="content-right">
+        <view class="goods" hover-class="gray-hover" wx:for="{{hotGoods.list.r}}" wx:key="index" data-id="{{item.id}}" bindtap="getGoodsDetail">
+          <image class="goods-image" src="{{item.goods_pictures}}" mode="aspectFit"></image>
+          <view class="goods-name">{{item.goods_name}}</view>
+          <view class="goods-info">
+            <view class="goods-sale">已售{{item.sales_volume}}件</view>
+            <view class="goods-price"><text class="f-s-24">￥</text>{{item.goods_price}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+</view>

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "icontext": "/mycomponents/icontext/icontext",
+    "parser": "/mycomponents/parser/index"
+  },
+  "navigationBarTitleText": "商品详情"
+}

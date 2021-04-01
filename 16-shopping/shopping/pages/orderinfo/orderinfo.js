@@ -51,6 +51,14 @@ Page({
     util.post("/api/order/wxPayAgain", data).then(res=>{
       console.log(res);
 
+      if(res.code == -1){
+        return util.showError(res.msg, function(){
+          wx.navigateBack({
+            delta: 1,
+          });
+        });
+      }
+
       wx.requestPayment({
         nonceStr: res.data.nonceStr,
         package: res.data.package,

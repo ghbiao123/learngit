@@ -1,0 +1,64 @@
+<view class="container">
+
+  <view class="head">
+    <block wx:if="{{detail.pay_status == 0}}">
+      <image class="head-image" src="/images/w.png"></image>
+      <view>待付款</view>
+    </block>
+    <block wx:if="{{detail.pay_status == 1}}">
+      <image class="head-image" src="/images/d.png"></image>
+      <view>已完成</view>
+    </block>
+  </view>
+
+  <view class="tit-no-bg">商品清单</view>
+
+  <view class="goods-box">
+    <image class="goods-image" src="{{detail.goodsinfo.goods_pictures}}" mode="aspectFit"></image>
+    <view class="goods-info">
+      <view class="goods-name">
+        {{detail.goodsinfo.goods_name}}
+      </view>
+      <view class="goods-price"><text class="f-s-24">￥</text>{{detail.goodsinfo.goods_price}}</view>
+    </view>
+
+  </view>
+
+  <view class="tit-no-bg">订单信息</view>
+
+  <view class="order-box">
+    <view class="order-info">
+      <view class="info-key">订单号</view>
+      <view class="info-val">{{detail.order_sn}}</view>
+    </view>
+    <view class="order-info">
+      <view class="info-key">下单时间</view>
+      <view class="info-val">{{detail.createtime}}</view>
+    </view>
+    <view class="order-info">
+      <view class="info-key">订单状态</view>
+      <view class="info-val">{{detail.pay_status == 0 ? "待付款" : "已完成"}}</view>
+    </view>
+  </view>
+
+
+
+
+
+
+
+  <view class="btn-box" wx:if="{{detail.pay_status == 0}}">
+    <view class="bg-white">
+      <!-- <navigator hover-class="none" open-type="switchTab" url="/pages/index/index">
+        <icontext size="22" boxH="80" lHeight="30" color="#ccc" iconW="42" iconH="42" cont="回首页" src="/images/index.png"></icontext>
+      </navigator>
+      <button class="contact-btn" open-type="contact">
+        <icontext size="22" boxH="80" lHeight="30" color="#ccc" iconW="42" iconH="42" cont="客服" src="/images/contact.png"></icontext>
+      </button> -->
+    </view>
+    <view class="bg-orange" bindtap="pay">
+      <!-- <image class="pay-icon" src="/images/go.png"></image> -->
+      <view class="m-l-20">立即支付</view>
+    </view>
+  </view>
+</view>

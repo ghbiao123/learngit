@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "searchbar": "/mycomponents/searchbar/searchbar",
+    "goodslist": "/mycomponents/goodslist/goodslist"
+  },
+  "navigationBarBackgroundColor": "#F2B454",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "搜索"
+}

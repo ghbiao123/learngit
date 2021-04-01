@@ -1,0 +1,3 @@
+<searchbar isFocus bind:mysearchbar="getResult" theme="#F2B454"></searchbar>
+
+<goodslist goodsList="{{goodsList.list}}"></goodslist>

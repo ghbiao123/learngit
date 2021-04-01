@@ -1,0 +1,44 @@
+<view class="container">
+  <swiper class="swiper">
+    <swiper-item class="swiper-item">
+      <image class="swiper-image" src="{{detail.goods_pictures}}"></image>
+    </swiper-item>
+  </swiper>
+
+  <view class="cell-card">
+    <view class="goods-name">
+      {{detail.goods_name}}
+    </view>
+    <view class="goods-introduce">{{detail.category.category_name}}</view>
+    <view class="goods-sale-info">
+      <view class="goods-price"><text class="f-s-24">￥</text>{{detail.goods_price}}</view>
+      <view class="goods-sale m-l-20">已售{{detail.sales_volume}}件</view>
+    </view>
+
+    <button class="share" open-type="share">
+      <image class="share-icon" src="/images/share.png"></image>
+      <view>分享</view>
+    </button>
+
+  </view>
+
+  <image style="display:block; width: 298rpx; margin: 30rpx auto;" mode="widthFix" src="/images/products.png"></image>
+
+    <parser domain="{{doMain}}" content="{{detail.goods_details}}"></parser>
+
+  <view class="btn-box">
+    <view class="bg-white">
+      <navigator hover-class="none" open-type="switchTab" url="/pages/index/index">
+        <icontext size="22" boxH="80" lHeight="30" color="#ccc" iconW="42" iconH="42" cont="回首页" src="/images/index.png"></icontext>
+      </navigator>
+      <button class="contact-btn" open-type="contact">
+        <icontext size="22" boxH="80" lHeight="30" color="#ccc" iconW="42" iconH="42" cont="客服" src="/images/contact.png"></icontext>
+      </button>
+    </view>
+    <view class="bg-orange" bindtap="placeOrder">
+      <image class="pay-icon" src="/images/go.png"></image>
+      <view class="m-l-20">立即购买</view>
+    </view>
+  </view>
+
+</view>
