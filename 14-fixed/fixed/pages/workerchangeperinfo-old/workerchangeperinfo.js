@@ -108,7 +108,7 @@ Page({
           name: 'image',
           url: util.getSiteRoot() + "/index.php/api/personal/upload",
           success(ret) {
-            let url = util.getSiteRoot() + JSON.parse(ret.data).data.replace(/\\/g, "/");
+            let url = util.getSiteRoot1() + JSON.parse(ret.data).data.replace(/\\/g, "/");
             that.setData({
               avatar: url
             });
@@ -137,7 +137,7 @@ Page({
               // if (reqData.certimages.length >= 8) {
               //   return
               // }
-              let url = util.getSiteRoot() + JSON.parse(ret.data).data.replace(/\\/g, "/");
+              let url = util.getSiteRoot1() + JSON.parse(ret.data).data.replace(/\\/g, "/");
               reqData.certimages.push(url);
               that.setData({
                 reqData

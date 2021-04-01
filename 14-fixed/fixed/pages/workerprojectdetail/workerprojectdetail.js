@@ -97,7 +97,7 @@ Page({
               // if (reqData.fkimages.length >= 8) {
               //   return
               // }
-              let url = util.getSiteRoot() + JSON.parse(ret.data).data.replace(/\\/g, "/");
+              let url = util.getSiteRoot1() + JSON.parse(ret.data).data.replace(/\\/g, "/");
               reqData.fkimages.push(url);
               that.setData({
                 reqData

@@ -188,7 +188,7 @@ Page({
       url: util.getSiteRoot() + "/index.php/api/personal/upload",
       success(ret) {
         let reqData = that.data.reqData;
-        let url = util.getSiteRoot() + JSON.parse(ret.data).data.replace(/\\/g, "/");
+        let url = util.getSiteRoot1() + JSON.parse(ret.data).data.replace(/\\/g, "/");
         reqData.yingyeimage = url;
         that.setData({
           reqData,
@@ -212,7 +212,7 @@ Page({
           url: util.getSiteRoot() + "/index.php/api/personal/upload",
           success(ret) {
             let reqData = that.data.reqData;
-            let url = util.getSiteRoot() + JSON.parse(ret.data).data.replace(/\\/g, "/");
+            let url = util.getSiteRoot1() + JSON.parse(ret.data).data.replace(/\\/g, "/");
             reqData[key] = url;
             that.setData({
               reqData,

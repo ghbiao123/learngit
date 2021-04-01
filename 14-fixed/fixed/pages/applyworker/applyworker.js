@@ -106,7 +106,7 @@ Page({
                 return
               }
 
-              let url = util.getSiteRoot() + JSON.parse(ret.data).data.replace(/\\/g, "/");
+              let url = util.getSiteRoot1() + JSON.parse(ret.data).data.replace(/\\/g, "/");
 
               idx? reqData[key][idx-1] = url : reqData[key].push(url);
 

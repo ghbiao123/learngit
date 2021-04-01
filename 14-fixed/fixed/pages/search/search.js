@@ -73,7 +73,10 @@ Page({
   lv2(id){
     util.post("/api/shou_ye/getservers",{levelone_id: id}).then(res=>{
       
-      let arrLv2 = res.data.leveltwo;
+      let arrLv2 = res.data.leveltwo.map(v=>{
+        v.length = v.name.length;
+        return v;
+      });
       let arrLv3 = res.data.levelthree.map(val=>{
         val.server_arr = util.getImageFullUrl(val.server_arr, "xmimage");
         return val;

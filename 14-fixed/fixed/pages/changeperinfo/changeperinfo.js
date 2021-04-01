@@ -68,7 +68,7 @@ Page({
           name: 'image',
           url: util.getSiteRoot() + "/index.php/api/personal/upload",
           success(ret) {
-            let url = util.getSiteRoot() + JSON.parse(ret.data).data.replace(/\\/g, "/");
+            let url = util.getSiteRoot1() + JSON.parse(ret.data).data.replace(/\\/g, "/");
             that.setData({
               avatar: url
             });

@@ -7,6 +7,10 @@ function getSiteRoot() {
   return site.siteroot;
 }
 
+function getSiteRoot1() {
+  return "https://weixiu-1304759965.cos.ap-shanghai.myqcloud.com";
+}
+
 // post 请求
 function post(url, data = {}) {
 
@@ -316,11 +320,11 @@ function getImageFullUrl(arr, key) {
   }
   if (!key) {
     // key 不存在
-    return getSiteRoot() + arr;
+    return getSiteRoot1() + arr;
   } else {
     // key 存在
     let newArr = arr.map(v => {
-      v[key] = getSiteRoot() + v[key];
+      v[key] = getSiteRoot1() + v[key];
       return v
     });
     return newArr;
@@ -352,4 +356,5 @@ module.exports = {
   updateManager, // 小程序主动更新
   getImageFullUrl, // 将图片添加为完整路径
   showImage, // 展示图片
+  getSiteRoot1, // new site root
 }
