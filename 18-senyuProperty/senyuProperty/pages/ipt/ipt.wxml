@@ -1,0 +1,57 @@
+<view class="container">
+  <view class="card">
+    <view class="head-cont">
+      <!-- <image class="locationicon" src="/images/location.png"></image>
+      <view class="location">
+        <view class="detail">森宇小区东区</view>
+        <view class="info">四川晟成都市天府新区</view>
+      </view> -->
+      <view class="none">扫描识别到访小区名称</view>
+    </view>
+    <line bgColor="#F2F2F2"></line>
+    <view class="list">
+      <view class="item">
+        <view class="key">访客姓名</view>
+        <view class="val">
+          <input placeholder="请输入您的姓名" type="text" class="noral ipt" />
+        </view>
+      </view>
+      <view class="item">
+        <view class="key">联系方式</view>
+        <view class="val">
+          <input placeholder="请输入联系方式" type="number" class=" ipt" />
+        </view>
+      </view>
+      <view class="item">
+        <view class="key">访客类型</view>
+        <view class="val">
+          <view class="radio {{selected == index ? 'selected' : ''}}" data-id="{{index}}" bindtap="onChange" wx:for="{{arrRadio}}" wx:key="index">{{item}}</view>
+        </view>
+      </view>
+      <view class="item">
+        <view class="key">到访房号</view>
+        <view class="val">
+          <input placeholder="请输入到访房号" type="text" class=" ipt" />
+        </view>
+      </view>
+      <view class="item">
+        <view class="key">当前体温</view>
+        <view class="val">
+          <input placeholder="请输入当前体温" type="text" class=" ipt" />
+        </view>
+      </view>
+      <view class="item">
+        <view class="key">车牌号</view>
+        <view class="val">
+          <input placeholder="" value="川A " type="text" class="small ipt" />
+          <input placeholder="" value="" type="text" class="middle ipt" />
+        </view>
+      </view>
+    </view>
+
+    <view class="mt50">
+      <btn icon size="big" title="扫码识别小区信息"></btn>
+    </view>
+
+  </view>
+</view>

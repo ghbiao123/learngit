@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="listbox">
+    <view class="time">2021年4月</view>
+    <navigator url="/pages/displayinfo/displayinfo" hover-class="none" wx:for="000" wx:key="index">
+      <view class="list">
+        <view class="tieminfo">4月12日 12：00：23</view>
+        <view class="detail">森宇小区东区</view>
+        <view class="local">四川晟成都市天府新区</view>
+        <image src="/images/flag.png" class="icon"></image>
+      </view>
+    </navigator>
+  </view>
+</view>

@@ -1,0 +1,39 @@
+/**app.wxss**/
+.container {
+  padding: 16px;
+  min-height: 100vh;
+  background-color: #F2F2F2;
+}
+
+.color-green{
+  color: #338B56;
+}
+
+.color-red{
+  color: #C90000;
+}
+
+.bgcolor-green {
+  background-color: #338B56;
+}
+
+.card {
+  margin: 0 auto;
+  padding: 20px 20px 30px;
+  width: calc(100vw - 72px);
+  min-height: 40px;
+  border-radius: 20px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.head-cont {
+  display: flex;
+  height: 172rpx;
+}
+
+.mt50 {
+  margin-top: 50rpx;
+}
+
+

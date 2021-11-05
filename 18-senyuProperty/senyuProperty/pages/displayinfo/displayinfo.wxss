@@ -1,0 +1,46 @@
+/* pages/displayinfo/displayinfo.wxss */
+.locationicon {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.head-cont {
+  align-items: center;
+}
+
+.location {
+  padding-left: 20rpx;
+  height: 100rpx;
+}
+
+.detail {
+  font-size: 36rpx;
+  font-family: PingFang HK-Semibold, PingFang HK;
+  font-weight: 600;
+  color: #494E51;
+  line-height: 42rpx;
+}
+
+.info {
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  font-family: PingFang HK-Regular, PingFang HK;
+  font-weight: 400;
+  color: #8D959A;
+  line-height: 50rpx;
+}
+
+.item {
+  display: flex;
+  padding: 34rpx 0;
+  height: 48rpx;
+  line-height: 48rpx;
+  font-size: 32rpx;
+}
+.key {
+  width: 168rpx;
+  color: #8D959A;
+}
+.val{
+  color: #3D403F;
+}
