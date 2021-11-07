@@ -1,7 +1,6 @@
 ﻿mQuery.js
 program.config.js
 PSD/
-components/
 01-回迁小程序/
 02-汽修服务小程序/
 03-天地体育小程序/
@@ -12,7 +11,7 @@ components/
 releaseInformation/
 key.txt
 回收二手手机确定版.et
-
+17-防诈骗小程序/
 dist/
 
 .ssh
