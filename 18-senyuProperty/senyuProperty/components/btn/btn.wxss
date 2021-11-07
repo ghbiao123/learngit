@@ -1,0 +1,18 @@
+.btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  height: 84rpx;
+  line-height: 84rpx;
+  border-radius: 42rpx;
+  color: #ffffff;
+  font-size: 32rpx;
+  background-color: #338B56;
+  overflow: hidden;
+}
+.icon{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 25rpx;
+}

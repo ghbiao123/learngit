@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "line": "/components/line/line",
-    "btn": "/components/btn/btn"
+    "btn": "/components/btn/btn",
+    "showLoginModal": "/components/showLoginModal/showLoginModal"
   },
   "navigationBarBackgroundColor": "#338B56",
   "navigationBarTitleText": "首页",

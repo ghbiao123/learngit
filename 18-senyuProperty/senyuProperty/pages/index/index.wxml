@@ -34,10 +34,18 @@
     </navigator>
 
     <view class="mt50">
-      <navigator url="/pages/ipt/ipt" hover-class="none">
+      <!-- <navigator url="/pages/ipt/ipt" hover-class="none"> -->
         <btn size="small" icon title="扫码识别小区信息"></btn>
-      </navigator>
+      <!-- </navigator> -->
     </view>
 
   </view>
 </view>
+
+<!-- 自定义-展示获取用户手机号弹窗 -->
+<showLoginModal bind:ontap="getInfo" visible="{{phoneModal}}" type="getPhoneNumber"></showLoginModal>
+<!-- 自定义-展示获取用户信息弹窗 -->
+<showLoginModal bind:ontap="getInfo" visible="{{userinfoModal}}" type="getUesrInfo"></showLoginModal>
+
+<!-- 小程序-触犯获取手机号弹窗的全屏遮罩 -->
+<button wx:if="{{showMark}}" class="getPhoneNuberMarl" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>

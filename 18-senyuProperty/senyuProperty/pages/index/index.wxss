@@ -78,3 +78,15 @@ page {
   width: 188rpx;
   height: 188rpx;
 }
+.getPhoneNuberMarl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100% !important;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 999;
+  border-radius: 0 !important;
+}

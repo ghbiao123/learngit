@@ -1,0 +1,28 @@
+.box {
+  display: flex;
+  justify-content: space-between;
+  transform: translateX(-20px);
+  align-items: center;
+  width: calc(100% + 40px);
+  height: 14px;
+  overflow: hidden;
+  background: transparent;
+}
+.left,.right {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fff;
+}
+.left {
+  transform: translateX(-7px);
+}
+.right {
+  transform: translateX(7px);
+}
+.line {
+  width: calc(100% - 36px);
+  height: 0px;
+  border-top: 1px dashed #C9C9C9;
+}

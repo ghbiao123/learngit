@@ -1,0 +1,5 @@
+<view class="box">
+  <view class="left" style="background-color: {{bgColor}}"></view>
+  <view class="line"></view>
+  <view class="right" style="background-color: {{bgColor}}"></view>
+</view>

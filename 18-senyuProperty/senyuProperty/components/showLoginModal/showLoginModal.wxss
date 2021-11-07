@@ -1,0 +1,91 @@
+.mark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 9999;
+}
+
+.modal {
+  position: relative;
+  margin: 50% auto 0;
+  width: 568rpx;
+  height: 494rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.title {
+  margin-top: 60rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-family: PingFang HK-Semibold, PingFang HK;
+  font-weight: 600;
+  color: #494E51;
+  line-height: 48rpx;
+}
+
+.logo {
+  display: block;
+  margin: 20rpx auto 0;
+  width: 118rpx;
+  height: 118rpx;
+}
+
+.cont {
+  margin: 35rpx auto 0;
+  width: 444rpx;
+}
+
+.subtitle {
+  font-size: 24rpx;
+  font-family: PingFang HK-Medium, PingFang HK;
+  font-weight: 500;
+  color: #494E51;
+  line-height: 36rpx;
+}
+
+.detail {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  font-family: PingFang HK-Regular, PingFang HK;
+  font-weight: 400;
+  color: #8D959A;
+  line-height: 36rpx;
+}
+
+.btn-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 98rpx;
+  border-top: 2rpx solid #E5E5E5;
+}
+
+.cancel,
+.confirm {
+  width: 282rpx;
+  height: 98rpx;
+  line-height: 98rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-family: PingFang HK-Medium, PingFang HK;
+  font-weight: 500;
+}
+.cancel {
+  color: #494E51;
+}
+.confirm {
+  color: #36A463;
+}
+.line {
+  width: 2rpx;
+  height: 98rpx;
+  background-color: #E5E5E5;
+}

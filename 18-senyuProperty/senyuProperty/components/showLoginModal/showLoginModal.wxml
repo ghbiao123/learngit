@@ -1,0 +1,20 @@
+<view wx:if="{{visible}}" class="mark">
+
+  <view class="modal">
+    <view class="title">请先登录再进行操作</view>
+    <image class="logo" src="/images/logo.png"></image>
+    <view class="cont">
+      <view class="subtitle">小程序将获取以下授权</view>
+      <view wx:if="{{type === 'getPhoneNumber'}}" class="detail">·获得您的公开信息（手机号等）</view>
+      <view wx:if="{{type === 'getUesrInfo'}}" class="detail">·获得您的公开信息（昵称、头像等）</view>
+    </view>
+
+    <view class="btn-box">
+      <view bindtap="ontap" data-type="cancel" class="cancel">暂不登陆</view>
+      <view class="line"></view>
+      <view bindtap="ontap" data-type="confirm" class="confirm">立即登录</view>
+    </view>
+
+  </view>
+
+</view>

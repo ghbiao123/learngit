@@ -1,0 +1,4 @@
+<view class="btn" style="width: {{size === 'big' ? '614rpx' : '446rpx'}};">
+  <image class="icon" wx:if="{{icon}}" src="/images/scan.png"></image>
+  <view>{{title}}</view>
+</view>
