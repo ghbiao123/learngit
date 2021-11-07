@@ -1,0 +1,27 @@
+<view class="container">
+  <view class="avatar-box" bindtap="getAvatar">
+    <view class="avatar-title">头像</view>
+    <image class="avatar" mode="aspectFit" src="{{avatar ? avatar : '/images/default-avatar.png'}}"></image>
+    <image class="rt" src="/images/rt.png"></image>
+  </view>
+  <form bindsubmit="submit">
+    <cell title="公司名称">
+      <input name="company_name" placeholder="请输入公司名称" value="{{userInfo.company_name}}" class="t-a-r form-input" type="text" slot="value" />
+    </cell>
+    <cell title="公司地址">
+      <input name="company_address" placeholder="请输入公司地址" value="{{userInfo.company_address}}" class="t-a-r form-input" type="text" slot="value" />
+    </cell>
+    <cell title="员工工号">
+      <input name="staffnum" placeholder="请输入员工工号" value="{{userInfo.staffnum}}" class="t-a-r" type="text" slot="value" />
+    </cell>
+    <cell title="姓名">
+      <input name="name" placeholder="请输入姓名" value="{{userInfo.name}}" class="t-a-r" type="text" slot="value" />
+    </cell>
+    <cell title="电话">
+      <input name="phone" placeholder="请输入电话" value="{{userInfo.phone}}" class="t-a-r" type="text" slot="value" />
+    </cell>
+
+    <button class="clear normal btn" hover-class="normal-hover" form-type="submit">提交</button>
+
+  </form>
+</view>

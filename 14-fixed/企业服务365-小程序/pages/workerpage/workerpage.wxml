@@ -1,0 +1,74 @@
+<view class="container">
+
+  <!-- head -->
+  <view class="header b-b-line">
+    <!-- 已登录 -->
+    <view class="header-cont">
+      <image wx:if="{{userInfo.headimage}}" class="avatar" mode="aspectFill" src="{{userInfo.headimage}}"></image>
+      <view class="avatar" wx:if="{{!userInfo.headimage}}">
+        <open-data type="userAvatarUrl" class="avatar"></open-data>
+      </view>
+      <view class="userinfo">
+        <view class="user-name">
+          <view>{{userInfo.name}}</view>
+          <image wx:if="{{userInfo.renzhenglist == 1}}" class="user-verify" src="/images/verify.png"></image>
+          <view wx:if="{{userInfo.renzhenglist == 1}}" class="user-verify-text">企业已认证</view>
+          <block wx:if="{{!userInfo.name}}">
+            <open-data type="userNickName"></open-data>
+          </block>
+        </view>
+        <view class="user-phone">{{userInfo.gongzhong}}·{{userInfo.phone}}</view>
+        <view class="user-phone">身份证：{{userInfo.sfzh}}</view>
+      </view>
+
+      <view class="btn-box">
+        
+        <view class="user-detail" hover-class="user-detail-hover">
+          <navigator hover-class="none" url="/pages/workerinfo/workerinfo">
+            个人资料
+          </navigator>
+        </view>
+        <!-- <view class="user-detail" hover-class="user-detail-hover">
+          用户端
+        </view> -->
+        <!-- <view class="user-detail worker" hover-class="worker-hover">
+          师傅端
+        </view> -->
+      </view>
+
+    </view>
+  </view>
+
+
+  <!-- tab -->
+  <view class="tab-box b-b-line">
+    <scroll-view class="tab-scroll" scroll-x scroll-with-animation scroll-into-view="id{{tabSelected-1}}">
+      <view class="tab" style="width:710rpx;">
+        <view class="tab-item" id="id{{index}}" bindtap="getTab" data-idx="{{index}}" wx:for="{{orderStatus}}"
+          wx:key="index">
+          <view class="tab-name {{index == tabSelected ? 'tab-s' : ''}}">{{item.name}}({{item.count}})</view>
+          <view class="tab-s-line {{index == tabSelected ? 'tab-l-s' : ''}}"></view>
+        </view>
+      </view>
+    </scroll-view>
+    <!-- <view class="filter" bindtap="showFilter">
+      <image class="filter-icon" src="/images/filter.png"></image>
+    </view> -->
+  </view>
+
+  <!-- cont -->
+  <scroll-view bindscrolltolower="getList" scroll-y class="cont-scroll" style="height:{{contHeight}}px;">
+    <workerlist bind:cancel="cancel" list="{{list}}"></workerlist>
+    <view wx:if="{{list.length == 0}}" class="cell-card t-a-c">暂无数据</view>
+  </scroll-view>
+
+
+  <!-- filter -->
+  <view hidden="{{!filter}}" class="filter-box" style="height:{{contHeight}}px;">
+    <view class="filter-cont">
+      <view bindtap="getTab" data-idx="{{index}}"
+        class="filter-item  {{index == tabSelected ? 'filter-item-select' : ''}}" wx:for="{{orderStatus}}"
+        wx:key="index">{{item.name}}({{item.count}})</view>
+    </view>
+  </view>
+</view>

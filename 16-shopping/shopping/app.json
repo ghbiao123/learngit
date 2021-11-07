@@ -1,39 +1,8 @@
 {
   "pages":[
-    "pages/index/index",
-    "pages/sort/sort",
-    "pages/main/main",
-    "pages/goodsinfo/goodsinfo",
-    "pages/orderinfo/orderinfo",
-    "pages/order/order",
-    "pages/notice/notice",
-    "pages/searchlist/searchlist",
-    "pages/login/login"
+    "pages/index/index"
   ],
-  "tabBar": {
-    "color": "#CCCCCC",
-    "selectedColor": "#664230",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "/images/index.png",
-        "selectedIconPath": "/images/index-s.png"
-      },
-      {
-        "pagePath": "pages/sort/sort",
-        "text": "分类",
-        "iconPath": "/images/sort.png",
-        "selectedIconPath": "/images/sort-s.png"
-      },
-      {
-        "pagePath": "pages/main/main",
-        "text": "我的",
-        "iconPath": "/images/main.png",
-        "selectedIconPath": "/images/main-s.png"
-      }
-    ]
-  },
+ 
   "requiredBackgroundModes": ["audio"],
   "window":{
     "backgroundTextStyle":"light",

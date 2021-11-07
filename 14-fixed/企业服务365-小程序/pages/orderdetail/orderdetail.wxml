@@ -1,0 +1,229 @@
+<view class="btn-container">
+
+  <view class="order-tip">
+    <image class="tip-icon" src="/images/tip.png"></image>
+    <view class="tip-text">订单内容若有变化，请下拉刷新……</view>
+  </view>
+
+  <view class="order-status b-b-line">
+    <status selected="{{order.orderDetail.status >= 5}}" icon="/images/status-1.png" text="已下单"></status>
+    <view class="{{order.orderDetail.status >= 5 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{order.orderDetail.status >= 25}}" icon="/images/status-5.png" text="合同确认"></status>
+    <view class="{{order.orderDetail.status >= 25 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{order.orderDetail.status >= 45}}" icon="/images/status-9.png" text="维修中"></status>
+    <view class="{{order.orderDetail.status >= 45 ? 'dot-x-s':'dot-x'}}"></view>
+    <status selected="{{order.orderDetail.status >= 50}}" icon="/images/status-10.png" text="维修完成"></status>
+    <view class="{{order.orderDetail.status >= 50 ? 'dot-x-s':'dot-x'}}"></view>
+    <navigator url="/pages/orderstatus/orderstatus?status={{order.orderDetail.status}}">
+      <status selected="{{false}}" icon="/images/status-more.png" text="查看更多"></status>
+    </navigator>
+  </view>
+
+  <view class="cell-cont b-b-line">
+    <view class="cell-cont-title">
+      <view>订单信息</view>
+      <orderstatus status="{{order.orderDetail.status}}"></orderstatus>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">订单号：</view>
+      <view class="cell-val">{{order.orderDetail.ordernum}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">订单标题：</view>
+      <view class="cell-val">{{order.orderDetail.order_name || '***'}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">维修一级类别：</view>
+      <view class="cell-val">{{order.orderDetail.levelone_name || '***'}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">维修二级类别：</view>
+      <view class="cell-val">{{order.orderDetail.leveltwo_name || '***'}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">维修三级类别：</view>
+      <view class="cell-val">{{order.orderDetail.levelthree_name || '***'}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">服务项目：</view>
+      <view class="cell-val">{{order.orderDetail.servers_name || '***'}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">订单内容：</view>
+      <view class="cell-val">{{order.orderDetail.baoxiu}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">照片：</view>
+      <view class="cell-val">
+        <block wx:if="{{order.orderDetail.orderimages && order.orderDetail.orderimages.length != 0}}">
+          <image wx:for="{{order.orderDetail.orderimages}}" wx:key="index" class="cell-image" src="{{item}}" mode="aspectFit" bindtap="showImage" data-idx="{{index}}" data-key="orderimages"></image>
+        </block>
+        <view wx:else>***</view>
+      </view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">公司名称：</view>
+      <view class="cell-val">{{order.orderDetail.company_name}}</view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">联系人：</view>
+      <view class="cell-val">{{order.orderDetail.lianxiren}}</view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">联系方式：</view>
+      <view class="cell-val">{{order.orderDetail.lianxiphone}}</view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">发票状态：</view>
+      <view class="cell-val">{{order.orderDetail.fapiao == 0 ? '未开发票' : '已开发票'}}</view>
+    </view>
+
+  </view>
+
+  <view class="cell-cont b-b-line">
+    <view class="cell-cont-title">
+      <view>师傅信息</view>
+      <!-- <view wx:if="{{order.shifuDetail.shifu_name}}" class="color-blue">师傅指派中</view> -->
+      <view wx:if="{{!order.shifuDetail.shifu_name}}" class="color-blue">师傅指派中</view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">师傅名字：</view>
+      <view class="cell-val">{{order.shifuDetail.shifu_name || "***"}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">联系方式：</view>
+      <view class="cell-val">{{order.shifuDetail.shifu_phone || "***"}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">上门维修时间：</view>
+      <view class="cell-val">{{order.shifuDetail.repair_time || "***"}}</view>
+    </view>
+    <!-- <view class="cell-cont-item">
+      <view class="cell-key">照片：</view>
+      <view class="cell-val">
+        <block wx:if="{{order.shifuDetail.fkimages && order.shifuDetail.fkimages.length != 0}}">
+          <image wx:for="{{order.shifuDetail.fkimages}}" wx:key="index" class="cell-image" src="{{item}}" mode="aspectFit" bindtap="showImage" data-idx="{{index}}" data-key="fkimages"></image>
+        </block>
+        <view wx:else>***</view>
+      </view>
+    </view> -->
+    <view class="cell-cont-item">
+      <view class="cell-key">反馈内容：</view>
+      <view class="cell-val">{{order.shifuDetail.fkneirong ? '' : "***"}}</view>
+    </view>
+    <feedback list="{{order.shifuDetail.fkneirong}}"></feedback>
+  </view>
+
+  <view class="cell-cont b-b-line">
+    <view class="cell-cont-title">
+      <view>业务员信息</view>
+      <view wx:if="{{!order.salesman.salesman_name}}" class="color-blue">业务员指派中</view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">业务联系人：</view>
+      <view class="cell-val">{{order.salesman.salesman_name || "***"}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">联系方式：</view>
+      <view class="cell-val">{{order.salesman.salesman_phone || "***"}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">照片：</view>
+      <view class="cell-val">
+        <block wx:if="{{order.salesman.xsimages && order.salesman.xsimages.length != 0}}">
+          <image wx:for="{{order.salesman.xsimages}}" wx:key="index" class="cell-image" src="{{item}}" mode="aspectFit" bindtap="showImage" data-idx="{{index}}" data-key="xsimages"></image>
+        </block>
+        <view wx:else>***</view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class="cell-cont b-b-line">
+    <view class="cell-cont-title">
+      <view>下单信息</view>
+      <!-- <view class="color-blue">业务员指派中</view> -->
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">预付款：</view>
+      <view class="cell-val color-red">￥{{order.order_information.yf_price || "0"}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">尾款：</view>
+      <view class="cell-val color-red">￥{{order.order_information.wk_price || "0"}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">下单时间：</view>
+      <view class="cell-val">{{order.order_information.createtime || "***"}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">预计完成时间：</view>
+      <view class="cell-val">{{order.order_information.complete_time || "***"}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">
+        合同状态：
+        <text wx:if="{{order.order_information.contract_status == 0}}">未签署 </text>
+        <text wx:if="{{order.order_information.contract_status == 1}}" class="color-blue">已签署 </text>
+      </view>
+      <!-- 未签署合同 -->
+      <!-- <view bindtap="openPDF" wx:if="{{order.order_information.contract_status == 0}}" class="cell-val color-blue"
+        style="text-decoration:underline;"> 查看合同</view> -->
+      <!-- 已签署合同 -->
+      <!-- <view bindtap="openPDF" wx:if="{{order.order_information.contract_status == 1}}" class="cell-key"
+        style="text-decoration:underline;"> 查看合同</view> -->
+    </view>
+
+    <view class="sign {{isCheck || order.order_information.contract_status == 1? '':'cover-gray'}}">
+      <view class="download" bindtap="downloadPDF">
+        <icontext boxH="100" iconW="48" iconH="48" src="/images/PDF.png" cont="下载合同" color="#4F93D0"></icontext>
+      </view>
+
+      <view bindtap="signIn" wx:if="{{order.orderDetail.status == 20}}">
+        <btn type="normal">确认签署</btn>
+      </view>
+
+    </view>
+
+  </view>
+
+
+  <!-- 订单已签署，则隐藏按钮 -->
+  <!-- 预付款 -->
+  <view wx:if="{{order.orderDetail.status ==10 || order.orderDetail.status == 25}}" class="bottom-btn-box" style="justify-content: space-between;">
+    <view style="width: 380rpx;">
+      <block wx:if="{{order.orderDetail.status == 25}}">
+        <text style="font-size: 26rpx;">合计：</text><text style="font-size: 26rpx;" class="color-red">¥{{order.order_information.yf_price}}</text>
+      </block>
+    </view>
+    <block wx:if="{{order.orderDetail.status == 25}}">
+      <btn type="detail" url="/pages/uploadvoucher/uploadvoucher?order_id={{order.orderDetail.id}}&type=1&users_id={{userId}}">上传凭证</btn>
+      <btn type="update" bind:getTap="pay" data-key="advance">立即支付</btn>
+    </block>
+    <view bindtap="cancelOrder" wx:if="{{order.orderDetail.status == 10}}">
+      <btn type="cancel">取消订单</btn>
+    </view>
+  </view>
+
+  <!-- 维修完成 -->
+  <view wx:if="{{order.orderDetail.status == 45}}" class="bottom-btn-box" style="justify-content: center;">
+    <btn type="normal" bind:getTap="fixDone">维修完成</btn>
+  </view>
+
+  <!-- 余款 -->
+  <view wx:if="{{order.orderDetail.status == 50}}" class="bottom-btn-box" style="justify-content: space-between;">
+    <view style="width: 240rpx;">
+      <text style="font-size: 26rpx;">合计：</text><text style="font-size: 26rpx;" class="color-red">¥{{order.order_information.wk_price}}</text>
+    </view>
+    <btn type="detail" url="/pages/uploadvoucher/uploadvoucher?order_id={{order.orderDetail.id}}&type=2&users_id={{userId}}">上传凭证</btn>
+    <btn type="done" bind:getTap="pay" data-key="rest">维修完成，确认支付</btn>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "searchbar": "/mycomponents/searchbar/searchbar"
+  },
+  "navigationBarTitleText": "维修项目"
+}

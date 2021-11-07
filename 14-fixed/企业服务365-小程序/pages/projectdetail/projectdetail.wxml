@@ -1,0 +1,16 @@
+<view class="btn-container">
+
+  <image class="image" src="{{detail.xmimage}}" mode="aspectFit"></image>
+
+  <view class="project-info b-b-line">
+    <view class="name">{{detail.name}}</view>
+    <view class="location">{{detail.xmdescribe}}</view>
+  </view>
+
+  <view class="project-introduce">
+  <parser content="{{detail.xmjieshao}}" domain="{{siteUrl}}"></parser>
+    <view class="bottom-btn-box">
+      <btn type="normal" bind:getTap="createOrder">创建订单</btn>
+    </view>
+  </view>
+</view>

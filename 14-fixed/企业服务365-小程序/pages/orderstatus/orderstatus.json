@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "status": "/mycomponents/status/status"
+  },
+  "navigationBarTitleText": "订单状态"
+}

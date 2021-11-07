@@ -1,0 +1,25 @@
+/* pages/projectdetail/projectdetail.wxss */
+.image{
+  width: 750rpx;
+  height: 500rpx;
+}
+
+.project-info{
+  padding: 20rpx;
+  line-height: 2;
+}
+.name{
+  font-size: 32rpx;
+  color: #333333;
+}
+.location{
+  font-size: 26rpx;
+  color: #999999;
+}
+
+.project-introduce{
+  font-size: 26rpx;
+  color: #666666;
+  padding: 20rpx;
+}
+

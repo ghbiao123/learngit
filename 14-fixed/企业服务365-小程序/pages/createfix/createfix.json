@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "cell": "/mycomponents/cell/cell",
+    "btn": "/mycomponents/btn/btn",
+    "cover": "/mycomponents/cover/cover"
+  },
+  "navigationBarTitleText": "创建报修"
+}

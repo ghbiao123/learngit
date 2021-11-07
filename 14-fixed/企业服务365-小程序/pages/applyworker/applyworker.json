@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "cell": "/mycomponents/cell/cell",
+    "btn": "/mycomponents/btn/btn"
+  },
+  "navigationBarTitleText": "申请成为师傅"
+}

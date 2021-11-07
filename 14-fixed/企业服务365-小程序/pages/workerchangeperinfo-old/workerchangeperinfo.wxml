@@ -1,0 +1,52 @@
+<view class="container">
+  <view class="avatar-box" bindtap="getAvatar">
+    <view class="avatar-title">头像</view>
+    <image class="avatar" mode="aspectFit" src="{{avatar ? avatar : '/images/default-avatar.png'}}"></image>
+    <image class="rt" src="/images/rt.png"></image>
+  </view>
+  <form bindsubmit="submit">
+    <cell title="姓名">
+      <input name="name" placeholder="请输入姓名" bindinput="iptChange" data-key="name" value="{{reqData.name}}" class="t-a-r" type="text" slot="value" />
+    </cell>
+    <cell title="电话">
+      <input name="phone" placeholder="请输入电话" bindinput="iptChange" data-key="phone" value="{{reqData.phone}}" class="t-a-r" type="text" slot="value" />
+    </cell>
+    <!-- <cell title="类型(工种)">
+      <input name="gongzhong" placeholder="请输入类型(工种)" value="{{reqData.gongzhong}}" class="t-a-r" type="text" slot="value" />
+    </cell> -->
+    <picker mode="selector" range="{{arrServer}}" range-key="name" bindchange="serverChange">
+      <cell title="类型(工种)" footer>
+        <input type="text" value="{{reqData.gongzhong}}" disabled class="t-a-r" placeholder="请选择类型(工种)" slot="value" />
+      </cell>
+    </picker>
+
+
+    <view class="form-title b-t-g">
+      <view>证书</view>
+      <!-- <view class="form-title-tip">请上传照片，最多上传8张</view> -->
+    </view>
+    <view class="form-picture-box">
+      <view class="form-picture-item" wx:for="{{reqData.certimages}}" wx:key="index">
+        <icon data-idx="{{index}}" bindtap="deleteImage" type="cancel" size="25" class="form-cancel" color="#ccc"></icon>
+        <image class="form-picture" mode="aspectFit" src="{{item}}" bindtap="showImage" data-idx="{{index}}" data-key="certimages"></image>
+      </view>
+      <image bindtap="addImage" class="form-picture-item" src="/images/add.png"></image>
+    </view>
+
+    <view class="form-title">
+      个人擅长
+    </view>
+    <textarea value="{{reqData.skill}}" name="skill" placeholder="请输入擅长的事项" class="form-textarea"></textarea>
+
+
+    <cell title="银行卡卡号">
+      <input name="banknum" bindinput="iptChange" data-key="banknum" placeholder="请输入银行卡卡号" value="{{reqData.banknum}}" class="t-a-r form-input" type="text" slot="value" />
+    </cell>
+    <cell title="银行卡分行信息">
+      <input name="bankdetail" bindinput="iptChange" data-key="bankdetail" placeholder="请输入银行卡分行信息" value="{{reqData.bankdetail}}" class="t-a-r form-input" type="text" slot="value" />
+    </cell>
+
+    <button class="clear normal btn" hover-class="normal-hover" form-type="submit">提交</button>
+
+  </form>
+</view>

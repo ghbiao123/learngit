@@ -1,0 +1,4 @@
+<view style="padding: 20rpx;">
+  <!-- <parser content="{{nodes}}" domain="https://weixiu-demo.zlogic.cn"></parser> -->
+  <parser content="{{nodes}}" domain="{{siteUrl}}"></parser>
+</view>

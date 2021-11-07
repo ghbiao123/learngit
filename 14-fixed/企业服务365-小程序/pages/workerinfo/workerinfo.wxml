@@ -1,0 +1,60 @@
+<view class="container">
+  <cell title="姓名" cont="{{detail.name}}"></cell>
+  <cell title="身份证号" cont="{{detail.sfzh}}"></cell>
+  <cell title="电话" cont="{{detail.phone}}"></cell>
+  <cell title="位置" cont="{{detail.sfaddress}}"></cell>
+  <cell title="类型(工种)" cont="{{detail.gongzhong}}"></cell>
+  <!-- 
+    证书,证件照,身份证照片
+   -->
+  <view class="cell-cont">
+
+    <view class="cell-cont-item">
+      <view class="cell-key">证书：</view>
+      <view class="cell-val">
+        <block wx:if="{{detail.certimages && detail.certimages.length != 0}}">
+          <image wx:for="{{detail.certimages}}" wx:key="index" class="cell-image" src="{{item}}" mode="aspectFit"
+            bindtap="showImage" data-idx="{{index}}" data-key="certimages">
+          </image>
+        </block>
+        <view wx:else>***</view>
+      </view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">证件照</view>
+      <view class="cell-val">
+        <block wx:if="{{detail.cardimage && detail.cardimage.length != 0}}">
+          <image wx:for="{{detail.cardimage}}" wx:key="index" class="cell-image" src="{{item}}" mode="aspectFit"
+            bindtap="showImage" data-idx="{{index}}" data-key="cardimage">
+          </image>
+        </block>
+        <view wx:else>***</view>
+      </view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">身份证照片：</view>
+      <view class="cell-val">
+        <block wx:if="{{detail.sfzimages && detail.sfzimages.length != 0}}">
+          <image wx:for="{{detail.sfzimages}}" wx:key="index" class="cell-image" src="{{item}}" mode="aspectFit"
+            bindtap="showImage" data-idx="{{index}}" data-key="sfzimages">
+          </image>
+        </block>
+        <view wx:else>***</view>
+      </view>
+    </view>
+
+  </view>
+
+  <cell title="培训" cont="{{detail.train}}"></cell>
+  <cell title="认证" cont="{{detail.renzhenglist==0?'未认证':'已认证'}}"></cell>
+
+  <cell title="个人擅长" cont="{{detail.skill}}"></cell>
+  <cell title="银行卡号" cont="{{detail.banknum}}"></cell>
+  <cell title="银行卡分行信息" cont="{{detail.bankdetail}}"></cell>
+
+  <view class="button-box">
+    <btn url="/pages/workerchangeperinfo/workerchangeperinfo" type="change">修改个人信息</btn>
+  </view>
+</view>

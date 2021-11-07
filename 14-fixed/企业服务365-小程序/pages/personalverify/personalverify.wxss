@@ -1,0 +1,34 @@
+/* pages/personalverify/personalverify.wxss */
+.item{
+  display: flex;
+  justify-content: space-between;
+  width: 710rpx;
+  margin: 0 auto;
+  min-height: 46rpx;
+  padding: 27rpx 0;
+  border-bottom: 1rpx solid #EEEEEE;
+}
+.item-name{
+  font-size: 30rpx;
+  color: #666666;
+  line-height: 46rpx;
+}
+.item-name-tip{
+  font-size: 26rpx;
+  line-height: 38rpx;
+  color: #cccccc;
+}
+.image-box{
+  width: 200rpx;
+  height: 140rpx;
+  border: 1rpx solid #CCCCCC;
+  border-radius: 10rpx;
+}
+.image{
+  width: 200rpx;
+  height: 140rpx;
+}
+
+.btn-box{
+  margin-top: 60rpx;
+}

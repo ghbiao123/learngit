@@ -1,6 +1,6 @@
 //index.js
 let that;
-let util = require("../../utils/util");
+// let util = require("../../utils/util");
 Page({
   data: {
     hotGoods: {
@@ -17,12 +17,41 @@ Page({
   onLoad: function () {
     that = this;
 
+    function getfunction(url, data, callback){
+
+      let _data = [];
+      for(let [key, val] of Object.entries(data)){
+        _data.push(`${key}=${val}`);
+      }
+      _data = _data.join("&");
+      url = url + '?' + _data;
+      wx.request({
+        url,
+        header: { "content-type":"application/json"},
+        method: "GET",
+        success(res){
+        },
+        fail(err){
+          callback&&callback(err);
+        }
+
+      })
+    }
+
+    getfunction("djwx.zlogic.cn/index.php/api/rexam/myRanking", {}, function(res){
+      console.log(res)
+    });
+
+    // util.post()
+
     // this.init();
   },
   
   onShow(){
     
-    this.init();
+    // this.init();
+
+
   },
 
   init(){

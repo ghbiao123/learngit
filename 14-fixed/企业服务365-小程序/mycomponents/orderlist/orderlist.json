@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "btn": "/mycomponents/btn/btn",
+    "orderstatus": "/mycomponents/orderstatus/orderstatus"
+  }
+}

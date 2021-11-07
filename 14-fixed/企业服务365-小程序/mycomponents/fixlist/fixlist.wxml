@@ -1,0 +1,33 @@
+<view class="content">
+  <view class="list" wx:for="{{list}}" wx:key="index">
+    <view class="cont">
+      <view class="list-head">
+        <view>报修号：{{item.repair_num}}</view>
+        
+        <!-- fix -->
+        <view wx:if="{{item.repair_status == 0}}" class="color-blue">未处理</view>
+        <view wx:if="{{item.repair_status == 1}}" class="color-gray">已取消</view>
+        <view wx:if="{{item.repair_status == 2}}" class="color-yellow">已转订单</view>
+
+      </view>
+
+      <view class="list-cont">
+        <view class="cont-item">
+          <view class="cont-left">报修标题：{{item.repair_name}}</view>
+          <!-- <view class="cont-right">维修师傅：{{item.shifu || '***'}}</view> -->
+        </view>
+        <view class="cont-item">报修时间：{{item.createtime}}</view>
+      </view>
+
+      <view class="list-foot">
+        <view data-id="{{item.id}}" bindtap="getDetail">
+          <btn type="detail">查看详情</btn>
+        </view>
+        <view wx:if="{{item.repair_status == 0}}" style="margin-left:20rpx;" data-id="{{item.id}}" bindtap="getCancel">
+          <btn type="cancel">取消</btn>
+        </view>
+      </view>
+
+    </view>
+  </view>
+</view>

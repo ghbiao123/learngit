@@ -1,0 +1,1 @@
+<cell bind:startmessage='startmessage' bind:completemessage="completemessage" plugid='plugid'  ></cell>

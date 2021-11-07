@@ -1,0 +1,32 @@
+<view class="container">
+  <!-- tab -->
+  <view class="tab-box b-b-line">
+    <scroll-view class="tab-scroll" scroll-x scroll-with-animation scroll-into-view="id{{tabSelected-1}}">
+      <view class="tab" style="width:{{170 * orderStatus.length}}rpx;">
+        <view class="tab-item" id="id{{index}}" bindtap="getTab" data-idx="{{index}}" wx:for="{{orderStatus}}" wx:key="index">
+          <view class="tab-name {{index == tabSelected ? 'tab-s' : ''}}">{{item.name}}({{item.count}})</view>
+          <view class="tab-s-line {{index == tabSelected ? 'tab-l-s' : ''}}"></view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="filter" bindtap="showFilter">
+      <image class="filter-icon" src="/images/filter.png"></image>
+    </view>
+  </view>
+
+  <!-- cont -->
+  <scroll-view bindscrolltolower="getList" scroll-y class="cont-scroll" style="height:{{contHeight}}px;">
+    <orderlist list="{{list}}"></orderlist>
+
+    <view wx:if="{{list.length == 0}}" class="cell-card t-a-c">暂无数据</view>
+
+  </scroll-view>
+  
+
+  <!-- filter -->
+  <view hidden="{{!filter}}" class="filter-box" style="height:{{contHeight}}px;">
+    <view class="filter-cont">
+      <view bindtap="getTab" data-idx="{{index}}" class="filter-item  {{index == tabSelected ? 'filter-item-select' : ''}}" wx:for="{{orderStatus}}" wx:key="index">{{item.name}}({{item.count}})</view>
+    </view>
+  </view>
+</view>

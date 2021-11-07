@@ -1,0 +1,89 @@
+<view class="container">
+  <!-- 头部登录 -->
+  <view class="header b-b-line">
+    <!-- 已登录 -->
+    <view wx:if="{{isLogin}}" class="header-cont">
+      <image wx:if="{{userInfo.headimage}}" class="avatar" mode="aspectFill" src="{{userInfo.headimage}}"></image>
+      <view class="avatar" wx:if="{{!userInfo.headimage}}">
+        <open-data type="userAvatarUrl" class="avatar"></open-data>
+      </view>
+      <view class="userinfo">
+        <view class="user-name">
+          {{userInfo.name}}
+          <block wx:if="{{!userInfo.name}}">
+            <open-data type="userNickName"></open-data>
+          </block>
+        </view>
+        <view class="user-phone">{{userInfo.phone}}</view>
+      </view>
+
+      <view class="user-detail" hover-class="user-detail-hover">
+        <navigator url="/pages/personalinfo/personalinfo" hover-class="none">个人资料</navigator>
+      </view>
+
+    </view>
+    <!-- 未登录 -->
+    <view wx:else class="header-cont">
+      <image class="avatar" mode="aspectFit" src="/images/default-avatar.png"></image>
+      <view class="userinfo">
+        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="login">立即登录</button>
+      </view>
+    </view>
+
+  </view>
+
+  <!-- 用户订单 -->
+  <view class="userorder b-b-line" >
+    <!-- 全部订单 -->
+    <view class="userorder-title">
+      <view>我的订单</view>
+      <view class="userorder-all">
+        <view class="all-text" bindtap="getList" data-status="{{orderStatus[3].status}}" hover-class="sort-item-hover">
+          全部订单
+        </view>
+        <image class="all-icon" src="/images/rt.png"></image>
+      </view>
+    </view>
+
+    <!-- 订单分类 -->
+    <view class="order-sort">
+      <!-- <view class="sort-item" bindtap="getList" data-status="{{orderStatus[1].status}}" hover-class="sort-item-hover">
+        <image class="sort-icon" mode="aspectFit" src="/images/main-4.png"></image>
+        <view class="sort-name">已申请</view>
+        <view class="sort-count">({{orderStatus[1].count || 0}})</view>
+      </view> -->
+      <view class="sort-item" bindtap="getList" data-status="{{orderStatus[3].status}}" hover-class="sort-item-hover">
+        <image class="sort-icon" mode="aspectFit" src="/images/main-5.png"></image>
+        <view class="sort-name">已下单</view>
+        <view class="sort-count">({{orderStatus[3].count || 0}})</view>
+      </view>
+      <view class="sort-item" bindtap="getList" data-status="{{orderStatus[11].status}}" hover-class="sort-item-hover">
+        <image class="sort-icon" mode="aspectFit" src="/images/main-6.png"></image>
+        <view class="sort-name">已付款</view>
+        <view class="sort-count">({{orderStatus[11].count || 0}})</view>
+      </view>
+      <view class="sort-item" bindtap="getList" data-status="{{orderStatus[10].status}}" hover-class="sort-item-hover">
+        <image class="sort-icon" mode="aspectFit" src="/images/main-7.png"></image>
+        <view class="sort-name">维修完成</view>
+        <view class="sort-count">({{orderStatus[10].count || 0}})</view>
+      </view>
+      <view class="sort-item" bindtap="getList" data-status="{{orderStatus[13].status}}" hover-class="sort-item-hover">
+        <image class="sort-icon" mode="aspectFit" src="/images/main-8.png"></image>
+        <view class="sort-name">订单完成</view>
+        <view class="sort-count">({{orderStatus[13].count || 0}})</view>
+      </view>
+    </view>
+
+
+  </view>
+
+  <!-- menu -->
+  <view bindtap="getFixList">
+    <cell icon="/images/main-1.png" title="我的报修" hover footer></cell>
+  </view>
+  <cell link="/pages/clause/clause" icon="/images/main-2.png" title="隐私条款" hover footer></cell>
+  <view bindtap="applyWoker">
+    <cell icon="/images/main-3.png" title="{{userInfo.jueselist == 2? '师傅端':'申请成为师傅'}}" hover footer></cell>
+  </view>
+
+</view>

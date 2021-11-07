@@ -1,0 +1,77 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/main/main",
+    "pages/createorder/createorder",
+    "pages/createfix/createfix",
+    "pages/search/search",
+    "pages/searchlist/searchlist",
+    "pages/personalinfo/personalinfo",
+    "pages/changeperinfo/changeperinfo",
+    "pages/personalverify/personalverify",
+    "pages/orderlist/orderlist",
+    "pages/projectdetail/projectdetail",
+    "pages/orderstatus/orderstatus",
+    "pages/orderdetail/orderdetail",
+    "pages/uploadvoucher/uploadvoucher",
+    "pages/pagerichtext/pagerichtext",
+    "pages/login/login",
+    "pages/readPDF/readPDF",
+    "pages/fixlist/fixlist",
+    "pages/fixdetail/fixdetail",
+    "pages/clause/clause",
+    "pages/applyworker/applyworker",
+    "pages/workerpage/workerpage",
+    "pages/workerinfo/workerinfo",
+    "pages/workerprojectdetail/workerprojectdetail",
+    "pages/workerchangeperinfo/workerchangeperinfo"
+    
+  ],
+  "usingComponents": {
+    "parser": "/mycomponents/parser/index"
+  },
+  "tabBar": {
+    "color": "#CCCCCC",
+    "selectedColor": "#4F93D0",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/index.png",
+        "selectedIconPath": "/images/index-s.png"
+      },
+      {
+        "pagePath": "pages/createorder/createorder",
+        "text": "创建订单",
+        "iconPath": "/images/createorder.png",
+        "selectedIconPath": "/images/createorder-s.png"
+      },
+      {
+        "pagePath": "pages/createfix/createfix",
+        "text": "报修",
+        "iconPath": "/images/createfix.png",
+        "selectedIconPath": "/images/createfix-s.png"
+      },
+      {
+        "pagePath": "pages/main/main",
+        "text": "我的",
+        "iconPath": "/images/main.png",
+        "selectedIconPath": "/images/main-s.png"
+      }
+  ]
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "plugins": {
+    "ocr-plugin": {
+      "version": "3.0.4",
+      "provider": "wx4418e3e031e551be"
+    }
+  }
+}

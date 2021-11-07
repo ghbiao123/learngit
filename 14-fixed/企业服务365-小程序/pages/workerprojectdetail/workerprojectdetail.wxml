@@ -1,0 +1,169 @@
+<view class="btn-container">
+
+  <!-- <view class="order-tip">
+    <image class="tip-icon" src="/images/tip.png"></image>
+    <view class="tip-text">订单内容若有变化，请下拉刷新……</view>
+  </view> -->
+
+  <!-- <view class="order-status b-b-line">
+    <status selected icon="/images/status-1.png" text="已支付预付"></status>
+    <view class="dot-x"></view>
+    <status selected icon="/images/status-1.png" text="已支付预付"></status>
+    <view class="dot-x"></view>
+    <status selected icon="/images/status-1.png" text="已支付预付"></status>
+    <view class="dot-x"></view>
+    <status selected icon="/images/status-1.png" text="已支付预付"></status>
+    <view class="dot-x"></view>
+    <status selected icon="/images/status-1.png" text="已支付预付"></status>
+  </view> -->
+
+  <view class="cell-cont b-b-line">
+    <view class="cell-cont-title">
+      <view>订单信息</view>
+      <view wx:if="{{order.status == 40}}" class="color-blue">已派单</view>
+      <view wx:if="{{order.status == 45}}" class="color-gray">维修中</view>
+      <view wx:if="{{order.status >= 50}}" class="color-yellow">已完成</view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">订单号：</view>
+      <view class="cell-val">{{order.ordernum}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">订单标题：</view>
+      <view class="cell-val">{{order.order_name}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">维修一级类别：</view>
+      <view class="cell-val">{{order.levelone_name}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">维修二级类别：</view>
+      <view class="cell-val">{{order.leveltwo_name}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">维修三级类别：</view>
+      <view class="cell-val">{{order.levelthree_name}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">服务项目：</view>
+      <view class="cell-val">{{order.servers_name}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">订单内容：</view>
+      <view class="cell-val">{{order.baoxiu}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">照片：</view>
+      <view class="cell-val">
+        <block wx:if="{{order.orderimages && order.orderimages.length != 0}}">
+          <image wx:for="{{order.orderimages}}" wx:key="index" 
+          class="cell-image" src="{{item}}" mode="aspectFit"
+          bindtap="showImage"
+          data-idx="{{index}}"
+          data-key="orderimages"
+          >
+          </image>
+        </block>
+        <view wx:else>***</view>
+      </view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">公司名称：</view>
+      <view class="cell-val">{{order.company_name}}</view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">联系人：</view>
+      <view class="cell-val">{{order.lianxiren}}</view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">联系方式：</view>
+      <view class="cell-val">{{order.lianxiphone}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">上门维修时间：</view>
+      <view class="cell-val">{{order.repair_time_text || '***'}}</view>
+    </view>
+    <view class="cell-cont-item">
+      <view class="cell-key">预计完成时间：</view>
+      <view class="cell-val">{{order.complete_time_text || '***'}}</view>
+    </view>
+
+  </view>
+
+  <!-- 已派单状态，确认开始维修 -->
+  <view wx:if="{{order.status == 40}}" bindtap="startFix" class="btn-box">
+    <btn type="normal">开始维修</btn>
+  </view>
+
+  <view wx:if="{{order.status == 45}}" class="cell-cont b-b-line">
+    <view class="cell-cont-title">
+      <view>师傅反馈</view>
+    </view>
+    <view class="cell-cont-item" wx:if="{{order.fkneirong}}">
+      <view class="cell-key">
+        <view>记录：</view>
+      </view>
+      <!-- <view class="cell-val">{{order.fkneirong}}</view> -->
+    </view>
+
+    <feedback list="{{order.fkneirong}}"></feedback>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">反馈内容：</view>
+    </view>
+    <textarea bindinput="textInput" value="{{reqData.fkneirong}}" class="form-textarea" placeholder="请输入反馈内容"></textarea>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">照片：</view>
+    </view>
+    <view class="form-picture-box">
+      <image class="form-picture-item" wx:for="{{order.arrfk}}" wx:key="index" src="{{item}}" mode="aspectFit"  bindtap="showImage" data-idx="{{index}}" data-key="arrfk"></image>
+      <view class="form-picture-item" wx:for="{{reqData.fkimages}}" wx:key="index">
+        <icon data-idx="{{index}}" bindtap="deleteImage" type="cancel" size="25" class="form-cancel" color="#ccc">
+        </icon>
+        <image class="form-picture" mode="aspectFit" src="{{item}}"
+          bindtap="showImage"
+          data-idx="{{index}}"
+          data-key="fkimages"
+        ></image>
+      </view>
+      <image bindtap="addImage" class="form-picture-item" src="/images/add.png"></image>
+    </view>
+
+  </view>
+
+  <view wx:if="{{order.status == 45}}" bindtap="submit" class="btn-box">
+    <btn type="normal">提交反馈完成订单</btn>
+  </view>
+
+  <view wx:if="{{order.status >= 50}}" class="cell-cont b-b-line">
+    <view class="cell-cont-title">
+      <view>师傅反馈</view>
+    </view>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">反馈内容：</view>
+    </view>
+    <textarea bindinput="textInput" value="{{order.fkneirong}}" disabled class="form-textarea" placeholder="请输入反馈内容"></textarea>
+
+    <view class="cell-cont-item">
+      <view class="cell-key">照片：</view>
+    </view>
+    <view class="form-picture-box">
+      <image wx:for="{{order.arrfk}}" wx:key="index" 
+        mode="aspectFit"
+        class="form-picture-item" src="{{item}}"
+        bindtap="showImage"
+        data-idx="{{index}}"
+        data-key="arrfk"
+        ></image>
+    </view>
+
+  </view>
+
+
+</view>

@@ -1,0 +1,57 @@
+<view class="container">
+  <view class="searchbar b-b-g">
+    <navigator hover-class="none" url="/pages/searchlist/searchlist">
+      <searchbar theme="#ffffff" placeholder="搜索维修项目" coverholder="搜索维修项目" disabled></searchbar>
+    </navigator>
+  </view>
+  <view class="content">
+    <!-- 左侧一级类目 -->
+    <view class="vtab-box" style="height: {{contHeight}}px;">
+      <view class="m-t-20">
+        <view class="vtab-item {{ item.id == lv1Id ? 'vtab-item-s' : ''}}" data-id="{{item.id}}" bindtap="getLv1" wx:for="{{arrLv1}}" wx:key="index">
+          {{item.name}}
+        </view>
+        
+      </view>
+    </view>
+
+    <!-- 右侧二、三级类目 -->
+    <view class="main-cont" style="height: {{contHeight}}px;">
+      <!-- 二级类目 -->
+      <view class="tab-box">
+        <scroll-view class="tab-scroll" scroll-x scroll-with-animation scroll-into-view="id{{lv2Id-1}}">
+          <view class="tab-cont" style="width:{{180 * (arrLv2.length < 5 ? 5 : arrLv2.length)}}rpx;">
+            <view id="id{{item.id}}" class="tab-item {{(item.id == lv2Id) ? 'tab-item-s' : ''}}" data-idx="{{index}}" data-id="{{item.id}}" bindtap="getLv2" wx:for="{{arrLv2}}" wx:key="index">{{item.name}}</view>
+          </view>
+        </scroll-view>
+      </view>
+      <!-- 三级类目 -->
+      <view class="cont-box">
+
+        <swiper class="cont-swiper" bindchange="contSwiperChange" current="{{contCurrent}}" vertical style="height:{{contScrollHeight}}px;">
+          <swiper-item wx:for="{{arrLv3}}" wx:key="index" class="cont-swiper-item" style="height:{{contScrollHeight}}px;">
+            <scroll-view class="cont-scroll" scroll-y style="height:{{contScrollHeight}}px;">
+              <view class="cont-title">
+                {{item.leveltwo_name}}
+              </view>
+              <view class="cont-list" hover-class="cont-list-hover" data-idx="{{idx}}" bindtap="getLv3" wx:for="{{item.server_arr}}" wx:for-item="itm" wx:for-index="idx"  wx:key="idx">
+                <image class="list-image" mode="aspectFit" src="{{itm.xmimage}}"></image>
+                <view class="list-info">
+                  <view class="list-name">{{itm.name}}</view>
+                  <view class="list-msg">
+                    <parser content="{{itm.xmdescribe}}" domain="{{siteUrl}}"></parser>
+                  </view>
+                </view>
+              </view>
+            </scroll-view>
+          </swiper-item>
+        </swiper>
+
+  
+      </view>
+
+    </view>
+
+
+  </view>
+</view>

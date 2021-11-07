@@ -1,0 +1,254 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/search/search",
+          "pathName": "pages/search/search",
+          "query": "id=3",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 2,
+          "name": "pages/evaluation/evaluation",
+          "pathName": "pages/evaluation/evaluation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/order/order",
+          "pathName": "pages/order/order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 4,
+          "name": "pages/mine/mine",
+          "pathName": "pages/mine/mine",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/login/login",
+          "pathName": "pages/login/login",
+          "query": "agentid=12",
+          "scene": 1011
+        },
+        {
+          "name": "pages/evaluation/result",
+          "pathName": "pages/evaluation/result",
+          "query": "name=小米10&price=2900&type=mobile&frompage=evaluation",
+          "scene": null
+        },
+        {
+          "id": 7,
+          "name": "pages/order/orderdetail",
+          "pathName": "pages/order/orderdetail",
+          "query": "id=9",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/searchbar/searchbar",
+          "pathName": "pages/searchbar/searchbar",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/contact/contact",
+          "pathName": "pages/contact/contact",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/stafflogin/stafflogin",
+          "pathName": "pages/stafflogin/stafflogin",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 11,
+          "name": "pages/staffinfo/staffinfo",
+          "pathName": "pages/staffinfo/staffinfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/coupon/coupon",
+          "pathName": "pages/coupon/coupon",
+          "query": "type=add",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/stafforderlist/stafforderlist",
+          "pathName": "pages/stafforderlist/stafforderlist",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 14,
+          "name": "pages/stafforder/stafforder",
+          "pathName": "pages/stafforder/stafforder",
+          "query": "id=28",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/order/order",
+          "pathName": "pages/order/order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/qrcode/qrcode",
+          "pathName": "pages/qrcode/qrcode",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/recyclelist/recyclelist",
+          "pathName": "pages/recyclelist/recyclelist",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/personalinfo/personalinfo",
+          "pathName": "pages/personalinfo/personalinfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/evaluation/othercalcprice",
+          "pathName": "pages/evaluation/othercalcprice",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 20,
+          "name": "pages/cancel/cancel",
+          "pathName": "pages/cancel/cancel",
+          "query": "orderid=1&operator=1&operatorid=17",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/tips/tips",
+          "pathName": "pages/tips/tips",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 22,
+          "name": "pages/cameraevaluation/evaluation",
+          "pathName": "pages/cameraevaluation/evaluation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/uploadimage/uploadimage",
+          "pathName": "pages/uploadimage/uploadimage",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/address/address",
+          "pathName": "pages/address/address",
+          "query": "id=4",
+          "scene": null
+        },
+        {
+          "name": "pages/aboutus/aboutus",
+          "pathName": "pages/aboutus/aboutus",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/orderinformation/orderinformation",
+          "pathName": "pages/orderinformation/orderinformation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/qualityreport/qualityreport",
+          "pathName": "pages/qualityreport/qualityreport",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/manualresult/manualresult",
+          "pathName": "pages/manualresult/manualresult",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/mycouponlist/mycouponlist",
+          "pathName": "pages/mycouponlist/mycouponlist",
+          "query": "type=add",
+          "scene": null
+        },
+        {
+          "name": "pages/paymentmethod/paymentmethod",
+          "pathName": "pages/paymentmethod/paymentmethod",
+          "query": "orderid=43",
+          "scene": null
+        },
+        {
+          "name": "pages/paymentresult/paymentresult",
+          "pathName": "pages/paymentresult/paymentresult",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/waitdeliver/waitdeliver",
+          "pathName": "pages/waitdeliver/waitdeliver",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/waitevaluationlist/waitevaluationlist",
+          "pathName": "pages/waitevaluationlist/waitevaluationlist",
+          "query": "name=小米10&price=2900&type=mobile&frompage=evaluation",
+          "scene": null
+        },
+        {
+          "name": "pages/waitevaluationdetail/waitevaluationdetail",
+          "pathName": "pages/waitevaluationdetail/waitevaluationdetail",
+          "query": "name=小米10&price=2900&type=mobile&frompage=evaluation",
+          "scene": null
+        },
+        {
+          "name": "pages/qycontact/qycontact",
+          "pathName": "pages/qycontact/qycontact",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

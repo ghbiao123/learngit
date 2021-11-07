@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="title">
+    付款凭证
+    <text class="title-tip">请上传付款凭证</text>
+  </view>
+
+  <view class="form-picture-box">
+    <view class="form-picture-item" wx:for="{{reqData.voucherimages}}" wx:key="index">
+      <image class="form-picture" src="{{item}}" mode="aspectFit" bindtap="showImage" data-idx="{{index}}" data-key="orderimages"></image>
+      <icon data-idx="{{index}}" bindtap="deleteImage" size="25" class="form-cancel" type="cancel" color="#ccc"></icon>
+    </view>
+    <image bindtap="addImage" class="form-picture-item" src="/images/add.png"></image>
+  </view>
+
+  <view class="m-t-20" bindtap="submit">
+    <btn type="normal">提交</btn>
+  </view>
+
+</view>

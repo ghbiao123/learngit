@@ -1,0 +1,11 @@
+/* pages/uploadvoucher/uploadvoucher.wxss */
+.title{
+  margin: 50rpx 0 0 30rpx;
+  text-indent: 20rpx;
+  font-size: 30rpx;
+  color: #999;
+}
+.title-tip{
+  font-size: 26rpx;
+  color: #CCCCCC;
+}

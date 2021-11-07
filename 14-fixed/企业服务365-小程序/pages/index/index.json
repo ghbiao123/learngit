@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "searchbar": "/mycomponents/searchbar/searchbar",
+    "icontext": "/mycomponents/icontext/icontext"
+  },
+  "navigationBarTitleText": "首页"
+}

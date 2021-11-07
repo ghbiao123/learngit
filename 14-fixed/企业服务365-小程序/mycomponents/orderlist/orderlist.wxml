@@ -1,0 +1,33 @@
+<view class="content">
+  <view class="list" wx:for="{{list}}" wx:key="index">
+    <view class="cont">
+      <view class="list-head">
+        <view>订单号：{{item.ordernum}}</view>
+        <!-- order -->
+        <orderstatus status="{{item.status}}"></orderstatus>
+        <!-- fix -->
+        <!-- <view wx:if="{{item.repair_status == 0}}" class="color-gray">未处理</view>
+        <view wx:if="{{item.repair_status == 1}}" class="color-gray">已取消</view>
+        <view wx:if="{{item.repair_status == 2}}" class="color-gray">已转订单</view> -->
+
+      </view>
+
+      <view class="list-cont">
+        <view class="cont-item">
+          <view class="cont-left">项目名称：{{item.order_name}}</view>
+          <view class="cont-right">维修师傅：{{item.shifu_name || '***'}}</view>
+        </view>
+        <view class="cont-item">
+          <view class="cont-left">预付款：{{item.yf_price || '***'}}</view>
+          <view class="cont-right">尾款：{{item.wk_price || '***'}}</view>
+        </view>
+        <view class="cont-item">下单时间：{{item.createtime}}</view>
+      </view>
+
+      <view class="list-foot" data-id="{{item.id}}" bindtap="getDetail">
+        <btn type="detail">查看详情</btn>
+      </view>
+
+    </view>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "btn": "/mycomponents/btn/btn"
+  },
+  "navigationBarTitleText": "上传凭证"
+}
