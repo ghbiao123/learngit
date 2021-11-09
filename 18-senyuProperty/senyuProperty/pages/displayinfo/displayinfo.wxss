@@ -37,10 +37,21 @@
   line-height: 48rpx;
   font-size: 32rpx;
 }
+
 .key {
   width: 168rpx;
   color: #8D959A;
 }
-.val{
-  color: #3D403F;
+
+.val {
+  color: #494E51;
+  font-weight: 600;
+}
+
+.welcome {
+  text-align: center;
+  padding: 150rpx 0 200rpx;
+  font-size: 48rpx;
+  font-family: PingFang SC-Semibold, PingFang SC;
+  font-weight: 600;
 }

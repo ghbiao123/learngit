@@ -31,7 +31,9 @@
       <view class="item">
         <view class="key">到访房号</view>
         <view class="val">
-          <input placeholder="请输入到访房号" type="text" class=" ipt" />
+          <picker mode="multiSelector" range="{{arrAddress}}" bindchange="addressChange">
+            <input disabled value="{{address}}" placeholder="请选择到访房号" type="text" class=" ipt" />
+          </picker>
         </view>
       </view>
       <view class="item">

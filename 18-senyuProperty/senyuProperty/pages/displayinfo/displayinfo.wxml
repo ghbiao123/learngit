@@ -9,41 +9,42 @@
     </view>
     <line bgColor="#F2F2F2"></line>
     <view class="list">
-      <view class="item">
+      <!-- <view class="item">
         <view class="key">访客姓名</view>
         <view class="val">张三</view>
-      </view>
-      <view class="item">
+      </view> -->
+      <!-- <view class="item">
         <view class="key">联系方式</view>
         <view class="val">13827654356</view>
-      </view>
+      </view> -->
       <view class="item">
         <view class="key">访客类型</view>
-        <view class="val">中介</view>
+        <view class="val color-green">中介</view>
       </view>
       <view class="item">
         <view class="key">到访房号</view>
         <view class="val">15栋2301</view>
       </view>
-      <view class="item">
+      <!-- <view class="item">
         <view class="key">当前体温</view>
         <view class="val"><text class="color-red">39</text>度</view>
-      </view>
-      <view class="item">
+      </view> -->
+      <!-- <view class="item">
         <view class="key">车牌号</view>
         <view class="val">川A 23490</view>
-      </view>
+      </view> -->
       <view class="item">
         <view class="key">到访时间</view>
         <view class="val">2021-11-05 12:30:34</view>
       </view>
     </view>
-
-    <view class="mt50">
+    <view class="welcome color-green">
+      森宇欢迎您的光临
+    </view>
+  </view>
+  <view class="mt50">
       <navigator open-type="reLaunch" url="/pages/index/index">
         <btn size="big" title="返回首页"></btn>
       </navigator>
     </view>
-
-  </view>
 </view>

@@ -13,7 +13,7 @@
     </view>
     <line bgColor="#338B56"></line>
 
-    <navigator url="/pages/list/list" hover-class="none">
+    <!-- <navigator url="/pages/list/list" hover-class="none">
       <view class="menulist">
         <view class="menuinfo">
           <view class="menutitle">访客记录</view>
@@ -21,9 +21,9 @@
         </view>
         <image src="/images/note.png" class="menuicon"></image>
       </view>
-    </navigator>
+    </navigator> -->
 
-    <navigator url="/pages/list/list" hover-class="none">
+    <navigator url="/pages/displayinfo/displayinfo" hover-class="none">
       <view class="menulist">
         <view class="menuinfo">
           <view class="menutitle">天府健康通</view>
@@ -34,9 +34,9 @@
     </navigator>
 
     <view class="mt50">
-      <!-- <navigator url="/pages/ipt/ipt" hover-class="none"> -->
+      <navigator url="/pages/ipt/ipt" hover-class="none">
         <btn size="small" icon title="扫码识别小区信息"></btn>
-      <!-- </navigator> -->
+      </navigator>
     </view>
 
   </view>

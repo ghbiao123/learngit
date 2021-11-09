@@ -6,7 +6,7 @@
 }
 
 .color-green{
-  color: #338B56;
+  color: #36A463 !important;
 }
 
 .color-red{
